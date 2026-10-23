@@ -25,5 +25,24 @@ def test_epocas_rui_costa():
     assert (portugal["jogos"], portugal["golos"], portugal["assistencias"]) == (94, 26, 22)
 
 
+PLANTEL = """<div class="staff_line">
+<div class="staff"><div class="number">7</div><div class="name"><a title="Portugal" href="/pais/portugal">PT</a>
+<a href="/jogador/cristiano-ronaldo?epoca_id=138">Cristiano Ronaldo</a></div></div>
+<div class="staff"><div class="number">47</div><div class="name">
+<a href="/jogador/matty-james/98546?epoca_id=138">Matty James</a></div></div>
+</div>"""
+
+
+def test_numero_no_plantel():
+    assert zz.numero_no_plantel(PLANTEL, 1579, "cristiano-ronaldo") == 7
+    assert zz.numero_no_plantel(PLANTEL, 98546, None) == 47             # a ligação traz o id
+    assert zz.numero_no_plantel(PLANTEL, 1, "outro") is None
+
+
+def test_epocas_tem_plantel_e_slug():
+    e = zz.epocas(_html("zz_rui_costa_epocas.html.gz"))
+    assert e["slug"] and all(x["plantel"].startswith("/equipa/") for x in e["clubes"] if x["plantel"])
+
+
 def test_jovem():
     assert zz.jovem("Benfica[Jun.D S13]") and zz.jovem("Portugal[S21]") and not zz.jovem("Benfica")

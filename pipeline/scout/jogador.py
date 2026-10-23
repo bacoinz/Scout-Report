@@ -17,6 +17,7 @@ from . import config
 from .fontes import wikidata as wd
 from .fontes import wikipedia as wp
 from .fontes import zerozero as zz
+from .http import BloqueioAntiBot
 from .normalizar import normalizar, semelhanca_clube, slug
 
 _POSICOES_TM = {"Goalkeeper": "GR", "Centre-Back": "DC", "Right-Back": "LD", "Left-Back": "LE",
@@ -359,6 +360,24 @@ def construir(ctx: Contexto, qid: str, ent: dict, artigo: dict) -> tuple[dict, l
             for ep in passagens[i]["epocas"]:
                 if ep["epoca"] == a:
                     ep["numeros"] |= nums
+
+    # Números que ainda faltam: o plantel do clube nessa época no zerozero. Só para as épocas sem número de outra
+    # fonte; cada plantel é um pedido (a cache partilha-o entre os jogadores do mesmo plantel).
+    for p in passagens:
+        for ep in p["epocas"]:
+            if ep["numeros"] or not ep["jogos"] or not ep.get("plantel"):
+                continue
+            try:
+                n = zz.numero_no_plantel(zz.pagina_plantel(cliente, ep["plantel"], fresco=ctx.fresco), zz_id,
+                                         zz_epocas.get("slug"))
+            except BloqueioAntiBot:
+                raise
+            except Exception as e:                       # noqa: BLE001 — um plantel em falta não para a recolha
+                avisos.append(f"plantel do zerozero {ep['plantel']} falhou: {e}")
+                continue
+            if n:
+                ep["numeros"].add(n)
+                p["numeros"].add(n)
 
     # --- seleções --------------------------------------------------------------------------------------------------
     selecoes = []

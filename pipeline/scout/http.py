@@ -40,6 +40,8 @@ class ErroApi(RuntimeError):
 def _parece_desafio(resposta: requests.Response) -> bool:
     if resposta.headers.get("cf-mitigated", "").lower() == "challenge":
         return True
+    if resposta.headers.get("x-amzn-waf-action", "").lower() in ("challenge", "captcha"):   # AWS WAF (Transfermarkt)
+        return True
     if resposta.status_code in (403, 503) and "text/html" in resposta.headers.get("content-type", ""):
         inicio = resposta.text[:3000].lower()
         return "just a moment" in inicio or "challenge-platform" in inicio or "cf-chl" in inicio
