@@ -105,33 +105,25 @@
   text-transform: uppercase;
 }
 
-/* O dono da ficha: um papelinho preso com um pionés da cor do jogador. */
+/* O dono da ficha: um papelinho com o nome, preso com um pionés da cor do jogador, a sair do topo da folha. */
 .pin-dono {
-  position: absolute;
-  top: -14px;
-  left: 12px;
+  flex: none;
+  position: relative;
   z-index: 5;
+  margin-top: -26px;
   transform: rotate(-4deg);
-  padding: 9px 12px 3px;
-  min-width: 76px;
+  padding: 10px 12px 4px;
+  min-width: 70px;
   text-align: center;
   color: var(--tinta);
   background-color: #fffdf6;
   background-image: var(--textura-papel);
   box-shadow: 0 3px 8px #0005;
   font-family: var(--mao);
-  font-size: 22px;
+  font-size: 23px;
   font-weight: 700;
   line-height: 1;
-}
-.pin-dono small {
-  display: block;
-  font-family: var(--body);
-  font-size: 9px;
-  font-weight: 800;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--tinta-suave);
+  white-space: nowrap;
 }
 .pin-dono::before {
   content: '';
@@ -146,14 +138,12 @@
   box-shadow: 0 2px 3px #0007, inset 0 -2px 2px #0003;
 }
 
-/* Botão de minimizar/maximizar, no canto da folha. */
+/* Botão de recolher/abrir a folha (acordeão), no canto. */
 .folha-min {
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  z-index: 5;
-  width: 28px;
-  height: 28px;
+  flex: none;
+  align-self: flex-start;
+  width: 26px;
+  height: 26px;
   display: grid;
   place-items: center;
   border: 1.5px solid #1f2a4440;
@@ -172,33 +162,52 @@
   outline-offset: 2px;
 }
 
-/* Foto e nome lado a lado; os dados principais por baixo, a toda a largura. */
+/* Primeira linha: o papelinho do dono, o nome e o botão de recolher. Segunda: a foto, com os dados ao lado. */
 .folha-topo {
-  display: grid;
-  grid-template-columns: 66px minmax(0, 1fr);
-  grid-template-areas:
-    'foto nome'
-    'dados dados';
-  gap: 8px 12px;
-  align-items: center;
-  padding: 36px 14px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px 12px;
   border-bottom: 2px solid var(--tinta);
 }
-.folha-topo > .folha-foto {
-  grid-area: foto;
+.dossier .folha-topo {
+  padding-top: 14px;
 }
-.folha-topo > .folha-nome {
-  grid-area: nome;
+.folha-linha {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
 }
-.folha-topo > .folha-dados {
-  grid-area: dados;
+.folha-id {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.folha-retrato {
+  display: grid;
+  grid-template-columns: 86px minmax(0, 1fr);
+  gap: 10px;
+  align-items: start;
+}
+/* Só aparece com a folha recolhida: os "sim" por baixo do nome. */
+.folha-resumo {
+  display: none;
+  font: 800 11px/1 var(--body);
+  color: var(--tinta);
+  white-space: nowrap;
+}
+.folha-resumo.pronto {
+  color: var(--carimbo-roxo);
 }
 .folha-foto {
   margin: 0;
 }
 .folha-foto .moldura {
-  width: 66px;
-  height: 82px;
+  width: 86px;
+  height: 108px;
   background: #d9d3c2;
   border: 3px solid #fff;
   box-shadow: 0 2px 6px #0003;
@@ -227,35 +236,33 @@
   font-size: 34px;
   color: #fbf8efd9;
 }
-.folha-foto figcaption {
-  margin-top: 4px;
-  font-size: 9px;
-  line-height: 1.2;
-  color: var(--tinta-suave);
-}
 .folha-nome {
-  margin: 0 30px 4px 0;
+  margin: 0;
   font-family: var(--maquina);
   font-weight: 700;
-  font-size: 18px;
+  font-size: 17px;
   line-height: 1.15;
 }
 .folha-nome.desconhecido {
-  font-size: 15px;
-  letter-spacing: 0.02em;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
 }
+/* Os dados ao lado da foto: rótulo pequeno em cima, valor à máquina por baixo. */
 .folha-dados {
   margin: 0;
-  display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
-  gap: 1px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
   font-family: var(--maquina);
-  font-size: 12.5px;
-  line-height: 1.35;
+  font-size: 12px;
+  line-height: 1.25;
 }
 .folha-dados dt {
-  font: 800 9.5px/1.75 var(--body);
-  letter-spacing: 0.06em;
+  font: 800 9px/1.3 var(--body);
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--tinta-suave);
 }
@@ -353,7 +360,7 @@
   font-family: var(--maquina);
   font-weight: 700;
   font-size: 13px;
-  white-space: nowrap;
+  text-align: right;
 }
 .lista-folha {
   margin: 0;
@@ -562,84 +569,142 @@
 .requisito.ok {
   color: var(--carimbo-verde);
 }
-.selo-palpite {
+/* "PALPITE FINAL": um botão roxo bem visível quando a ficha está desbloqueada;
+   fechado, fica com o contorno tracejado a cinzento e não se pode carregar. */
+.btn-palpite {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px 5px;
+  border: 2px solid var(--carimbo-roxo);
+  border-radius: 999px;
+  background: linear-gradient(180deg, #7c3aed, var(--carimbo-roxo));
+  color: #fff;
   font-family: var(--display);
-  font-size: 12px;
+  font-size: 13px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--carimbo-roxo);
-  border: 2px solid currentColor;
-  border-radius: 999px;
-  padding: 4px 10px 3px;
-  background: #6d28d914;
+  box-shadow: 0 3px 0 #4c1d95, 0 6px 16px #6d28d966;
+  cursor: pointer;
+  transition: transform 0.08s, filter 0.15s, box-shadow 0.08s;
+  animation: chamar 2.4s ease-in-out infinite;
 }
-.selo-palpite.fechado {
+.btn-palpite::after {
+  content: '→';
+  font-family: var(--body);
+  font-weight: 800;
+}
+.btn-palpite:hover:not(:disabled) {
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+}
+.btn-palpite:active:not(:disabled) {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 #4c1d95, 0 3px 8px #6d28d966;
+}
+.btn-palpite:focus-visible {
+  outline: 2px solid var(--carimbo-roxo);
+  outline-offset: 3px;
+}
+.btn-palpite:disabled {
   color: var(--tinta-suave);
-  border-style: dashed;
   background: none;
+  border: 2px dashed currentColor;
+  box-shadow: none;
+  cursor: not-allowed;
+  animation: none;
+}
+.btn-palpite:disabled::after {
+  content: none;
+}
+@keyframes chamar {
+  50% { box-shadow: 0 3px 0 #4c1d95, 0 6px 16px #6d28d966, 0 0 0 5px #6d28d926; }
 }
 
-/* ---------- Folha minimizada: uma tira na pilha (só no computador; no telemóvel cada ficha é uma página) ---------- */
-.folha-tira {
-  display: none;
+/* A caixa do palpite final abre-se por cima do fundo da ficha. */
+.caixa-palpite {
+  position: absolute;
+  left: 8px;
+  right: 8px;
+  bottom: 8px;
+  z-index: 6;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px;
+  background-color: var(--papel);
+  background-image: var(--textura-papel);
+  border: 2px solid var(--carimbo-roxo);
+  border-radius: 8px;
+  box-shadow: 0 -6px 30px #0005;
+  animation: caixa-subir 0.22s cubic-bezier(0.2, 0.9, 0.3, 1) both;
 }
-@media (min-width: 960px) {
-.folha.minimizada {
-  outline-width: 2px;
-  cursor: pointer;
+@keyframes caixa-subir {
+  from { transform: translateY(16px); opacity: 0; }
+  to { transform: none; opacity: 1; }
 }
-.folha.minimizada > :not(.folha-tira) {
-  display: none;
+.caixa-palpite h4 {
+  color: var(--carimbo-roxo);
 }
-.folha.minimizada > .folha-tira {
-  display: grid;
-  grid-template-columns: 12px minmax(0, 1fr) auto;
-  grid-template-areas:
-    'pino dono sim'
-    'pino quem quem';
+.caixa-palpite .campo {
+  background: #fff;
+  color: var(--tinta);
+  border-color: #1f2a4440;
+  font-family: var(--maquina);
+}
+.caixa-palpite .campo:focus {
+  border-color: var(--carimbo-roxo);
+  box-shadow: 0 0 0 3px #6d28d933;
+}
+.caixa-palpite .sugestoes {
+  position: static;
+  margin: 0;
+  background: #fff;
+  border-color: #1f2a4430;
+  box-shadow: none;
+  color: var(--tinta);
+}
+.caixa-palpite .sugestoes li[aria-selected='true'],
+.caixa-palpite .sugestoes li:hover {
+  background: #6d28d914;
+}
+.caixa-palpite .sugestoes li small {
+  color: var(--tinta-suave);
+}
+.caixa-palpite .linha-botoes {
+  justify-content: space-between;
   align-items: center;
-  gap: 0 8px;
-  width: 100%;
-  padding: 10px 12px 9px;
+}
+.caixa-palpite .cancelar {
   border: 0;
   background: none;
-  color: inherit;
-  text-align: left;
+  color: var(--tinta-suave);
+  font-weight: 700;
+  font-size: 13px;
   cursor: pointer;
 }
-}
-.folha-tira .pino {
-  grid-area: pino;
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: radial-gradient(circle at 35% 30%, #fff9 0 2px, var(--cor-dono) 3px 100%);
-  box-shadow: 0 1px 2px #0007;
-}
-.folha-tira .dono {
-  grid-area: dono;
-  font-family: var(--mao);
-  font-weight: 700;
-  font-size: 21px;
-  line-height: 1;
-}
-.folha-tira .quem {
-  grid-area: quem;
-  font-family: var(--maquina);
-  font-size: 11.5px;
-  color: var(--tinta-suave);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.folha-tira .sim {
-  grid-area: sim;
-  font: 800 11px/1 var(--body);
-  color: var(--tinta);
-  white-space: nowrap;
-}
-.folha-tira .sim.pronto {
-  color: var(--carimbo-roxo);
+
+/* ---------- Acordeão: a folha recolhida mostra só a primeira linha (só no computador) ---------- */
+@media (min-width: 960px) {
+  .folha.recolhida {
+    flex: none;
+  }
+  .folha.recolhida > :not(.folha-topo) {
+    display: none;
+  }
+  .folha.recolhida > .folha-topo {
+    border-bottom: 0;
+    cursor: pointer;
+  }
+  .folha.recolhida .folha-retrato {
+    display: none;
+  }
+  .folha.recolhida .folha-resumo {
+    display: block;
+  }
+  .folha.recolhida:hover {
+    filter: brightness(1.03);
+  }
 }
 
 /* ---------- IDENTIFICADO ---------- */
@@ -696,12 +761,6 @@
   object-position: 50% 20%;
   background: #d9d3c2;
 }
-.identificado-foto figcaption {
-  margin-top: 4px;
-  font-size: 8.5px;
-  line-height: 1.2;
-  color: var(--tinta-suave);
-}
 @keyframes foto-cair {
   from { transform: translateY(-24px) rotate(-6deg); opacity: 0; }
   to { transform: rotate(3deg); opacity: 1; }
@@ -720,7 +779,7 @@
   margin: 0;
   font: 700 12.5px/1.35 var(--body);
   color: var(--tinta-suave);
-  max-width: 260px;
+  max-width: 100%;
 }
 
 /* ---------- O meu dossier: pasta de cartolina ---------- */
@@ -962,7 +1021,8 @@
   height: 118px;
 }
 .ft-sujeito .pin-dono {
-  position: static;
+  justify-self: center;
+  margin-top: 4px;
   transform: rotate(-3deg);
 }
 .ft-dados {

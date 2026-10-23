@@ -71,26 +71,36 @@ isso o violeta nunca leva texto branco por cima.
 - Courier Prime para os dados à máquina e Caveat para as notas à mão;
 - carimbos com tinta gasta (máscara de ruído) e a animação de carimbar.
 
-As fichas dos adversários têm o mesmo formato do dossier: foto (silhueta enquanto é desconhecido), nome
-("[Jogador desconhecido]") e os mesmos campos, com **????** no que falta e preenchidos à medida que se confirma. Por
-ordem:
-1. carreira, estatísticas e prémios;
-2. as notas à margem (perguntas livres);
-3. as **informações descartadas**.
+As fichas dos adversários têm o mesmo formato do dossier:
+- **primeira linha:** o nome do dono num papelinho preso com um pionés da cor dele, "[DESCONHECIDO]" (ou o nome,
+  depois de identificado) e o botão de recolher;
+- **por baixo:** a foto (silhueta enquanto é desconhecido), com os dados ao lado (nasceu, nação, posição, físico,
+  estado), com **????** no que falta, preenchidos à medida que se confirma;
+- **depois, por esta ordem:** carreira, estatísticas e prémios; as **notas extra** (perguntas livres); as
+  **informações descartadas**.
 
-O rodapé, com os "sim", o clube e o palpite, está sempre à vista. O dono é um papelinho preso com um pionés da cor
-dele. O IDENTIFICADO traz a foto do jogador (Wikimedia Commons, com autor e licença).
+O rodapé está sempre à vista. Tem os "sim", o clube e o botão **PALPITE FINAL**: roxo e clicável quando a ficha está
+desbloqueada, tracejado a cinzento quando não. Esse botão abre a caixa do palpite na própria ficha. O IDENTIFICADO
+traz a foto do jogador. Os créditos da foto (autor e licença, do Wikimedia Commons) ficam na dica que aparece ao
+passar o rato.
 
 A **Ronda Joker** abre com um anúncio animado (a carta a rodar e o título) e passa a uma ficha técnica em quadrícula:
 sujeito, dados conhecidos, pergunta, tempo, lance, lances dos outros e pontuação.
 
 `jogo/public/css/app.css` tem a disposição do jogo, e **a página nunca desliza**: só desliza o interior de cada coluna.
-- **Cabeçalho:** marca; "Volta 3 de 8 · A tua vez → Ana" com a barra do tempo e o relógio; Classificação e
-  Acontecimentos, que descem por cima do jogo e sobem ao clicar fora; o menu com a sala, o som, o "Como jogar" e
-  "Sair".
-- **Computador:** perguntas à esquerda, à altura da janela; o meu dossier; as fichas abertas; e à direita a pilha das
-  minimizadas, umas por cima das outras. Cabem tantas fichas quantas a largura deixar; ao abrir uma da pilha, a que foi
-  aberta há mais tempo passa para lá.
+- **Cabeçalho (baixo):**
+  - marca;
+  - "Ronda 3 de 8", com a linha do tempo e o relógio na mesma linha;
+  - Acontecimentos e Classificação, que descem por cima do jogo e sobem ao clicar fora;
+  - o menu, com a sala, o som, o "Como jogar" e "Sair".
+- **Coluna das perguntas (à esquerda, à altura da janela):**
+  - em cima, "A tua vez → Ana" e a lista das perguntas por categoria; escolher uma seleciona-a;
+  - em baixo, fixos, a pergunta escolhida, o campo "Pergunta livre" e o botão "Enviar pergunta";
+  - só se envia uma das duas; com as duas preenchidas, aparece um erro.
+- **Computador:**
+  - o meu dossier primeiro e depois uma coluna por adversário, enquanto couberem (com 4 jogadores, todos);
+  - as fichas a mais ficam por baixo, recolhidas em acordeão (só a primeira linha);
+  - em cada coluna abre-se a ficha do alvo (ou de quem está a jogar), senão a última que se abriu.
 - **Telemóvel:** cada coluna ocupa o ecrã e passa-se de lado, com um navegador em baixo (Perguntar, O meu, Ana, …).
 
 ## Ver o mockup
@@ -106,7 +116,8 @@ Parâmetros para abrir um estado direto (usados nas capturas):
 - `?vista=inicio|jogo|joker|revelacao`
 - `?como`
 - `?popup=placar|feed|menu`
-- `?abrir=rui`
+- `?palpite` (abre a caixa do palpite final na ficha do Rui)
+- `?erro` (as duas perguntas preenchidas, com o erro)
 - `?congelar=1500` (para as animações nesse instante)
 
 As capturas estão em `docs/capturas/`.
