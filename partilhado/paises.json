@@ -1,0 +1,1561 @@
+{
+ "paises": {
+  "AF": {
+   "nome": "Afeganistão",
+   "confederacao": "AFC",
+   "selecao": "Afghanistan national football team",
+   "qid_selecao": "Q192966",
+   "qid_pais": "Q889"
+  },
+  "AL": {
+   "nome": "Albânia",
+   "confederacao": "UEFA",
+   "selecao": "Albania national football team",
+   "qid_selecao": "Q186262",
+   "qid_pais": "Q222"
+  },
+  "DZ": {
+   "nome": "Argélia",
+   "confederacao": "CAF",
+   "selecao": "Algeria national football team",
+   "qid_selecao": "Q181903",
+   "qid_pais": "Q262"
+  },
+  "AS": {
+   "nome": "Samoa Americana",
+   "confederacao": "OFC",
+   "selecao": "American Samoa national football team",
+   "qid_selecao": "Q318919",
+   "qid_pais": "Q16641"
+  },
+  "AD": {
+   "nome": "Andorra",
+   "confederacao": "UEFA",
+   "selecao": "Andorra national football team",
+   "qid_selecao": "Q180798",
+   "qid_pais": "Q228"
+  },
+  "AO": {
+   "nome": "Angola",
+   "confederacao": "CAF",
+   "selecao": "Angola national football team",
+   "qid_selecao": "Q192828",
+   "qid_pais": "Q916"
+  },
+  "AI": {
+   "nome": "Anguila",
+   "confederacao": "CONCACAF",
+   "selecao": "Anguilla national football team",
+   "qid_selecao": "Q497630",
+   "qid_pais": "Q25228"
+  },
+  "AG": {
+   "nome": "Antígua e Barbuda",
+   "confederacao": "CONCACAF",
+   "selecao": "Antigua and Barbuda national football team",
+   "qid_selecao": "Q267972",
+   "qid_pais": "Q781"
+  },
+  "AR": {
+   "nome": "Argentina",
+   "confederacao": "CONMEBOL",
+   "selecao": "Argentina national football team",
+   "qid_selecao": "Q79800",
+   "qid_pais": "Q414"
+  },
+  "AM": {
+   "nome": "Arménia",
+   "confederacao": "UEFA",
+   "selecao": "Armenia national football team",
+   "qid_selecao": "Q183326",
+   "qid_pais": "Q399"
+  },
+  "AW": {
+   "nome": "Aruba",
+   "confederacao": "CONCACAF",
+   "selecao": "Aruba national football team",
+   "qid_selecao": "Q459101",
+   "qid_pais": "Q21203"
+  },
+  "AU": {
+   "nome": "Austrália",
+   "confederacao": "AFC",
+   "selecao": "Australia men's national soccer team",
+   "qid_selecao": "Q268208",
+   "qid_pais": "Q408"
+  },
+  "AT": {
+   "nome": "Áustria",
+   "confederacao": "UEFA",
+   "selecao": "Austria national football team",
+   "qid_selecao": "Q163534",
+   "qid_pais": "Q40"
+  },
+  "AZ": {
+   "nome": "Azerbaijão",
+   "confederacao": "UEFA",
+   "selecao": "Azerbaijan national football team",
+   "qid_selecao": "Q180800",
+   "qid_pais": "Q227"
+  },
+  "BS": {
+   "nome": "Bahamas",
+   "confederacao": "CONCACAF",
+   "selecao": "Bahamas national football team",
+   "qid_selecao": "Q244590",
+   "qid_pais": "Q778"
+  },
+  "BH": {
+   "nome": "Barém",
+   "confederacao": "AFC",
+   "selecao": "Bahrain national football team",
+   "qid_selecao": "Q210460",
+   "qid_pais": "Q398"
+  },
+  "BD": {
+   "nome": "Bangladesh",
+   "confederacao": "AFC",
+   "selecao": "Bangladesh national football team",
+   "qid_selecao": "Q241670",
+   "qid_pais": "Q902"
+  },
+  "BB": {
+   "nome": "Barbados",
+   "confederacao": "CONCACAF",
+   "selecao": "Barbados national football team",
+   "qid_selecao": "Q497659",
+   "qid_pais": "Q244"
+  },
+  "BY": {
+   "nome": "Bielorrússia",
+   "confederacao": "UEFA",
+   "selecao": "Belarus national football team",
+   "qid_selecao": "Q186252",
+   "qid_pais": "Q184"
+  },
+  "BE": {
+   "nome": "Bélgica",
+   "confederacao": "UEFA",
+   "selecao": "Belgium national football team",
+   "qid_selecao": "Q166776",
+   "qid_pais": "Q31"
+  },
+  "BZ": {
+   "nome": "Belize",
+   "confederacao": "CONCACAF",
+   "selecao": "Belize national football team",
+   "qid_selecao": "Q455413",
+   "qid_pais": "Q242"
+  },
+  "BJ": {
+   "nome": "Benim",
+   "confederacao": "CAF",
+   "selecao": "Benin national football team",
+   "qid_selecao": "Q239535",
+   "qid_pais": "Q962"
+  },
+  "BM": {
+   "nome": "Bermudas",
+   "confederacao": "CONCACAF",
+   "selecao": "Bermuda national football team",
+   "qid_selecao": "Q497653",
+   "qid_pais": "Q23635"
+  },
+  "BT": {
+   "nome": "Butão",
+   "confederacao": "AFC",
+   "selecao": "Bhutan national football team",
+   "qid_selecao": "Q244431",
+   "qid_pais": "Q917"
+  },
+  "BO": {
+   "nome": "Bolívia",
+   "confederacao": "CONMEBOL",
+   "selecao": "Bolivia national football team",
+   "qid_selecao": "Q193386",
+   "qid_pais": "Q750"
+  },
+  "Q25396": {
+   "nome": "Bonaire",
+   "confederacao": "CONCACAF",
+   "selecao": "Bonaire national football team",
+   "qid_selecao": "Q2474418",
+   "qid_pais": "Q25396"
+  },
+  "BA": {
+   "nome": "Bósnia e Herzegovina",
+   "confederacao": "UEFA",
+   "selecao": "Bosnia and Herzegovina national football team",
+   "qid_selecao": "Q181190",
+   "qid_pais": "Q225"
+  },
+  "BW": {
+   "nome": "Botsuana",
+   "confederacao": "CAF",
+   "selecao": "Botswana national football team",
+   "qid_selecao": "Q119322",
+   "qid_pais": "Q963"
+  },
+  "BR": {
+   "nome": "Brasil",
+   "confederacao": "CONMEBOL",
+   "selecao": "Brazil national football team",
+   "qid_selecao": "Q83459",
+   "qid_pais": "Q155"
+  },
+  "VG": {
+   "nome": "Ilhas Virgens Britânicas",
+   "confederacao": "CONCACAF",
+   "selecao": "British Virgin Islands national football team",
+   "qid_selecao": "Q263708",
+   "qid_pais": "Q25305"
+  },
+  "BN": {
+   "nome": "Brunei",
+   "confederacao": "AFC",
+   "selecao": "Brunei national football team",
+   "qid_selecao": "Q239555",
+   "qid_pais": "Q921"
+  },
+  "BG": {
+   "nome": "Bulgária",
+   "confederacao": "UEFA",
+   "selecao": "Bulgaria national football team",
+   "qid_selecao": "Q180845",
+   "qid_pais": "Q219"
+  },
+  "BF": {
+   "nome": "Burquina Fasso",
+   "confederacao": "CAF",
+   "selecao": "Burkina Faso national football team",
+   "qid_selecao": "Q44270",
+   "qid_pais": "Q965"
+  },
+  "BI": {
+   "nome": "Burundi",
+   "confederacao": "CAF",
+   "selecao": "Burundi national football team",
+   "qid_selecao": "Q459110",
+   "qid_pais": "Q967"
+  },
+  "KH": {
+   "nome": "Camboja",
+   "confederacao": "AFC",
+   "selecao": "Cambodia national football team",
+   "qid_selecao": "Q318925",
+   "qid_pais": "Q424"
+  },
+  "CM": {
+   "nome": "Camarões",
+   "confederacao": "CAF",
+   "selecao": "Cameroon national football team",
+   "qid_selecao": "Q175309",
+   "qid_pais": "Q1009"
+  },
+  "CA": {
+   "nome": "Canadá",
+   "confederacao": "CONCACAF",
+   "selecao": "Canada men's national soccer team",
+   "qid_selecao": "Q208635",
+   "qid_pais": "Q16"
+  },
+  "CV": {
+   "nome": "Cabo Verde",
+   "confederacao": "CAF",
+   "selecao": "Cape Verde national football team",
+   "qid_selecao": "Q330039",
+   "qid_pais": "Q1011"
+  },
+  "KY": {
+   "nome": "Ilhas Cayman",
+   "confederacao": "CONCACAF",
+   "selecao": "Cayman Islands national football team",
+   "qid_selecao": "Q373462",
+   "qid_pais": "Q5785"
+  },
+  "CF": {
+   "nome": "República Centro-Africana",
+   "confederacao": "CAF",
+   "selecao": "Central African Republic national football team",
+   "qid_selecao": "Q189948",
+   "qid_pais": "Q929"
+  },
+  "TD": {
+   "nome": "Chade",
+   "confederacao": "CAF",
+   "selecao": "Chad national football team",
+   "qid_selecao": "Q275675",
+   "qid_pais": "Q657"
+  },
+  "CL": {
+   "nome": "Chile",
+   "confederacao": "CONMEBOL",
+   "selecao": "Chile national football team",
+   "qid_selecao": "Q172025",
+   "qid_pais": "Q298"
+  },
+  "CN": {
+   "nome": "China",
+   "confederacao": "AFC",
+   "selecao": "China national football team",
+   "qid_selecao": "Q130582",
+   "qid_pais": "Q148"
+  },
+  "Q216923": {
+   "nome": "Taipé Chinês",
+   "confederacao": "AFC",
+   "selecao": "Chinese Taipei national football team",
+   "qid_selecao": "Q459119",
+   "qid_pais": "Q216923"
+  },
+  "CO": {
+   "nome": "Colômbia",
+   "confederacao": "CONMEBOL",
+   "selecao": "Colombia national football team",
+   "qid_selecao": "Q212564",
+   "qid_pais": "Q739"
+  },
+  "KM": {
+   "nome": "Comores",
+   "confederacao": "CAF",
+   "selecao": "Comoros national football team",
+   "qid_selecao": "Q497637",
+   "qid_pais": "Q970"
+  },
+  "CG": {
+   "nome": "República do Congo",
+   "confederacao": "CAF",
+   "selecao": "Congo national football team",
+   "qid_selecao": "Q330056",
+   "qid_pais": "Q971"
+  },
+  "CK": {
+   "nome": "Ilhas Cook",
+   "confederacao": "OFC",
+   "selecao": "Cook Islands national football team",
+   "qid_selecao": "Q275669",
+   "qid_pais": "Q26988"
+  },
+  "CR": {
+   "nome": "Costa Rica",
+   "confederacao": "CONCACAF",
+   "selecao": "Costa Rica national football team",
+   "qid_selecao": "Q194387",
+   "qid_pais": "Q800"
+  },
+  "HR": {
+   "nome": "Croácia",
+   "confederacao": "UEFA",
+   "selecao": "Croatia national football team",
+   "qid_selecao": "Q134479",
+   "qid_pais": "Q224"
+  },
+  "CU": {
+   "nome": "Cuba",
+   "confederacao": "CONCACAF",
+   "selecao": "Cuba national football team",
+   "qid_selecao": "Q236014",
+   "qid_pais": "Q241"
+  },
+  "CW": {
+   "nome": "Curaçau",
+   "confederacao": "CONCACAF",
+   "selecao": "Curaçao national football team",
+   "qid_selecao": "Q729640",
+   "qid_pais": "Q25279"
+  },
+  "CY": {
+   "nome": "Chipre",
+   "confederacao": "UEFA",
+   "selecao": "Cyprus national football team",
+   "qid_selecao": "Q188791",
+   "qid_pais": "Q229"
+  },
+  "CZ": {
+   "nome": "Chéquia",
+   "confederacao": "UEFA",
+   "selecao": "Czech Republic national football team",
+   "qid_selecao": "Q483868",
+   "qid_pais": "Q213"
+  },
+  "CD": {
+   "nome": "RD Congo",
+   "confederacao": "CAF",
+   "selecao": "DR Congo national football team",
+   "qid_selecao": "Q270080",
+   "qid_pais": "Q974"
+  },
+  "DK": {
+   "nome": "Dinamarca",
+   "confederacao": "UEFA",
+   "selecao": "Denmark national football team",
+   "qid_selecao": "Q131785",
+   "qid_pais": "Q35"
+  },
+  "DJ": {
+   "nome": "Djibouti",
+   "confederacao": "CAF",
+   "selecao": "Djibouti national football team",
+   "qid_selecao": "Q275698",
+   "qid_pais": "Q977"
+  },
+  "DM": {
+   "nome": "Dominica",
+   "confederacao": "CONCACAF",
+   "selecao": "Dominica national football team",
+   "qid_selecao": "Q220724",
+   "qid_pais": "Q784"
+  },
+  "DO": {
+   "nome": "República Dominicana",
+   "confederacao": "CONCACAF",
+   "selecao": "Dominican Republic national football team",
+   "qid_selecao": "Q47233",
+   "qid_pais": "Q786"
+  },
+  "EC": {
+   "nome": "Equador",
+   "confederacao": "CONMEBOL",
+   "selecao": "Ecuador national football team",
+   "qid_selecao": "Q987584",
+   "qid_pais": "Q736"
+  },
+  "EG": {
+   "nome": "Egito",
+   "confederacao": "CAF",
+   "selecao": "Egypt national football team",
+   "qid_selecao": "Q28089",
+   "qid_pais": "Q79"
+  },
+  "SV": {
+   "nome": "El Salvador",
+   "confederacao": "CONCACAF",
+   "selecao": "El Salvador national football team",
+   "qid_selecao": "Q188228",
+   "qid_pais": "Q792"
+  },
+  "GB-ENG": {
+   "nome": "Inglaterra",
+   "confederacao": "UEFA",
+   "selecao": "England national football team",
+   "qid_selecao": "Q47762",
+   "qid_pais": "Q21"
+  },
+  "GQ": {
+   "nome": "Guiné Equatorial",
+   "confederacao": "CAF",
+   "selecao": "Equatorial Guinea national football team",
+   "qid_selecao": "Q255771",
+   "qid_pais": "Q983"
+  },
+  "ER": {
+   "nome": "Eritreia",
+   "confederacao": "CAF",
+   "selecao": "Eritrea national football team",
+   "qid_selecao": "Q455131",
+   "qid_pais": "Q986"
+  },
+  "EE": {
+   "nome": "Estónia",
+   "confederacao": "UEFA",
+   "selecao": "Estonia national football team",
+   "qid_selecao": "Q186914",
+   "qid_pais": "Q191"
+  },
+  "SZ": {
+   "nome": "Essuatíni",
+   "confederacao": "CAF",
+   "selecao": "Eswatini national football team",
+   "qid_selecao": "Q333490",
+   "qid_pais": "Q1050"
+  },
+  "ET": {
+   "nome": "Etiópia",
+   "confederacao": "CAF",
+   "selecao": "Ethiopia national football team",
+   "qid_selecao": "Q257411",
+   "qid_pais": "Q115"
+  },
+  "FO": {
+   "nome": "Ilhas Feroe",
+   "confederacao": "UEFA",
+   "selecao": "Faroe Islands national football team",
+   "qid_selecao": "Q200688",
+   "qid_pais": "Q4628"
+  },
+  "FJ": {
+   "nome": "Fiji",
+   "confederacao": "OFC",
+   "selecao": "Fiji national football team",
+   "qid_selecao": "Q275933",
+   "qid_pais": "Q712"
+  },
+  "FI": {
+   "nome": "Finlândia",
+   "confederacao": "UEFA",
+   "selecao": "Finland national football team",
+   "qid_selecao": "Q186532",
+   "qid_pais": "Q33"
+  },
+  "FR": {
+   "nome": "França",
+   "confederacao": "UEFA",
+   "selecao": "France national football team",
+   "qid_selecao": "Q47774",
+   "qid_pais": "Q142"
+  },
+  "GF": {
+   "nome": "Guiana Francesa",
+   "confederacao": "CONCACAF",
+   "selecao": "French Guiana national football team",
+   "qid_selecao": "Q726592",
+   "qid_pais": "Q3769"
+  },
+  "GA": {
+   "nome": "Gabão",
+   "confederacao": "CAF",
+   "selecao": "Gabon national football team",
+   "qid_selecao": "Q235416",
+   "qid_pais": "Q1000"
+  },
+  "GM": {
+   "nome": "Gâmbia",
+   "confederacao": "CAF",
+   "selecao": "Gambia national football team",
+   "qid_selecao": "Q270181",
+   "qid_pais": "Q1005"
+  },
+  "GE": {
+   "nome": "Geórgia",
+   "confederacao": "UEFA",
+   "selecao": "Georgia national football team",
+   "qid_selecao": "Q186268",
+   "qid_pais": "Q230"
+  },
+  "DE": {
+   "nome": "Alemanha",
+   "confederacao": "UEFA",
+   "selecao": "Germany national football team",
+   "qid_selecao": "Q43310",
+   "qid_pais": "Q183"
+  },
+  "GH": {
+   "nome": "Gana",
+   "confederacao": "CAF",
+   "selecao": "Ghana national football team",
+   "qid_selecao": "Q172014",
+   "qid_pais": "Q117"
+  },
+  "GI": {
+   "nome": "Gibraltar",
+   "confederacao": "UEFA",
+   "selecao": "Gibraltar national football team",
+   "qid_selecao": "Q583626",
+   "qid_pais": "Q1410"
+  },
+  "GR": {
+   "nome": "Grécia",
+   "confederacao": "UEFA",
+   "selecao": "Greece national football team",
+   "qid_selecao": "Q134925",
+   "qid_pais": "Q41"
+  },
+  "GD": {
+   "nome": "Granada",
+   "confederacao": "CONCACAF",
+   "selecao": "Grenada national football team",
+   "qid_selecao": "Q270666",
+   "qid_pais": "Q769"
+  },
+  "GP": {
+   "nome": "Guadalupe",
+   "confederacao": "CONCACAF",
+   "selecao": "Guadeloupe national football team",
+   "qid_selecao": "Q497334",
+   "qid_pais": "Q17012"
+  },
+  "GU": {
+   "nome": "Guam",
+   "confederacao": "AFC",
+   "selecao": "Guam national football team",
+   "qid_selecao": "Q270203",
+   "qid_pais": "Q16635"
+  },
+  "GT": {
+   "nome": "Guatemala",
+   "confederacao": "CONCACAF",
+   "selecao": "Guatemala national football team",
+   "qid_selecao": "Q270168",
+   "qid_pais": "Q774"
+  },
+  "GN": {
+   "nome": "Guiné",
+   "confederacao": "CAF",
+   "selecao": "Guinea national football team",
+   "qid_selecao": "Q235411",
+   "qid_pais": "Q1006"
+  },
+  "GW": {
+   "nome": "Guiné-Bissau",
+   "confederacao": "CAF",
+   "selecao": "Guinea-Bissau national football team",
+   "qid_selecao": "Q455123",
+   "qid_pais": "Q1007"
+  },
+  "GY": {
+   "nome": "Guiana",
+   "confederacao": "CONCACAF",
+   "selecao": "Guyana national football team",
+   "qid_selecao": "Q330125",
+   "qid_pais": "Q734"
+  },
+  "HT": {
+   "nome": "Haiti",
+   "confederacao": "CONCACAF",
+   "selecao": "Haiti national football team",
+   "qid_selecao": "Q236006",
+   "qid_pais": "Q790"
+  },
+  "HN": {
+   "nome": "Honduras",
+   "confederacao": "CONCACAF",
+   "selecao": "Honduras national football team",
+   "qid_selecao": "Q180187",
+   "qid_pais": "Q783"
+  },
+  "HK": {
+   "nome": "Hong Kong",
+   "confederacao": "AFC",
+   "selecao": "Hong Kong national football team",
+   "qid_selecao": "Q242119",
+   "qid_pais": "Q8646"
+  },
+  "HU": {
+   "nome": "Hungria",
+   "confederacao": "UEFA",
+   "selecao": "Hungary national football team",
+   "qid_selecao": "Q170561",
+   "qid_pais": "Q28"
+  },
+  "IS": {
+   "nome": "Islândia",
+   "confederacao": "UEFA",
+   "selecao": "Iceland national football team",
+   "qid_selecao": "Q189198",
+   "qid_pais": "Q189"
+  },
+  "IN": {
+   "nome": "Índia",
+   "confederacao": "AFC",
+   "selecao": "India national football team",
+   "qid_selecao": "Q212206",
+   "qid_pais": "Q668"
+  },
+  "ID": {
+   "nome": "Indonésia",
+   "confederacao": "AFC",
+   "selecao": "Indonesia national football team",
+   "qid_selecao": "Q657451",
+   "qid_pais": "Q252"
+  },
+  "IR": {
+   "nome": "Irão",
+   "confederacao": "AFC",
+   "selecao": "Iran national football team",
+   "qid_selecao": "Q184602",
+   "qid_pais": "Q794"
+  },
+  "IQ": {
+   "nome": "Iraque",
+   "confederacao": "AFC",
+   "selecao": "Iraq national football team",
+   "qid_selecao": "Q186243",
+   "qid_pais": "Q796"
+  },
+  "IL": {
+   "nome": "Israel",
+   "confederacao": "UEFA",
+   "selecao": "Israel national football team",
+   "qid_selecao": "Q191406",
+   "qid_pais": "Q801"
+  },
+  "IT": {
+   "nome": "Itália",
+   "confederacao": "UEFA",
+   "selecao": "Italy national football team",
+   "qid_selecao": "Q676899",
+   "qid_pais": "Q38"
+  },
+  "CI": {
+   "nome": "Costa do Marfim",
+   "confederacao": "CAF",
+   "selecao": "Ivory Coast national football team",
+   "qid_selecao": "Q175145",
+   "qid_pais": "Q1008"
+  },
+  "JM": {
+   "nome": "Jamaica",
+   "confederacao": "CONCACAF",
+   "selecao": "Jamaica national football team",
+   "qid_selecao": "Q235399",
+   "qid_pais": "Q766"
+  },
+  "JP": {
+   "nome": "Japão",
+   "confederacao": "AFC",
+   "selecao": "Japan national football team",
+   "qid_selecao": "Q170566",
+   "qid_pais": "Q17"
+  },
+  "JO": {
+   "nome": "Jordânia",
+   "confederacao": "AFC",
+   "selecao": "Jordan national football team",
+   "qid_selecao": "Q275940",
+   "qid_pais": "Q810"
+  },
+  "KZ": {
+   "nome": "Cazaquistão",
+   "confederacao": "UEFA",
+   "selecao": "Kazakhstan national football team",
+   "qid_selecao": "Q183468",
+   "qid_pais": "Q232"
+  },
+  "KE": {
+   "nome": "Quénia",
+   "confederacao": "CAF",
+   "selecao": "Kenya national football team",
+   "qid_selecao": "Q239520",
+   "qid_pais": "Q114"
+  },
+  "KI": {
+   "nome": "Quiribáti",
+   "confederacao": "OFC",
+   "selecao": "Kiribati national football team",
+   "qid_selecao": "Q725543",
+   "qid_pais": "Q710"
+  },
+  "XK": {
+   "nome": "Kosovo",
+   "confederacao": "UEFA",
+   "selecao": "Kosovo national football team",
+   "qid_selecao": "Q113143",
+   "qid_pais": "Q1246"
+  },
+  "KW": {
+   "nome": "Kuwait",
+   "confederacao": "AFC",
+   "selecao": "Kuwait national football team",
+   "qid_selecao": "Q206828",
+   "qid_pais": "Q817"
+  },
+  "KG": {
+   "nome": "Quirguistão",
+   "confederacao": "AFC",
+   "selecao": "Kyrgyzstan national football team",
+   "qid_selecao": "Q244374",
+   "qid_pais": "Q813"
+  },
+  "LA": {
+   "nome": "Laos",
+   "confederacao": "AFC",
+   "selecao": "Laos national football team",
+   "qid_selecao": "Q276079",
+   "qid_pais": "Q819"
+  },
+  "LV": {
+   "nome": "Letónia",
+   "confederacao": "UEFA",
+   "selecao": "Latvia national football team",
+   "qid_selecao": "Q189322",
+   "qid_pais": "Q211"
+  },
+  "LB": {
+   "nome": "Líbano",
+   "confederacao": "AFC",
+   "selecao": "Lebanon national football team",
+   "qid_selecao": "Q318928",
+   "qid_pais": "Q822"
+  },
+  "LS": {
+   "nome": "Lesoto",
+   "confederacao": "CAF",
+   "selecao": "Lesotho national football team",
+   "qid_selecao": "Q221093",
+   "qid_pais": "Q1013"
+  },
+  "LR": {
+   "nome": "Libéria",
+   "confederacao": "CAF",
+   "selecao": "Liberia national football team",
+   "qid_selecao": "Q387301",
+   "qid_pais": "Q1014"
+  },
+  "LY": {
+   "nome": "Líbia",
+   "confederacao": "CAF",
+   "selecao": "Libya national football team",
+   "qid_selecao": "Q276089",
+   "qid_pais": "Q1016"
+  },
+  "LI": {
+   "nome": "Liechtenstein",
+   "confederacao": "UEFA",
+   "selecao": "Liechtenstein national football team",
+   "qid_selecao": "Q186690",
+   "qid_pais": "Q347"
+  },
+  "LT": {
+   "nome": "Lituânia",
+   "confederacao": "UEFA",
+   "selecao": "Lithuania national football team",
+   "qid_selecao": "Q186276",
+   "qid_pais": "Q37"
+  },
+  "LU": {
+   "nome": "Luxemburgo",
+   "confederacao": "UEFA",
+   "selecao": "Luxembourg national football team",
+   "qid_selecao": "Q184266",
+   "qid_pais": "Q32"
+  },
+  "MO": {
+   "nome": "Macau",
+   "confederacao": "AFC",
+   "selecao": "Macau national football team",
+   "qid_selecao": "Q285708",
+   "qid_pais": "Q14773"
+  },
+  "MG": {
+   "nome": "Madagáscar",
+   "confederacao": "CAF",
+   "selecao": "Madagascar national football team",
+   "qid_selecao": "Q477304",
+   "qid_pais": "Q1019"
+  },
+  "MW": {
+   "nome": "Malawi",
+   "confederacao": "CAF",
+   "selecao": "Malawi national football team",
+   "qid_selecao": "Q365548",
+   "qid_pais": "Q1020"
+  },
+  "MY": {
+   "nome": "Malásia",
+   "confederacao": "AFC",
+   "selecao": "Malaysia national football team",
+   "qid_selecao": "Q318922",
+   "qid_pais": "Q833"
+  },
+  "MV": {
+   "nome": "Maldivas",
+   "confederacao": "AFC",
+   "selecao": "Maldives national football team",
+   "qid_selecao": "Q387312",
+   "qid_pais": "Q826"
+  },
+  "ML": {
+   "nome": "Mali",
+   "confederacao": "CAF",
+   "selecao": "Mali national football team",
+   "qid_selecao": "Q211733",
+   "qid_pais": "Q912"
+  },
+  "MT": {
+   "nome": "Malta",
+   "confederacao": "UEFA",
+   "selecao": "Malta national football team",
+   "qid_selecao": "Q188782",
+   "qid_pais": "Q233"
+  },
+  "MQ": {
+   "nome": "Martinica",
+   "confederacao": "CONCACAF",
+   "selecao": "Martinique national football team",
+   "qid_selecao": "Q739684",
+   "qid_pais": "Q17054"
+  },
+  "MR": {
+   "nome": "Mauritânia",
+   "confederacao": "CAF",
+   "selecao": "Mauritania national football team",
+   "qid_selecao": "Q477067",
+   "qid_pais": "Q1025"
+  },
+  "MU": {
+   "nome": "Maurícia",
+   "confederacao": "CAF",
+   "selecao": "Mauritius national football team",
+   "qid_selecao": "Q477833",
+   "qid_pais": "Q1027"
+  },
+  "MX": {
+   "nome": "México",
+   "confederacao": "CONCACAF",
+   "selecao": "Mexico national football team",
+   "qid_selecao": "Q164089",
+   "qid_pais": "Q96"
+  },
+  "MD": {
+   "nome": "Moldávia",
+   "confederacao": "UEFA",
+   "selecao": "Moldova national football team",
+   "qid_selecao": "Q191142",
+   "qid_pais": "Q217"
+  },
+  "MN": {
+   "nome": "Mongólia",
+   "confederacao": "AFC",
+   "selecao": "Mongolia national football team",
+   "qid_selecao": "Q241353",
+   "qid_pais": "Q711"
+  },
+  "ME": {
+   "nome": "Montenegro",
+   "confederacao": "UEFA",
+   "selecao": "Montenegro national football team",
+   "qid_selecao": "Q189018",
+   "qid_pais": "Q236"
+  },
+  "MS": {
+   "nome": "Monserrate",
+   "confederacao": "CONCACAF",
+   "selecao": "Montserrat national football team",
+   "qid_selecao": "Q497989",
+   "qid_pais": "Q13353"
+  },
+  "MA": {
+   "nome": "Marrocos",
+   "confederacao": "CAF",
+   "selecao": "Morocco national football team",
+   "qid_selecao": "Q207337",
+   "qid_pais": "Q1028"
+  },
+  "MZ": {
+   "nome": "Moçambique",
+   "confederacao": "CAF",
+   "selecao": "Mozambique national football team",
+   "qid_selecao": "Q254231",
+   "qid_pais": "Q1029"
+  },
+  "MM": {
+   "nome": "Myanmar",
+   "confederacao": "AFC",
+   "selecao": "Myanmar national football team",
+   "qid_selecao": "Q271753",
+   "qid_pais": "Q836"
+  },
+  "NA": {
+   "nome": "Namíbia",
+   "confederacao": "CAF",
+   "selecao": "Namibia national football team",
+   "qid_selecao": "Q328687",
+   "qid_pais": "Q1030"
+  },
+  "NP": {
+   "nome": "Nepal",
+   "confederacao": "AFC",
+   "selecao": "Nepal national football team",
+   "qid_selecao": "Q330971",
+   "qid_pais": "Q837"
+  },
+  "NL": {
+   "nome": "Países Baixos",
+   "confederacao": "UEFA",
+   "selecao": "Netherlands national football team",
+   "qid_selecao": "Q47050",
+   "qid_pais": "Q55"
+  },
+  "NC": {
+   "nome": "Nova Caledónia",
+   "confederacao": "OFC",
+   "selecao": "New Caledonia national football team",
+   "qid_selecao": "Q328295",
+   "qid_pais": "Q33788"
+  },
+  "NZ": {
+   "nome": "Nova Zelândia",
+   "confederacao": "OFC",
+   "selecao": "New Zealand men's national football team",
+   "qid_selecao": "Q175315",
+   "qid_pais": "Q664"
+  },
+  "NI": {
+   "nome": "Nicarágua",
+   "confederacao": "CONCACAF",
+   "selecao": "Nicaragua national football team",
+   "qid_selecao": "Q327924",
+   "qid_pais": "Q811"
+  },
+  "NE": {
+   "nome": "Níger",
+   "confederacao": "CAF",
+   "selecao": "Niger national football team",
+   "qid_selecao": "Q245153",
+   "qid_pais": "Q1032"
+  },
+  "NG": {
+   "nome": "Nigéria",
+   "confederacao": "CAF",
+   "selecao": "Nigeria national football team",
+   "qid_selecao": "Q181930",
+   "qid_pais": "Q1033"
+  },
+  "KP": {
+   "nome": "Coreia do Norte",
+   "confederacao": "AFC",
+   "selecao": "North Korea national football team",
+   "qid_selecao": "Q14132",
+   "qid_pais": "Q423"
+  },
+  "MK": {
+   "nome": "Macedónia do Norte",
+   "confederacao": "UEFA",
+   "selecao": "North Macedonia national football team",
+   "qid_selecao": "Q188568",
+   "qid_pais": "Q221"
+  },
+  "GB-NIR": {
+   "nome": "Irlanda do Norte",
+   "confederacao": "UEFA",
+   "selecao": "Northern Ireland national football team",
+   "qid_selecao": "Q190978",
+   "qid_pais": "Q26"
+  },
+  "MP": {
+   "nome": "Marianas Setentrionais",
+   "confederacao": "AFC",
+   "selecao": "Northern Mariana Islands national football team",
+   "qid_selecao": "Q754199",
+   "qid_pais": "Q16644"
+  },
+  "NO": {
+   "nome": "Noruega",
+   "confederacao": "UEFA",
+   "selecao": "Norway national football team",
+   "qid_selecao": "Q184387",
+   "qid_pais": "Q20"
+  },
+  "OM": {
+   "nome": "Omã",
+   "confederacao": "AFC",
+   "selecao": "Oman national football team",
+   "qid_selecao": "Q206830",
+   "qid_pais": "Q842"
+  },
+  "PK": {
+   "nome": "Paquistão",
+   "confederacao": "AFC",
+   "selecao": "Pakistan national football team",
+   "qid_selecao": "Q390989",
+   "qid_pais": "Q843"
+  },
+  "PS": {
+   "nome": "Estado da Palestina",
+   "confederacao": "AFC",
+   "selecao": "Palestine national football team",
+   "qid_selecao": "Q276076",
+   "qid_pais": "Q219060"
+  },
+  "PA": {
+   "nome": "Panamá",
+   "confederacao": "CONCACAF",
+   "selecao": "Panama national football team",
+   "qid_selecao": "Q223748",
+   "qid_pais": "Q804"
+  },
+  "PG": {
+   "nome": "Papua-Nova Guiné",
+   "confederacao": "OFC",
+   "selecao": "Papua New Guinea national soccer team",
+   "qid_selecao": "Q477647",
+   "qid_pais": "Q691"
+  },
+  "PY": {
+   "nome": "Paraguai",
+   "confederacao": "CONMEBOL",
+   "selecao": "Paraguay national football team",
+   "qid_selecao": "Q172020",
+   "qid_pais": "Q733"
+  },
+  "PE": {
+   "nome": "Peru",
+   "confederacao": "CONMEBOL",
+   "selecao": "Peru national football team",
+   "qid_selecao": "Q212166",
+   "qid_pais": "Q419"
+  },
+  "PH": {
+   "nome": "Filipinas",
+   "confederacao": "AFC",
+   "selecao": "Philippines national football team",
+   "qid_selecao": "Q219854",
+   "qid_pais": "Q928"
+  },
+  "PL": {
+   "nome": "Polónia",
+   "confederacao": "UEFA",
+   "selecao": "Poland national football team",
+   "qid_selecao": "Q166196",
+   "qid_pais": "Q36"
+  },
+  "PT": {
+   "nome": "Portugal",
+   "confederacao": "UEFA",
+   "selecao": "Portugal national football team",
+   "qid_selecao": "Q267245",
+   "qid_pais": "Q45"
+  },
+  "PR": {
+   "nome": "Porto Rico",
+   "confederacao": "CONCACAF",
+   "selecao": "Puerto Rico national football team",
+   "qid_selecao": "Q477452",
+   "qid_pais": "Q1183"
+  },
+  "QA": {
+   "nome": "Catar",
+   "confederacao": "AFC",
+   "selecao": "Qatar national football team",
+   "qid_selecao": "Q232731",
+   "qid_pais": "Q846"
+  },
+  "IE": {
+   "nome": "Irlanda",
+   "confederacao": "UEFA",
+   "selecao": "Republic of Ireland national football team",
+   "qid_selecao": "Q163547",
+   "qid_pais": "Q27"
+  },
+  "RO": {
+   "nome": "Roménia",
+   "confederacao": "UEFA",
+   "selecao": "Romania national football team",
+   "qid_selecao": "Q168397",
+   "qid_pais": "Q218"
+  },
+  "RU": {
+   "nome": "Rússia",
+   "confederacao": "UEFA",
+   "selecao": "Russia national football team",
+   "qid_selecao": "Q726080",
+   "qid_pais": "Q159"
+  },
+  "RW": {
+   "nome": "Ruanda",
+   "confederacao": "CAF",
+   "selecao": "Rwanda national football team",
+   "qid_selecao": "Q319776",
+   "qid_pais": "Q1037"
+  },
+  "RE": {
+   "nome": "Reunião",
+   "confederacao": "CAF",
+   "selecao": "Réunion national football team",
+   "qid_selecao": "Q605155",
+   "qid_pais": "Q17070"
+  },
+  "KN": {
+   "nome": "São Cristóvão e Neves",
+   "confederacao": "CONCACAF",
+   "selecao": "Saint Kitts and Nevis national football team",
+   "qid_selecao": "Q187664",
+   "qid_pais": "Q763"
+  },
+  "LC": {
+   "nome": "Santa Lúcia",
+   "confederacao": "CONCACAF",
+   "selecao": "Saint Lucia national football team",
+   "qid_selecao": "Q637831",
+   "qid_pais": "Q760"
+  },
+  "MF": {
+   "nome": "São Martinho",
+   "confederacao": "CONCACAF",
+   "selecao": "Saint Martin national football team",
+   "qid_selecao": "Q284113",
+   "qid_pais": "Q126125"
+  },
+  "VC": {
+   "nome": "São Vicente e Granadinas",
+   "confederacao": "CONCACAF",
+   "selecao": "Saint Vincent and the Grenadines national football team",
+   "qid_selecao": "Q221426",
+   "qid_pais": "Q757"
+  },
+  "WS": {
+   "nome": "Samoa",
+   "confederacao": "OFC",
+   "selecao": "Samoa national football team",
+   "qid_selecao": "Q477079",
+   "qid_pais": "Q683"
+  },
+  "SM": {
+   "nome": "San Marino",
+   "confederacao": "UEFA",
+   "selecao": "San Marino national football team",
+   "qid_selecao": "Q185350",
+   "qid_pais": "Q238"
+  },
+  "SA": {
+   "nome": "Arábia Saudita",
+   "confederacao": "AFC",
+   "selecao": "Saudi Arabia national football team",
+   "qid_selecao": "Q189723",
+   "qid_pais": "Q851"
+  },
+  "GB-SCT": {
+   "nome": "Escócia",
+   "confederacao": "UEFA",
+   "selecao": "Scotland national football team",
+   "qid_selecao": "Q34044",
+   "qid_pais": "Q22"
+  },
+  "SN": {
+   "nome": "Senegal",
+   "confederacao": "CAF",
+   "selecao": "Senegal national football team",
+   "qid_selecao": "Q207441",
+   "qid_pais": "Q1041"
+  },
+  "RS": {
+   "nome": "Sérvia",
+   "confederacao": "UEFA",
+   "selecao": "Serbia national football team",
+   "qid_selecao": "Q182740",
+   "qid_pais": "Q403"
+  },
+  "SC": {
+   "nome": "Seychelles",
+   "confederacao": "CAF",
+   "selecao": "Seychelles national football team",
+   "qid_selecao": "Q638166",
+   "qid_pais": "Q1042"
+  },
+  "SL": {
+   "nome": "Serra Leoa",
+   "confederacao": "CAF",
+   "selecao": "Sierra Leone national football team",
+   "qid_selecao": "Q330148",
+   "qid_pais": "Q1044"
+  },
+  "SG": {
+   "nome": "Singapura",
+   "confederacao": "AFC",
+   "selecao": "Singapore national football team",
+   "qid_selecao": "Q239528",
+   "qid_pais": "Q334"
+  },
+  "SX": {
+   "nome": "São Martinho",
+   "confederacao": "CONCACAF",
+   "selecao": "Sint Maarten national football team",
+   "qid_selecao": "Q684531",
+   "qid_pais": "Q26273"
+  },
+  "SK": {
+   "nome": "Eslováquia",
+   "confederacao": "UEFA",
+   "selecao": "Slovakia national football team",
+   "qid_selecao": "Q174512",
+   "qid_pais": "Q214"
+  },
+  "SI": {
+   "nome": "Eslovénia",
+   "confederacao": "UEFA",
+   "selecao": "Slovenia national football team",
+   "qid_selecao": "Q172221",
+   "qid_pais": "Q215"
+  },
+  "SB": {
+   "nome": "Ilhas Salomão",
+   "confederacao": "OFC",
+   "selecao": "Solomon Islands national football team",
+   "qid_selecao": "Q387812",
+   "qid_pais": "Q685"
+  },
+  "SO": {
+   "nome": "Somália",
+   "confederacao": "CAF",
+   "selecao": "Somalia national football team",
+   "qid_selecao": "Q389097",
+   "qid_pais": "Q1045"
+  },
+  "ZA": {
+   "nome": "África do Sul",
+   "confederacao": "CAF",
+   "selecao": "South Africa national soccer team",
+   "qid_selecao": "Q170327",
+   "qid_pais": "Q258"
+  },
+  "KR": {
+   "nome": "Coreia do Sul",
+   "confederacao": "AFC",
+   "selecao": "South Korea national football team",
+   "qid_selecao": "Q543842",
+   "qid_pais": "Q884"
+  },
+  "SS": {
+   "nome": "Sudão do Sul",
+   "confederacao": "CAF",
+   "selecao": "South Sudan national football team",
+   "qid_selecao": "Q627130",
+   "qid_pais": "Q958"
+  },
+  "ES": {
+   "nome": "Espanha",
+   "confederacao": "UEFA",
+   "selecao": "Spain national football team",
+   "qid_selecao": "Q42267",
+   "qid_pais": "Q29"
+  },
+  "LK": {
+   "nome": "Sri Lanka",
+   "confederacao": "AFC",
+   "selecao": "Sri Lanka national football team",
+   "qid_selecao": "Q478339",
+   "qid_pais": "Q854"
+  },
+  "SD": {
+   "nome": "Sudão",
+   "confederacao": "CAF",
+   "selecao": "Sudan national football team",
+   "qid_selecao": "Q270682",
+   "qid_pais": "Q1049"
+  },
+  "SR": {
+   "nome": "Suriname",
+   "confederacao": "CONCACAF",
+   "selecao": "Suriname national football team",
+   "qid_selecao": "Q327769",
+   "qid_pais": "Q730"
+  },
+  "SE": {
+   "nome": "Suécia",
+   "confederacao": "UEFA",
+   "selecao": "Sweden men's national football team",
+   "qid_selecao": "Q160826",
+   "qid_pais": "Q34"
+  },
+  "CH": {
+   "nome": "Suíça",
+   "confederacao": "UEFA",
+   "selecao": "Switzerland national football team",
+   "qid_selecao": "Q165141",
+   "qid_pais": "Q39"
+  },
+  "SY": {
+   "nome": "Síria",
+   "confederacao": "AFC",
+   "selecao": "Syria national football team",
+   "qid_selecao": "Q272097",
+   "qid_pais": "Q858"
+  },
+  "ST": {
+   "nome": "São Tomé e Príncipe",
+   "confederacao": "CAF",
+   "selecao": "São Tomé and Príncipe national football team",
+   "qid_selecao": "Q643073",
+   "qid_pais": "Q1039"
+  },
+  "PF": {
+   "nome": "Polinésia Francesa",
+   "confederacao": "OFC",
+   "selecao": "Tahiti national football team",
+   "qid_selecao": "Q239405",
+   "qid_pais": "Q30971"
+  },
+  "TJ": {
+   "nome": "Tajiquistão",
+   "confederacao": "AFC",
+   "selecao": "Tajikistan national football team",
+   "qid_selecao": "Q386139",
+   "qid_pais": "Q863"
+  },
+  "TZ": {
+   "nome": "Tanzânia",
+   "confederacao": "CAF",
+   "selecao": "Tanzania national football team",
+   "qid_selecao": "Q244728",
+   "qid_pais": "Q924"
+  },
+  "TH": {
+   "nome": "Tailândia",
+   "confederacao": "AFC",
+   "selecao": "Thailand national football team",
+   "qid_selecao": "Q239549",
+   "qid_pais": "Q869"
+  },
+  "TL": {
+   "nome": "Timor-Leste",
+   "confederacao": "AFC",
+   "selecao": "Timor-Leste national football team",
+   "qid_selecao": "Q270973",
+   "qid_pais": "Q574"
+  },
+  "TG": {
+   "nome": "Togo",
+   "confederacao": "CAF",
+   "selecao": "Togo national football team",
+   "qid_selecao": "Q191595",
+   "qid_pais": "Q945"
+  },
+  "TO": {
+   "nome": "Tonga",
+   "confederacao": "OFC",
+   "selecao": "Tonga national football team",
+   "qid_selecao": "Q477448",
+   "qid_pais": "Q678"
+  },
+  "TT": {
+   "nome": "Trindade e Tobago",
+   "confederacao": "CONCACAF",
+   "selecao": "Trinidad and Tobago national football team",
+   "qid_selecao": "Q192149",
+   "qid_pais": "Q754"
+  },
+  "TN": {
+   "nome": "Tunísia",
+   "confederacao": "CAF",
+   "selecao": "Tunisia national football team",
+   "qid_selecao": "Q27971",
+   "qid_pais": "Q948"
+  },
+  "TR": {
+   "nome": "Turquia",
+   "confederacao": "UEFA",
+   "selecao": "Turkey national football team",
+   "qid_selecao": "Q483856",
+   "qid_pais": "Q43"
+  },
+  "TM": {
+   "nome": "Turquemenistão",
+   "confederacao": "AFC",
+   "selecao": "Turkmenistan national football team",
+   "qid_selecao": "Q486628",
+   "qid_pais": "Q874"
+  },
+  "TC": {
+   "nome": "Ilhas Turcas e Caicos",
+   "confederacao": "CONCACAF",
+   "selecao": "Turks and Caicos Islands national football team",
+   "qid_selecao": "Q499287",
+   "qid_pais": "Q18221"
+  },
+  "TV": {
+   "nome": "Tuvalu",
+   "confederacao": "OFC",
+   "selecao": "Tuvalu national football team",
+   "qid_selecao": "Q733047",
+   "qid_pais": "Q672"
+  },
+  "UG": {
+   "nome": "Uganda",
+   "confederacao": "CAF",
+   "selecao": "Uganda national football team",
+   "qid_selecao": "Q242845",
+   "qid_pais": "Q1036"
+  },
+  "UA": {
+   "nome": "Ucrânia",
+   "confederacao": "UEFA",
+   "selecao": "Ukraine national football team",
+   "qid_selecao": "Q170403",
+   "qid_pais": "Q212"
+  },
+  "AE": {
+   "nome": "Emirados Árabes Unidos",
+   "confederacao": "AFC",
+   "selecao": "United Arab Emirates national football team",
+   "qid_selecao": "Q235910",
+   "qid_pais": "Q878"
+  },
+  "VI": {
+   "nome": "Ilhas Virgens Americanas",
+   "confederacao": "CONCACAF",
+   "selecao": "United States Virgin Islands national soccer team",
+   "qid_selecao": "Q692087",
+   "qid_pais": "Q11703"
+  },
+  "US": {
+   "nome": "Estados Unidos",
+   "confederacao": "CONCACAF",
+   "selecao": "United States men's national soccer team",
+   "qid_selecao": "Q164134",
+   "qid_pais": "Q30"
+  },
+  "UY": {
+   "nome": "Uruguai",
+   "confederacao": "CONMEBOL",
+   "selecao": "Uruguay national football team",
+   "qid_selecao": "Q134916",
+   "qid_pais": "Q77"
+  },
+  "UZ": {
+   "nome": "Usbequistão",
+   "confederacao": "AFC",
+   "selecao": "Uzbekistan national football team",
+   "qid_selecao": "Q487321",
+   "qid_pais": "Q265"
+  },
+  "VU": {
+   "nome": "Vanuatu",
+   "confederacao": "OFC",
+   "selecao": "Vanuatu national football team",
+   "qid_selecao": "Q328318",
+   "qid_pais": "Q686"
+  },
+  "VE": {
+   "nome": "Venezuela",
+   "confederacao": "CONMEBOL",
+   "selecao": "Venezuela national football team",
+   "qid_selecao": "Q214151",
+   "qid_pais": "Q717"
+  },
+  "VN": {
+   "nome": "Vietname",
+   "confederacao": "AFC",
+   "selecao": "Vietnam national football team",
+   "qid_selecao": "Q270689",
+   "qid_pais": "Q881"
+  },
+  "GB-WLS": {
+   "nome": "País de Gales",
+   "confederacao": "UEFA",
+   "selecao": "Wales national football team",
+   "qid_selecao": "Q180857",
+   "qid_pais": "Q25"
+  },
+  "YE": {
+   "nome": "Iémen",
+   "confederacao": "AFC",
+   "selecao": "Yemen national football team",
+   "qid_selecao": "Q326864",
+   "qid_pais": "Q805"
+  },
+  "ZM": {
+   "nome": "Zâmbia",
+   "confederacao": "CAF",
+   "selecao": "Zambia national football team",
+   "qid_selecao": "Q206350",
+   "qid_pais": "Q953"
+  },
+  "ZW": {
+   "nome": "Zimbábue",
+   "confederacao": "CAF",
+   "selecao": "Zimbabwe national football team",
+   "qid_selecao": "Q327100",
+   "qid_pais": "Q954"
+  }
+ },
+ "selecoes_extintas": {
+  "Yugoslavia national football team": "RS",
+  "Serbia and Montenegro national football team": "RS",
+  "Soviet Union national football team": "RU",
+  "CIS national football team": "RU",
+  "Czechoslovakia national football team": "CZ",
+  "East Germany national football team": "DE",
+  "Germany national football team": "DE",
+  "DR Congo national football team": "CD"
+ }
+}

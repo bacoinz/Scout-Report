@@ -1,0 +1,446 @@
+{
+ "Q100146559": {
+  "futebol": true,
+  "nome": "Primera Federación",
+  "nome_en": "Primera Federación",
+  "pais": "ES"
+ },
+ "Q1061291": {
+  "futebol": true,
+  "nome": "Championnat National 1",
+  "nome_en": "Championnat National 1",
+  "pais": "FR"
+ },
+ "Q106597664": {
+  "futebol": true,
+  "nome": "Terceira Liga",
+  "nome_en": "Liga 3",
+  "pais": "PT"
+ },
+ "Q1140581": {
+  "futebol": true,
+  "nome": "J2 League",
+  "nome_en": "J2 League",
+  "pais": "JP"
+ },
+ "Q12837728": {
+  "futebol": true,
+  "nome": "First Professional Football League",
+  "nome_en": "First Professional Football League",
+  "pais": "BG"
+ },
+ "Q13394": {
+  "futebol": true,
+  "nome": "Ligue 1",
+  "nome_en": "Ligue 1",
+  "pais": "FR"
+ },
+ "Q1348155": {
+  "futebol": true,
+  "nome": "Campeonato Paulista",
+  "nome_en": "Campeonato Paulista de Futebol",
+  "pais": "BR"
+ },
+ "Q1362411": {
+  "futebol": true,
+  "nome": "USL Championship",
+  "nome_en": "USL Championship",
+  "pais": "US"
+ },
+ "Q13668768": {
+  "futebol": true,
+  "nome": "Campeonato de Portugal",
+  "nome_en": "Campeonato de Portugal",
+  "pais": "PT"
+ },
+ "Q14377162": {
+  "futebol": true,
+  "nome": "Scottish Premiership",
+  "nome_en": "Scottish Premiership",
+  "pais": "GB-SCT"
+ },
+ "Q1520453": {
+  "futebol": true,
+  "nome": "United Soccer Leagues",
+  "nome_en": "United Soccer League",
+  "pais": "CA"
+ },
+ "Q152665": {
+  "futebol": true,
+  "nome": "2. Fußball-Bundesliga",
+  "nome_en": "2. Bundesliga",
+  "pais": "DE"
+ },
+ "Q155965": {
+  "futebol": true,
+  "nome": "Cypriot First Division",
+  "nome_en": "Cypriot First Division",
+  "pais": "CY"
+ },
+ "Q1561244": {
+  "futebol": true,
+  "nome": "Ukrainian First League",
+  "nome_en": "Ukrainian First League",
+  "pais": "UA"
+ },
+ "Q15804": {
+  "futebol": true,
+  "nome": "Serie A",
+  "nome_en": null,
+  "pais": "IT"
+ },
+ "Q162604": {
+  "futebol": true,
+  "nome": "Prva HNL",
+  "nome_en": "Croatian Football League",
+  "pais": "HR"
+ },
+ "Q167541": {
+  "futebol": true,
+  "nome": "Eredivisie",
+  "nome_en": "Eredivisie",
+  "pais": "NL"
+ },
+ "Q1710248": {
+  "futebol": true,
+  "nome": "Campeonato Amazonense",
+  "nome_en": "Campeonato Amazonense",
+  "pais": "BR"
+ },
+ "Q182165": {
+  "futebol": true,
+  "nome": "Liga Premier Russa",
+  "nome_en": "Russian Premier League",
+  "pais": "RU"
+ },
+ "Q182994": {
+  "futebol": true,
+  "nome": "Primeira Liga",
+  "nome_en": "Primeira Liga",
+  "pais": "PT"
+ },
+ "Q18543": {
+  "futebol": true,
+  "nome": "Major League Soccer",
+  "nome_en": "Major League Soccer",
+  "pais": "US"
+ },
+ "Q194052": {
+  "futebol": true,
+  "nome": "Serie B",
+  "nome_en": "Serie B",
+  "pais": "IT"
+ },
+ "Q19510": {
+  "futebol": true,
+  "nome": "EFL Championship",
+  "nome_en": "EFL Championship",
+  "pais": "GB-ENG"
+ },
+ "Q19565": {
+  "futebol": true,
+  "nome": "Football League One",
+  "nome_en": "EFL League One",
+  "pais": "GB-ENG"
+ },
+ "Q201671": {
+  "futebol": true,
+  "nome": "Eliteserien",
+  "nome_en": "Eliteserien",
+  "pais": "NO"
+ },
+ "Q202243": {
+  "futebol": true,
+  "nome": "Allsvenskan",
+  "nome_en": "Allsvenskan",
+  "pais": "SE"
+ },
+ "Q202699": {
+  "futebol": true,
+  "nome": "Swiss Super League",
+  "nome_en": "Swiss Super League",
+  "pais": "CH"
+ },
+ "Q2037826": {
+  "futebol": true,
+  "nome": "Campeonato Brasileiro Série C",
+  "nome_en": "Campeonato Brasileiro Série C",
+  "pais": "BR"
+ },
+ "Q204752": {
+  "futebol": true,
+  "nome": "Danish Superliga",
+  "nome_en": "Danish Superliga",
+  "pais": "DK"
+ },
+ "Q206073": {
+  "futebol": true,
+  "nome": "Ukrainian Premier League",
+  "nome_en": "Premier League",
+  "pais": "UA"
+ },
+ "Q206813": {
+  "futebol": true,
+  "nome": "Campeonato Brasileiro Série A",
+  "nome_en": "Campeonato Brasileiro Série A",
+  "pais": "BR"
+ },
+ "Q209318": {
+  "futebol": true,
+  "nome": "Super Liga Chinesa",
+  "nome_en": "Chinese Super League",
+  "pais": "CN"
+ },
+ "Q209967": {
+  "futebol": true,
+  "nome": "First Football League",
+  "nome_en": "Prva nogometna liga",
+  "pais": "HR"
+ },
+ "Q216022": {
+  "futebol": true,
+  "nome": "Jupiler Pro League",
+  "nome_en": "Belgian Pro League",
+  "pais": "BE"
+ },
+ "Q217374": {
+  "futebol": true,
+  "nome": "Ligue 2",
+  "nome_en": "Ligue 2",
+  "pais": "FR"
+ },
+ "Q219586": {
+  "futebol": true,
+  "nome": "A-League",
+  "nome_en": "A-League Men",
+  "pais": "AU"
+ },
+ "Q219592": {
+  "futebol": true,
+  "nome": "Austrian Football Bundesliga",
+  "nome_en": "Bundesliga",
+  "pais": "AT"
+ },
+ "Q223170": {
+  "futebol": true,
+  "nome": "AFA Liga Profesional de Fútbol",
+  "nome_en": "Argentine Primera División",
+  "pais": "AR"
+ },
+ "Q235114": {
+  "futebol": true,
+  "nome": "Super League Greece",
+  "nome_en": "Super League Greece",
+  "pais": "GR"
+ },
+ "Q2458887": {
+  "futebol": false,
+  "nome": "Liga de Voleibol Argentina",
+  "nome_en": "Liga de Voleibol Argentina – Serie A1",
+  "pais": "AR"
+ },
+ "Q255633": {
+  "futebol": true,
+  "nome": "Saudi Pro League",
+  "nome_en": "Saudi Pro League",
+  "pais": "SA"
+ },
+ "Q2648473": {
+  "futebol": true,
+  "nome": "III Divisão",
+  "nome_en": "Terceira Divisão",
+  "pais": "PT"
+ },
+ "Q276445": {
+  "futebol": true,
+  "nome": "J1 League",
+  "nome_en": "J1 League",
+  "pais": "JP"
+ },
+ "Q2792041": {
+  "futebol": true,
+  "nome": "Norwegian Third Division",
+  "nome_en": "Norwegian Third Division",
+  "pais": "NO"
+ },
+ "Q287453": {
+  "futebol": true,
+  "nome": "Liga AUF Uruguaya",
+  "nome_en": "Uruguayan Primera División",
+  "pais": "UY"
+ },
+ "Q324867": {
+  "futebol": true,
+  "nome": "La Liga",
+  "nome_en": "La Liga",
+  "pais": "ES"
+ },
+ "Q353508": {
+  "futebol": true,
+  "nome": "Norwegian First Division",
+  "nome_en": "1. divisjon football",
+  "pais": "NO"
+ },
+ "Q35615": {
+  "futebol": true,
+  "nome": "Segunda División",
+  "nome_en": "LaLiga 2",
+  "pais": "ES"
+ },
+ "Q3651924": {
+  "futebol": true,
+  "nome": "Campeonato Paulista Série A2",
+  "nome_en": "Campeonato Paulista Série A2",
+  "pais": "BR"
+ },
+ "Q391006": {
+  "futebol": true,
+  "nome": "Premijer Liga",
+  "nome_en": "Premier League of Bosnia and Herzegovina",
+  "pais": "BA"
+ },
+ "Q3957692": {
+  "futebol": true,
+  "nome": "2005–06 Serie C1",
+  "nome_en": "2005–06 Serie C1",
+  "pais": "IT"
+ },
+ "Q46582": {
+  "futebol": true,
+  "nome": "Norwegian Second Division",
+  "nome_en": "Norwegian Second Division",
+  "pais": "NO"
+ },
+ "Q485568": {
+  "futebol": true,
+  "nome": "Süper Lig",
+  "nome_en": "Süper Lig",
+  "pais": "TR"
+ },
+ "Q5334350": {
+  "futebol": true,
+  "nome": "UAE Pro League",
+  "nome_en": "UAE Pro League",
+  "pais": "AE"
+ },
+ "Q539678": {
+  "futebol": true,
+  "nome": "Regionalliga Nord",
+  "nome_en": "Regionalliga Nord",
+  "pais": "DE"
+ },
+ "Q575453": {
+  "futebol": true,
+  "nome": "J.League",
+  "nome_en": "J.League",
+  "pais": "JP"
+ },
+ "Q60681": {
+  "futebol": true,
+  "nome": "Liga do Qatar",
+  "nome_en": "Qatar Stars League",
+  "pais": "QA"
+ },
+ "Q610175": {
+  "futebol": true,
+  "nome": "Campeonato Brasileiro Série B",
+  "nome_en": "Campeonato Brasileiro Série B",
+  "pais": "BR"
+ },
+ "Q618131": {
+  "futebol": true,
+  "nome": "II Divisão",
+  "nome_en": "Segunda Divisão",
+  "pais": "PT"
+ },
+ "Q677397": {
+  "futebol": true,
+  "nome": "Lega Pro Prima Divisione",
+  "nome_en": "Serie C1",
+  "pais": "IT"
+ },
+ "Q680619": {
+  "futebol": true,
+  "nome": "Egyptian Premier League",
+  "nome_en": "Egyptian Premier League",
+  "pais": "EG"
+ },
+ "Q692009": {
+  "futebol": true,
+  "nome": "Superettan",
+  "nome_en": "Superettan",
+  "pais": "SE"
+ },
+ "Q7228035": {
+  "futebol": true,
+  "nome": "Ponta Delgada Football Association",
+  "nome_en": "Ponta Delgada Football Association",
+  "pais": "PT"
+ },
+ "Q7232154": {
+  "futebol": true,
+  "nome": "Porto Football Association",
+  "nome_en": "Porto Football Association",
+  "pais": "PT"
+ },
+ "Q7232634": {
+  "futebol": true,
+  "nome": "Campeonato Distrital",
+  "nome_en": "Portuguese District Football Associations",
+  "pais": "PT"
+ },
+ "Q731877": {
+  "futebol": true,
+  "nome": "Campeonato Mineiro",
+  "nome_en": "Campeonato Mineiro",
+  "pais": "BR"
+ },
+ "Q749736": {
+  "futebol": true,
+  "nome": "Quarta Divisão Espanhola",
+  "nome_en": "Tercera División",
+  "pais": "ES"
+ },
+ "Q751826": {
+  "futebol": true,
+  "nome": "Segunda División B",
+  "nome_en": "Segunda División B",
+  "pais": "ES"
+ },
+ "Q754488": {
+  "futebol": true,
+  "nome": "Segunda Liga",
+  "nome_en": "Liga Portugal 2",
+  "pais": "PT"
+ },
+ "Q82595": {
+  "futebol": true,
+  "nome": "Bundesliga",
+  "nome_en": null,
+  "pais": "DE"
+ },
+ "Q864298": {
+  "futebol": true,
+  "nome": "Championnat National",
+  "nome_en": "Ligue 3",
+  "pais": "FR"
+ },
+ "Q931513": {
+  "futebol": true,
+  "nome": "Campeonato Brasileiro Série D",
+  "nome_en": "Campeonato Brasileiro Série D",
+  "pais": "BR"
+ },
+ "Q9448": {
+  "futebol": true,
+  "nome": "Premier League",
+  "nome_en": "Premier League",
+  "pais": "GB-ENG"
+ },
+ "Q959186": {
+  "futebol": true,
+  "nome": "Division 1",
+  "nome_en": "Ettan Fotboll",
+  "pais": "SE"
+ }
+}

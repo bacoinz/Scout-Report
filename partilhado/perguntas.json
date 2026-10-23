@@ -1,0 +1,61 @@
+{
+ "versao": 1,
+ "pontos": {
+  "nivel1": 3, "nivel2": 6, "nivel3": 9, "livre": 3, "fisico": 3, "palpite": 30,
+  "joker": {"exato": 15, "perto": 9, "passou": 0, "dono_todos_passam": 9, "dono_perto": 3, "dono_exato": 0},
+  "fator_identificado": 0.5
+ },
+ "palpite": {"sim_minimos": 6, "clube_obrigatorio": true},
+ "ordem_categorias": ["era", "nacionalidade", "posicao", "fisico", "estado", "carreira", "estatisticas", "numeros", "premios", "treinador"],
+ "setores": {"gr": "Guarda-redes", "defesa": "Defesa", "medio": "Médio", "avancado": "Avançado"},
+ "posicoes": {
+  "GR": {"nome": "Guarda-redes", "setor": "gr"},
+  "DC": {"nome": "Defesa-central", "setor": "defesa"},
+  "LD": {"nome": "Lateral direito", "setor": "defesa"},
+  "LE": {"nome": "Lateral esquerdo", "setor": "defesa"},
+  "MDC": {"nome": "Médio defensivo", "setor": "medio"},
+  "MC": {"nome": "Médio centro", "setor": "medio"},
+  "MO": {"nome": "Médio ofensivo", "setor": "medio"},
+  "MD": {"nome": "Médio direito", "setor": "medio"},
+  "ME": {"nome": "Médio esquerdo", "setor": "medio"},
+  "ED": {"nome": "Extremo direito", "setor": "avancado"},
+  "EE": {"nome": "Extremo esquerdo", "setor": "avancado"},
+  "SA": {"nome": "Segundo avançado", "setor": "avancado"},
+  "PL": {"nome": "Ponta de lança", "setor": "avancado"}
+ },
+ "estatisticas": {
+  "jogos": [100, 200, 300, 500],
+  "golos": [50, 100, 200, 300],
+  "internacionalizacoes": [25, 50, 100],
+  "assistencias": [25, 50, 100]
+ },
+ "numeros": {"faixas": [[1, 9], [10, 20], [21, 99]]},
+ "fisico": {"alturas_cm": [175, 180, 185, 190], "pes": ["direito", "esquerdo", "ambos"]},
+ "decadas": [1960, 1970, 1980, 1990, 2000, 2010, 2020],
+ "treinador": {"titulos": [1, 5, 10, 20]},
+ "premios": {
+  "liga_campeoes": {"nome": "a Liga dos Campeões", "tipo": "clube", "treinador": true},
+  "liga_europa": {"nome": "a Liga Europa (ou a Taça UEFA)", "tipo": "clube", "treinador": true},
+  "liga_conferencia": {"nome": "a Liga Conferência", "tipo": "clube", "treinador": true},
+  "taca_tacas": {"nome": "a Taça das Taças", "tipo": "clube", "treinador": true},
+  "supertaca_europeia": {"nome": "a Supertaça Europeia", "tipo": "clube", "treinador": false},
+  "mundial_clubes": {"nome": "o Mundial de Clubes (ou a Taça Intercontinental)", "tipo": "clube", "treinador": true},
+  "libertadores": {"nome": "a Taça Libertadores", "tipo": "clube", "treinador": true},
+  "campeonato_nacional": {"nome": "um campeonato nacional", "tipo": "clube", "treinador": true},
+  "taca_nacional": {"nome": "uma taça nacional", "tipo": "clube", "treinador": true},
+  "mundial": {"nome": "o Mundial", "tipo": "selecao", "treinador": true},
+  "europeu": {"nome": "o Europeu", "tipo": "selecao", "treinador": true},
+  "copa_america": {"nome": "a Copa América", "tipo": "selecao", "treinador": true},
+  "can": {"nome": "a Taça das Nações Africanas", "tipo": "selecao", "treinador": true},
+  "taca_asia": {"nome": "a Taça da Ásia", "tipo": "selecao", "treinador": true},
+  "gold_cup": {"nome": "a Gold Cup da CONCACAF", "tipo": "selecao", "treinador": true},
+  "liga_nacoes": {"nome": "a Liga das Nações", "tipo": "selecao", "treinador": true},
+  "taca_confederacoes": {"nome": "a Taça das Confederações", "tipo": "selecao", "treinador": true},
+  "jogos_olimpicos": {"nome": "os Jogos Olímpicos", "tipo": "selecao", "treinador": false},
+  "bola_de_ouro": {"nome": "a Bola de Ouro", "tipo": "individual", "treinador": false},
+  "melhor_jogador_fifa": {"nome": "o prémio de Melhor Jogador do Mundo da FIFA", "tipo": "individual", "treinador": false},
+  "bota_de_ouro": {"nome": "a Bota de Ouro", "tipo": "individual", "treinador": false},
+  "golden_boy": {"nome": "o Golden Boy", "tipo": "individual", "treinador": false},
+  "melhor_treinador_fifa": {"nome": "o prémio de Melhor Treinador da FIFA", "tipo": "individual", "treinador": true}
+ }
+}

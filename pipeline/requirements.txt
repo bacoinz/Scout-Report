@@ -1,0 +1,4 @@
+requests>=2.32
+mwparserfromhell>=0.7
+selectolax>=0.3
+pytest>=8

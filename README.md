@@ -20,7 +20,7 @@ O projeto tem três partes:
 - [ ] Passo 2 — pipeline com uma amostra de 30 jogadores e relatório de qualidade
 - [ ] Passo 3 — lista dos míticos e processamento completo
 - [ ] Passo 4 — jogo: salas, rotação, perguntas, fichas, pontuação, palpites
-- [ ] Passo 5 — Volta Joker
+- [ ] Passo 5 — Ronda Joker
 - [ ] Passo 6 — Desafio do Dia
 - [ ] Passo 7 — exportação para o D1 e deploy
 
@@ -36,6 +36,36 @@ py -3.12 -m http.server 8790 --bind 127.0.0.1 --directory jogo/public
 ```
 
 Abre `http://127.0.0.1:8790/mockup.html`.
+
+## Pipeline
+
+Python 3.12, a partir de `pipeline/`:
+
+```bash
+py -3.12 -m venv .venv
+.venv/Scripts/python -m pip install -r requirements.txt
+.venv/Scripts/python -m scout tm descarregar      # uma vez: transfermarkt-datasets (CC0, ~180 MB) → .cache/tm/
+.venv/Scripts/python -m scout tm preparar         # → .cache/tm/tm.sqlite
+.venv/Scripts/python -m scout paises              # → partilhado/paises.json
+.venv/Scripts/python -m scout recolher --amostra  # os 30 da amostra → dados/jogadores/<QID>.json
+.venv/Scripts/python -m scout curiosidades        # precisa de GEMINI_API_KEY (plano gratuito do Gemini)
+.venv/Scripts/python -m scout validar
+.venv/Scripts/python -m scout relatorio           # → saida/qualidade.md
+.venv/Scripts/python -m pytest
+```
+
+- **Fontes:**
+  - Wikipédia inglesa: caixa de informação, títulos, plantéis das épocas e das fases finais;
+  - Wikidata: ids, nascimento, cidadania, local de nascimento, foto, ligas dos clubes;
+  - zerozero: jogos, golos e assistências de cada época, em todas as competições;
+  - transfermarkt-datasets: pé, altura, posição, ligas e números a partir de 2012.
+- **Cache:** tudo o que vem da rede fica em `pipeline/.cache/`. Correr outra vez não pede nada à rede, e `--fresco`
+  ignora a cache. Há um pedido de cada vez, e o zerozero só leva um a cada 2–3 s.
+- **Curiosidades:** o pipeline lê a chave só da variável de ambiente `GEMINI_API_KEY`. Nunca a escreve em
+  ficheiros nem na cache. Cria-a em https://aistudio.google.com/apikey e define-a no Windows com
+  `setx GEMINI_API_KEY "…"`; depois abre um terminal novo.
+- **Correções à mão:** ficam em `pipeline/dados/ajustes.json`, `pipeline/dados/competicoes.json` e
+  `pipeline/dados/clubes.json`. Os ajustes aplicam-se por cima das fontes em cada recolha.
 
 ## Créditos
 
