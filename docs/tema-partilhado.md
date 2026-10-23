@@ -66,10 +66,32 @@ isso o violeta nunca leva texto branco por cima.
 
 ## A identidade do Scout Report (fora do tema)
 
-`jogo/public/css/relatorio.css`: papel creme com grão (ruído SVG embutido), Courier Prime para os dados à máquina,
-Caveat para as notas à mão, carimbos com tinta gasta (máscara de ruído) e a animação de carimbar, o IDENTIFICADO, o
-RELATÓRIO CONFIDENCIAL da Volta Joker e o dossier em pasta de cartolina. `jogo/public/css/app.css` tem a disposição
-dos ecrãs de jogo (três colunas no computador; carrossel de fichas e lingueta do dossier no telemóvel).
+`jogo/public/css/relatorio.css`:
+- papel creme com grão (ruído SVG embutido);
+- Courier Prime para os dados à máquina e Caveat para as notas à mão;
+- carimbos com tinta gasta (máscara de ruído) e a animação de carimbar.
+
+As fichas dos adversários têm o mesmo formato do dossier: foto (silhueta enquanto é desconhecido), nome
+("[Jogador desconhecido]") e os mesmos campos, com **????** no que falta e preenchidos à medida que se confirma. Por
+ordem:
+1. carreira, estatísticas e prémios;
+2. as notas à margem (perguntas livres);
+3. as **informações descartadas**.
+
+O rodapé, com os "sim", o clube e o palpite, está sempre à vista. O dono é um papelinho preso com um pionés da cor
+dele. O IDENTIFICADO traz a foto do jogador (Wikimedia Commons, com autor e licença).
+
+A **Ronda Joker** abre com um anúncio animado (a carta a rodar e o título) e passa a uma ficha técnica em quadrícula:
+sujeito, dados conhecidos, pergunta, tempo, lance, lances dos outros e pontuação.
+
+`jogo/public/css/app.css` tem a disposição do jogo, e **a página nunca desliza**: só desliza o interior de cada coluna.
+- **Cabeçalho:** marca; "Volta 3 de 8 · A tua vez → Ana" com a barra do tempo e o relógio; Classificação e
+  Acontecimentos, que descem por cima do jogo e sobem ao clicar fora; o menu com a sala, o som, o "Como jogar" e
+  "Sair".
+- **Computador:** perguntas à esquerda, à altura da janela; o meu dossier; as fichas abertas; e à direita a pilha das
+  minimizadas, umas por cima das outras. Cabem tantas fichas quantas a largura deixar; ao abrir uma da pilha, a que foi
+  aberta há mais tempo passa para lá.
+- **Telemóvel:** cada coluna ocupa o ecrã e passa-se de lado, com um navegador em baixo (Perguntar, O meu, Ana, …).
 
 ## Ver o mockup
 
@@ -77,6 +99,14 @@ dos ecrãs de jogo (três colunas no computador; carrossel de fichas e lingueta 
 py -3.12 -m http.server 8790 --bind 127.0.0.1 --directory jogo/public
 ```
 
-Abre `http://127.0.0.1:8790/mockup.html`. A barra de cima troca entre Início, Jogo, Volta Joker e Como jogar. Também
-dá para abrir um ecrã direto com `?vista=inicio|jogo|joker`, `?como` ou `?dossier`. As capturas estão em
-`docs/capturas/`.
+Abre `http://127.0.0.1:8790/mockup.html`. A barra de cima troca entre Início, Jogo, Ronda Joker, Revelação e Como
+jogar.
+
+Parâmetros para abrir um estado direto (usados nas capturas):
+- `?vista=inicio|jogo|joker|revelacao`
+- `?como`
+- `?popup=placar|feed|menu`
+- `?abrir=rui`
+- `?congelar=1500` (para as animações nesse instante)
+
+As capturas estão em `docs/capturas/`.

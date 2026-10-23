@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
   <title>Scout Report — mockup</title>
-  <meta name="description" content="Mockup estático do Scout Report: tema partilhado e relatórios de olheiro, com dados de exemplo.">
+  <meta name="description" content="Mockup estático do Scout Report: tema partilhado e fichas de olheiro, com dados de exemplo.">
   <meta name="theme-color" content="#8b5cf6">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="preload" href="fontes/anton-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -16,16 +16,17 @@
   <style>
     /* Só do mockup: a barra para trocar de ecrã. */
     .mockup-barra {
-      position: fixed; z-index: 100; top: 8px; left: 50%; transform: translateX(-50%);
+      position: fixed; z-index: 100; top: 6px; left: 50%; transform: translateX(-50%);
       display: flex; gap: 4px; padding: 4px; border-radius: 999px;
-      background: #000c; border: 1px solid #ffffff26; box-shadow: 0 8px 24px #0008;
-      font-size: 12px; max-width: calc(100vw - 16px); overflow-x: auto;
+      background: #000d; border: 1px solid #ffffff26; box-shadow: 0 8px 24px #0008;
+      font-size: 12px; max-width: calc(100vw - 16px); overflow-x: auto; scrollbar-width: none;
     }
     .mockup-barra b { padding: 6px 8px 6px 10px; color: var(--destaque-2); letter-spacing: .08em; }
     .mockup-barra button { border: 0; border-radius: 999px; padding: 6px 10px; background: transparent; font-weight: 700; cursor: pointer; white-space: nowrap; }
     .mockup-barra button[aria-pressed='true'] { background: var(--destaque-suave); box-shadow: inset 0 0 0 1px var(--destaque); }
-    body.vista-jogo .ecra-jogo, body.vista-joker .ecra-jogo { padding-top: 44px; }
-    @media (max-width: 959px) { body.vista-jogo .ecra-jogo, body.vista-joker .ecra-jogo { padding-top: 46px; } }
+    body { padding-top: 44px; }
+    body .ecra-jogo { height: calc(100dvh - 44px); min-height: 0; }
+    body.vista-inicio { padding-top: 0; }
   </style>
 </head>
 <body class="vista-jogo">
@@ -35,10 +36,22 @@
     <b>MOCKUP</b>
     <button type="button" data-vista="inicio">Início</button>
     <button type="button" data-vista="jogo" aria-pressed="true">Jogo</button>
-    <button type="button" data-vista="joker">Volta Joker</button>
+    <button type="button" data-vista="joker">Ronda Joker</button>
+    <button type="button" data-vista="revelacao">Revelação</button>
     <button type="button" data-abrir-dialogo>Como jogar</button>
     <button type="button" data-repetir>Repetir carimbos</button>
   </nav>
+
+  <!-- Ícones (só traço, cor do texto) -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-trofeu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0V4z"/><path d="M17 5h3v2a3 3 0 0 1-3 3M7 5H4v2a3 3 0 0 0 3 3"/></symbol>
+    <symbol id="i-lista" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 6h11M9 12h11M9 18h11"/><circle cx="4.5" cy="6" r="1.2"/><circle cx="4.5" cy="12" r="1.2"/><circle cx="4.5" cy="18" r="1.2"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></symbol>
+    <symbol id="i-som" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></symbol>
+    <symbol id="i-ajuda" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.6v.6M12 17h.01"/></symbol>
+    <symbol id="i-sair" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4H5v16h4M14 8l4 4-4 4M18 12H9"/></symbol>
+    <symbol id="i-silhueta" viewBox="0 0 56 70"><circle cx="28" cy="22" r="13" fill="#a8a291"/><path d="M4 70C6 46 16 40 28 40s22 6 24 30z" fill="#a8a291"/></symbol>
+  </svg>
 
   <!-- ===================== Início ===================== -->
   <main id="ecra-inicio" class="ecra ecra-centro" hidden>
@@ -70,274 +83,120 @@
         <img class="logo" src="favicon.svg" alt="" width="28" height="28">
         <span class="barra-nome"><span>Scout</span> <span class="destaque">Report</span></span>
       </div>
-      <p class="barra-info"><span class="ronda">Volta 3 de 8</span></p>
-      <p class="barra-sala">KQZT</p>
-      <button class="btn btn-mini" type="button" aria-label="Som">🔊</button>
-      <button class="btn btn-mini" type="button" data-abrir-dialogo aria-label="Como jogar"><span class="so-largo">Como jogar</span><span class="so-estreito">?</span></button>
-      <button class="btn btn-mini" type="button">Sair</button>
-    </header>
 
-    <section class="faixa-vez" aria-live="polite">
-      <p class="faixa-volta">Volta 3 · alvos a +2</p>
-      <p class="faixa-texto">
-        <span class="quem"><span class="ponto" style="background:#facc15"></span>A tua vez</span>
-        <span class="seta">→</span>
-        <span>pergunta à ficha de <span class="quem"><span class="ponto" style="background:#22d3ee"></span>Ana</span></span>
-      </p>
-      <div class="faixa-relogio"><p class="relogio">0:38</p></div>
-      <div class="barra-tempo" aria-hidden="true"><div class="barra-tempo-enchimento" style="width:84%"></div></div>
-    </section>
+      <div class="barra-vez" aria-live="polite">
+        <p class="vez-linha">
+          <span class="ronda">Volta 3 de 8</span><span class="sep">·</span>
+          <span class="quem"><span class="ponto" style="background:#facc15"></span>A tua vez</span>
+          <span class="seta">→</span>
+          <span class="quem"><span class="ponto" style="background:#22d3ee"></span>Ana</span>
+        </p>
+        <div class="barra-tempo" aria-hidden="true"><div class="barra-tempo-enchimento" style="width:84%"></div></div>
+        <p class="relogio vez-relogio">0:38</p>
+      </div>
 
-    <div class="jogo-grelha">
-      <!-- Placar e acontecimentos -->
-      <aside class="g-lado">
-        <section class="painel g-placar">
-          <h2 class="painel-titulo">Classificação</h2>
-          <div class="placar-lista">
+      <div class="barra-botoes">
+        <div class="ancora">
+          <button class="btn-barra" type="button" data-popup aria-controls="popup-placar" aria-expanded="false" aria-label="Classificação">
+            <svg><use href="#i-trofeu"/></svg><span class="so-largo">Classificação</span>
+          </button>
+          <div id="popup-placar" class="popup" hidden>
+            <h2 class="painel-titulo">Classificação</h2>
             <table class="tabela tabela-placar">
               <thead><tr><th>#</th><th>Jogador</th><th>Volta</th><th>Total</th></tr></thead>
               <tbody>
-                <tr class="subiu"><td>1</td><td><span class="celula-jogador"><span class="ponto" style="background:#ef4444"></span><span class="nome-jogador">Rui</span></span></td><td>+10</td><td class="total-celula">23</td></tr>
-                <tr><td>2</td><td><span class="celula-jogador"><span class="ponto" style="background:#22d3ee"></span><span class="nome-jogador">Ana</span></span></td><td>+3</td><td class="total-celula">12</td></tr>
-                <tr class="eu"><td>3</td><td><span class="celula-jogador"><span class="ponto" style="background:#facc15"></span><span class="nome-jogador">Pedro (tu)</span></span></td><td>+2</td><td class="total-celula">9</td></tr>
-                <tr><td>4</td><td><span class="celula-jogador"><span class="ponto" style="background:#f472b6"></span><span class="nome-jogador">Marta</span></span></td><td>+1</td><td class="total-celula">7</td></tr>
+                <tr class="subiu"><td>1</td><td><span class="celula-jogador"><span class="ponto" style="background:#ef4444"></span><span class="nome-jogador">Rui</span></span></td><td class="mais">+10</td><td class="total-celula">23</td></tr>
+                <tr><td>2</td><td><span class="celula-jogador"><span class="ponto" style="background:#f97316"></span><span class="nome-jogador">Sofia</span></span></td><td class="mais">+1</td><td class="total-celula">14</td></tr>
+                <tr><td>3</td><td><span class="celula-jogador"><span class="ponto" style="background:#22d3ee"></span><span class="nome-jogador">Ana</span></span></td><td class="mais">+3</td><td class="total-celula">12</td></tr>
+                <tr class="eu"><td>4</td><td><span class="celula-jogador"><span class="ponto" style="background:#facc15"></span><span class="nome-jogador">Pedro (tu)</span></span></td><td class="mais">+2</td><td class="total-celula">9</td></tr>
+                <tr><td>5</td><td><span class="celula-jogador"><span class="ponto" style="background:#f472b6"></span><span class="nome-jogador">Marta</span></span></td><td class="mais">+1</td><td class="total-celula">7</td></tr>
+                <tr class="desligado"><td>6</td><td><span class="celula-jogador"><span class="ponto" style="background:#a3e635"></span><span class="nome-jogador">João</span></span></td><td>—</td><td class="total-celula">4</td></tr>
               </tbody>
             </table>
+            <p class="nota">O João está desligado: as vezes dele são saltadas até voltar.</p>
           </div>
-        </section>
-        <section class="painel g-feed">
-          <h2 class="painel-titulo">Acontecimentos</h2>
-          <ol class="feed">
-            <li><span class="forte">Rui</span> identificou <span class="forte">Cristiano Ronaldo</span> na ficha de Marta (+10)</li>
-            <li><span class="forte">Ana</span> perguntou «Treinou em Espanha?» à ficha de Rui → Sim (+1)</li>
-            <li class="sistema">Volta Joker: golos pela seleção da ficha de Rui = 31. Ana ficou mais perto (+3).</li>
-            <li><span class="forte">Pedro</span> perguntou «Usou um número acima de 20?» à ficha de Ana → sem registo</li>
-            <li><span class="forte">Marta</span> deu o palpite «Pirlo» à ficha de Rui → errado</li>
-            <li class="sistema">Volta 3: cada um pergunta a quem está dois lugares à frente.</li>
-          </ol>
-        </section>
-      </aside>
-
-      <!-- Fichas dos adversários -->
-      <section class="g-fichas" aria-label="Relatórios dos adversários">
-        <div class="fichas">
-
-          <!-- Ficha da Ana: a meio, é o alvo desta volta -->
-          <article class="ficha papel alvo" style="--cor-dono:#22d3ee">
-            <span class="ficha-etiqueta-alvo">Alvo da tua vez</span>
-            <header class="ficha-cabecalho">
-              <p class="ficha-tipo">Relatório de observação</p>
-              <p class="ficha-num">Ficha n.º 004</p>
-            </header>
-            <dl class="ficha-meta">
-              <div><dt>Sujeito</dt><dd>[Desconhecido]</dd></div>
-              <div><dt>Observador</dt><dd class="dono">Ana</dd></div>
-            </dl>
-
-            <section class="ficha-secao">
-              <h3>Carreira</h3>
-              <ul class="registos">
-                <li class="registo"><span class="q">Jogou numa liga de Espanha</span><span class="carimbo confirmado" style="--rot:-3deg">Confirmado</span></li>
-                <li class="registo nao"><span class="q">Jogou numa liga de Inglaterra</span><span class="carimbo descartado" style="--rot:2deg">Descartado</span></li>
-                <li class="registo"><span class="q">Jogou na La Liga <span class="nivel">N2</span></span><span class="carimbo confirmado" style="--rot:-1deg">Confirmado</span></li>
-                <li class="registo vazio"><span class="q">Clube: ____________________</span></li>
-              </ul>
-            </section>
-            <section class="ficha-secao">
-              <h3>Posição</h3>
-              <ul class="registos">
-                <li class="registo"><span class="q">É médio</span><span class="carimbo confirmado" style="--rot:3deg">Confirmado</span></li>
-                <li class="registo nao"><span class="q">É médio ofensivo <span class="nivel">N2</span></span><span class="carimbo descartado" style="--rot:-2deg">Descartado</span></li>
-              </ul>
-            </section>
-            <section class="ficha-secao">
-              <h3>Nacionalidade</h3>
-              <ul class="registos">
-                <li class="registo"><span class="q">É da América do Sul (CONMEBOL)</span><span class="carimbo confirmado" style="--rot:-4deg">Confirmado</span></li>
-              </ul>
-            </section>
-            <section class="ficha-secao">
-              <h3>Números</h3>
-              <ul class="registos">
-                <li class="registo"><span class="q">Usou um número acima de 20</span><span class="carimbo sem-registo novo" style="--rot:1deg">Sem registo</span></li>
-              </ul>
-            </section>
-            <section class="ficha-secao">
-              <h3>Estatísticas</h3>
-              <ul class="registos">
-                <li class="registo"><span class="q">Mais de 300 jogos</span><span class="carimbo confirmado" style="--rot:2deg">Confirmado</span></li>
-                <li class="registo deduzido"><span class="q">Mais de 200 jogos</span><span class="tag-deduzido">deduzido</span></li>
-                <li class="registo deduzido"><span class="q">Mais de 100 jogos</span><span class="tag-deduzido">deduzido</span></li>
-              </ul>
-            </section>
-            <section class="ficha-secao">
-              <h3>Notas à margem</h3>
-              <ul class="notas">
-                <li>Jogou com o irmão na mesma equipa? <span class="resposta-livre sim">Sim</span> <span class="autor">— Rui</span></li>
-                <li>Já foi capitão da seleção? <span class="resposta-livre nao-sei">Não sei</span> <span class="autor">— Pedro</span></li>
-              </ul>
-            </section>
-            <footer class="ficha-rodape">
-              <span class="contador-sim">Sim <span class="caixas"><i class="sim"></i><i class="sim"></i><i class="sim"></i><i class="sim"></i><i class="sim"></i><i class="sim"></i></span> <span class="valor">6/6</span></span>
-              <span class="requisito">✗ falta um clube confirmado</span>
-              <span class="selo-palpite fechado">Palpite fechado</span>
-            </footer>
-          </article>
-
-          <!-- Ficha do Rui: um treinador, com o palpite desbloqueado e um valor da Joker -->
-          <article class="ficha papel" style="--cor-dono:#ef4444">
-            <header class="ficha-cabecalho">
-              <p class="ficha-tipo">Relatório de observação</p>
-              <p class="ficha-num">Ficha n.º 002</p>
-            </header>
-            <dl class="ficha-meta">
-              <div><dt>Sujeito</dt><dd>[Desconhecido]</dd></div>
-              <div><dt>Observador</dt><dd class="dono">Rui</dd></div>
-            </dl>
-            <section class="ficha-secao">
-              <h3>Carreira</h3>
-              <ul class="registos">
-                <li class="registo"><span class="q">Jogou numa liga de Itália</span><span class="carimbo confirmado" style="--rot:2deg">Confirmado</span></li>
-                <li class="registo"><span class="q">Jogou na Serie A <span class="nivel">N2</span></span><span class="carimbo confirmado" style="--rot:-3deg">Confirmado</span></li>
-                <li class="registo"><span class="q">Jogou na Juventus <span class="nivel">N3</span></span><span class="carimbo confirmado" style="--rot:1deg">Confirmado</span></li>
-                <li class="registo nao"><span class="q">Jogou numa liga de Inglaterra</span><span class="carimbo descartado" style="--rot:-2deg">Descartado</span></li>
-              </ul>
-            </section>
-            <section class="ficha-secao">
-              <h3>Nacionalidade</h3>
-              <ul class="registos">
-                <li class="registo"><span class="q">É da Europa (UEFA)</span><span class="carimbo confirmado" style="--rot:3deg">Confirmado</span></li>
-              </ul>
-            </section>
-            <section class="ficha-secao">
-              <h3>Estado</h3>
-              <ul class="registos">
-                <li class="registo"><span class="q">Está retirado</span><span class="carimbo confirmado" style="--rot:-1deg">Confirmado</span></li>
-                <li class="registo deduzido"><span class="q">Está no ativo: não</span><span class="tag-deduzido">deduzido</span></li>
-                <li class="registo"><span class="q">É ou foi treinador</span><span class="carimbo confirmado" style="--rot:2deg">Confirmado</span></li>
-              </ul>
-            </section>
-            <section class="ficha-secao">
-              <h3>Treinador</h3>
-              <ul class="registos">
-                <li class="registo"><span class="q">Treinou em Espanha</span><span class="carimbo confirmado novo" style="--rot:-3deg">Confirmado</span></li>
-                <li class="registo"><span class="q">Ganhou a Liga dos Campeões como treinador</span><span class="carimbo confirmado" style="--rot:1deg">Confirmado</span></li>
-                <li class="registo nao"><span class="q">Mais de 20 títulos como treinador</span><span class="carimbo descartado" style="--rot:3deg">Descartado</span></li>
-              </ul>
-            </section>
-            <section class="ficha-secao">
-              <h3>Volta Joker</h3>
-              <ul class="registos">
-                <li class="registo joker"><span class="q">Golos pela seleção: <strong>31</strong></span><span class="tag-joker">Joker</span></li>
-              </ul>
-            </section>
-            <section class="ficha-secao">
-              <h3>Notas à margem</h3>
-              <ul class="notas">
-                <li>Palpite: <span class="palpite-errado">Pirlo</span> <span class="autor">— Marta</span></li>
-              </ul>
-            </section>
-            <footer class="ficha-rodape">
-              <span class="contador-sim">Sim <span class="caixas"><i class="sim"></i><i class="sim"></i><i class="sim"></i><i class="sim"></i><i class="sim"></i><i class="sim"></i></span> <span class="valor">8/6</span></span>
-              <span class="requisito ok">✓ clube confirmado</span>
-              <span class="selo-palpite">Palpite desbloqueado</span>
-            </footer>
-          </article>
-
-          <!-- Ficha da Marta: acabou de ser identificada -->
-          <article class="ficha papel" style="--cor-dono:#f472b6">
-            <header class="ficha-cabecalho">
-              <p class="ficha-tipo">Relatório de observação</p>
-              <p class="ficha-num">Ficha n.º 006</p>
-            </header>
-            <dl class="ficha-meta">
-              <div><dt>Sujeito</dt><dd>[Desconhecido]</dd></div>
-              <div><dt>Observador</dt><dd class="dono">Marta</dd></div>
-            </dl>
-            <section class="ficha-secao">
-              <h3>Carreira</h3>
-              <ul class="registos">
-                <li class="registo"><span class="q">Joga atualmente numa liga da Arábia Saudita</span><span class="carimbo confirmado" style="--rot:-2deg">Confirmado</span></li>
-                <li class="registo"><span class="q">Jogou na Premier League <span class="nivel">N2</span></span><span class="carimbo confirmado" style="--rot:2deg">Confirmado</span></li>
-                <li class="registo"><span class="q">Jogou no Sporting <span class="nivel">N3</span></span><span class="carimbo confirmado" style="--rot:-1deg">Confirmado</span></li>
-              </ul>
-            </section>
-            <section class="ficha-secao">
-              <h3>Prémios</h3>
-              <ul class="registos">
-                <li class="registo"><span class="q">Ganhou o Europeu</span><span class="carimbo confirmado" style="--rot:3deg">Confirmado</span></li>
-                <li class="registo"><span class="q">Ganhou a Bola de Ouro</span><span class="carimbo confirmado" style="--rot:-3deg">Confirmado</span></li>
-              </ul>
-            </section>
-            <footer class="ficha-rodape">
-              <span class="contador-sim">Sim <span class="caixas"><i class="sim"></i><i class="sim"></i><i class="sim"></i><i class="sim"></i><i class="sim"></i><i class="sim"></i></span> <span class="valor">7/6</span></span>
-              <span class="selo-palpite">Palpite desbloqueado</span>
-            </footer>
-            <div class="identificado">
-              <p class="carimbo-grande">Identificado</p>
-              <p class="identificado-nome">Cristiano Ronaldo</p>
-              <p class="identificado-por">por Rui · +10 pontos · a Marta já recebeu um jogador novo</p>
-            </div>
-          </article>
-
         </div>
-      </section>
 
-      <!-- Ações e dossier -->
-      <aside class="g-direita">
-        <section class="acoes" aria-label="A tua vez">
+        <div class="ancora">
+          <button class="btn-barra" type="button" data-popup aria-controls="popup-feed" aria-expanded="false" aria-label="Acontecimentos">
+            <svg><use href="#i-lista"/></svg><span class="so-largo">Acontecimentos</span><span class="contagem">2</span>
+          </button>
+          <div id="popup-feed" class="popup" hidden>
+            <h2 class="painel-titulo">Acontecimentos</h2>
+            <ol class="feed">
+              <li><span class="forte">Rui</span> identificou <span class="forte">Cristiano Ronaldo</span> na ficha da Marta (+10)</li>
+              <li><span class="forte">Ana</span> perguntou «Treinou em Espanha?» à ficha do Rui → Sim (+1)</li>
+              <li class="sistema">Ronda Joker: golos pela seleção da ficha do Rui = 31. A Ana ficou mais perto (+3).</li>
+              <li><span class="forte">Pedro</span> perguntou «Usou um número acima de 20?» à ficha da Ana → sem registo</li>
+              <li><span class="forte">Marta</span> deu o palpite «Pirlo» à ficha do Rui → errado</li>
+              <li class="sistema">Volta 3: cada um pergunta a quem está três lugares à frente.</li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="ancora">
+          <button class="btn-barra btn-menu" type="button" data-popup aria-controls="popup-menu" aria-expanded="false" aria-label="Menu">
+            <svg><use href="#i-menu"/></svg>
+          </button>
+          <div id="popup-menu" class="popup menu" hidden>
+            <div class="menu-sala">
+              <div><p class="rotulo">Sala</p><span class="codigo-inline">KQZT</span></div>
+              <button class="btn btn-mini" type="button">Copiar link</button>
+            </div>
+            <button class="menu-item" type="button" aria-pressed="true"><svg><use href="#i-som"/></svg>Som e vibração <span class="estado">Ligado</span></button>
+            <button class="menu-item" type="button" data-abrir-dialogo><svg><use href="#i-ajuda"/></svg>Como jogar</button>
+            <button class="menu-item perigo" type="button"><svg><use href="#i-sair"/></svg>Sair da sala</button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="mesa" id="mesa">
+      <!-- ===== Perguntas ===== -->
+      <section class="coluna-perguntas" id="col-perguntas" aria-label="A tua vez">
+        <div class="acoes">
+          <h2 class="acoes-titulo">A tua vez <span class="seta" style="color:var(--muted)">→</span> <span class="quem"><span class="ponto" style="background:#22d3ee"></span>Ana</span></h2>
           <div class="segmentos" role="tablist" aria-label="Ação">
             <button class="segmento" type="button" role="tab" aria-checked="true" data-separador="estruturada">Pergunta</button>
-            <button class="segmento" type="button" role="tab" aria-checked="false" data-separador="livre">Pergunta livre</button>
+            <button class="segmento" type="button" role="tab" aria-checked="false" data-separador="livre">Livre</button>
             <button class="segmento" type="button" role="tab" aria-checked="false" data-separador="palpite">Palpite</button>
           </div>
 
-          <div data-painel="estruturada">
-            <p class="acoes-alvo">À ficha n.º 004 de <strong>Ana</strong>. O jogo responde sozinho.</p>
-            <div class="categorias">
-              <details class="categoria" open>
-                <summary>Carreira <span class="resumo-cat">2 ✓ · 1 ✗</span></summary>
-                <ul class="perguntas">
-                  <li>
-                    <div class="pergunta-campo">
-                      <div class="autocompletar"><input class="campo" placeholder="Jogou no clube… (La Liga)" value="Atlé"></div>
-                      <span class="pts" style="align-self:center">3 pts</span>
-                    </div>
-                    <ul class="sugestoes" style="position:static;margin-top:6px">
-                      <li aria-selected="true">Atlético de Madrid <small>La Liga</small></li>
-                      <li>Athletic Club <small>La Liga</small></li>
-                    </ul>
-                  </li>
-                  <li><button class="pergunta" type="button"><span>Joga atualmente na La Liga?</span><span class="pts">2 pts</span></button></li>
-                  <li><button class="pergunta" type="button"><span>Jogou numa liga de… <span class="porque">Escolhe um país</span></span><span class="pts">1 pt</span></button></li>
-                  <li><button class="pergunta" type="button" disabled><span>Jogou na Premier League? <span class="porque">Fechada: Inglaterra foi descartada</span></span><span class="pts">2 pts</span></button></li>
-                </ul>
-              </details>
-              <details class="categoria">
-                <summary>Posição <span class="resumo-cat">1 ✓ · 1 ✗</span></summary>
-              </details>
-              <details class="categoria">
-                <summary>Nacionalidade <span class="resumo-cat">1 ✓</span></summary>
-              </details>
-              <details class="categoria">
-                <summary>Era <span class="resumo-cat">—</span></summary>
-              </details>
-              <details class="categoria">
-                <summary>Números <span class="resumo-cat">1 sem registo</span></summary>
-              </details>
-              <details class="categoria">
-                <summary>Estatísticas <span class="resumo-cat">1 ✓ · 2 deduzidas</span></summary>
-              </details>
-              <details class="categoria">
-                <summary>Prémios <span class="resumo-cat">—</span></summary>
-              </details>
-              <details class="categoria">
-                <summary>Estado <span class="resumo-cat">—</span></summary>
-              </details>
-              <details class="categoria">
-                <summary>Físico <span class="resumo-cat">extra · 1 pt</span></summary>
-              </details>
-            </div>
+          <div data-painel="estruturada" class="categorias">
+            <p class="acoes-alvo">À ficha da <strong>Ana</strong>. O jogo responde sozinho.</p>
+            <details class="categoria" open>
+              <summary>Carreira <span class="resumo-cat">2 ✓ · 1 ✗</span></summary>
+              <ul class="perguntas">
+                <li>
+                  <div class="pergunta-campo">
+                    <div class="autocompletar"><input class="campo" placeholder="Jogou no clube… (La Liga)" value="Atlé"></div>
+                    <span class="pts">3 pts</span>
+                  </div>
+                  <ul class="sugestoes" style="position:static;margin-top:6px">
+                    <li aria-selected="true">Atlético de Madrid <small>La Liga</small></li>
+                    <li>Athletic Club <small>La Liga</small></li>
+                  </ul>
+                </li>
+                <li><button class="pergunta" type="button"><span>Joga atualmente na La Liga?</span><span class="pts">2 pts</span></button></li>
+                <li><button class="pergunta" type="button"><span>Jogou numa liga de… <span class="porque">Escolhe um país</span></span><span class="pts">1 pt</span></button></li>
+                <li><button class="pergunta" type="button" disabled><span>Jogou na Premier League? <span class="porque">Fechada: Inglaterra foi descartada</span></span><span class="pts">2 pts</span></button></li>
+              </ul>
+            </details>
+            <details class="categoria"><summary>Posição <span class="resumo-cat">1 ✓ · 1 ✗</span></summary></details>
+            <details class="categoria"><summary>Nacionalidade <span class="resumo-cat">1 ✓</span></summary></details>
+            <details class="categoria"><summary>Era <span class="resumo-cat">—</span></summary></details>
+            <details class="categoria"><summary>Números <span class="resumo-cat">1 sem registo</span></summary></details>
+            <details class="categoria" open>
+              <summary>Estatísticas <span class="resumo-cat">1 ✓</span></summary>
+              <ul class="perguntas">
+                <li><button class="pergunta" type="button"><span>Mais de 500 jogos?</span><span class="pts">1 pt</span></button></li>
+                <li><button class="pergunta" type="button" disabled><span>Mais de 200 jogos? <span class="porque">Deduzida: já tem mais de 300</span></span><span class="pts">—</span></button></li>
+                <li><button class="pergunta" type="button"><span>Mais de 50 golos?</span><span class="pts">1 pt</span></button></li>
+              </ul>
+            </details>
+            <details class="categoria"><summary>Prémios <span class="resumo-cat">—</span></summary></details>
+            <details class="categoria"><summary>Estado <span class="resumo-cat">—</span></summary></details>
+            <details class="categoria"><summary>Físico <span class="resumo-cat">extra · 1 pt</span></summary></details>
           </div>
 
           <div data-painel="livre" hidden>
@@ -345,15 +204,15 @@
             <label class="rotulo" for="livre">Resumo da pergunta</label>
             <input id="livre" class="campo" maxlength="60" value="É canhoto?" placeholder="Ex.: Jogou com o irmão?">
             <p class="nota contador-livre">10/60</p>
-            <button class="btn btn-principal" type="button">Enviar à Ana · 1 pt se for sim</button>
+            <button class="btn btn-principal" type="button" style="width:100%">Enviar à Ana · 1 pt se for sim</button>
           </div>
 
           <div data-painel="palpite" hidden>
             <p class="acoes-alvo">Podes dar palpite a qualquer ficha desbloqueada (6 "sim" e um clube confirmado).</p>
             <label class="rotulo">Ficha</label>
-            <div class="segmentos" role="radiogroup">
-              <button class="segmento" type="button" role="radio" aria-checked="true">N.º 002 · Rui <small>8 sim</small></button>
-              <button class="segmento" type="button" role="radio" aria-checked="false" disabled>N.º 004 · Ana <small>falta o clube</small></button>
+            <div class="segmentos" role="radiogroup" style="grid-template-columns:1fr">
+              <button class="segmento" type="button" role="radio" aria-checked="true">Rui <small>8 sim · clube ✓</small></button>
+              <button class="segmento" type="button" role="radio" aria-checked="false" disabled>Ana <small>falta o clube</small></button>
             </div>
             <label class="rotulo" for="palpite">Quem é?</label>
             <div class="autocompletar">
@@ -362,97 +221,426 @@
                 <li aria-selected="true">Zinedine Zidane <small>1972 · França</small></li>
               </ul>
             </div>
-            <button class="btn btn-principal" type="button">Dar palpite · 10 pts</button>
+            <button class="btn btn-principal" type="button" style="width:100%;margin-top:8px">Dar palpite · 10 pts</button>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <!-- O meu dossier: só eu o vejo -->
-        <section class="dossier" aria-label="O teu dossier">
+      <!-- ===== Fichas: o meu dossier primeiro, depois os adversários ===== -->
+      <div class="fichas" id="fichas">
+
+        <!-- O meu dossier -->
+        <article class="folha dossier" id="f-meu" aria-label="O teu dossier">
           <p class="dossier-titulo">Dossier · o teu jogador</p>
           <span class="carimbo carimbo-secreto">Só para os teus olhos</span>
           <div class="dossier-folha papel">
-            <div class="dossier-topo">
-              <figure class="dossier-foto">
-                <div class="moldura">
-                  <svg width="56" height="70" viewBox="0 0 56 70" aria-hidden="true"><circle cx="28" cy="22" r="13" fill="#a8a291"/><path d="M4 70 C6 46 16 40 28 40 C40 40 50 46 52 70 Z" fill="#a8a291"/></svg>
-                </div>
-                <figcaption>Foto: Wikimedia Commons · autor · CC BY-SA</figcaption>
+            <header class="folha-topo">
+              <figure class="folha-foto">
+                <div class="moldura"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/8/82/L._Figo_2017_%28cropped%29.jpg/500px-L._Figo_2017_%28cropped%29.jpg" alt="Luís Figo" loading="lazy"></div>
+                <figcaption>Foto: Biser Todorov · CC BY 4.0</figcaption>
               </figure>
-              <div>
-                <p class="dossier-nome">Luís Figo</p>
-                <dl class="dossier-dados">
+              
+                <h3 class="folha-nome">Luís Figo</h3>
+                <dl class="folha-dados">
                   <dt>Nasceu</dt><dd>4/11/1972, Almada (53 anos)</dd>
                   <dt>Nação</dt><dd>Portugal (UEFA)</dd>
                   <dt>Posição</dt><dd>Avançado · extremo direito</dd>
                   <dt>Físico</dt><dd>1,80 m · pé direito</dd>
                   <dt>Estado</dt><dd>Retirado (2009) · não treina</dd>
                 </dl>
-              </div>
+            </header>
+            <div class="folha-corpo">
+              <section>
+                <h4>Carreira</h4>
+                <table class="tabela-carreira">
+                  <thead><tr><th>Clube</th><th>Épocas</th><th>J</th><th>G</th><th>N.º</th></tr></thead>
+                  <tbody>
+                    <tr><td>Sporting<small>Primeira Liga</small></td><td>89–95</td><td>137</td><td>16</td><td>—</td></tr>
+                    <tr><td>Barcelona<small>La Liga</small></td><td>95–00</td><td>172</td><td>30</td><td>7</td></tr>
+                    <tr><td>Real Madrid<small>La Liga</small></td><td>00–05</td><td>164</td><td>38</td><td>10</td></tr>
+                    <tr><td>Inter<small>Serie A</small></td><td>05–09</td><td>105</td><td>9</td><td>7</td></tr>
+                    <tr><td>Portugal<small>seleção</small></td><td>91–06</td><td>127</td><td>32</td><td>7</td></tr>
+                  </tbody>
+                </table>
+              </section>
+              <section>
+                <h4>Prémios</h4>
+                <ul class="lista-folha">
+                  <li>Bola de Ouro (2000) · Melhor Jogador do Mundo da FIFA (2001)</li>
+                  <li>Liga dos Campeões (2002) · Taça das Taças (1997)</li>
+                  <li>La Liga ×4 · Serie A ×4 · Taça de Portugal (1995)</li>
+                </ul>
+              </section>
+              <section>
+                <h4>Curiosidades</h4>
+                <ul class="curiosidades">
+                  <li>Começou a jogar à bola na rua, em Almada, no clube de bairro Os Pastilhas.</li>
+                  <li>Foi campeão do mundo de sub-20 em 1991, em Lisboa, com a «geração de ouro».</li>
+                  <li>Em 2000 trocou o Barcelona pelo Real Madrid, na transferência mais cara do mundo até então.</li>
+                  <li>No regresso ao Camp Nou, em 2002, os adeptos do Barcelona atiraram-lhe uma cabeça de porco.</li>
+                </ul>
+              </section>
+              <p class="folha-fonte">Fonte: <a href="https://pt.wikipedia.org/wiki/Lu%C3%ADs_Figo" target="_blank" rel="noopener">Wikipédia</a> · zerozero · Transfermarkt. Base dos jogos: campeonato + seleção. Dados de exemplo.</p>
             </div>
+            <footer class="folha-rodape">
+              <span class="contador-sim">Já sabem <span class="caixas"><i class="sim"></i><i class="sim"></i><i class="sim"></i><i></i><i></i><i></i></span> <span class="valor">3/6</span></span>
+              <span class="requisito">ainda sem clube</span>
+            </footer>
+          </div>
+        </article>
 
-            <div>
-              <h4>Carreira (campeonato + seleção)</h4>
+        <!-- Ficha da Ana: alvo desta vez -->
+        <article class="folha ficha papel alvo" id="f-ana" data-ordem="1" style="--cor-dono:#22d3ee" aria-label="Ficha da Ana">
+          <div class="pin-dono"><small>ficha de</small>Ana</div>
+          <span class="folha-etiqueta-alvo">Alvo</span>
+          <button class="folha-min" type="button" aria-label="Minimizar a ficha da Ana" data-minimizar>–</button>
+          <button class="folha-tira" type="button" data-maximizar><span class="pino"></span><span class="dono">Ana</span><span class="sim">6/6 sim</span><span class="quem">[jogador desconhecido] · alvo</span></button>
+          <header class="folha-topo">
+            <figure class="folha-foto"><div class="moldura desconhecida"><svg width="56" height="70"><use href="#i-silhueta"/></svg></div></figure>
+            
+              <h3 class="folha-nome desconhecido">[Jogador desconhecido]</h3>
+              <dl class="folha-dados">
+                <dt>Nasceu</dt><dd class="incognita">????</dd>
+                <dt>Nação</dt><dd>América do Sul (CONMEBOL) · <span class="incognita">????</span></dd>
+                <dt>Posição</dt><dd>Médio · <span class="incognita">????</span></dd>
+                <dt>Físico</dt><dd class="incognita">????</dd>
+                <dt>Estado</dt><dd class="incognita">????</dd>
+              </dl>
+          </header>
+          <div class="folha-corpo">
+            <section>
+              <h4>Carreira</h4>
               <table class="tabela-carreira">
-                <thead><tr><th>Clube</th><th>Épocas</th><th>J</th><th>G</th><th>N.º</th></tr></thead>
+                <thead><tr><th>Clube</th><th class="esq">Liga</th><th>Épocas</th></tr></thead>
                 <tbody>
-                  <tr><td>Sporting <span class="epocas">· Primeira Liga</span></td><td>89–95</td><td>137</td><td>16</td><td>—</td></tr>
-                  <tr><td>Barcelona <span class="epocas">· La Liga</span></td><td>95–00</td><td>172</td><td>30</td><td>7</td></tr>
-                  <tr><td>Real Madrid <span class="epocas">· La Liga</span></td><td>00–05</td><td>164</td><td>38</td><td>10</td></tr>
-                  <tr><td>Inter <span class="epocas">· Serie A</span></td><td>05–09</td><td>105</td><td>9</td><td>7</td></tr>
-                  <tr><td>Portugal</td><td>91–06</td><td>127</td><td>32</td><td>7</td></tr>
+                  <tr><td class="incognita">????</td><td class="esq">La Liga <span class="carimbo mini confirmado novo" style="--rot:-4deg">Confirmado</span><small>Espanha</small></td><td class="incognita">????</td></tr>
+                  <tr><td class="incognita">????</td><td class="esq incognita">????</td><td class="incognita">????</td></tr>
                 </tbody>
               </table>
-            </div>
-
-            <div>
+            </section>
+            <section>
+              <h4>Estatísticas</h4>
+              <dl class="estatisticas">
+                <div><dt>Jogos</dt><dd>+300</dd></div>
+                <div><dt>Golos</dt><dd class="incognita">????</dd></div>
+                <div><dt>Assistências</dt><dd class="incognita">????</dd></div>
+                <div><dt>Seleção</dt><dd class="incognita">????</dd></div>
+                <div><dt>Golos seleção</dt><dd class="incognita">????</dd></div>
+                <div><dt>Estreia</dt><dd class="incognita">????</dd></div>
+                <div><dt>Camisola</dt><dd><span class="carimbo mini sem-registo" style="--rot:2deg">Sem registo</span></dd></div>
+              </dl>
+            </section>
+            <section>
               <h4>Prémios</h4>
-              <ul class="lista-dossier">
-                <li>Bola de Ouro (2000) · Melhor Jogador do Mundo da FIFA (2001)</li>
-                <li>Liga dos Campeões (2002) · Taça das Taças (1997)</li>
-                <li>La Liga ×4 · Serie A ×4 · Taça de Portugal (1995)</li>
+              <p class="texto-maquina incognita">????</p>
+            </section>
+            <section>
+              <h4>Notas à margem</h4>
+              <ul class="notas">
+                <li>Jogou com o irmão na mesma equipa? <span class="resposta-livre sim">Sim</span> <span class="autor">— Rui</span></li>
+                <li>Já foi capitão da seleção? <span class="resposta-livre nao-sei">Não sei</span> <span class="autor">— Pedro</span></li>
               </ul>
-            </div>
-
-            <div>
-              <h4>Curiosidades</h4>
-              <ul class="curiosidades">
-                <li>Começou a jogar à bola na rua, em Almada, no clube de bairro Os Pastilhas.</li>
-                <li>Foi campeão do mundo de sub-20 em 1991, em Lisboa, com a «geração de ouro».</li>
-                <li>Em 2000 trocou o Barcelona pelo Real Madrid, na transferência mais cara do mundo até então.</li>
-                <li>No regresso ao Camp Nou, em 2002, os adeptos do Barcelona atiraram-lhe uma cabeça de porco.</li>
+            </section>
+            <section class="descartadas">
+              <h4>Informações descartadas</h4>
+              <ul>
+                <li><span>Jogou numa liga de Inglaterra</span><span class="autor">Rui</span></li>
+                <li><span>É médio ofensivo</span><span class="autor">Marta</span></li>
+                <li><span>Ganhou a Copa América</span><span class="autor">Sofia</span></li>
               </ul>
-            </div>
-            <p class="dossier-fonte">Fonte: <a href="https://pt.wikipedia.org/wiki/Lu%C3%ADs_Figo" target="_blank" rel="noopener">Wikipédia</a> · zerozero · Transfermarkt. Dados de exemplo para o mockup.</p>
+            </section>
           </div>
-        </section>
+          <footer class="folha-rodape">
+            <span class="contador-sim">Sim <span class="caixas"><i class="sim"></i><i class="sim"></i><i class="sim"></i><i class="sim"></i><i class="sim"></i><i class="sim"></i></span> <span class="valor">6/6</span></span>
+            <span class="requisito">✗ falta um clube confirmado</span>
+            <span class="selo-palpite fechado">Palpite fechado</span>
+          </footer>
+        </article>
+
+        <!-- Ficha da Marta: acabou de ser identificada -->
+        <article class="folha ficha papel" id="f-marta" data-ordem="2" style="--cor-dono:#f472b6" aria-label="Ficha da Marta">
+          <div class="pin-dono"><small>ficha de</small>Marta</div>
+          <button class="folha-min" type="button" aria-label="Minimizar a ficha da Marta" data-minimizar>–</button>
+          <button class="folha-tira" type="button" data-maximizar><span class="pino"></span><span class="dono">Marta</span><span class="sim pronto">identificado</span><span class="quem">Cristiano Ronaldo</span></button>
+          <header class="folha-topo">
+            <figure class="folha-foto"><div class="moldura desconhecida"><svg width="56" height="70"><use href="#i-silhueta"/></svg></div></figure>
+            
+              <h3 class="folha-nome desconhecido">[Jogador desconhecido]</h3>
+              <dl class="folha-dados">
+                <dt>Nasceu</dt><dd class="incognita">????</dd>
+                <dt>Nação</dt><dd>Europa (UEFA) · <span class="incognita">????</span></dd>
+                <dt>Posição</dt><dd>Avançado · <span class="incognita">????</span></dd>
+                <dt>Físico</dt><dd class="incognita">????</dd>
+                <dt>Estado</dt><dd>No ativo</dd>
+              </dl>
+          </header>
+          <div class="folha-corpo">
+            <section>
+              <h4>Carreira</h4>
+              <table class="tabela-carreira">
+                <thead><tr><th>Clube</th><th class="esq">Liga</th><th>Épocas</th></tr></thead>
+                <tbody>
+                  <tr><td>Sporting</td><td class="esq">Primeira Liga<small>Portugal</small></td><td class="incognita">????</td></tr>
+                  <tr><td class="incognita">????</td><td class="esq">Premier League<small>Inglaterra</small></td><td class="incognita">????</td></tr>
+                  <tr><td class="incognita">????</td><td class="esq incognita">???? <small>Arábia Saudita (atual)</small></td><td class="incognita">????</td></tr>
+                </tbody>
+              </table>
+            </section>
+            <section>
+              <h4>Prémios</h4>
+              <ul class="lista-folha"><li>Europeu</li><li>Bola de Ouro</li></ul>
+            </section>
+          </div>
+          <footer class="folha-rodape">
+            <span class="contador-sim">Sim <span class="caixas"><i class="sim"></i><i class="sim"></i><i class="sim"></i><i class="sim"></i><i class="sim"></i><i class="sim"></i></span> <span class="valor">7/6</span></span>
+            <span class="selo-palpite">Palpite desbloqueado</span>
+          </footer>
+          <div class="identificado">
+            <p class="carimbo-grande">Identificado</p>
+            <figure class="identificado-foto">
+              <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/2/26/Cristiano_Ronaldo_Croatia_v_Portugal_2_July_2026-075_%28cropped%29.jpg/500px-Cristiano_Ronaldo_Croatia_v_Portugal_2_July_2026-075_%28cropped%29.jpg" alt="Cristiano Ronaldo">
+              <figcaption>Foto: Bryan Berlin · CC BY-SA 4.0</figcaption>
+            </figure>
+            <p class="identificado-nome">Cristiano Ronaldo</p>
+            <p class="identificado-por">por Rui · +10 pontos · a Marta já recebeu um jogador novo</p>
+          </div>
+        </article>
+      </div>
+
+      <!-- ===== Pilha das fichas minimizadas ===== -->
+      <aside class="pilha" id="pilha" aria-label="Fichas minimizadas">
+        <p class="rotulo">Minimizadas <span id="pilha-n" class="nota">3</span></p>
+        <div class="pilha-lista" id="pilha-lista">
+
+          <!-- Ficha do Rui: um treinador, com o palpite desbloqueado -->
+          <article class="folha ficha papel minimizada" id="f-rui" data-ordem="3" style="--cor-dono:#ef4444" aria-label="Ficha do Rui">
+            <div class="pin-dono"><small>ficha de</small>Rui</div>
+            <button class="folha-min" type="button" aria-label="Minimizar a ficha do Rui" data-minimizar>–</button>
+            <button class="folha-tira" type="button" data-maximizar><span class="pino"></span><span class="dono">Rui</span><span class="sim pronto">8 sim · palpite!</span><span class="quem">[jogador desconhecido]</span></button>
+            <header class="folha-topo">
+              <figure class="folha-foto"><div class="moldura desconhecida"><svg width="56" height="70"><use href="#i-silhueta"/></svg></div></figure>
+              
+                <h3 class="folha-nome desconhecido">[Jogador desconhecido]</h3>
+                <dl class="folha-dados">
+                  <dt>Nasceu</dt><dd class="incognita">????</dd>
+                  <dt>Nação</dt><dd>Europa (UEFA) · <span class="incognita">????</span></dd>
+                  <dt>Posição</dt><dd class="incognita">????</dd>
+                  <dt>Físico</dt><dd class="incognita">????</dd>
+                  <dt>Estado</dt><dd>Retirado · treinador</dd>
+                </dl>
+            </header>
+            <div class="folha-corpo">
+              <section>
+                <h4>Carreira</h4>
+                <table class="tabela-carreira">
+                  <thead><tr><th>Clube</th><th class="esq">Liga</th><th>Épocas</th></tr></thead>
+                  <tbody>
+                    <tr><td>Juventus</td><td class="esq">Serie A<small>Itália</small></td><td class="incognita">????</td></tr>
+                    <tr><td class="incognita">????</td><td class="esq incognita">????</td><td class="incognita">????</td></tr>
+                  </tbody>
+                </table>
+              </section>
+              <section>
+                <h4>Treinador</h4>
+                <dl class="folha-dados">
+                  <dt>Treinou</dt><dd>Espanha <span class="carimbo mini confirmado novo" style="--rot:3deg">Confirmado</span> · <span class="incognita">????</span></dd>
+                  <dt>Títulos</dt><dd>Liga dos Campeões · menos de 20 · <span class="incognita">????</span></dd>
+                </dl>
+              </section>
+              <section>
+                <h4>Estatísticas</h4>
+                <dl class="estatisticas">
+                  <div><dt>Jogos</dt><dd class="incognita">????</dd></div>
+                  <div><dt>Golos</dt><dd class="incognita">????</dd></div>
+                  <div><dt>Seleção</dt><dd class="incognita">????</dd></div>
+                  <div><dt>Golos seleção</dt><dd>31 <span class="tag-joker">Joker</span></dd></div>
+                </dl>
+              </section>
+              <section class="descartadas">
+                <h4>Informações descartadas</h4>
+                <ul>
+                  <li><span>Jogou numa liga de Inglaterra</span><span class="autor">Ana</span></li>
+                  <li><span>Mais de 20 títulos como treinador</span><span class="autor">Pedro</span></li>
+                  <li><span>Palpite: Pirlo</span><span class="autor">Marta</span></li>
+                </ul>
+              </section>
+            </div>
+            <footer class="folha-rodape">
+              <span class="contador-sim">Sim <span class="caixas"><i class="sim"></i><i class="sim"></i><i class="sim"></i><i class="sim"></i><i class="sim"></i><i class="sim"></i></span> <span class="valor">8/6</span></span>
+              <span class="requisito ok">✓ clube confirmado</span>
+              <span class="selo-palpite">Palpite desbloqueado</span>
+            </footer>
+          </article>
+
+          <!-- Ficha da Sofia -->
+          <article class="folha ficha papel minimizada" id="f-sofia" data-ordem="4" style="--cor-dono:#f97316" aria-label="Ficha da Sofia">
+            <div class="pin-dono"><small>ficha de</small>Sofia</div>
+            <button class="folha-min" type="button" aria-label="Minimizar a ficha da Sofia" data-minimizar>–</button>
+            <button class="folha-tira" type="button" data-maximizar><span class="pino"></span><span class="dono">Sofia</span><span class="sim">3/6 sim</span><span class="quem">[jogador desconhecido]</span></button>
+            <header class="folha-topo">
+              <figure class="folha-foto"><div class="moldura desconhecida"><svg width="56" height="70"><use href="#i-silhueta"/></svg></div></figure>
+              
+                <h3 class="folha-nome desconhecido">[Jogador desconhecido]</h3>
+                <dl class="folha-dados">
+                  <dt>Nasceu</dt><dd class="incognita">????</dd>
+                  <dt>Nação</dt><dd class="incognita">????</dd>
+                  <dt>Posição</dt><dd class="incognita">????</dd>
+                  <dt>Físico</dt><dd class="incognita">????</dd>
+                  <dt>Estado</dt><dd>No ativo</dd>
+                </dl>
+            </header>
+            <div class="folha-corpo">
+              <section>
+                <h4>Carreira</h4>
+                <table class="tabela-carreira">
+                  <thead><tr><th>Clube</th><th class="esq">Liga</th><th>Épocas</th></tr></thead>
+                  <tbody><tr><td class="incognita">????</td><td class="esq incognita">???? <small>Portugal</small></td><td class="incognita">????</td></tr></tbody>
+                </table>
+              </section>
+              <section>
+                <h4>Estatísticas</h4>
+                <dl class="estatisticas"><div><dt>Estreia</dt><dd>anos 2010</dd></div><div><dt>Jogos</dt><dd class="incognita">????</dd></div></dl>
+              </section>
+            </div>
+            <footer class="folha-rodape">
+              <span class="contador-sim">Sim <span class="caixas"><i class="sim"></i><i class="sim"></i><i class="sim"></i><i></i><i></i><i></i></span> <span class="valor">3/6</span></span>
+              <span class="selo-palpite fechado">Palpite fechado</span>
+            </footer>
+          </article>
+
+          <!-- Ficha do João (desligado) -->
+          <article class="folha ficha papel minimizada" id="f-joao" data-ordem="5" style="--cor-dono:#a3e635" aria-label="Ficha do João">
+            <div class="pin-dono"><small>ficha de</small>João</div>
+            <button class="folha-min" type="button" aria-label="Minimizar a ficha do João" data-minimizar>–</button>
+            <button class="folha-tira" type="button" data-maximizar><span class="pino"></span><span class="dono">João</span><span class="sim">2/6 sim</span><span class="quem">[jogador desconhecido] · desligado</span></button>
+            <header class="folha-topo">
+              <figure class="folha-foto"><div class="moldura desconhecida"><svg width="56" height="70"><use href="#i-silhueta"/></svg></div></figure>
+              
+                <h3 class="folha-nome desconhecido">[Jogador desconhecido]</h3>
+                <dl class="folha-dados">
+                  <dt>Nasceu</dt><dd class="incognita">????</dd>
+                  <dt>Nação</dt><dd>Europa (UEFA) · <span class="incognita">????</span></dd>
+                  <dt>Posição</dt><dd>Defesa · <span class="incognita">????</span></dd>
+                  <dt>Físico</dt><dd class="incognita">????</dd>
+                  <dt>Estado</dt><dd class="incognita">????</dd>
+                </dl>
+            </header>
+            <div class="folha-corpo">
+              <section class="descartadas">
+                <h4>Informações descartadas</h4>
+                <ul><li><span>Jogou numa liga de Portugal</span><span class="autor">Sofia</span></li></ul>
+              </section>
+            </div>
+            <footer class="folha-rodape">
+              <span class="contador-sim">Sim <span class="caixas"><i class="sim"></i><i class="sim"></i><i></i><i></i><i></i><i></i></span> <span class="valor">2/6</span></span>
+              <span class="selo-palpite fechado">Palpite fechado</span>
+            </footer>
+          </article>
+        </div>
       </aside>
     </div>
 
-    <button class="lingueta-dossier" type="button" data-lingueta>📁 O teu dossier</button>
+    <!-- Telemóvel: saltar entre colunas -->
+    <nav class="navegador" aria-label="Ir para">
+      <button type="button" data-ir="col-perguntas" aria-current="true">Perguntar</button>
+      <button type="button" data-ir="f-meu"><span class="ponto" style="background:#facc15"></span>O meu</button>
+      <button type="button" data-ir="f-ana"><span class="ponto" style="background:#22d3ee"></span>Ana</button>
+      <button type="button" data-ir="f-marta"><span class="ponto" style="background:#f472b6"></span>Marta</button>
+      <button type="button" data-ir="f-rui"><span class="ponto" style="background:#ef4444"></span>Rui</button>
+      <button type="button" data-ir="f-sofia"><span class="ponto" style="background:#f97316"></span>Sofia</button>
+      <button type="button" data-ir="f-joao"><span class="ponto" style="background:#a3e635"></span>João</button>
+    </nav>
 
-    <!-- ===================== Volta Joker ===================== -->
-    <div id="joker" class="sobreposicao" hidden>
-      <article class="ficha papel confidencial" style="--cor-dono:#f472b6; width:min(100%, 440px)">
-        <header class="ficha-cabecalho">
-          <p class="ficha-tipo">Relatório confidencial</p>
-          <p class="ficha-num">Volta Joker</p>
+    <!-- ===================== Ronda Joker ===================== -->
+    <div id="joker" class="joker" hidden>
+      <div class="joker-anuncio" aria-hidden="true">
+        <div class="joker-raios"></div>
+        <svg class="carta-joker" viewBox="0 0 124 176">
+          <defs><linearGradient id="gj" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#a78bfa"/><stop offset="1" stop-color="#5b21b6"/></linearGradient></defs>
+          <rect x="3" y="3" width="118" height="170" rx="12" fill="url(#gj)" stroke="#fbf8ef" stroke-width="4"/>
+          <rect x="12" y="12" width="100" height="152" rx="7" fill="none" stroke="#fbf8ef80" stroke-width="1.5"/>
+          <text x="20" y="38" font-family="Anton, Impact, sans-serif" font-size="24" fill="#fbf8ef">J</text>
+          <text x="104" y="138" font-family="Anton, Impact, sans-serif" font-size="24" fill="#fbf8ef" transform="rotate(180 104 146)">J</text>
+          <path d="M30 108Q36 70 24 60Q50 66 62 102Q74 66 100 60Q88 70 94 108Z" fill="#fbf8ef"/>
+          <path d="M50 106Q53 66 62 50Q71 66 74 106Z" fill="#ede9fe"/>
+          <circle cx="24" cy="60" r="6" fill="#facc15"/><circle cx="62" cy="50" r="6" fill="#facc15"/><circle cx="100" cy="60" r="6" fill="#facc15"/>
+          <rect x="30" y="104" width="64" height="13" rx="5" fill="#fbf8ef"/>
+          <circle cx="44" cy="110.5" r="2.5" fill="#6d28d9"/><circle cx="62" cy="110.5" r="2.5" fill="#6d28d9"/><circle cx="80" cy="110.5" r="2.5" fill="#6d28d9"/>
+        </svg>
+        <h2 class="joker-titulo"><span>Ronda</span> <span class="destaque">Joker</span></h2>
+        <p class="joker-sub">A ficha com menos «sim» vai a jogo. Todos respondem, menos o dono.</p>
+      </div>
+
+      <article class="ficha-tecnica papel" id="ficha-tecnica" aria-label="Ficha técnica da Ronda Joker">
+        <header class="ft-cabecalho">
+          <span class="ft-tipo">Ficha técnica</span>
+          <h2>Ronda Joker</h2>
+          <span class="ft-volta">depois da volta 3 · 15 s</span>
         </header>
-        <span class="fita-confidencial" aria-hidden="true">Confidencial</span>
-        <dl class="ficha-meta">
-          <div><dt>Sujeito</dt><dd>[Desconhecido] · ficha n.º 007</dd></div>
-          <div><dt>Observador</dt><dd class="dono">Marta</dd></div>
-          <div><dt>Motivo</dt><dd>a ficha com menos "sim" (2)</dd></div>
-        </dl>
-        <p class="pergunta-joker">Quantos jogos fez pela seleção?</p>
-        <div class="linha">
-          <input class="campo" inputmode="numeric" placeholder="O teu lance" value="64" style="font-family:var(--maquina);font-size:20px;background:#fff;color:var(--tinta);border-color:var(--papel-sombra)">
-          <button class="btn btn-principal" type="button">Enviar lance</button>
+        <div class="ft-grelha">
+          <div class="ft-celula ft-sujeito">
+            <span class="ft-rotulo">Sujeito</span>
+            <div class="folha-foto"><div class="moldura desconhecida"><svg width="56" height="70"><use href="#i-silhueta"/></svg></div></div>
+            <p class="folha-nome desconhecido" style="margin:0">[Jogador desconhecido]</p>
+            <div class="pin-dono" style="--cor-dono:#f472b6"><small>ficha de</small>Marta</div>
+          </div>
+          <div class="ft-celula ft-dados">
+            <span class="ft-rotulo">Dados conhecidos</span>
+            <dl class="folha-dados">
+              <dt>Motivo</dt><dd>a ficha com menos «sim» em jogo (0)</dd>
+              <dt>Nação</dt><dd class="incognita">????</dd>
+              <dt>Posição</dt><dd class="incognita">????</dd>
+              <dt>Carreira</dt><dd class="incognita">????</dd>
+            </dl>
+          </div>
+          <div class="ft-celula ft-pergunta">
+            <span class="ft-rotulo">Pergunta</span>
+            <p>Quantos jogos fez pela seleção?</p>
+          </div>
+          <div class="ft-celula ft-tempo">
+            <span class="ft-rotulo">Tempo</span>
+            <div class="cronometro">
+              <svg viewBox="0 0 120 120"><circle class="fundo-anel" cx="60" cy="60" r="52" fill="none" stroke-width="10"/><circle class="anel" cx="60" cy="60" r="52" fill="none" stroke-width="10" stroke-dasharray="326.7" stroke-dashoffset="87"/></svg>
+              <p><span class="ft-por-revelar">0:11</span><span class="ft-fim">Fim</span></p>
+            </div>
+          </div>
+          <div class="ft-celula ft-lance">
+            <span class="ft-rotulo">O teu lance</span>
+            <div class="ft-por-revelar">
+              <div class="digitos" aria-label="O teu lance: 64"><span class="digito vazio">0</span><span class="digito">6</span><span class="digito cursor">4</span></div>
+              <button class="btn btn-principal" type="button" style="margin-top:10px">Enviar lance</button>
+            </div>
+            <div class="ft-valor-certo">
+              <span class="numero">64</span>
+              <span class="carimbo confirmado novo" style="--rot:-6deg">Valor certo</span>
+              <span class="requisito">fica na ficha da Marta, com a etiqueta Joker</span>
+            </div>
+          </div>
+          <div class="ft-celula ft-lances">
+            <span class="ft-rotulo">Lances</span>
+            <ul class="ft-por-revelar">
+              <li><span class="ponto" style="background:#ef4444"></span>Rui <span class="estado ok">✓ enviado</span></li>
+              <li><span class="ponto" style="background:#22d3ee"></span>Ana <span class="estado ok">✓ enviado</span></li>
+              <li><span class="ponto" style="background:#f97316"></span>Sofia <span class="estado ok">✓ enviado</span></li>
+              <li><span class="ponto" style="background:#facc15"></span>Pedro (tu) <span class="estado">a escrever…</span></li>
+              <li><span class="ponto" style="background:#a3e635"></span>João <span class="estado">desligado</span></li>
+              <li><span class="ponto" style="background:#f472b6"></span>Marta <span class="estado">dona · não responde</span></li>
+            </ul>
+            <ul class="ft-resultados" hidden>
+              <li><span class="ponto" style="background:#facc15"></span>Pedro (tu) · 64 <span class="estado pontos">exato +5</span></li>
+              <li><span class="ponto" style="background:#22d3ee"></span>Ana · 58 <span class="estado">0</span></li>
+              <li class="passou"><span class="ponto" style="background:#ef4444"></span>Rui · 70 <span class="estado">passou</span></li>
+              <li class="passou"><span class="ponto" style="background:#f97316"></span>Sofia · 80 <span class="estado">passou</span></li>
+              <li><span class="ponto" style="background:#f472b6"></span>Marta (dona) <span class="estado">0 · alguém acertou</span></li>
+            </ul>
+          </div>
+          <div class="ft-celula ft-regras">
+            <span class="ft-rotulo">Pontuação</span>
+            <span><strong>Exato</strong> 5</span><span><strong>Mais perto sem passar</strong> 3</span><span><strong>Passou</strong> 0</span>
+            <span><strong>Dona:</strong> todos passam 3 · alguém perto 1 · alguém exato 0</span>
+          </div>
         </div>
-        <footer class="ficha-rodape">
-          <span class="contador-sim">Faltam <span class="valor">0:11</span></span>
-          <span class="requisito">Já responderam: Rui, Ana · a Marta não responde</span>
-        </footer>
-        <p class="requisito" style="margin:0">Exato: 5 · mais perto sem passar: 3 · passou: 0. A Marta ganha 3 se toda a gente passar.</p>
+        <span class="carimbo ft-carimbo">Confidencial</span>
       </article>
     </div>
   </main>
@@ -461,19 +649,19 @@
   <dialog id="dialogo-como" class="dialogo">
     <h2 class="titulo titulo-medio" tabindex="-1" autofocus><span>Como</span> <span class="destaque">jogar</span></h2>
     <ol class="regras">
-      <li><span>Cada um recebe um <strong>jogador secreto</strong>: ao calhas (modo Aleatório) ou à escolha entre 3 cartas (modo Escolha). No canto tens o teu <strong>dossier</strong>, com tudo sobre ele, para responderes às perguntas livres.</span></li>
-      <li><span>Joga-se <strong>à vez</strong>. Em cada volta tens um <strong>alvo</strong> fixo, que roda: com 4 jogadores, na 1.ª volta perguntas ao seguinte, na 2.ª ao que está dois lugares à frente, e assim por diante.</span></li>
+      <li><span>Cada um recebe um <strong>jogador secreto</strong>: ao calhas (modo Aleatório) ou à escolha entre 3 cartas (modo Escolha). O teu <strong>dossier</strong>, a primeira ficha, tem tudo sobre ele, para responderes às perguntas livres.</span></li>
+      <li><span>Joga-se <strong>à vez</strong>. Em cada volta tens um <strong>alvo</strong> fixo, que roda: na 1.ª volta perguntas ao seguinte, na 2.ª ao que está dois lugares à frente, e assim por diante.</span></li>
       <li><span>Na tua vez fazes <strong>uma</strong> coisa: uma <strong>pergunta estruturada</strong> ao alvo (o jogo responde), uma <strong>pergunta livre</strong> ao alvo (por voz no Discord; o dono responde Sim, Não ou Não sei e tu escreves um resumo) ou um <strong>palpite</strong> a qualquer ficha desbloqueada.</span></li>
-      <li><span>As perguntas abrem por níveis: <strong>país da liga → liga → clube</strong>, setor → posição, confederação → país, década → ano de estreia, faixa → número. Só perguntas pela liga depois de confirmares o país. A secção Treinador abre com "é ou foi treinador?".</span></li>
+      <li><span>As perguntas abrem por níveis: <strong>país da liga → liga → clube</strong>, setor → posição, confederação → país, década → ano de estreia, faixa → número. A secção Treinador abre com "é ou foi treinador?".</span></li>
+      <li><span>Cada ficha mostra o que já se sabe e <strong>????</strong> no que falta. O que se perguntou e está errado fica em <strong>Informações descartadas</strong>. Podes minimizar fichas: ficam numa pilha à direita.</span></li>
       <li><span>Cada "sim" dá pontos a quem perguntou:
         <table class="tabela tabela-pontos">
           <thead><tr><th>Nível 1</th><th>Nível 2</th><th>Nível 3</th><th>Livre</th><th>Físico</th><th>Palpite</th></tr></thead>
           <tbody><tr><td>1</td><td>2</td><td>3</td><td>1</td><td>1</td><td>10</td></tr></tbody>
         </table>
-        Não, Não sei, Sem registo e palpites errados valem 0. Ninguém perde pontos.</span></li>
-      <li><span>O que já se sabe pelas outras respostas fica a cinzento e não dá pontos (depois de "mais de 300 jogos", o "mais de 100" é deduzido).</span></li>
+        Não, Não sei, Sem registo e palpites errados valem 0. O que já se sabe pelas outras respostas fica a cinzento e não dá pontos. Ninguém perde pontos.</span></li>
       <li><span>O <strong>palpite</strong> abre quando a ficha tem <strong>6 "sim"</strong> e pelo menos <strong>um clube confirmado</strong>. Contam gralhas pequenas e alcunhas. Acertar vale 10 pontos e o dono recebe logo outro jogador.</span></li>
-      <li><span><strong>Volta Joker</strong>: uma vez por partida, depois da 3.ª volta. Pergunta-se um número sobre o jogador com menos "sim" e todos menos o dono respondem em 15 s. Exato: 5; mais perto sem passar: 3. O dono ganha 3 se toda a gente passar, 1 se alguém ficar perto e 0 se alguém acertar.</span></li>
+      <li><span><strong>Ronda Joker</strong>: uma vez por partida, depois da 3.ª volta. Pergunta-se um número sobre o jogador com menos "sim" e todos menos o dono respondem em 15 s. Exato: 5; mais perto sem passar: 3. O dono ganha 3 se toda a gente passar, 1 se alguém ficar perto e 0 se alguém acertar.</span></li>
       <li><span>Quem entra a meio fica a ver e joga a partir da volta seguinte, com um jogador secreto.</span></li>
       <li><span><strong>Relatório do Dia</strong>: um jogador mistério por dia, igual para toda a gente. Só perguntas estruturadas; o resultado é o número de perguntas até acertares. Copia-o para o Discord.</span></li>
     </ol>
@@ -481,33 +669,118 @@
   </dialog>
 
   <script>
-    // Só do mockup: trocar de ecrã, separadores, lingueta do dossier e repetir as animações dos carimbos.
-    const vistas = document.querySelectorAll('[data-vista]');
+    // Só do mockup: ecrãs, popups do cabeçalho, minimizar/maximizar fichas, navegador do telemóvel e repetir animações.
+    const $ = (s, r = document) => r.querySelector(s);
+    const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+    const params = new URLSearchParams(location.search);
+
+    // Ecrãs
     const mostrar = (vista) => {
       document.body.className = 'vista-' + vista;
-      document.getElementById('ecra-inicio').hidden = vista !== 'inicio';
-      document.getElementById('ecra-jogo').hidden = vista === 'inicio';
-      document.getElementById('joker').hidden = vista !== 'joker';
-      vistas.forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.vista === vista)));
+      $('#ecra-inicio').hidden = vista !== 'inicio';
+      $('#ecra-jogo').hidden = vista === 'inicio';
+      const joker = $('#joker');
+      joker.hidden = !['joker', 'revelacao'].includes(vista);
+      joker.classList.toggle('sem-anuncio', vista === 'revelacao');
+      $('#ficha-tecnica').classList.toggle('revelada', vista === 'revelacao');
+      $('.ft-resultados').hidden = vista !== 'revelacao';
+      $('.ft-lances .ft-por-revelar').hidden = vista === 'revelacao';
+      if (vista === 'joker') reiniciarAnimacoes(joker);
+      $$('[data-vista]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.vista === vista)));
+      arrumar();
     };
-    vistas.forEach((b) => b.addEventListener('click', () => mostrar(b.dataset.vista)));
-    document.querySelectorAll('[data-abrir-dialogo]').forEach((b) =>
-      b.addEventListener('click', () => document.getElementById('dialogo-como').showModal()));
-    document.querySelectorAll('[data-separador]').forEach((b) => b.addEventListener('click', () => {
-      document.querySelectorAll('[data-separador]').forEach((x) => x.setAttribute('aria-checked', String(x === b)));
-      document.querySelectorAll('[data-painel]').forEach((p) => { p.hidden = p.dataset.painel !== b.dataset.separador; });
-    }));
-    document.querySelector('[data-lingueta]').addEventListener('click', () => document.body.classList.toggle('dossier-aberto'));
-    document.querySelector('[data-repetir]').addEventListener('click', () => {
-      document.querySelectorAll('.carimbo, .carimbo-grande').forEach((c) => {
-        c.classList.remove('novo'); c.style.animation = 'none'; void c.offsetWidth; c.style.animation = '';
-        c.classList.add('novo');
-      });
+    const reiniciarAnimacoes = (raiz) => raiz.querySelectorAll('*').forEach((el) => {
+      el.style.animation = 'none'; void el.offsetWidth; el.style.animation = '';
     });
-    const inicial = new URLSearchParams(location.search).get('vista');
-    if (inicial) mostrar(inicial);
-    if (new URLSearchParams(location.search).has('como')) document.getElementById('dialogo-como').showModal();
-    if (new URLSearchParams(location.search).has('dossier')) document.body.classList.add('dossier-aberto');
+    $$('[data-vista]').forEach((b) => b.addEventListener('click', () => mostrar(b.dataset.vista)));
+    $$('[data-abrir-dialogo]').forEach((b) => b.addEventListener('click', () => { fecharPopups(); $('#dialogo-como').showModal(); }));
+    $('[data-repetir]').addEventListener('click', () => $$('.carimbo, .carimbo-grande, .identificado-foto').forEach((c) => {
+      c.style.animation = 'none'; void c.offsetWidth; c.style.animation = ''; if (c.classList.contains('carimbo')) c.classList.add('novo');
+    }));
+
+    // Separadores do painel das perguntas
+    $$('[data-separador]').forEach((b) => b.addEventListener('click', () => {
+      $$('[data-separador]').forEach((x) => x.setAttribute('aria-checked', String(x === b)));
+      $$('[data-painel]').forEach((p) => { p.hidden = p.dataset.painel !== b.dataset.separador; });
+    }));
+
+    // Popups do cabeçalho: descem ao abrir, sobem ao clicar fora ou com Esc
+    const fecharPopups = (excepto) => $$('.popup').forEach((p) => {
+      if (p === excepto || p.hidden || p.classList.contains('a-fechar')) return;
+      document.querySelector(`[aria-controls="${p.id}"]`).setAttribute('aria-expanded', 'false');
+      p.classList.add('a-fechar');
+      setTimeout(() => { p.hidden = true; p.classList.remove('a-fechar'); }, 180);
+    });
+    $$('[data-popup]').forEach((b) => b.addEventListener('click', () => {
+      const p = document.getElementById(b.getAttribute('aria-controls'));
+      const aberto = !p.hidden && !p.classList.contains('a-fechar');
+      fecharPopups(p);
+      if (aberto) { fecharPopups(); return; }
+      // No telemóvel o popup ocupa a largura toda, logo abaixo do cabeçalho.
+      p.style.top = innerWidth < 960 ? `${$('.barra-jogo').getBoundingClientRect().bottom + 8}px` : '';
+      p.hidden = false;
+      b.setAttribute('aria-expanded', 'true');
+      if (p.id === 'popup-feed') b.querySelector('.contagem')?.remove();
+    }));
+    document.addEventListener('click', (e) => { if (!e.target.closest('.ancora')) fecharPopups(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') fecharPopups(); });
+
+    // Minimizar e maximizar fichas. Cabem tantas quantas a largura deixar; as que sobram vão para a pilha,
+    // começando pela que foi aberta há mais tempo (a do alvo fica sempre aberta).
+    const fichas = $('#fichas'), pilha = $('#pilha'), lista = $('#pilha-lista');
+    // A ficha aberta há menos tempo ganha o lugar; no início de cada vez, a do alvo abre-se e passa a ser a mais recente.
+    let relogio = 0;
+    $$('.folha.ficha').forEach((f) => { f.dataset.recente = f.classList.contains('minimizada') ? 0 : ++relogio; });
+    $$('.folha.ficha.alvo').forEach((f) => { f.dataset.recente = ++relogio; });
+    const LARGURA = 270, GAP = 14, PILHA = 190;
+    const capacidade = (comPilha) => {
+      const mesa = $('#mesa');
+      const util = mesa.clientWidth - 32 - $('#col-perguntas').offsetWidth - GAP - (comPilha ? PILHA + GAP : 0);
+      return Math.max(0, Math.floor((util + GAP) / (LARGURA + GAP)) - 1); // -1: o meu dossier
+    };
+    function arrumar() {
+      const todas = $$('.folha.ficha').sort((a, b) => a.dataset.ordem - b.dataset.ordem);
+      if (innerWidth >= 960) {
+        let abertas = todas.filter((f) => !f.classList.contains('minimizada'));
+        const cabe = capacidade(abertas.length < todas.length) ;
+        const cabeSemPilha = capacidade(false);
+        const limite = todas.length <= cabeSemPilha ? cabeSemPilha : cabe;
+        abertas.sort((a, b) => b.dataset.recente - a.dataset.recente);
+        abertas.slice(Math.max(1, limite)).forEach((f) => f.classList.add('minimizada'));
+      }
+      todas.forEach((f) => (f.classList.contains('minimizada') && innerWidth >= 960 ? lista : fichas).appendChild(f));
+      const n = lista.children.length;
+      pilha.hidden = innerWidth >= 960 && n === 0;
+      $('#pilha-n').textContent = n;
+    }
+    document.addEventListener('click', (e) => {
+      const min = e.target.closest('[data-minimizar]');
+      const max = e.target.closest('.folha.minimizada');
+      if (min) { min.closest('.folha').classList.add('minimizada'); arrumar(); }
+      else if (max && innerWidth >= 960) { max.classList.remove('minimizada'); max.dataset.recente = ++relogio; arrumar(); }
+    });
+    addEventListener('resize', arrumar);
+
+    // Telemóvel: o navegador em baixo salta para cada coluna e acompanha o deslocamento
+    $$('[data-ir]').forEach((b) => b.addEventListener('click', () =>
+      document.getElementById(b.dataset.ir).scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' })));
+    $('#mesa').addEventListener('scroll', () => {
+      const x = $('#mesa').getBoundingClientRect().left + 20;
+      const atual = $$('[data-ir]').map((b) => document.getElementById(b.dataset.ir))
+        .reduce((m, el) => (Math.abs(el.getBoundingClientRect().left - x) < Math.abs(m.getBoundingClientRect().left - x) ? el : m));
+      $$('[data-ir]').forEach((b) => b.setAttribute('aria-current', String(b.dataset.ir === atual.id)));
+    }, { passive: true });
+
+    // Abrir um estado direto pelo endereço (para as capturas)
+    mostrar(params.get('vista') || 'jogo');
+    if (params.has('como')) $('#dialogo-como').showModal();
+    if (params.get('popup')) $(`[aria-controls="popup-${params.get('popup')}"]`).click();
+    if (params.get('abrir')) { const f = document.getElementById('f-' + params.get('abrir')); f.classList.remove('minimizada'); f.dataset.recente = ++relogio; arrumar(); }
+    if (params.get('ir')) document.getElementById(params.get('ir')).scrollIntoView({ inline: 'start', block: 'nearest' });
+    // ?congelar=1400 para as animações nesse instante (o Chrome sem janela nem sempre as faz avançar).
+    if (params.get('congelar')) requestAnimationFrame(() => document.getAnimations().forEach((a) => {
+      a.pause(); a.currentTime = Number(params.get('congelar'));
+    }));
   </script>
 </body>
 </html>

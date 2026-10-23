@@ -1,5 +1,5 @@
 /* Scout Report — a identidade de relatório de olheiro, dentro da moldura do tema.css.
-   Papel creme com tinta escura (13,4:1), dados à máquina de escrever, notas à mão e carimbos. */
+   Papel creme com tinta escura (13,4:1), dados à máquina de escrever, notas à mão, carimbos e pastas de cartolina. */
 
 @font-face {
   font-family: 'Courier Prime';
@@ -52,6 +52,7 @@
   --linha-papel: #1f2a4424;
   --caneta: #1e3a8a;
   --cartolina: #e6cf98;
+  --cartolina-clara: #ecd8a6;
   --cartolina-escura: #c9ab6a;
   --carimbo-verde: #15803d;
   --carimbo-vermelho: #b91c1c;
@@ -76,24 +77,25 @@
   box-shadow: 0 1px 0 var(--papel-sombra), 0 14px 30px #0000005c;
 }
 
-/* ---------- Ficha (relatório de observação) ---------- */
-.ficha {
+/* ---------- Folha: a ficha de cada jogador (e o meu dossier) ----------
+   Cabeçalho fixo (foto, nome, dados principais), corpo com deslocamento próprio e rodapé com os "sim". */
+.folha {
   --cor-dono: #94a3b8;
-  padding: 14px 16px 16px;
+  position: relative;
   display: flex;
   flex-direction: column;
-  gap: 10px;
   min-width: 0;
-  border-top: 5px solid var(--cor-dono);
+  min-height: 0;
 }
-.ficha.alvo {
+.folha.alvo {
   outline: 3px solid var(--cor-dono);
   outline-offset: 3px;
 }
-.ficha-etiqueta-alvo {
+.folha-etiqueta-alvo {
   position: absolute;
-  top: -14px;
-  right: 14px;
+  top: -13px;
+  right: 46px;
+  z-index: 3;
   padding: 2px 9px;
   border-radius: 999px;
   background: var(--cor-dono);
@@ -102,150 +104,322 @@
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
-.ficha-cabecalho {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 8px;
-  padding-bottom: 6px;
-  border-bottom: 2px solid var(--tinta);
-}
-.ficha-tipo {
-  margin: 0;
-  font-family: var(--display);
-  font-size: 15px;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-}
-.ficha-num {
-  margin: 0;
-  font-family: var(--maquina);
-  font-weight: 700;
-  font-size: 13px;
-  white-space: nowrap;
-}
-.ficha-meta {
-  margin: 0;
-  display: grid;
-  gap: 2px;
-  font-family: var(--maquina);
-  font-size: 13px;
-}
-.ficha-meta div {
-  display: flex;
-  gap: 6px;
-  align-items: baseline;
-}
-.ficha-meta dt {
-  font-family: var(--body);
-  font-size: 10px;
-  font-weight: 800;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--tinta-suave);
-  min-width: 78px;
-}
-.ficha-meta dd {
-  margin: 0;
-  flex: 1;
-  border-bottom: 1px dotted var(--linha-papel);
-}
-.ficha-meta .dono {
-  font-weight: 700;
-}
-.ficha-meta .dono::before {
-  content: '';
-  display: inline-block;
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
-  margin-right: 6px;
-  background: var(--cor-dono);
-  box-shadow: 0 0 0 1.5px var(--tinta);
-}
 
-/* Secções do formulário */
-.ficha-secao {
-  margin: 0;
+/* O dono da ficha: um papelinho preso com um pionés da cor do jogador. */
+.pin-dono {
+  position: absolute;
+  top: -14px;
+  left: 12px;
+  z-index: 5;
+  transform: rotate(-4deg);
+  padding: 9px 12px 3px;
+  min-width: 76px;
+  text-align: center;
+  color: var(--tinta);
+  background-color: #fffdf6;
+  background-image: var(--textura-papel);
+  box-shadow: 0 3px 8px #0005;
+  font-family: var(--mao);
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1;
 }
-.ficha-secao h3 {
-  margin: 0 0 3px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font: 800 10.5px/1.2 var(--body);
+.pin-dono small {
+  display: block;
+  font-family: var(--body);
+  font-size: 9px;
+  font-weight: 800;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--tinta-suave);
 }
-.ficha-secao h3::after {
+.pin-dono::before {
+  content: '';
+  position: absolute;
+  top: -6px;
+  left: 50%;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  transform: translateX(-50%);
+  background: radial-gradient(circle at 35% 30%, #fff9 0 2px, var(--cor-dono) 3px 100%);
+  box-shadow: 0 2px 3px #0007, inset 0 -2px 2px #0003;
+}
+
+/* Botão de minimizar/maximizar, no canto da folha. */
+.folha-min {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 5;
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  border: 1.5px solid #1f2a4440;
+  border-radius: 8px;
+  background: #ffffff8c;
+  color: var(--tinta);
+  font: 800 16px/1 var(--body);
+  cursor: pointer;
+}
+.folha-min:hover {
+  background: #fff;
+  border-color: var(--tinta-suave);
+}
+.folha-min:focus-visible {
+  outline: 2px solid var(--carimbo-roxo);
+  outline-offset: 2px;
+}
+
+/* Foto e nome lado a lado; os dados principais por baixo, a toda a largura. */
+.folha-topo {
+  display: grid;
+  grid-template-columns: 66px minmax(0, 1fr);
+  grid-template-areas:
+    'foto nome'
+    'dados dados';
+  gap: 8px 12px;
+  align-items: center;
+  padding: 36px 14px 10px;
+  border-bottom: 2px solid var(--tinta);
+}
+.folha-topo > .folha-foto {
+  grid-area: foto;
+}
+.folha-topo > .folha-nome {
+  grid-area: nome;
+}
+.folha-topo > .folha-dados {
+  grid-area: dados;
+}
+.folha-foto {
+  margin: 0;
+}
+.folha-foto .moldura {
+  width: 66px;
+  height: 82px;
+  background: #d9d3c2;
+  border: 3px solid #fff;
+  box-shadow: 0 2px 6px #0003;
+  transform: rotate(-2deg);
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  position: relative;
+}
+.folha-foto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 20%;
+}
+/* A cara por descobrir: silhueta com um ponto de interrogação à máquina. */
+.folha-foto .moldura.desconhecida::after {
+  content: '?';
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding-top: 8px;
+  font-family: var(--maquina);
+  font-weight: 700;
+  font-size: 34px;
+  color: #fbf8efd9;
+}
+.folha-foto figcaption {
+  margin-top: 4px;
+  font-size: 9px;
+  line-height: 1.2;
+  color: var(--tinta-suave);
+}
+.folha-nome {
+  margin: 0 30px 4px 0;
+  font-family: var(--maquina);
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.15;
+}
+.folha-nome.desconhecido {
+  font-size: 15px;
+  letter-spacing: 0.02em;
+}
+.folha-dados {
+  margin: 0;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 1px 8px;
+  font-family: var(--maquina);
+  font-size: 12.5px;
+  line-height: 1.35;
+}
+.folha-dados dt {
+  font: 800 9.5px/1.75 var(--body);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--tinta-suave);
+}
+.folha-dados dd {
+  margin: 0;
+}
+/* O que ainda não se sabe. */
+.incognita {
+  color: var(--tinta-suave);
+  letter-spacing: 0.12em;
+}
+.sem-registo {
+  color: var(--carimbo-cinza);
+  font-style: italic;
+}
+
+.folha-corpo {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 10px 14px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  scrollbar-width: thin;
+  scrollbar-color: #1f2a4440 transparent;
+}
+.folha h4 {
+  margin: 0 0 4px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font: 800 10px/1.2 var(--body);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--tinta-suave);
+}
+.folha h4::after {
   content: '';
   flex: 1;
   border-bottom: 1px solid var(--linha-papel);
 }
-.registos {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-.registo {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-  min-height: 27px;
-  padding: 2px 0;
-  border-bottom: 1px dotted var(--linha-papel);
+.tabela-carreira {
+  width: 100%;
+  border-collapse: collapse;
   font-family: var(--maquina);
-  font-size: 14px;
-  line-height: 1.25;
+  font-size: 12.5px;
 }
-.registo .q {
-  min-width: 0;
-}
-.registo .nivel {
-  font-family: var(--body);
-  font-size: 10px;
-  font-weight: 800;
-  color: var(--tinta-suave);
-  margin-left: 4px;
-  white-space: nowrap;
-}
-.registo.nao .q {
-  color: var(--tinta-suave);
-  text-decoration: line-through;
-  text-decoration-color: #b91c1c66;
-}
-/* Deduzidas: sabidas sem perguntar, a cinzento e sem carimbo. */
-.registo.deduzido {
-  color: var(--tinta-suave);
-  font-size: 13px;
-}
-.registo.deduzido .q::before {
-  content: '≈ ';
-}
-.registo.deduzido .tag-deduzido {
-  font: 700 10px/1 var(--body);
+.tabela-carreira th {
+  font: 800 9px/1.2 var(--body);
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--tinta-suave);
+  text-align: right;
+  padding: 2px 3px;
+}
+.tabela-carreira th:first-child,
+.tabela-carreira td:first-child,
+.tabela-carreira .esq {
+  text-align: left;
+}
+.tabela-carreira td {
+  text-align: right;
+  padding: 3px 3px;
+  border-top: 1px dotted var(--linha-papel);
+  font-variant-numeric: tabular-nums;
+  vertical-align: top;
+}
+.tabela-carreira small {
+  display: block;
+  color: var(--tinta-suave);
+  font-size: 10.5px;
+}
+/* As estatísticas, em quadrícula. */
+.estatisticas {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 12px;
+  margin: 0;
+}
+.estatisticas div {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 6px;
+  padding: 3px 0;
+  border-bottom: 1px dotted var(--linha-papel);
+}
+.estatisticas dt {
+  font: 700 11px/1.3 var(--body);
+  color: var(--tinta-suave);
+}
+.estatisticas dd {
+  margin: 0;
+  font-family: var(--maquina);
+  font-weight: 700;
+  font-size: 13px;
   white-space: nowrap;
 }
-.registo.vazio {
-  color: #1f2a4459;
-  font-size: 13px;
+.lista-folha {
+  margin: 0;
+  padding-left: 16px;
+  font-size: 12.5px;
 }
-.registo.joker .q strong {
-  color: var(--carimbo-roxo);
+.texto-maquina {
+  margin: 0;
+  font-family: var(--maquina);
+  font-size: 12.5px;
 }
+
+/* Informações descartadas: tudo o que se perguntou e está errado. */
+.descartadas {
+  border-radius: 6px;
+  padding: 8px 10px 8px;
+  background: #b91c1c0d;
+  border: 1px dashed #b91c1c4d;
+}
+.descartadas h4 {
+  color: var(--carimbo-vermelho);
+}
+.descartadas h4::after {
+  border-color: #b91c1c33;
+}
+.descartadas ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-family: var(--maquina);
+  font-size: 12.5px;
+  line-height: 1.35;
+}
+.descartadas li {
+  display: flex;
+  gap: 6px;
+  padding: 2px 0;
+}
+.descartadas li::before {
+  content: '✗';
+  color: var(--carimbo-vermelho);
+  font-weight: 700;
+}
+.descartadas li span {
+  text-decoration: line-through;
+  text-decoration-color: #b91c1c80;
+}
+.descartadas .autor {
+  margin-left: auto;
+  font-family: var(--mao);
+  font-size: 15px;
+  color: var(--tinta-suave);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
 .tag-joker {
-  font: 800 10px/1 var(--body);
+  display: inline-block;
+  font: 800 9.5px/1 var(--body);
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: #fff;
   background: var(--carimbo-roxo);
   border-radius: 3px;
   padding: 3px 5px;
+  vertical-align: 1px;
   white-space: nowrap;
 }
 
@@ -271,6 +445,12 @@
   -webkit-mask-size: 120px;
   mask-size: 120px;
 }
+.carimbo.mini {
+  font-size: 9.5px;
+  padding: 2px 4px 1px;
+  margin-left: 4px;
+  vertical-align: 1px;
+}
 .carimbo.confirmado {
   color: var(--carimbo-verde);
 }
@@ -281,6 +461,7 @@
   color: var(--carimbo-cinza);
   border-style: dashed;
   outline: 0;
+  font-style: normal;
 }
 .carimbo.novo {
   animation: carimbar 0.42s cubic-bezier(0.2, 0.9, 0.3, 1.2) both;
@@ -294,7 +475,7 @@
 /* ---------- Notas à mão (perguntas livres) ---------- */
 .notas {
   position: relative;
-  margin: 2px 0 0;
+  margin: 0;
   padding: 2px 0 2px 16px;
   list-style: none;
   font-family: var(--mao);
@@ -328,20 +509,15 @@
   font-size: 15px;
   color: var(--tinta-suave);
 }
-.notas .palpite-errado {
-  text-decoration: line-through;
-  text-decoration-thickness: 2px;
-  text-decoration-color: var(--carimbo-vermelho);
-}
 
 /* ---------- Rodapé: contador de "sim" e palpite ---------- */
-.ficha-rodape {
+.folha-rodape {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: 8px;
-  padding-top: 8px;
+  gap: 6px 8px;
+  padding: 8px 14px 10px;
   border-top: 2px solid var(--tinta);
 }
 .contador-sim {
@@ -378,6 +554,11 @@
   font: 700 11px/1.2 var(--body);
   color: var(--tinta-suave);
 }
+/* No rodapé: contador e selo na primeira linha, o que falta na segunda. */
+.folha-rodape .requisito {
+  order: 3;
+  flex-basis: 100%;
+}
 .requisito.ok {
   color: var(--carimbo-verde);
 }
@@ -398,30 +579,95 @@
   background: none;
 }
 
+/* ---------- Folha minimizada: uma tira na pilha (só no computador; no telemóvel cada ficha é uma página) ---------- */
+.folha-tira {
+  display: none;
+}
+@media (min-width: 960px) {
+.folha.minimizada {
+  outline-width: 2px;
+  cursor: pointer;
+}
+.folha.minimizada > :not(.folha-tira) {
+  display: none;
+}
+.folha.minimizada > .folha-tira {
+  display: grid;
+  grid-template-columns: 12px minmax(0, 1fr) auto;
+  grid-template-areas:
+    'pino dono sim'
+    'pino quem quem';
+  align-items: center;
+  gap: 0 8px;
+  width: 100%;
+  padding: 10px 12px 9px;
+  border: 0;
+  background: none;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+}
+.folha-tira .pino {
+  grid-area: pino;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #fff9 0 2px, var(--cor-dono) 3px 100%);
+  box-shadow: 0 1px 2px #0007;
+}
+.folha-tira .dono {
+  grid-area: dono;
+  font-family: var(--mao);
+  font-weight: 700;
+  font-size: 21px;
+  line-height: 1;
+}
+.folha-tira .quem {
+  grid-area: quem;
+  font-family: var(--maquina);
+  font-size: 11.5px;
+  color: var(--tinta-suave);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.folha-tira .sim {
+  grid-area: sim;
+  font: 800 11px/1 var(--body);
+  color: var(--tinta);
+  white-space: nowrap;
+}
+.folha-tira .sim.pronto {
+  color: var(--carimbo-roxo);
+}
+
 /* ---------- IDENTIFICADO ---------- */
 .identificado {
   position: absolute;
   inset: 0;
-  z-index: 2;
+  z-index: 4;
   display: grid;
   place-content: center;
   justify-items: center;
-  gap: 10px;
+  gap: 8px;
   padding: 16px;
   text-align: center;
   border-radius: inherit;
-  background: #fbf8efb8;
+  background: #fbf8efd1;
   backdrop-filter: blur(1.5px);
 }
 .carimbo-grande {
   --rot: -9deg;
+  position: relative;
+  z-index: 1;
   font-family: var(--display);
-  font-size: clamp(34px, 5.2vw, 50px);
+  font-size: clamp(30px, 3.2vw, 44px);
   line-height: 1;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--carimbo-roxo);
-  padding: 8px 16px 5px;
+  padding: 8px 14px 5px;
   border: 5px solid currentColor;
   border-radius: 8px;
   outline: 2px solid currentColor;
@@ -433,11 +679,38 @@
   mask-size: 160px;
   animation: carimbar 0.5s cubic-bezier(0.2, 0.9, 0.3, 1.2) both;
 }
+.identificado-foto {
+  margin: -6px 0 0;
+  width: 150px;
+  padding: 6px 6px 8px;
+  background: #fff;
+  box-shadow: 0 6px 18px #0004;
+  transform: rotate(3deg);
+  animation: foto-cair 0.6s 0.25s cubic-bezier(0.2, 0.9, 0.3, 1.1) both;
+}
+.identificado-foto img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: 50% 20%;
+  background: #d9d3c2;
+}
+.identificado-foto figcaption {
+  margin-top: 4px;
+  font-size: 8.5px;
+  line-height: 1.2;
+  color: var(--tinta-suave);
+}
+@keyframes foto-cair {
+  from { transform: translateY(-24px) rotate(-6deg); opacity: 0; }
+  to { transform: rotate(3deg); opacity: 1; }
+}
 .identificado-nome {
-  margin: 6px 0 0;
+  margin: 4px 0 0;
   font-family: var(--maquina);
   font-weight: 700;
-  font-size: 22px;
+  font-size: 20px;
   color: var(--tinta);
   background: var(--papel);
   padding: 2px 10px;
@@ -445,54 +718,19 @@
 }
 .identificado-por {
   margin: 0;
-  font: 700 13px/1.3 var(--body);
+  font: 700 12.5px/1.35 var(--body);
   color: var(--tinta-suave);
+  max-width: 260px;
 }
 
-/* ---------- Volta Joker: RELATÓRIO CONFIDENCIAL ---------- */
-.ficha.confidencial {
-  border-top-color: var(--carimbo-roxo);
-}
-.ficha.confidencial .ficha-cabecalho {
-  margin: -14px -16px 0;
-  padding: 14px 16px 8px;
-  background: var(--carimbo-roxo);
-  color: #fff;
-  border-bottom: 0;
-}
-/* Fita-cola com "CONFIDENCIAL" a selar o relatório. */
-.fita-confidencial {
-  position: absolute;
-  top: -13px;
-  left: 50%;
-  transform: translateX(-50%) rotate(-2.5deg);
-  font-family: var(--display);
-  font-size: 13px;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-  color: var(--carimbo-roxo);
-  background: #f1ecdfe6;
-  padding: 4px 18px 3px;
-  box-shadow: 0 2px 6px #0004;
-  white-space: nowrap;
-}
-.pergunta-joker {
-  margin: 4px 0 0;
-  font-family: var(--maquina);
-  font-weight: 700;
-  font-size: 17px;
-  line-height: 1.3;
-}
-
-/* ---------- Dossier (o meu jogador) ---------- */
-.dossier {
-  position: relative;
+/* ---------- O meu dossier: pasta de cartolina ---------- */
+.folha.dossier {
   border-radius: 4px 10px 8px 8px;
   background:
     var(--textura-papel),
-    linear-gradient(180deg, #ecd8a6, var(--cartolina));
+    linear-gradient(180deg, var(--cartolina-clara), var(--cartolina));
   color: var(--tinta);
-  padding: 22px 12px 12px;
+  padding: 22px 10px 10px;
   box-shadow: 0 1px 0 var(--cartolina-escura), 0 16px 34px #00000070;
 }
 /* O título é a lingueta da pasta. */
@@ -503,124 +741,30 @@
   margin: 0;
   padding: 5px 12px 4px;
   border-radius: 7px 7px 0 0;
-  background: #ecd8a6;
+  background: var(--cartolina-clara);
   font: 800 10px/1 var(--body);
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: #6b5525;
 }
 .carimbo-secreto {
-  --rot: 6deg;
+  --rot: 5deg;
   position: absolute;
-  top: 8px;
+  top: 6px;
   right: 10px;
-  z-index: 1;
+  z-index: 2;
   color: var(--carimbo-vermelho-escuro);
-  font-size: 11px;
+  font-size: 10.5px;
   background: #ecd8a6cc;
 }
 .dossier-folha {
-  padding: 12px;
+  flex: 1;
+  min-height: 0;
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  font-size: 13px;
 }
-.dossier-topo {
-  display: grid;
-  grid-template-columns: 74px minmax(0, 1fr);
-  gap: 10px;
-  align-items: start;
-}
-.dossier-foto {
-  margin: 0;
-}
-.dossier-foto .moldura {
-  width: 74px;
-  height: 92px;
-  background: #d9d3c2;
-  border: 3px solid #fff;
-  box-shadow: 0 2px 6px #0003;
-  transform: rotate(-2deg);
-  display: grid;
-  place-items: center;
-  overflow: hidden;
-}
-.dossier-foto figcaption {
-  margin-top: 4px;
-  font-size: 9px;
-  line-height: 1.2;
-  color: var(--tinta-suave);
-}
-.dossier-nome {
-  margin: 0;
-  font-family: var(--maquina);
-  font-weight: 700;
-  font-size: 19px;
-  line-height: 1.15;
-}
-.dossier-dados {
-  margin: 4px 0 0;
-  display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
-  gap: 1px 8px;
-  font-family: var(--maquina);
-  font-size: 12.5px;
-}
-.dossier-dados dt {
-  font: 800 9.5px/1.6 var(--body);
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--tinta-suave);
-}
-.dossier-dados dd {
-  margin: 0;
-}
-.dossier h4 {
-  margin: 0 0 3px;
-  font: 800 10px/1.2 var(--body);
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--tinta-suave);
-  border-bottom: 1px solid var(--linha-papel);
-  padding-bottom: 2px;
-}
-.tabela-carreira {
-  width: 100%;
-  border-collapse: collapse;
-  font-family: var(--maquina);
-  font-size: 12px;
-}
-.tabela-carreira th {
-  font: 800 9px/1.2 var(--body);
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--tinta-suave);
-  text-align: right;
-  padding: 2px 3px;
-}
-.tabela-carreira th:first-child,
-.tabela-carreira td:first-child {
-  text-align: left;
-}
-.tabela-carreira td {
-  text-align: right;
-  padding: 2px 3px;
-  border-top: 1px dotted var(--linha-papel);
-  font-variant-numeric: tabular-nums;
-}
-.tabela-carreira .epocas {
-  color: var(--tinta-suave);
-  font-size: 11px;
-}
-.tabela-carreira tfoot td {
-  font-weight: 700;
-  border-top: 1.5px solid var(--tinta);
-}
-.lista-dossier {
-  margin: 0;
-  padding-left: 16px;
-  font-size: 12.5px;
+.dossier .folha-topo {
+  padding-top: 14px;
 }
 .curiosidades {
   margin: 0;
@@ -642,12 +786,399 @@
   left: 0;
   color: var(--carimbo-roxo);
 }
-.dossier-fonte {
+.folha-fonte {
   margin: 0;
   font-size: 11px;
   color: var(--tinta-suave);
 }
-.dossier-fonte a {
+.folha-fonte a {
   color: var(--caneta);
   font-weight: 700;
+}
+
+/* ---------- Ronda Joker ---------- */
+.joker {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  display: grid;
+  place-items: center;
+  padding: 16px;
+  background: radial-gradient(70% 60% at 50% 45%, #2e106599, #05030ce6 70%);
+  backdrop-filter: blur(5px);
+  overflow: hidden;
+}
+.joker > * {
+  grid-area: 1 / 1;
+}
+/* 1. O anúncio: a carta entra a rodar, o título encolhe até ao lugar e tudo sai ao fim de ~2,6 s. */
+.joker-anuncio {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  gap: 16px;
+  text-align: center;
+  pointer-events: none;
+  animation: anuncio-sair 0.45s ease-in 2.6s forwards;
+}
+.joker-raios {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 160vmax;
+  height: 160vmax;
+  transform: translate(-50%, -50%);
+  background: repeating-conic-gradient(from 0deg, #8b5cf62e 0 7deg, transparent 7deg 18deg);
+  -webkit-mask-image: radial-gradient(circle, #000 0 18%, transparent 46%);
+  mask-image: radial-gradient(circle, #000 0 18%, transparent 46%);
+  animation: rodar 14s linear infinite;
+  z-index: -1;
+}
+.carta-joker {
+  width: 124px;
+  filter: drop-shadow(0 20px 40px #6d28d9aa);
+  animation: carta-entrar 0.9s cubic-bezier(0.2, 0.9, 0.3, 1.15) both;
+}
+.joker-titulo {
+  margin: 0;
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(56px, 11vw, 120px);
+  line-height: 0.9;
+  text-transform: uppercase;
+  color: #fff;
+  animation: titulo-entrar 0.8s 0.35s cubic-bezier(0.2, 0.8, 0.3, 1) both;
+}
+.joker-sub {
+  margin: 0;
+  font-family: var(--maquina);
+  font-weight: 700;
+  font-size: clamp(15px, 2vw, 19px);
+  color: #ede9fe;
+  animation: aparecer 0.4s 1s both;
+}
+@keyframes carta-entrar {
+  0% { transform: perspective(700px) rotateY(540deg) scale(0.2); opacity: 0; }
+  70% { transform: perspective(700px) rotateY(-14deg) scale(1.1); opacity: 1; }
+  100% { transform: perspective(700px) rotateY(0) scale(1); opacity: 1; }
+}
+@keyframes titulo-entrar {
+  from { letter-spacing: 0.7em; opacity: 0; filter: blur(10px); }
+  to { letter-spacing: 0.02em; opacity: 1; filter: none; }
+}
+@keyframes anuncio-sair {
+  to { opacity: 0; transform: scale(1.08); visibility: hidden; }
+}
+@keyframes rodar {
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* 2. A ficha técnica: um formulário com células, como a ficha técnica de um jogo. */
+.ficha-tecnica {
+  width: min(100%, 860px);
+  max-height: calc(100dvh - 32px);
+  overflow-y: auto;
+  animation: ft-entrar 0.55s cubic-bezier(0.2, 0.9, 0.3, 1.05) 2.75s both;
+}
+.joker.sem-anuncio .joker-anuncio {
+  display: none;
+}
+.joker.sem-anuncio .ficha-tecnica {
+  animation-delay: 0s;
+}
+@keyframes ft-entrar {
+  from { transform: translateY(40px) rotate(-1.5deg); opacity: 0; }
+  to { transform: none; opacity: 1; }
+}
+.ft-cabecalho {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 18px 10px;
+  background: var(--carimbo-roxo);
+  color: #fff;
+  border-radius: 4px 4px 0 0;
+}
+.ft-cabecalho .ft-tipo {
+  font: 800 11px/1.2 var(--body);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #ede9fe;
+}
+.ft-cabecalho h2 {
+  margin: 0;
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: 34px;
+  line-height: 1;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.ft-cabecalho .ft-volta {
+  justify-self: end;
+  font-family: var(--maquina);
+  font-weight: 700;
+  font-size: 13px;
+  color: #ede9fe;
+}
+.ft-grelha {
+  display: grid;
+  grid-template-columns: 190px minmax(0, 1fr) minmax(0, 1fr) 170px;
+  grid-template-areas:
+    'sujeito dados dados tempo'
+    'sujeito pergunta pergunta tempo'
+    'lance lance lances lances'
+    'regras regras regras regras';
+  margin: 14px 18px 18px;
+  border: 2px solid var(--tinta);
+}
+.ft-celula {
+  position: relative;
+  padding: 20px 12px 10px;
+  border: 1px solid var(--tinta);
+  min-width: 0;
+}
+.ft-rotulo {
+  position: absolute;
+  top: 5px;
+  left: 8px;
+  font: 800 9.5px/1 var(--body);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--tinta-suave);
+}
+.ft-sujeito {
+  grid-area: sujeito;
+  display: grid;
+  justify-items: center;
+  align-content: start;
+  gap: 8px;
+  text-align: center;
+  padding-top: 26px;
+}
+.ft-sujeito .moldura {
+  width: 96px;
+  height: 118px;
+}
+.ft-sujeito .pin-dono {
+  position: static;
+  transform: rotate(-3deg);
+}
+.ft-dados {
+  grid-area: dados;
+}
+.ft-dados .folha-dados {
+  font-size: 13.5px;
+}
+.ft-pergunta {
+  grid-area: pergunta;
+  display: grid;
+  align-content: center;
+}
+.ft-pergunta p {
+  margin: 4px 0 0;
+  font-family: var(--maquina);
+  font-weight: 700;
+  font-size: clamp(19px, 2.2vw, 25px);
+  line-height: 1.25;
+}
+.ft-tempo {
+  grid-area: tempo;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 4px;
+}
+.cronometro {
+  position: relative;
+  width: 112px;
+  height: 112px;
+}
+.cronometro svg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+.cronometro .fundo-anel {
+  stroke: #1f2a441f;
+}
+.cronometro .anel {
+  stroke: var(--carimbo-roxo);
+  stroke-linecap: round;
+  transition: stroke-dashoffset 1s linear;
+}
+.cronometro p {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  display: grid;
+  place-items: center;
+  font-family: var(--display);
+  font-size: 34px;
+  color: var(--tinta);
+}
+.ft-lance {
+  grid-area: lance;
+  display: grid;
+  gap: 10px;
+  align-content: center;
+}
+.digitos {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+.digito {
+  width: 46px;
+  height: 58px;
+  display: grid;
+  place-items: center;
+  border: 2px solid var(--tinta);
+  border-radius: 4px;
+  background: #fff;
+  font-family: var(--maquina);
+  font-weight: 700;
+  font-size: 32px;
+  color: var(--tinta);
+}
+.digito.vazio {
+  color: #1f2a4433;
+}
+.digito.cursor {
+  border-color: var(--carimbo-roxo);
+  box-shadow: 0 0 0 3px #6d28d933;
+}
+.ft-lance .btn {
+  justify-self: start;
+}
+.ft-lances {
+  grid-area: lances;
+}
+.ft-lances ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px 12px;
+  font-size: 13.5px;
+}
+.ft-lances li {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 0;
+  border-bottom: 1px dotted var(--linha-papel);
+  font-weight: 700;
+}
+.ft-lances li .estado {
+  margin-left: auto;
+  font-family: var(--maquina);
+  font-size: 12.5px;
+  color: var(--tinta-suave);
+  white-space: nowrap;
+}
+.ft-lances li .estado.ok {
+  color: var(--carimbo-verde);
+}
+.ft-lances li .estado.pontos {
+  color: var(--carimbo-roxo);
+  font-weight: 700;
+}
+.ft-lances li.passou .estado {
+  color: var(--carimbo-vermelho);
+}
+.ft-regras {
+  grid-area: regras;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 20px;
+  font-size: 12.5px;
+  color: var(--tinta-suave);
+}
+.ft-regras strong {
+  color: var(--tinta);
+}
+.ft-carimbo {
+  --rot: 8deg;
+  position: absolute;
+  right: 26px;
+  bottom: 18px;
+  color: var(--carimbo-roxo);
+  font-size: 16px;
+  opacity: 0.85;
+}
+/* Revelação: o valor certo e os pontos de cada um. */
+.ft-valor-certo {
+  display: none;
+}
+.ficha-tecnica.revelada .ft-valor-certo {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.ficha-tecnica.revelada .ft-por-revelar,
+.ft-fim {
+  display: none;
+}
+.ficha-tecnica.revelada .ft-fim {
+  display: inline;
+}
+.ficha-tecnica.revelada .anel {
+  stroke-dashoffset: 326.7;
+}
+.ft-valor-certo .numero {
+  font-family: var(--display);
+  font-size: 64px;
+  line-height: 1;
+  color: var(--carimbo-roxo);
+}
+.ft-valor-certo .carimbo {
+  font-size: 15px;
+}
+/* Ecrãs estreitos: a ficha técnica passa a uma coluna, com o sujeito e o tempo lado a lado. */
+@media (max-width: 719px) {
+  .ft-cabecalho {
+    grid-template-columns: 1fr auto;
+    padding: 10px 14px 8px;
+  }
+  .ft-cabecalho h2 {
+    font-size: 26px;
+    grid-row: 1;
+    grid-column: 1;
+    white-space: nowrap;
+  }
+  .ft-cabecalho .ft-tipo {
+    display: none;
+  }
+  .ft-grelha {
+    grid-template-columns: minmax(0, 1fr) 128px;
+    grid-template-areas:
+      'sujeito tempo'
+      'dados dados'
+      'pergunta pergunta'
+      'lance lance'
+      'lances lances'
+      'regras regras';
+    margin: 10px;
+  }
+  .ft-sujeito .moldura {
+    width: 66px;
+    height: 82px;
+  }
+  .cronometro {
+    width: 90px;
+    height: 90px;
+  }
+  .cronometro p {
+    font-size: 26px;
+  }
+  .ft-lances ul {
+    grid-template-columns: 1fr;
+  }
+  .ft-carimbo {
+    display: none;
+  }
 }
