@@ -117,3 +117,10 @@ def test_verificar_curiosidade():
     assert "origem" in verificar(inventada, fonte, set(), paises)
     nome = {"texto": "Nasceu no Funchal, como o Eusébio.", "origem": "Ronaldo was born in Funchal, Madeira, Portugal."}
     assert "Eusébio" in verificar(nome, fonte, set(), paises)
+    # Início de frase não é nome próprio; números por extenso e décadas na frase inglesa.
+    fonte2 = "at age five he was sent to france his mother was a national heptathlon champion in norway in the 1990s"
+    cinco = {"texto": "Casou-se cedo? Não: aos 5 anos foi enviado para França.", "origem": "At age five he was sent to France."}
+    assert verificar(cinco, fonte2, set(), {"franca": "france"}) is None
+    decada = {"texto": "A mãe foi campeã de heptatlo nos anos 90.",
+              "origem": "His mother was a national heptathlon champion in Norway in the 1990s."}
+    assert verificar(decada, fonte2, set(), {}) is None

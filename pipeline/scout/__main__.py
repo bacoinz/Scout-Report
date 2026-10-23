@@ -65,10 +65,17 @@ def cmd_recolher(args):
 def cmd_curiosidades(args):
     from . import curiosidades
     from .fontes import llm
-    if not llm.tem_chave():
+    if llm.e_local(args.modelo):
+        falta = llm.ollama_disponivel(args.modelo)
+        if falta:
+            sys.exit(f"Ollama: {falta}.")
+    elif not llm.tem_chave():
         sys.exit("Falta a variável de ambiente GEMINI_API_KEY (cria a chave em https://aistudio.google.com/apikey).")
-    res = curiosidades.correr(_cliente(), ids=args.id, limite=args.limite, refazer=args.refazer)
+    res = curiosidades.correr(_cliente(), ids=args.id, limite=args.limite, refazer=args.refazer,
+                             modelo=args.modelo)
     print(f"Feitos: {len(res['feitos'])} · saltados: {len(res['saltados'])} · falhas: {len(res['falhas'])}")
+    if res.get("parado"):
+        print(f"Parado: {res['parado']}. Corre o mesmo comando amanhã para continuar.")
     for q, erro in res["falhas"].items():
         print(f"  {q}: {erro}")
 
@@ -129,6 +136,7 @@ def main(argv=None):
     s.add_argument("--id", action="append")
     s.add_argument("--limite", type=int)
     s.add_argument("--refazer", action="store_true")
+    s.add_argument("--modelo", default=config.GEMINI_MODELO, help=f"modelo do Gemini (por omissão {config.GEMINI_MODELO})")
     s.set_defaults(f=cmd_curiosidades)
     s = sub.add_parser("validar", help="valida os registos (sai com 1 se houver erros)")
     s.add_argument("--avisos", action="store_true", help="mostra também os avisos")
