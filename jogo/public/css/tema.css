@@ -304,13 +304,26 @@ select {
   outline: 2px solid var(--destaque-2);
   outline-offset: 2px;
 }
+/* Botão principal (o roxo): o mesmo em todo o jogo — Anton em maiúsculas, gradiente e sombra de relevo. */
 .btn-principal {
-  background: linear-gradient(180deg, var(--destaque), var(--destaque-escuro));
+  background: linear-gradient(180deg, color-mix(in srgb, var(--destaque) 70%, var(--destaque-escuro)), var(--destaque-escuro));
   color: #fff;
-  box-shadow: 0 6px 20px color-mix(in srgb, var(--destaque) 30%, transparent);
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: 16px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  box-shadow:
+    0 3px 0 var(--destaque-tinta),
+    0 8px 20px color-mix(in srgb, var(--destaque) 30%, transparent);
 }
 .btn-principal:hover:not(:disabled) {
-  filter: brightness(1.08);
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+}
+.btn-principal:active:not(:disabled) {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 var(--destaque-tinta), 0 4px 10px color-mix(in srgb, var(--destaque) 30%, transparent);
 }
 .btn-fantasma {
   background: #ffffff14;

@@ -30,7 +30,8 @@ const pares = [
   ['destaque', 'bg', 3, 'títulos, números grandes, bordas e anéis'],
   ['destaque-2', 'bg', 4.5, 'texto pequeno em destaque'],
   ['destaque-2', PAINEL, 4.5, 'texto pequeno em destaque nos painéis'],
-  [BRANCO, 'destaque', 3, 'botão principal (topo do gradiente, texto a 800)'],
+  // Topo do gradiente do botão = color-mix(--destaque 70%, --destaque-escuro) ≈ #824ced.
+  [BRANCO, '#824ced', 4.5, 'botão principal (topo do gradiente, Anton em maiúsculas)'],
   [BRANCO, 'destaque-escuro', 4.5, 'botão principal (fundo do gradiente)'],
   ['tinta', 'papel', 7, 'dados à máquina nas fichas'],
   ['tinta-suave', 'papel', 4.5, 'rótulos e deduções nas fichas'],

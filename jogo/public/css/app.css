@@ -195,11 +195,11 @@
   display: flex;
   gap: 14px;
 }
+/* O dossier e as colunas dividem entre si o resto da largura (sem espaço vazio à direita). */
 .fichas > .folha.dossier,
 .coluna-fichas {
   flex: 1 1 0;
   min-width: 245px;
-  max-width: 320px;
   min-height: 0;
 }
 /* Cada coluna empilha fichas: a aberta ocupa o espaço, as recolhidas mostram só a primeira linha. */
@@ -332,10 +332,12 @@
   font-weight: 600;
   color: var(--muted);
 }
+/* Os pontos de cada pergunta: Inter normal, mais legível do que o Anton em tamanho pequeno. */
 .pts {
-  font-family: var(--display);
-  font-size: 14px;
-  letter-spacing: 0.04em;
+  font-family: var(--body);
+  font-weight: 600;
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
   color: var(--destaque-2);
   white-space: nowrap;
 }

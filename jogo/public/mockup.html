@@ -94,7 +94,7 @@
       <div class="barra-botoes">
         <div class="ancora">
           <button class="btn-barra" type="button" data-popup aria-controls="popup-feed" aria-expanded="false" aria-label="Acontecimentos">
-            <svg><use href="#i-lista"/></svg><span class="so-largo">Acontecimentos</span><span class="contagem">2</span>
+            <svg><use href="#i-lista"/></svg><span class="so-largo">Acontecimentos</span>
           </button>
           <div id="popup-feed" class="popup" hidden>
             <h2 class="painel-titulo">Acontecimentos</h2>
@@ -208,7 +208,7 @@
         <!-- O meu dossier -->
         <article class="folha dossier" id="f-meu" aria-label="O teu dossier">
           <p class="dossier-titulo">Dossier · o teu jogador</p>
-          <span class="carimbo carimbo-secreto">Só para os teus olhos</span>
+          <span class="carimbo carimbo-secreto">Confidencial</span>
           <div class="dossier-folha papel">
             <header class="folha-topo">
               <div class="folha-linha"><div class="folha-id"><h3 class="folha-nome">Luís Figo</h3></div></div>
@@ -256,7 +256,7 @@
             </div>
             <footer class="folha-rodape">
               <span class="contador-sim" title="Os outros já têm 3 «sim» sobre o teu jogador" aria-label="Os outros já têm 3 «sim» sobre o teu jogador"><span class="caixas"><i class="sim"></i><i class="sim"></i><i class="sim"></i><i></i><i></i><i></i></span></span>
-              <button class="btn-palpite" type="button" disabled title="Ainda ninguém pode dar palpite ao teu jogador">Palpite final</button>
+              <button class="btn btn-principal btn-palpite" type="button" disabled title="Ainda ninguém pode dar palpite ao teu jogador">Palpite final</button>
             </footer>
           </div>
         </article>
@@ -322,7 +322,7 @@
           </div>
           <footer class="folha-rodape">
             <span class="contador-sim" title="6 «sim»" aria-label="6 «sim»"><span class="caixas"><i class="sim"></i><i class="sim"></i><i class="sim"></i><i class="sim"></i><i class="sim"></i><i class="sim"></i></span></span>
-            <button class="btn-palpite" type="button" disabled title="Falta um clube confirmado">Palpite final</button>
+            <button class="btn btn-principal btn-palpite" type="button" disabled title="Falta um clube confirmado">Palpite final</button>
           </footer>
         </article>
 
@@ -421,7 +421,7 @@
           </div>
           <footer class="folha-rodape">
             <span class="contador-sim" title="8 «sim»" aria-label="8 «sim»"><span class="caixas"><i class="sim"></i><i class="sim"></i><i class="sim"></i><i class="sim"></i><i class="sim"></i><i class="sim"></i></span></span>
-            <button class="btn-palpite" type="button" data-palpite>Palpite final</button>
+            <button class="btn btn-principal btn-palpite" type="button" data-palpite>Palpite final</button>
           </footer>
           <form class="caixa-palpite" hidden onsubmit="return false">
             <h4>Palpite final · ficha do Rui</h4>
@@ -457,7 +457,7 @@
           </div>
           <footer class="folha-rodape">
             <span class="contador-sim" title="2 «sim»" aria-label="2 «sim»"><span class="caixas"><i class="sim"></i><i class="sim"></i><i></i><i></i><i></i><i></i></span></span>
-            <button class="btn-palpite" type="button" disabled>Palpite final</button>
+            <button class="btn btn-principal btn-palpite" type="button" disabled>Palpite final</button>
           </footer>
         </article>
 
@@ -491,7 +491,7 @@
           </div>
           <footer class="folha-rodape">
             <span class="contador-sim" title="3 «sim»" aria-label="3 «sim»"><span class="caixas"><i class="sim"></i><i class="sim"></i><i class="sim"></i><i></i><i></i><i></i></span></span>
-            <button class="btn-palpite" type="button" disabled>Palpite final</button>
+            <button class="btn btn-principal btn-palpite" type="button" disabled>Palpite final</button>
           </footer>
         </article>
       </div>
@@ -532,7 +532,6 @@
         <header class="ft-cabecalho">
           <span class="ft-tipo">Ficha técnica</span>
           <h2>Ronda Joker</h2>
-          <span class="ft-volta">depois da ronda 3 · 15 s</span>
         </header>
         <div class="ft-grelha">
           <div class="ft-celula ft-sujeito" style="--cor-dono:#a3e635">
@@ -544,7 +543,6 @@
           <div class="ft-celula ft-dados">
             <span class="ft-rotulo">Dados conhecidos</span>
             <dl class="folha-dados">
-              <div><dt>Motivo</dt><dd>a ficha com menos «sim» em jogo (2)</dd></div>
               <div><dt>Nação</dt><dd>Europa (UEFA) · <span class="incognita">????</span></dd></div>
               <div><dt>Posição</dt><dd>Defesa · <span class="incognita">????</span></dd></div>
             </dl>
@@ -568,9 +566,7 @@
             </div>
             <div class="ft-valor-certo">
               <span class="numero">64</span>
-              <span class="carimbo confirmado novo" style="--rot:-6deg">Valor certo</span>
-              <span class="requisito">fica na ficha do João, com a etiqueta Joker</span>
-            </div>
+              <span class="carimbo confirmado novo" style="--rot:-6deg">Valor certo</span>            </div>
           </div>
           <div class="ft-celula ft-lances">
             <span class="ft-rotulo">Palpites</span>
@@ -578,14 +574,14 @@
               <li><span class="ponto" style="background:#ef4444"></span>Rui <span class="estado ok">✓ enviado</span></li>
               <li><span class="ponto" style="background:#22d3ee"></span>Ana <span class="estado ok">✓ enviado</span></li>
               <li><span class="ponto" style="background:#f97316"></span>Sofia <span class="estado ok">✓ enviado</span></li>
-              <li><span class="ponto" style="background:#f472b6"></span>Marta ½ <span class="estado ok">✓ enviado</span></li>
+              <li><span class="ponto" style="background:#f472b6"></span>Marta <span class="estado ok">✓ enviado</span></li>
               <li><span class="ponto" style="background:#facc15"></span>Pedro (tu) <span class="estado">a escrever…</span></li>
               <li><span class="ponto" style="background:#a3e635"></span>João <span class="estado">dono · não responde</span></li>
             </ul>
             <ul class="ft-resultados" hidden>
               <li><span class="ponto" style="background:#facc15"></span>Pedro (tu) · 64 <span class="estado pontos">exato +15</span></li>
               <li><span class="ponto" style="background:#22d3ee"></span>Ana · 58 <span class="estado">0</span></li>
-              <li><span class="ponto" style="background:#f472b6"></span>Marta ½ · 60 <span class="estado">0</span></li>
+              <li><span class="ponto" style="background:#f472b6"></span>Marta · 60 <span class="estado">0</span></li>
               <li class="passou"><span class="ponto" style="background:#ef4444"></span>Rui · 70 <span class="estado">passou</span></li>
               <li class="passou"><span class="ponto" style="background:#f97316"></span>Sofia · 80 <span class="estado">passou</span></li>
               <li><span class="ponto" style="background:#a3e635"></span>João (dono) <span class="estado">0 · alguém acertou</span></li>
