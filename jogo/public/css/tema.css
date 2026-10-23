@@ -749,6 +749,10 @@ select {
 .dialogo::backdrop {
   background: #000a;
 }
+/* O título recebe o foco ao abrir (para o diálogo começar no topo), mas não é um controlo. */
+.dialogo [tabindex='-1']:focus {
+  outline: none;
+}
 .dialogo .btn {
   width: 100%;
 }
