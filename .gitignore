@@ -1,0 +1,8 @@
+node_modules/
+.wrangler/
+.venv/
+.cache/
+__pycache__/
+pipeline/saida/
+*.gen.js
+.dev.vars

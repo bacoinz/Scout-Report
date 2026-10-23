@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "mockup",
+      "runtimeExecutable": "py",
+      "runtimeArgs": ["-3.12", "-m", "http.server", "8790", "--bind", "127.0.0.1", "--directory", "jogo/public"],
+      "port": 8790
+    }
+  ]
+}

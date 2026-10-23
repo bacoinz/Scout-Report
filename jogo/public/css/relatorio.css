@@ -1,0 +1,653 @@
+/* Scout Report — a identidade de relatório de olheiro, dentro da moldura do tema.css.
+   Papel creme com tinta escura (13,4:1), dados à máquina de escrever, notas à mão e carimbos. */
+
+@font-face {
+  font-family: 'Courier Prime';
+  src: url(../fontes/courier-prime-latin-400.woff2) format('woff2');
+  font-weight: 400;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Courier Prime';
+  src: url(../fontes/courier-prime-latin-ext-400.woff2) format('woff2');
+  font-weight: 400;
+  font-display: swap;
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Courier Prime';
+  src: url(../fontes/courier-prime-latin-700.woff2) format('woff2');
+  font-weight: 700;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Courier Prime';
+  src: url(../fontes/courier-prime-latin-ext-700.woff2) format('woff2');
+  font-weight: 700;
+  font-display: swap;
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Caveat';
+  src: url(../fontes/caveat-latin.woff2) format('woff2-variations');
+  font-weight: 400 700;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Caveat';
+  src: url(../fontes/caveat-latin-ext.woff2) format('woff2-variations');
+  font-weight: 400 700;
+  font-display: swap;
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+:root {
+  --papel: #fbf8ef;
+  --papel-sombra: #e7e0cc;
+  --tinta: #1f2a44;
+  --tinta-suave: #55607a;
+  --linha-papel: #1f2a4424;
+  --caneta: #1e3a8a;
+  --cartolina: #e6cf98;
+  --cartolina-escura: #c9ab6a;
+  --carimbo-verde: #15803d;
+  --carimbo-vermelho: #b91c1c;
+  --carimbo-vermelho-escuro: #991b1b; /* na cartolina, que é mais escura do que o papel */
+  --carimbo-roxo: #6d28d9;
+  --carimbo-cinza: #6b7280;
+  --maquina: 'Courier Prime', 'Courier New', ui-monospace, monospace;
+  --mao: 'Caveat', 'Segoe Print', 'Comic Sans MS', cursive;
+  /* Grão do papel: ruído SVG embutido, ~7% de opacidade. */
+  --textura-papel: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .35 0 0 0 0 .29 0 0 0 0 .18 0 0 0 .07 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+  /* Tinta gasta dos carimbos: máscara de ruído com falhas. */
+  --gasto: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='m'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.3' numOctaves='2' seed='4'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -2.6 2.15'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23m)'/%3E%3C/svg%3E");
+}
+
+/* ---------- Papel ---------- */
+.papel {
+  position: relative;
+  color: var(--tinta);
+  background-color: var(--papel);
+  background-image: var(--textura-papel);
+  border-radius: 4px;
+  box-shadow: 0 1px 0 var(--papel-sombra), 0 14px 30px #0000005c;
+}
+
+/* ---------- Ficha (relatório de observação) ---------- */
+.ficha {
+  --cor-dono: #94a3b8;
+  padding: 14px 16px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
+  border-top: 5px solid var(--cor-dono);
+}
+.ficha.alvo {
+  outline: 3px solid var(--cor-dono);
+  outline-offset: 3px;
+}
+.ficha-etiqueta-alvo {
+  position: absolute;
+  top: -14px;
+  right: 14px;
+  padding: 2px 9px;
+  border-radius: 999px;
+  background: var(--cor-dono);
+  color: #0b1020;
+  font: 800 11px/1.4 var(--body);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.ficha-cabecalho {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px;
+  padding-bottom: 6px;
+  border-bottom: 2px solid var(--tinta);
+}
+.ficha-tipo {
+  margin: 0;
+  font-family: var(--display);
+  font-size: 15px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.ficha-num {
+  margin: 0;
+  font-family: var(--maquina);
+  font-weight: 700;
+  font-size: 13px;
+  white-space: nowrap;
+}
+.ficha-meta {
+  margin: 0;
+  display: grid;
+  gap: 2px;
+  font-family: var(--maquina);
+  font-size: 13px;
+}
+.ficha-meta div {
+  display: flex;
+  gap: 6px;
+  align-items: baseline;
+}
+.ficha-meta dt {
+  font-family: var(--body);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--tinta-suave);
+  min-width: 78px;
+}
+.ficha-meta dd {
+  margin: 0;
+  flex: 1;
+  border-bottom: 1px dotted var(--linha-papel);
+}
+.ficha-meta .dono {
+  font-weight: 700;
+}
+.ficha-meta .dono::before {
+  content: '';
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  margin-right: 6px;
+  background: var(--cor-dono);
+  box-shadow: 0 0 0 1.5px var(--tinta);
+}
+
+/* Secções do formulário */
+.ficha-secao {
+  margin: 0;
+}
+.ficha-secao h3 {
+  margin: 0 0 3px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font: 800 10.5px/1.2 var(--body);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--tinta-suave);
+}
+.ficha-secao h3::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid var(--linha-papel);
+}
+.registos {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.registo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  min-height: 27px;
+  padding: 2px 0;
+  border-bottom: 1px dotted var(--linha-papel);
+  font-family: var(--maquina);
+  font-size: 14px;
+  line-height: 1.25;
+}
+.registo .q {
+  min-width: 0;
+}
+.registo .nivel {
+  font-family: var(--body);
+  font-size: 10px;
+  font-weight: 800;
+  color: var(--tinta-suave);
+  margin-left: 4px;
+  white-space: nowrap;
+}
+.registo.nao .q {
+  color: var(--tinta-suave);
+  text-decoration: line-through;
+  text-decoration-color: #b91c1c66;
+}
+/* Deduzidas: sabidas sem perguntar, a cinzento e sem carimbo. */
+.registo.deduzido {
+  color: var(--tinta-suave);
+  font-size: 13px;
+}
+.registo.deduzido .q::before {
+  content: '≈ ';
+}
+.registo.deduzido .tag-deduzido {
+  font: 700 10px/1 var(--body);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--tinta-suave);
+  white-space: nowrap;
+}
+.registo.vazio {
+  color: #1f2a4459;
+  font-size: 13px;
+}
+.registo.joker .q strong {
+  color: var(--carimbo-roxo);
+}
+.tag-joker {
+  font: 800 10px/1 var(--body);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #fff;
+  background: var(--carimbo-roxo);
+  border-radius: 3px;
+  padding: 3px 5px;
+  white-space: nowrap;
+}
+
+/* ---------- Carimbos ---------- */
+.carimbo {
+  --rot: -3deg;
+  flex: none;
+  display: inline-block;
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: 11.5px;
+  line-height: 1;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  padding: 3px 6px 2px;
+  border: 2px solid currentColor;
+  border-radius: 3px;
+  outline: 1px solid currentColor;
+  outline-offset: 1.5px;
+  transform: rotate(var(--rot));
+  -webkit-mask-image: var(--gasto);
+  mask-image: var(--gasto);
+  -webkit-mask-size: 120px;
+  mask-size: 120px;
+}
+.carimbo.confirmado {
+  color: var(--carimbo-verde);
+}
+.carimbo.descartado {
+  color: var(--carimbo-vermelho);
+}
+.carimbo.sem-registo {
+  color: var(--carimbo-cinza);
+  border-style: dashed;
+  outline: 0;
+}
+.carimbo.novo {
+  animation: carimbar 0.42s cubic-bezier(0.2, 0.9, 0.3, 1.2) both;
+}
+@keyframes carimbar {
+  0% { transform: rotate(var(--rot)) scale(1.7); opacity: 0; }
+  55% { transform: rotate(var(--rot)) scale(0.94); opacity: 1; }
+  100% { transform: rotate(var(--rot)) scale(1); opacity: 1; }
+}
+
+/* ---------- Notas à mão (perguntas livres) ---------- */
+.notas {
+  position: relative;
+  margin: 2px 0 0;
+  padding: 2px 0 2px 16px;
+  list-style: none;
+  font-family: var(--mao);
+  font-size: 20px;
+  line-height: 1.1;
+  color: var(--caneta);
+  /* A margem do caderno, a vermelho. */
+  background: linear-gradient(90deg, transparent 5px, #d6282873 5px 6.5px, transparent 6.5px);
+}
+.notas li {
+  padding: 1px 0;
+}
+.notas .resposta-livre {
+  display: inline-block;
+  margin-left: 4px;
+  padding: 0 6px;
+  border: 1.5px solid currentColor;
+  border-radius: 50% 45% 55% 40% / 60% 50% 45% 55%;
+  font-weight: 700;
+}
+.notas .resposta-livre.sim {
+  color: var(--carimbo-verde);
+}
+.notas .resposta-livre.nao {
+  color: var(--carimbo-vermelho);
+}
+.notas .resposta-livre.nao-sei {
+  color: var(--tinta-suave);
+}
+.notas .autor {
+  font-size: 15px;
+  color: var(--tinta-suave);
+}
+.notas .palpite-errado {
+  text-decoration: line-through;
+  text-decoration-thickness: 2px;
+  text-decoration-color: var(--carimbo-vermelho);
+}
+
+/* ---------- Rodapé: contador de "sim" e palpite ---------- */
+.ficha-rodape {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding-top: 8px;
+  border-top: 2px solid var(--tinta);
+}
+.contador-sim {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font: 800 11px/1 var(--body);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.contador-sim .caixas {
+  display: inline-flex;
+  gap: 3px;
+}
+.contador-sim .caixas i {
+  width: 14px;
+  height: 14px;
+  border: 1.5px solid var(--tinta);
+  border-radius: 2px;
+  display: grid;
+  place-items: center;
+  font: 700 12px/1 var(--maquina);
+  font-style: normal;
+  color: var(--carimbo-verde);
+}
+.contador-sim .caixas i.sim::before {
+  content: '✓';
+}
+.contador-sim .valor {
+  font-family: var(--maquina);
+  font-size: 14px;
+}
+.requisito {
+  font: 700 11px/1.2 var(--body);
+  color: var(--tinta-suave);
+}
+.requisito.ok {
+  color: var(--carimbo-verde);
+}
+.selo-palpite {
+  font-family: var(--display);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--carimbo-roxo);
+  border: 2px solid currentColor;
+  border-radius: 999px;
+  padding: 4px 10px 3px;
+  background: #6d28d914;
+}
+.selo-palpite.fechado {
+  color: var(--tinta-suave);
+  border-style: dashed;
+  background: none;
+}
+
+/* ---------- IDENTIFICADO ---------- */
+.identificado {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 10px;
+  padding: 16px;
+  text-align: center;
+  border-radius: inherit;
+  background: #fbf8efb8;
+  backdrop-filter: blur(1.5px);
+}
+.carimbo-grande {
+  --rot: -9deg;
+  font-family: var(--display);
+  font-size: clamp(34px, 5.2vw, 50px);
+  line-height: 1;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--carimbo-roxo);
+  padding: 8px 16px 5px;
+  border: 5px solid currentColor;
+  border-radius: 8px;
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
+  transform: rotate(var(--rot));
+  -webkit-mask-image: var(--gasto);
+  mask-image: var(--gasto);
+  -webkit-mask-size: 160px;
+  mask-size: 160px;
+  animation: carimbar 0.5s cubic-bezier(0.2, 0.9, 0.3, 1.2) both;
+}
+.identificado-nome {
+  margin: 6px 0 0;
+  font-family: var(--maquina);
+  font-weight: 700;
+  font-size: 22px;
+  color: var(--tinta);
+  background: var(--papel);
+  padding: 2px 10px;
+  box-shadow: 0 0 0 1px var(--linha-papel);
+}
+.identificado-por {
+  margin: 0;
+  font: 700 13px/1.3 var(--body);
+  color: var(--tinta-suave);
+}
+
+/* ---------- Volta Joker: RELATÓRIO CONFIDENCIAL ---------- */
+.ficha.confidencial {
+  border-top-color: var(--carimbo-roxo);
+}
+.ficha.confidencial .ficha-cabecalho {
+  margin: -14px -16px 0;
+  padding: 14px 16px 8px;
+  background: var(--carimbo-roxo);
+  color: #fff;
+  border-bottom: 0;
+}
+/* Fita-cola com "CONFIDENCIAL" a selar o relatório. */
+.fita-confidencial {
+  position: absolute;
+  top: -13px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-2.5deg);
+  font-family: var(--display);
+  font-size: 13px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--carimbo-roxo);
+  background: #f1ecdfe6;
+  padding: 4px 18px 3px;
+  box-shadow: 0 2px 6px #0004;
+  white-space: nowrap;
+}
+.pergunta-joker {
+  margin: 4px 0 0;
+  font-family: var(--maquina);
+  font-weight: 700;
+  font-size: 17px;
+  line-height: 1.3;
+}
+
+/* ---------- Dossier (o meu jogador) ---------- */
+.dossier {
+  position: relative;
+  border-radius: 4px 10px 8px 8px;
+  background:
+    var(--textura-papel),
+    linear-gradient(180deg, #ecd8a6, var(--cartolina));
+  color: var(--tinta);
+  padding: 22px 12px 12px;
+  box-shadow: 0 1px 0 var(--cartolina-escura), 0 16px 34px #00000070;
+}
+/* O título é a lingueta da pasta. */
+.dossier-titulo {
+  position: absolute;
+  top: -15px;
+  left: 12px;
+  margin: 0;
+  padding: 5px 12px 4px;
+  border-radius: 7px 7px 0 0;
+  background: #ecd8a6;
+  font: 800 10px/1 var(--body);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #6b5525;
+}
+.carimbo-secreto {
+  --rot: 6deg;
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  z-index: 1;
+  color: var(--carimbo-vermelho-escuro);
+  font-size: 11px;
+  background: #ecd8a6cc;
+}
+.dossier-folha {
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 13px;
+}
+.dossier-topo {
+  display: grid;
+  grid-template-columns: 74px minmax(0, 1fr);
+  gap: 10px;
+  align-items: start;
+}
+.dossier-foto {
+  margin: 0;
+}
+.dossier-foto .moldura {
+  width: 74px;
+  height: 92px;
+  background: #d9d3c2;
+  border: 3px solid #fff;
+  box-shadow: 0 2px 6px #0003;
+  transform: rotate(-2deg);
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+.dossier-foto figcaption {
+  margin-top: 4px;
+  font-size: 9px;
+  line-height: 1.2;
+  color: var(--tinta-suave);
+}
+.dossier-nome {
+  margin: 0;
+  font-family: var(--maquina);
+  font-weight: 700;
+  font-size: 19px;
+  line-height: 1.15;
+}
+.dossier-dados {
+  margin: 4px 0 0;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 1px 8px;
+  font-family: var(--maquina);
+  font-size: 12.5px;
+}
+.dossier-dados dt {
+  font: 800 9.5px/1.6 var(--body);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--tinta-suave);
+}
+.dossier-dados dd {
+  margin: 0;
+}
+.dossier h4 {
+  margin: 0 0 3px;
+  font: 800 10px/1.2 var(--body);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--tinta-suave);
+  border-bottom: 1px solid var(--linha-papel);
+  padding-bottom: 2px;
+}
+.tabela-carreira {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--maquina);
+  font-size: 12px;
+}
+.tabela-carreira th {
+  font: 800 9px/1.2 var(--body);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--tinta-suave);
+  text-align: right;
+  padding: 2px 3px;
+}
+.tabela-carreira th:first-child,
+.tabela-carreira td:first-child {
+  text-align: left;
+}
+.tabela-carreira td {
+  text-align: right;
+  padding: 2px 3px;
+  border-top: 1px dotted var(--linha-papel);
+  font-variant-numeric: tabular-nums;
+}
+.tabela-carreira .epocas {
+  color: var(--tinta-suave);
+  font-size: 11px;
+}
+.tabela-carreira tfoot td {
+  font-weight: 700;
+  border-top: 1.5px solid var(--tinta);
+}
+.lista-dossier {
+  margin: 0;
+  padding-left: 16px;
+  font-size: 12.5px;
+}
+.curiosidades {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-size: 13px;
+  line-height: 1.35;
+}
+.curiosidades li {
+  padding-left: 14px;
+  position: relative;
+}
+.curiosidades li::before {
+  content: '▸';
+  position: absolute;
+  left: 0;
+  color: var(--carimbo-roxo);
+}
+.dossier-fonte {
+  margin: 0;
+  font-size: 11px;
+  color: var(--tinta-suave);
+}
+.dossier-fonte a {
+  color: var(--caneta);
+  font-weight: 700;
+}
