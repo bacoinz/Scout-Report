@@ -5,7 +5,7 @@ import re
 from collections import Counter
 from datetime import date
 
-from . import config
+from . import assistencias, config
 from .fontes import llm
 from .validar import validar_todos
 
@@ -24,8 +24,9 @@ def _pct(n, total):
 
 
 def respostas_sem_registo(r: dict, perguntas: dict) -> list[str]:
-    """Perguntas a que o jogo responderia SEM REGISTO para este jogador (as mesmas regras do jogo):
-    um "sim" basta um dado conhecido; um "não" precisa de cobertura ≥ 90% dos jogos de clube."""
+    """Perguntas a que o jogo responderia SEM REGISTO para este jogador (as mesmas regras do jogo): um "sim" basta
+    um dado conhecido; um "não" precisa de cobertura ≥ 90% dos jogos de clube ou, nas assistências, de o máximo
+    possível (assistencias.py) não chegar ao limiar."""
     t = r["totais"]
     falta = []
     conhecidos = set(t["numeros"]["conhecidos"])
@@ -33,7 +34,7 @@ def respostas_sem_registo(r: dict, perguntas: dict) -> list[str]:
         if not any(a <= n <= b for n in conhecidos) and t["numeros"]["cobertura"] < config.COBERTURA_MINIMA:
             falta.append(f"números {a}–{b}")
     for limiar in perguntas["estatisticas"]["assistencias"]:
-        if t["assistencias"]["conhecidas"] <= limiar and t["assistencias"]["cobertura"] < config.COBERTURA_MINIMA:
+        if assistencias.resposta(t["assistencias"], limiar) == "sem_registo":
             falta.append(f"mais de {limiar} assistências")
     perfil = r.get("perfil") or {}
     if not perfil.get("pe"):
@@ -93,6 +94,10 @@ def gerar() -> str:
          f"| Discrepâncias entre fontes | {sum(len(v['discrepancias']) for v in recolha.values())} |", "",
          "## Perguntas que dariam SEM REGISTO", "",
          "Um \"sim\" basta um dado conhecido; um \"não\" precisa de dados que cubram ≥ 90% dos jogos de clube. "
+         "Nas assistências, também sai \"não\" quando o máximo possível não chega ao limiar: as conhecidas mais os "
+         "jogos sem dados × o maior de 2 × a taxa do jogador (com pelo menos 50 jogos conhecidos) e o teto da "
+         "posição (0,02 por jogo num guarda-redes, "
+         "0,10 num central, 0,25 num lateral, até 0,45 num médio ofensivo ou extremo). "
          "Quando não chega para decidir, a ficha leva SEM REGISTO e quem pergunta escolhe outra ação.", "",
          "| Pergunta | Jogadores com SEM REGISTO | Quem |", "|---|---|---|"]
     ordem = [f"números {a}–{b}" for a, b in perguntas["numeros"]["faixas"]] + \
@@ -102,7 +107,7 @@ def gerar() -> str:
         L.append(f"| {q} | {_pct(len(quem), n)} | {', '.join(quem) or '—'} |")
 
     L += ["", "## Jogadores", "",
-          "| Jogador | Nasc. | Nac. | Posição | Estado | Base | Jogos | Golos | Int. (golos) | Assist. (cob.) | Números (cob.) | Clubes | Prémios | Fama |",
+          "| Jogador | Nasc. | Nac. | Posição | Estado | Base | Jogos | Golos | Int. (golos) | Assist. (cob., máx.) | Números (cob.) | Clubes | Prémios | Fama |",
           "|---|---|---|---|---|---|---|---|---|---|---|---|---|---|"]
     for r in registos:
         t = r["totais"]
@@ -110,7 +115,8 @@ def gerar() -> str:
                  f"{'/'.join(r['posicao']['especificas'] or r['posicao']['setores'])} | {r['estado']}"
                  f"{' + treinador' if r.get('treinador') else ''} | {'todas' if t['base'] == 'todas' else 'camp.+sel.'} | "
                  f"{t['jogos']} | {t['golos']} | {t['internacionalizacoes']} ({t['golos_selecao']}) | "
-                 f"{t['assistencias']['conhecidas']} ({round(100 * t['assistencias']['cobertura'])}%) | "
+                 f"{t['assistencias']['conhecidas']} ({round(100 * t['assistencias']['cobertura'])}%, "
+                 f"máx. {t['assistencias'].get('maximo', '?')}) | "
                  f"{', '.join(map(str, t['numeros']['conhecidos'])) or '—'} ({round(100 * t['numeros']['cobertura'])}%) | "
                  f"{t['clubes']} | {sum(p['n'] for p in r['premios'])} | {r['fama']['wikipedias']} |")
 

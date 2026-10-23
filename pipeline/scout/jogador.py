@@ -13,7 +13,7 @@ import json
 import re
 from datetime import date
 
-from . import config
+from . import assistencias, config
 from .fontes import wikidata as wd
 from .fontes import wikipedia as wp
 from .fontes import zerozero as zz
@@ -469,6 +469,7 @@ def construir(ctx: Contexto, qid: str, ent: dict, artigo: dict) -> tuple[dict, l
         golos_total = sum(c["golos_liga"] or 0 for c in carreira) + golos_sel
     jogos_zz += jogos_sem_zz                             # as coberturas contam também os jogos sem dados
     assist_sel = zz_sel["assistencias"] if zz_sel and zz_sel["assistencias"] is not None else 0
+    jogos_sel_com_assist = min(zz_sel["jogos"], jogos_sel) if zz_sel and zz_sel["assistencias"] is not None else 0
 
     # --- identidade, nacionalidades, estado ----------------------------------------------------------------------------
     nascimento = next((wd.data(wd.valor(c)) for c in wd.afirmacoes(ent, "P569")), None)
@@ -576,8 +577,15 @@ def construir(ctx: Contexto, qid: str, ent: dict, artigo: dict) -> tuple[dict, l
             "base": base,
             "jogos": jogos_total, "golos": golos_total,
             "internacionalizacoes": jogos_sel, "golos_selecao": golos_sel,
-            "assistencias": {"conhecidas": assist_conhecidas + assist_sel,
-                             "cobertura": round(jogos_com_assist / jogos_zz, 3) if jogos_zz else 0.0},
+            "assistencias": {
+                "conhecidas": assist_conhecidas + assist_sel,
+                "cobertura": round(jogos_com_assist / jogos_zz, 3) if jogos_zz else 0.0,
+                "jogos_com_dados": jogos_com_assist + jogos_sel_com_assist,
+                "jogos_sem_dados": (jogos_zz - jogos_com_assist) + (jogos_sel - jogos_sel_com_assist),
+                # Estimativa generosa (assistencias.py): abaixo dela, o jogo pode responder "não".
+                "maximo": assistencias.maximo(assist_conhecidas + assist_sel, jogos_com_assist + jogos_sel_com_assist,
+                                              (jogos_zz - jogos_com_assist) + (jogos_sel - jogos_sel_com_assist),
+                                              posicao)},
             "numeros": {"cobertura": round(jogos_com_numero / jogos_zz, 3) if jogos_zz else 0.0,
                         "conhecidos": sorted({n for c in carreira for n in c["numeros"]}
                                              | {n for s in selecoes for n in s["numeros"]}

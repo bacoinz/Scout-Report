@@ -93,6 +93,18 @@ def cmd_relatorio(args):
     print(escrever())
 
 
+def cmd_assistencias(args):
+    from . import assistencias
+    registos = [json.loads(c.read_text(encoding="utf-8")) for c in sorted(config.JOGADORES.glob("*.json"))]
+    res = assistencias.testar(_cliente(), registos)
+    print(f"{res['casos']} casos · {len(res['falhas'])} em que o máximo ficou abaixo do real · "
+          f"folga mediana: máximo = {res['folga_mediana']} × o real")
+    for c in res["falhas"]:
+        print(f"  {c['nome']}: escondidas as {c['lado']} ({round(100 * c['fracao'])}% dos jogos) → máximo {c['maximo']}, "
+              f"real {c['real']}")
+    sys.exit(1 if res["falhas"] else 0)
+
+
 def cmd_estado(args):
     registos = [json.loads(c.read_text(encoding="utf-8")) for c in config.JOGADORES.glob("*.json")]
     print(f"Jogadores: {len(registos)} · com curiosidades: {sum(bool(r.get('curiosidades')) for r in registos)} · "
@@ -122,6 +134,8 @@ def main(argv=None):
     s.add_argument("--avisos", action="store_true", help="mostra também os avisos")
     s.set_defaults(f=cmd_validar)
     sub.add_parser("relatorio", help="escreve saida/qualidade.md").set_defaults(f=cmd_relatorio)
+    sub.add_parser("assistencias", help="testa o máximo de assistências com as épocas conhecidas"
+                   ).set_defaults(f=cmd_assistencias)
     sub.add_parser("estado", help="contagens").set_defaults(f=cmd_estado)
     args = p.parse_args(argv)
     args.f(args)
