@@ -122,11 +122,11 @@
                 <tr><td>2</td><td><span class="celula-jogador"><span class="ponto" style="background:#f97316"></span><span class="nome-jogador">Sofia</span></span></td><td class="mais">+3</td><td class="total-celula">42</td></tr>
                 <tr><td>3</td><td><span class="celula-jogador"><span class="ponto" style="background:#22d3ee"></span><span class="nome-jogador">Ana</span></span></td><td class="mais">+9</td><td class="total-celula">36</td></tr>
                 <tr class="eu"><td>4</td><td><span class="celula-jogador"><span class="ponto" style="background:#facc15"></span><span class="nome-jogador">Pedro (tu)</span></span></td><td class="mais">+6</td><td class="total-celula">27</td></tr>
-                <tr><td>5</td><td><span class="celula-jogador"><span class="ponto" style="background:#f472b6"></span><span class="nome-jogador">Marta ½</span></span></td><td class="mais">+2</td><td class="total-celula">21</td></tr>
+                <tr><td>5</td><td><span class="celula-jogador"><span class="ponto" style="background:#f472b6"></span><span class="nome-jogador">Marta</span><span class="carimbo no-escuro" style="--rot:-4deg">Identificado</span></span></td><td class="mais">+2</td><td class="total-celula">21</td></tr>
                 <tr class="desligado"><td>6</td><td><span class="celula-jogador"><span class="ponto" style="background:#a3e635"></span><span class="nome-jogador">João</span></span></td><td>—</td><td class="total-celula">12</td></tr>
               </tbody>
             </table>
-            <p class="nota">½ = jogador já identificado: continua a jogar a receber metade dos pontos. O João está desligado e as vezes dele são saltadas até voltar.</p>
+            <p class="nota">Os jogadores que já foram identificados recebem metade dos pontos em cada ronda.</p>
           </div>
         </div>
 
@@ -208,10 +208,9 @@
         <!-- O meu dossier -->
         <article class="folha dossier" id="f-meu" aria-label="O teu dossier">
           <p class="dossier-titulo">Dossier · o teu jogador</p>
-          <span class="carimbo carimbo-secreto">Confidencial</span>
           <div class="dossier-folha papel">
             <header class="folha-topo">
-              <div class="folha-linha"><div class="folha-id"><h3 class="folha-nome">Luís Figo</h3></div></div>
+              <div class="folha-linha"><div class="folha-id"><h3 class="folha-nome">Luís Figo</h3></div><span class="carimbo carimbo-secreto">Confidencial</span></div>
               <div class="folha-retrato"><figure class="folha-foto"><div class="moldura"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/8/82/L._Figo_2017_%28cropped%29.jpg/500px-L._Figo_2017_%28cropped%29.jpg" alt="Luís Figo" title="Foto: Biser Todorov, CC BY 4.0, via Wikimedia Commons"></div></figure>
               <dl class="folha-dados">
                 <div><dt>Nasceu</dt><dd>4/11/1972 · Almada</dd></div>
@@ -364,7 +363,7 @@
               <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/2/26/Cristiano_Ronaldo_Croatia_v_Portugal_2_July_2026-075_%28cropped%29.jpg/500px-Cristiano_Ronaldo_Croatia_v_Portugal_2_July_2026-075_%28cropped%29.jpg" alt="Cristiano Ronaldo" title="Foto: Bryan Berlin, CC BY-SA 4.0, via Wikimedia Commons">
             </figure>
             <p class="identificado-nome">Cristiano Ronaldo</p>
-            <p class="identificado-por">por Rui · +30 pontos · Marta continua a jogar a receber metade dos pontos</p>
+            <p class="carimbo carimbo-autor" style="--cor-autor:#ef4444" title="Identificado pelo Rui (+30)">Rui</p>
           </div>
         </article>
 
@@ -438,7 +437,7 @@
         <article class="folha ficha papel" id="f-joao" data-ordem="4" style="--cor-dono:#a3e635" aria-label="Ficha do João">
           <header class="folha-topo">
               <div class="folha-linha"><div class="pin-dono">João</div>
-            <div class="folha-id"><h3 class="folha-nome desconhecido">[Desconhecido]</h3><span class="folha-resumo">2/6 sim</span></div>
+            <div class="folha-id"><h3 class="folha-nome desconhecido">[Desconhecido]</h3><span class="folha-resumo">3/6 sim</span></div>
             <button class="folha-min" type="button" aria-label="Recolher a ficha do João" data-recolher>–</button></div>
               <div class="folha-retrato"><figure class="folha-foto"><div class="moldura desconhecida"><svg width="64" height="80"><use href="#i-silhueta"/></svg></div></figure>
             <dl class="folha-dados">
@@ -450,13 +449,17 @@
             </dl></div>
           </header>
           <div class="folha-corpo">
+            <section>
+              <h4>Estatísticas</h4>
+              <dl class="estatisticas"><div><dt>Estreia</dt><dd>anos 2000</dd></div><div><dt>Seleção</dt><dd class="incognita">????</dd></div></dl>
+            </section>
             <section class="descartadas">
               <h4>Informações descartadas</h4>
               <ul><li><span>Jogou numa liga de Portugal</span><span class="autor">Sofia</span></li></ul>
             </section>
           </div>
           <footer class="folha-rodape">
-            <span class="contador-sim" title="2 «sim»" aria-label="2 «sim»"><span class="caixas"><i class="sim"></i><i class="sim"></i><i></i><i></i><i></i><i></i></span></span>
+            <span class="contador-sim" title="3 «sim»" aria-label="3 «sim»"><span class="caixas"><i class="sim"></i><i class="sim"></i><i class="sim"></i><i></i><i></i><i></i></span></span>
             <button class="btn btn-principal btn-palpite" type="button" disabled>Palpite final</button>
           </footer>
         </article>
@@ -525,7 +528,7 @@
           <circle cx="44" cy="110.5" r="2.5" fill="#6d28d9"/><circle cx="62" cy="110.5" r="2.5" fill="#6d28d9"/><circle cx="80" cy="110.5" r="2.5" fill="#6d28d9"/>
         </svg>
         <h2 class="joker-titulo"><span>Ronda</span> <span class="destaque">Joker</span></h2>
-        <p class="joker-sub">A ficha com menos «sim» vai a jogo. Todos respondem, menos o dono.</p>
+        <p class="joker-sub">GANHA PONTOS EXTRA COM A EXATIDÃO</p>
       </div>
 
       <article class="ficha-tecnica papel" id="ficha-tecnica" aria-label="Ficha técnica da Ronda Joker">
@@ -543,6 +546,7 @@
           <div class="ft-celula ft-dados">
             <span class="ft-rotulo">Dados conhecidos</span>
             <dl class="folha-dados">
+              <div><dt>Estreia</dt><dd>anos 2000 · <span class="incognita">????</span></dd></div>
               <div><dt>Nação</dt><dd>Europa (UEFA) · <span class="incognita">????</span></dd></div>
               <div><dt>Posição</dt><dd>Defesa · <span class="incognita">????</span></dd></div>
             </dl>
@@ -618,7 +622,8 @@
         </table>
         Não, Não sei, Sem registo e palpites errados valem 0. O que já se sabe pelas outras respostas fica a cinzento e não dá pontos. Ninguém perde pontos.</span></li>
       <li><span>O botão <strong>Palpite final</strong> de cada ficha acende-se quando ela tem <strong>6 "sim"</strong> e pelo menos <strong>um clube confirmado</strong>. Na tua vez, em vez de perguntar, podes carregar nele e dizer quem é. Contam gralhas pequenas e alcunhas. Acertar vale 30 pontos.</span></li>
-      <li><span>Quem tem o jogador <strong>identificado</strong> não recebe outro: continua a perguntar e a dar palpites, mas com <strong>metade dos pontos</strong>, e deixa de ser alvo.</span></li>
+      <li><span>Quem tem o jogador <strong>identificado</strong> não recebe outro: continua a perguntar e a dar palpites, mas recebe <strong>metade dos pontos</strong> em tudo (também no palpite final: 15 em vez de 30), e deixa de ser alvo.</span></li>
+      <li><span>Podes consultar fora do jogo (internet, livros…) dados <strong>só do teu próprio jogador</strong>, para responderes bem às perguntas livres. Pesquisar os jogadores dos outros <strong>não vale</strong>.</span></li>
       <li><span><strong>Ronda Joker</strong>: uma vez por partida, depois da 3.ª ronda. Pergunta-se um número sobre o jogador com menos "sim" e todos menos o dono respondem em 15 s. Exato: 15; mais perto sem passar: 9. O dono ganha 9 se toda a gente passar, 3 se alguém ficar perto e 0 se alguém acertar.</span></li>
       <li><span>Quem entra a meio fica a ver e joga a partir da ronda seguinte, com um jogador secreto.</span></li>
       <li><span><strong>Relatório do Dia</strong>: um jogador mistério por dia, igual para toda a gente. Só perguntas da lista; o resultado é o número de perguntas até acertares. Copia-o para o Discord.</span></li>
