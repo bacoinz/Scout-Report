@@ -99,7 +99,7 @@
           <div id="popup-feed" class="popup" hidden>
             <h2 class="painel-titulo">Acontecimentos</h2>
             <ol class="feed">
-              <li><span class="forte">Rui</span> identificou <span class="forte">Cristiano Ronaldo</span> na ficha da Marta (+30). A Marta continua a jogar, com metade dos pontos.</li>
+              <li><span class="forte">Rui</span> identificou <span class="forte">Cristiano Ronaldo</span> na ficha da Marta (+30). Marta continua a jogar a receber metade dos pontos.</li>
               <li><span class="forte">Ana</span> perguntou «Treinou em Espanha?» à ficha do Rui → Sim (+3)</li>
               <li class="sistema">Ronda Joker: golos pela seleção da ficha do Rui = 31. A Ana ficou mais perto (+9).</li>
               <li><span class="forte">Pedro</span> perguntou «Usou um número acima de 20?» à ficha da Ana → sem registo</li>
@@ -126,7 +126,7 @@
                 <tr class="desligado"><td>6</td><td><span class="celula-jogador"><span class="ponto" style="background:#a3e635"></span><span class="nome-jogador">João</span></span></td><td>—</td><td class="total-celula">12</td></tr>
               </tbody>
             </table>
-            <p class="nota">½ = jogador já identificado: continua a jogar, com metade dos pontos. O João está desligado e as vezes dele são saltadas até voltar.</p>
+            <p class="nota">½ = jogador já identificado: continua a jogar a receber metade dos pontos. O João está desligado e as vezes dele são saltadas até voltar.</p>
           </div>
         </div>
 
@@ -154,6 +154,11 @@
           <h2 class="acoes-titulo">A tua vez <span class="seta">→</span> <span class="quem"><span class="ponto" style="background:#22d3ee"></span>Ana</span></h2>
 
           <div class="categorias">
+            <details class="categoria"><summary>Era <span class="resumo-cat">—</span></summary></details>
+            <details class="categoria"><summary>Nacionalidade <span class="resumo-cat">1 ✓</span></summary></details>
+            <details class="categoria"><summary>Posição <span class="resumo-cat">1 ✓ · 1 ✗</span></summary></details>
+            <details class="categoria"><summary>Físico <span class="resumo-cat">—</span></summary></details>
+            <details class="categoria"><summary>Estado <span class="resumo-cat">—</span></summary></details>
             <details class="categoria" open>
               <summary>Carreira <span class="resumo-cat">2 ✓ · 1 ✗</span></summary>
               <ul class="perguntas">
@@ -172,10 +177,6 @@
                 <li><button class="pergunta" type="button" disabled><span>Jogou na Premier League? <span class="porque">Fechada: Inglaterra foi descartada</span></span><span class="pts">6 pts</span></button></li>
               </ul>
             </details>
-            <details class="categoria"><summary>Posição <span class="resumo-cat">1 ✓ · 1 ✗</span></summary></details>
-            <details class="categoria"><summary>Nacionalidade <span class="resumo-cat">1 ✓</span></summary></details>
-            <details class="categoria"><summary>Era <span class="resumo-cat">—</span></summary></details>
-            <details class="categoria"><summary>Números <span class="resumo-cat">1 sem registo</span></summary></details>
             <details class="categoria" open>
               <summary>Estatísticas <span class="resumo-cat">1 ✓</span></summary>
               <ul class="perguntas">
@@ -184,9 +185,8 @@
                 <li><button class="pergunta" type="button" aria-pressed="false" data-escolher="Mais de 50 golos?" data-pts="3"><span>Mais de 50 golos?</span><span class="pts">3 pts</span></button></li>
               </ul>
             </details>
+            <details class="categoria"><summary>Números <span class="resumo-cat">1 sem registo</span></summary></details>
             <details class="categoria"><summary>Prémios <span class="resumo-cat">—</span></summary></details>
-            <details class="categoria"><summary>Estado <span class="resumo-cat">—</span></summary></details>
-            <details class="categoria"><summary>Físico <span class="resumo-cat">extra · 3 pts</span></summary></details>
           </div>
 
           <div class="acoes-fundo">
@@ -255,8 +255,8 @@
               <p class="folha-fonte">Fonte: <a href="https://pt.wikipedia.org/wiki/Lu%C3%ADs_Figo" target="_blank" rel="noopener">Wikipédia</a> · zerozero · Transfermarkt. Jogos: campeonato + seleção. Dados de exemplo.</p>
             </div>
             <footer class="folha-rodape">
-              <span class="contador-sim">Já sabem <span class="caixas"><i class="sim"></i><i class="sim"></i><i class="sim"></i><i></i><i></i><i></i></span> <span class="valor">3/6</span></span>
-              <span class="requisito">ainda sem clube</span>
+              <span class="contador-sim" title="Os outros já têm 3 «sim» sobre o teu jogador" aria-label="Os outros já têm 3 «sim» sobre o teu jogador"><span class="caixas"><i class="sim"></i><i class="sim"></i><i class="sim"></i><i></i><i></i><i></i></span></span>
+              <button class="btn-palpite" type="button" disabled title="Ainda ninguém pode dar palpite ao teu jogador">Palpite final</button>
             </footer>
           </div>
         </article>
@@ -321,9 +321,8 @@
             </section>
           </div>
           <footer class="folha-rodape">
-            <span class="contador-sim">Sim <span class="caixas"><i class="sim"></i><i class="sim"></i><i class="sim"></i><i class="sim"></i><i class="sim"></i><i class="sim"></i></span> <span class="valor">6/6</span></span>
+            <span class="contador-sim" title="6 «sim»" aria-label="6 «sim»"><span class="caixas"><i class="sim"></i><i class="sim"></i><i class="sim"></i><i class="sim"></i><i class="sim"></i><i class="sim"></i></span></span>
             <button class="btn-palpite" type="button" disabled title="Falta um clube confirmado">Palpite final</button>
-            <span class="requisito">✗ falta um clube confirmado</span>
           </footer>
         </article>
 
@@ -356,8 +355,8 @@
             </section>
           </div>
           <footer class="folha-rodape">
-            <span class="contador-sim">Sim <span class="caixas"><i class="sim"></i><i class="sim"></i><i class="sim"></i><i class="sim"></i><i class="sim"></i><i class="sim"></i></span> <span class="valor">7/6</span></span>
-            <span class="requisito ok">✓ identificado pelo Rui · a Marta joga a metade dos pontos</span>
+            <span class="contador-sim" title="7 «sim»" aria-label="7 «sim»"><span class="caixas"><i class="sim"></i><i class="sim"></i><i class="sim"></i><i class="sim"></i><i class="sim"></i><i class="sim"></i></span></span>
+            <span class="carimbo identificado-mini" style="--rot:-3deg" title="Identificado pelo Rui">Identificado</span>
           </footer>
           <div class="identificado">
             <p class="carimbo-grande">Identificado</p>
@@ -365,7 +364,7 @@
               <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/2/26/Cristiano_Ronaldo_Croatia_v_Portugal_2_July_2026-075_%28cropped%29.jpg/500px-Cristiano_Ronaldo_Croatia_v_Portugal_2_July_2026-075_%28cropped%29.jpg" alt="Cristiano Ronaldo" title="Foto: Bryan Berlin, CC BY-SA 4.0, via Wikimedia Commons">
             </figure>
             <p class="identificado-nome">Cristiano Ronaldo</p>
-            <p class="identificado-por">por Rui · +30 pontos · a Marta continua a jogar, mas com metade dos pontos</p>
+            <p class="identificado-por">por Rui · +30 pontos · Marta continua a jogar a receber metade dos pontos</p>
           </div>
         </article>
 
@@ -421,9 +420,8 @@
             </section>
           </div>
           <footer class="folha-rodape">
-            <span class="contador-sim">Sim <span class="caixas"><i class="sim"></i><i class="sim"></i><i class="sim"></i><i class="sim"></i><i class="sim"></i><i class="sim"></i></span> <span class="valor">8/6</span></span>
+            <span class="contador-sim" title="8 «sim»" aria-label="8 «sim»"><span class="caixas"><i class="sim"></i><i class="sim"></i><i class="sim"></i><i class="sim"></i><i class="sim"></i><i class="sim"></i></span></span>
             <button class="btn-palpite" type="button" data-palpite>Palpite final</button>
-            <span class="requisito ok">✓ clube confirmado</span>
           </footer>
           <form class="caixa-palpite" hidden onsubmit="return false">
             <h4>Palpite final · ficha do Rui</h4>
@@ -458,7 +456,7 @@
             </section>
           </div>
           <footer class="folha-rodape">
-            <span class="contador-sim">Sim <span class="caixas"><i class="sim"></i><i class="sim"></i><i></i><i></i><i></i><i></i></span> <span class="valor">2/6</span></span>
+            <span class="contador-sim" title="2 «sim»" aria-label="2 «sim»"><span class="caixas"><i class="sim"></i><i class="sim"></i><i></i><i></i><i></i><i></i></span></span>
             <button class="btn-palpite" type="button" disabled>Palpite final</button>
           </footer>
         </article>
@@ -492,7 +490,7 @@
             </section>
           </div>
           <footer class="folha-rodape">
-            <span class="contador-sim">Sim <span class="caixas"><i class="sim"></i><i class="sim"></i><i class="sim"></i><i></i><i></i><i></i></span> <span class="valor">3/6</span></span>
+            <span class="contador-sim" title="3 «sim»" aria-label="3 «sim»"><span class="caixas"><i class="sim"></i><i class="sim"></i><i class="sim"></i><i></i><i></i><i></i></span></span>
             <button class="btn-palpite" type="button" disabled>Palpite final</button>
           </footer>
         </article>
@@ -563,10 +561,10 @@
             </div>
           </div>
           <div class="ft-celula ft-lance">
-            <span class="ft-rotulo">O teu lance</span>
+            <span class="ft-rotulo">O teu palpite</span>
             <div class="ft-por-revelar">
-              <div class="digitos" aria-label="O teu lance: 64"><span class="digito vazio">0</span><span class="digito">6</span><span class="digito cursor">4</span></div>
-              <button class="btn btn-principal" type="button" style="margin-top:10px">Enviar lance</button>
+              <div class="digitos" aria-label="O teu palpite: 64"><span class="digito vazio">0</span><span class="digito">6</span><span class="digito cursor">4</span></div>
+              <button class="btn btn-principal" type="button">Enviar palpite</button>
             </div>
             <div class="ft-valor-certo">
               <span class="numero">64</span>
@@ -575,7 +573,7 @@
             </div>
           </div>
           <div class="ft-celula ft-lances">
-            <span class="ft-rotulo">Lances</span>
+            <span class="ft-rotulo">Palpites</span>
             <ul class="ft-por-revelar">
               <li><span class="ponto" style="background:#ef4444"></span>Rui <span class="estado ok">✓ enviado</span></li>
               <li><span class="ponto" style="background:#22d3ee"></span>Ana <span class="estado ok">✓ enviado</span></li>
@@ -605,8 +603,12 @@
   </main>
 
   <!-- ===================== Como jogar ===================== -->
-  <dialog id="dialogo-como" class="dialogo">
-    <h2 class="titulo titulo-medio" tabindex="-1" autofocus><span>Como</span> <span class="destaque">jogar</span></h2>
+  <dialog id="dialogo-como" class="dialogo dialogo-fixo" aria-labelledby="como-titulo">
+    <header class="dialogo-cabecalho">
+      <h2 id="como-titulo" class="titulo titulo-medio" tabindex="-1" autofocus><span>Como</span> <span class="destaque">jogar</span></h2>
+      <form method="dialog"><button class="btn-fechar" type="submit" aria-label="Fechar">×</button></form>
+    </header>
+    <div class="dialogo-corpo">
     <ol class="regras">
       <li><span>Cada um recebe um <strong>jogador secreto</strong>: ao calhas (modo Aleatório) ou à escolha entre 3 cartas (modo Escolha). O teu <strong>dossier</strong>, a primeira ficha, tem tudo sobre ele, para responderes às perguntas livres.</span></li>
       <li><span>Joga-se <strong>à vez</strong>. Em cada ronda tens um <strong>alvo</strong> fixo, que roda: na 1.ª ronda perguntas ao seguinte, na 2.ª ao que está dois lugares à frente, e assim por diante.</span></li>
@@ -625,7 +627,7 @@
       <li><span>Quem entra a meio fica a ver e joga a partir da ronda seguinte, com um jogador secreto.</span></li>
       <li><span><strong>Relatório do Dia</strong>: um jogador mistério por dia, igual para toda a gente. Só perguntas da lista; o resultado é o número de perguntas até acertares. Copia-o para o Discord.</span></li>
     </ol>
-    <form method="dialog"><button class="btn btn-principal" type="submit">Percebi</button></form>
+    </div>
   </dialog>
 
   <div id="toasts" class="toasts" aria-live="polite"></div>
@@ -684,11 +686,11 @@
     document.addEventListener('click', (e) => { if (!e.target.closest('.ancora')) fecharPopups(); });
     document.addEventListener('keydown', (e) => { if (e.key === 'Escape') fecharPopups(); });
 
-    // Colunas de fichas em acordeão. Cabem tantas colunas quantas a largura deixar (com 4 jogadores, todas);
+    // Colunas de fichas em acordeão: no máximo 3 adversários lado a lado (menos, se a largura não deixar);
     // as fichas a mais ficam por baixo, recolhidas. Em cada coluna abre-se a ficha do alvo (ou de quem está a jogar),
     // senão a última que se abriu.
     const fichas = $('#fichas');
-    const LARGURA = 245, GAP = 14;
+    const LARGURA = 245, GAP = 14, MAX_COLUNAS = 3;
     let relogio = 0;
     $$('.folha.ficha').forEach((f) => { f.dataset.recente = f.dataset.aberta ? ++relogio : 0; });
     $$('.folha.ficha.alvo').forEach((f) => { f.dataset.recente = ++relogio; });
@@ -700,7 +702,7 @@
       const todas = $$('.folha.ficha').sort((a, b) => a.dataset.ordem - b.dataset.ordem);
       $$('.coluna-fichas').forEach((c) => c.remove());
       if (innerWidth < 960) { todas.forEach((f) => { f.classList.remove('recolhida'); fichas.append(f); }); return; }
-      const n = Math.min(todas.length, colunasPossiveis());
+      const n = Math.min(todas.length, colunasPossiveis(), MAX_COLUNAS);
       const colunas = Array.from({ length: n }, () => {
         const c = document.createElement('div'); c.className = 'coluna-fichas'; fichas.append(c); return c;
       });

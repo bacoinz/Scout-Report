@@ -753,6 +753,50 @@ select {
 .dialogo [tabindex='-1']:focus {
   outline: none;
 }
+/* Diálogo com cabeçalho fixo (título e X para fechar); só o corpo desliza. */
+.dialogo-fixo {
+  padding: 0;
+  overflow-y: auto;
+}
+.dialogo-cabecalho {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px 16px 12px 22px;
+  background: #0b2016;
+  border-bottom: 1px solid var(--line);
+}
+.dialogo-cabecalho .titulo {
+  margin: 0;
+}
+.dialogo-corpo {
+  padding: 16px 22px 22px;
+}
+.btn-fechar {
+  flex: none;
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border: 1px solid #ffffff26;
+  border-radius: 10px;
+  background: #ffffff0f;
+  color: var(--text);
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+}
+.btn-fechar:hover {
+  background: #ffffff1f;
+}
+.btn-fechar:focus-visible {
+  outline: 2px solid var(--destaque-2);
+  outline-offset: 2px;
+}
 .dialogo .btn {
   width: 100%;
 }
@@ -791,6 +835,16 @@ select {
 .tabela-pontos td,
 .tabela-pontos th {
   padding: 4px 6px;
+}
+@media (max-width: 480px) {
+  .tabela-pontos th {
+    font-size: 9px;
+    letter-spacing: 0;
+  }
+  .tabela-pontos td,
+  .tabela-pontos th {
+    padding: 4px 2px;
+  }
 }
 
 /* Avisos */

@@ -27,6 +27,8 @@ simples.
 **O que mudou em relação aos outros:**
 - **"Como jogar" com passos numerados "01.", "02.", …** (contador `decimal-leading-zero`). Os outros jogos usam a
   numeração normal; podem passar a esta trocando o `.regras` pelo deste ficheiro.
+- **"Como jogar" sem o botão "Percebi":** o título e um X para fechar ficam fixos no topo e só as regras deslizam
+  (`.dialogo-fixo`, `.dialogo-cabecalho`, `.btn-fechar`).
 - **A cor de destaque está só no `:root`.** Nos outros jogos há 11–12 valores da cor escritos à mão fora do `:root`
   (`#f9731655`, `#3b82f64d`…). Aqui as transparências saem de `color-mix()`:
   `--destaque-suave` (18%), `--destaque-borda` (40%), `--destaque-brilho` (33%), `--destaque-claro`.
@@ -79,8 +81,9 @@ As fichas dos adversários têm o mesmo formato do dossier:
 - **depois, por esta ordem:** carreira, estatísticas e prémios; as **notas extra** (perguntas livres); as
   **informações descartadas**.
 
-O rodapé está sempre à vista. Tem os "sim", o clube e o botão **PALPITE FINAL**: roxo e clicável quando a ficha está
-desbloqueada, tracejado a cinzento quando não. Esse botão abre a caixa do palpite na própria ficha. O IDENTIFICADO
+O rodapé está sempre à vista e tem só os 6 quadrados dos "sim" e, à direita, o botão **PALPITE FINAL**: roxo e
+clicável quando a ficha está desbloqueada, tracejado a cinzento quando não (o que falta para desbloquear vai na dica do
+botão). Esse botão abre a caixa do palpite na própria ficha. O IDENTIFICADO
 traz a foto do jogador. Os créditos da foto (autor e licença, do Wikimedia Commons) ficam na dica que aparece ao
 passar o rato.
 
