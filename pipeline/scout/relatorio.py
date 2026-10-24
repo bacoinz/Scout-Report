@@ -18,6 +18,14 @@ def _sem_artigo(texto: str) -> str:
     return texto[:1].upper() + texto[1:]
 
 
+def _tipo_aviso(aviso: str) -> str:
+    """'Santos: liga só pela Wikidata (…)' → 'liga só pela Wikidata (…)'; tira nomes, números e listas."""
+    t = re.sub(r"^[^:]{1,60}: (liga só|sem liga)", lambda m: m.group(1), aviso)
+    t = re.sub(r"(: |para |\): ).*$", lambda m: m.group(1) + "…", t)
+    t = re.sub(r"\s*\(P\d+\)", "", t)
+    return re.sub(r"\b\d+\b", "N", t).strip()
+
+
 def _pct(n, total):
     return f"{n}/{total} ({round(100 * n / total) if total else 0}%)"
 
@@ -72,7 +80,9 @@ def gerar() -> str:
     n_erros = sum(len(v["erros"]) for v in validacao.values())
     n_avisos = sum(len(v["avisos"]) for v in validacao.values())
 
-    L = [f"# Scout Report — relatório de qualidade da amostra", "",
+    base_toda = n > 60
+    amostra = set(_ler(config.DADOS / "amostra.json", []))
+    L = [f"# Scout Report — relatório de qualidade {'da base' if base_toda else 'da amostra'}", "",
          f"Gerado a {date.today().isoformat()} · {n} jogadores · fontes: Wikipédia inglesa, Wikidata, zerozero, "
          f"transfermarkt-datasets, Wikimedia Commons.", "",
          "## Resumo", "", "| Medida | Valor |", "|---|---|",
@@ -98,7 +108,8 @@ def gerar() -> str:
             [f"mais de {x} assistências" for x in perguntas["estatisticas"]["assistencias"]] + ["pé", "altura"]
     for q in ordem:
         quem = [r["nome"] for r in registos if q in sem_registo[r["id"]]]
-        L.append(f"| {q} | {_pct(len(quem), n)} | {', '.join(quem) or '—'} |")
+        lista = ", ".join(quem[:25]) + (f" e mais {len(quem) - 25}" if len(quem) > 25 else "")
+        L.append(f"| {q} | {_pct(len(quem), n)} | {lista or '—'} |")
 
     L += ["", "## Jogadores", "",
           "| Jogador | Nasc. | Nac. | Posição | Estado | Base | Jogos | Golos | Int. (golos) | Assist. (cob., máx.) | Números (cob.) | Clubes | Prémios | Fama |",
@@ -114,8 +125,24 @@ def gerar() -> str:
                  f"{', '.join(map(str, t['numeros']['conhecidos'])) or '—'} ({round(100 * t['numeros']['cobertura'])}%) | "
                  f"{t['clubes']} | {sum(p['n'] for p in r['premios'])} | {r['fama']['wikipedias']} |")
 
-    L += ["", "## Ficha a ficha", ""]
+    # Avisos agrupados por tipo (sem os nomes e números), para ver o que é sistemático.
+    tipos = Counter()
     for r in registos:
+        for a in (recolha[r["id"]].get("avisos") or []) + (validacao.get(r["id"], {}).get("avisos") or []):
+            tipos[_tipo_aviso(a)] += 1
+    L += ["", "## Avisos mais comuns", "", "| Aviso | Vezes |", "|---|---|"]
+    L += [f"| {t} | {k} |" for t, k in tipos.most_common(25)]
+    com_erros = [r for r in registos if validacao.get(r["id"], {}).get("erros")]
+    if com_erros:
+        L += ["", "## Erros de validação", ""]
+        L += [f"- **{r['nome']}** ({r['id']}): " + "; ".join(validacao[r["id"]]["erros"]) for r in com_erros]
+
+    fichas = [r for r in registos if not base_toda or r["id"] in amostra or validacao.get(r["id"], {}).get("erros")]
+    L += ["", "## Ficha a ficha", ""]
+    if base_toda:
+        L += [f"Só os 30 da amostra e quem tem erros ({len(fichas)} fichas); os registos completos estão em "
+              "`pipeline/dados/jogadores/`.", ""]
+    for r in fichas:
         v, rec = validacao.get(r["id"], {}), recolha[r["id"]]
         perfil = r["perfil"]
         foto = perfil.get("foto")
