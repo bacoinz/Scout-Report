@@ -74,8 +74,6 @@ def validar_registo(r: dict, perguntas: dict, paises: dict) -> tuple[list[str], 
         erros.append(f"altura estranha: {perfil['altura_cm']} cm")
     if not perfil.get("foto"):
         avisos.append("sem foto")
-    if not r.get("curiosidades"):
-        avisos.append("sem curiosidades")
     return erros, avisos
 
 

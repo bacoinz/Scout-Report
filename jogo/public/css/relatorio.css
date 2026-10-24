@@ -812,26 +812,6 @@
 .dossier .folha-topo {
   padding-top: 14px;
 }
-.curiosidades {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  font-size: 13px;
-  line-height: 1.35;
-}
-.curiosidades li {
-  padding-left: 14px;
-  position: relative;
-}
-.curiosidades li::before {
-  content: '▸';
-  position: absolute;
-  left: 0;
-  color: var(--carimbo-roxo);
-}
 .folha-fonte {
   margin: 0;
   font-size: 11px;

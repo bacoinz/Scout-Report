@@ -2,10 +2,11 @@
 
     python -m scout tm descarregar|preparar
     python -m scout paises
+    python -m scout sementes
     python -m scout recolher --amostra | --titulo "Rui Costa" | --id Q190608   [--refazer] [--fresco]
-    python -m scout curiosidades [--id Q…] [--limite N] [--refazer]
     python -m scout validar
     python -m scout relatorio
+    python -m scout assistencias
     python -m scout estado
 """
 import argparse
@@ -76,24 +77,6 @@ def cmd_recolher(args):
         print(f"  {t}: {erro}")
 
 
-def cmd_curiosidades(args):
-    from . import curiosidades
-    from .fontes import llm
-    if llm.e_local(args.modelo):
-        falta = llm.ollama_disponivel(args.modelo)
-        if falta:
-            sys.exit(f"Ollama: {falta}.")
-    elif not llm.tem_chave():
-        sys.exit("Falta a variável de ambiente GEMINI_API_KEY (cria a chave em https://aistudio.google.com/apikey).")
-    res = curiosidades.correr(_cliente(), ids=args.id, limite=args.limite, refazer=args.refazer,
-                             modelo=args.modelo)
-    print(f"Feitos: {len(res['feitos'])} · saltados: {len(res['saltados'])} · falhas: {len(res['falhas'])}")
-    if res.get("parado"):
-        print(f"Parado: {res['parado']}. Corre o mesmo comando amanhã para continuar.")
-    for q, erro in res["falhas"].items():
-        print(f"  {q}: {erro}")
-
-
 def cmd_validar(args):
     from .validar import validar_todos
     res = validar_todos()
@@ -128,8 +111,7 @@ def cmd_assistencias(args):
 
 def cmd_estado(args):
     registos = [json.loads(c.read_text(encoding="utf-8")) for c in config.JOGADORES.glob("*.json")]
-    print(f"Jogadores: {len(registos)} · com curiosidades: {sum(bool(r.get('curiosidades')) for r in registos)} · "
-          f"ativos: {sum(r.get('estado') == 'ativo' for r in registos)}")
+    print(f"Jogadores: {len(registos)} · ativos: {sum(r.get('estado') == 'ativo' for r in registos)}")
 
 
 def main(argv=None):
@@ -147,13 +129,6 @@ def main(argv=None):
     s.add_argument("--refazer", action="store_true", help="refaz quem já tem registo")
     s.add_argument("--fresco", action="store_true", help="ignora a cache")
     s.set_defaults(f=cmd_recolher)
-    s = sub.add_parser("curiosidades", help="curiosidades com o Gemini (precisa de GEMINI_API_KEY)")
-    s.add_argument("--id", action="append")
-    s.add_argument("--limite", type=int)
-    s.add_argument("--refazer", action="store_true")
-    s.add_argument("--modelo", default=config.LLM_MODELO,
-                   help=f"ollama:<modelo> (local) ou um modelo do Gemini; por omissão {config.LLM_MODELO}")
-    s.set_defaults(f=cmd_curiosidades)
     s = sub.add_parser("validar", help="valida os registos (sai com 1 se houver erros)")
     s.add_argument("--avisos", action="store_true", help="mostra também os avisos")
     s.set_defaults(f=cmd_validar)

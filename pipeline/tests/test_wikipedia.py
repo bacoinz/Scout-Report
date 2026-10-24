@@ -183,17 +183,5 @@ def test_titulos_epoca():
     assert wp.titulos_epoca("S.L. Benfica", 1999, 2000) == ["1999–2000 S.L. Benfica season", "2000–01 S.L. Benfica season"]
 
 
-def test_texto_curiosidades_e_da_carreira():
-    texto = ("'''X''' is a footballer.\n"
-             "== Early life ==\nHis mother was a cook and his father a gardener; the family was poor and he was born "
-             "in Funchal, where his parents raised four children in a small house near the sea front.\n\n"
-             "He joined the youth academy of the local club at eight and was scouted by a bigger club, which signed "
-             "him after a trial; his first coach said the team had never seen such a football talent.\n"
-             "== Club career ==\n"
-             "[[File:X.jpg|thumb|X playing in 2005]]He made his debut at 17 and broke the club record for the youngest "
-             "scorer, a world record fee followed in the summer transfer window when he signed for a giant.\n"
-             "== Personal life ==\nHe married in 2010 and has four children, two of them twins born in the United "
-             "States through surrogacy, and the family lives in a mansion with a private gym.\n")
-    t = wp.texto_curiosidades(texto)
-    assert "is a footballer" in t and "youth academy" in t and "youngest scorer" in t
-    assert "gardener" not in t and "married" not in t and "thumb" not in t
+def test_limpo_sem_legendas_de_imagens():
+    assert wp.limpo("[[File:X.jpg|thumb|X playing in 2005]]He made his [[debut]] at 17.") == "He made his debut at 17."

@@ -596,7 +596,6 @@ def construir(ctx: Contexto, qid: str, ent: dict, artigo: dict) -> tuple[dict, l
         "treinador": treinador,
         "perfil": {"pe": pe, "altura_cm": altura, "naturalidade": naturalidade, "alcunhas": alcunhas,
                    "foto": _foto(cliente, ficheiro_foto)},
-        "curiosidades": [],
         "factos": {
             "maior_transferencia": ctx.tm.maior_transferencia(tm_id) if tm else None,
             "valor_maximo_eur": (tm or {}).get("highest_market_value_in_eur"),

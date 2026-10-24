@@ -1,5 +1,5 @@
 """Wikipédia inglesa: títulos → QID, wikitexto, caixa de informação (os dois formatos), títulos ganhos,
-plantéis com números (épocas dos clubes e fases finais) e texto para as curiosidades."""
+plantéis com números (épocas dos clubes e fases finais) e ligas por época."""
 import re
 
 import mwparserfromhell as mwp
@@ -435,63 +435,3 @@ def ligas_por_epoca(texto: str) -> list[dict]:
                 res.append({"clube_titulo": titulo_clube, "clube_nome": re.sub(r"\(loan\)", "", nome_clube).strip(),
                             "epoca": int(limpo(linha[k])[:4]), "liga_titulo": titulo_div})
     return res
-
-
-# --- Texto para as curiosidades ------------------------------------------------------------------------------------
-
-_SECOES_CARREIRA = re.compile(r"(club|international|professional|senior|playing|managerial|coaching) career|^career$|"
-                              r"style of play|player profile|legacy|reception|goal celebrations?|nickname|rivalry", re.I)
-_SECOES_FORMACAO = re.compile(r"early (life|years|career)|youth career|background", re.I)
-_FUTEBOL = re.compile(r"\b(academy|youth|club|signed|trial|scouted|coach\w*|team|football(?:er)?|played for|joined)\b",
-                      re.I)
-_FAMILIA = re.compile(r"\b(mother|father|brothers?|sisters?|parents|family|married|wife|children|born|grandmother|"
-                      r"grandfather|alcoholism|parish)\b", re.I)
-# Palavras que costumam marcar um facto curioso num parágrafo de carreira.
-_SINAIS = re.compile(r"\b(records?|first|only|youngest|oldest|debut\w*|fee|nicknam\w*|famous\w*|iconic|hat[- ]tricks?|"
-                     r"penalt\w*|sent off|red card|controvers\w*|captain\w*|shirt|number \d+|decisive|winning goal|"
-                     r"finals?|broke|surpass\w*|all-time|histor\w*|highest|fastest|longest|consecutive|unbeaten|"
-                     r"transfer\w*|world[- ]record|million|rejected|refused|banned|suspended|comeback|farewell|"
-                     r"statue|rivalry|derby|celebrat\w*|bicycle kick|free[- ]kick|header|own goal|unusual|"
-                     r"surprising|remarkable|despite|instead|nickname)\b", re.I)
-
-
-def _paragrafos(seccao: str) -> list[str]:
-    """Parágrafos de texto simples de uma secção (sem cabeçalhos nem linhas curtas)."""
-    res = []
-    for bloco in re.split(r"\n\s*\n", seccao):
-        bloco = "\n".join(l for l in bloco.splitlines() if not _CABECALHO.match(l.strip()))
-        p = limpo(bloco)
-        if len(p) >= 120:
-            res.append(p)
-    return res
-
-
-def texto_curiosidades(texto: str, maximo: int = 12000) -> str:
-    """Texto para as curiosidades da carreira: a introdução, um pouco da formação e os parágrafos das secções de
-    carreira e estilo de jogo com mais sinais de facto curioso (recordes, estreias, transferências, finais,
-    alcunhas…), pela ordem do artigo. A vida pessoal fica de fora."""
-    intro = limpo(_CABECALHO.split(texto, maxsplit=1)[0])[:1500]
-    todas = secoes(texto)
-    # Da infância, só o parágrafo mais "de futebol" (clube, academia, camadas jovens), não os da família.
-    infancia = next((_paragrafos(c) for n, t, c in todas if n == 2 and _SECOES_FORMACAO.search(t)), [])
-    pontuados = [(len(_FUTEBOL.findall(p)) - len(_FAMILIA.findall(p)), p) for p in infancia]
-    formacao = max(pontuados, default=(0, ""))
-    formacao = formacao[1][:800] if formacao[0] >= 2 else ""
-    vistos, candidatos = set(), []
-    for n, t, c in todas:
-        if n not in (2, 3) or not _SECOES_CARREIRA.search(t):
-            continue
-        for p in _paragrafos(c):
-            if p in vistos:
-                continue                                 # a secção de cima já inclui as de baixo
-            vistos.add(p)
-            pontos = len(_SINAIS.findall(p)) / max(1.0, (len(p) / 600) ** 0.5)
-            candidatos.append((pontos, len(candidatos), p))
-    resto = maximo - len(intro) - len(formacao)
-    escolhidos = []
-    for pontos, ordem, p in sorted(candidatos, key=lambda x: (-x[0], x[1])):
-        if pontos <= 0 or len(p) > resto:
-            continue
-        escolhidos.append((ordem, p))
-        resto -= len(p) + 2
-    return "\n\n".join([x for x in (intro, formacao) if x] + [p for _, p in sorted(escolhidos)])

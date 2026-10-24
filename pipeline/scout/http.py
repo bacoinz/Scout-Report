@@ -90,8 +90,7 @@ class Cliente:
 
     def pode(self, url: str) -> bool:
         anfitriao = urlsplit(url).netloc
-        if anfitriao in config.WIKIMEDIA or anfitriao.endswith("googleapis.com") or \
-                anfitriao.split(":")[0] in ("127.0.0.1", "localhost"):          # APIs (Gemini, Ollama local)
+        if anfitriao in config.WIKIMEDIA:
             return True
         return self._robots_de(url).can_fetch(config.USER_AGENT, url)
 
@@ -113,8 +112,6 @@ class Cliente:
             self.pedidos += 1
             if _parece_desafio(resposta):
                 raise BloqueioAntiBot(f"{anfitriao} respondeu com um desafio anti-bot ({resposta.status_code}) em {url}")
-            if resposta.status_code == 429 and "PerDay" in resposta.text:
-                return resposta                          # quota diária (Gemini): esperar segundos não adianta
             if resposta.status_code == 429 or resposta.status_code >= 500:
                 espera = resposta.headers.get("retry-after")
                 self.dormir(float(espera) if espera and espera.isdigit() else 10 * (tentativa + 1))
@@ -123,7 +120,7 @@ class Cliente:
         return resposta
 
     def _ficheiro_cache(self, chave: str, anfitriao: str):
-        # "127.0.0.1:11434" (Ollama): o Windows não aceita ":" nos nomes das pastas.
+        # Um anfitrião com porta ("host:8080"): o Windows não aceita ":" nos nomes das pastas.
         return self.pasta_cache / anfitriao.replace(":", "_") / f"{hashlib.sha1(chave.encode()).hexdigest()}.gz"
 
     def _ler_cache(self, ficheiro):
@@ -178,19 +175,6 @@ class Cliente:
             self._gravar_cache(ficheiro, json.dumps(dados, ensure_ascii=False))
             return dados
         raise ErroApi(f"maxlag persistente em {completo[:200]}")
-
-    def post_json(self, url: str, corpo: dict, cabecalhos: dict, chave_cache: str, fresco: bool = False,
-                  timeout: float = config.TIMEOUT) -> dict:
-        """POST JSON (o LLM). A chave da cache é dada por quem chama e nunca inclui segredos (chaves de API)."""
-        ficheiro = self._ficheiro_cache(chave_cache, urlsplit(url).netloc)
-        if not fresco and (guardado := self._ler_cache(ficheiro)) is not None:
-            return json.loads(guardado)
-        resposta = self._pedir("POST", url, json=corpo, headers=cabecalhos, timeout=timeout)
-        if resposta.status_code != 200:
-            raise ErroHttp(url, resposta.status_code, resposta.text)
-        dados = resposta.json()
-        self._gravar_cache(ficheiro, json.dumps(dados, ensure_ascii=False))
-        return dados
 
     def descarregar(self, url: str, destino) -> int:
         """Ficheiro binário grande (CSV.gz do transfermarkt-datasets) direto para o disco. Devolve os bytes."""

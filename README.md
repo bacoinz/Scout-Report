@@ -49,7 +49,6 @@ py -3.12 -m venv .venv
 .venv/Scripts/python -m scout paises              # → partilhado/paises.json
 .venv/Scripts/python -m scout sementes            # quem entra na base → dados/candidatos.json
 .venv/Scripts/python -m scout recolher --amostra  # os 30 da amostra → dados/jogadores/<QID>.json
-.venv/Scripts/python -m scout curiosidades        # Ollama local com o gemma4:12b (ver abaixo)
 .venv/Scripts/python -m scout validar
 .venv/Scripts/python -m scout relatorio           # → saida/qualidade.md
 .venv/Scripts/python -m pytest
@@ -62,22 +61,7 @@ py -3.12 -m venv .venv
   - transfermarkt-datasets: pé, altura, posição, ligas e números a partir de 2012.
 - **Cache:** tudo o que vem da rede fica em `pipeline/.cache/`. Correr outra vez não pede nada à rede, e `--fresco`
   ignora a cache. Há um pedido de cada vez, e o zerozero só leva um a cada 2–3 s.
-- **Curiosidades:**
-  - Por omissão usam o [Ollama](https://ollama.com) local, com o modelo `gemma4:12b` (`winget install Ollama.Ollama`,
-    depois `ollama pull gemma4:12b`). Não há quotas, e o texto da Wikipédia não sai do PC.
-  - São sobre a carreira: recordes, estreias, momentos marcantes, transferências, alcunhas, seleção e treinador.
-    O modelo lê a introdução do artigo, a formação e os parágrafos de carreira com mais sinais de facto curioso.
-  - Cada curiosidade passa por quatro passos:
-    1. o modelo escreve 7;
-    2. revê o português de cada uma;
-    3. a verificação confirma que a frase original existe no artigo, com os mesmos números e nomes, e que não há
-       marcas de português do Brasil;
-    4. uma confirmação final compara o português com o inglês e rejeita o que acrescenta, troca, exagera ("o
-       primeiro" em vez de "um dos") ou não faz sentido.
-  - Tudo isto leva ~55 s por jogador numa RTX 3070.
-  - `--modelo gemini-3.5-flash` escreve melhor, mas o plano gratuito só dá 20 pedidos por dia. Precisa da variável
-    de ambiente `GEMINI_API_KEY`, que o pipeline nunca escreve em ficheiros nem na cache. Cria a chave em
-    https://aistudio.google.com/apikey e define-a com `setx GEMINI_API_KEY "…"`; depois abre um terminal novo.
+- **Sem IA:** o pipeline só lê fontes estruturadas (caixas, tabelas, Wikidata, zerozero, transfermarkt-datasets).
 - **Correções à mão:** ficam em `pipeline/dados/ajustes.json`, `pipeline/dados/competicoes.json` e
   `pipeline/dados/clubes.json`. Os ajustes aplicam-se por cima das fontes em cada recolha.
 

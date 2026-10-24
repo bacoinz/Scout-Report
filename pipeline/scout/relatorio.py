@@ -1,12 +1,11 @@
 """saida/qualidade.md: cobertura por campo, perguntas que dariam SEM REGISTO, ficha a ficha, discrepâncias entre
-fontes, competições desconhecidas e curiosidades ao lado da frase de origem."""
+fontes e competições desconhecidas."""
 import json
 import re
 from collections import Counter
 from datetime import date
 
 from . import assistencias, config
-from .fontes import llm
 from .validar import validar_todos
 
 
@@ -62,7 +61,6 @@ def gerar() -> str:
     registos.sort(key=lambda r: r["nome"])
     recolha = {r["id"]: _ler(config.SAIDA / "recolha" / f"{r['id']}.json", {"discrepancias": [], "avisos": []})
                for r in registos}
-    curios = {r["id"]: _ler(config.SAIDA / "curiosidades" / f"{r['id']}.json") for r in registos}
     validacao = validar_todos()
     n = len(registos)
     nome_pais = lambda c: paises.get(c, {}).get("nome", c)
@@ -73,7 +71,6 @@ def gerar() -> str:
     contagem_sr = Counter(q for v in sem_registo.values() for q in v)
     n_erros = sum(len(v["erros"]) for v in validacao.values())
     n_avisos = sum(len(v["avisos"]) for v in validacao.values())
-    com_curios = sum(1 for r in registos if r.get("curiosidades"))
 
     L = [f"# Scout Report — relatório de qualidade da amostra", "",
          f"Gerado a {date.today().isoformat()} · {n} jogadores · fontes: Wikipédia inglesa, Wikidata, zerozero, "
@@ -86,9 +83,6 @@ def gerar() -> str:
          f"| Com altura | {_pct(sum(bool(r['perfil']['altura_cm']) for r in registos), n)} |",
          f"| Com foto (Commons) | {_pct(sum(bool(r['perfil']['foto']) for r in registos), n)} |",
          f"| Com posição específica | {_pct(sum(bool(r['posicao']['especificas']) for r in registos), n)} |",
-         f"| Com curiosidades | {_pct(com_curios, n)}"
-         + ("" if com_curios else (" — pendentes: falta a variável GEMINI_API_KEY" if not llm.tem_chave() else
-                                   " — ainda não geradas (`python -m scout curiosidades`)")) + " |",
          f"| Erros de validação | {n_erros} em {sum(bool(v['erros']) for v in validacao.values())} jogadores |",
          f"| Avisos de validação | {n_avisos} |",
          f"| Discrepâncias entre fontes | {sum(len(v['discrepancias']) for v in recolha.values())} |", "",
@@ -122,7 +116,7 @@ def gerar() -> str:
 
     L += ["", "## Ficha a ficha", ""]
     for r in registos:
-        v, rec, cur = validacao.get(r["id"], {}), recolha[r["id"]], curios.get(r["id"])
+        v, rec = validacao.get(r["id"], {}), recolha[r["id"]]
         perfil = r["perfil"]
         foto = perfil.get("foto")
         L += [f"### {r['nome']} · [{r['id']}](https://www.wikidata.org/wiki/{r['id']})", "",
@@ -173,11 +167,6 @@ def gerar() -> str:
                      + (f" · treina agora: {tr['atual']['nome']}" if tr.get("atual") else ""))
         if sem_registo[r["id"]]:
             L.append(f"- **SEM REGISTO em:** {', '.join(sem_registo[r['id']])}")
-        if r.get("curiosidades") or (cur and cur.get("rejeitadas")):
-            L += ["", "| Curiosidade (PT-PT) | Frase de origem (Wikipédia) |", "|---|---|"]
-            L += [f"| {c['texto']}" + (f"<br><sub>antes da revisão: {c['antes']}</sub>" if c.get("antes") else "")
-                  + f" | {c['origem']} |" for c in ((cur or {}).get("aceites") or r.get("curiosidades", []))]
-            L += [f"| ~~{c['texto']}~~ — rejeitada: {c['motivo']} | {c['origem']} |" for c in (cur or {}).get("rejeitadas", [])]
         for titulo, itens in (("Erros", v.get("erros")), ("Avisos", (rec.get("avisos") or []) + (v.get("avisos") or []))):
             if itens:
                 L.append(f"- **{titulo}:** " + "; ".join(itens))

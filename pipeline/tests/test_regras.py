@@ -1,8 +1,7 @@
-"""Cruzamento de fontes, prémios, SEM REGISTO e curiosidades (sem rede)."""
+"""Cruzamento de fontes, prémios, SEM REGISTO e validação (sem rede)."""
 import json
 
 from scout import config
-from scout.curiosidades import verificar
 from scout.jogador import _limpar_competicao, _premios, passagem_da_epoca, ultimo_ano
 from scout.relatorio import respostas_sem_registo
 from scout.validar import validar_registo
@@ -76,7 +75,7 @@ def _registo(**extra):
          "carreira": [{"clube": "Q75729", "nome": "Sporting", "inicio": 2002, "fim": 2003, "emprestimo": False,
                        "ligas": ["Q182994"], "paises_liga": ["PT"], "jogos": 31, "golos": 5, "assistencias": 4,
                        "jogos_liga": 25, "golos_liga": 3, "numeros": [28]}],
-         "selecoes": [], "premios": [], "treinador": None, "curiosidades": [],
+         "selecoes": [], "premios": [], "treinador": None,
          "totais": {"base": "todas", "jogos": 31, "golos": 5, "internacionalizacoes": 0, "golos_selecao": 0,
                     "assistencias": {"conhecidas": 4, "cobertura": 0.5},
                     "numeros": {"cobertura": 0.95, "conhecidos": [28]}, "clubes": 1},
@@ -103,43 +102,3 @@ def test_validar():
     assert any("antes do nascimento" in e for e in erros)
     erros, _ = validar_registo(_registo(posicao={"setores": ["defesa"], "especificas": ["PL"], "texto": ""}), PERGUNTAS, paises)
     assert any("setor" in e for e in erros)
-
-
-def test_verificar_curiosidade():
-    fonte = "ronaldo was born in funchal madeira portugal he was the youngest of four children"
-    paises = {"portugal": "portugal", "inglaterra": "england"}
-    ok = {"texto": "Nasceu no Funchal, na Madeira, e é o mais novo de quatro irmãos.",
-          "origem": "Ronaldo was born in Funchal, Madeira, Portugal."}
-    assert verificar(ok, fonte, {"cristiano ronaldo"}, paises) is None
-    numero = {"texto": "Nasceu no Funchal em 1985.", "origem": "Ronaldo was born in Funchal, Madeira, Portugal."}
-    assert "1985" in verificar(numero, fonte, set(), paises)
-    inventada = {"texto": "Nasceu em Lisboa.", "origem": "He was born in Lisbon in a big family."}
-    assert "origem" in verificar(inventada, fonte, set(), paises)
-    nome = {"texto": "Nasceu no Funchal, como o Eusébio.", "origem": "Ronaldo was born in Funchal, Madeira, Portugal."}
-    assert "Eusébio" in verificar(nome, fonte, set(), paises)
-    # Início de frase não é nome próprio; números por extenso e décadas na frase inglesa.
-    fonte2 = "at age five he was sent to france his mother was a national heptathlon champion in norway in the 1990s"
-    cinco = {"texto": "Casou-se cedo? Não: aos 5 anos foi enviado para França.", "origem": "At age five he was sent to France."}
-    assert verificar(cinco, fonte2, set(), {"franca": "france"}) is None
-    decada = {"texto": "A mãe foi campeã de heptatlo nos anos 90.",
-              "origem": "His mother was a national heptathlon champion in Norway in the 1990s."}
-    assert verificar(decada, fonte2, set(), {}) is None
-    brasil = {"texto": "A mãe lhe deu a alcunha na Copa do Mundo.", "origem": "His mother was a national heptathlon champion in Norway in the 1990s."}
-    assert "Brasil" in verificar(brasil, fonte2, set(), {})
-    proclise = {"texto": "Os pais o enviaram para França aos 5 anos.", "origem": "At age five he was sent to France."}
-    assert "Brasil" in verificar(proclise, fonte2, set(), {"franca": "france"})
-    certa = {"texto": "O tio, que o recebeu em França, tinha 5 filhos? Não: foi aos 5 anos.", "origem": "At age five he was sent to France."}
-    assert verificar(certa, fonte2, set(), {"franca": "france"}) is None          # "que o recebeu" está certo
-
-
-def test_corrigir_grafia():
-    from scout.curiosidades import corrigir_grafia
-    assert corrigir_grafia("A alcunha O Fenômeno e o prêmio") == "A alcunha O Fenómeno e o prémio"
-
-
-def test_origem_com_palavras_trocadas():
-    from scout.curiosidades import _no_artigo
-    fonte = "in 2018 son opened son football academy in his hometown chuncheon with his father and his brother"
-    copia = "in 2018 son opened the son football academy in his hometown chuncheon together with his father and brother"
-    assert _no_artigo(copia, fonte)                                               # ≥ 85% das palavras
-    assert _no_artigo("he scored twelve goals in the final against brazil in 1998", fonte) is None
