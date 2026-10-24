@@ -65,8 +65,16 @@ py -3.12 -m venv .venv
   - Por omissão usam o [Ollama](https://ollama.com) local, com o modelo `gemma4:12b` (`winget install Ollama.Ollama`,
     depois `ollama pull gemma4:12b`). Não há quotas, e o texto da Wikipédia não sai do PC. Leva ~12 s por jogador
     numa RTX 3070, mais ~5 s da revisão do português.
-  - Cada curiosidade só é aceite se a frase original existir no artigo, com os mesmos números e nomes, e se não
-    tiver marcas de português do Brasil.
+  - São sobre a carreira: recordes, estreias, momentos marcantes, transferências, alcunhas, seleção e treinador.
+    O modelo lê a introdução do artigo, a formação e os parágrafos de carreira com mais sinais de facto curioso.
+  - Cada curiosidade passa por quatro passos:
+    1. o modelo escreve 7;
+    2. revê o português de cada uma;
+    3. a verificação confirma que a frase original existe no artigo, com os mesmos números e nomes, e que não há
+       marcas de português do Brasil;
+    4. uma confirmação final compara o português com o inglês e rejeita o que acrescenta, troca, exagera ("o
+       primeiro" em vez de "um dos") ou não faz sentido.
+  - Tudo isto leva ~55 s por jogador numa RTX 3070.
   - `--modelo gemini-3.5-flash` escreve melhor, mas o plano gratuito só dá 20 pedidos por dia. Precisa da variável
     de ambiente `GEMINI_API_KEY`, que o pipeline nunca escreve em ficheiros nem na cache. Cria a chave em
     https://aistudio.google.com/apikey e define-a com `setx GEMINI_API_KEY "…"`; depois abre um terminal novo.

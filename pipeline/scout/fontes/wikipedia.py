@@ -85,7 +85,11 @@ def limpo(valor) -> str:
     """Texto visível de um valor (sem ligações, referências nem predefinições)."""
     if valor is None:
         return ""
-    texto = mwp.parse(str(valor)).strip_code(normalize=True, collapse=True)
+    codigo = mwp.parse(str(valor))
+    for l in codigo.filter_wikilinks(recursive=False):  # imagens: a legenda não é texto do artigo
+        if str(l.title).split(":")[0].strip().lower() in {"file", "image", "ficheiro"}:
+            codigo.remove(l)
+    texto = codigo.strip_code(normalize=True, collapse=True)
     return re.sub(r"\s+", " ", texto).strip()
 
 
@@ -435,17 +439,59 @@ def ligas_por_epoca(texto: str) -> list[dict]:
 
 # --- Texto para as curiosidades ------------------------------------------------------------------------------------
 
-_SECOES_CURIOSIDADES = re.compile(r"early (life|years|career)|personal life|style of play|player profile|"
-                                  r"background|outside football|legacy", re.I)
+_SECOES_CARREIRA = re.compile(r"(club|international|professional|senior|playing|managerial|coaching) career|^career$|"
+                              r"style of play|player profile|legacy|reception|goal celebrations?|nickname|rivalry", re.I)
+_SECOES_FORMACAO = re.compile(r"early (life|years|career)|youth career|background", re.I)
+_FUTEBOL = re.compile(r"\b(academy|youth|club|signed|trial|scouted|coach\w*|team|football(?:er)?|played for|joined)\b",
+                      re.I)
+_FAMILIA = re.compile(r"\b(mother|father|brothers?|sisters?|parents|family|married|wife|children|born|grandmother|"
+                      r"grandfather|alcoholism|parish)\b", re.I)
+# Palavras que costumam marcar um facto curioso num parágrafo de carreira.
+_SINAIS = re.compile(r"\b(records?|first|only|youngest|oldest|debut\w*|fee|nicknam\w*|famous\w*|iconic|hat[- ]tricks?|"
+                     r"penalt\w*|sent off|red card|controvers\w*|captain\w*|shirt|number \d+|decisive|winning goal|"
+                     r"finals?|broke|surpass\w*|all-time|histor\w*|highest|fastest|longest|consecutive|unbeaten|"
+                     r"transfer\w*|world[- ]record|million|rejected|refused|banned|suspended|comeback|farewell|"
+                     r"statue|rivalry|derby|celebrat\w*|bicycle kick|free[- ]kick|header|own goal|unusual|"
+                     r"surprising|remarkable|despite|instead|nickname)\b", re.I)
 
 
-def texto_curiosidades(texto: str, maximo: int = 9000) -> str:
-    """Texto simples das secções com mais curiosidades (infância, vida pessoal, estilo de jogo…) e da introdução."""
-    partes = [limpo(_CABECALHO.split(texto, maxsplit=1)[0])]          # a introdução
-    escolhidas = [(n, c) for n, t, c in secoes(texto) if n in (2, 3) and _SECOES_CURIOSIDADES.search(t)]
-    for n, c in escolhidas:
-        if n == 3 and any(n2 == 2 and c in c2 for n2, c2 in escolhidas):
-            continue                                     # já vem dentro da secção de cima
-        partes.append(limpo(c))
-    juntos = "\n\n".join(p for p in partes if p)
-    return juntos[:maximo]
+def _paragrafos(seccao: str) -> list[str]:
+    """Parágrafos de texto simples de uma secção (sem cabeçalhos nem linhas curtas)."""
+    res = []
+    for bloco in re.split(r"\n\s*\n", seccao):
+        bloco = "\n".join(l for l in bloco.splitlines() if not _CABECALHO.match(l.strip()))
+        p = limpo(bloco)
+        if len(p) >= 120:
+            res.append(p)
+    return res
+
+
+def texto_curiosidades(texto: str, maximo: int = 12000) -> str:
+    """Texto para as curiosidades da carreira: a introdução, um pouco da formação e os parágrafos das secções de
+    carreira e estilo de jogo com mais sinais de facto curioso (recordes, estreias, transferências, finais,
+    alcunhas…), pela ordem do artigo. A vida pessoal fica de fora."""
+    intro = limpo(_CABECALHO.split(texto, maxsplit=1)[0])[:1500]
+    todas = secoes(texto)
+    # Da infância, só o parágrafo mais "de futebol" (clube, academia, camadas jovens), não os da família.
+    infancia = next((_paragrafos(c) for n, t, c in todas if n == 2 and _SECOES_FORMACAO.search(t)), [])
+    pontuados = [(len(_FUTEBOL.findall(p)) - len(_FAMILIA.findall(p)), p) for p in infancia]
+    formacao = max(pontuados, default=(0, ""))
+    formacao = formacao[1][:800] if formacao[0] >= 2 else ""
+    vistos, candidatos = set(), []
+    for n, t, c in todas:
+        if n not in (2, 3) or not _SECOES_CARREIRA.search(t):
+            continue
+        for p in _paragrafos(c):
+            if p in vistos:
+                continue                                 # a secção de cima já inclui as de baixo
+            vistos.add(p)
+            pontos = len(_SINAIS.findall(p)) / max(1.0, (len(p) / 600) ** 0.5)
+            candidatos.append((pontos, len(candidatos), p))
+    resto = maximo - len(intro) - len(formacao)
+    escolhidos = []
+    for pontos, ordem, p in sorted(candidatos, key=lambda x: (-x[0], x[1])):
+        if pontos <= 0 or len(p) > resto:
+            continue
+        escolhidos.append((ordem, p))
+        resto -= len(p) + 2
+    return "\n\n".join([x for x in (intro, formacao) if x] + [p for _, p in sorted(escolhidos)])

@@ -1,5 +1,6 @@
-"""Curiosidades do dossier: o LLM lê as secções do artigo (introdução, infância, vida pessoal, estilo de jogo…) e
-escreve 4–6 frases curtas em PT-PT, cada uma com a frase original da Wikipédia em que se baseia.
+"""Curiosidades do dossier, sobre a carreira: o LLM lê a introdução do artigo, a formação e os parágrafos de carreira
+e estilo de jogo com mais sinais de facto curioso (recordes, estreias, transferências, finais, alcunhas…) e escreve
+5–6 frases curtas em PT-PT, cada uma com a frase original da Wikipédia em que se baseia.
 
 Cada curiosidade só é aceite se:
 - a frase de origem existir mesmo no artigo (comparação sem acentos nem pontuação);
@@ -7,6 +8,7 @@ Cada curiosidade só é aceite se:
 - os nomes próprios da curiosidade aparecerem na frase de origem (ou forem a tradução de um país, ou partilharem o
   início com uma palavra da frase: Lisboa/Lisbon, Milão/Milan).
 As outras vão para saida/curiosidades/<QID>.json, e o relatório mostra-as com o motivo."""
+import hashlib
 import json
 import re
 
@@ -15,28 +17,36 @@ from .fontes import llm
 from .fontes import wikipedia as wp
 from .normalizar import normalizar
 
-VERSAO = 3
+VERSAO = 5
 SAIDA_CURIOSIDADES = config.SAIDA / "curiosidades"
-TEMAS = ["infancia", "vida_pessoal", "estilo", "carreira", "outro"]
+TEMAS = ["recorde", "momento", "transferencia", "estreia", "formacao", "alcunha", "estilo", "selecao", "treinador",
+         "fora_de_campo"]
 
 SISTEMA = """És o redator de um jogo de adivinhar futebolistas, em português de Portugal (PT-PT: "equipa", "golo",
 "guarda-redes", "treinador", "seleção", "relvado", "adepto"; nunca português do Brasil). Atenção às diferenças:
 Mundial (não "Copa do Mundo"), livre (não "cobrança de falta"), baliza, equipa (não "time"), alcunha (feminino:
 "a alcunha"), Jugoslávia, Montevideu, Jogos Olímpicos, dar os parabéns (não "parabenizar"), facto, contacto; e os
 pronomes depois do verbo ("deu-lhe", "tornou-se"; não "lhe deu", "se tornou"). Os meses escrevem-se em minúsculas.
-Recebes o texto de um artigo da Wikipédia inglesa sobre um futebolista. Escreve 5 ou 6 curiosidades sobre ele:
-- factos surpreendentes que só estão no texto: infância e origem, família, vida pessoal, estilo de jogo, alcunhas e a
-  sua origem, momentos insólitos da carreira;
-- evita o que o jogo já mostra noutro lado: local e data de nascimento, lista de clubes, jogos, golos, títulos,
-  internacionalizações;
+Recebes excertos de um artigo da Wikipédia inglesa sobre um futebolista. Escreve 7 curiosidades sobre a
+CARREIRA dele, de preferência factos que um adepto acharia surpreendentes:
+- recordes e "primeiras vezes" (o mais novo a…, o primeiro a…, o único a…);
+- momentos marcantes ou insólitos em campo: estreias, golos decisivos, finais, expulsões, lesões, polémicas;
+- transferências (valores, recordes, circunstâncias), como foi descoberto e a formação no clube;
+- alcunhas ganhas em campo, celebrações, número da camisola, estilo de jogo;
+- seleção e, se foi treinador, a carreira de treinador;
+- no máximo uma curiosidade fora do campo (tema "fora_de_campo"), e só se tiver a ver com futebol; nada de vida
+  amorosa, filhos ou família;
+- evita só repetir o que o jogo já mostra noutro lado (lista de clubes, totais de jogos e golos, lista de títulos,
+  local e data de nascimento): um título ou um clube podem aparecer, mas como parte de uma história;
 - cada curiosidade é uma frase simples, com no máximo 140 caracteres, verdadeira segundo o texto, sem opiniões;
 - escreve com ortografia correta do português europeu: acentos, maiúsculas nos nomes próprios ("Jugoslávia",
   "França"), concordância; relê cada frase e confirma que faz sentido;
-- não comeces pelo nome do jogador; escreve na terceira pessoa ("Cresceu…", "O pai…");
+- não comeces pelo nome do jogador; escreve na terceira pessoa ("Estreou-se…", "Foi o primeiro…");
 - mantém os nomes próprios como estão no texto (exceto os países, que vão em português) e os números em algarismos;
-- em "origem" copia, letra a letra, a frase do texto em que a curiosidade se baseia (uma frase completa, ou duas
-  seguidas se precisares). Cada facto, número e nome da curiosidade tem de estar nessa origem; não juntes factos
-  de outras partes do texto.
+- em "origem" copia, letra a letra, a frase do texto em que a curiosidade se baseia. Cada facto, número, ano,
+  clube e competição da curiosidade tem de estar na origem: se a frase não tiver o ano, o clube ou a competição
+  (porque vêm de trás), copia também a frase anterior que os tem, ou então não os ponhas na curiosidade. Não
+  juntes factos de outras partes do texto.
 Se o texto não tiver curiosidades suficientes, devolve menos. Nunca inventes."""
 
 ESQUEMA = {
@@ -67,7 +77,7 @@ _COMUNS = {
 }
 # Marcas do português do Brasil que escapam aos modelos pequenos (o pedido já as proíbe; estas rejeitam-se).
 _BRASIL = re.compile(r"\b(copa do mundo|cobranças? de (falta|livre)|parabeniz\w*|goleiro|zagueiro|torcedor\w*|camisa|"
-                     r"gramado|gols?|time|equipe|você|ônibus|trem|balé|iugoslav\w*|montevidéu|olimpíadas|"
+                     r"gramado|gols?|time|equipe|você|ônibus|trem|balé|iugoslav\w*|montevidéu|olimpíadas|penais|pênaltis?|"
                      r"fato|contato|acadêmi\w*|o alcunha)\b",
                      re.I)
 # Pronome antes do verbo sem palavra que o justifique ("Os pais o enviaram", "A avó o acompanhava"): em PT-PT é
@@ -208,8 +218,58 @@ def gerar(cliente, registo: dict, fresco: bool = False,
         else:
             rejeitadas.append(dict(item, texto=revista, motivo=motivo,
                                    **({"antes": original} if revista != original else {})))
-    return aceites[:6], rejeitadas, {"modelo": modelo, "versao": VERSAO, "revisao": REVISAO_VERSAO,
+    # Confirmação: a frase portuguesa diz o mesmo que a de origem? (a verificação acima só vê números e nomes)
+    fieis = _confirmar(cliente, registo, artigo["revid"], aceites, modelo, fresco)
+    for item, (fiel, porque) in zip(list(aceites), fieis):
+        if not fiel:
+            aceites.remove(item)
+            rejeitadas.append(dict(item, motivo=f"não diz o mesmo que a origem ({porque})" if porque
+                                   else "não diz o mesmo que a origem"))
+    # A carreira primeiro; no máximo uma fora do campo, no fim.
+    carreira = [c for c in aceites if c.get("tema") != "fora_de_campo"]
+    aceites = carreira[:6] + [c for c in aceites if c.get("tema") == "fora_de_campo"][:max(0, min(1, 6 - len(carreira)))]
+    return aceites, rejeitadas, {"modelo": modelo, "versao": VERSAO, "revisao": REVISAO_VERSAO,
+                                 "confirmacao": CONFIRMACAO_VERSAO,
                                      "revid": artigo["revid"]}
+
+
+CONFIRMACAO_VERSAO = 2
+CONFIRMACAO_SISTEMA = """Verificas traduções para um jogo de futebol. Cada par numerado tem uma curiosidade em português
+(PT) e a frase da Wikipédia inglesa em que se baseia (EN). A curiosidade é um resumo: omitir pormenores (datas,
+resultados, contexto, nomes secundários) NÃO é problema. Para cada par, classifica o "problema":
+- "nenhum": tudo o que o PT diz está no EN, sem mudar o sentido;
+- "acrescenta": o PT diz algo que o EN não diz;
+- "troca": o PT muda um facto (quem fez o quê, a quem, quando, quanto, em que clube ou competição);
+- "exagera": o PT diz "o primeiro", "o único", "o mais…" quando o EN diz "um dos", "o segundo", "o primeiro desde…",
+  "o mais rápido" ou coisa parecida;
+- "confuso": a frase portuguesa não faz sentido ou está mal escrita.
+Em "porque", explica em poucas palavras (vazio se for "nenhum")."""
+ESQUEMA_CONFIRMACAO = {"type": "object", "properties": {"respostas": {"type": "array", "items": {
+    "type": "object",
+    "properties": {"problema": {"type": "string", "enum": ["nenhum", "acrescenta", "troca", "exagera", "confuso"]},
+                   "porque": {"type": "string"}},
+    "required": ["problema", "porque"]}}}, "required": ["respostas"]}
+
+
+def _confirmar(cliente, registo: dict, revid, itens: list[dict], modelo: str, fresco: bool) -> list[tuple[bool, str]]:
+    """[(fiel, porquê)] por curiosidade. Se a confirmação falhar, ficam todas (a verificação já passou)."""
+    if not itens:
+        return []
+    pedido = "\n\n".join(f"{i}. PT: {c['texto']}\n   EN: {c['origem']}" for i, c in enumerate(itens, 1))
+    chave = "|".join(c["texto"] for c in itens)
+    try:
+        res = llm.gerar_json(cliente, CONFIRMACAO_SISTEMA, pedido, ESQUEMA_CONFIRMACAO, modelo=modelo, fresco=fresco,
+                             chave_cache=f"confirmacao|v{CONFIRMACAO_VERSAO}|{registo['id']}|{revid}|"
+                                         f"{hashlib.sha1(chave.encode()).hexdigest()}")
+    except (llm.SemChave, llm.SemOllama, llm.QuotaDiaria):
+        raise
+    except Exception:                                    # noqa: BLE001
+        return [(True, "")] * len(itens)
+    respostas = res.get("respostas", [])
+    if len(respostas) != len(itens):
+        return [(True, "")] * len(itens)
+    return [(r.get("problema", "nenhum") == "nenhum",
+             f"{r.get('problema')}: {(r.get('porque') or '').strip()}".rstrip(": ")) for r in respostas]
 
 
 REVISAO_VERSAO = 2
