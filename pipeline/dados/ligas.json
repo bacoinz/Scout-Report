@@ -89,6 +89,12 @@
   "nome_en": "Danish 3rd Division",
   "pais": "DK"
  },
+ "Q107427039": {
+  "futebol": true,
+  "nome": "MLS Next Pro",
+  "nome_en": "MLS Next Pro",
+  "pais": "US"
+ },
  "Q10881724": {
   "futebol": true,
   "nome": "League 2",
@@ -353,6 +359,12 @@
   "nome_en": "Campeonato de Portugal",
   "pais": "PT"
  },
+ "Q1394554": {
+  "futebol": true,
+  "nome": "Scottish Football League Third Division",
+  "nome_en": "Scottish Football League Third Division",
+  "pais": "GB-SCT"
+ },
  "Q1421208": {
   "futebol": true,
   "nome": "Beta Ethniki",
@@ -406,6 +418,12 @@
   "nome": "1970 Soviet Top League",
   "nome_en": "1970 Soviet Top League",
   "pais": null
+ },
+ "Q1443938": {
+  "futebol": false,
+  "nome": "Italian Hockey League Division I",
+  "nome_en": "Italian Hockey League - Division I",
+  "pais": "IT"
  },
  "Q14468438": {
   "futebol": true,
@@ -815,6 +833,12 @@
   "nome_en": "Third Amateur Football League",
   "pais": "BG"
  },
+ "Q20012074": {
+  "futebol": true,
+  "nome": "Lega Pro",
+  "nome_en": "Lega Pro",
+  "pais": "IT"
+ },
  "Q20028073": {
   "futebol": true,
   "nome": "Bayernliga Nord",
@@ -1066,6 +1090,12 @@
   "nome": "Macedonian Second Football League",
   "nome_en": "Macedonian Second Football League",
   "pais": "MK"
+ },
+ "Q2313134": {
+  "futebol": true,
+  "nome": "Slovenian Third League",
+  "nome_en": "Slovenian Third League",
+  "pais": "SI"
  },
  "Q2313139": {
   "futebol": true,
@@ -1373,6 +1403,12 @@
   "nome_en": "1989–90 Cypriot First Division",
   "pais": "CY"
  },
+ "Q2706513": {
+  "futebol": true,
+  "nome": "Hong Kong Second Division League",
+  "nome_en": "Hong Kong Second Division League",
+  "pais": "CN"
+ },
  "Q271271": {
   "futebol": true,
   "nome": "Montenegrin First League",
@@ -1655,6 +1691,12 @@
   "nome_en": null,
   "pais": "IT"
  },
+ "Q3717917": {
+  "futebol": true,
+  "nome": "Eccellenza Abruzzo",
+  "nome_en": "Eccellenza Abruzzo",
+  "pais": "IT"
+ },
  "Q3718288": {
   "futebol": true,
   "nome": "Eccellenza Tuscany",
@@ -1786,6 +1828,12 @@
   "nome": "Football League Two",
   "nome_en": "EFL League Two",
   "pais": "GB-ENG"
+ },
+ "Q48851752": {
+  "futebol": true,
+  "nome": "Campionato Primavera 1",
+  "nome_en": "Campionato Primavera 1",
+  "pais": "IT"
  },
  "Q4893434": {
   "futebol": true,
@@ -2476,6 +2524,18 @@
   "nome": "Serie A 1959-60",
   "nome_en": "1959–60 Serie A",
   "pais": "IT"
+ },
+ "Q9086321": {
+  "futebol": true,
+  "nome": "Primeira Catalã",
+  "nome_en": "Primera Catalana",
+  "pais": "ES"
+ },
+ "Q912116": {
+  "futebol": true,
+  "nome": "Djibouti Premier League",
+  "nome_en": "Djibouti Premier League",
+  "pais": "DJ"
  },
  "Q920397": {
   "futebol": true,

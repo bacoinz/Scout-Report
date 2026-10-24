@@ -19,10 +19,17 @@
    "melhor": 1
   },
   "categorias": [
-   "bola_de_ouro"
+   "bola_de_ouro",
+   "final"
   ],
   "conhecido": true,
   "diario": true,
+  "finais": [
+   {
+    "ano": 2006,
+    "competicao": "mundial"
+   }
+  ],
   "titulo": "Fabio Cannavaro"
  },
  "Q102045930": {
@@ -55,10 +62,17 @@
    "melhor": 15
   },
   "categorias": [
-   "bola_de_ouro"
+   "bola_de_ouro",
+   "final"
   ],
   "conhecido": true,
-  "diario": false,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2024,
+    "competicao": "europeu"
+   }
+  ],
   "titulo": "Nico Williams"
  },
  "Q104454": {
@@ -192,11 +206,40 @@
    "melhor": 3
   },
   "categorias": [
-   "bola_de_ouro"
+   "bola_de_ouro",
+   "final"
   ],
   "conhecido": true,
   "diario": true,
+  "finais": [
+   {
+    "ano": 2014,
+    "competicao": "mundial"
+   },
+   {
+    "ano": 2013,
+    "competicao": "liga_campeoes"
+   },
+   {
+    "ano": 2020,
+    "competicao": "liga_campeoes"
+   }
+  ],
   "titulo": "Manuel Neuer"
+ },
+ "Q1085348": {
+  "categorias": [
+   "final"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2014,
+    "competicao": "mundial"
+   }
+  ],
+  "titulo": "Christoph Kramer"
  },
  "Q109417": {
   "bola_de_ouro": {
@@ -206,10 +249,17 @@
    "melhor": 11
   },
   "categorias": [
-   "bola_de_ouro"
+   "bola_de_ouro",
+   "final"
   ],
   "conhecido": true,
-  "diario": false,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2004,
+    "competicao": "europeu"
+   }
+  ],
   "titulo": "Angelos Charisteas"
  },
  "Q109428": {
@@ -239,10 +289,17 @@
    "melhor": 27
   },
   "categorias": [
-   "bola_de_ouro"
+   "bola_de_ouro",
+   "final"
   ],
   "conhecido": true,
-  "diario": false,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2014,
+    "competicao": "mundial"
+   }
+  ],
   "titulo": "Mats Hummels"
  },
  "Q111962649": {
@@ -266,10 +323,21 @@
    "melhor": 14
   },
   "categorias": [
-   "bola_de_ouro"
+   "bola_de_ouro",
+   "final"
   ],
   "conhecido": true,
-  "diario": false,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2025,
+    "competicao": "liga_campeoes"
+   },
+   {
+    "ano": 2026,
+    "competicao": "liga_campeoes"
+   }
+  ],
   "titulo": "Désiré Doué"
  },
  "Q113156": {
@@ -296,10 +364,21 @@
   "categorias": [
    "bola_de_ouro",
    "selecao",
-   "grandes"
+   "grandes",
+   "final"
   ],
   "conhecido": true,
-  "diario": false,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2025,
+    "competicao": "liga_campeoes"
+   },
+   {
+    "ano": 2026,
+    "competicao": "liga_campeoes"
+   }
+  ],
   "grandes": {
    "benfica": 50
   },
@@ -315,10 +394,21 @@
    "melhor": 2
   },
   "categorias": [
-   "bola_de_ouro"
+   "bola_de_ouro",
+   "final"
   ],
   "conhecido": true,
   "diario": true,
+  "finais": [
+   {
+    "ano": 2026,
+    "competicao": "mundial"
+   },
+   {
+    "ano": 2024,
+    "competicao": "europeu"
+   }
+  ],
   "titulo": "Lamine Yamal"
  },
  "Q115453": {
@@ -330,10 +420,17 @@
    "melhor": 19
   },
   "categorias": [
-   "bola_de_ouro"
+   "bola_de_ouro",
+   "final"
   ],
   "conhecido": true,
-  "diario": false,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2015,
+    "competicao": "liga_campeoes"
+   }
+  ],
   "titulo": "Ivan Rakitić"
  },
  "Q1155889": {
@@ -373,10 +470,33 @@
   },
   "categorias": [
    "bola_de_ouro",
-   "selecao"
+   "selecao",
+   "final"
   ],
   "conhecido": true,
   "diario": true,
+  "finais": [
+   {
+    "ano": 2016,
+    "competicao": "europeu"
+   },
+   {
+    "ano": 2014,
+    "competicao": "liga_campeoes"
+   },
+   {
+    "ano": 2016,
+    "competicao": "liga_campeoes"
+   },
+   {
+    "ano": 2017,
+    "competicao": "liga_campeoes"
+   },
+   {
+    "ano": 2018,
+    "competicao": "liga_campeoes"
+   }
+  ],
   "internacionalizacoes": 234,
   "titulo": "Cristiano Ronaldo"
  },
@@ -415,10 +535,29 @@
   },
   "categorias": [
    "bola_de_ouro",
-   "grandes"
+   "grandes",
+   "final"
   ],
   "conhecido": true,
   "diario": true,
+  "finais": [
+   {
+    "ano": 2010,
+    "competicao": "mundial"
+   },
+   {
+    "ano": 2008,
+    "competicao": "europeu"
+   },
+   {
+    "ano": 2012,
+    "competicao": "europeu"
+   },
+   {
+    "ano": 2014,
+    "competicao": "liga_campeoes"
+   }
+  ],
   "grandes": {
    "porto": 116
   },
@@ -475,10 +614,17 @@
    "melhor": 14
   },
   "categorias": [
-   "bola_de_ouro"
+   "bola_de_ouro",
+   "final"
   ],
   "conhecido": true,
-  "diario": false,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2006,
+    "competicao": "mundial"
+   }
+  ],
   "titulo": "Gennaro Gattuso"
  },
  "Q117322318": {
@@ -505,6 +651,20 @@
   "conhecido": true,
   "diario": false,
   "titulo": "Yoann Gourcuff"
+ },
+ "Q118473161": {
+  "categorias": [
+   "final"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2026,
+    "competicao": "mundial"
+   }
+  ],
+  "titulo": "Pau Cubarsí"
  },
  "Q1185419": {
   "categorias": [
@@ -663,10 +823,17 @@
    "melhor": 4
   },
   "categorias": [
-   "bola_de_ouro"
+   "bola_de_ouro",
+   "final"
   ],
   "conhecido": true,
   "diario": true,
+  "finais": [
+   {
+    "ano": 2010,
+    "competicao": "liga_campeoes"
+   }
+  ],
   "titulo": "Wesley Sneijder"
  },
  "Q1249859": {
@@ -698,10 +865,17 @@
    "melhor": 5
   },
   "categorias": [
-   "bola_de_ouro"
+   "bola_de_ouro",
+   "final"
   ],
   "conhecido": true,
   "diario": true,
+  "finais": [
+   {
+    "ano": 2010,
+    "competicao": "liga_campeoes"
+   }
+  ],
   "titulo": "Samuel Eto'o"
  },
  "Q126503": {
@@ -728,10 +902,41 @@
    "melhor": 4
   },
   "categorias": [
-   "bola_de_ouro"
+   "bola_de_ouro",
+   "final"
   ],
   "conhecido": true,
   "diario": true,
+  "finais": [
+   {
+    "ano": 2024,
+    "competicao": "europeu"
+   },
+   {
+    "ano": 2014,
+    "competicao": "liga_campeoes"
+   },
+   {
+    "ano": 2016,
+    "competicao": "liga_campeoes"
+   },
+   {
+    "ano": 2017,
+    "competicao": "liga_campeoes"
+   },
+   {
+    "ano": 2018,
+    "competicao": "liga_campeoes"
+   },
+   {
+    "ano": 2022,
+    "competicao": "liga_campeoes"
+   },
+   {
+    "ano": 2024,
+    "competicao": "liga_campeoes"
+   }
+  ],
   "titulo": "Dani Carvajal"
  },
  "Q12808967": {
@@ -786,10 +991,17 @@
    "melhor": 14
   },
   "categorias": [
-   "bola_de_ouro"
+   "bola_de_ouro",
+   "final"
   ],
   "conhecido": true,
-  "diario": false,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2018,
+    "competicao": "mundial"
+   }
+  ],
   "titulo": "Paul Pogba"
  },
  "Q129700": {
@@ -848,10 +1060,37 @@
    "melhor": 9
   },
   "categorias": [
-   "bola_de_ouro"
+   "bola_de_ouro",
+   "final"
   ],
   "conhecido": true,
   "diario": true,
+  "finais": [
+   {
+    "ano": 2014,
+    "competicao": "mundial"
+   },
+   {
+    "ano": 2016,
+    "competicao": "liga_campeoes"
+   },
+   {
+    "ano": 2017,
+    "competicao": "liga_campeoes"
+   },
+   {
+    "ano": 2018,
+    "competicao": "liga_campeoes"
+   },
+   {
+    "ano": 2022,
+    "competicao": "liga_campeoes"
+   },
+   {
+    "ano": 2024,
+    "competicao": "liga_campeoes"
+   }
+  ],
   "titulo": "Toni Kroos"
  },
  "Q131261": {
@@ -880,6 +1119,34 @@
    "sporting": 53
   },
   "titulo": "João Simões (footballer, born 2007)"
+ },
+ "Q13308": {
+  "categorias": [
+   "final"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2018,
+    "competicao": "mundial"
+   }
+  ],
+  "titulo": "Samuel Umtiti"
+ },
+ "Q133556": {
+  "categorias": [
+   "final"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2012,
+    "competicao": "liga_campeoes"
+   }
+  ],
+  "titulo": "Ashley Cole"
  },
  "Q1335595": {
   "categorias": [
@@ -937,10 +1204,17 @@
    "melhor": 2
   },
   "categorias": [
-   "bola_de_ouro"
+   "bola_de_ouro",
+   "final"
   ],
   "conhecido": true,
   "diario": true,
+  "finais": [
+   {
+    "ano": 2019,
+    "competicao": "liga_campeoes"
+   }
+  ],
   "titulo": "Virgil van Dijk"
  },
  "Q1347269": {
@@ -989,10 +1263,17 @@
    "melhor": 4
   },
   "categorias": [
-   "bola_de_ouro"
+   "bola_de_ouro",
+   "final"
   ],
   "conhecido": true,
   "diario": true,
+  "finais": [
+   {
+    "ano": 2019,
+    "competicao": "liga_campeoes"
+   }
+  ],
   "titulo": "Mohamed Salah"
  },
  "Q1365706": {
@@ -1067,10 +1348,17 @@
    "melhor": 20
   },
   "categorias": [
-   "bola_de_ouro"
+   "bola_de_ouro",
+   "final"
   ],
   "conhecido": true,
-  "diario": false,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2020,
+    "competicao": "liga_campeoes"
+   }
+  ],
   "titulo": "Joshua Kimmich"
  },
  "Q1391784": {
@@ -1118,10 +1406,17 @@
    "melhor": 3
   },
   "categorias": [
-   "bola_de_ouro"
+   "bola_de_ouro",
+   "final"
   ],
   "conhecido": true,
   "diario": true,
+  "finais": [
+   {
+    "ano": 2015,
+    "competicao": "liga_campeoes"
+   }
+  ],
   "titulo": "Neymar"
  },
  "Q1442274": {
@@ -1147,6 +1442,20 @@
   },
   "internacionalizacoes": 30,
   "titulo": "Paulinho Santos"
+ },
+ "Q14831282": {
+  "categorias": [
+   "final"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2020,
+    "competicao": "europeu"
+   }
+  ],
+  "titulo": "Giovanni Di Lorenzo"
  },
  "Q1496559": {
   "categorias": [
@@ -1186,6 +1495,28 @@
   "internacionalizacoes": 53,
   "titulo": "André Silva (footballer, born 1995)"
  },
+ "Q151260": {
+  "categorias": [
+   "final"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2014,
+    "competicao": "mundial"
+   },
+   {
+    "ano": 2013,
+    "competicao": "liga_campeoes"
+   },
+   {
+    "ano": 2020,
+    "competicao": "liga_campeoes"
+   }
+  ],
+  "titulo": "Jérôme Boateng"
+ },
  "Q151269": {
   "bola_de_ouro": {
    "edicoes": {
@@ -1202,10 +1533,17 @@
    "melhor": 2
   },
   "categorias": [
-   "bola_de_ouro"
+   "bola_de_ouro",
+   "final"
   ],
   "conhecido": true,
   "diario": true,
+  "finais": [
+   {
+    "ano": 2020,
+    "competicao": "liga_campeoes"
+   }
+  ],
   "titulo": "Robert Lewandowski"
  },
  "Q15131398": {
@@ -1300,6 +1638,20 @@
   "diario": false,
   "titulo": "Oliver Bierhoff"
  },
+ "Q152897": {
+  "categorias": [
+   "final"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2014,
+    "competicao": "mundial"
+   }
+  ],
+  "titulo": "Benedikt Höwedes"
+ },
  "Q153786": {
   "bola_de_ouro": {
    "edicoes": {
@@ -1353,10 +1705,17 @@
   },
   "categorias": [
    "bola_de_ouro",
-   "selecao"
+   "selecao",
+   "final"
   ],
   "conhecido": true,
   "diario": true,
+  "finais": [
+   {
+    "ano": 2023,
+    "competicao": "liga_campeoes"
+   }
+  ],
   "internacionalizacoes": 115,
   "titulo": "Bernardo Silva"
  },
@@ -1410,10 +1769,21 @@
    "melhor": 19
   },
   "categorias": [
-   "bola_de_ouro"
+   "bola_de_ouro",
+   "final"
   ],
   "conhecido": true,
-  "diario": false,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2002,
+    "competicao": "mundial"
+   },
+   {
+    "ano": 2010,
+    "competicao": "liga_campeoes"
+   }
+  ],
   "titulo": "Lúcio"
  },
  "Q15830937": {
@@ -1459,6 +1829,20 @@
   "internacionalizacoes": 25,
   "titulo": "Rafa Silva"
  },
+ "Q15915040": {
+  "categorias": [
+   "final"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2019,
+    "competicao": "liga_campeoes"
+   }
+  ],
+  "titulo": "Andy Robertson"
+ },
  "Q160206": {
   "bola_de_ouro": {
    "edicoes": {
@@ -1482,11 +1866,32 @@
    "melhor": 24
   },
   "categorias": [
-   "bola_de_ouro"
+   "bola_de_ouro",
+   "final"
   ],
   "conhecido": true,
-  "diario": false,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2015,
+    "competicao": "liga_campeoes"
+   }
+  ],
   "titulo": "Marc-André ter Stegen"
+ },
+ "Q16056053": {
+  "categorias": [
+   "final"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2023,
+    "competicao": "liga_campeoes"
+   }
+  ],
+  "titulo": "Jack Grealish"
  },
  "Q1607231": {
   "categorias": [
@@ -1499,6 +1904,24 @@
   },
   "titulo": "Paulo Costinha"
  },
+ "Q161069": {
+  "categorias": [
+   "final"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2008,
+    "competicao": "europeu"
+   },
+   {
+    "ano": 2012,
+    "competicao": "europeu"
+   }
+  ],
+  "titulo": "David Silva"
+ },
  "Q161089": {
   "bola_de_ouro": {
    "edicoes": {
@@ -1507,10 +1930,17 @@
    "melhor": 14
   },
   "categorias": [
-   "bola_de_ouro"
+   "bola_de_ouro",
+   "final"
   ],
   "conhecido": true,
-  "diario": false,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2023,
+    "competicao": "liga_campeoes"
+   }
+  ],
   "titulo": "İlkay Gündoğan"
  },
  "Q161571": {
@@ -1522,10 +1952,21 @@
    "melhor": 14
   },
   "categorias": [
-   "bola_de_ouro"
+   "bola_de_ouro",
+   "final"
   ],
   "conhecido": true,
-  "diario": false,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2011,
+    "competicao": "liga_campeoes"
+   },
+   {
+    "ano": 2015,
+    "competicao": "liga_campeoes"
+   }
+  ],
   "titulo": "Javier Mascherano"
  },
  "Q16212492": {
@@ -1608,6 +2049,20 @@
    "benfica": 66
   },
   "titulo": "Gilberto (footballer, born 1993)"
+ },
+ "Q163437": {
+  "categorias": [
+   "final"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2004,
+    "competicao": "europeu"
+   }
+  ],
+  "titulo": "Zisis Vryzas"
  },
  "Q163564": {
   "bola_de_ouro": {
@@ -1709,11 +2164,36 @@
    "melhor": 5
   },
   "categorias": [
-   "bola_de_ouro"
+   "bola_de_ouro",
+   "final"
   ],
   "conhecido": true,
   "diario": true,
+  "finais": [
+   {
+    "ano": 2018,
+    "competicao": "mundial"
+   },
+   {
+    "ano": 2021,
+    "competicao": "liga_campeoes"
+   }
+  ],
   "titulo": "N'Golo Kanté"
+ },
+ "Q166984": {
+  "categorias": [
+   "final"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2012,
+    "competicao": "liga_campeoes"
+   }
+  ],
+  "titulo": "Mikel John Obi"
  },
  "Q16729477": {
   "categorias": [
@@ -1743,6 +2223,20 @@
   "conhecido": true,
   "diario": false,
   "titulo": "Edinson Cavani"
+ },
+ "Q168740": {
+  "categorias": [
+   "final"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2012,
+    "competicao": "liga_campeoes"
+   }
+  ],
+  "titulo": "Juan Mata"
  },
  "Q16902219": {
   "bola_de_ouro": {
@@ -1853,10 +2347,17 @@
  },
  "Q17074511": {
   "categorias": [
-   "grandes"
+   "grandes",
+   "final"
   ],
-  "conhecido": false,
-  "diario": false,
+  "conhecido": true,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2023,
+    "competicao": "liga_campeoes"
+   }
+  ],
   "grandes": {
    "benfica": 58
   },
@@ -1890,10 +2391,21 @@
    "melhor": 11
   },
   "categorias": [
-   "bola_de_ouro"
+   "bola_de_ouro",
+   "final"
   ],
   "conhecido": true,
-  "diario": false,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2010,
+    "competicao": "mundial"
+   },
+   {
+    "ano": 2008,
+    "competicao": "europeu"
+   }
+  ],
   "titulo": "Carles Puyol"
  },
  "Q172211": {
@@ -1920,10 +2432,21 @@
    "melhor": 15
   },
   "categorias": [
-   "bola_de_ouro"
+   "bola_de_ouro",
+   "final"
   ],
   "conhecido": true,
-  "diario": false,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2011,
+    "competicao": "liga_campeoes"
+   },
+   {
+    "ano": 2015,
+    "competicao": "liga_campeoes"
+   }
+  ],
   "titulo": "Dani Alves"
  },
  "Q17274709": {
@@ -2019,6 +2542,20 @@
   "internacionalizacoes": 73,
   "titulo": "Rúben Neves"
  },
+ "Q17493": {
+  "categorias": [
+   "final"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2020,
+    "competicao": "liga_campeoes"
+   }
+  ],
+  "titulo": "Thiago Alcântara"
+ },
  "Q17499": {
   "bola_de_ouro": {
    "edicoes": {
@@ -2031,10 +2568,21 @@
    "melhor": 8
   },
   "categorias": [
-   "bola_de_ouro"
+   "bola_de_ouro",
+   "final"
   ],
   "conhecido": true,
   "diario": true,
+  "finais": [
+   {
+    "ano": 2008,
+    "competicao": "europeu"
+   },
+   {
+    "ano": 2012,
+    "competicao": "europeu"
+   }
+  ],
   "titulo": "Cesc Fàbregas"
  },
  "Q17500": {
@@ -2050,10 +2598,29 @@
    "melhor": 3
   },
   "categorias": [
-   "bola_de_ouro"
+   "bola_de_ouro",
+   "final"
   ],
   "conhecido": true,
   "diario": true,
+  "finais": [
+   {
+    "ano": 2010,
+    "competicao": "mundial"
+   },
+   {
+    "ano": 2008,
+    "competicao": "europeu"
+   },
+   {
+    "ano": 2012,
+    "competicao": "europeu"
+   },
+   {
+    "ano": 2011,
+    "competicao": "liga_campeoes"
+   }
+  ],
   "titulo": "Xavi (footballer, born 1980)"
  },
  "Q17507": {
@@ -2065,10 +2632,29 @@
    "melhor": 21
   },
   "categorias": [
-   "bola_de_ouro"
+   "bola_de_ouro",
+   "final"
   ],
   "conhecido": true,
-  "diario": false,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2010,
+    "competicao": "mundial"
+   },
+   {
+    "ano": 2012,
+    "competicao": "europeu"
+   },
+   {
+    "ano": 2011,
+    "competicao": "liga_campeoes"
+   },
+   {
+    "ano": 2015,
+    "competicao": "liga_campeoes"
+   }
+  ],
   "titulo": "Gerard Piqué"
  },
  "Q17515": {
@@ -2092,6 +2678,20 @@
   "internacionalizacoes": 76,
   "titulo": "Raul Meireles"
  },
+ "Q1755683": {
+  "categorias": [
+   "final"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2023,
+    "competicao": "liga_campeoes"
+   }
+  ],
+  "titulo": "Nathan Aké"
+ },
  "Q17560793": {
   "categorias": [
    "selecao",
@@ -2104,6 +2704,20 @@
   },
   "internacionalizacoes": 21,
   "titulo": "Gelson Martins"
+ },
+ "Q1756086": {
+  "categorias": [
+   "final"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2020,
+    "competicao": "europeu"
+   }
+  ],
+  "titulo": "Lorenzo Insigne"
  },
  "Q1758025": {
   "categorias": [
@@ -2122,10 +2736,17 @@
    "melhor": 17
   },
   "categorias": [
-   "bola_de_ouro"
+   "bola_de_ouro",
+   "final"
   ],
   "conhecido": true,
-  "diario": false,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2010,
+    "competicao": "liga_campeoes"
+   }
+  ],
   "titulo": "Maicon (footballer, born 1981)"
  },
  "Q178599": {
@@ -2156,10 +2777,17 @@
    "melhor": 15
   },
   "categorias": [
-   "bola_de_ouro"
+   "bola_de_ouro",
+   "final"
   ],
   "conhecido": true,
-  "diario": false,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2002,
+    "competicao": "mundial"
+   }
+  ],
   "titulo": "Cafu"
  },
  "Q179069": {
@@ -2188,6 +2816,24 @@
   "diario": false,
   "titulo": "Henrik Larsson"
  },
+ "Q179773": {
+  "categorias": [
+   "final"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2010,
+    "competicao": "mundial"
+   },
+   {
+    "ano": 2011,
+    "competicao": "liga_campeoes"
+   }
+  ],
+  "titulo": "Pedro (footballer, born 1987)"
+ },
  "Q1801340": {
   "categorias": [
    "grandes"
@@ -2214,6 +2860,20 @@
   "conhecido": true,
   "diario": true,
   "titulo": "Lilian Thuram"
+ },
+ "Q180462": {
+  "categorias": [
+   "final"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2012,
+    "competicao": "liga_campeoes"
+   }
+  ],
+  "titulo": "Salomon Kalou"
  },
  "Q180553": {
   "bola_de_ouro": {
@@ -2256,10 +2916,17 @@
  },
  "Q182063": {
   "categorias": [
-   "grandes"
+   "grandes",
+   "final"
   ],
   "conhecido": true,
-  "diario": false,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2022,
+    "competicao": "mundial"
+   }
+  ],
   "grandes": {
    "benfica": 178,
    "porto": 77
@@ -2294,10 +2961,17 @@
    "melhor": 7
   },
   "categorias": [
-   "bola_de_ouro"
+   "bola_de_ouro",
+   "final"
   ],
   "conhecido": true,
   "diario": true,
+  "finais": [
+   {
+    "ano": 2019,
+    "competicao": "liga_campeoes"
+   }
+  ],
   "titulo": "Alisson Becker"
  },
  "Q182459": {
@@ -2310,10 +2984,17 @@
   },
   "categorias": [
    "bola_de_ouro",
-   "grandes"
+   "grandes",
+   "final"
   ],
   "conhecido": true,
-  "diario": false,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2010,
+    "competicao": "liga_campeoes"
+   }
+  ],
   "grandes": {
    "benfica": 57
   },
@@ -2327,10 +3008,17 @@
    "melhor": 20
   },
   "categorias": [
-   "bola_de_ouro"
+   "bola_de_ouro",
+   "final"
   ],
   "conhecido": true,
-  "diario": false,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2006,
+    "competicao": "mundial"
+   }
+  ],
   "titulo": "Gianluca Zambrotta"
  },
  "Q1835": {
@@ -2375,10 +3063,17 @@
  "Q18394009": {
   "categorias": [
    "selecao",
-   "grandes"
+   "grandes",
+   "final"
   ],
   "conhecido": true,
-  "diario": false,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2016,
+    "competicao": "europeu"
+   }
+  ],
   "grandes": {
    "benfica": 56
   },
@@ -2469,10 +3164,21 @@
    "melhor": 6
   },
   "categorias": [
-   "bola_de_ouro"
+   "bola_de_ouro",
+   "final"
   ],
   "conhecido": true,
   "diario": true,
+  "finais": [
+   {
+    "ano": 2014,
+    "competicao": "liga_campeoes"
+   },
+   {
+    "ano": 2016,
+    "competicao": "liga_campeoes"
+   }
+  ],
   "titulo": "Gareth Bale"
  },
  "Q184614": {
@@ -2487,6 +3193,20 @@
   },
   "internacionalizacoes": 62,
   "titulo": "Paulo Ferreira"
+ },
+ "Q185081": {
+  "categorias": [
+   "final"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2006,
+    "competicao": "mundial"
+   }
+  ],
+  "titulo": "Marco Materazzi"
  },
  "Q185115": {
   "bola_de_ouro": {
@@ -2563,11 +3283,44 @@
    "melhor": 24
   },
   "categorias": [
-   "bola_de_ouro"
+   "bola_de_ouro",
+   "final"
   ],
   "conhecido": true,
-  "diario": false,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2026,
+    "competicao": "mundial"
+   },
+   {
+    "ano": 2024,
+    "competicao": "europeu"
+   },
+   {
+    "ano": 2025,
+    "competicao": "liga_campeoes"
+   },
+   {
+    "ano": 2026,
+    "competicao": "liga_campeoes"
+   }
+  ],
   "titulo": "Fabián Ruiz"
+ },
+ "Q186415": {
+  "categorias": [
+   "final"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2008,
+    "competicao": "europeu"
+   }
+  ],
+  "titulo": "Carlos Marchena"
  },
  "Q186478": {
   "bola_de_ouro": {
@@ -2578,10 +3331,17 @@
    "melhor": 20
   },
   "categorias": [
-   "bola_de_ouro"
+   "bola_de_ouro",
+   "final"
   ],
   "conhecido": true,
-  "diario": false,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2006,
+    "competicao": "mundial"
+   }
+  ],
   "titulo": "Luca Toni"
  },
  "Q187125": {
@@ -2592,6 +3352,24 @@
   "diario": true,
   "titulo": "Hristo Stoichkov"
  },
+ "Q187159": {
+  "categorias": [
+   "final"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2012,
+    "competicao": "europeu"
+   },
+   {
+    "ano": 2015,
+    "competicao": "liga_campeoes"
+   }
+  ],
+  "titulo": "Jordi Alba"
+ },
  "Q187171": {
   "bola_de_ouro": {
    "edicoes": {
@@ -2600,10 +3378,17 @@
    "melhor": 25
   },
   "categorias": [
-   "bola_de_ouro"
+   "bola_de_ouro",
+   "final"
   ],
   "conhecido": true,
-  "diario": false,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2013,
+    "competicao": "liga_campeoes"
+   }
+  ],
   "titulo": "Mario Mandžukić"
  },
  "Q188241": {
@@ -2679,6 +3464,24 @@
   "diario": false,
   "titulo": "Michael Laudrup"
  },
+ "Q188793": {
+  "categorias": [
+   "final"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2010,
+    "competicao": "mundial"
+   },
+   {
+    "ano": 2008,
+    "competicao": "europeu"
+   }
+  ],
+  "titulo": "Joan Capdevila"
+ },
  "Q188983": {
   "categorias": [
    "grandes"
@@ -2704,6 +3507,20 @@
   "conhecido": true,
   "diario": true,
   "titulo": "Davor Šuker"
+ },
+ "Q18924954": {
+  "categorias": [
+   "final"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2018,
+    "competicao": "mundial"
+   }
+  ],
+  "titulo": "Lucas Hernandez"
  },
  "Q18928108": {
   "categorias": [
@@ -2731,6 +3548,20 @@
   "diario": false,
   "titulo": "Patrick Kluivert"
  },
+ "Q189716": {
+  "categorias": [
+   "final"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2006,
+    "competicao": "mundial"
+   }
+  ],
+  "titulo": "Mauro Camoranesi"
+ },
  "Q189892": {
   "categorias": [
    "mitico"
@@ -2746,6 +3577,20 @@
   "conhecido": true,
   "diario": true,
   "titulo": "Franco Baresi"
+ },
+ "Q190142": {
+  "categorias": [
+   "final"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2002,
+    "competicao": "mundial"
+   }
+  ],
+  "titulo": "Gilberto Silva"
  },
  "Q19059840": {
   "bola_de_ouro": {
@@ -2793,11 +3638,32 @@
    "melhor": 20
   },
   "categorias": [
-   "bola_de_ouro"
+   "bola_de_ouro",
+   "final"
   ],
   "conhecido": true,
-  "diario": false,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2018,
+    "competicao": "mundial"
+   }
+  ],
   "titulo": "Hugo Lloris"
+ },
+ "Q1911": {
+  "categorias": [
+   "final"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2018,
+    "competicao": "mundial"
+   }
+  ],
+  "titulo": "Olivier Giroud"
  },
  "Q191139": {
   "bola_de_ouro": {
@@ -2848,10 +3714,33 @@
    "melhor": 1
   },
   "categorias": [
-   "bola_de_ouro"
+   "bola_de_ouro",
+   "final"
   ],
   "conhecido": true,
   "diario": true,
+  "finais": [
+   {
+    "ano": 2014,
+    "competicao": "liga_campeoes"
+   },
+   {
+    "ano": 2016,
+    "competicao": "liga_campeoes"
+   },
+   {
+    "ano": 2017,
+    "competicao": "liga_campeoes"
+   },
+   {
+    "ano": 2018,
+    "competicao": "liga_campeoes"
+   },
+   {
+    "ano": 2022,
+    "competicao": "liga_campeoes"
+   }
+  ],
   "titulo": "Karim Benzema"
  },
  "Q1918": {
@@ -2866,11 +3755,46 @@
    "melhor": 3
   },
   "categorias": [
-   "bola_de_ouro"
+   "bola_de_ouro",
+   "final"
   ],
   "conhecido": true,
   "diario": true,
+  "finais": [
+   {
+    "ano": 2013,
+    "competicao": "liga_campeoes"
+   }
+  ],
   "titulo": "Franck Ribéry"
+ },
+ "Q1921": {
+  "categorias": [
+   "final"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2018,
+    "competicao": "mundial"
+   }
+  ],
+  "titulo": "Blaise Matuidi"
+ },
+ "Q192122": {
+  "categorias": [
+   "final"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2010,
+    "competicao": "liga_campeoes"
+   }
+  ],
+  "titulo": "Esteban Cambiasso"
  },
  "Q192175": {
   "bola_de_ouro": {
@@ -3045,10 +3969,17 @@
    "melhor": 18
   },
   "categorias": [
-   "bola_de_ouro"
+   "bola_de_ouro",
+   "final"
   ],
   "conhecido": true,
-  "diario": false,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2011,
+    "competicao": "liga_campeoes"
+   }
+  ],
   "titulo": "Eric Abidal"
  },
  "Q193568": {
@@ -3081,12 +4012,33 @@
   "diario": true,
   "titulo": "Marcel Desailly"
  },
+ "Q193702": {
+  "categorias": [
+   "final"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2010,
+    "competicao": "liga_campeoes"
+   }
+  ],
+  "titulo": "Walter Samuel"
+ },
  "Q193706": {
   "categorias": [
-   "grandes"
+   "grandes",
+   "final"
   ],
-  "conhecido": false,
-  "diario": false,
+  "conhecido": true,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2012,
+    "competicao": "liga_campeoes"
+   }
+  ],
   "grandes": {
    "benfica": 82
   },
@@ -3100,10 +4052,17 @@
    "melhor": 11
   },
   "categorias": [
-   "bola_de_ouro"
+   "bola_de_ouro",
+   "final"
   ],
   "conhecido": true,
-  "diario": false,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2008,
+    "competicao": "europeu"
+   }
+  ],
   "titulo": "Marcos Senna"
  },
  "Q19509544": {
@@ -3114,10 +4073,21 @@
    "melhor": 17
   },
   "categorias": [
-   "bola_de_ouro"
+   "bola_de_ouro",
+   "final"
   ],
   "conhecido": true,
-  "diario": false,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2022,
+    "competicao": "liga_campeoes"
+   },
+   {
+    "ano": 2024,
+    "competicao": "liga_campeoes"
+   }
+  ],
   "titulo": "Federico Valverde"
  },
  "Q19518278": {
@@ -3137,11 +4107,36 @@
    "melhor": 13
   },
   "categorias": [
-   "bola_de_ouro"
+   "bola_de_ouro",
+   "final"
   ],
   "conhecido": true,
-  "diario": false,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2026,
+    "competicao": "mundial"
+   },
+   {
+    "ano": 2024,
+    "competicao": "europeu"
+   }
+  ],
   "titulo": "Dani Olmo"
+ },
+ "Q19599124": {
+  "categorias": [
+   "final"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2018,
+    "competicao": "mundial"
+   }
+  ],
+  "titulo": "Benjamin Pavard"
  },
  "Q19754212": {
   "categorias": [
@@ -3203,6 +4198,20 @@
   "conhecido": true,
   "diario": false,
   "titulo": "Frenkie de Jong"
+ },
+ "Q19938984": {
+  "categorias": [
+   "final"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2023,
+    "competicao": "liga_campeoes"
+   }
+  ],
+  "titulo": "Manuel Akanji"
  },
  "Q19985279": {
   "categorias": [
@@ -3282,10 +4291,17 @@
    "melhor": 26
   },
   "categorias": [
-   "bola_de_ouro"
+   "bola_de_ouro",
+   "final"
   ],
   "conhecido": true,
-  "diario": false,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2020,
+    "competicao": "europeu"
+   }
+  ],
   "titulo": "Nicolò Barella"
  },
  "Q20110": {
@@ -3299,10 +4315,17 @@
    "melhor": 5
   },
   "categorias": [
-   "bola_de_ouro"
+   "bola_de_ouro",
+   "final"
   ],
   "conhecido": true,
   "diario": true,
+  "finais": [
+   {
+    "ano": 2006,
+    "competicao": "mundial"
+   }
+  ],
   "titulo": "Francesco Totti"
  },
  "Q201414": {
@@ -3316,6 +4339,20 @@
   },
   "titulo": "Nélson Pereira"
  },
+ "Q201752": {
+  "categorias": [
+   "final"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2013,
+    "competicao": "liga_campeoes"
+   }
+  ],
+  "titulo": "Javi Martínez"
+ },
  "Q2018541": {
   "categorias": [
    "grandes"
@@ -3326,6 +4363,20 @@
    "sporting": 52
   },
   "titulo": "Stefan Ristovski"
+ },
+ "Q2025900": {
+  "categorias": [
+   "final"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2023,
+    "competicao": "liga_campeoes"
+   }
+  ],
+  "titulo": "John Stones"
  },
  "Q202645": {
   "bola_de_ouro": {
@@ -3507,10 +4558,17 @@
    "melhor": 14
   },
   "categorias": [
-   "bola_de_ouro"
+   "bola_de_ouro",
+   "final"
   ],
   "conhecido": true,
-  "diario": false,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2020,
+    "competicao": "europeu"
+   }
+  ],
   "titulo": "Leonardo Bonucci"
  },
  "Q208104": {
@@ -3523,10 +4581,21 @@
    "melhor": 10
   },
   "categorias": [
-   "bola_de_ouro"
+   "bola_de_ouro",
+   "final"
   ],
   "conhecido": true,
   "diario": true,
+  "finais": [
+   {
+    "ano": 2010,
+    "competicao": "mundial"
+   },
+   {
+    "ano": 2012,
+    "competicao": "europeu"
+   }
+  ],
   "titulo": "Xabi Alonso"
  },
  "Q20830808": {
@@ -3538,10 +4607,21 @@
    "melhor": 9
   },
   "categorias": [
-   "bola_de_ouro"
+   "bola_de_ouro",
+   "final"
   ],
   "conhecido": true,
   "diario": true,
+  "finais": [
+   {
+    "ano": 2020,
+    "competicao": "europeu"
+   },
+   {
+    "ano": 2025,
+    "competicao": "liga_campeoes"
+   }
+  ],
   "titulo": "Gianluigi Donnarumma"
  },
  "Q20851003": {
@@ -3552,10 +4632,21 @@
    "melhor": 1
   },
   "categorias": [
-   "bola_de_ouro"
+   "bola_de_ouro",
+   "final"
   ],
   "conhecido": true,
   "diario": true,
+  "finais": [
+   {
+    "ano": 2025,
+    "competicao": "liga_campeoes"
+   },
+   {
+    "ano": 2026,
+    "competicao": "liga_campeoes"
+   }
+  ],
   "titulo": "Ousmane Dembélé"
  },
  "Q208638": {
@@ -3592,10 +4683,25 @@
    "melhor": 1
   },
   "categorias": [
-   "bola_de_ouro"
+   "bola_de_ouro",
+   "final"
   ],
   "conhecido": true,
   "diario": true,
+  "finais": [
+   {
+    "ano": 2026,
+    "competicao": "mundial"
+   },
+   {
+    "ano": 2024,
+    "competicao": "europeu"
+   },
+   {
+    "ano": 2023,
+    "competicao": "liga_campeoes"
+   }
+  ],
   "titulo": "Rodri"
  },
  "Q209942": {
@@ -3609,10 +4715,17 @@
    "melhor": 2
   },
   "categorias": [
-   "bola_de_ouro"
+   "bola_de_ouro",
+   "final"
   ],
   "conhecido": true,
   "diario": true,
+  "finais": [
+   {
+    "ano": 2019,
+    "competicao": "liga_campeoes"
+   }
+  ],
   "titulo": "Sadio Mané"
  },
  "Q210083": {
@@ -3631,11 +4744,32 @@
    "melhor": 21
   },
   "categorias": [
-   "bola_de_ouro"
+   "bola_de_ouro",
+   "final"
   ],
   "conhecido": true,
-  "diario": false,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2021,
+    "competicao": "liga_campeoes"
+   }
+  ],
   "titulo": "Thiago Silva"
+ },
+ "Q210491": {
+  "categorias": [
+   "final"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2010,
+    "competicao": "liga_campeoes"
+   }
+  ],
+  "titulo": "Cristian Chivu"
  },
  "Q210937": {
   "categorias": [
@@ -3674,22 +4808,50 @@
  },
  "Q211124": {
   "categorias": [
-   "grandes"
+   "grandes",
+   "final"
   ],
-  "conhecido": false,
-  "diario": false,
+  "conhecido": true,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2004,
+    "competicao": "europeu"
+   }
+  ],
   "grandes": {
    "benfica": 80
   },
   "titulo": "Kostas Katsouranis"
  },
+ "Q21195147": {
+  "categorias": [
+   "final"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2026,
+    "competicao": "mundial"
+   }
+  ],
+  "titulo": "Mikel Oyarzabal"
+ },
  "Q211996": {
   "categorias": [
    "selecao",
-   "grandes"
+   "grandes",
+   "final"
   ],
   "conhecido": true,
-  "diario": false,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2012,
+    "competicao": "liga_campeoes"
+   }
+  ],
   "grandes": {
    "porto": 107
   },
@@ -3896,6 +5058,20 @@
   "diario": false,
   "titulo": "Guillermo Ochoa"
  },
+ "Q21621029": {
+  "categorias": [
+   "final"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2021,
+    "competicao": "liga_campeoes"
+   }
+  ],
+  "titulo": "Ben Chilwell"
+ },
  "Q21621168": {
   "bola_de_ouro": {
    "edicoes": {
@@ -3908,10 +5084,17 @@
   "categorias": [
    "bola_de_ouro",
    "selecao",
-   "grandes"
+   "grandes",
+   "final"
   ],
   "conhecido": true,
   "diario": true,
+  "finais": [
+   {
+    "ano": 2023,
+    "competicao": "liga_campeoes"
+   }
+  ],
   "grandes": {
    "benfica": 91
   },
@@ -3933,10 +5116,17 @@
    "melhor": 3
   },
   "categorias": [
-   "bola_de_ouro"
+   "bola_de_ouro",
+   "final"
   ],
   "conhecido": true,
   "diario": true,
+  "finais": [
+   {
+    "ano": 2018,
+    "competicao": "mundial"
+   }
+  ],
   "titulo": "Kylian Mbappé"
  },
  "Q216312": {
@@ -4106,6 +5296,38 @@
   "diario": false,
   "titulo": "Ludovic Giuly"
  },
+ "Q22082505": {
+  "categorias": [
+   "final"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2026,
+    "competicao": "mundial"
+   },
+   {
+    "ano": 2024,
+    "competicao": "europeu"
+   }
+  ],
+  "titulo": "Marc Cucurella"
+ },
+ "Q22082590": {
+  "categorias": [
+   "final"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2022,
+    "competicao": "mundial"
+   }
+  ],
+  "titulo": "Nahuel Molina"
+ },
  "Q221138": {
   "bola_de_ouro": {
    "edicoes": {
@@ -4114,11 +5336,32 @@
    "melhor": 24
   },
   "categorias": [
-   "bola_de_ouro"
+   "bola_de_ouro",
+   "final"
   ],
   "conhecido": true,
-  "diario": false,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2004,
+    "competicao": "europeu"
+   }
+  ],
   "titulo": "Antonios Nikopolidis"
+ },
+ "Q221142": {
+  "categorias": [
+   "final"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2004,
+    "competicao": "europeu"
+   }
+  ],
+  "titulo": "Angelos Basinas"
  },
  "Q222151": {
   "categorias": [
@@ -4176,6 +5419,20 @@
   "conhecido": true,
   "diario": false,
   "titulo": "Jimmy Floyd Hasselbaink"
+ },
+ "Q223827": {
+  "categorias": [
+   "final"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2012,
+    "competicao": "liga_campeoes"
+   }
+  ],
+  "titulo": "Gary Cahill"
  },
  "Q224033": {
   "bola_de_ouro": {
@@ -4268,6 +5525,20 @@
   },
   "titulo": "Héctor Herrera"
  },
+ "Q230529": {
+  "categorias": [
+   "final"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2006,
+    "competicao": "mundial"
+   }
+  ],
+  "titulo": "Fabio Grosso"
+ },
  "Q2307574": {
   "categorias": [
    "grandes"
@@ -4290,6 +5561,20 @@
    "sporting": 64
   },
   "titulo": "Hugo (footballer, born 1976)"
+ },
+ "Q232789": {
+  "categorias": [
+   "final"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2006,
+    "competicao": "mundial"
+   }
+  ],
+  "titulo": "Simone Perrotta"
  },
  "Q2339": {
   "bola_de_ouro": {
@@ -4321,6 +5606,20 @@
   "conhecido": true,
   "diario": false,
   "titulo": "Francesco Toldo"
+ },
+ "Q23540953": {
+  "categorias": [
+   "final"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2020,
+    "competicao": "liga_campeoes"
+   }
+  ],
+  "titulo": "Alphonso Davies"
  },
  "Q2358664": {
   "categorias": [
@@ -4370,6 +5669,56 @@
   "conhecido": true,
   "diario": true,
   "titulo": "Predrag Mijatović"
+ },
+ "Q238163": {
+  "categorias": [
+   "final"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2010,
+    "competicao": "liga_campeoes"
+   }
+  ],
+  "titulo": "Goran Pandev"
+ },
+ "Q23884186": {
+  "categorias": [
+   "final"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2022,
+    "competicao": "liga_campeoes"
+   },
+   {
+    "ano": 2024,
+    "competicao": "liga_campeoes"
+   }
+  ],
+  "titulo": "Ferland Mendy"
+ },
+ "Q23908113": {
+  "categorias": [
+   "final"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2026,
+    "competicao": "mundial"
+   },
+   {
+    "ano": 2024,
+    "competicao": "europeu"
+   }
+  ],
+  "titulo": "Unai Simón"
  },
  "Q24084271": {
   "categorias": [
@@ -4487,6 +5836,17 @@
   },
   "titulo": "Serhiy Kandaurov"
  },
+ "Q2479934": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "porto": 65
+  },
+  "titulo": "Agustín Marchesín"
+ },
  "Q2498195": {
   "categorias": [
    "grandes"
@@ -4497,6 +5857,20 @@
    "benfica": 56
   },
   "titulo": "Armando Sá"
+ },
+ "Q250901": {
+  "categorias": [
+   "final"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2012,
+    "competicao": "europeu"
+   }
+  ],
+  "titulo": "Álvaro Arbeloa"
  },
  "Q250962": {
   "categorias": [
@@ -4529,10 +5903,21 @@
   },
   "categorias": [
    "bola_de_ouro",
-   "grandes"
+   "grandes",
+   "final"
   ],
   "conhecido": true,
   "diario": true,
+  "finais": [
+   {
+    "ano": 2022,
+    "competicao": "mundial"
+   },
+   {
+    "ano": 2014,
+    "competicao": "liga_campeoes"
+   }
+  ],
   "grandes": {
    "benfica": 129
   },
@@ -4708,10 +6093,17 @@
    "melhor": 4
   },
   "categorias": [
-   "bola_de_ouro"
+   "bola_de_ouro",
+   "final"
   ],
   "conhecido": true,
   "diario": true,
+  "finais": [
+   {
+    "ano": 2015,
+    "competicao": "liga_campeoes"
+   }
+  ],
   "titulo": "Luis Suárez (Uruguayan footballer)"
  },
  "Q2662720": {
@@ -4755,6 +6147,20 @@
   },
   "titulo": "Jovane Cabral"
  },
+ "Q26704703": {
+  "categorias": [
+   "final"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2020,
+    "competicao": "europeu"
+   }
+  ],
+  "titulo": "Federico Chiesa"
+ },
  "Q26924424": {
   "categorias": [
    "grandes"
@@ -4774,10 +6180,21 @@
    "melhor": 6
   },
   "categorias": [
-   "bola_de_ouro"
+   "bola_de_ouro",
+   "final"
   ],
   "conhecido": true,
   "diario": true,
+  "finais": [
+   {
+    "ano": 2025,
+    "competicao": "liga_campeoes"
+   },
+   {
+    "ano": 2026,
+    "competicao": "liga_campeoes"
+   }
+  ],
   "titulo": "Achraf Hakimi"
  },
  "Q26972992": {
@@ -4870,24 +6287,66 @@
  "Q2724855": {
   "categorias": [
    "selecao",
-   "grandes"
+   "grandes",
+   "final"
   ],
   "conhecido": true,
-  "diario": false,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2016,
+    "competicao": "europeu"
+   }
+  ],
   "grandes": {
    "sporting": 168
   },
   "internacionalizacoes": 26,
   "titulo": "Adrien Silva"
  },
- "Q2736254": {
+ "Q27310755": {
   "categorias": [
-   "selecao"
+   "final"
   ],
   "conhecido": true,
   "diario": true,
+  "finais": [
+   {
+    "ano": 2021,
+    "competicao": "liga_campeoes"
+   }
+  ],
+  "titulo": "Kai Havertz"
+ },
+ "Q2736254": {
+  "categorias": [
+   "selecao",
+   "final"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2016,
+    "competicao": "europeu"
+   }
+  ],
   "internacionalizacoes": 50,
   "titulo": "José Fonte"
+ },
+ "Q273715": {
+  "categorias": [
+   "final"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2019,
+    "competicao": "liga_campeoes"
+   }
+  ],
+  "titulo": "Jordan Henderson"
  },
  "Q273776": {
   "categorias": [
@@ -4898,6 +6357,20 @@
   "internacionalizacoes": 35,
   "titulo": "Eder (footballer, born 1987)"
  },
+ "Q27469970": {
+  "categorias": [
+   "final"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2024,
+    "competicao": "europeu"
+   }
+  ],
+  "titulo": "Robin Le Normand"
+ },
  "Q27569376": {
   "bola_de_ouro": {
    "edicoes": {
@@ -4907,10 +6380,17 @@
    "melhor": 19
   },
   "categorias": [
-   "bola_de_ouro"
+   "bola_de_ouro",
+   "final"
   ],
   "conhecido": true,
-  "diario": false,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2019,
+    "competicao": "liga_campeoes"
+   }
+  ],
   "titulo": "Trent Alexander-Arnold"
  },
  "Q276091": {
@@ -4951,6 +6431,20 @@
   "internacionalizacoes": 27,
   "titulo": "Silvestre Varela"
  },
+ "Q27736107": {
+  "categorias": [
+   "final"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2021,
+    "competicao": "liga_campeoes"
+   }
+  ],
+  "titulo": "Édouard Mendy"
+ },
  "Q2777891": {
   "categorias": [
    "grandes"
@@ -4983,6 +6477,20 @@
    "sporting": 56
   },
   "titulo": "Manuel Ugarte (footballer)"
+ },
+ "Q28058687": {
+  "categorias": [
+   "final"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2022,
+    "competicao": "mundial"
+   }
+  ],
+  "titulo": "Cristian Romero"
  },
  "Q283762": {
   "categorias": [
@@ -5114,10 +6622,17 @@
    "melhor": 2
   },
   "categorias": [
-   "bola_de_ouro"
+   "bola_de_ouro",
+   "final"
   ],
   "conhecido": true,
   "diario": true,
+  "finais": [
+   {
+    "ano": 2023,
+    "competicao": "liga_campeoes"
+   }
+  ],
   "titulo": "Erling Haaland"
  },
  "Q28973866": {
@@ -5131,10 +6646,21 @@
    "melhor": 2
   },
   "categorias": [
-   "bola_de_ouro"
+   "bola_de_ouro",
+   "final"
   ],
   "conhecido": true,
   "diario": true,
+  "finais": [
+   {
+    "ano": 2022,
+    "competicao": "liga_campeoes"
+   },
+   {
+    "ano": 2024,
+    "competicao": "liga_campeoes"
+   }
+  ],
   "titulo": "Vinícius Júnior"
  },
  "Q29117869": {
@@ -5227,10 +6753,17 @@
    "melhor": 29
   },
   "categorias": [
-   "bola_de_ouro"
+   "bola_de_ouro",
+   "final"
   ],
   "conhecido": true,
-  "diario": false,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2021,
+    "competicao": "liga_campeoes"
+   }
+  ],
   "titulo": "César Azpilicueta"
  },
  "Q294881": {
@@ -5269,10 +6802,17 @@
   "categorias": [
    "bola_de_ouro",
    "selecao",
-   "grandes"
+   "grandes",
+   "final"
   ],
   "conhecido": true,
   "diario": true,
+  "finais": [
+   {
+    "ano": 2016,
+    "competicao": "europeu"
+   }
+  ],
   "grandes": {
    "sporting": 327
   },
@@ -5377,6 +6917,20 @@
   "internacionalizacoes": 80,
   "titulo": "Vítor Baía"
  },
+ "Q296058": {
+  "categorias": [
+   "final"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2002,
+    "competicao": "mundial"
+   }
+  ],
+  "titulo": "Edmílson"
+ },
  "Q296133": {
   "categorias": [
    "grandes"
@@ -5416,6 +6970,20 @@
   "diario": false,
   "titulo": "Scott McTominay"
  },
+ "Q296391": {
+  "categorias": [
+   "final"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2012,
+    "competicao": "liga_campeoes"
+   }
+  ],
+  "titulo": "Ryan Bertrand"
+ },
  "Q296452": {
   "bola_de_ouro": {
    "edicoes": {
@@ -5424,10 +6992,17 @@
    "melhor": 5
   },
   "categorias": [
-   "bola_de_ouro"
+   "bola_de_ouro",
+   "final"
   ],
   "conhecido": true,
   "diario": true,
+  "finais": [
+   {
+    "ano": 2004,
+    "competicao": "europeu"
+   }
+  ],
   "titulo": "Theodoros Zagorakis"
  },
  "Q296684": {
@@ -5490,6 +7065,20 @@
   },
   "titulo": "Clayton (footballer, born 1975)"
  },
+ "Q299238": {
+  "categorias": [
+   "final"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2004,
+    "competicao": "europeu"
+   }
+  ],
+  "titulo": "Giourkas Seitaridis"
+ },
  "Q299488": {
   "bola_de_ouro": {
    "edicoes": {
@@ -5518,6 +7107,20 @@
   "conhecido": true,
   "diario": false,
   "titulo": "Fabrizio Ravanelli"
+ },
+ "Q29950055": {
+  "categorias": [
+   "final"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2022,
+    "competicao": "liga_campeoes"
+   }
+  ],
+  "titulo": "Éder Militão"
  },
  "Q299624": {
   "bola_de_ouro": {
@@ -5609,10 +7212,17 @@
  "Q304416": {
   "categorias": [
    "selecao",
-   "grandes"
+   "grandes",
+   "final"
   ],
   "conhecido": true,
   "diario": true,
+  "finais": [
+   {
+    "ano": 2016,
+    "competicao": "europeu"
+   }
+  ],
   "grandes": {
    "sporting": 143
   },
@@ -5747,6 +7357,20 @@
   "diario": false,
   "internacionalizacoes": 38,
   "titulo": "Danny (footballer)"
+ },
+ "Q311035": {
+  "categorias": [
+   "final"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2002,
+    "competicao": "mundial"
+   }
+  ],
+  "titulo": "Kléberson"
  },
  "Q311087": {
   "categorias": [
@@ -5981,10 +7605,17 @@
    "melhor": 17
   },
   "categorias": [
-   "bola_de_ouro"
+   "bola_de_ouro",
+   "final"
   ],
   "conhecido": true,
-  "diario": false,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2004,
+    "competicao": "europeu"
+   }
+  ],
   "titulo": "Traianos Dellas"
  },
  "Q313753": {
@@ -6099,6 +7730,20 @@
   "diario": true,
   "internacionalizacoes": 51,
   "titulo": "Paulo Sousa"
+ },
+ "Q315831": {
+  "categorias": [
+   "final"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2002,
+    "competicao": "mundial"
+   }
+  ],
+  "titulo": "Roque Júnior"
  },
  "Q316512": {
   "categorias": [
@@ -6285,6 +7930,28 @@
   },
   "titulo": "Chancel Mbemba"
  },
+ "Q31981": {
+  "categorias": [
+   "final"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2013,
+    "competicao": "liga_campeoes"
+   },
+   {
+    "ano": 2020,
+    "competicao": "liga_campeoes"
+   },
+   {
+    "ano": 2022,
+    "competicao": "liga_campeoes"
+   }
+  ],
+  "titulo": "David Alaba"
+ },
  "Q323180": {
   "categorias": [
    "grandes"
@@ -6316,10 +7983,17 @@
    "melhor": 15
   },
   "categorias": [
-   "bola_de_ouro"
+   "bola_de_ouro",
+   "final"
   ],
   "conhecido": true,
-  "diario": false,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2022,
+    "competicao": "mundial"
+   }
+  ],
   "titulo": "Emiliano Martínez"
  },
  "Q328466": {
@@ -6363,11 +8037,32 @@
    "melhor": 22
   },
   "categorias": [
-   "bola_de_ouro"
+   "bola_de_ouro",
+   "final"
   ],
   "conhecido": true,
-  "diario": false,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2022,
+    "competicao": "mundial"
+   }
+  ],
   "titulo": "Alexis Mac Allister"
+ },
+ "Q337623": {
+  "categorias": [
+   "final"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2020,
+    "competicao": "europeu"
+   }
+  ],
+  "titulo": "Marco Verratti"
  },
  "Q342223": {
   "bola_de_ouro": {
@@ -6382,6 +8077,20 @@
   "conhecido": true,
   "diario": false,
   "titulo": "Sergi Barjuán"
+ },
+ "Q342474": {
+  "categorias": [
+   "final"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2002,
+    "competicao": "mundial"
+   }
+  ],
+  "titulo": "Marcos (footballer, born 1973)"
  },
  "Q343997": {
   "categorias": [
@@ -6456,6 +8165,20 @@
   },
   "internacionalizacoes": 81,
   "titulo": "João Pinto"
+ },
+ "Q3529022": {
+  "categorias": [
+   "final"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2021,
+    "competicao": "liga_campeoes"
+   }
+  ],
+  "titulo": "Timo Werner"
  },
  "Q353059": {
   "bola_de_ouro": {
@@ -6556,10 +8279,17 @@
    "melhor": 3
   },
   "categorias": [
-   "bola_de_ouro"
+   "bola_de_ouro",
+   "final"
   ],
   "conhecido": true,
   "diario": true,
+  "finais": [
+   {
+    "ano": 2023,
+    "competicao": "liga_campeoes"
+   }
+  ],
   "titulo": "Kevin De Bruyne"
  },
  "Q359481": {
@@ -6586,6 +8316,20 @@
   },
   "internacionalizacoes": 17,
   "titulo": "Carlos Martins (footballer)"
+ },
+ "Q36371294": {
+  "categorias": [
+   "final"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2026,
+    "competicao": "liga_campeoes"
+   }
+  ],
+  "titulo": "Matvey Safonov"
  },
  "Q363829": {
   "categorias": [
@@ -6725,10 +8469,17 @@
    "melhor": 26
   },
   "categorias": [
-   "bola_de_ouro"
+   "bola_de_ouro",
+   "final"
   ],
   "conhecido": true,
-  "diario": false,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2019,
+    "competicao": "liga_campeoes"
+   }
+  ],
   "titulo": "Georginio Wijnaldum"
  },
  "Q372534": {
@@ -6866,10 +8617,17 @@
    "melhor": 19
   },
   "categorias": [
-   "bola_de_ouro"
+   "bola_de_ouro",
+   "final"
   ],
   "conhecido": true,
-  "diario": false,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2021,
+    "competicao": "liga_campeoes"
+   }
+  ],
   "titulo": "Mason Mount"
  },
  "Q380024": {
@@ -6902,10 +8660,21 @@
    "melhor": 3
   },
   "categorias": [
-   "bola_de_ouro"
+   "bola_de_ouro",
+   "final"
   ],
   "conhecido": true,
   "diario": true,
+  "finais": [
+   {
+    "ano": 2020,
+    "competicao": "europeu"
+   },
+   {
+    "ano": 2021,
+    "competicao": "liga_campeoes"
+   }
+  ],
   "titulo": "Jorginho (footballer, born December 1991)"
  },
  "Q3810496": {
@@ -6928,10 +8697,25 @@
    "melhor": 16
   },
   "categorias": [
-   "bola_de_ouro"
+   "bola_de_ouro",
+   "final"
   ],
   "conhecido": true,
-  "diario": false,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2016,
+    "competicao": "liga_campeoes"
+   },
+   {
+    "ano": 2017,
+    "competicao": "liga_campeoes"
+   },
+   {
+    "ano": 2018,
+    "competicao": "liga_campeoes"
+   }
+  ],
   "titulo": "Marcelo (footballer, born 1988)"
  },
  "Q381384": {
@@ -6978,6 +8762,24 @@
   },
   "titulo": "Marco Aurélio (footballer, born 1967)"
  },
+ "Q3855340": {
+  "categorias": [
+   "final"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2026,
+    "competicao": "mundial"
+   },
+   {
+    "ano": 2024,
+    "competicao": "europeu"
+   }
+  ],
+  "titulo": "Aymeric Laporte"
+ },
  "Q386876": {
   "bola_de_ouro": {
    "edicoes": {
@@ -7012,6 +8814,20 @@
   },
   "titulo": "Basarab Panduru"
  },
+ "Q3876530": {
+  "categorias": [
+   "final"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2022,
+    "competicao": "mundial"
+   }
+  ],
+  "titulo": "Nicolás Tagliafico"
+ },
  "Q3887042": {
   "categorias": [
    "selecao",
@@ -7025,6 +8841,20 @@
   "internacionalizacoes": 22,
   "titulo": "Otávio (footballer, born 1995)"
  },
+ "Q39076401": {
+  "categorias": [
+   "final"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2021,
+    "competicao": "liga_campeoes"
+   }
+  ],
+  "titulo": "Reece James"
+ },
  "Q39230": {
   "bola_de_ouro": {
    "edicoes": {
@@ -7033,10 +8863,21 @@
    "melhor": 28
   },
   "categorias": [
-   "bola_de_ouro"
+   "bola_de_ouro",
+   "final"
   ],
   "conhecido": true,
-  "diario": false,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2025,
+    "competicao": "liga_campeoes"
+   },
+   {
+    "ano": 2026,
+    "competicao": "liga_campeoes"
+   }
+  ],
   "titulo": "Marquinhos"
  },
  "Q3940027": {
@@ -7063,10 +8904,17 @@
    "melhor": 1
   },
   "categorias": [
-   "bola_de_ouro"
+   "bola_de_ouro",
+   "final"
   ],
   "conhecido": true,
   "diario": true,
+  "finais": [
+   {
+    "ano": 2002,
+    "competicao": "mundial"
+   }
+  ],
   "titulo": "Ronaldinho"
  },
  "Q40588348": {
@@ -7130,18 +8978,32 @@
    "melhor": 2
   },
   "categorias": [
-   "bola_de_ouro"
+   "bola_de_ouro",
+   "final"
   ],
   "conhecido": true,
   "diario": true,
+  "finais": [
+   {
+    "ano": 2012,
+    "competicao": "liga_campeoes"
+   }
+  ],
   "titulo": "Frank Lampard"
  },
  "Q4241680": {
   "categorias": [
-   "selecao"
+   "selecao",
+   "final"
   ],
   "conhecido": true,
   "diario": true,
+  "finais": [
+   {
+    "ano": 2016,
+    "competicao": "europeu"
+   }
+  ],
   "internacionalizacoes": 65,
   "titulo": "Raphaël Guerreiro"
  },
@@ -7159,6 +9021,20 @@
   "diario": false,
   "titulo": "David Ginola"
  },
+ "Q42728914": {
+  "categorias": [
+   "final"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2024,
+    "competicao": "liga_campeoes"
+   }
+  ],
+  "titulo": "Rodrygo"
+ },
  "Q42731": {
   "bola_de_ouro": {
    "edicoes": {
@@ -7168,10 +9044,17 @@
    "melhor": 3
   },
   "categorias": [
-   "bola_de_ouro"
+   "bola_de_ouro",
+   "final"
   ],
   "conhecido": true,
   "diario": true,
+  "finais": [
+   {
+    "ano": 2008,
+    "competicao": "europeu"
+   }
+  ],
   "titulo": "Fernando Torres"
  },
  "Q428603": {
@@ -7201,10 +9084,17 @@
    "melhor": 2
   },
   "categorias": [
-   "bola_de_ouro"
+   "bola_de_ouro",
+   "final"
   ],
   "conhecido": true,
   "diario": true,
+  "finais": [
+   {
+    "ano": 2002,
+    "competicao": "mundial"
+   }
+  ],
   "titulo": "Roberto Carlos"
  },
  "Q430865": {
@@ -7253,10 +9143,25 @@
    "melhor": 5
   },
   "categorias": [
-   "bola_de_ouro"
+   "bola_de_ouro",
+   "final"
   ],
   "conhecido": true,
   "diario": true,
+  "finais": [
+   {
+    "ano": 2014,
+    "competicao": "mundial"
+   },
+   {
+    "ano": 2013,
+    "competicao": "liga_campeoes"
+   },
+   {
+    "ano": 2020,
+    "competicao": "liga_campeoes"
+   }
+  ],
   "titulo": "Thomas Müller"
  },
  "Q43682": {
@@ -7270,10 +9175,21 @@
    "melhor": 6
   },
   "categorias": [
-   "bola_de_ouro"
+   "bola_de_ouro",
+   "final"
   ],
   "conhecido": true,
   "diario": true,
+  "finais": [
+   {
+    "ano": 2014,
+    "competicao": "mundial"
+   },
+   {
+    "ano": 2013,
+    "competicao": "liga_campeoes"
+   }
+  ],
   "titulo": "Philipp Lahm"
  },
  "Q43729": {
@@ -7291,10 +9207,33 @@
    "melhor": 2
   },
   "categorias": [
-   "bola_de_ouro"
+   "bola_de_ouro",
+   "final"
   ],
   "conhecido": true,
   "diario": true,
+  "finais": [
+   {
+    "ano": 2010,
+    "competicao": "mundial"
+   },
+   {
+    "ano": 2008,
+    "competicao": "europeu"
+   },
+   {
+    "ano": 2012,
+    "competicao": "europeu"
+   },
+   {
+    "ano": 2011,
+    "competicao": "liga_campeoes"
+   },
+   {
+    "ano": 2015,
+    "competicao": "liga_campeoes"
+   }
+  ],
   "titulo": "Andrés Iniesta"
  },
  "Q437329": {
@@ -7319,10 +9258,17 @@
    "melhor": 4
   },
   "categorias": [
-   "bola_de_ouro"
+   "bola_de_ouro",
+   "final"
   ],
   "conhecido": true,
   "diario": true,
+  "finais": [
+   {
+    "ano": 2013,
+    "competicao": "liga_campeoes"
+   }
+  ],
   "titulo": "Arjen Robben"
  },
  "Q43926": {
@@ -7336,10 +9282,17 @@
    "melhor": 5
   },
   "categorias": [
-   "bola_de_ouro"
+   "bola_de_ouro",
+   "final"
   ],
   "conhecido": true,
   "diario": true,
+  "finais": [
+   {
+    "ano": 2006,
+    "competicao": "mundial"
+   }
+  ],
   "titulo": "Andrea Pirlo"
  },
  "Q439722": {
@@ -7374,10 +9327,17 @@
  },
  "Q44080929": {
   "categorias": [
-   "grandes"
+   "grandes",
+   "final"
   ],
-  "conhecido": false,
-  "diario": false,
+  "conhecido": true,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2026,
+    "competicao": "mundial"
+   }
+  ],
   "grandes": {
    "sporting": 67
   },
@@ -7425,10 +9385,21 @@
    "melhor": 15
   },
   "categorias": [
-   "bola_de_ouro"
+   "bola_de_ouro",
+   "final"
   ],
   "conhecido": true,
-  "diario": false,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2014,
+    "competicao": "mundial"
+   },
+   {
+    "ano": 2013,
+    "competicao": "liga_campeoes"
+   }
+  ],
   "titulo": "Bastian Schweinsteiger"
  },
  "Q44522": {
@@ -7528,10 +9499,17 @@
    "melhor": 3
   },
   "categorias": [
-   "bola_de_ouro"
+   "bola_de_ouro",
+   "final"
   ],
   "conhecido": true,
   "diario": true,
+  "finais": [
+   {
+    "ano": 2018,
+    "competicao": "mundial"
+   }
+  ],
   "titulo": "Antoine Griezmann"
  },
  "Q45567": {
@@ -7590,6 +9568,20 @@
    "benfica": 63
   },
   "titulo": "Nolito"
+ },
+ "Q458101": {
+  "categorias": [
+   "final"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2020,
+    "competicao": "europeu"
+   }
+  ],
+  "titulo": "Ciro Immobile"
  },
  "Q45901": {
   "bola_de_ouro": {
@@ -7719,6 +9711,20 @@
   "internacionalizacoes": 50,
   "titulo": "Jorge Costa"
  },
+ "Q465975": {
+  "categorias": [
+   "final"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2004,
+    "competicao": "europeu"
+   }
+  ],
+  "titulo": "Michalis Kapsis"
+ },
  "Q4689382": {
   "categorias": [
    "grandes"
@@ -7798,6 +9804,20 @@
   "diario": true,
   "titulo": "Andrey Arshavin"
  },
+ "Q47548": {
+  "categorias": [
+   "final"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2011,
+    "competicao": "liga_campeoes"
+   }
+  ],
+  "titulo": "Víctor Valdés"
+ },
  "Q4755614": {
   "categorias": [
    "grandes"
@@ -7831,10 +9851,17 @@
  "Q481330": {
   "categorias": [
    "selecao",
-   "grandes"
+   "grandes",
+   "final"
   ],
   "conhecido": true,
-  "diario": false,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2016,
+    "competicao": "europeu"
+   }
+  ],
   "grandes": {
    "sporting": 67
   },
@@ -7864,10 +9891,17 @@
   "categorias": [
    "bola_de_ouro",
    "selecao",
-   "grandes"
+   "grandes",
+   "final"
   ],
   "conhecido": true,
   "diario": true,
+  "finais": [
+   {
+    "ano": 2016,
+    "competicao": "europeu"
+   }
+  ],
   "grandes": {
    "sporting": 103
   },
@@ -7916,10 +9950,17 @@
    "melhor": 14
   },
   "categorias": [
-   "bola_de_ouro"
+   "bola_de_ouro",
+   "final"
   ],
   "conhecido": true,
-  "diario": false,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2012,
+    "competicao": "liga_campeoes"
+   }
+  ],
   "titulo": "Petr Čech"
  },
  "Q483145": {
@@ -7957,10 +9998,41 @@
    "melhor": 6
   },
   "categorias": [
-   "bola_de_ouro"
+   "bola_de_ouro",
+   "final"
   ],
   "conhecido": true,
   "diario": true,
+  "finais": [
+   {
+    "ano": 2010,
+    "competicao": "mundial"
+   },
+   {
+    "ano": 2008,
+    "competicao": "europeu"
+   },
+   {
+    "ano": 2012,
+    "competicao": "europeu"
+   },
+   {
+    "ano": 2014,
+    "competicao": "liga_campeoes"
+   },
+   {
+    "ano": 2016,
+    "competicao": "liga_campeoes"
+   },
+   {
+    "ano": 2017,
+    "competicao": "liga_campeoes"
+   },
+   {
+    "ano": 2018,
+    "competicao": "liga_campeoes"
+   }
+  ],
   "titulo": "Sergio Ramos"
  },
  "Q483417": {
@@ -7990,10 +10062,17 @@
    "melhor": 1
   },
   "categorias": [
-   "bola_de_ouro"
+   "bola_de_ouro",
+   "final"
   ],
   "conhecido": true,
   "diario": true,
+  "finais": [
+   {
+    "ano": 2002,
+    "competicao": "mundial"
+   }
+  ],
   "titulo": "Rivaldo"
  },
  "Q483583": {
@@ -8032,10 +10111,33 @@
    "melhor": 1
   },
   "categorias": [
-   "bola_de_ouro"
+   "bola_de_ouro",
+   "final"
   ],
   "conhecido": true,
   "diario": true,
+  "finais": [
+   {
+    "ano": 2014,
+    "competicao": "liga_campeoes"
+   },
+   {
+    "ano": 2016,
+    "competicao": "liga_campeoes"
+   },
+   {
+    "ano": 2017,
+    "competicao": "liga_campeoes"
+   },
+   {
+    "ano": 2018,
+    "competicao": "liga_campeoes"
+   },
+   {
+    "ano": 2022,
+    "competicao": "liga_campeoes"
+   }
+  ],
   "titulo": "Luka Modrić"
  },
  "Q483846": {
@@ -8055,10 +10157,17 @@
  "Q484384": {
   "categorias": [
    "selecao",
-   "grandes"
+   "grandes",
+   "final"
   ],
   "conhecido": true,
   "diario": true,
+  "finais": [
+   {
+    "ano": 2014,
+    "competicao": "liga_campeoes"
+   }
+  ],
   "grandes": {
    "benfica": 52
   },
@@ -8091,16 +10200,41 @@
   },
   "categorias": [
    "bola_de_ouro",
+   "final",
    "selecao",
    "grandes"
   ],
   "conhecido": true,
   "diario": true,
+  "finais": [
+   {
+    "ano": 2016,
+    "competicao": "europeu"
+   },
+   {
+    "ano": 2016,
+    "competicao": "liga_campeoes"
+   }
+  ],
   "grandes": {
    "porto": 196
   },
   "internacionalizacoes": 141,
   "titulo": "Pepe (footballer, born February 1983)"
+ },
+ "Q48770": {
+  "categorias": [
+   "final"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2024,
+    "competicao": "europeu"
+   }
+  ],
+  "titulo": "Álvaro Morata"
  },
  "Q4888740": {
   "categorias": [
@@ -8128,10 +10262,17 @@
    "melhor": 4
   },
   "categorias": [
-   "bola_de_ouro"
+   "bola_de_ouro",
+   "final"
   ],
   "conhecido": true,
   "diario": true,
+  "finais": [
+   {
+    "ano": 2012,
+    "competicao": "liga_campeoes"
+   }
+  ],
   "titulo": "Didier Drogba"
  },
  "Q489039": {
@@ -8142,10 +10283,29 @@
    "melhor": 7
   },
   "categorias": [
-   "bola_de_ouro"
+   "bola_de_ouro",
+   "final"
   ],
   "conhecido": true,
   "diario": true,
+  "finais": [
+   {
+    "ano": 2018,
+    "competicao": "mundial"
+   },
+   {
+    "ano": 2014,
+    "competicao": "liga_campeoes"
+   },
+   {
+    "ano": 2017,
+    "competicao": "liga_campeoes"
+   },
+   {
+    "ano": 2018,
+    "competicao": "liga_campeoes"
+   }
+  ],
   "titulo": "Raphaël Varane"
  },
  "Q489111": {
@@ -8202,10 +10362,29 @@
    "melhor": 20
   },
   "categorias": [
-   "bola_de_ouro"
+   "bola_de_ouro",
+   "final"
   ],
   "conhecido": true,
-  "diario": false,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2010,
+    "competicao": "mundial"
+   },
+   {
+    "ano": 2012,
+    "competicao": "europeu"
+   },
+   {
+    "ano": 2011,
+    "competicao": "liga_campeoes"
+   },
+   {
+    "ano": 2015,
+    "competicao": "liga_campeoes"
+   }
+  ],
   "titulo": "Sergio Busquets"
  },
  "Q4979316": {
@@ -8228,6 +10407,20 @@
   "internacionalizacoes": 97,
   "titulo": "Bruno Fernandes"
  },
+ "Q49821": {
+  "categorias": [
+   "final"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2004,
+    "competicao": "europeu"
+   }
+  ],
+  "titulo": "Stelios Giannakopoulos"
+ },
  "Q50069716": {
   "categorias": [
    "grandes"
@@ -8247,6 +10440,20 @@
   "diario": false,
   "internacionalizacoes": 20,
   "titulo": "Abel Xavier"
+ },
+ "Q503137": {
+  "categorias": [
+   "final"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2024,
+    "competicao": "liga_campeoes"
+   }
+  ],
+  "titulo": "Nacho (footballer, born 1990)"
  },
  "Q503365": {
   "categorias": [
@@ -8389,6 +10596,20 @@
   "internacionalizacoes": 29,
   "titulo": "André Gomes"
  },
+ "Q520721": {
+  "categorias": [
+   "final"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2020,
+    "competicao": "liga_campeoes"
+   }
+  ],
+  "titulo": "Leon Goretzka"
+ },
  "Q526233": {
   "categorias": [
    "grandes"
@@ -8413,10 +10634,17 @@
  },
  "Q52876": {
   "categorias": [
-   "mitico"
+   "mitico",
+   "final"
   ],
   "conhecido": true,
   "diario": true,
+  "finais": [
+   {
+    "ano": 2010,
+    "competicao": "liga_campeoes"
+   }
+  ],
   "titulo": "Javier Zanetti"
  },
  "Q529207": {
@@ -8432,10 +10660,17 @@
    "melhor": 1
   },
   "categorias": [
-   "bola_de_ouro"
+   "bola_de_ouro",
+   "final"
   ],
   "conhecido": true,
   "diario": true,
+  "finais": [
+   {
+    "ano": 2002,
+    "competicao": "mundial"
+   }
+  ],
   "titulo": "Ronaldo (Brazilian footballer)"
  },
  "Q531814": {
@@ -8468,6 +10703,34 @@
   },
   "titulo": "Carlos Paredes (footballer)"
  },
+ "Q536160": {
+  "categorias": [
+   "final"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2004,
+    "competicao": "europeu"
+   }
+  ],
+  "titulo": "Takis Fyssas"
+ },
+ "Q5370912": {
+  "categorias": [
+   "final"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2020,
+    "competicao": "europeu"
+   }
+  ],
+  "titulo": "Emerson Palmieri"
+ },
  "Q537568": {
   "bola_de_ouro": {
    "edicoes": {
@@ -8492,6 +10755,20 @@
    "porto": 57
   },
   "titulo": "Cristian Tello"
+ },
+ "Q54094": {
+  "categorias": [
+   "final"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2014,
+    "competicao": "liga_campeoes"
+   }
+  ],
+  "titulo": "Sami Khedira"
  },
  "Q5427726": {
   "categorias": [
@@ -8740,6 +11017,20 @@
   },
   "titulo": "Hernâni Fortes"
  },
+ "Q57567": {
+  "categorias": [
+   "final"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2019,
+    "competicao": "liga_campeoes"
+   }
+  ],
+  "titulo": "Joël Matip"
+ },
  "Q579231": {
   "categorias": [
    "grandes"
@@ -8810,11 +11101,32 @@
    "melhor": 7
   },
   "categorias": [
+   "final",
    "bola_de_ouro"
   ],
   "conhecido": true,
   "diario": true,
+  "finais": [
+   {
+    "ano": 2022,
+    "competicao": "mundial"
+   }
+  ],
   "titulo": "Julián Alvarez"
+ },
+ "Q59490": {
+  "categorias": [
+   "final"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2020,
+    "competicao": "liga_campeoes"
+   }
+  ],
+  "titulo": "Serge Gnabry"
  },
  "Q59655998": {
   "bola_de_ouro": {
@@ -8854,10 +11166,17 @@
    "melhor": 17
   },
   "categorias": [
-   "bola_de_ouro"
+   "bola_de_ouro",
+   "final"
   ],
   "conhecido": true,
-  "diario": false,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2019,
+    "competicao": "liga_campeoes"
+   }
+  ],
   "titulo": "Roberto Firmino"
  },
  "Q605817": {
@@ -8902,6 +11221,20 @@
    "porto": 192
   },
   "titulo": "Jesús Manuel Corona"
+ },
+ "Q6110670": {
+  "categorias": [
+   "final"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2022,
+    "competicao": "mundial"
+   }
+  ],
+  "titulo": "Rodrigo De Paul"
  },
  "Q611923": {
   "categorias": [
@@ -8964,10 +11297,25 @@
    "melhor": 1
   },
   "categorias": [
-   "bola_de_ouro"
+   "bola_de_ouro",
+   "final"
   ],
   "conhecido": true,
   "diario": true,
+  "finais": [
+   {
+    "ano": 2022,
+    "competicao": "mundial"
+   },
+   {
+    "ano": 2011,
+    "competicao": "liga_campeoes"
+   },
+   {
+    "ano": 2015,
+    "competicao": "liga_campeoes"
+   }
+  ],
   "titulo": "Lionel Messi"
  },
  "Q616664": {
@@ -8978,10 +11326,29 @@
    "melhor": 17
   },
   "categorias": [
-   "bola_de_ouro"
+   "bola_de_ouro",
+   "final"
   ],
   "conhecido": true,
-  "diario": false,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2016,
+    "competicao": "liga_campeoes"
+   },
+   {
+    "ano": 2017,
+    "competicao": "liga_campeoes"
+   },
+   {
+    "ano": 2018,
+    "competicao": "liga_campeoes"
+   },
+   {
+    "ano": 2022,
+    "competicao": "liga_campeoes"
+   }
+  ],
   "titulo": "Casemiro"
  },
  "Q61741633": {
@@ -9015,10 +11382,21 @@
    "melhor": 12
   },
   "categorias": [
-   "bola_de_ouro"
+   "bola_de_ouro",
+   "final"
   ],
   "conhecido": true,
-  "diario": false,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2025,
+    "competicao": "liga_campeoes"
+   },
+   {
+    "ano": 2026,
+    "competicao": "liga_campeoes"
+   }
+  ],
   "titulo": "Khvicha Kvaratskhelia"
  },
  "Q61978222": {
@@ -9087,6 +11465,20 @@
   },
   "titulo": "José Barroso (footballer)"
  },
+ "Q62960177": {
+  "categorias": [
+   "final"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2024,
+    "competicao": "liga_campeoes"
+   }
+  ],
+  "titulo": "Eduardo Camavinga"
+ },
  "Q6298063": {
   "bola_de_ouro": {
    "edicoes": {
@@ -9106,10 +11498,17 @@
  "Q6298271": {
   "categorias": [
    "selecao",
-   "grandes"
+   "grandes",
+   "final"
   ],
   "conhecido": true,
   "diario": true,
+  "finais": [
+   {
+    "ano": 2016,
+    "competicao": "europeu"
+   }
+  ],
   "grandes": {
    "benfica": 94,
    "sporting": 93
@@ -9139,6 +11538,20 @@
   },
   "titulo": "Fábio Vieira (footballer, born 2000)"
  },
+ "Q6413296": {
+  "categorias": [
+   "final"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2020,
+    "competicao": "liga_campeoes"
+   }
+  ],
+  "titulo": "Kingsley Coman"
+ },
  "Q641425": {
   "bola_de_ouro": {
    "edicoes": {
@@ -9147,10 +11560,17 @@
    "melhor": 14
   },
   "categorias": [
-   "bola_de_ouro"
+   "bola_de_ouro",
+   "final"
   ],
   "conhecido": true,
-  "diario": false,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2019,
+    "competicao": "liga_campeoes"
+   }
+  ],
   "titulo": "Fabinho (footballer, born 1993)"
  },
  "Q659634": {
@@ -9196,10 +11616,17 @@
    "melhor": 3
   },
   "categorias": [
-   "bola_de_ouro"
+   "bola_de_ouro",
+   "final"
   ],
   "conhecido": true,
   "diario": true,
+  "finais": [
+   {
+    "ano": 2024,
+    "competicao": "liga_campeoes"
+   }
+  ],
   "titulo": "Jude Bellingham"
  },
  "Q66606355": {
@@ -9252,10 +11679,21 @@
    "bola_de_ouro",
    "selecao",
    "grandes",
-   "bola_de_ouro"
+   "bola_de_ouro",
+   "final"
   ],
   "conhecido": true,
-  "diario": false,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2025,
+    "competicao": "liga_campeoes"
+   },
+   {
+    "ano": 2026,
+    "competicao": "liga_campeoes"
+   }
+  ],
   "grandes": {
    "porto": 59
   },
@@ -9337,10 +11775,17 @@
    "melhor": 2
   },
   "categorias": [
-   "bola_de_ouro"
+   "bola_de_ouro",
+   "final"
   ],
   "conhecido": true,
   "diario": true,
+  "finais": [
+   {
+    "ano": 2006,
+    "competicao": "mundial"
+   }
+  ],
   "titulo": "Gianluigi Buffon"
  },
  "Q69975567": {
@@ -9585,10 +12030,21 @@
    "melhor": 7
   },
   "categorias": [
-   "bola_de_ouro"
+   "bola_de_ouro",
+   "final"
   ],
   "conhecido": true,
   "diario": true,
+  "finais": [
+   {
+    "ano": 2022,
+    "competicao": "liga_campeoes"
+   },
+   {
+    "ano": 2024,
+    "competicao": "liga_campeoes"
+   }
+  ],
   "titulo": "Thibaut Courtois"
  },
  "Q73400656": {
@@ -9650,6 +12106,20 @@
    "sporting": 52
   },
   "titulo": "Luís Miguel (footballer, born 1971)"
+ },
+ "Q76089": {
+  "categorias": [
+   "final"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2010,
+    "competicao": "liga_campeoes"
+   }
+  ],
+  "titulo": "Diego Milito"
  },
  "Q76322": {
   "bola_de_ouro": {
@@ -9780,10 +12250,17 @@
    "melhor": 12
   },
   "categorias": [
-   "bola_de_ouro"
+   "bola_de_ouro",
+   "final"
   ],
   "conhecido": true,
-  "diario": false,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2020,
+    "competicao": "europeu"
+   }
+  ],
   "titulo": "Giorgio Chiellini"
  },
  "Q80471": {
@@ -9795,11 +12272,32 @@
    "melhor": 7
   },
   "categorias": [
-   "bola_de_ouro"
+   "bola_de_ouro",
+   "final"
   ],
   "conhecido": true,
   "diario": true,
+  "finais": [
+   {
+    "ano": 2014,
+    "competicao": "mundial"
+   }
+  ],
   "titulo": "Miroslav Klose"
+ },
+ "Q80761": {
+  "categorias": [
+   "final"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2013,
+    "competicao": "liga_campeoes"
+   }
+  ],
+  "titulo": "Dante (footballer)"
  },
  "Q80892": {
   "bola_de_ouro": {
@@ -9810,10 +12308,21 @@
    "melhor": 12
   },
   "categorias": [
-   "bola_de_ouro"
+   "bola_de_ouro",
+   "final"
   ],
   "conhecido": true,
-  "diario": false,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2017,
+    "competicao": "liga_campeoes"
+   },
+   {
+    "ano": 2018,
+    "competicao": "liga_campeoes"
+   }
+  ],
   "titulo": "Isco"
  },
  "Q83006": {
@@ -9828,10 +12337,21 @@
    "melhor": 7
   },
   "categorias": [
-   "bola_de_ouro"
+   "bola_de_ouro",
+   "final"
   ],
   "conhecido": true,
   "diario": true,
+  "finais": [
+   {
+    "ano": 2010,
+    "competicao": "mundial"
+   },
+   {
+    "ano": 2011,
+    "competicao": "liga_campeoes"
+   }
+  ],
   "titulo": "David Villa"
  },
  "Q8338725": {
@@ -9878,10 +12398,17 @@
    "melhor": 11
   },
   "categorias": [
-   "bola_de_ouro"
+   "bola_de_ouro",
+   "final"
   ],
   "conhecido": true,
-  "diario": false,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2014,
+    "competicao": "mundial"
+   }
+  ],
   "titulo": "Mesut Özil"
  },
  "Q83721": {
@@ -9916,6 +12443,24 @@
    "benfica": 66
   },
   "titulo": "Petar Musa"
+ },
+ "Q87767569": {
+  "categorias": [
+   "final"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2025,
+    "competicao": "liga_campeoes"
+   },
+   {
+    "ano": 2026,
+    "competicao": "liga_campeoes"
+   }
+  ],
+  "titulo": "Willian Pacho"
  },
  "Q91531": {
   "categorias": [
@@ -10149,6 +12694,20 @@
   "diario": false,
   "titulo": "Jamal Musiala"
  },
+ "Q96105248": {
+  "categorias": [
+   "final"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2022,
+    "competicao": "mundial"
+   }
+  ],
+  "titulo": "Enzo Fernández"
+ },
  "Q9613708": {
   "categorias": [
    "grandes"
@@ -10183,10 +12742,21 @@
   "categorias": [
    "bola_de_ouro",
    "selecao",
-   "grandes"
+   "grandes",
+   "final"
   ],
   "conhecido": true,
   "diario": true,
+  "finais": [
+   {
+    "ano": 2025,
+    "competicao": "liga_campeoes"
+   },
+   {
+    "ano": 2026,
+    "competicao": "liga_campeoes"
+   }
+  ],
   "grandes": {
    "sporting": 56
   },
@@ -10210,11 +12780,44 @@
    "melhor": 20
   },
   "categorias": [
-   "bola_de_ouro"
+   "bola_de_ouro",
+   "final"
   ],
   "conhecido": true,
-  "diario": false,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2021,
+    "competicao": "liga_campeoes"
+   },
+   {
+    "ano": 2024,
+    "competicao": "liga_campeoes"
+   }
+  ],
   "titulo": "Antonio Rüdiger"
+ },
+ "Q969423": {
+  "categorias": [
+   "final"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2016,
+    "competicao": "liga_campeoes"
+   },
+   {
+    "ano": 2017,
+    "competicao": "liga_campeoes"
+   },
+   {
+    "ano": 2018,
+    "competicao": "liga_campeoes"
+   }
+  ],
+  "titulo": "Keylor Navas"
  },
  "Q969520": {
   "bola_de_ouro": {
@@ -10294,6 +12897,20 @@
    "porto": 73
   },
   "titulo": "Tomás Costa"
+ },
+ "Q97404267": {
+  "categorias": [
+   "final"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "finais": [
+   {
+    "ano": 2026,
+    "competicao": "mundial"
+   }
+  ],
+  "titulo": "Álex Baena"
  },
  "Q97725322": {
   "categorias": [

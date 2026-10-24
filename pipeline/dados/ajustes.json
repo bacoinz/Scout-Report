@@ -1,3 +1,8 @@
 {
- "_nota": "Correções à mão, aplicadas por cima das fontes no fim de cada recolha: {\"Q…\": {\"campo\": valor, \"perfil.altura_cm\": 180}}."
+ "_nota": "Correções à mão, aplicadas por cima das fontes no fim de cada recolha: {\"Q…\": {\"campo\": valor, \"perfil.altura_cm\": 180}}.",
+ "Q2479934": {
+  "nascimento": "1988-03-16",
+  "dica": "1988 · Argentina",
+  "_porque": "a Wikidata tem 1945 (o zerozero e a Wikipédia dizem 16/3/1988)"
+ }
 }

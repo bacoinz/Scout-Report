@@ -7,6 +7,7 @@
 | Três grandes ≥ 50 | Category:S.L. Benfica footballers / FC Porto players / Sporting CP footballers + caixa (passagem que toque
 |                   | 1996+; jogos de campeonato) e, quando a caixa fica perto do limiar, os jogos em todas as competições do zerozero |
 | Míticos | dados/miticos.json, depois de aprovados |
+| Finais | titulares das equipas campeãs: Mundial e Europeu desde 2002, Liga dos Campeões desde 2010 (wikipedia.final) |
 
 As passagens comparam-se pelo QID do clube (o Sporting CP não se confunde com o Sporting de Gijón)."""
 import json
@@ -190,19 +191,63 @@ def grandes(cliente, registar=print) -> dict:
     return res
 
 
+# --- Titulares das finais -------------------------------------------------------------------------------------------
+
+# Os onzes das equipas campeãs (pedido do utilizador, 24/10/2026): Mundial e Europeu desde 2002, Liga dos Campeões
+# desde 2010. Os artigos das finais têm a caixa do jogo e as tabelas dos onzes (wikipedia.final).
+FINAIS = {
+    "mundial": ("Mundial", 2002, 4, lambda a: f"{a} FIFA World Cup final"),
+    "europeu": ("Europeu", 2004, 4, lambda a: f"UEFA Euro {a} final"),
+    "liga_campeoes": ("Liga dos Campeões", 2010, 1, lambda a: f"{a} UEFA Champions League final"),
+}
+
+
+def titulares_das_finais(cliente, registar=print) -> dict:
+    """{artigo do jogador: [(competição, ano)]} com os titulares de quem ganhou cada final."""
+    pedidos = [(comp, ano, titulo(ano)) for comp, (_, desde, passo, titulo) in FINAIS.items()
+               for ano in range(desde, config.ANO_ATUAL + 1, passo)]
+    textos = wp.wikitextos(cliente, [t for _, _, t in pedidos])
+    res = {}
+    for comp, ano, t in pedidos:
+        artigo = textos.get(t)
+        f = wp.final(artigo["texto"]) if artigo else None
+        if not f:
+            registar(f"  {t}: sem artigo ou sem os onzes (ainda não se jogou?)")
+            continue
+        for jogador in f["titulares"][f["vencedor"]]:
+            res.setdefault(jogador, []).append((comp, ano))
+    return res
+
+
+def _nascidos_antes(cliente, qids) -> set[str]:
+    """Os QIDs de quem nasceu antes de config.NASCIDOS_DESDE (P569 da Wikidata): não entram na base."""
+    ents = wd.entidades(cliente, sorted(qids), props="claims")
+    ajustes = json.loads((config.DADOS / "ajustes.json").read_text(encoding="utf-8"))         if (config.DADOS / "ajustes.json").exists() else {}
+    fora = set()
+    for q, e in ents.items():
+        corrigido = (ajustes.get(q) or {}).get("nascimento")      # a Wikidata às vezes erra (Marchesín: 1945)
+        ano = int(corrigido[:4]) if corrigido else next((wd.ano(wd.valor(c)) for c in wd.afirmacoes(e, "P569")), None)
+        if ano and ano < config.NASCIDOS_DESDE:
+            fora.add(q)
+    return fora
+
+
 # --- Juntar -----------------------------------------------------------------------------------------------------------
 
 def gerar(cliente, registar=print) -> dict:
-    """{QID: {'titulo', 'categorias', 'bola_de_ouro', 'internacionalizacoes', 'grandes', 'conhecido', 'diario'}}."""
+    """{QID: {'titulo', 'categorias', 'bola_de_ouro', 'internacionalizacoes', 'grandes', 'finais', 'conhecido',
+    'diario'}}."""
     bola = bola_de_ouro(cliente)
     registar(f"Bola de Ouro: {len(bola)} jogadores no top 30 ({DESDE}–{config.ANO_ATUAL})")
     selecao = internacionais(cliente, registar)
     registar(f"Seleção: {len(selecao)} jogadores com ≥ {MINIMO_SELECAO} internacionalizações desde {DESDE}")
     clubes = grandes(cliente, registar)
     registar(f"Três grandes: {len(clubes)} jogadores com ≥ {MINIMO_GRANDES} jogos")
+    finais = titulares_das_finais(cliente, registar)
+    registar(f"Finais: {len(finais)} titulares das equipas campeãs (Mundial e Europeu desde 2002, Liga dos Campeões desde 2010)")
     miticos = json.loads((config.DADOS / "miticos.json").read_text(encoding="utf-8")) \
         if (config.DADOS / "miticos.json").exists() else []
-    titulos = set(bola) | set(selecao) | set(clubes) | set(miticos)
+    titulos = set(bola) | set(selecao) | set(clubes) | set(miticos) | set(finais)
     info = wp.info_titulos(cliente, titulos)
     res = {}
     for t in sorted(titulos):
@@ -222,14 +267,19 @@ def gerar(cliente, registar=print) -> dict:
             d["grandes"] = clubes[t]
         if t in miticos:
             d["categorias"].append("mitico")
+        if t in finais:
+            d["categorias"].append("final")
+            d["finais"] = [{"competicao": c, "ano": a} for c, a in finais[t]]
+    for q in _nascidos_antes(cliente, res):
+        registar(f"  nasceu antes de {config.NASCIDOS_DESDE}, fica de fora: {res.pop(q)['titulo']}")
     for d in res.values():
-        # Conhecidos (opção do lobby) e Desafio do Dia (plano, 1.3).
+        # Conhecidos (opção do lobby) e Desafio do Dia (plano, 1.3). Os titulares de uma final ganha são as duas coisas.
         melhor = d.get("bola_de_ouro", {}).get("melhor", 99)
         caps = d.get("internacionalizacoes", 0)
         jogos = max(d.get("grandes", {}).values(), default=0)
-        mitico = "mitico" in d["categorias"]
-        d["conhecido"] = mitico or melhor <= 30 or caps >= 25 or jogos >= 150
-        d["diario"] = mitico or melhor <= 10 or caps >= 50 or jogos >= 200
+        destaque = "mitico" in d["categorias"] or "final" in d["categorias"]
+        d["conhecido"] = destaque or melhor <= 30 or caps >= 25 or jogos >= 150
+        d["diario"] = destaque or melhor <= 10 or caps >= 50 or jogos >= 200
     return res
 
 

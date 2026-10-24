@@ -188,7 +188,7 @@
     "liga": "Q223170"
    }
   ],
-  "nome": null,
+  "nome": "Defensa y Justicia",
   "nome_completo": "Club Social y Deportivo Defensa y Justicia",
   "pais_qid": "Q414",
   "titulo": "Defensa y Justicia"
@@ -264,6 +264,19 @@
   "nome_completo": "Club Sportif Sfaxien",
   "pais_qid": "Q948",
   "titulo": "CS Sfaxien"
+ },
+ "Q1026324": {
+  "ligas": [
+   {
+    "fim": null,
+    "inicio": null,
+    "liga": "Q830717"
+   }
+  ],
+  "nome": "Chieti",
+  "nome_completo": "S.S. Chieti Calcio",
+  "pais_qid": "Q38",
+  "titulo": "SSD Chieti FC 1922"
  },
  "Q1027173": {
   "ligas": [
@@ -696,6 +709,19 @@
   "pais_qid": "Q183",
   "titulo": "1. FC Köln"
  },
+ "Q1051013": {
+  "ligas": [
+   {
+    "fim": null,
+    "inicio": 2025,
+    "liga": "Q13394"
+   }
+  ],
+  "nome": "Paris FC",
+  "nome_completo": "Paris FC",
+  "pais_qid": "Q142",
+  "titulo": "Paris FC"
+ },
  "Q1051164": {
   "ligas": [
    {
@@ -1116,6 +1142,19 @@
   "nome_completo": "FC Rustavi",
   "pais_qid": "Q230",
   "titulo": "FC Rustavi"
+ },
+ "Q1082290": {
+  "ligas": [
+   {
+    "fim": null,
+    "inicio": null,
+    "liga": "Q1141778"
+   }
+  ],
+  "nome": "Matera",
+  "nome_completo": "Società Sportiva Matera Calcio",
+  "pais_qid": "Q38",
+  "titulo": "Matera 1933"
  },
  "Q108457563": {
   "ligas": [],
@@ -1559,6 +1598,13 @@
   "pais_qid": "Q96",
   "titulo": "Pumas UNAM"
  },
+ "Q114555493": {
+  "ligas": [],
+  "nome": null,
+  "nome_completo": "North Esporte Clube",
+  "pais_qid": "Q155",
+  "titulo": "North Esporte Clube"
+ },
  "Q114566920": {
   "ligas": [],
   "nome": null,
@@ -1685,6 +1731,19 @@
   "nome_completo": "Club Deportivo Español de Buenos Aires",
   "pais_qid": "Q414",
   "titulo": "Deportivo Español"
+ },
+ "Q1191700": {
+  "ligas": [
+   {
+    "fim": null,
+    "inicio": null,
+    "liga": "Q1809510"
+   }
+  ],
+  "nome": null,
+  "nome_completo": "Coras Fútbol Club",
+  "pais_qid": "Q96",
+  "titulo": "Coras FC"
  },
  "Q1191998": {
   "ligas": [
@@ -1994,7 +2053,7 @@
     "liga": "Q100146559"
    }
   ],
-  "nome": null,
+  "nome": "Real Murcia",
   "nome_completo": "Real Murcia Club de Fútbol",
   "pais_qid": "Q29",
   "titulo": "Real Murcia CF"
@@ -2387,6 +2446,24 @@
   "nome_completo": "Futebol Clube do Porto",
   "pais_qid": "Q45",
   "titulo": "FC Porto"
+ },
+ "Q12878793": {
+  "ligas": [
+   {
+    "fim": null,
+    "inicio": 2025,
+    "liga": "Q2186582"
+   },
+   {
+    "fim": 2025,
+    "inicio": 2022,
+    "liga": "Q155965"
+   }
+  ],
+  "nome": null,
+  "nome_completo": "Karmiotissa FC",
+  "pais_qid": "Q229",
+  "titulo": "Karmiotissa FC"
  },
  "Q1293144": {
   "ligas": [
@@ -2982,6 +3059,19 @@
   "pais_qid": "Q43",
   "titulo": "Sakaryaspor"
  },
+ "Q1371330": {
+  "ligas": [
+   {
+    "fim": null,
+    "inicio": null,
+    "liga": "Q1436035"
+   }
+  ],
+  "nome": "Ethnikos Asteras",
+  "nome_completo": "Ethnikos Asteras",
+  "pais_qid": "Q41",
+  "titulo": "Ethnikos Asteras F.C."
+ },
  "Q1371345": {
   "ligas": [
    {
@@ -2990,7 +3080,7 @@
     "liga": "Q1436035"
    }
   ],
-  "nome": null,
+  "nome": "Ethnikos Piraeus",
   "nome_completo": "Ethnikos Pireu",
   "pais_qid": "Q41",
   "titulo": "Ethnikos Piraeus F.C."
@@ -3260,6 +3350,19 @@
   "nome_completo": "Fath Union Sport Football Club",
   "pais_qid": "Q1028",
   "titulo": "Fath Union Sport"
+ },
+ "Q139399": {
+  "ligas": [
+   {
+    "fim": null,
+    "inicio": null,
+    "liga": "Q607965"
+   }
+  ],
+  "nome": "Foggia",
+  "nome_completo": "Calcio Foggia 1920",
+  "pais_qid": "Q38",
+  "titulo": "Calcio Foggia 1920"
  },
  "Q1394197": {
   "ligas": [
@@ -3728,6 +3831,19 @@
   "pais_qid": "Q155",
   "titulo": "Paysandu Sport Club"
  },
+ "Q1508747": {
+  "ligas": [
+   {
+    "fim": null,
+    "inicio": null,
+    "liga": "Q1141778"
+   }
+  ],
+  "nome": "Sorrento",
+  "nome_completo": "Sorrento Calcio",
+  "pais_qid": "Q38",
+  "titulo": "Sorrento Calcio 1945"
+ },
  "Q1510813": {
   "ligas": [
    {
@@ -3793,6 +3909,19 @@
   "pais_qid": "Q414",
   "titulo": "Club Atlético Platense"
  },
+ "Q1520422": {
+  "ligas": [
+   {
+    "fim": null,
+    "inicio": 2018,
+    "liga": "Q607965"
+   }
+  ],
+  "nome": "Cavese",
+  "nome_completo": "Società Sportiva Cavese 1919",
+  "pais_qid": "Q38",
+  "titulo": "Cavese 1919"
+ },
  "Q15214308": {
   "ligas": [
    {
@@ -3818,6 +3947,19 @@
   "nome_completo": "Goiânia Esporte Clube",
   "pais_qid": "Q155",
   "titulo": "Goiânia Esporte Clube"
+ },
+ "Q15384017": {
+  "ligas": [
+   {
+    "fim": null,
+    "inicio": null,
+    "liga": "Q209955"
+   }
+  ],
+  "nome": "Krasnodar-2",
+  "nome_completo": "FC Krasnodar-2",
+  "pais_qid": "Q159",
+  "titulo": "FC Krasnodar-2"
  },
  "Q154053": {
   "ligas": [
@@ -3850,7 +3992,7 @@
     "liga": "Q152665"
    }
   ],
-  "nome": null,
+  "nome": "MSV Duisburg",
   "nome_completo": "Meidericher Spielverein Duisburg",
   "pais_qid": "Q183",
   "titulo": "MSV Duisburg"
@@ -4274,6 +4416,29 @@
   "pais_qid": null,
   "titulo": "1. FC Lokomotive Leipzig"
  },
+ "Q16245443": {
+  "ligas": [
+   {
+    "fim": null,
+    "inicio": 2025,
+    "liga": "Q235114"
+   },
+   {
+    "fim": 2024,
+    "inicio": 2023,
+    "liga": "Q235114"
+   },
+   {
+    "fim": 2025,
+    "inicio": 2024,
+    "liga": "Q63980269"
+   }
+  ],
+  "nome": null,
+  "nome_completo": "A.E. Kifisia F.C.",
+  "pais_qid": "Q41",
+  "titulo": "A.E. Kifisia F.C."
+ },
  "Q1630834": {
   "ligas": [
    {
@@ -4412,6 +4577,24 @@
   "pais_qid": "Q1009",
   "titulo": "Léopard Douala"
  },
+ "Q1642914": {
+  "ligas": [
+   {
+    "fim": null,
+    "inicio": 2021,
+    "liga": "Q2306229"
+   },
+   {
+    "fim": 2021,
+    "inicio": 2020,
+    "liga": "Q275189"
+   }
+  ],
+  "nome": "Belasica",
+  "nome_completo": "PFC Belasitsa Petrich",
+  "pais_qid": "Q221",
+  "titulo": "FK Belasica"
+ },
  "Q16495104": {
   "ligas": [
    {
@@ -4450,6 +4633,19 @@
   "nome_completo": "Bayer 04 Leverkusen II",
   "pais_qid": "Q183",
   "titulo": "Bayer 04 Leverkusen II"
+ },
+ "Q16539606": {
+  "ligas": [
+   {
+    "fim": null,
+    "inicio": null,
+    "liga": "Q912116"
+   }
+  ],
+  "nome": "Arta/Solar7",
+  "nome_completo": "Arta/Solar7",
+  "pais_qid": "Q977",
+  "titulo": "AS Arta/Solar7"
  },
  "Q16637410": {
   "ligas": [
@@ -4705,6 +4901,19 @@
   "nome_completo": "Mumbai City Football Club",
   "pais_qid": "Q668",
   "titulo": "Mumbai City FC"
+ },
+ "Q16848949": {
+  "ligas": [
+   {
+    "fim": null,
+    "inicio": null,
+    "liga": "Q194052"
+   }
+  ],
+  "nome": null,
+  "nome_completo": "Cesena Football Club",
+  "pais_qid": "Q38",
+  "titulo": "Cesena FC"
  },
  "Q1689756": {
   "ligas": [
@@ -5881,7 +6090,7 @@
     "liga": "Q19510"
    }
   ],
-  "nome": null,
+  "nome": "Wigan Athletic",
   "nome_completo": "Wigan Athletic Football Club",
   "pais_qid": "Q145",
   "titulo": "Wigan Athletic F.C."
@@ -6343,7 +6552,7 @@
     "liga": "Q19510"
    }
   ],
-  "nome": null,
+  "nome": "Barnsley",
   "nome_completo": "Barnsley Football Club",
   "pais_qid": "Q145",
   "titulo": "Barnsley F.C."
@@ -6517,6 +6726,29 @@
   "nome_completo": "Derby County Football Club",
   "pais_qid": "Q145",
   "titulo": "Derby County F.C."
+ },
+ "Q19473": {
+  "ligas": [
+   {
+    "fim": null,
+    "inicio": 2024,
+    "liga": "Q19565"
+   },
+   {
+    "fim": 2019,
+    "inicio": null,
+    "liga": "Q9448"
+   },
+   {
+    "fim": 2024,
+    "inicio": 2019,
+    "liga": "Q19510"
+   }
+  ],
+  "nome": "Huddersfield Town",
+  "nome_completo": "Huddersfield Town Football Club",
+  "pais_qid": "Q145",
+  "titulo": "Huddersfield Town A.F.C."
  },
  "Q19477": {
   "ligas": [
@@ -6835,6 +7067,19 @@
   "pais_qid": "Q142",
   "titulo": "AS Nancy Lorraine"
  },
+ "Q19564744": {
+  "ligas": [
+   {
+    "fim": 2017,
+    "inicio": 2015,
+    "liga": "Q1362411"
+   }
+  ],
+  "nome": "Whitecaps FC 2",
+  "nome_completo": "Whitecaps FC 2",
+  "pais_qid": "Q16",
+  "titulo": "Whitecaps FC 2"
+ },
  "Q19568": {
   "ligas": [
    {
@@ -6870,6 +7115,24 @@
   "nome_completo": "Atlético Sanluqueño Club de Fútbol",
   "pais_qid": "Q29",
   "titulo": "Atlético Sanluqueño CF"
+ },
+ "Q19571": {
+  "ligas": [
+   {
+    "fim": null,
+    "inicio": 2021,
+    "liga": "Q9448"
+   },
+   {
+    "fim": 2021,
+    "inicio": 2014,
+    "liga": "Q19510"
+   }
+  ],
+  "nome": "Brentford",
+  "nome_completo": "Brentford Football Club",
+  "pais_qid": "Q145",
+  "titulo": "Brentford F.C."
  },
  "Q1957763": {
   "ligas": [
@@ -6998,7 +7261,7 @@
     "liga": "Q48837"
    }
   ],
-  "nome": null,
+  "nome": "Notts County",
   "nome_completo": "Notts County Football Club",
   "pais_qid": "Q145",
   "titulo": "Notts County F.C."
@@ -7011,7 +7274,7 @@
     "liga": "Q48837"
    }
   ],
-  "nome": null,
+  "nome": "Oldham Athletic",
   "nome_completo": "Oldham Athletic Association Football Club",
   "pais_qid": "Q145",
   "titulo": "Oldham Athletic A.F.C."
@@ -7393,6 +7656,29 @@
   "pais_qid": "Q750",
   "titulo": "Club Independiente Petrolero"
  },
+ "Q201969": {
+  "ligas": [
+   {
+    "fim": null,
+    "inicio": 2026,
+    "liga": "Q669073"
+   },
+   {
+    "fim": 2022,
+    "inicio": 1999,
+    "liga": "Q669073"
+   },
+   {
+    "fim": 2026,
+    "inicio": 2022,
+    "liga": "Q202699"
+   }
+  ],
+  "nome": "FC Winterthur II",
+  "nome_completo": "FC Winterthur",
+  "pais_qid": "Q39",
+  "titulo": "FC Winterthur"
+ },
  "Q2019858": {
   "ligas": [
    {
@@ -7757,6 +8043,19 @@
   "pais_qid": "Q38",
   "titulo": "ACF Fiorentina"
  },
+ "Q20539174": {
+  "ligas": [
+   {
+    "fim": null,
+    "inicio": null,
+    "liga": "Q129950"
+   }
+  ],
+  "nome": null,
+  "nome_completo": "Club de Fútbol Cafetaleros de Tapachula",
+  "pais_qid": "Q96",
+  "titulo": "Cafetaleros de Chiapas"
+ },
  "Q205998": {
   "ligas": [
    {
@@ -8101,6 +8400,37 @@
   "pais_qid": "Q35",
   "titulo": "FC Nordsjælland"
  },
+ "Q210530": {
+  "ligas": [
+   {
+    "fim": null,
+    "inicio": 1991,
+    "liga": "Q275005"
+   }
+  ],
+  "nome": null,
+  "nome_completo": "NK Maribor",
+  "pais_qid": "Q215",
+  "titulo": "NK Maribor"
+ },
+ "Q21070839": {
+  "ligas": [
+   {
+    "fim": 2019,
+    "inicio": 2016,
+    "liga": "Q1362411"
+   },
+   {
+    "fim": null,
+    "inicio": 2022,
+    "liga": "Q107427039"
+   }
+  ],
+  "nome": null,
+  "nome_completo": "Bethlehem Steel FC",
+  "pais_qid": "Q30",
+  "titulo": "Philadelphia Union II"
+ },
  "Q210864": {
   "ligas": [
    {
@@ -8146,6 +8476,19 @@
   "nome_completo": "União Desportiva de Leiria",
   "pais_qid": "Q45",
   "titulo": "U.D. Leiria"
+ },
+ "Q2114224": {
+  "ligas": [
+   {
+    "fim": null,
+    "inicio": null,
+    "liga": "Q607965"
+   }
+  ],
+  "nome": "Trapani",
+  "nome_completo": "Trapani Calcio",
+  "pais_qid": "Q38",
+  "titulo": "FC Trapani 1905"
  },
  "Q211477": {
   "ligas": [
@@ -8784,6 +9127,19 @@
   "pais_qid": "Q155",
   "titulo": "Grêmio FBPA"
  },
+ "Q221766": {
+  "ligas": [
+   {
+    "fim": null,
+    "inicio": 1995,
+    "liga": "Q257282"
+   }
+  ],
+  "nome": "Santa Coloma",
+  "nome_completo": "Futbol Club Santa Coloma",
+  "pais_qid": "Q228",
+  "titulo": "FC Santa Coloma"
+ },
  "Q221882": {
   "ligas": [
    {
@@ -8960,6 +9316,19 @@
   "nome_completo": "Skonto FC",
   "pais_qid": "Q211",
   "titulo": "Skonto FC"
+ },
+ "Q2251415": {
+  "ligas": [
+   {
+    "fim": null,
+    "inicio": null,
+    "liga": "Q1141778"
+   }
+  ],
+  "nome": "Marsala",
+  "nome_completo": "Marsala Football Club",
+  "pais_qid": "Q38",
+  "titulo": "ASD Marsala 1912"
  },
  "Q2254157": {
   "ligas": [
@@ -9543,6 +9912,19 @@
   "pais_qid": "Q736",
   "titulo": "LDU Quito"
  },
+ "Q249648": {
+  "ligas": [
+   {
+    "fim": null,
+    "inicio": null,
+    "liga": "Q2289847"
+   }
+  ],
+  "nome": "Independiente del Valle",
+  "nome_completo": "Club Social y Deportivo Independiente José Terán",
+  "pais_qid": "Q736",
+  "titulo": "Independiente del Valle"
+ },
  "Q249662": {
   "ligas": [
    {
@@ -10099,6 +10481,13 @@
   "nome_completo": "FC Lokomotiv-2 Moscou",
   "pais_qid": "Q159",
   "titulo": "FC Kazanka Moscow"
+ },
+ "Q2661174": {
+  "ligas": [],
+  "nome": "Paniliakos",
+  "nome_completo": "Paniliakos F.C.",
+  "pais_qid": "Q41",
+  "titulo": "Paniliakos F.C."
  },
  "Q2662732": {
   "ligas": [
@@ -10702,6 +11091,29 @@
   "nome_completo": "Udinese Calcio",
   "pais_qid": "Q38",
   "titulo": "Udinese Calcio"
+ },
+ "Q280679": {
+  "ligas": [
+   {
+    "fim": null,
+    "inicio": 2026,
+    "liga": "Q1436035"
+   },
+   {
+    "fim": 2024,
+    "inicio": 2020,
+    "liga": "Q235114"
+   },
+   {
+    "fim": 2026,
+    "inicio": 2024,
+    "liga": "Q63980269"
+   }
+  ],
+  "nome": "PAS Giannina",
+  "nome_completo": "PAS Giannina",
+  "pais_qid": "Q41",
+  "titulo": "PAS Giannina F.C."
  },
  "Q2817362": {
   "ligas": [
@@ -11679,6 +12091,19 @@
   "pais_qid": "Q142",
   "titulo": "AS Cannes"
  },
+ "Q298279": {
+  "ligas": [
+   {
+    "fim": null,
+    "inicio": null,
+    "liga": "Q864298"
+   }
+  ],
+  "nome": "Cherbourg",
+  "nome_completo": "AS Cherbourg Football",
+  "pais_qid": "Q142",
+  "titulo": "AS Cherbourg Football"
+ },
  "Q298314": {
   "ligas": [
    {
@@ -12434,6 +12859,13 @@
   "pais_qid": "Q16",
   "titulo": "Toronto FC"
  },
+ "Q3277715": {
+  "ligas": [],
+  "nome": "XV de Jaú",
+  "nome_completo": "Esporte Clube XV de Novembro",
+  "pais_qid": "Q155",
+  "titulo": "Esporte Clube XV de Novembro (Jaú)"
+ },
  "Q328313": {
   "ligas": [
    {
@@ -13007,6 +13439,19 @@
   "pais_qid": "Q45",
   "titulo": "Sporting CP B"
  },
+ "Q3501099": {
+  "ligas": [
+   {
+    "fim": null,
+    "inicio": null,
+    "liga": "Q1443938"
+   }
+  ],
+  "nome": "Tor di Quinto",
+  "nome_completo": "Lupa Roma F.C.",
+  "pais_qid": "Q38",
+  "titulo": "Lupa Roma FC"
+ },
  "Q3508932": {
   "ligas": [],
   "nome": "Borovo",
@@ -13482,6 +13927,19 @@
   "pais_qid": "Q183",
   "titulo": "Eintracht Frankfurt"
  },
+ "Q383617": {
+  "ligas": [
+   {
+    "fim": null,
+    "inicio": null,
+    "liga": "Q749736"
+   }
+  ],
+  "nome": "San Isidro",
+  "nome_completo": "CD San Isidro",
+  "pais_qid": "Q29",
+  "titulo": "CD Raqui San Isidro"
+ },
  "Q383943": {
   "ligas": [
    {
@@ -13673,6 +14131,19 @@
   "pais_qid": "Q739",
   "titulo": "Real Cartagena"
  },
+ "Q392310": {
+  "ligas": [
+   {
+    "fim": null,
+    "inicio": 2017,
+    "liga": "Q219592"
+   }
+  ],
+  "nome": "LASK",
+  "nome_completo": "LASK",
+  "pais_qid": "Q40",
+  "titulo": "LASK"
+ },
  "Q3924852": {
   "ligas": [
    {
@@ -13685,6 +14156,19 @@
   "nome_completo": "Olympique Lyonnais Reserves and Academy",
   "pais_qid": "Q142",
   "titulo": "Olympique Lyonnais Reserves and Academy"
+ },
+ "Q3932646": {
+  "ligas": [
+   {
+    "fim": null,
+    "inicio": null,
+    "liga": "Q1141778"
+   }
+  ],
+  "nome": "Renato Curi",
+  "nome_completo": "Renato Curi Angolana",
+  "pais_qid": "Q38",
+  "titulo": "Renato Curi Angolana"
  },
  "Q3933354": {
   "ligas": [],
@@ -15217,6 +15701,24 @@
   "pais_qid": "Q45",
   "titulo": "CU Micaelense"
  },
+ "Q501693": {
+  "ligas": [
+   {
+    "fim": null,
+    "inicio": 2026,
+    "liga": "Q13394"
+   },
+   {
+    "fim": 2026,
+    "inicio": 2023,
+    "liga": "Q217374"
+   }
+  ],
+  "nome": "Troyes",
+  "nome_completo": "Espérance Sportive Troyes Aube Champagne",
+  "pais_qid": "Q142",
+  "titulo": "ES Troyes AC"
+ },
  "Q5030371": {
   "ligas": [],
   "nome": "Toronto First Portuguese",
@@ -15729,6 +16231,19 @@
   "nome_completo": "Red Bull Bragantino",
   "pais_qid": "Q155",
   "titulo": "Red Bull Bragantino"
+ },
+ "Q5423698": {
+  "ligas": [
+   {
+    "fim": null,
+    "inicio": null,
+    "liga": "Q48851752"
+   }
+  ],
+  "nome": null,
+  "nome_completo": "Inter Youth Sector",
+  "pais_qid": "Q38",
+  "titulo": "Inter Milan Youth Sector"
  },
  "Q5423714": {
   "ligas": [
@@ -16246,7 +16761,7 @@
     "liga": "Q386384"
    }
   ],
-  "nome": null,
+  "nome": "Universitatea Craiova",
   "nome_completo": "FC Universitatea Craiova",
   "pais_qid": "Q218",
   "titulo": "FC U Craiova 1948"
@@ -16457,6 +16972,24 @@
   "pais_qid": "Q45",
   "titulo": "S.L. Benfica (women)"
  },
+ "Q6023905": {
+  "ligas": [
+   {
+    "fim": null,
+    "inicio": 2018,
+    "liga": "Q1362411"
+   },
+   {
+    "fim": 2017,
+    "inicio": 2014,
+    "liga": "Q1197790"
+   }
+  ],
+  "nome": "Indy Eleven",
+  "nome_completo": "Indy Eleven",
+  "pais_qid": "Q30",
+  "titulo": "Indy Eleven"
+ },
  "Q602515": {
   "ligas": [
    {
@@ -16521,6 +17054,13 @@
   "nome_completo": "Club Nacional",
   "pais_qid": "Q733",
   "titulo": "Club Nacional"
+ },
+ "Q60318566": {
+  "ligas": [],
+  "nome": "Al Bidda",
+  "nome_completo": "Al Bidaa SC",
+  "pais_qid": "Q846",
+  "titulo": "Al Bidda SC"
  },
  "Q603633": {
   "ligas": [
@@ -16637,6 +17177,19 @@
   "pais_qid": "Q43",
   "titulo": "Kayserispor"
  },
+ "Q609554": {
+  "ligas": [
+   {
+    "fim": null,
+    "inicio": null,
+    "liga": "Q677397"
+   }
+  ],
+  "nome": "Cuneo",
+  "nome_completo": "A.C. Cuneo 1905 Olmo",
+  "pais_qid": "Q38",
+  "titulo": "AC Cuneo 1905"
+ },
  "Q609651": {
   "ligas": [
    {
@@ -16656,6 +17209,29 @@
   "nome_completo": "Real Madrid Juvenil",
   "pais_qid": "Q29",
   "titulo": "Real Madrid CF (youth)"
+ },
+ "Q610621": {
+  "ligas": [
+   {
+    "fim": 2021,
+    "inicio": 2019,
+    "liga": "Q607965"
+   },
+   {
+    "fim": 2024,
+    "inicio": 2021,
+    "liga": "Q1141778"
+   },
+   {
+    "fim": null,
+    "inicio": 2024,
+    "liga": "Q607965"
+   }
+  ],
+  "nome": "Carpi",
+  "nome_completo": "Carpi F. C. 1909",
+  "pais_qid": "Q38",
+  "titulo": "AC Carpi"
  },
  "Q611222": {
   "ligas": [
@@ -17436,6 +18012,34 @@
   "pais_qid": "Q39",
   "titulo": "FC St. Gallen"
  },
+ "Q6592551": {
+  "ligas": [
+   {
+    "fim": null,
+    "inicio": 2023,
+    "liga": "Q2548558"
+   },
+   {
+    "fim": 2017,
+    "inicio": null,
+    "liga": "Q2313134"
+   },
+   {
+    "fim": 2019,
+    "inicio": 2017,
+    "liga": "Q2548558"
+   },
+   {
+    "fim": 2023,
+    "inicio": 2019,
+    "liga": "Q275005"
+   }
+  ],
+  "nome": null,
+  "nome_completo": "NK Tabor Sežana",
+  "pais_qid": "Q215",
+  "titulo": "NK Tabor Sežana"
+ },
  "Q660003": {
   "ligas": [
    {
@@ -17675,6 +18279,26 @@
   "pais_qid": "Q45",
   "titulo": "C.D. Feirense"
  },
+ "Q6721": {
+  "ligas": [
+   {
+    "fim": null,
+    "inicio": null,
+    "liga": "Q1141778"
+   }
+  ],
+  "nome": "Grosseto",
+  "nome_completo": "Unione Sportiva Grosseto 1912",
+  "pais_qid": "Q38",
+  "titulo": "US Grosseto 1912"
+ },
+ "Q6742905": {
+  "ligas": [],
+  "nome": null,
+  "nome_completo": "UA Horta",
+  "pais_qid": "Q29",
+  "titulo": "UA Horta"
+ },
  "Q6747212": {
   "ligas": [
    {
@@ -17804,6 +18428,19 @@
   "nome_completo": "Sport Clube Beira-Mar",
   "pais_qid": "Q45",
   "titulo": "S.C. Beira-Mar"
+ },
+ "Q689874": {
+  "ligas": [
+   {
+    "fim": null,
+    "inicio": 2010,
+    "liga": "Q18543"
+   }
+  ],
+  "nome": "Philadelphia Union",
+  "nome_completo": "Philadelphia Union",
+  "pais_qid": "Q30",
+  "titulo": "Philadelphia Union"
  },
  "Q690272": {
   "ligas": [
@@ -18341,6 +18978,19 @@
   "pais_qid": "Q851",
   "titulo": "Al-Ettifaq Club"
  },
+ "Q728557": {
+  "ligas": [
+   {
+    "fim": null,
+    "inicio": 1986,
+    "liga": "Q318480"
+   }
+  ],
+  "nome": null,
+  "nome_completo": "Floriana F.C.",
+  "pais_qid": "Q233",
+  "titulo": "Floriana F.C."
+ },
  "Q7301102": {
   "ligas": [
    {
@@ -18353,6 +19003,19 @@
   "nome_completo": "Real Valladolid B",
   "pais_qid": "Q29",
   "titulo": "Real Valladolid Promesas"
+ },
+ "Q7301187": {
+  "ligas": [
+   {
+    "fim": null,
+    "inicio": null,
+    "liga": "Q100486747"
+   }
+  ],
+  "nome": null,
+  "nome_completo": "Real Ávila CF",
+  "pais_qid": "Q29",
+  "titulo": "Real Ávila CF"
  },
  "Q730809": {
   "ligas": [
@@ -18796,6 +19459,19 @@
   "pais_qid": "Q55",
   "titulo": "Go Ahead Eagles"
  },
+ "Q749603": {
+  "ligas": [
+   {
+    "fim": null,
+    "inicio": null,
+    "liga": "Q1348155"
+   }
+  ],
+  "nome": "São José-SP",
+  "nome_completo": "São José Esporte Clube",
+  "pais_qid": "Q155",
+  "titulo": "São José Esporte Clube"
+ },
  "Q750322": {
   "ligas": [
    {
@@ -19137,6 +19813,19 @@
   "pais_qid": "Q408",
   "titulo": "Central Coast Mariners FC"
  },
+ "Q765016": {
+  "ligas": [
+   {
+    "fim": null,
+    "inicio": null,
+    "liga": "Q749736"
+   }
+  ],
+  "nome": "Cornellà",
+  "nome_completo": "Unión Esportiva Cornellà",
+  "pais_qid": "Q29",
+  "titulo": "UE Cornellà"
+ },
  "Q7671747": {
   "ligas": [
    {
@@ -19315,6 +20004,13 @@
   "pais_qid": "Q29",
   "titulo": "UD Las Palmas Atlético"
  },
+ "Q7864446": {
+  "ligas": [],
+  "nome": "Tàrrega",
+  "nome_completo": "UE Tàrrega",
+  "pais_qid": "Q29",
+  "titulo": "UE Tàrrega"
+ },
  "Q786500": {
   "ligas": [
    {
@@ -19412,6 +20108,19 @@
   "nome_completo": "Bilbao Athletic",
   "pais_qid": "Q29",
   "titulo": "Athletic Bilbao B"
+ },
+ "Q797530": {
+  "ligas": [
+   {
+    "fim": null,
+    "inicio": null,
+    "liga": "Q1061291"
+   }
+  ],
+  "nome": "Istres",
+  "nome_completo": "Football Club Istres Ouest Provence",
+  "pais_qid": "Q142",
+  "titulo": "Istres FC"
  },
  "Q803976": {
   "ligas": [
@@ -19534,6 +20243,19 @@
   "pais_qid": "Q414",
   "titulo": "Godoy Cruz Antonio Tomba"
  },
+ "Q80886": {
+  "ligas": [
+   {
+    "fim": null,
+    "inicio": null,
+    "liga": "Q934724"
+   }
+  ],
+  "nome": null,
+  "nome_completo": "Club Atlético Tigre",
+  "pais_qid": "Q414",
+  "titulo": "Club Atlético Tigre"
+ },
  "Q80897": {
   "ligas": [
    {
@@ -19642,6 +20364,19 @@
   "nome_completo": "Al Wehda FC",
   "pais_qid": "Q851",
   "titulo": "Al Wehda FC"
+ },
+ "Q812716": {
+  "ligas": [
+   {
+    "fim": null,
+    "inicio": null,
+    "liga": "Q168018"
+   }
+  ],
+  "nome": "Kuwait SC",
+  "nome_completo": "Kuwait SC",
+  "pais_qid": "Q817",
+  "titulo": "Kuwait SC"
  },
  "Q812719": {
   "ligas": [
@@ -20386,6 +21121,24 @@
   "pais_qid": "Q29",
   "titulo": "Burgos CF"
  },
+ "Q852753": {
+  "ligas": [
+   {
+    "fim": null,
+    "inicio": null,
+    "liga": "Q1394554"
+   },
+   {
+    "fim": null,
+    "inicio": 1890,
+    "liga": "Q2261276"
+   }
+  ],
+  "nome": "Queen's Park",
+  "nome_completo": "Queen's Park Football Club",
+  "pais_qid": "Q145",
+  "titulo": "Queen's Park F.C."
+ },
  "Q853053": {
   "ligas": [
    {
@@ -20733,6 +21486,19 @@
   "pais_qid": "Q155",
   "titulo": "Amazonas Futebol Clube"
  },
+ "Q867710": {
+  "ligas": [
+   {
+    "fim": null,
+    "inicio": null,
+    "liga": "Q2706513"
+   }
+  ],
+  "nome": "Sha Tin",
+  "nome_completo": "Shatin SA",
+  "pais_qid": "Q148",
+  "titulo": "Sha Tin SA"
+ },
  "Q8682": {
   "ligas": [
    {
@@ -20745,6 +21511,19 @@
   "nome_completo": "Real Madrid Club de Fútbol",
   "pais_qid": "Q29",
   "titulo": "Real Madrid CF"
+ },
+ "Q868582": {
+  "ligas": [
+   {
+    "fim": null,
+    "inicio": null,
+    "liga": "Q1139408"
+   }
+  ],
+  "nome": "Saprissa",
+  "nome_completo": "Deportivo Saprissa",
+  "pais_qid": "Q800",
+  "titulo": "Deportivo Saprissa"
  },
  "Q8687": {
   "ligas": [
@@ -21097,6 +21876,19 @@
   "nome_completo": "Club Recreativo Granada",
   "pais_qid": "Q29",
   "titulo": "Recreativo Granada"
+ },
+ "Q9076584": {
+  "ligas": [
+   {
+    "fim": null,
+    "inicio": null,
+    "liga": "Q100486967"
+   }
+  ],
+  "nome": null,
+  "nome_completo": "Sevilla FC C",
+  "pais_qid": "Q29",
+  "titulo": "Sevilla FC C"
  },
  "Q908477": {
   "ligas": [
@@ -21819,6 +22611,19 @@
   "pais_qid": "Q20",
   "titulo": "Bryne FK"
  },
+ "Q999035": {
+  "ligas": [
+   {
+    "fim": null,
+    "inicio": null,
+    "liga": "Q219586"
+   }
+  ],
+  "nome": "Western Sydney Wanderers",
+  "nome_completo": "Western Sydney Wanderers Football Club",
+  "pais_qid": "Q408",
+  "titulo": "Western Sydney Wanderers FC"
+ },
  "x-": {
   "ligas": [],
   "nome": "",
@@ -21832,6 +22637,22 @@
   "nome": "Águas Boas",
   "nome_completo": null,
   "pais": "PT",
+  "pais_qid": null,
+  "titulo": null
+ },
+ "x-ao-neapoli": {
+  "ligas": [],
+  "nome": "AO Neapoli",
+  "nome_completo": null,
+  "pais": "GR",
+  "pais_qid": null,
+  "titulo": null
+ },
+ "x-aris-nikea": {
+  "ligas": [],
+  "nome": "Aris Nikea",
+  "nome_completo": null,
+  "pais": "GR",
   "pais_qid": null,
   "titulo": null
  },

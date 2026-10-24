@@ -435,3 +435,85 @@ def ligas_por_epoca(texto: str) -> list[dict]:
                 res.append({"clube_titulo": titulo_clube, "clube_nome": re.sub(r"\(loan\)", "", nome_clube).strip(),
                             "epoca": int(limpo(linha[k])[:4]), "liga_titulo": titulo_div})
     return res
+
+
+# --- Finais (Mundial, Europeu, Liga dos Campeões): os onzes titulares -------------------------------------------------
+
+# Uma linha de jogador nas tabelas dos onzes: "|GK ||'''1''' ||{{flagicon|ESP}} [[Iker Casillas]] (…)"; a posição
+# pode vir numa {{abbr|RB|Right-back}}.
+_LINHA_ONZE = re.compile(r"^\|\s*(?:[A-Z]{2,3}|\{\{\s*abbr\s*\|\s*[A-Z]{2,3}\s*\|[^}]*\}\})\s*\|\|\s*'''\s*\d+\s*'''\s*\|\|(.*)$")
+# A caixa do jogo: {{Football box …}} ou {{#invoke:football box|main …}}.
+_CAIXA_JOGO = re.compile(r"\{\{\s*(?:#invoke:\s*)?football ?box\b", re.I)
+_LIGACAO = re.compile(r"\[\[([^\]|#]+)(?:#[^\]|]*)?(?:\|[^\]]*)?\]\]")
+_NAO_JOGADOR = re.compile(r"^(file|image|ficheiro|captain \(association football\))", re.I)
+
+
+def _golos(valor) -> tuple[int, int] | None:
+    """'0–1', '{{score link|…#Final|0–1|…}}', '1–1 {{aet}}' → (0, 1)."""
+    codigo = mwp.parse(str(valor or ""))
+    for t in codigo.filter_templates(recursive=False):
+        if str(t.name).strip().lower() in ("score link", "score"):
+            for i in (2, 1):
+                if t.has(i) and re.search(r"\d+\s*[–-]\s*\d+", str(t.get(i).value)):
+                    codigo = mwp.parse(str(t.get(i).value))
+                    break
+    m = re.search(r"(\d+)\s*[–-]\s*(\d+)", codigo.strip_code() if hasattr(codigo, "strip_code") else str(codigo))
+    return (int(m.group(1)), int(m.group(2))) if m else None
+
+
+def final(texto: str) -> dict | None:
+    """O resultado e os onzes de uma final: {'golos': (a, b), 'penaltis': (a, b) | None, 'vencedor': 0 | 1,
+    'titulares': [[artigos da equipa 1], [artigos da equipa 2]]}. Os onzes vêm das tabelas a seguir à caixa do jogo,
+    pela mesma ordem (equipa 1 e equipa 2); os titulares são as linhas antes de "Substitutes:"."""
+    # A caixa do jogo é a última antes da primeira linha dos onzes (o artigo pode ter outras, do caminho até à final).
+    linhas = texto.splitlines(keepends=True)
+    pos, inicio_onzes = 0, None
+    for linha in linhas:
+        if _LINHA_ONZE.match(linha.strip()):
+            inicio_onzes = pos
+            break
+        pos += len(linha)
+    caixas = [m for m in _CAIXA_JOGO.finditer(texto) if inicio_onzes is None or m.start() < inicio_onzes]
+    if not caixas or inicio_onzes is None:
+        return None
+    # Os parâmetros leem-se do texto (a caixa às vezes tem <includeonly> que o mwparserfromhell não percorre).
+    bloco = texto[caixas[-1].start():inicio_onzes]
+
+    def parametro(nome):
+        m = re.search(rf"\|\s*{nome}\s*=([^\n]*)", bloco)
+        return m.group(1).strip() if m else ""
+
+    golos = _golos(parametro("score"))
+    penaltis = _golos(parametro("penaltyscore")) if parametro("penaltyscore") else None
+    if not golos:
+        return None
+    if golos[0] != golos[1]:
+        vencedor = 0 if golos[0] > golos[1] else 1
+    elif penaltis and penaltis[0] != penaltis[1]:
+        vencedor = 0 if penaltis[0] > penaltis[1] else 1
+    else:
+        return None
+    resto = texto[inicio_onzes:]
+    equipas, titulares, proxima = [], False, True
+    for linha in resto.splitlines():
+        linha = linha.strip()
+        m = _LINHA_ONZE.match(linha)
+        if m:
+            if proxima:                                 # primeira linha de um onze novo (a seguir ao treinador)
+                equipas.append([])
+                titulares, proxima = True, False
+            if titulares:
+                artigo = next((x.group(1).strip() for x in _LIGACAO.finditer(m.group(1))
+                               if not _NAO_JOGADOR.match(x.group(1).strip())), None)
+                if artigo:
+                    equipas[-1].append(artigo[0].upper() + artigo[1:])
+            continue
+        if re.search(r"'''\s*substitut", linha, re.I):
+            titulares = False
+        elif re.search(r"'''\s*(manager|head coach|coach)\s*:?\s*'''", linha, re.I):
+            proxima = True
+        if len(equipas) == 2 and not titulares and proxima:
+            break
+    if len(equipas) < 2:
+        return None
+    return {"golos": golos, "penaltis": penaltis, "vencedor": vencedor, "titulares": equipas[:2]}

@@ -64,7 +64,10 @@ py -3.12 -m venv .venv
 - **Cache:** tudo o que vem da rede fica em `pipeline/.cache/`. Correr outra vez não pede nada à rede, e `--fresco`
   ignora a cache. Há um pedido de cada vez, e o zerozero só leva um a cada 2–3 s.
 - **Sem IA:** o pipeline só lê fontes estruturadas (caixas, tabelas, Wikidata, zerozero, transfermarkt-datasets).
-- **Quem entra:** só jogadores nascidos a partir de 1960 (`NASCIDOS_DESDE` em `config.py`); a recolha não grava os
+- **Quem entra** (`python -m scout sementes`): o top 30 da Bola de Ouro desde 1996, a seleção portuguesa com 10
+  internacionalizações ou mais, os três grandes com 50 jogos ou mais, os míticos de `dados/miticos.json` e os titulares
+  das equipas campeãs nas finais do Mundial e do Europeu desde 2002 e da Liga dos Campeões desde 2010 (os onzes vêm dos
+  artigos das finais na Wikipédia). Só jogadores nascidos a partir de 1960 (`NASCIDOS_DESDE` em `config.py`); a recolha não grava os
   outros e a exportação também os deixa de fora.
 - **Correções à mão:** ficam em `pipeline/dados/ajustes.json`, `pipeline/dados/competicoes.json` e
   `pipeline/dados/clubes.json`. Os ajustes aplicam-se por cima das fontes em cada recolha.

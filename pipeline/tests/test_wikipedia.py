@@ -192,3 +192,56 @@ def test_medalhas_de_prata_nao_contam():
     anos = {t["competicao"]: t["anos"] for t in wp.titulos(texto)}
     assert anos.get("CONCACAF Gold Cup", []) == []
     assert anos["FIFA Confederations Cup"] == [2005]
+
+
+FINAL = """==Match==
+<section begin="Final" />{{Football box
+|team1={{fb-rt|NED}}
+|score={{score link|2010 FIFA World Cup knockout stage#Final|1–1|2010 FIFA World Cup final}}
+|aet=yes
+|penaltyscore=2–4
+|team2={{fb|ESP}}
+}}
+{| width="100%"
+|valign="top"|
+{| style="font-size: 90%"
+|-
+!width="25"| !!width="25"|
+|-
+|GK ||'''1''' ||[[Maarten Stekelenburg]]
+|-
+|{{abbr|RB|Right-back}} ||'''2''' ||[[Gregory van der Wiel]] || {{yel|111}}
+|-
+|colspan=3|'''Substitutions:'''
+|-
+|MF ||'''17'''||[[Eljero Elia]] || || {{subon|71}}
+|-
+|colspan=3|'''Manager:'''
+|-
+|colspan=3|[[Bert van Marwijk]]
+|}
+|valign="top"|
+{| style="font-size: 90%"
+|-
+|GK ||'''1''' ||{{flagicon|ESP}} [[Iker Casillas]] ([[Captain (association football)|c]])
+|-
+|CM ||'''8''' ||[[Xavi (footballer, born 1980)|Xavi]] || {{yel|120+1}}
+|-
+|colspan=3|'''Substitutes:'''
+|-
+|MF ||'''10'''||[[Cesc Fàbregas]] || || {{subon|87}}
+|-
+|colspan=3|'''Manager:'''
+|-
+|colspan=3|[[Vicente del Bosque]]
+|}
+|}
+"""
+
+
+def test_final_titulares_do_vencedor():
+    f = wp.final(FINAL)
+    assert f["golos"] == (1, 1) and f["penaltis"] == (2, 4) and f["vencedor"] == 1
+    assert f["titulares"][0] == ["Maarten Stekelenburg", "Gregory van der Wiel"]
+    # Sem o capitão, sem os suplentes e com o artigo (não o nome curto).
+    assert f["titulares"][1] == ["Iker Casillas", "Xavi (footballer, born 1980)"]

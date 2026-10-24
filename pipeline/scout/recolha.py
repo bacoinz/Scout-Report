@@ -32,6 +32,8 @@ def _gravar(caminho, dados):
 def _ajustar(registo: dict, ajustes: dict) -> dict:
     """Correções à mão de dados/ajustes.json ({QID: {campo: valor}}), por cima do que veio das fontes."""
     for campo, valor in ajustes.get(registo["id"], {}).items():
+        if campo.startswith("_"):
+            continue
         alvo, *resto = campo.split(".")
         if resto:                                        # "perfil.altura_cm": 180
             registo.setdefault(alvo, {})[resto[0]] = valor
@@ -135,12 +137,13 @@ def recolher(ctx: Contexto, titulos: list[str], refazer: bool = False, registar=
             res["falhas"][t] = f"{type(e).__name__}: {e}"
             registar(f"[{n}/{len(pendentes)}] {canon}: FALHOU ({e})")
             continue
+        registo = _ajustar(registo, ajustes)              # antes do filtro: um ajuste pode corrigir o nascimento
         if registo["nascimento"] and int(registo["nascimento"][:4]) < config.NASCIDOS_DESDE:
             res["fora"].append(q)                    # nasceu antes de 1960: não entra na base
             registar(f"[{n}/{len(pendentes)}] {canon}: nasceu em {registo['nascimento'][:4]}, fica de fora")
             continue
         _marcar_fama(registo, candidatos)
-        _gravar(config.JOGADORES / f"{q}.json", _ajustar(registo, ajustes))
+        _gravar(config.JOGADORES / f"{q}.json", registo)
         _gravar(SAIDA_RECOLHA / f"{q}.json", {"id": q, "nome": registo["nome"], "discrepancias": discrepancias,
                                              "avisos": avisos})
         ctx.gravar_catalogo()
