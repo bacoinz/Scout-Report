@@ -48,7 +48,7 @@ py -3.12 -m venv .venv
 .venv/Scripts/python -m scout tm preparar         # → .cache/tm/tm.sqlite
 .venv/Scripts/python -m scout paises              # → partilhado/paises.json
 .venv/Scripts/python -m scout recolher --amostra  # os 30 da amostra → dados/jogadores/<QID>.json
-.venv/Scripts/python -m scout curiosidades        # precisa de GEMINI_API_KEY (plano gratuito do Gemini)
+.venv/Scripts/python -m scout curiosidades        # Ollama local com o gemma4:12b (ver abaixo)
 .venv/Scripts/python -m scout validar
 .venv/Scripts/python -m scout relatorio           # → saida/qualidade.md
 .venv/Scripts/python -m pytest
@@ -61,9 +61,15 @@ py -3.12 -m venv .venv
   - transfermarkt-datasets: pé, altura, posição, ligas e números a partir de 2012.
 - **Cache:** tudo o que vem da rede fica em `pipeline/.cache/`. Correr outra vez não pede nada à rede, e `--fresco`
   ignora a cache. Há um pedido de cada vez, e o zerozero só leva um a cada 2–3 s.
-- **Curiosidades:** o pipeline lê a chave só da variável de ambiente `GEMINI_API_KEY`. Nunca a escreve em
-  ficheiros nem na cache. Cria-a em https://aistudio.google.com/apikey e define-a no Windows com
-  `setx GEMINI_API_KEY "…"`; depois abre um terminal novo.
+- **Curiosidades:**
+  - Por omissão usam o [Ollama](https://ollama.com) local, com o modelo `gemma4:12b` (`winget install Ollama.Ollama`,
+    depois `ollama pull gemma4:12b`). Não há quotas, e o texto da Wikipédia não sai do PC. Leva ~12 s por jogador
+    numa RTX 3070, mais ~5 s da revisão do português.
+  - Cada curiosidade só é aceite se a frase original existir no artigo, com os mesmos números e nomes, e se não
+    tiver marcas de português do Brasil.
+  - `--modelo gemini-3.5-flash` escreve melhor, mas o plano gratuito só dá 20 pedidos por dia. Precisa da variável
+    de ambiente `GEMINI_API_KEY`, que o pipeline nunca escreve em ficheiros nem na cache. Cria a chave em
+    https://aistudio.google.com/apikey e define-a com `setx GEMINI_API_KEY "…"`; depois abre um terminal novo.
 - **Correções à mão:** ficam em `pipeline/dados/ajustes.json`, `pipeline/dados/competicoes.json` e
   `pipeline/dados/clubes.json`. Os ajustes aplicam-se por cima das fontes em cada recolha.
 

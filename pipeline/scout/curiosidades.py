@@ -15,12 +15,15 @@ from .fontes import llm
 from .fontes import wikipedia as wp
 from .normalizar import normalizar
 
-VERSAO = 2
+VERSAO = 3
 SAIDA_CURIOSIDADES = config.SAIDA / "curiosidades"
 TEMAS = ["infancia", "vida_pessoal", "estilo", "carreira", "outro"]
 
 SISTEMA = """És o redator de um jogo de adivinhar futebolistas, em português de Portugal (PT-PT: "equipa", "golo",
-"guarda-redes", "treinador", "seleção", "relvado", "adepto"; nunca português do Brasil).
+"guarda-redes", "treinador", "seleção", "relvado", "adepto"; nunca português do Brasil). Atenção às diferenças:
+Mundial (não "Copa do Mundo"), livre (não "cobrança de falta"), baliza, equipa (não "time"), alcunha (feminino:
+"a alcunha"), Jugoslávia, Montevideu, Jogos Olímpicos, dar os parabéns (não "parabenizar"), facto, contacto; e os
+pronomes depois do verbo ("deu-lhe", "tornou-se"; não "lhe deu", "se tornou"). Os meses escrevem-se em minúsculas.
 Recebes o texto de um artigo da Wikipédia inglesa sobre um futebolista. Escreve 5 ou 6 curiosidades sobre ele:
 - factos surpreendentes que só estão no texto: infância e origem, família, vida pessoal, estilo de jogo, alcunhas e a
   sua origem, momentos insólitos da carreira;
@@ -53,7 +56,37 @@ _COMUNS = {
     "supertaça", "série", "primeira", "segunda", "divisão", "clube", "estádio", "prémio", "melhor", "jogador",
     "treinador", "presidente", "rei", "rainha", "papa", "dom", "sir", "são", "santo", "santa", "nações",
     "jovem", "ano", "mundo", "século", "revelação", "bota", "prata", "bronze", "africano", "sul-americano",
+    # Palavras genéricas dentro de nomes de prémios e instituições ("Melhor Médio", "Central Nuclear", "Associação de
+    # Futebol"), que a frase inglesa escreve com outras palavras.
+    "torneio", "geração", "botas", "central", "nuclear", "futebol", "médio", "guarda-redes", "defesa", "avançado",
+    "extremo", "lateral", "capitão", "guerra", "independência", "associação", "federação", "nacional",
+    "internacional", "equipa", "ordem", "oficial", "comendador", "cidade", "deus", "exército", "verão", "inverno",
+    "academia", "escola", "universidade", "instituto", "fundação", "programa", "canal", "filme", "primeiro-ministro",
+    "ministro", "governo", "república", "igreja", "infantaria", "marinha", "francês", "inglês", "egípcio", "italiano",
+    "espanhol", "alemão", "holandês", "brasileiro", "argentino", "português", "europeia", "europeias", "mundiais",
 }
+# Marcas do português do Brasil que escapam aos modelos pequenos (o pedido já as proíbe; estas rejeitam-se).
+_BRASIL = re.compile(r"\b(copa do mundo|cobranças? de (falta|livre)|parabeniz\w*|goleiro|zagueiro|torcedor\w*|camisa|"
+                     r"gramado|gols?|time|equipe|você|ônibus|trem|balé|iugoslav\w*|montevidéu|olimpíadas|"
+                     r"fato|contato|acadêmi\w*|o alcunha)\b",
+                     re.I)
+# Pronome antes do verbo sem palavra que o justifique ("Os pais o enviaram", "A avó o acompanhava"): em PT-PT é
+# "enviaram-no", "acompanhava-o". Com "que", "não", "já"… antes, a próclise está certa ("que se tornou").
+_PROCLISE = re.compile(r"(?<![\w-])(o|a|os|as|lhe|lhes|se|me|te|nos)\s+(\w+(?:ava|avam|ou|aram|eram|iram|iu)|deu|deram|fez|fizeram|disse|disseram|pôs|trouxe)\b",
+                       re.I)
+_ATRAEM = {"que", "não", "nunca", "já", "também", "quando", "onde", "como", "quem", "porque", "ainda", "sempre", "só",
+           "até", "se", "mais", "bem", "assim", "talvez", "cujo", "cuja", "qual", "pois", "nem", "tanto", "logo"}
+_COMUNS = {normalizar(p) for p in _COMUNS}               # compara-se sem acentos ("Campeões" → "campeoes")
+# Grafias do Brasil que se corrigem sem risco (só muda o acento): "O Fenômeno" → "O Fenómeno".
+_GRAFIAS_PT = {"fenômeno": "fenómeno", "prêmio": "prémio", "gênio": "génio", "tênis": "ténis", "quilômetro": "quilómetro",
+               "econômic": "económic", "acadêmic": "académic", "atômic": "atómic", "cômic": "cómic", "gênero": "género",
+               "anônim": "anónim", "fôlego": "fôlego", "elastico": "elástico"}
+
+
+def corrigir_grafia(texto: str) -> str:
+    for br, pt in _GRAFIAS_PT.items():
+        texto = re.sub(br, lambda m: pt.capitalize() if m.group()[0].isupper() else pt, texto, flags=re.I)
+    return texto
 # Nomes de lugares que o português escreve de outra maneira (os países saem de paises.json).
 _EXONIMOS = {"jugoslavia": "yugoslavia", "uniao sovietica": "soviet union", "checoslovaquia": "czechoslovakia",
              "kiev": "kyiv", "napoles": "naples", "genova": "genoa", "florenca": "florence", "sevilha": "seville",
@@ -77,6 +110,29 @@ def _paises_en_pt() -> dict:
     return {**res, **_EXONIMOS}
 
 
+def _no_artigo(origem_norm: str, fonte_norm: str) -> str | None:
+    """A frase de origem tal como está no artigo (normalizada), ou None. Os modelos pequenos às vezes copiam-na com
+    uma ou duas palavras mudadas: aceita-se o trecho do artigo que tenha ≥ 85% das palavras dela (e as verificações
+    seguintes usam esse trecho, não a cópia do modelo)."""
+    if len(origem_norm) < 20:
+        return None
+    if origem_norm in fonte_norm:
+        return origem_norm
+    palavras = origem_norm.split()
+    chave = {w for w in palavras if len(w) >= 4}
+    if len(palavras) < 6 or not chave:
+        return None
+    fonte = fonte_norm.split()
+    tamanho = len(palavras) + 4
+    melhor, trecho = 0.0, None
+    for i in range(max(1, len(fonte) - tamanho + 1)):
+        janela = fonte[i:i + tamanho]
+        r = len(chave & set(janela)) / len(chave)
+        if r > melhor:
+            melhor, trecho = r, " ".join(janela)
+    return trecho if melhor >= 0.85 else None
+
+
 def verificar(cur: dict, fonte_norm: str, nomes_jogador: set[str], paises: dict) -> str | None:
     """Motivo para rejeitar a curiosidade, ou None se estiver bem."""
     texto, origem = cur.get("texto", "").strip(), cur.get("origem", "").strip()
@@ -84,10 +140,16 @@ def verificar(cur: dict, fonte_norm: str, nomes_jogador: set[str], paises: dict)
         return "vazia"
     if len(texto) > 180:
         return "demasiado longa"
-    origem_norm = normalizar(origem)
-    if len(origem_norm) < 20 or origem_norm not in fonte_norm:
+    brasil = _BRASIL.search(texto) or next(
+        (m for m in _PROCLISE.finditer(texto)
+         if (texto[:m.start()].split() or [""])[-1].lower().strip(",;") not in _ATRAEM), None)
+    if brasil:
+        return f"português do Brasil (\"{brasil.group()}\")"
+    origem_norm = _no_artigo(normalizar(origem), fonte_norm)
+    if not origem_norm:
         return "a frase de origem não está no artigo"
-    numeros_origem = set(re.findall(r"\d+", origem.replace(",", "").replace(".", "")))
+    numeros_origem = set(re.findall(r"\d+", origem.replace(",", "").replace(".", ""))) & set(origem_norm.split()) \
+        if origem_norm != normalizar(origem) else set(re.findall(r"\d+", origem.replace(",", "").replace(".", "")))
     palavras_origem = set(origem_norm.split())
     for n in re.findall(r"\d+", texto.replace(".", "").replace(",", "")):
         if n in numeros_origem or _POR_EXTENSO.get(int(n)) in palavras_origem:
@@ -104,8 +166,10 @@ def verificar(cur: dict, fonte_norm: str, nomes_jogador: set[str], paises: dict)
             continue
         if p in palavras_origem or p in origem_norm:
             continue
-        if any(p in pt.split() and en in origem_norm for pt, en in paises.items()):
-            continue
+        if any(p in pt.split() and (en in origem_norm or any(w[:5] == e[:5] for e in en.split() if len(e) >= 5
+                                                               for w in palavras_origem))
+               for pt, en in paises.items()):
+            continue                                     # Ucrânia ↔ Ukraine/Ukrainian, Coreia do Sul ↔ Korea
         if len(p) >= 4 and any(w.startswith(p[:4]) for w in palavras_origem):
             continue
         return f"o nome \"{palavra}\" não está na frase de origem"
@@ -113,7 +177,7 @@ def verificar(cur: dict, fonte_norm: str, nomes_jogador: set[str], paises: dict)
 
 
 def gerar(cliente, registo: dict, fresco: bool = False,
-          modelo: str = config.GEMINI_MODELO) -> tuple[list[dict], list[dict], dict]:
+          modelo: str = config.LLM_MODELO) -> tuple[list[dict], list[dict], dict]:
     """(aceites, rejeitadas, fonte) para um registo."""
     titulo = registo["fontes"]["wikipedia"]
     textos = wp.wikitextos(cliente, [titulo])
@@ -126,16 +190,70 @@ def gerar(cliente, registo: dict, fresco: bool = False,
     fonte_norm = normalizar(fonte)
     nomes = {normalizar(registo["nome"])} | {normalizar(a) for a in registo.get("aliases", [])}
     paises = _paises_en_pt()
+    candidatas = [c for c in resposta.get("curiosidades", [])[:8] if c.get("texto", "").strip()]
+    revistas = [corrigir_grafia(r) for r in
+                _rever(cliente, registo, artigo["revid"], [c["texto"].strip() for c in candidatas], modelo, fresco)]
     aceites, rejeitadas = [], []
-    for cur in resposta.get("curiosidades", [])[:8]:
-        motivo = verificar(cur, fonte_norm, nomes, paises)
-        item = {"texto": cur.get("texto", "").strip(), "origem": cur.get("origem", "").strip(), "tema": cur.get("tema")}
-        (rejeitadas.append(dict(item, motivo=motivo)) if motivo else aceites.append(item))
-    return aceites[:6], rejeitadas, {"modelo": modelo, "versao": VERSAO, "revid": artigo["revid"]}
+    for cur, revista in zip(candidatas, revistas):
+        original = cur["texto"].strip()
+        item = {"texto": original, "origem": cur.get("origem", "").strip(), "tema": cur.get("tema")}
+        motivo = verificar(dict(item, texto=revista), fonte_norm, nomes, paises)
+        if motivo is None:
+            aceites.append(dict(item, texto=revista, **({"antes": original} if revista != original else {})))
+            continue
+        # A revisão estragou alguma coisa (tirou um número, mudou um nome): fica a original, se passar.
+        motivo_original = verificar(item, fonte_norm, nomes, paises) if revista != original else motivo
+        if motivo_original is None:
+            aceites.append(item)
+        else:
+            rejeitadas.append(dict(item, texto=revista, motivo=motivo,
+                                   **({"antes": original} if revista != original else {})))
+    return aceites[:6], rejeitadas, {"modelo": modelo, "versao": VERSAO, "revisao": REVISAO_VERSAO,
+                                     "revid": artigo["revid"]}
+
+
+REVISAO_VERSAO = 2
+REVISAO_SISTEMA = """És revisor de textos em português de Portugal. Recebes frases curtas sobre um futebolista.
+Muda só o que estiver errado; uma frase que já esteja correta fica exatamente igual. Corrige:
+- gralhas, acentos e concordância (sem inventar palavras: usa só palavras portuguesas que existem);
+- construções do Brasil: o pronome vai depois do verbo ("deu-lhe", "enviaram-no", "acompanhava-o"), exceto depois de
+  "que", "não", "já", "também", "nunca" e afins; "Mundial" em vez de "Copa do Mundo"; "livre", "baliza", "equipa",
+  "facto", "contacto", "Fenómeno", "dar os parabéns";
+- frases confusas: reescreve-as de forma simples e clara.
+Mantém todos os nomes próprios como estão, incluindo os das competições ("Copa América", "Copa Libertadores",
+"Liga dos Campeões"). Não acrescentes nem tires factos, nomes, datas ou números. Devolve todas as frases, pela
+mesma ordem."""
+
+
+def _maiusculas(frase: str) -> set[str]:
+    """Palavras com maiúscula que não estão no início de uma frase (nomes próprios)."""
+    return {m.group() for m in re.finditer(r"[A-ZÀ-Ý][\wÀ-ÿ'-]+", frase)
+            if not re.search(r"(^|[.!?:;]\s*[\"“«(']?)\s*$", frase[:m.start()])}
+ESQUEMA_REVISAO = {"type": "object", "properties": {"frases": {"type": "array", "items": {"type": "string"}}},
+                   "required": ["frases"]}
+
+
+def _rever(cliente, registo: dict, revid, frases: list[str], modelo: str, fresco: bool) -> list[str]:
+    """As frases revistas pelo mesmo modelo, pela mesma ordem; as originais se a revisão falhar."""
+    if not frases:
+        return frases
+    pedido = "\n".join(f"{i}. {f}" for i, f in enumerate(frases, 1))
+    try:
+        res = llm.gerar_json(cliente, REVISAO_SISTEMA, pedido, ESQUEMA_REVISAO, modelo=modelo, fresco=fresco,
+                             chave_cache=f"revisao|v{REVISAO_VERSAO}|v{VERSAO}|{registo['id']}|{revid}")
+    except (llm.SemChave, llm.SemOllama, llm.QuotaDiaria):
+        raise
+    except Exception:                                    # noqa: BLE001 — sem revisão, ficam as originais
+        return frases
+    revistas = [re.sub(r"^\s*\d+[.)]\s*", "", f).strip() for f in res.get("frases", [])]
+    if len(revistas) != len(frases) or not all(revistas):
+        return frases
+    # Uma revisão que tira um nome próprio ("Copa América" → "América") estraga a frase: fica a original.
+    return [r if _maiusculas(f) <= _maiusculas(r) else f for f, r in zip(frases, revistas)]
 
 
 def correr(cliente, ids: list[str] | None = None, limite: int | None = None, refazer: bool = False,
-           fresco: bool = False, modelo: str = config.GEMINI_MODELO, registar=print) -> dict:
+           fresco: bool = False, modelo: str = config.LLM_MODELO, registar=print) -> dict:
     """Gera as curiosidades em falta (ou todas, com refazer). Devolve {'feitos', 'saltados', 'falhas'}."""
     res = {"feitos": [], "saltados": [], "falhas": {}}
     caminhos = sorted(config.JOGADORES.glob("*.json"))
@@ -161,7 +279,7 @@ def correr(cliente, ids: list[str] | None = None, limite: int | None = None, ref
             res["falhas"][registo["id"]] = f"{type(e).__name__}: {e}"
             registar(f"{registo['nome']}: FALHOU ({type(e).__name__})")
             continue
-        registo["curiosidades"] = aceites
+        registo["curiosidades"] = [{k: v for k, v in c.items() if k != "antes"} for c in aceites]
         registo.setdefault("fontes", {})["curiosidades"] = fonte
         caminho.write_text(json.dumps(registo, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
         SAIDA_CURIOSIDADES.mkdir(parents=True, exist_ok=True)

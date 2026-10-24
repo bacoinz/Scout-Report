@@ -44,6 +44,10 @@ GEMINI_URL = "https://generativelanguage.googleapis.com/v1beta/models/{modelo}:g
 # Ollama local (curiosidades com `--modelo ollama:gemma4:12b`): sem quotas, o texto não sai do PC.
 OLLAMA_URL = "http://127.0.0.1:11434"
 OLLAMA_CONTEXTO = 8192
+# Modelo das curiosidades (23–24/10, comparados em 7 jogadores): o gemma4:12b local deu 32 aceites em 37, ~12 s
+# por jogador numa RTX 3070; o qwen3.5:9b, 21 em 34 e pior português. O gemini-3.5-flash escreve melhor, mas o
+# plano gratuito só dá 20 pedidos por dia.
+LLM_MODELO = "ollama:gemma4:12b"
 
 # Regras de cobertura (ver Decisões no plano): um "não" só sai com dados que cubram ≥ 90% dos jogos de clube.
 COBERTURA_MINIMA = 0.90

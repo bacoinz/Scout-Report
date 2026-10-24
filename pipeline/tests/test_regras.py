@@ -124,3 +124,22 @@ def test_verificar_curiosidade():
     decada = {"texto": "A mãe foi campeã de heptatlo nos anos 90.",
               "origem": "His mother was a national heptathlon champion in Norway in the 1990s."}
     assert verificar(decada, fonte2, set(), {}) is None
+    brasil = {"texto": "A mãe lhe deu a alcunha na Copa do Mundo.", "origem": "His mother was a national heptathlon champion in Norway in the 1990s."}
+    assert "Brasil" in verificar(brasil, fonte2, set(), {})
+    proclise = {"texto": "Os pais o enviaram para França aos 5 anos.", "origem": "At age five he was sent to France."}
+    assert "Brasil" in verificar(proclise, fonte2, set(), {"franca": "france"})
+    certa = {"texto": "O tio, que o recebeu em França, tinha 5 filhos? Não: foi aos 5 anos.", "origem": "At age five he was sent to France."}
+    assert verificar(certa, fonte2, set(), {"franca": "france"}) is None          # "que o recebeu" está certo
+
+
+def test_corrigir_grafia():
+    from scout.curiosidades import corrigir_grafia
+    assert corrigir_grafia("A alcunha O Fenômeno e o prêmio") == "A alcunha O Fenómeno e o prémio"
+
+
+def test_origem_com_palavras_trocadas():
+    from scout.curiosidades import _no_artigo
+    fonte = "in 2018 son opened son football academy in his hometown chuncheon with his father and his brother"
+    copia = "in 2018 son opened the son football academy in his hometown chuncheon together with his father and brother"
+    assert _no_artigo(copia, fonte)                                               # ≥ 85% das palavras
+    assert _no_artigo("he scored twelve goals in the final against brazil in 1998", fonte) is None

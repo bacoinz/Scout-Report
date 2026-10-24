@@ -175,7 +175,8 @@ def gerar() -> str:
             L.append(f"- **SEM REGISTO em:** {', '.join(sem_registo[r['id']])}")
         if r.get("curiosidades") or (cur and cur.get("rejeitadas")):
             L += ["", "| Curiosidade (PT-PT) | Frase de origem (Wikipédia) |", "|---|---|"]
-            L += [f"| {c['texto']} | {c['origem']} |" for c in r.get("curiosidades", [])]
+            L += [f"| {c['texto']}" + (f"<br><sub>antes da revisão: {c['antes']}</sub>" if c.get("antes") else "")
+                  + f" | {c['origem']} |" for c in ((cur or {}).get("aceites") or r.get("curiosidades", []))]
             L += [f"| ~~{c['texto']}~~ — rejeitada: {c['motivo']} | {c['origem']} |" for c in (cur or {}).get("rejeitadas", [])]
         for titulo, itens in (("Erros", v.get("erros")), ("Avisos", (rec.get("avisos") or []) + (v.get("avisos") or []))):
             if itens:

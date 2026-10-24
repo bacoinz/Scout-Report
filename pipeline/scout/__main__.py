@@ -136,7 +136,8 @@ def main(argv=None):
     s.add_argument("--id", action="append")
     s.add_argument("--limite", type=int)
     s.add_argument("--refazer", action="store_true")
-    s.add_argument("--modelo", default=config.GEMINI_MODELO, help=f"modelo do Gemini (por omissão {config.GEMINI_MODELO})")
+    s.add_argument("--modelo", default=config.LLM_MODELO,
+                   help=f"ollama:<modelo> (local) ou um modelo do Gemini; por omissão {config.LLM_MODELO}")
     s.set_defaults(f=cmd_curiosidades)
     s = sub.add_parser("validar", help="valida os registos (sai com 1 se houver erros)")
     s.add_argument("--avisos", action="store_true", help="mostra também os avisos")

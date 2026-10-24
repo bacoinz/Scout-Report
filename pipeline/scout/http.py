@@ -123,7 +123,8 @@ class Cliente:
         return resposta
 
     def _ficheiro_cache(self, chave: str, anfitriao: str):
-        return self.pasta_cache / anfitriao / f"{hashlib.sha1(chave.encode()).hexdigest()}.gz"
+        # "127.0.0.1:11434" (Ollama): o Windows não aceita ":" nos nomes das pastas.
+        return self.pasta_cache / anfitriao.replace(":", "_") / f"{hashlib.sha1(chave.encode()).hexdigest()}.gz"
 
     def _ler_cache(self, ficheiro):
         return gzip.decompress(ficheiro.read_bytes()).decode("utf-8") if ficheiro.exists() else None
