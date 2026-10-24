@@ -127,7 +127,7 @@ function carreiraPublica(f, ctx) {
     el('table', { class: 'tabela-carreira' },
       el('thead', {}, el('tr', {}, el('th', { text: 'Clube' }), el('th', { class: 'esq', text: 'Liga' }))),
       el('tbody', {}, ...linhas)),
-    nota ? el('p', { class: 'nota-carreira', text: `Totais: ${nota}.` }) : null);
+);
 }
 
 function estatisticasPublicas(f, ctx) {
@@ -238,7 +238,6 @@ function dadosRegisto(reg) {
 function carreiraRegisto(reg, cat, completa) {
   const ativo = reg.estado === 'ativo';
   const cabeca = completa ? ['Clube', 'Épocas', 'J', 'G', 'A', 'N.º'] : ['Clube', 'Liga', 'Épocas'];
-  let nota = null;
   const linhas = reg.carreira.map((c, i) => {
     const liga = c.ligas[0] ? P.nomeLiga(cat, c.ligas[0]) : '—';
     const ep = epocas(c.inicio, c.fim, ativo && i === reg.carreira.length - 1);
@@ -249,7 +248,7 @@ function carreiraRegisto(reg, cat, completa) {
       el('td', { text: ep }),
       el('td', { text: c.jogos ?? '—' }),
       el('td', { text: c.golos ?? '—' }),
-      el('td', { text: c.assistencias ?? '—' }),
+      el('td', { text: c.assistencias != null ? `≃${c.assistencias}` : '—' }),
       el('td', { text: c.numeros?.length ? c.numeros.join(', ') : '—' }));
   });
   if (completa) {
@@ -264,14 +263,12 @@ function carreiraRegisto(reg, cat, completa) {
     }
     const t = reg.totais;
     const assist = t.assistencias;
-    nota = [t.base === 'todas' ? 'todas as competições + seleção' : 'campeonato + seleção',
-      assist.cobertura < P.COBERTURA_MINIMA ? `assist. conhecidas em ${Math.round(assist.cobertura * 100)}% dos jogos` : null].filter(Boolean).join(' · ');
     linhas.push(el('tr', { class: 'total' },
       el('td', { text: 'Total' }),
       el('td', { text: '' }),
       el('td', { text: t.jogos }),
       el('td', { text: t.golos }),
-      el('td', { text: assist.conhecidas }),
+      el('td', { text: `≃${assist.conhecidas}` }),
       el('td', { text: '' })));
   }
   return el('section', {},
@@ -370,12 +367,17 @@ export function linhasPremios(lista) {
     const unicos = [...new Set(a)].sort((x, y) => x - y);
     return unicos.length ? `(${unicos.join(', ')})` : n > 1 ? `×${n}` : '';
   };
-  return [...porId].sort(([a], [b]) => ordem.indexOf(a) - ordem.indexOf(b)).map(([id, porPais]) => {
-    const nome = nomePremio(id);
-    const semPais = porPais.size === 1 && porPais.has('');
-    if (semPais) return [nome, anos(porPais.get(''))].filter(Boolean).join(' ');
-    return `${nome} · ${[...porPais].map(([pais, x]) => [pais ? P.nomePais(pais) : '?', anos(x)].filter(Boolean).join(' ')).join(', ')}`;
-  });
+  return [...porId].sort(([a], [b]) => ordem.indexOf(a) - ordem.indexOf(b)).map(([id, porPais]) => ({
+    nome: nomePremio(id),
+    partes: [...porPais].map(([pais, x]) => ({ pais: pais ? P.nomePais(pais) : null, anos: anos(x) })),
+  }));
+}
+
+/** Uma linha de prémios: "<b>Campeonato nacional</b> · Croácia <i>(2019, 2020)</i>, Inglaterra <i>(2023)</i>". */
+export const textoPremio = (l) => `${l.nome}${l.partes.some((x) => x.pais) ? ' ·' : ''} ${l.partes.map((x) => [x.pais, x.anos].filter(Boolean).join(' ')).join(', ')}`.trim();
+function linhaPremio(l) {
+  const partes = l.partes.flatMap((x, i) => [i ? ', ' : (x.pais ? ' · ' : ' '), x.pais ?? '', x.pais && x.anos ? ' ' : '', x.anos ? el('em', { text: x.anos }) : null]);
+  return el('li', {}, el('strong', { text: l.nome }), ...partes.filter((x) => x !== ''));
 }
 
 // ---------------------------------------------------------------------------
@@ -404,13 +406,13 @@ export function dossier(reg, f, o) {
         grupos.length ? el('section', {}, el('h4', { text: 'Prémios' }),
           ...grupos.map(([rotulo, linhas]) => el('div', { class: 'premios-grupo' },
             el('p', { class: 'premios-rotulo', text: rotulo }),
-            el('ul', { class: 'lista-folha' }, ...linhas.map((l) => el('li', { text: l })))))) : null,
+            el('ul', { class: 'lista-folha' }, ...linhas.map(linhaPremio))))) : null,
         tr ? el('section', {},
           el('h4', { text: 'Treinador' }),
           el('ul', { class: 'lista-folha' },
             ...tr.equipas.map((e) => el('li', { text: `${e.tipo === 'selecao' ? `Seleção ${P.dePais(e.pais)}` : e.nome}${e.pais && e.tipo !== 'selecao' ? ` (${P.nomePais(e.pais)})` : ''} · ${epocas(e.inicio, e.fim, e === tr.atual)}${e.interino ? ' · interino' : ''}` })),
             el('li', { text: plural(tr.n_titulos ?? 0, 'título', 'títulos') }),
-            ...linhasPremios(tr.titulos).map((l) => el('li', { text: l })))) : null,
+            ...linhasPremios(tr.titulos).map(linhaPremio))) : null,
         reg.perfil?.alcunhas?.length ? el('section', {}, el('h4', { text: 'Alcunhas' }), el('p', { class: 'texto-maquina', text: reg.perfil.alcunhas.join(' · ') })) : null,
         el('p', { class: 'folha-fonte' }, 'Fonte: ',
           reg.fontes?.wikipedia ? el('a', { href: `https://en.wikipedia.org/wiki/${encodeURIComponent(reg.fontes.wikipedia.replace(/ /g, '_'))}`, target: '_blank', rel: 'noopener', text: 'Wikipédia' }) : 'Wikipédia',

@@ -43,16 +43,19 @@ function perguntaCom(sala, ctx, resposta) {
   }
   return null;
 }
-/** Deixa a ficha de `dono` com o palpite final desbloqueado (6 "sim" e um clube). */
+/** Deixa a ficha de `dono` com o palpite final desbloqueado (10 "sim" e um clube). */
 function desbloquear(sala, ctx, dono) {
   const f = ficha(sala, dono);
   const reg = ctx.registos.get(sala.partida.segredos[dono].registo);
   const c = reg.carreira[0];
   f.respostas[`clube:${c.clube}`] = { r: 'sim', autor: 'jx', ronda: 1 };
-  for (const k of ['conf', 'setor', 'decada', 'pais', 'jogos'].flatMap((t) => P.candidatas(f, t, cat))) {
-    if (P.contarSim(f) >= 6) break;
+  const tipos = ['conf', 'setor', 'decada', 'pais', 'jogos', 'golos', 'premio', 'ativo', 'retirado', 'pe', 'altura', 'faixa', 'inter'];
+  for (const k of tipos.flatMap((t) => P.candidatas(f, t, cat))) {
+    if (P.contarSim(f) >= P.SIM_MINIMOS) break;
     if (P.responder(reg, k) === 'sim') f.respostas[k] = { r: 'sim', autor: 'jx', ronda: 1 };
   }
+  // Se ainda faltar, com perguntas livres respondidas "sim" (também contam).
+  while (P.contarSim(f) < P.SIM_MINIMOS) f.livres.push({ texto: '?', r: 'sim', autor: 'jx', ronda: 1 });
   expect(P.palpiteDesbloqueado(f)).toBe(true);
 }
 

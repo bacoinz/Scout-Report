@@ -12,32 +12,33 @@ const tipoPremio = (tipo) => (k) => P.PREMIOS[P.ler(k).valor]?.tipo === tipo;
 /**
  * As subcategorias de cada categoria: o rótulo, os tipos de pergunta e como se escolhe (grelha por omissão;
  * `campo` com sugestões quando há muitas opções, com esse texto de exemplo; `lista` para os prémios).
+ * `soCerto`: depois de uma resposta certa, o grupo fica só com ela (sai o resto e o campo), para não baralhar.
  */
 const GRUPOS = {
   estado: [{ tipos: ['ativo', 'retirado', 'foi_treinador'], colunas: 3 }],
   era: [
-    { rotulo: 'Estreou-se nos anos…', tipos: ['decada'], colunas: 3 },
-    { rotulo: 'Estreou-se em…', tipos: ['ano'], colunas: 5 },
+    { rotulo: 'Estreou-se nos anos…', tipos: ['decada'], colunas: 3, soCerto: true },
+    { rotulo: 'Estreou-se em…', tipos: ['ano'], colunas: 5, soCerto: true },
   ],
   nacionalidade: [
-    { rotulo: 'Continente', tipos: ['conf'], larga: true },
-    { rotulo: 'País', tipos: ['nac'], campo: 'país', larga: true },
+    { rotulo: 'Continente', tipos: ['conf'], larga: true, soCerto: true },
+    { rotulo: 'País', tipos: ['nac'], campo: 'país', larga: true, soCerto: true },
   ],
   posicao: [
-    { rotulo: 'Setor', tipos: ['setor'], larga: true },
-    { rotulo: 'Posição', tipos: ['pos'], larga: true },
+    { rotulo: 'Setor', tipos: ['setor'], larga: true, soCerto: true },
+    { rotulo: 'Posição', tipos: ['pos'], larga: true, soCerto: true },
   ],
   fisico: [
-    { rotulo: 'Pé', tipos: ['pe'], colunas: 3 },
+    { rotulo: 'Pé', tipos: ['pe'], colunas: 3, soCerto: true },
     { rotulo: 'Altura', tipos: ['baixo', 'altura'], colunas: 5 },
   ],
   carreira: [
-    { rotulo: 'Jogou em…', tipos: ['pais'], campo: 'país', larga: true },
-    { rotulo: 'Joga atualmente em…', tipos: ['pais_atual'], campo: 'país', larga: true },
-    { rotulo: 'Jogou na liga…', tipos: ['liga'], campo: 'liga', larga: true },
-    { rotulo: 'Joga atualmente na liga…', tipos: ['liga_atual'], campo: 'liga', larga: true },
-    { rotulo: 'Jogou no clube…', tipos: ['clube'], campo: 'clube', larga: true },
-    { rotulo: 'Joga atualmente no clube…', tipos: ['clube_atual'], campo: 'clube', larga: true },
+    { rotulo: 'Jogou em…', tipos: ['pais'], campo: 'país', larga: true, soCerto: true },
+    { rotulo: 'Joga atualmente em…', tipos: ['pais_atual'], campo: 'país', larga: true, soCerto: true },
+    { rotulo: 'Jogou na liga…', tipos: ['liga'], campo: 'liga', larga: true, soCerto: true },
+    { rotulo: 'Joga atualmente na liga…', tipos: ['liga_atual'], campo: 'liga', larga: true, soCerto: true },
+    { rotulo: 'Jogou no clube…', tipos: ['clube'], campo: 'clube', larga: true, soCerto: true },
+    { rotulo: 'Joga atualmente no clube…', tipos: ['clube_atual'], campo: 'clube', larga: true, soCerto: true },
   ],
   estatisticas: [
     { rotulo: 'Jogos', tipos: ['jogos'], colunas: 4 },
@@ -46,8 +47,8 @@ const GRUPOS = {
     { rotulo: 'Internacionalizações', tipos: ['inter_menos', 'inter'], colunas: 4 },
   ],
   numeros: [
-    { rotulo: 'Números usados', tipos: ['faixa'], colunas: 3 },
-    { rotulo: 'Número exato', tipos: ['num'], campo: 'número', colunas: 5 },
+    { rotulo: 'Números usados', tipos: ['faixa'], colunas: 3, soCerto: true },
+    { rotulo: 'Número exato', tipos: ['num'], campo: 'número', colunas: 5, soCerto: true },
   ],
   premios: [
     { rotulo: 'Clubes', tipos: ['premio'], filtro: tipoPremio('clube'), lista: true },
@@ -58,10 +59,10 @@ const GRUPOS = {
     { rotulo: 'Treinador', tipos: ['t_atual', 't_selecao'], larga: true },
     { rotulo: 'Títulos como treinador', tipos: ['t_titulos'], colunas: 4 },
     { rotulo: 'Ganhou como treinador', tipos: ['t_premio'], lista: true },
-    { rotulo: 'Treinou em…', tipos: ['t_pais'], campo: 'país', larga: true },
-    { rotulo: 'Treinou o clube…', tipos: ['t_clube'], campo: 'clube', larga: true },
-    { rotulo: 'Treinou a seleção de…', tipos: ['t_sel'], campo: 'país', larga: true },
-    { rotulo: 'Treina atualmente…', tipos: ['t_atual_clube', 't_atual_sel'], campo: 'equipa', larga: true },
+    { rotulo: 'Treinou em…', tipos: ['t_pais'], campo: 'país', larga: true, soCerto: true },
+    { rotulo: 'Treinou o clube…', tipos: ['t_clube'], campo: 'clube', larga: true, soCerto: true },
+    { rotulo: 'Treinou a seleção de…', tipos: ['t_sel'], campo: 'país', larga: true, soCerto: true },
+    { rotulo: 'Treina atualmente…', tipos: ['t_atual_clube', 't_atual_sel'], campo: 'equipa', larga: true, soCerto: true },
   ],
 };
 /** Até tantas opções vão em grelha; mais do que isso, num campo com sugestões. */
@@ -180,31 +181,44 @@ export function menu(ficha, o) {
     return [el('div', { class: 'seletor' }, botao, opcoes)];
   };
 
+  const grelha = (g, chaves) => el('div', { class: `grelha${g.larga ? ' larga' : ''}`, style: g.colunas ? { '--colunas': String(g.colunas) } : null }, ...chaves.map(botao));
+
   const categorias = P.ORDEM.filter((c) => c !== 'treinador' || P.comTreinador(ficha));
   return categorias.map((categoria) => {
     const grupos = [];
-    const abertasCat = [];
+    const abertasVisiveis = [];
     for (const g of GRUPOS[categoria]) {
       let chaves = g.tipos.flatMap((t) => P.candidatas(ficha, t, cat)).filter((k) => P.valida(k, cat));
       if (g.filtro) chaves = chaves.filter(g.filtro);
       // Os níveis 2 e 3 só aparecem com o nível de cima confirmado (sem candidatas, o grupo não se mostra).
       chaves = chaves.filter((k) => estado(k).estado !== 'bloqueada');
       if (!chaves.length) continue;
-      abertasCat.push(...chaves.filter(aberta));
-      const conteudo = g.lista ? lista(chaves)
-        : g.campo && chaves.length > MAX_GRELHA ? campo(chaves, g.campo)
-          : [el('div', { class: `grelha${g.larga ? ' larga' : ''}`, style: g.colunas ? { '--colunas': String(g.colunas) } : null }, ...chaves.map(botao))];
+      // Depois de acertar, o grupo fica só com o ✓ (num grupo da hierarquia, segue-se o nível de baixo).
+      const certas = g.soCerto ? chaves.filter((k) => estado(k).r === 'sim') : [];
+      let conteudo;
+      if (certas.length) {
+        conteudo = [grelha(g, certas)];
+      } else if (g.lista) {
+        conteudo = lista(chaves);
+        abertasVisiveis.push(...chaves.filter(aberta));
+      } else {
+        conteudo = g.campo && chaves.length > MAX_GRELHA ? campo(chaves, g.campo) : [grelha(g, chaves)];
+        abertasVisiveis.push(...chaves.filter(aberta));
+      }
       grupos.push(el('div', { class: 'grupo' }, g.rotulo ? el('p', { class: 'grupo-rotulo', text: g.rotulo }) : null, ...conteudo));
     }
-    // Os pontos ficam só no título: os de cada nível que está aberto nesta categoria (3, depois 3/6, 3/6/9).
-    const valores = [...new Set(abertasCat.map((k) => P.comFator(P.pontos(k), o.identificado)))].sort((a, b) => a - b);
+    // Sem nada por perguntar (todos os níveis respondidos), a categoria fecha-se: leva o carimbo e não abre.
+    const fechada = abertasVisiveis.length === 0;
+    if (fechada) o.abertas.delete(categoria);
+    // Os pontos são os do nível em que a categoria está (o mais fundo que está aberto: 3, depois 6, depois 9).
+    const pontosCat = fechada ? null : Math.max(...abertasVisiveis.map((k) => P.comFator(P.pontos(k), o.identificado)));
     const r = P.resumoCategoria(ficha, categoria);
     const resumo = [r.sim && `${r.sim} ✓`, r.nao && `${r.nao} ✗`, r.sem_registo && `${r.sem_registo} s/ registo`].filter(Boolean).join(' · ');
-    const det = el('details', { class: 'categoria', open: o.abertas.has(categoria), dataset: { categoria } },
-      el('summary', {},
+    const det = el('details', { class: `categoria${fechada ? ' fechada' : ''}`, open: !fechada && o.abertas.has(categoria), dataset: { categoria } },
+      el('summary', { 'aria-disabled': fechada ? 'true' : null, onclick: fechada ? (e) => e.preventDefault() : null },
         el('span', { class: 'cat-nome', text: P.NOMES_CATEGORIAS[categoria] }),
-        el('span', { class: 'cat-pts', text: valores.length ? `${valores.join('/')} pts` : '' }),
-        resumo ? el('span', { class: 'resumo-cat', text: resumo }) : null),
+        el('span', { class: 'resumo-cat', text: resumo }),
+        fechada ? el('span', { class: 'carimbo mini cat-fechada', text: 'Fechado' }) : el('span', { class: 'cat-pts', text: `${pontosCat} pts` })),
       el('div', { class: 'grupos' }, ...grupos));
     det.addEventListener('toggle', () => (det.open ? o.abertas.add(categoria) : o.abertas.delete(categoria)));
     return det;

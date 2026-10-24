@@ -835,9 +835,36 @@ body:has(.dialogo-livre[open]) .toasts {
   text-transform: uppercase;
   color: var(--tinta-suave);
 }
-.nota-carreira {
-  margin: 4px 0 0;
-  font-family: var(--body);
-  font-size: 11px;
-  color: var(--tinta-suave);
+
+/* Título da categoria: nome, resumo (✓ ✗) e os pontos do nível em que está; esgotada, leva o carimbo e não abre. */
+.categoria > summary .resumo-cat {
+  margin-left: auto;
+}
+.categoria > summary .cat-pts {
+  margin-left: 4px;
+}
+.categoria.fechada > summary {
+  cursor: default;
+  color: var(--muted);
+}
+.categoria.fechada > summary::after {
+  content: none;
+}
+.carimbo.mini.cat-fechada {
+  --rot: -3deg;
+  margin-left: 6px;
+  font-size: 10.5px;
+  color: #d9a3a3;
+}
+
+/* Os 10 "sim" do palpite final em duas linhas de 5, para caberem ao lado do botão. */
+.contador-sim .caixas {
+  display: inline-grid;
+  grid-template-columns: repeat(5, 11px);
+  gap: 2px;
+}
+.contador-sim .caixas i {
+  width: 11px;
+  height: 11px;
+  font-size: 10px;
 }

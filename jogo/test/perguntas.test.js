@@ -230,13 +230,17 @@ describe('deduções', () => {
 });
 
 describe('palpite final', () => {
-  it('pede 6 "sim" (estruturados e livres, sem deduções) e um clube confirmado', () => {
-    const cinco = { 'conf:UEFA': 'sim', 'pais:ES': 'sim', [`liga:${LA_LIGA}`]: 'sim', 'jogos:300': 'sim', 'setor:medio': 'sim' };
-    expect(P.contarSim(ficha({ ...cinco, 'jogos:500': 'nao' }))).toBe(5);
-    expect(P.palpiteDesbloqueado(ficha(cinco, ['sim']))).toBe(false); // falta o clube
-    expect(P.faltaParaPalpite(ficha(cinco))).toEqual({ sim: 1, clube: true });
-    expect(P.palpiteDesbloqueado(ficha({ ...cinco, [`clube:${REAL_MADRID}`]: 'sim' }))).toBe(true);
-    expect(P.palpiteDesbloqueado(ficha({ ...cinco, [`clube_atual:${REAL_MADRID}`]: 'sim' }))).toBe(true);
+  it('pede 10 "sim" (estruturados e livres, sem deduções) e um clube confirmado', () => {
+    expect(P.SIM_MINIMOS).toBe(10);
+    const nove = {
+      'conf:UEFA': 'sim', 'pais:ES': 'sim', [`liga:${LA_LIGA}`]: 'sim', 'jogos:300': 'sim', 'setor:medio': 'sim',
+      'golos:50': 'sim', 'premio:liga_campeoes': 'sim', 'decada:1990': 'sim', 'faixa:0': 'sim',
+    };
+    expect(P.contarSim(ficha({ ...nove, 'jogos:500': 'nao' }))).toBe(9);
+    expect(P.palpiteDesbloqueado(ficha(nove, ['sim']))).toBe(false); // falta o clube
+    expect(P.faltaParaPalpite(ficha(nove))).toEqual({ sim: 1, clube: true });
+    expect(P.palpiteDesbloqueado(ficha({ ...nove, [`clube:${REAL_MADRID}`]: 'sim' }))).toBe(true);
+    expect(P.palpiteDesbloqueado(ficha({ ...nove, [`clube_atual:${REAL_MADRID}`]: 'sim' }))).toBe(true);
   });
 });
 

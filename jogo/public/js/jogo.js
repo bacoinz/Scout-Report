@@ -213,7 +213,7 @@ function renderPainel(sala) {
       el('span', { class: 'quem' }, ponto(v.alvo), nome(v.alvo)));
     if (p.livre) textoAviso = p.livre.alvo === contexto.eu ? `Pergunta livre ao teu jogador: «${p.livre.texto}». Responde na janela.`
       : `Pergunta livre: «${p.livre.texto}». À espera da resposta de ${nome(p.livre.alvo)}.`;
-    else if (alvo) textoAviso = `Na tua vez perguntas à ficha de ${nome(alvo)}. Podes ir escolhendo.`;
+    else if (alvo) textoAviso = `O teu próximo palpite é para a ficha de ${nome(alvo)}.`;
   } else if (p.fase === 'identificado') {
     titulo.replaceChildren('Identificado!');
   } else {

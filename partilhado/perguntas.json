@@ -5,7 +5,7 @@
   "joker": {"exato": 15, "perto": 9, "passou": 0, "dono_todos_passam": 9, "dono_perto": 3, "dono_exato": 0},
   "fator_identificado": 0.5
  },
- "palpite": {"sim_minimos": 6, "clube_obrigatorio": true},
+ "palpite": {"sim_minimos": 10, "clube_obrigatorio": true},
  "sorteio_por_decada_de_nascimento": {"1990": 8, "1980": 5, "2000": 5, "1970": 3, "1960": 1},
  "ordem_categorias": ["estado", "era", "nacionalidade", "posicao", "fisico", "carreira", "estatisticas", "numeros", "premios", "treinador"],
  "setores": {"gr": "Guarda-redes", "defesa": "Defesa", "medio": "Médio", "avancado": "Avançado"},
