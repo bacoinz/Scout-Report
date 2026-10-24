@@ -18,7 +18,7 @@ O projeto tem três partes:
 
 - [x] Passo 1 — tema partilhado e mockup do relatório de olheiro (`docs/tema-partilhado.md`, `docs/capturas/`)
 - [x] Passo 2 — pipeline com uma amostra de 30 jogadores e relatório de qualidade
-- [ ] Passo 3 — lista dos míticos e processamento completo
+- [x] Passo 3 — lista dos míticos e processamento completo (865 jogadores)
 - [ ] Passo 4 — jogo: salas, rotação, perguntas, fichas, pontuação, palpites
 - [ ] Passo 5 — Ronda Joker
 - [ ] Passo 6 — Desafio do Dia
@@ -48,7 +48,8 @@ py -3.12 -m venv .venv
 .venv/Scripts/python -m scout tm preparar         # → .cache/tm/tm.sqlite
 .venv/Scripts/python -m scout paises              # → partilhado/paises.json
 .venv/Scripts/python -m scout sementes            # quem entra na base → dados/candidatos.json
-.venv/Scripts/python -m scout recolher --amostra  # os 30 da amostra → dados/jogadores/<QID>.json
+.venv/Scripts/python -m scout recolher --candidatos  # todos (6–7 h na 1.ª vez; retoma onde parou) → dados/jogadores/
+.venv/Scripts/python -m scout premios             # volta a aplicar dados/competicoes.json aos títulos
 .venv/Scripts/python -m scout validar
 .venv/Scripts/python -m scout relatorio           # → saida/qualidade.md
 .venv/Scripts/python -m pytest

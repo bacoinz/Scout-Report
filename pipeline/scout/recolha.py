@@ -9,7 +9,7 @@ from . import config
 from .fontes import wikidata as wd
 from .fontes import wikipedia as wp
 from .http import BloqueioAntiBot
-from .jogador import Contexto, construir
+from .jogador import Contexto, _premios, construir
 
 # Amostra do passo 2 (plano, 1.6): artigos da Wikipédia inglesa.
 AMOSTRA = [
@@ -50,6 +50,36 @@ def _marcar_fama(registo: dict, candidatos: dict) -> bool:
         return False
     registo.setdefault("fama", {}).update(marcas)
     return True
+
+
+def atualizar_premios(ctx: Contexto, registar=print) -> int:
+    """Volta a ler os títulos de todos os registos com o dados/competicoes.json atual, sem refazer a recolha
+    (para depois de mapear competições à mão). Devolve quantos registos mudaram."""
+    caminhos = sorted(config.JOGADORES.glob("*.json"))
+    registos = [json.loads(p.read_text(encoding="utf-8")) for p in caminhos]
+    textos = wp.wikitextos(ctx.cliente, [r["fontes"]["wikipedia"] for r in registos])
+    mudados = 0
+    for caminho, r in zip(caminhos, registos):
+        artigo = textos.get(r["fontes"]["wikipedia"])
+        if not artigo:
+            registar(f"{r['nome']}: artigo não encontrado")
+            continue
+        premios, premios_treinador, desconhecidas, n_treinador = _premios(ctx, wp.titulos(artigo["texto"]))
+        antes = json.dumps([r["premios"], r.get("treinador")], sort_keys=True)
+        r["premios"] = premios
+        if r.get("treinador"):
+            r["treinador"]["titulos"], r["treinador"]["n_titulos"] = premios_treinador, n_treinador
+        if json.dumps([r["premios"], r.get("treinador")], sort_keys=True) != antes:
+            _gravar(caminho, r)
+            mudados += 1
+        saida = SAIDA_RECOLHA / caminho.name                  # o aviso das competições desconhecidas, atualizado
+        if saida.exists():
+            rec = json.loads(saida.read_text(encoding="utf-8"))
+            rec["avisos"] = [a for a in rec["avisos"] if not a.startswith("competições sem prémio associado")]
+            if desconhecidas:
+                rec["avisos"].append("competições sem prémio associado: " + "; ".join(sorted(desconhecidas)))
+            _gravar(saida, rec)
+    return mudados
 
 
 def titulos_candidatos() -> list[str]:

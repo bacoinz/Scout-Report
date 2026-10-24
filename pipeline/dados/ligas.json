@@ -5,6 +5,72 @@
   "nome_en": "Primera Federación",
   "pais": "ES"
  },
+ "Q100486747": {
+  "futebol": true,
+  "nome": "Segunda Federación",
+  "nome_en": "Primera Federación",
+  "pais": "ES"
+ },
+ "Q100486967": {
+  "futebol": true,
+  "nome": "Tercera Federación",
+  "nome_en": "Tercera Federación",
+  "pais": "ES"
+ },
+ "Q1033083": {
+  "futebol": true,
+  "nome": "Uruguayan Segunda División",
+  "nome_en": "Uruguayan Segunda División",
+  "pais": "UY"
+ },
+ "Q1033339": {
+  "futebol": true,
+  "nome": "Liga FUTVE",
+  "nome_en": "Venezuelan Primera División",
+  "pais": "VE"
+ },
+ "Q1033349": {
+  "futebol": true,
+  "nome": "Liga DIMAYOR",
+  "nome_en": "Categoría Primera A",
+  "pais": "CO"
+ },
+ "Q1046766": {
+  "futebol": true,
+  "nome": "UAE First Division League",
+  "nome_en": "UAE Division 1 Group A",
+  "pais": "AE"
+ },
+ "Q104682088": {
+  "futebol": true,
+  "nome": "2021 LigaPro Serie A",
+  "nome_en": "Serie A de Ecuador 2021",
+  "pais": "EC"
+ },
+ "Q105071625": {
+  "futebol": true,
+  "nome": "Copa de la Liga Profesional",
+  "nome_en": "Copa de la Liga Profesional",
+  "pais": "AR"
+ },
+ "Q1053080": {
+  "futebol": true,
+  "nome": "China League Two",
+  "nome_en": "China League Two",
+  "pais": "CN"
+ },
+ "Q1054995": {
+  "futebol": true,
+  "nome": "Manchester Football League",
+  "nome_en": "Manchester Football League",
+  "pais": "GB-ENG"
+ },
+ "Q105548811": {
+  "futebol": true,
+  "nome": "Campeonato Carioca Série B1",
+  "nome_en": "Campeonato Carioca Série B1",
+  "pais": "BR"
+ },
  "Q1061291": {
   "futebol": true,
   "nome": "Championnat National 1",
@@ -17,11 +83,215 @@
   "nome_en": "Liga 3",
   "pais": "PT"
  },
+ "Q107243538": {
+  "futebol": true,
+  "nome": "Danish 3rd Division",
+  "nome_en": "Danish 3rd Division",
+  "pais": "DK"
+ },
+ "Q10881724": {
+  "futebol": true,
+  "nome": "League 2",
+  "nome_en": "Iran Football's 2nd Division",
+  "pais": "IR"
+ },
+ "Q10947421": {
+  "futebol": true,
+  "nome": "Lisbon Football Association",
+  "nome_en": "Lisbon Football Association",
+  "pais": "PT"
+ },
+ "Q1095556": {
+  "futebol": true,
+  "nome": "North American Soccer League",
+  "nome_en": "North American Soccer League",
+  "pais": "US"
+ },
+ "Q112114152": {
+  "futebol": false,
+  "nome": "Q112114152",
+  "nome_en": null,
+  "pais": "NO"
+ },
+ "Q1124776": {
+  "futebol": true,
+  "nome": "III liga",
+  "nome_en": "III liga",
+  "pais": "PL"
+ },
+ "Q1139408": {
+  "futebol": true,
+  "nome": "Liga FPD",
+  "nome_en": "Liga FPD",
+  "pais": "CR"
+ },
  "Q1140581": {
   "futebol": true,
   "nome": "J2 League",
   "nome_en": "J2 League",
   "pais": "JP"
+ },
+ "Q1141692": {
+  "futebol": true,
+  "nome": "TFF 1. Lig",
+  "nome_en": "TFF First League",
+  "pais": "TR"
+ },
+ "Q1141778": {
+  "futebol": true,
+  "nome": "Serie D",
+  "nome_en": "Serie D",
+  "pais": "IT"
+ },
+ "Q1146403": {
+  "futebol": true,
+  "nome": "Primera B Metropolitana",
+  "nome_en": "Primera Nacional",
+  "pais": "AR"
+ },
+ "Q11527108": {
+  "futebol": true,
+  "nome": "Liga 1",
+  "nome_en": "Liga 1",
+  "pais": null
+ },
+ "Q1158138": {
+  "futebol": true,
+  "nome": "Damallsvenskan",
+  "nome_en": "Damallsvenskan",
+  "pais": "SE"
+ },
+ "Q115821": {
+  "futebol": true,
+  "nome": "Bahraini Premier League",
+  "nome_en": "Bahraini Premier League",
+  "pais": "BH"
+ },
+ "Q116909": {
+  "futebol": true,
+  "nome": "Kategoria e Parë",
+  "nome_en": "Albanian First Division",
+  "pais": "AL"
+ },
+ "Q118223254": {
+  "futebol": true,
+  "nome": "2023–24 Primera Federación",
+  "nome_en": "Primera Federación 2023-24",
+  "pais": "ES"
+ },
+ "Q1187730": {
+  "futebol": true,
+  "nome": "Togolese Championnat National",
+  "nome_en": "Togolese Championnat National",
+  "pais": "TG"
+ },
+ "Q1188284": {
+  "futebol": true,
+  "nome": "Ligue 1",
+  "nome_en": "Senegal Premier League",
+  "pais": "SN"
+ },
+ "Q11956424": {
+  "futebol": true,
+  "nome": "Norwegian Fourth Division",
+  "nome_en": "Norwegian Fourth Division",
+  "pais": "NO"
+ },
+ "Q1197790": {
+  "futebol": true,
+  "nome": "NASL",
+  "nome_en": "North American Soccer League",
+  "pais": "US"
+ },
+ "Q120431": {
+  "futebol": false,
+  "nome": "National Ice Hockey League",
+  "nome_en": "National Ice Hockey League",
+  "pais": "GB-ENG"
+ },
+ "Q1207912": {
+  "futebol": true,
+  "nome": "Primeira Liga Chinesa",
+  "nome_en": "China League One",
+  "pais": "CN"
+ },
+ "Q12289050": {
+  "futebol": true,
+  "nome": "Regional Amateur Football Groups",
+  "nome_en": "Regional Football Groups",
+  "pais": "BG"
+ },
+ "Q1231117": {
+  "futebol": true,
+  "nome": "Division 2",
+  "nome_en": "Swedish Football Division 2",
+  "pais": "SE"
+ },
+ "Q1231261": {
+  "futebol": true,
+  "nome": "Division 3",
+  "nome_en": "Swedish Football Division 3",
+  "pais": "SE"
+ },
+ "Q1231272": {
+  "futebol": true,
+  "nome": "Régional 1",
+  "nome_en": "Ligue régionale de football",
+  "pais": "FR"
+ },
+ "Q12323423": {
+  "futebol": true,
+  "nome": "Copenhagen Series",
+  "nome_en": "Copenhagen Series",
+  "pais": "DK"
+ },
+ "Q12335457": {
+  "futebol": true,
+  "nome": "Zealand Series",
+  "nome_en": "Zealand Series",
+  "pais": "DK"
+ },
+ "Q123953863": {
+  "futebol": true,
+  "nome": "Ykkönen",
+  "nome_en": "Ykkönen",
+  "pais": "FI"
+ },
+ "Q1261184": {
+  "futebol": true,
+  "nome": "Czech National Football League",
+  "nome_en": "Czech FNL",
+  "pais": "CZ"
+ },
+ "Q1263295": {
+  "futebol": true,
+  "nome": "Taça Brasil de Futebol",
+  "nome_en": "Taça Brasil",
+  "pais": "BR"
+ },
+ "Q12732182": {
+  "futebol": true,
+  "nome": "Liga IV Prahova",
+  "nome_en": "Liga IV Prahova",
+  "pais": "RO"
+ },
+ "Q12732209": {
+  "futebol": true,
+  "nome": "Liga IV Bucharest",
+  "nome_en": "Liga IV Bucharest",
+  "pais": "RO"
+ },
+ "Q12732216": {
+  "futebol": true,
+  "nome": "Liga IV Dolj",
+  "nome_en": "Liga IV Dolj",
+  "pais": "RO"
+ },
+ "Q12732220": {
+  "futebol": true,
+  "nome": "Liga IV Gorj",
+  "nome_en": "Liga IV Gorj",
+  "pais": "RO"
  },
  "Q12837728": {
   "futebol": true,
@@ -29,17 +299,47 @@
   "nome_en": "First Professional Football League",
   "pais": "BG"
  },
+ "Q129950": {
+  "futebol": true,
+  "nome": "Liga de Ascenso",
+  "nome_en": "Ascenso MX",
+  "pais": "MX"
+ },
+ "Q1300490": {
+  "futebol": true,
+  "nome": "Luxembourg Division of Honour",
+  "nome_en": "Luxembourg Division of Honour",
+  "pais": "LU"
+ },
  "Q13394": {
   "futebol": true,
   "nome": "Ligue 1",
   "nome_en": "Ligue 1",
   "pais": "FR"
  },
+ "Q1344912": {
+  "futebol": true,
+  "nome": "First League of Serbia and Montenegro",
+  "nome_en": "First League of Serbia and Montenegro",
+  "pais": "RS"
+ },
  "Q1348155": {
   "futebol": true,
   "nome": "Campeonato Paulista",
   "nome_en": "Campeonato Paulista de Futebol",
   "pais": "BR"
+ },
+ "Q1351694": {
+  "futebol": true,
+  "nome": "USL First Division",
+  "nome_en": "USL First Division",
+  "pais": "CA"
+ },
+ "Q1361963": {
+  "futebol": true,
+  "nome": "Kazakhstan First League",
+  "nome_en": "Kazakhstan First League",
+  "pais": "KZ"
  },
  "Q1362411": {
   "futebol": true,
@@ -53,11 +353,107 @@
   "nome_en": "Campeonato de Portugal",
   "pais": "PT"
  },
+ "Q1421208": {
+  "futebol": true,
+  "nome": "Beta Ethniki",
+  "nome_en": "Football League",
+  "pais": "GR"
+ },
+ "Q1436035": {
+  "futebol": false,
+  "nome": "Gamma Ethniki",
+  "nome_en": "Gamma Ethniki",
+  "pais": "GR"
+ },
+ "Q1436315": {
+  "futebol": true,
+  "nome": "Football League Fourth Division",
+  "nome_en": "Football League Fourth Division",
+  "pais": "GB-ENG"
+ },
+ "Q1436448": {
+  "futebol": true,
+  "nome": "Football League Third Division",
+  "nome_en": "Football League Third Division",
+  "pais": "GB-ENG"
+ },
  "Q14377162": {
   "futebol": true,
   "nome": "Scottish Premiership",
   "nome_en": "Scottish Premiership",
   "pais": "GB-SCT"
+ },
+ "Q1439767": {
+  "futebol": true,
+  "nome": "1975 Soviet Top League",
+  "nome_en": "1975 Soviet Top League",
+  "pais": null
+ },
+ "Q1439782": {
+  "futebol": true,
+  "nome": "1973 Soviet Top League",
+  "nome_en": "1973 Soviet Top League",
+  "pais": null
+ },
+ "Q1439791": {
+  "futebol": true,
+  "nome": "1972 Soviet Top League",
+  "nome_en": "1972 Soviet Top League",
+  "pais": null
+ },
+ "Q1439798": {
+  "futebol": true,
+  "nome": "1970 Soviet Top League",
+  "nome_en": "1970 Soviet Top League",
+  "pais": null
+ },
+ "Q14468438": {
+  "futebol": true,
+  "nome": "Scottish Championship",
+  "nome_en": "Scottish Championship",
+  "pais": "GB-SCT"
+ },
+ "Q14489498": {
+  "futebol": true,
+  "nome": "Scottish Professional Football League",
+  "nome_en": "Scottish Professional Football League",
+  "pais": "GB-SCT"
+ },
+ "Q145554": {
+  "futebol": true,
+  "nome": "Zambia Super League",
+  "nome_en": "Zambia Super League",
+  "pais": "ZM"
+ },
+ "Q14626725": {
+  "futebol": true,
+  "nome": "Scottish League Two",
+  "nome_en": "Scottish League Two",
+  "pais": "GB-SCT"
+ },
+ "Q1470401": {
+  "futebol": true,
+  "nome": "TFF 3. Lig",
+  "nome_en": "TFF Third League",
+  "pais": "TR"
+ },
+ "Q14752149": {
+  "futebol": true,
+  "nome": "clube de futebol amador",
+  "nome_en": "amateur football club",
+  "pais": null
+ },
+ "Q1477029": {
+  "futebol": true,
+  "nome": "Regionalliga West/Südwest",
+  "nome_en": "Regionalliga West/Südwest (1994-2000)",
+  "pais": "DE"
+ },
+ "Q1477071": {
+  "futebol": true,
+  "nome": "Q1477071",
+  "nome_en": null,
+  "pais": "DE"
  },
  "Q1520453": {
   "futebol": true,
@@ -71,6 +467,30 @@
   "nome_en": "2. Bundesliga",
   "pais": "DE"
  },
+ "Q1534932": {
+  "futebol": false,
+  "nome": "Speedway Ekstraliga",
+  "nome_en": "Speedway Ekstraliga",
+  "pais": "PL"
+ },
+ "Q154069": {
+  "futebol": true,
+  "nome": "3. Fußball-Liga",
+  "nome_en": "3. Liga",
+  "pais": "DE"
+ },
+ "Q1543206": {
+  "futebol": true,
+  "nome": "Copa Colômbia",
+  "nome_en": "Copa Colombia",
+  "pais": "CO"
+ },
+ "Q1547526": {
+  "futebol": true,
+  "nome": "United Soccer Association",
+  "nome_en": "United Soccer Association",
+  "pais": "CA"
+ },
  "Q155965": {
   "futebol": true,
   "nome": "Cypriot First Division",
@@ -83,11 +503,65 @@
   "nome_en": "Ukrainian First League",
   "pais": "UA"
  },
+ "Q157553": {
+  "futebol": true,
+  "nome": "DDR-Oberliga",
+  "nome_en": "DDR-Oberliga",
+  "pais": null
+ },
  "Q15804": {
   "futebol": true,
   "nome": "Serie A",
   "nome_en": null,
   "pais": "IT"
+ },
+ "Q15938614": {
+  "futebol": true,
+  "nome": "I-League",
+  "nome_en": "Indian Football League",
+  "pais": "IN"
+ },
+ "Q1604688": {
+  "futebol": true,
+  "nome": "1974 Soviet Top League",
+  "nome_en": "1974 Soviet Top League",
+  "pais": null
+ },
+ "Q16056350": {
+  "futebol": true,
+  "nome": "Indian Super League",
+  "nome_en": "Indian Super League",
+  "pais": "IN"
+ },
+ "Q16056559": {
+  "futebol": true,
+  "nome": "South African Premiership",
+  "nome_en": "South African Premier Division",
+  "pais": "ZA"
+ },
+ "Q161784": {
+  "futebol": true,
+  "nome": "Torneio Roberto Gomes Pedrosa",
+  "nome_en": "Torneio Roberto Gomes Pedrosa",
+  "pais": "BR"
+ },
+ "Q162031": {
+  "futebol": true,
+  "nome": "Danish 1st Division",
+  "nome_en": "Danish 1st Division",
+  "pais": "DK"
+ },
+ "Q1622667": {
+  "futebol": true,
+  "nome": "FBF División Profesional",
+  "nome_en": "Primera División de Bolivia",
+  "pais": "BO"
+ },
+ "Q162533": {
+  "futebol": true,
+  "nome": "Primeira Divisão Russa",
+  "nome_en": "Russian First League",
+  "pais": "RU"
  },
  "Q162604": {
   "futebol": true,
@@ -95,11 +569,83 @@
   "nome_en": "Croatian Football League",
   "pais": "HR"
  },
+ "Q163046": {
+  "futebol": true,
+  "nome": "I liga",
+  "nome_en": "I liga",
+  "pais": "PL"
+ },
+ "Q1634353": {
+  "futebol": true,
+  "nome": "Spartan South Midlands Football League",
+  "nome_en": "Spartan South Midlands Football League",
+  "pais": "GB-ENG"
+ },
+ "Q163786": {
+  "futebol": true,
+  "nome": "Yugoslav First League",
+  "nome_en": "Yugoslav First League",
+  "pais": null
+ },
+ "Q16563813": {
+  "futebol": true,
+  "nome": "NCL Premier",
+  "nome_en": "NIFL Premier Intermediate League",
+  "pais": "GB-NIR"
+ },
+ "Q16725990": {
+  "futebol": true,
+  "nome": "Indonesian football league system",
+  "nome_en": "Indonesian football league system",
+  "pais": "ID"
+ },
  "Q167541": {
   "futebol": true,
   "nome": "Eredivisie",
   "nome_en": "Eredivisie",
   "pais": "NL"
+ },
+ "Q168018": {
+  "futebol": true,
+  "nome": "Kuwait Premier League",
+  "nome_en": "Kuwaiti Premier League",
+  "pais": "KW"
+ },
+ "Q16820436": {
+  "futebol": true,
+  "nome": "American Soccer League",
+  "nome_en": "American Soccer League",
+  "pais": "US"
+ },
+ "Q16820441": {
+  "futebol": true,
+  "nome": "American Soccer League",
+  "nome_en": "American Soccer League",
+  "pais": "US"
+ },
+ "Q16820522": {
+  "futebol": true,
+  "nome": "Liga Indonesia Premier Division",
+  "nome_en": "Liga Indonesia Premier Divisoon",
+  "pais": "ID"
+ },
+ "Q16845579": {
+  "futebol": true,
+  "nome": "National Football League",
+  "nome_en": "National Football League",
+  "pais": "ZA"
+ },
+ "Q16849781": {
+  "futebol": true,
+  "nome": "Second League of Serbia and Montenegro",
+  "nome_en": "Second League of Serbia and Montenegro",
+  "pais": "ME"
+ },
+ "Q1707697": {
+  "futebol": true,
+  "nome": "Liga III",
+  "nome_en": "Liga III",
+  "pais": "RO"
  },
  "Q1710248": {
   "futebol": true,
@@ -107,11 +653,53 @@
   "nome_en": "Campeonato Amazonense",
   "pais": "BR"
  },
+ "Q17446411": {
+  "futebol": true,
+  "nome": "Torneo Federal A",
+  "nome_en": "Torneo Federal A",
+  "pais": "AR"
+ },
+ "Q177138": {
+  "futebol": true,
+  "nome": "Scottish Football League First Division",
+  "nome_en": "Scottish Football League First Division",
+  "pais": "GB-SCT"
+ },
+ "Q1780954": {
+  "futebol": true,
+  "nome": "TFF 2. Lig",
+  "nome_en": "TFF Second League",
+  "pais": "TR"
+ },
+ "Q1809510": {
+  "futebol": true,
+  "nome": "Liga Premier de México",
+  "nome_en": "Segunda División de México",
+  "pais": "MX"
+ },
+ "Q1813595": {
+  "futebol": true,
+  "nome": "Serbian First League",
+  "nome_en": "Serbian First League",
+  "pais": "RS"
+ },
  "Q182165": {
   "futebol": true,
   "nome": "Liga Premier Russa",
   "nome_en": "Russian Premier League",
   "pais": "RU"
+ },
+ "Q1824579": {
+  "futebol": false,
+  "nome": "Liga Nacional de Básquet",
+  "nome_en": "Liga Nacional de Básquet",
+  "pais": "AR"
+ },
+ "Q1824581": {
+  "futebol": true,
+  "nome": "Liga Leumit",
+  "nome_en": "Liga Leumit",
+  "pais": "IL"
  },
  "Q182994": {
   "futebol": true,
@@ -119,17 +707,89 @@
   "nome_en": "Primeira Liga",
   "pais": "PT"
  },
+ "Q1838936": {
+  "futebol": true,
+  "nome": "French Division 3",
+  "nome_en": "French Division 3 (1971–1993)",
+  "pais": "FR"
+ },
+ "Q18473778": {
+  "futebol": true,
+  "nome": "Campeonato Gaúcho Série B",
+  "nome_en": "Campeonato Gaúcho Série B",
+  "pais": "BR"
+ },
+ "Q18502": {
+  "futebol": true,
+  "nome": "Northern Premier League",
+  "nome_en": "Northern Premier League",
+  "pais": "GB-ENG"
+ },
+ "Q1852347": {
+  "futebol": true,
+  "nome": "National Premier Leagues Victoria Men's",
+  "nome_en": "National Premier Leagues Victoria",
+  "pais": "AU"
+ },
  "Q18543": {
   "futebol": true,
   "nome": "Major League Soccer",
   "nome_en": "Major League Soccer",
   "pais": "US"
  },
+ "Q18573": {
+  "futebol": true,
+  "nome": "Southern Football League",
+  "nome_en": "Southern Football League",
+  "pais": "GB-ENG"
+ },
+ "Q187304": {
+  "futebol": true,
+  "nome": "Scottish Premier League",
+  "nome_en": "Scottish Premier League",
+  "pais": "GB-SCT"
+ },
+ "Q1874074": {
+  "futebol": true,
+  "nome": "Thai League 1",
+  "nome_en": "Thai League 1",
+  "pais": "TH"
+ },
+ "Q1877646": {
+  "futebol": true,
+  "nome": "Vierde Divisie",
+  "nome_en": "Vierde divisie",
+  "pais": "NL"
+ },
+ "Q1887849": {
+  "futebol": true,
+  "nome": "Campeonato Gaúcho",
+  "nome_en": "Campeonato Gaúcho",
+  "pais": "BR"
+ },
+ "Q1930578": {
+  "futebol": true,
+  "nome": "Northern Counties East Football League",
+  "nome_en": "Northern Counties East Football League",
+  "pais": "GB-ENG"
+ },
  "Q194052": {
   "futebol": true,
   "nome": "Serie B",
   "nome_en": "Serie B",
   "pais": "IT"
+ },
+ "Q194180": {
+  "futebol": true,
+  "nome": "Malaysia Super League",
+  "nome_en": "Malaysia Super League",
+  "pais": "MY"
+ },
+ "Q194641": {
+  "futebol": true,
+  "nome": "Persian Gulf Pro League",
+  "nome_en": "Persian Gulf Pro League",
+  "pais": "IR"
  },
  "Q19510": {
   "futebol": true,
@@ -143,6 +803,42 @@
   "nome_en": "EFL League One",
   "pais": "GB-ENG"
  },
+ "Q19608400": {
+  "futebol": true,
+  "nome": "Campeonato Paraibano Second Division",
+  "nome_en": "Campeonato Paraibano Segunda Divisão",
+  "pais": "BR"
+ },
+ "Q1981593": {
+  "futebol": true,
+  "nome": "Third Amateur Football League",
+  "nome_en": "Third Amateur Football League",
+  "pais": "BG"
+ },
+ "Q20028073": {
+  "futebol": true,
+  "nome": "Bayernliga Nord",
+  "nome_en": "Bayernliga Nord",
+  "pais": "DE"
+ },
+ "Q20052961": {
+  "futebol": true,
+  "nome": "Campeonato Carioca Série A2",
+  "nome_en": "Campeonato Carioca Second Division",
+  "pais": "BR"
+ },
+ "Q20053001": {
+  "futebol": true,
+  "nome": "Campeonato Goiano Second Division",
+  "nome_en": "Campeonato Goiano - Segunda Divisão",
+  "pais": "BR"
+ },
+ "Q20053095": {
+  "futebol": true,
+  "nome": "Campeonato Potiguar Second Division",
+  "nome_en": "Campeonato Potiguar Second Division",
+  "pais": "BR"
+ },
  "Q201671": {
   "futebol": true,
   "nome": "Eliteserien",
@@ -154,6 +850,12 @@
   "nome": "Allsvenskan",
   "nome_en": "Allsvenskan",
   "pais": "SE"
+ },
+ "Q2023337": {
+  "futebol": true,
+  "nome": "División de Honor Juvenil de Fútbol",
+  "nome_en": "División de Honor Juvenil de España",
+  "pais": "ES"
  },
  "Q202699": {
   "futebol": true,
@@ -185,11 +887,47 @@
   "nome_en": "Campeonato Brasileiro Série A",
   "pais": "BR"
  },
+ "Q20750906": {
+  "futebol": true,
+  "nome": "Norwegian Third Division (women)",
+  "nome_en": "Norwegian Third Division (women)",
+  "pais": "NO"
+ },
+ "Q2083774": {
+  "futebol": true,
+  "nome": "TT Pro League",
+  "nome_en": "TT Premier Football League",
+  "pais": "TT"
+ },
+ "Q209008": {
+  "futebol": true,
+  "nome": "I Lyga",
+  "nome_en": "First League",
+  "pais": "LT"
+ },
+ "Q209080": {
+  "futebol": true,
+  "nome": "V-Liga",
+  "nome_en": "V.League 1",
+  "pais": "VN"
+ },
  "Q209318": {
   "futebol": true,
   "nome": "Super Liga Chinesa",
   "nome_en": "Chinese Super League",
   "pais": "CN"
+ },
+ "Q209946": {
+  "futebol": true,
+  "nome": "2. Liga",
+  "nome_en": "Slovak Second Football League",
+  "pais": "SK"
+ },
+ "Q209955": {
+  "futebol": true,
+  "nome": "Russian Second League",
+  "nome_en": "Russian Second League",
+  "pais": "RU"
  },
  "Q209967": {
   "futebol": true,
@@ -197,17 +935,65 @@
   "nome_en": "Prva nogometna liga",
   "pais": "HR"
  },
+ "Q210262": {
+  "futebol": true,
+  "nome": "II liga",
+  "nome_en": "II liga",
+  "pais": "PL"
+ },
+ "Q213347": {
+  "futebol": true,
+  "nome": "Football League",
+  "nome_en": "English Football League",
+  "pais": "GB-ENG"
+ },
  "Q216022": {
   "futebol": true,
   "nome": "Jupiler Pro League",
   "nome_en": "Belgian Pro League",
   "pais": "BE"
  },
+ "Q217016": {
+  "futebol": true,
+  "nome": "Czech First League",
+  "nome_en": "Czech First League",
+  "pais": "CZ"
+ },
  "Q217374": {
   "futebol": true,
   "nome": "Ligue 2",
   "nome_en": "Ligue 2",
   "pais": "FR"
+ },
+ "Q2181740": {
+  "futebol": true,
+  "nome": "Kolmonen",
+  "nome_en": "Kolmonen",
+  "pais": "FI"
+ },
+ "Q2186316": {
+  "futebol": true,
+  "nome": "Belgian Provincial Leagues",
+  "nome_en": "Belgian Provincial leagues",
+  "pais": "BE"
+ },
+ "Q2186582": {
+  "futebol": true,
+  "nome": "Cypriot Second Division",
+  "nome_en": "Cypriot Second Division",
+  "pais": "CY"
+ },
+ "Q2188121": {
+  "futebol": true,
+  "nome": "Fußball-Regionalliga",
+  "nome_en": "Regionalliga",
+  "pais": "DE"
+ },
+ "Q219007": {
+  "futebol": true,
+  "nome": "Erovnuli Liga",
+  "nome_en": "Erovnuli Liga",
+  "pais": "GE"
  },
  "Q219586": {
   "futebol": true,
@@ -221,11 +1007,137 @@
   "nome_en": "Bundesliga",
   "pais": "AT"
  },
+ "Q2196945": {
+  "futebol": true,
+  "nome": "Campeonato Mato-Grossense",
+  "nome_en": "Campeonato Mato-Grossense",
+  "pais": "BR"
+ },
+ "Q220875": {
+  "futebol": true,
+  "nome": "Veikkausliiga",
+  "nome_en": "Veikkausliiga",
+  "pais": "FI"
+ },
+ "Q2217353": {
+  "futebol": true,
+  "nome": "National First Division",
+  "nome_en": "National First Division",
+  "pais": "ZA"
+ },
  "Q223170": {
   "futebol": true,
   "nome": "AFA Liga Profesional de Fútbol",
   "nome_en": "Argentine Primera División",
   "pais": "AR"
+ },
+ "Q2250725": {
+  "futebol": true,
+  "nome": "Nigeria National League",
+  "nome_en": "Nigeria National League",
+  "pais": "NG"
+ },
+ "Q2261276": {
+  "futebol": true,
+  "nome": "Scottish Football League",
+  "nome_en": "Scottish Football League",
+  "pais": "GB-SCT"
+ },
+ "Q2261921": {
+  "futebol": true,
+  "nome": "Réunion Premier League",
+  "nome_en": "Réunion Premier League",
+  "pais": "FR"
+ },
+ "Q2270893": {
+  "futebol": true,
+  "nome": "Pirveli Liga",
+  "nome_en": "Erovnuli Liga 2",
+  "pais": "GE"
+ },
+ "Q2289847": {
+  "futebol": true,
+  "nome": "LigaPro Serie A",
+  "nome_en": "Ecuador Serie A",
+  "pais": "EC"
+ },
+ "Q2306229": {
+  "futebol": true,
+  "nome": "Macedonian Second Football League",
+  "nome_en": "Macedonian Second Football League",
+  "pais": "MK"
+ },
+ "Q2313139": {
+  "futebol": true,
+  "nome": "1987 Soviet Top League",
+  "nome_en": "1987 Soviet Top League",
+  "pais": null
+ },
+ "Q2313221": {
+  "futebol": true,
+  "nome": "1980 Soviet Top League",
+  "nome_en": "1980 Soviet Top League",
+  "pais": null
+ },
+ "Q2313750": {
+  "futebol": true,
+  "nome": "1979 Soviet Top League",
+  "nome_en": "1979 Soviet Top League",
+  "pais": null
+ },
+ "Q2313781": {
+  "futebol": true,
+  "nome": "1982 Soviet Top League",
+  "nome_en": "1982 Soviet Top League",
+  "pais": null
+ },
+ "Q2313793": {
+  "futebol": true,
+  "nome": "1981 Soviet Top League",
+  "nome_en": "1981 Soviet Top League",
+  "pais": null
+ },
+ "Q2313803": {
+  "futebol": true,
+  "nome": "1984 Soviet Top League",
+  "nome_en": "1984 Soviet Top League",
+  "pais": null
+ },
+ "Q2313826": {
+  "futebol": true,
+  "nome": "1983 Soviet Top League",
+  "nome_en": "1983 Soviet Top League",
+  "pais": null
+ },
+ "Q2315341": {
+  "futebol": true,
+  "nome": "1976 Soviet Top League",
+  "nome_en": "1976 Soviet Top League",
+  "pais": null
+ },
+ "Q2317199": {
+  "futebol": true,
+  "nome": "Campeonato Catarinense",
+  "nome_en": "Campeonato Catarinense",
+  "pais": "BR"
+ },
+ "Q233199": {
+  "futebol": true,
+  "nome": "Belgian Second Division",
+  "nome_en": "Belgian First Division B",
+  "pais": "BE"
+ },
+ "Q2332437": {
+  "futebol": true,
+  "nome": "1969 Soviet Top League",
+  "nome_en": "1969 Soviet Top League",
+  "pais": null
+ },
+ "Q2348880": {
+  "futebol": true,
+  "nome": "Regionalliga Süd",
+  "nome_en": "Regionalliga Süd",
+  "pais": "DE"
  },
  "Q235114": {
   "futebol": true,
@@ -233,11 +1145,143 @@
   "nome_en": "Super League Greece",
   "pais": "GR"
  },
+ "Q235307": {
+  "futebol": true,
+  "nome": "Serbian SuperLiga",
+  "nome_en": "Serbian SuperLiga",
+  "pais": "RS"
+ },
+ "Q237753": {
+  "futebol": true,
+  "nome": "Liga I",
+  "nome_en": "Liga I",
+  "pais": "RO"
+ },
+ "Q238113": {
+  "futebol": true,
+  "nome": "Slovak First Football League",
+  "nome_en": "Slovak First Football League",
+  "pais": "SK"
+ },
+ "Q2386334": {
+  "futebol": true,
+  "nome": "K League 1",
+  "nome_en": "K League 1",
+  "pais": "KR"
+ },
+ "Q23925620": {
+  "futebol": true,
+  "nome": "Challenger Pro League",
+  "nome_en": "Challenger Pro League",
+  "pais": "BE"
+ },
+ "Q2403778": {
+  "futebol": true,
+  "nome": "IV liga",
+  "nome_en": "IV liga",
+  "pais": "PL"
+ },
+ "Q2429321": {
+  "futebol": true,
+  "nome": "Tweede Klasse",
+  "nome_en": "Tweede Klasse",
+  "pais": "NL"
+ },
+ "Q244464": {
+  "futebol": true,
+  "nome": "Vysshaya Liga",
+  "nome_en": "Belarusian Premier League",
+  "pais": "BY"
+ },
+ "Q24448": {
+  "futebol": true,
+  "nome": "2. Liga",
+  "nome_en": "2. Liga",
+  "pais": "CH"
+ },
+ "Q245252": {
+  "futebol": true,
+  "nome": "Luxembourg National Division",
+  "nome_en": "Luxembourg National Division",
+  "pais": "LU"
+ },
  "Q2458887": {
   "futebol": false,
   "nome": "Liga de Voleibol Argentina",
   "nome_en": "Liga de Voleibol Argentina – Serie A1",
   "pais": "AR"
+ },
+ "Q246175": {
+  "futebol": true,
+  "nome": "Azerbaijan First League",
+  "nome_en": "Azerbaijan First Division",
+  "pais": "AZ"
+ },
+ "Q2469248": {
+  "futebol": true,
+  "nome": "Campeonato Alagoano",
+  "nome_en": "Campeonato Alagoano",
+  "pais": "BR"
+ },
+ "Q2473318": {
+  "futebol": true,
+  "nome": "Copa Simón Bolívar",
+  "nome_en": "Copa Simón Bolívar",
+  "pais": "BO"
+ },
+ "Q2474177": {
+  "futebol": true,
+  "nome": "League of Ireland First Division",
+  "nome_en": "League of Ireland First Division",
+  "pais": "IE"
+ },
+ "Q247767": {
+  "futebol": true,
+  "nome": "Jordanian Pro League",
+  "nome_en": "Jordan Premier League",
+  "pais": "JO"
+ },
+ "Q248512": {
+  "futebol": true,
+  "nome": "Iraq Stars League",
+  "nome_en": "Iraq Stars League",
+  "pais": "IQ"
+ },
+ "Q25000566": {
+  "futebol": true,
+  "nome": "Canadian Premier League",
+  "nome_en": "Canadian Premier League",
+  "pais": "CA"
+ },
+ "Q25020": {
+  "futebol": true,
+  "nome": "Russian Amateur Football League",
+  "nome_en": "Russian Amateur Football League Competition",
+  "pais": "RU"
+ },
+ "Q2532727": {
+  "futebol": true,
+  "nome": "Ukrainian Second League",
+  "nome_en": "Ukrainian Second League",
+  "pais": "UA"
+ },
+ "Q25399347": {
+  "futebol": true,
+  "nome": "Eastern Canada Professional Soccer League",
+  "nome_en": "Eastern Canada Professional Soccer League",
+  "pais": "CA"
+ },
+ "Q2540334": {
+  "futebol": true,
+  "nome": "Divisiones Regionales de Fútbol in the Community of Madrid",
+  "nome_en": "Divisiones Regionales de Fútbol in the Community of Madrid",
+  "pais": "ES"
+ },
+ "Q2548558": {
+  "futebol": true,
+  "nome": "Slovenian Second League",
+  "nome_en": "Slovenian Second League",
+  "pais": "SI"
  },
  "Q255633": {
   "futebol": true,
@@ -245,11 +1289,137 @@
   "nome_en": "Saudi Pro League",
   "pais": "SA"
  },
+ "Q2559056": {
+  "futebol": true,
+  "nome": "1978 Soviet Top League",
+  "nome_en": "1978 Soviet Top League",
+  "pais": null
+ },
+ "Q257282": {
+  "futebol": true,
+  "nome": "Lliga Nacional de Futbol",
+  "nome_en": "Primera Divisió",
+  "pais": "AD"
+ },
+ "Q2573693": {
+  "futebol": true,
+  "nome": "Algerian League 2",
+  "nome_en": "Algerian Ligue Professionnelle 2",
+  "pais": "DZ"
+ },
+ "Q2574561": {
+  "futebol": true,
+  "nome": "1985 Soviet Top League",
+  "nome_en": "1985 Soviet Top League",
+  "pais": null
+ },
+ "Q25762": {
+  "futebol": true,
+  "nome": "Promotion League",
+  "nome_en": "Promotion League",
+  "pais": "CH"
+ },
+ "Q26223": {
+  "futebol": true,
+  "nome": "Oberliga Rheinland-Pfalz/Saar",
+  "nome_en": "Oberliga Rheinland-Pfalz/Saar",
+  "pais": "DE"
+ },
+ "Q2623014": {
+  "futebol": true,
+  "nome": "Botola 2",
+  "nome_en": "Botola Pro 2",
+  "pais": "MA"
+ },
  "Q2648473": {
   "futebol": true,
   "nome": "III Divisão",
   "nome_en": "Terceira Divisão",
   "pais": "PT"
+ },
+ "Q2656109": {
+  "futebol": true,
+  "nome": "Saudi First Division League",
+  "nome_en": "Saudi First Division League",
+  "pais": "SA"
+ },
+ "Q2661169": {
+  "futebol": true,
+  "nome": "Campeonato Potiguar",
+  "nome_en": "Campeonato Potiguar",
+  "pais": "BR"
+ },
+ "Q2668623": {
+  "futebol": true,
+  "nome": "Soviet First League",
+  "nome_en": "Soviet First League",
+  "pais": null
+ },
+ "Q2683718": {
+  "futebol": true,
+  "nome": "Super League",
+  "nome_en": "Super League",
+  "pais": "ID"
+ },
+ "Q2686290": {
+  "futebol": true,
+  "nome": "Primera B",
+  "nome_en": "Chilean First B Division",
+  "pais": "CL"
+ },
+ "Q2697875": {
+  "futebol": true,
+  "nome": "1989–90 Cypriot First Division",
+  "nome_en": "1989–90 Cypriot First Division",
+  "pais": "CY"
+ },
+ "Q271271": {
+  "futebol": true,
+  "nome": "Montenegrin First League",
+  "nome_en": "Montenegrin First League",
+  "pais": "ME"
+ },
+ "Q2715304": {
+  "futebol": true,
+  "nome": "Campeonato Paraibano",
+  "nome_en": "Campeonato Paraibano",
+  "pais": "BR"
+ },
+ "Q2748885": {
+  "futebol": true,
+  "nome": "Vierde Klasse",
+  "nome_en": "Vierde Klasse",
+  "pais": "NL"
+ },
+ "Q275005": {
+  "futebol": true,
+  "nome": "Slovenian PrvaLiga",
+  "nome_en": "Slovenian PrvaLiga",
+  "pais": "SI"
+ },
+ "Q275189": {
+  "futebol": true,
+  "nome": "Macedonian Prva Liga",
+  "nome_en": "First Macedonian Football League",
+  "pais": "MK"
+ },
+ "Q275665": {
+  "futebol": true,
+  "nome": "Toplyga",
+  "nome_en": "TOPLYGA",
+  "pais": "LT"
+ },
+ "Q2758334": {
+  "futebol": true,
+  "nome": "Ecuadorian Serie B",
+  "nome_en": "Ecuadorian Serie B",
+  "pais": "EC"
+ },
+ "Q276085": {
+  "futebol": true,
+  "nome": "Nemzeti Bajnokság I",
+  "nome_en": "Nemzeti Bajnokság I",
+  "pais": "HU"
  },
  "Q276445": {
   "futebol": true,
@@ -257,11 +1427,35 @@
   "nome_en": "J1 League",
   "pais": "JP"
  },
+ "Q277581": {
+  "futebol": true,
+  "nome": "Moçambola",
+  "nome_en": "Moçambola",
+  "pais": "MZ"
+ },
+ "Q2777436": {
+  "futebol": true,
+  "nome": "Tweede Divisie",
+  "nome_en": "Tweede Divisie",
+  "pais": "NL"
+ },
  "Q2792041": {
   "futebol": true,
   "nome": "Norwegian Third Division",
   "nome_en": "Norwegian Third Division",
   "pais": "NO"
+ },
+ "Q2799025": {
+  "futebol": true,
+  "nome": "Denmark Series",
+  "nome_en": "Denmark Series",
+  "pais": "DK"
+ },
+ "Q28679826": {
+  "futebol": false,
+  "nome": "Portuguese Roller Hockey 3rd Division",
+  "nome_en": "Portuguese Roller Hockey 3rd Division",
+  "pais": "PT"
  },
  "Q287453": {
   "futebol": true,
@@ -269,11 +1463,161 @@
   "nome_en": "Uruguayan Primera División",
   "pais": "UY"
  },
+ "Q2914098": {
+  "futebol": true,
+  "nome": "Qatar Stars League 2",
+  "nome_en": "Qatar Stars League 2",
+  "pais": "QA"
+ },
+ "Q29224": {
+  "futebol": true,
+  "nome": "Taça de Portugal",
+  "nome_en": "Taça de Portugal",
+  "pais": "PT"
+ },
+ "Q2948903": {
+  "futebol": true,
+  "nome": "Interregional League",
+  "nome_en": "Inter-Régions Division",
+  "pais": "DZ"
+ },
+ "Q2952613": {
+  "futebol": true,
+  "nome": "Elite Two",
+  "nome_en": "Elite Two",
+  "pais": "CM"
+ },
+ "Q2952931": {
+  "futebol": true,
+  "nome": "Honduran Liga Nacional de Ascenso",
+  "nome_en": "Honduran Liga Nacional de Ascenso",
+  "pais": "HN"
+ },
+ "Q2953225": {
+  "futebol": true,
+  "nome": "Amateur National",
+  "nome_en": "Amateur National Championship",
+  "pais": "MA"
+ },
+ "Q30646209": {
+  "futebol": true,
+  "nome": "National Independent Soccer Association",
+  "nome_en": "National Independent Soccer Association",
+  "pais": "US"
+ },
+ "Q312370": {
+  "futebol": true,
+  "nome": "League of Ireland",
+  "nome_en": "League of Ireland",
+  "pais": "IE"
+ },
+ "Q316113": {
+  "futebol": true,
+  "nome": "Oberliga Westfalen",
+  "nome_en": "Oberliga Westfalen",
+  "pais": "DE"
+ },
+ "Q317238": {
+  "futebol": true,
+  "nome": "Oberliga Süd",
+  "nome_en": "Oberliga Süd",
+  "pais": null
+ },
+ "Q317927": {
+  "futebol": true,
+  "nome": "Oberliga Hamburg",
+  "nome_en": "Oberliga Hamburg",
+  "pais": "DE"
+ },
+ "Q318480": {
+  "futebol": true,
+  "nome": "Maltese Premier League",
+  "nome_en": "Maltese Premier League",
+  "pais": "MT"
+ },
+ "Q322128": {
+  "futebol": true,
+  "nome": "Regionalliga Südwest",
+  "nome_en": "Fußball-Regionalliga Südwest",
+  "pais": "DE"
+ },
+ "Q3236675": {
+  "futebol": true,
+  "nome": "Liga 3",
+  "nome_en": "Liga 3",
+  "pais": "GE"
+ },
+ "Q3240443": {
+  "futebol": true,
+  "nome": "Ligue de la Méditerranée de football",
+  "nome_en": "Ligue de la Méditerranée de football",
+  "pais": "FR"
+ },
+ "Q3240521": {
+  "futebol": true,
+  "nome": "Moroccan Football League",
+  "nome_en": "Moroccan football league",
+  "pais": "MA"
+ },
+ "Q3246708": {
+  "futebol": true,
+  "nome": "United Soccer League",
+  "nome_en": "United Soccer League",
+  "pais": "US"
+ },
  "Q324867": {
   "futebol": true,
   "nome": "La Liga",
   "nome_en": "La Liga",
   "pais": "ES"
+ },
+ "Q326422": {
+  "futebol": true,
+  "nome": "Kazakhstan Premier League",
+  "nome_en": "Kazakhstan Premier League",
+  "pais": "KZ"
+ },
+ "Q326549": {
+  "futebol": true,
+  "nome": "4. Liga",
+  "nome_en": "Slovak Fourth Football League",
+  "pais": "SK"
+ },
+ "Q326859": {
+  "futebol": true,
+  "nome": "Liga Yuksak",
+  "nome_en": "Azerbaijan Premier League",
+  "pais": "AZ"
+ },
+ "Q340179": {
+  "futebol": true,
+  "nome": "Regionalliga Bayern",
+  "nome_en": "Regionalliga Bayern",
+  "pais": "DE"
+ },
+ "Q3423604": {
+  "futebol": true,
+  "nome": "Regionalliga Süd",
+  "nome_en": "Regionalliga Süd (1963-1974)",
+  "pais": null
+ },
+ "Q3429753": {
+  "futebol": true,
+  "nome": "futebol da Eslovénia",
+  "nome_en": "football in Slovenia",
+  "pais": "SI"
+ },
+ "Q3476351": {
+  "futebol": true,
+  "nome": "Scottish Football Alliance",
+  "nome_en": "Scottish Football Alliance",
+  "pais": null
+ },
+ "Q3511878": {
+  "futebol": true,
+  "nome": "Second Football League",
+  "nome_en": "Treća HNL",
+  "pais": "HR"
  },
  "Q353508": {
   "futebol": true,
@@ -293,6 +1637,66 @@
   "nome_en": "Campeonato Paulista Série A2",
   "pais": "BR"
  },
+ "Q3651926": {
+  "futebol": true,
+  "nome": "Campeonato Paulista Série A3",
+  "nome_en": "Campeonato Paulista Série A3",
+  "pais": "BR"
+ },
+ "Q370184": {
+  "futebol": true,
+  "nome": "Moldovan Liga 1",
+  "nome_en": "Moldovan Liga 1",
+  "pais": "MD"
+ },
+ "Q3712074": {
+  "futebol": false,
+  "nome": "Q3712074",
+  "nome_en": null,
+  "pais": "IT"
+ },
+ "Q3718288": {
+  "futebol": true,
+  "nome": "Eccellenza Tuscany",
+  "nome_en": "Eccellenza Tuscany",
+  "pais": "IT"
+ },
+ "Q374937": {
+  "futebol": true,
+  "nome": "1977 Soviet Top League",
+  "nome_en": "1977 Soviet Top League",
+  "pais": null
+ },
+ "Q383932": {
+  "futebol": true,
+  "nome": "Danish 2nd Division",
+  "nome_en": "Danish 2nd Division",
+  "pais": "DK"
+ },
+ "Q384531": {
+  "futebol": true,
+  "nome": "Moldovan Liga",
+  "nome_en": "Moldovan National Division",
+  "pais": "MD"
+ },
+ "Q384536": {
+  "futebol": true,
+  "nome": "Ykkönen",
+  "nome_en": "Ykkösliiga",
+  "pais": "FI"
+ },
+ "Q386384": {
+  "futebol": true,
+  "nome": "Liga II",
+  "nome_en": "Liga II",
+  "pais": "RO"
+ },
+ "Q387662": {
+  "futebol": true,
+  "nome": "Campionato Sammarinese",
+  "nome_en": "Campionato Sammarinese di Calcio",
+  "pais": "SM"
+ },
  "Q391006": {
   "futebol": true,
   "nome": "Premijer Liga",
@@ -305,11 +1709,71 @@
   "nome_en": "2005–06 Serie C1",
   "pais": "IT"
  },
+ "Q4127913": {
+  "futebol": true,
+  "nome": "Soviet Second League",
+  "nome_en": "Soviet Second League",
+  "pais": null
+ },
+ "Q4127919": {
+  "futebol": true,
+  "nome": "3. Liga",
+  "nome_en": "Slovak Third Football League",
+  "pais": "SK"
+ },
+ "Q420970": {
+  "futebol": true,
+  "nome": "Belgian Third Division",
+  "nome_en": "Belgian Third Division",
+  "pais": "BE"
+ },
+ "Q429662": {
+  "futebol": true,
+  "nome": "Eccellenza Emilia-Romagna",
+  "nome_en": "Eccellenza Emilia–Romagna",
+  "pais": "IT"
+ },
+ "Q44763": {
+  "futebol": true,
+  "nome": "Ekstraklasa",
+  "nome_en": "Ekstraklasa",
+  "pais": "PL"
+ },
+ "Q4510733": {
+  "futebol": true,
+  "nome": "1971 Soviet Top League",
+  "nome_en": "1971 Soviet Top League",
+  "pais": null
+ },
+ "Q4646905": {
+  "futebol": true,
+  "nome": "A-League",
+  "nome_en": "A-League",
+  "pais": "US"
+ },
  "Q46582": {
   "futebol": true,
   "nome": "Norwegian Second Division",
   "nome_en": "Norwegian Second Division",
   "pais": "NO"
+ },
+ "Q477309": {
+  "futebol": true,
+  "nome": "Israeli Premier League",
+  "nome_en": "Israeli Premier League",
+  "pais": "IL"
+ },
+ "Q4825462": {
+  "futebol": true,
+  "nome": "Austrian 2. Landesliga",
+  "nome_en": "Austrian 2. Landesliga",
+  "pais": "AT"
+ },
+ "Q483045": {
+  "futebol": true,
+  "nome": "Korea National League",
+  "nome_en": "National League",
+  "pais": "KR"
  },
  "Q485568": {
   "futebol": true,
@@ -317,11 +1781,131 @@
   "nome_en": "Süper Lig",
   "pais": "TR"
  },
+ "Q48837": {
+  "futebol": true,
+  "nome": "Football League Two",
+  "nome_en": "EFL League Two",
+  "pais": "GB-ENG"
+ },
+ "Q4893434": {
+  "futebol": true,
+  "nome": "Turkish National Division",
+  "nome_en": "Milli Küme Şampiyonası",
+  "pais": "TR"
+ },
+ "Q4900351": {
+  "futebol": true,
+  "nome": "Bezirksliga Mittelfranken 1",
+  "nome_en": "Bezirksliga Mittelfranken-Nord",
+  "pais": "DE"
+ },
+ "Q4900360": {
+  "futebol": true,
+  "nome": "Bezirksliga Schwaben-Nord",
+  "nome_en": "Bezirksliga Schwaben-Nord",
+  "pais": null
+ },
+ "Q490700": {
+  "futebol": true,
+  "nome": "Soviet Top League",
+  "nome_en": "Soviet Top League",
+  "pais": null
+ },
+ "Q4968598": {
+  "futebol": true,
+  "nome": "Football Queensland Premier League 3 – Metro",
+  "nome_en": "Brisbane Premier League",
+  "pais": null
+ },
+ "Q5028279": {
+  "futebol": true,
+  "nome": "Campeonato Carioca (lower levels)",
+  "nome_en": "Campeonato Carioca (lower levels)",
+  "pais": "BR"
+ },
+ "Q5028284": {
+  "futebol": true,
+  "nome": "Campeonato Gaúcho Série A2",
+  "nome_en": "Campeonato Gaúcho",
+  "pais": "BR"
+ },
+ "Q5028286": {
+  "futebol": true,
+  "nome": "Campeonato Mineiro",
+  "nome_en": "Campeonato Mineiro",
+  "pais": "BR"
+ },
+ "Q5028299": {
+  "futebol": true,
+  "nome": "Campeonato Paulista Série A4",
+  "nome_en": "Campeonato Paulista Série A4",
+  "pais": "BR"
+ },
+ "Q5028300": {
+  "futebol": true,
+  "nome": "Campeonato Paulista Segunda Divisão",
+  "nome_en": "Campeonato Paulista Segunda Divisão",
+  "pais": "BR"
+ },
+ "Q5061105": {
+  "futebol": true,
+  "nome": "Central Football League",
+  "nome_en": "Central Football League",
+  "pais": null
+ },
+ "Q5100359": {
+  "futebol": true,
+  "nome": "K League 2",
+  "nome_en": "K League 2",
+  "pais": "KR"
+ },
+ "Q52041": {
+  "futebol": true,
+  "nome": "Oberliga",
+  "nome_en": "Fußball-Oberliga",
+  "pais": "DE"
+ },
+ "Q5282797": {
+  "futebol": true,
+  "nome": "dissolução",
+  "nome_en": "dissolution",
+  "pais": null
+ },
+ "Q5330147": {
+  "futebol": true,
+  "nome": "Eastern Football League",
+  "nome_en": "Eastern Football League",
+  "pais": null
+ },
  "Q5334350": {
   "futebol": true,
   "nome": "UAE Pro League",
   "nome_en": "UAE Pro League",
   "pais": "AE"
+ },
+ "Q5348442": {
+  "futebol": true,
+  "nome": "Egyptian Second Division",
+  "nome_en": "Egyptian Second Division League",
+  "pais": "EG"
+ },
+ "Q5360175": {
+  "futebol": true,
+  "nome": "Hong Kong Premier League",
+  "nome_en": "Hong Kong Premier League",
+  "pais": "CN"
+ },
+ "Q5371526": {
+  "futebol": true,
+  "nome": "Malaysia Premier League",
+  "nome_en": "Malaysia Premier League",
+  "pais": "MY"
+ },
+ "Q538655": {
+  "futebol": true,
+  "nome": "Campeonato Brasiliense",
+  "nome_en": "Campeonato Brasiliense",
+  "pais": "BR"
  },
  "Q539678": {
   "futebol": true,
@@ -329,11 +1913,107 @@
   "nome_en": "Regionalliga Nord",
   "pais": "DE"
  },
+ "Q541065": {
+  "futebol": true,
+  "nome": "Segona Divisió",
+  "nome_en": "Segona Divisió",
+  "pais": "AD"
+ },
+ "Q5465867": {
+  "futebol": true,
+  "nome": "Football League North and South",
+  "nome_en": "Football League North and South",
+  "pais": null
+ },
+ "Q5465920": {
+  "futebol": true,
+  "nome": "National Premier Leagues Western Australia Men's",
+  "nome_en": "Football West State League Premier Division",
+  "pais": "AU"
+ },
+ "Q548937": {
+  "futebol": true,
+  "nome": "Regionalliga Nordost",
+  "nome_en": "Regionalliga Nordost",
+  "pais": "DE"
+ },
+ "Q5511150": {
+  "futebol": true,
+  "nome": "Landesliga Bayern-Südwest",
+  "nome_en": "Fußball-Landesliga Bayern-Südwest",
+  "pais": "DE"
+ },
+ "Q555836": {
+  "futebol": true,
+  "nome": "Regionalliga West",
+  "nome_en": "Regionalliga West",
+  "pais": "DE"
+ },
+ "Q5575096": {
+  "futebol": true,
+  "nome": "Liga Profissional de Goa",
+  "nome_en": "Goa Professional League",
+  "pais": "IN"
+ },
+ "Q570246": {
+  "futebol": true,
+  "nome": "Botola Pro",
+  "nome_en": "Botola Pro 1",
+  "pais": "MA"
+ },
  "Q575453": {
   "futebol": true,
   "nome": "J.League",
   "nome_en": "J.League",
   "pais": "JP"
+ },
+ "Q583514": {
+  "futebol": true,
+  "nome": "Sudan Premier League",
+  "nome_en": "Sudani Premier League",
+  "pais": "SD"
+ },
+ "Q584090": {
+  "futebol": true,
+  "nome": "Klasa A",
+  "nome_en": "A-Class",
+  "pais": "PL"
+ },
+ "Q586726": {
+  "futebol": true,
+  "nome": "Czechoslovak First League",
+  "nome_en": "Czechoslovak First League",
+  "pais": null
+ },
+ "Q58916": {
+  "futebol": true,
+  "nome": "Conference National",
+  "nome_en": "National League",
+  "pais": "GB-ENG"
+ },
+ "Q59041": {
+  "futebol": true,
+  "nome": "National League North",
+  "nome_en": "National League North",
+  "pais": "GB-ENG"
+ },
+ "Q603439": {
+  "futebol": true,
+  "nome": "Premier Soccer League",
+  "nome_en": "Premier Soccer League",
+  "pais": "ZA"
+ },
+ "Q6064786": {
+  "futebol": true,
+  "nome": "Q6064786",
+  "nome_en": null,
+  "pais": "TR"
+ },
+ "Q606652": {
+  "futebol": true,
+  "nome": "Liga 1",
+  "nome_en": "Peruvian Primera División",
+  "pais": "PE"
  },
  "Q60681": {
   "futebol": true,
@@ -341,17 +2021,125 @@
   "nome_en": "Qatar Stars League",
   "pais": "QA"
  },
+ "Q606832": {
+  "futebol": true,
+  "nome": "Liga de Primera",
+  "nome_en": "Chilean Primera División",
+  "pais": "CL"
+ },
+ "Q607965": {
+  "futebol": true,
+  "nome": "Serie C",
+  "nome_en": "Serie C",
+  "pais": "IT"
+ },
  "Q610175": {
   "futebol": true,
   "nome": "Campeonato Brasileiro Série B",
   "nome_en": "Campeonato Brasileiro Série B",
   "pais": "BR"
  },
+ "Q610823": {
+  "futebol": true,
+  "nome": "Eerste Divisie",
+  "nome_en": "Eerste Divisie",
+  "pais": "NL"
+ },
+ "Q6156628": {
+  "futebol": true,
+  "nome": "Japan Football League",
+  "nome_en": "Japan Football League",
+  "pais": "JP"
+ },
  "Q618131": {
   "futebol": true,
   "nome": "II Divisão",
   "nome_en": "Segunda Divisão",
   "pais": "PT"
+ },
+ "Q628797": {
+  "futebol": true,
+  "nome": "LFA First Division",
+  "nome_en": "Liberian Premier League",
+  "pais": "LR"
+ },
+ "Q630141": {
+  "futebol": true,
+  "nome": "Girabola",
+  "nome_en": "Girabola",
+  "pais": "AO"
+ },
+ "Q635198": {
+  "futebol": true,
+  "nome": "Categoría Primera B",
+  "nome_en": "Categoría Primera B",
+  "pais": "CO"
+ },
+ "Q63980269": {
+  "futebol": false,
+  "nome": "Super League Greece 2",
+  "nome_en": "Super League Greece 2",
+  "pais": "GR"
+ },
+ "Q642975": {
+  "futebol": false,
+  "nome": "Elite Ice Hockey League",
+  "nome_en": "Elite Ice Hockey League",
+  "pais": "GB-ENG"
+ },
+ "Q645148": {
+  "futebol": true,
+  "nome": "Eccellenza",
+  "nome_en": "Eccellenza",
+  "pais": "IT"
+ },
+ "Q647746": {
+  "futebol": true,
+  "nome": "Algerian Ligue Professionnelle 1",
+  "nome_en": "Algerian Ligue Professionnelle 1",
+  "pais": "DZ"
+ },
+ "Q650236": {
+  "futebol": true,
+  "nome": "Erste Liga",
+  "nome_en": "Austrian Football Second League",
+  "pais": "AT"
+ },
+ "Q65160782": {
+  "futebol": true,
+  "nome": "Algarve Football Association",
+  "nome_en": "Algarve Football Association",
+  "pais": "PT"
+ },
+ "Q65293132": {
+  "futebol": true,
+  "nome": "Regionuli Liga",
+  "nome_en": "Regionuli Liga",
+  "pais": "GE"
+ },
+ "Q6545796": {
+  "futebol": true,
+  "nome": "Liga Premier A",
+  "nome_en": "Serie A de México",
+  "pais": "MX"
+ },
+ "Q657405": {
+  "futebol": true,
+  "nome": "Promozione",
+  "nome_en": "Promozione",
+  "pais": "IT"
+ },
+ "Q669073": {
+  "futebol": true,
+  "nome": "Challenge League",
+  "nome_en": "Challenge League",
+  "pais": "CH"
+ },
+ "Q672305": {
+  "futebol": true,
+  "nome": "1. Liga Classic",
+  "nome_en": "1. Liga Classic",
+  "pais": "CH"
  },
  "Q677397": {
   "futebol": true,
@@ -365,11 +2153,41 @@
   "nome_en": "Egyptian Premier League",
   "pais": "EG"
  },
+ "Q6825363": {
+  "futebol": false,
+  "nome": "Metropolitano de Hockey",
+  "nome_en": "Metropolitano de Hockey (men)",
+  "pais": "AR"
+ },
+ "Q683390": {
+  "futebol": true,
+  "nome": "Áustria Regional League",
+  "nome_en": "Austrian Regional League",
+  "pais": "AT"
+ },
+ "Q689865": {
+  "futebol": true,
+  "nome": "1988–89 Austrian Football Bundesliga",
+  "nome_en": "1988–89 Austrian Football Bundesliga",
+  "pais": "AT"
+ },
  "Q692009": {
   "futebol": true,
   "nome": "Superettan",
   "nome_en": "Superettan",
   "pais": "SE"
+ },
+ "Q694394": {
+  "futebol": true,
+  "nome": "2. Liga Interregional",
+  "nome_en": "2. Liga Interregional",
+  "pais": "CH"
+ },
+ "Q695055": {
+  "futebol": true,
+  "nome": "1987–88 Austrian Football Bundesliga",
+  "nome_en": "1987–88 Austrian Football Bundesliga",
+  "pais": "AT"
  },
  "Q7228035": {
   "futebol": true,
@@ -389,11 +2207,35 @@
   "nome_en": "Portuguese District Football Associations",
   "pais": "PT"
  },
+ "Q7247950": {
+  "futebol": true,
+  "nome": "Professional Development League",
+  "nome_en": "Professional Development League",
+  "pais": "GB-ENG"
+ },
  "Q731877": {
   "futebol": true,
   "nome": "Campeonato Mineiro",
   "nome_en": "Campeonato Mineiro",
   "pais": "BR"
+ },
+ "Q732721": {
+  "futebol": true,
+  "nome": "Segunda Divisão Húngara",
+  "nome_en": "Nemzeti Bajnokság II",
+  "pais": "HU"
+ },
+ "Q7427162": {
+  "futebol": true,
+  "nome": "Saudi Second Division League",
+  "nome_en": "Saudi The first Division",
+  "pais": "SA"
+ },
+ "Q7437734": {
+  "futebol": true,
+  "nome": "Scottish Football Federation",
+  "nome_en": "Scottish Football Federation",
+  "pais": null
  },
  "Q749736": {
   "futebol": true,
@@ -413,11 +2255,197 @@
   "nome_en": "Liga Portugal 2",
   "pais": "PT"
  },
+ "Q754839": {
+  "futebol": true,
+  "nome": "Football League First Division",
+  "nome_en": "Football League First Division",
+  "pais": "GB-ENG"
+ },
+ "Q7571694": {
+  "futebol": true,
+  "nome": "Soviet Second League B",
+  "nome_en": "Soviet Second League B",
+  "pais": null
+ },
+ "Q762162": {
+  "futebol": true,
+  "nome": "Campeonato Nacional Feminino",
+  "nome_en": "Campeonato Nacional de Futebol Feminino",
+  "pais": "PT"
+ },
+ "Q764690": {
+  "futebol": true,
+  "nome": "Liga MX",
+  "nome_en": "Liga MX",
+  "pais": "MX"
+ },
+ "Q7654668": {
+  "futebol": true,
+  "nome": "Division 1 Norra",
+  "nome_en": "Ettan Norra",
+  "pais": "SE"
+ },
+ "Q7654670": {
+  "futebol": true,
+  "nome": "Division 1 Södra",
+  "nome_en": "Ettan Södra",
+  "pais": "SE"
+ },
+ "Q765749": {
+  "futebol": true,
+  "nome": "Campeonato Carioca",
+  "nome_en": "Campeonato Carioca",
+  "pais": "BR"
+ },
+ "Q769744": {
+  "futebol": true,
+  "nome": "Football League Second Division",
+  "nome_en": "Football League Second Division",
+  "pais": "GB-ENG"
+ },
+ "Q7826089": {
+  "futebol": true,
+  "nome": "Torneo Argentino B",
+  "nome_en": "Torneo Argentino Β",
+  "pais": "AR"
+ },
+ "Q786925": {
+  "futebol": true,
+  "nome": "División Intermedia",
+  "nome_en": "Paraguayan División Intermedia",
+  "pais": "PY"
+ },
+ "Q793457": {
+  "futebol": true,
+  "nome": "Azadegan League",
+  "nome_en": "Azadegan League",
+  "pais": "IR"
+ },
+ "Q794235": {
+  "futebol": true,
+  "nome": "Tunisian Ligue Professionnelle 1",
+  "nome_en": "Tunisian Ligue Professionnelle 1",
+  "pais": "TN"
+ },
+ "Q794251": {
+  "futebol": true,
+  "nome": "Ghana Premier League",
+  "nome_en": "Ghana Premier League",
+  "pais": "GH"
+ },
+ "Q797414": {
+  "futebol": true,
+  "nome": "Second Professional Football League",
+  "nome_en": "Bulgarian B Professional Football Group",
+  "pais": "BG"
+ },
+ "Q8060376": {
+  "futebol": true,
+  "nome": "Yugoslav Third League",
+  "nome_en": "Yugoslav Third League",
+  "pais": null
+ },
  "Q82595": {
   "futebol": true,
   "nome": "Bundesliga",
   "nome_en": null,
   "pais": "DE"
+ },
+ "Q830717": {
+  "futebol": true,
+  "nome": "Serie C2",
+  "nome_en": "Serie C2",
+  "pais": "IT"
+ },
+ "Q830826": {
+  "futebol": true,
+  "nome": "Nigeria Premier Football League",
+  "nome_en": "Nigeria Premier Football League",
+  "pais": "NG"
+ },
+ "Q831202": {
+  "futebol": true,
+  "nome": "League of Ireland Premier Division",
+  "nome_en": "League of Ireland Premier Division",
+  "pais": "IE"
+ },
+ "Q832896": {
+  "futebol": true,
+  "nome": "NRW-Liga",
+  "nome_en": "NRW-Liga",
+  "pais": "DE"
+ },
+ "Q833244": {
+  "futebol": true,
+  "nome": "Major Indoor Soccer League",
+  "nome_en": "Major Indoor Soccer League",
+  "pais": "US"
+ },
+ "Q841939": {
+  "futebol": true,
+  "nome": "Serie A 1958-59",
+  "nome_en": "1958–59 Serie A",
+  "pais": "IT"
+ },
+ "Q842888": {
+  "futebol": true,
+  "nome": "Thai League 2",
+  "nome_en": "Thai League 2",
+  "pais": "TH"
+ },
+ "Q843012": {
+  "futebol": true,
+  "nome": "Scottish Football League Premier Division",
+  "nome_en": "Scottish Football League Premier Division",
+  "pais": "GB-SCT"
+ },
+ "Q843159": {
+  "futebol": true,
+  "nome": "Johnstone Paint Trophy",
+  "nome_en": "EFL Trophy",
+  "pais": "GB-ENG"
+ },
+ "Q843989": {
+  "futebol": true,
+  "nome": "Copa do Brasil",
+  "nome_en": "Copa do Brasil",
+  "pais": "BR"
+ },
+ "Q845412": {
+  "futebol": true,
+  "nome": "Primera C Metropolitana",
+  "nome_en": "Primera C Argentina",
+  "pais": "AR"
+ },
+ "Q845418": {
+  "futebol": true,
+  "nome": "Primera C (Argentina)",
+  "nome_en": "Primera D Argentina",
+  "pais": "AR"
+ },
+ "Q84614633": {
+  "futebol": true,
+  "nome": "K3 League",
+  "nome_en": "K3 League",
+  "pais": "KR"
+ },
+ "Q850132": {
+  "futebol": true,
+  "nome": "Elite One",
+  "nome_en": "Elite One",
+  "pais": "CM"
+ },
+ "Q856855": {
+  "futebol": true,
+  "nome": "Uzbekistan Super League",
+  "nome_en": "Uzbekistan Super League",
+  "pais": "UZ"
+ },
+ "Q85811491": {
+  "futebol": true,
+  "nome": "UAE Second Division League",
+  "nome_en": "UAE Second Division League",
+  "pais": null
  },
  "Q864298": {
   "futebol": true,
@@ -425,11 +2453,89 @@
   "nome_en": "Ligue 3",
   "pais": "FR"
  },
+ "Q878024": {
+  "futebol": true,
+  "nome": "Oberliga Nordrhein",
+  "nome_en": "Oberliga Nordrhein (1978-2008)",
+  "pais": "DE"
+ },
+ "Q878642": {
+  "futebol": true,
+  "nome": "Oberliga Baden-Württemberg",
+  "nome_en": "Oberliga Baden-Württemberg",
+  "pais": "DE"
+ },
+ "Q9022453": {
+  "futebol": true,
+  "nome": "Liga de Ascenso",
+  "nome_en": "Liga de Ascenso",
+  "pais": null
+ },
+ "Q903567": {
+  "futebol": true,
+  "nome": "Serie A 1959-60",
+  "nome_en": "1959–60 Serie A",
+  "pais": "IT"
+ },
+ "Q920397": {
+  "futebol": true,
+  "nome": "Campeonato Paranaense",
+  "nome_en": "Campeonato Paranaense",
+  "pais": "BR"
+ },
+ "Q922681": {
+  "futebol": true,
+  "nome": "National Premier Soccer League",
+  "nome_en": "National Premier Soccer League",
+  "pais": "US"
+ },
+ "Q9291649": {
+  "futebol": true,
+  "nome": "Regional Preferente de Cantabria",
+  "nome_en": null,
+  "pais": "ES"
+ },
+ "Q929341": {
+  "futebol": true,
+  "nome": "National Premier Leagues NSW Men's",
+  "nome_en": "National Premier Leagues NSW",
+  "pais": "AU"
+ },
+ "Q929804": {
+  "futebol": true,
+  "nome": "n/a",
+  "nome_en": "N/A",
+  "pais": null
+ },
+ "Q931003": {
+  "futebol": true,
+  "nome": "1986 Soviet Top League",
+  "nome_en": "1986 Soviet Top League",
+  "pais": null
+ },
+ "Q931386": {
+  "futebol": true,
+  "nome": "Campeonato Goiano",
+  "nome_en": "Campeonato Goiano",
+  "pais": "BR"
+ },
  "Q931513": {
   "futebol": true,
   "nome": "Campeonato Brasileiro Série D",
   "nome_en": "Campeonato Brasileiro Série D",
   "pais": "BR"
+ },
+ "Q934724": {
+  "futebol": true,
+  "nome": "Primera B Nacional",
+  "nome_en": "Primera Nacional",
+  "pais": "AR"
+ },
+ "Q938351": {
+  "futebol": true,
+  "nome": "National Soccer League",
+  "nome_en": "National Soccer League",
+  "pais": "AU"
  },
  "Q9448": {
   "futebol": true,
@@ -437,10 +2543,40 @@
   "nome_en": "Premier League",
   "pais": "GB-ENG"
  },
+ "Q954911": {
+  "futebol": true,
+  "nome": "APF División de Honor",
+  "nome_en": "Paraguayan Primera División",
+  "pais": "PY"
+ },
  "Q959186": {
   "futebol": true,
   "nome": "Division 1",
   "nome_en": "Ettan Fotboll",
   "pais": "SE"
+ },
+ "Q9680477": {
+  "futebol": true,
+  "nome": "Campeonato Mineiro Módulo II",
+  "nome_en": "Campeonato Mineiro Modulo II",
+  "pais": "BR"
+ },
+ "Q973312": {
+  "futebol": true,
+  "nome": "Championnat National 2",
+  "nome_en": "Championnat National 3",
+  "pais": "FR"
+ },
+ "Q976491": {
+  "futebol": true,
+  "nome": "USL League Two",
+  "nome_en": "USL League Two",
+  "pais": "US"
+ },
+ "Q988698": {
+  "futebol": true,
+  "nome": "Ligue 1",
+  "nome_en": "Ligue 1",
+  "pais": "CI"
  }
 }

@@ -30,11 +30,13 @@ _POSICOES_TEXTO = [
     (r"goal ?keeper", "GR"), (r"centre[- ]?back|central defender|sweeper|centre[- ]?half", "DC"),
     (r"right[- ]?back|right wing[- ]?back", "LD"), (r"left[- ]?back|left wing[- ]?back", "LE"),
     (r"defensive midfield", "MDC"), (r"attacking midfield|playmaker", "MO"), (r"central midfield|box-to-box", "MC"),
-    (r"right winger", "ED"), (r"left winger", "EE"), (r"second striker|support striker", "SA"),
+    (r"right winger|outside right", "ED"), (r"left winger|outside left", "EE"),
+    (r"second striker|support striker", "SA"), (r"inside (forward|right|left)", "MO"),
+    (r"wing[- ]half|half[- ]back", "MC"),
     (r"(?<!second )striker|centre[- ]?forward|center[- ]?forward", "PL"),
 ]
-_SETOR_TEXTO = [(r"goal ?keeper", "gr"), (r"defender|back\b", "defesa"), (r"midfield", "medio"),
-                (r"forward|striker|winger", "avancado")]
+_SETOR_TEXTO = [(r"goal ?keeper", "gr"), (r"defender|back\b", "defesa"), (r"midfield|half\b", "medio"),
+                (r"forward|striker|winger|outside (right|left)", "avancado")]
 # Fases finais com página "… squads" (números de camisola das seleções): modelo → (confederação ou None, anos).
 _TORNEIOS = {
     "{y} FIFA World Cup squads": (None, [1990, 1994, 1998, 2002, 2006, 2010, 2014, 2018, 2022, 2026]),
@@ -515,6 +517,12 @@ def construir(ctx: Contexto, qid: str, ent: dict, artigo: dict) -> tuple[dict, l
 
     # --- posição e físico ---------------------------------------------------------------------------------------------
     posicao = _posicao(tm, zz_perfil.get("posicoes", []), dc["posicao"], ctx.perguntas)
+    if not posicao["setores"]:
+        # Sem posição na caixa (Gianni Rivera): a posição da Wikidata (P413), pelos rótulos em inglês.
+        p413 = wd.itens(ent, "P413")
+        rotulos = wd.entidades(cliente, p413, props="labels", idiomas="en") if p413 else {}
+        texto_wd = ", ".join(wd.rotulo(e, ("en",)) or "" for e in rotulos.values())
+        posicao = _posicao(tm, zz_perfil.get("posicoes", []), texto_wd, ctx.perguntas)
     if not posicao["especificas"]:
         avisos.append(f"posição específica desconhecida ('{dc['posicao']}')")
     pe_tm = {"right": "direito", "left": "esquerdo", "both": "ambos"}.get((tm or {}).get("foot") or "")
@@ -570,7 +578,8 @@ def construir(ctx: Contexto, qid: str, ent: dict, artigo: dict) -> tuple[dict, l
         "nascimento": nascimento,
         "estreia": estreia,
         "estado": "ativo" if ativo else "retirado",
-        "clube_atual": ultima["clube"] if ativo else None,
+        # A carreira já tem os ids próprios dos clubes sem artigo ("x-vv-woudenberg").
+        "clube_atual": carreira[-1]["clube"] if ativo and carreira else None,
         "carreira": carreira,
         "selecoes": [dict(s, numeros=sorted(s["numeros"])) for s in selecoes],
         "totais": {

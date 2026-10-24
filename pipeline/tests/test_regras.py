@@ -55,7 +55,7 @@ def _linha(comp, anos, contexto="jogador", tipo="clube", vice=False):
 def test_premios():
     linhas = [_linha("UEFA Champions League", [2002]), _linha("2002–03 UEFA Champions League", [2002], tipo="individual"),
               _linha("FIFA World Youth Championship", [1991], tipo="jovem"), _linha("Primeira Liga", [1993]),
-              _linha("Supercoppa Italiana", [1996]), _linha("Emperor's Cup", [2011]),
+              _linha("Supercoppa Italiana", [1996]), _linha("Lunar New Year Cup", [2011]),
               _linha("Ballon d'Or", [], tipo="individual", vice=True),
               _linha("UEFA Champions League", [2016, 2017, 2018], contexto="treinador"),
               _linha("Supercopa de España", [2017], contexto="treinador")]
@@ -64,7 +64,7 @@ def test_premios():
     assert por_id[("liga_campeoes", None)]["n"] == 1                      # o prémio individual da UCL não soma
     assert ("campeonato_nacional", "PT") in por_id
     assert not any(p["id"] == "bola_de_ouro" for p in jogador)
-    assert desconhecidas == {"Emperor's Cup"}       # as supertaças são conhecidas; a das seleções jovens fica de fora
+    assert desconhecidas == {"Lunar New Year Cup"}       # as supertaças são conhecidas; a das seleções jovens fica de fora
     assert treinador[0]["n"] == 3 and n_treinador == 4                     # a supertaça conta nos títulos
 
 

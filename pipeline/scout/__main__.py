@@ -4,6 +4,7 @@
     python -m scout paises
     python -m scout sementes
     python -m scout recolher --amostra | --candidatos | --titulo "Rui Costa" | --id Q190608   [--refazer] [--fresco]
+    python -m scout premios
     python -m scout validar
     python -m scout relatorio
     python -m scout assistencias
@@ -81,6 +82,13 @@ def cmd_recolher(args):
         print(f"  {t}: {erro}")
 
 
+def cmd_premios(args):
+    from . import recolha
+    from .jogador import Contexto
+    n = recolha.atualizar_premios(Contexto(_cliente()))
+    print(f"{n} registos com prémios atualizados (dados/competicoes.json)")
+
+
 def cmd_validar(args):
     from .validar import validar_todos
     res = validar_todos()
@@ -135,6 +143,8 @@ def main(argv=None):
     s.add_argument("--refazer", action="store_true", help="refaz quem já tem registo")
     s.add_argument("--fresco", action="store_true", help="ignora a cache")
     s.set_defaults(f=cmd_recolher)
+    sub.add_parser("premios", help="volta a aplicar dados/competicoes.json aos títulos de todos os registos"
+                   ).set_defaults(f=cmd_premios)
     s = sub.add_parser("validar", help="valida os registos (sai com 1 se houver erros)")
     s.add_argument("--avisos", action="store_true", help="mostra também os avisos")
     s.set_defaults(f=cmd_validar)
