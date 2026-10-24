@@ -63,8 +63,7 @@ py -3.12 -m venv .venv
   ignora a cache. Há um pedido de cada vez, e o zerozero só leva um a cada 2–3 s.
 - **Curiosidades:**
   - Por omissão usam o [Ollama](https://ollama.com) local, com o modelo `gemma4:12b` (`winget install Ollama.Ollama`,
-    depois `ollama pull gemma4:12b`). Não há quotas, e o texto da Wikipédia não sai do PC. Leva ~12 s por jogador
-    numa RTX 3070, mais ~5 s da revisão do português.
+    depois `ollama pull gemma4:12b`). Não há quotas, e o texto da Wikipédia não sai do PC.
   - São sobre a carreira: recordes, estreias, momentos marcantes, transferências, alcunhas, seleção e treinador.
     O modelo lê a introdução do artigo, a formação e os parágrafos de carreira com mais sinais de facto curioso.
   - Cada curiosidade passa por quatro passos:
