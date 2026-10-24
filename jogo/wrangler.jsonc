@@ -1,0 +1,33 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "scout-report",
+  "main": "src/index.js",
+  "compatibility_date": "2026-09-01",
+  // Gera public/js/comum/dados.gen.js a partir de ../partilhado/*.json antes de cada dev/deploy.
+  "build": {
+    "command": "node scripts/gerar-dados.mjs",
+    "watch_dir": "../partilhado"
+  },
+  "assets": {
+    "directory": "./public",
+    "binding": "ASSETS",
+    "not_found_handling": "single-page-application",
+    "run_worker_first": ["/", "/index.html", "/api/*", "/ws/*", "/sala/*"]
+  },
+  "durable_objects": {
+    "bindings": [{ "name": "SALAS", "class_name": "Sala" }]
+  },
+  // SQLite é obrigatório para Durable Objects no plano gratuito.
+  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["Sala"] }],
+  // A base de jogadores (pipeline: python -m scout exportar). Em `wrangler dev` usa-se uma cópia local
+  // (npm run db:local). O database_id verdadeiro chega no passo 7, com `wrangler d1 create scout-report`.
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "scout-report",
+      "database_id": "00000000-0000-0000-0000-000000000000",
+      "migrations_dir": "migrations"
+    }
+  ],
+  "observability": { "enabled": true }
+}

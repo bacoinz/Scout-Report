@@ -540,7 +540,7 @@ def construir(ctx: Contexto, qid: str, ent: dict, artigo: dict) -> tuple[dict, l
     treinador = None
     equipas_treino = [t for t in car["treinador"] if not t["adjunto"]]
     if equipas_treino:
-        eq = []
+        eq, abertas = [], []
         for t in equipas_treino:
             qs = (info_sel.get(t["titulo"]) or {}).get("qid")
             pais_sel = ctx.pais_de_selecao((info_sel.get(t["titulo"]) or {}).get("titulo", t["titulo"]), qs) \
@@ -554,8 +554,10 @@ def construir(ctx: Contexto, qid: str, ent: dict, artigo: dict) -> tuple[dict, l
                            "inicio": t["inicio"], "fim": t["fim"], "interino": t["interino"]})
             else:
                 avisos.append(f"equipa treinada sem QID: {t['nome']}")
-        atual = next((e for e in eq if e["fim"] is None and not e["interino"]
-                      and any(t["aberto"] for t in equipas_treino if t["nome"] == e["nome"])), None)
+                continue
+            abertas.append(t["aberto"])
+        # O "aberto" é da própria linha da caixa ("2026–"): o nome das seleções já vem traduzido ("França").
+        atual = next((e for e, aberta in zip(eq, abertas) if e["fim"] is None and not e["interino"] and aberta), None)
         treinador = {"equipas": eq, "atual": atual, "titulos": premios_treinador, "n_titulos": n_titulos_treinador}
 
     # --- nomes, fama, foto, factos ---------------------------------------------------------------------------------

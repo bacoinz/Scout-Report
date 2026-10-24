@@ -1,0 +1,395 @@
+// Fichas de olheiro: a ficha pública de cada jogador secreto (o que já se sabe, a partir das respostas), a ficha
+// revelada (identificado, quem saiu, fim) e o dossier do meu jogador (o registo todo). Só desenha.
+import * as P from './comum/perguntas.js';
+import { el, rotacao, epocas, data, miniatura, creditoFoto, plural } from './util.js';
+
+const INCOGNITA = '????';
+const incognita = () => el('span', { class: 'incognita', text: INCOGNITA });
+const juntar = (partes, sep = ' · ') => partes.flatMap((p, i) => (i ? [sep, p] : [p]));
+const linhaDados = (rotulo, ...conteudo) => el('div', {}, el('dt', { text: rotulo }), el('dd', {}, ...conteudo));
+const PES = { direito: 'destro', esquerdo: 'canhoto', ambos: 'ambidestro' };
+const semArtigo = (t) => t.replace(/^(o|a|os|as|um|uma) /, '');
+export const nomePremio = (id) => semArtigo(P.PREMIOS[id]?.nome ?? id).replace(/ (ou [^)]*)$/, '').replace(/^./, (c) => c.toUpperCase());
+
+/** Carimbo pequeno ("Confirmado", "Sem registo"), com rotação fixa; "novo" anima-o. */
+const carimbo = (classe, texto, chave, novo) =>
+  el('span', { class: `carimbo mini ${classe}${novo ? ' novo' : ''}`, style: { '--rot': rotacao(chave) }, text: texto });
+
+// ---------------------------------------------------------------------------
+// O que já se sabe de uma ficha
+// ---------------------------------------------------------------------------
+
+/** Os valores de um tipo com ✓ (dados ou deduzidos), pela ordem em que foram respondidos. */
+function confirmados(f, tipo) {
+  const prefixo = `${tipo}:`;
+  const vistos = new Set();
+  for (const k of Object.keys(f.respostas)) {
+    const base = k.startsWith(`${tipo}_atual:`) ? k.slice(tipo.length + 7) : k.startsWith(prefixo) ? k.slice(prefixo.length) : null;
+    if (base != null && P.valor(f, `${tipo}:${base}`) === 'sim') vistos.add(base);
+  }
+  return [...vistos];
+}
+const temSemRegisto = (f, tipo) => Object.entries(f.respostas).some(([k, v]) => k.startsWith(`${tipo}:`) && v.r === 'sem_registo');
+
+/** "mais de N" já conhecido: { min (o maior ✓), max (o menor ✗) }. */
+function intervalo(f, tipo) {
+  let min = null;
+  let max = null;
+  for (const n of P.limiaresDe(tipo)) {
+    const v = P.valor(f, `${tipo}:${n}`);
+    if (v === 'sim') min = Math.max(min ?? -Infinity, n);
+    if (v === 'nao') max = Math.min(max ?? Infinity, n);
+  }
+  return { min, max };
+}
+function textoIntervalo({ min, max }, formatar = String) {
+  if (min != null && max != null) return `${formatar(min)}–${formatar(max)}`;
+  if (min != null) return `+${formatar(min)}`;
+  if (max != null) return `≤${formatar(max)}`;
+  return null;
+}
+const metros = (cm) => `${(cm / 100).toFixed(2).replace('.', ',')} m`;
+
+/** Valor de um dado: o texto, ou SEM REGISTO, ou ????. */
+function dado(texto, f, tipos, ctx) {
+  if (texto) return [texto];
+  const sr = tipos.find((t) => temSemRegisto(f, t));
+  if (sr) return [carimbo('sem-registo', 'Sem registo', `${f.n}:${sr}`, ctx.novas.has(`${f.n}:${sr}`))];
+  return [incognita()];
+}
+
+function dadosPublicos(f, ctx) {
+  const decadas = confirmados(f, 'decada');
+  const anos = confirmados(f, 'ano');
+  const estreia = anos.length ? anos[0] : decadas.length ? `anos ${decadas[0] < 2000 ? String(decadas[0]).slice(2) : decadas[0]}` : null;
+  const confs = confirmados(f, 'conf').map((c) => P.CONFEDERACOES[c].nome);
+  const nacs = confirmados(f, 'nac').map(P.nomePais);
+  const setores = confirmados(f, 'setor').map((s) => P.SETORES[s]);
+  const posicoes = confirmados(f, 'pos').map((p) => P.POSICOES[p].nome);
+  const altura = textoIntervalo(intervalo(f, 'altura'), metros);
+  const pe = confirmados(f, 'pe').map((p) => PES[p]);
+  const estado = P.valor(f, 'ativo') === 'sim' ? 'No ativo' : P.valor(f, 'retirado') === 'sim' ? 'Retirado' : null;
+  const treinador = P.valor(f, 'foi_treinador') === 'sim' ? (P.valor(f, 't_atual') === 'sim' ? 'treinador (no ativo)' : 'treinador') : null;
+  const comFalta = (partes, completo) => (partes.length ? juntar([...partes, ...(completo ? [] : [incognita()])]) : [incognita()]);
+  return el('dl', { class: 'folha-dados' },
+    linhaDados('Estreia', ...(estreia ? (anos.length ? [estreia] : juntar([estreia, incognita()])) : [incognita()])),
+    linhaDados('Nação', ...comFalta([...confs, ...nacs], nacs.length > 0)),
+    linhaDados('Posição', ...comFalta([...setores, ...posicoes], posicoes.length > 0)),
+    linhaDados('Físico', ...(altura || pe.length ? juntar([altura, ...pe].filter(Boolean)) : dado(null, f, ['altura', 'pe'], ctx))),
+    linhaDados('Estado', ...(estado || treinador ? juntar([estado ?? incognita(), treinador].filter(Boolean)) : [incognita()])));
+}
+
+/** Carreira: os clubes, as ligas e os países confirmados, e uma linha ???? para o que falta. */
+function carreiraPublica(f, ctx) {
+  const cat = ctx.cat;
+  const clubes = confirmados(f, 'clube');
+  const ligas = confirmados(f, 'liga');
+  const paises = confirmados(f, 'pais');
+  const atual = (tipo, v) => P.valor(f, `${tipo}_atual:${v}`) === 'sim';
+  const novo = (k) => ctx.novas.has(`${f.n}:${k}`);
+  const linhas = [];
+  const ligasUsadas = new Set();
+  const paisesUsados = new Set();
+  for (const c of clubes) {
+    const l = (cat.clubes[c]?.ligas ?? []).find((x) => ligas.includes(x));
+    if (l) ligasUsadas.add(l);
+    const pais = l ? P.paisLiga(cat, l) : cat.clubes[c]?.pais;
+    if (pais) paisesUsados.add(pais);
+    linhas.push(el('tr', {},
+      el('td', {}, P.nomeClube(cat, c), atual('clube', c) ? el('small', { text: 'atual' }) : null,
+        novo(`clube:${c}`) || novo(`clube_atual:${c}`) ? carimbo('confirmado', 'Confirmado', `clube:${c}`, true) : null),
+      el('td', { class: 'esq' }, l ? P.nomeLiga(cat, l) : incognita(), pais ? el('small', { text: P.nomePais(pais) }) : null)));
+  }
+  for (const l of ligas) {
+    if (ligasUsadas.has(l)) continue;
+    const pais = P.paisLiga(cat, l);
+    paisesUsados.add(pais);
+    linhas.push(el('tr', {},
+      el('td', {}, incognita()),
+      el('td', { class: 'esq' }, P.nomeLiga(cat, l), atual('liga', l) ? ' (atual)' : '',
+        novo(`liga:${l}`) || novo(`liga_atual:${l}`) ? carimbo('confirmado', 'Confirmado', `liga:${l}`, true) : null,
+        el('small', { text: P.nomePais(pais) }))));
+  }
+  for (const p of paises) {
+    if (paisesUsados.has(p)) continue;
+    linhas.push(el('tr', {},
+      el('td', {}, incognita()),
+      el('td', { class: 'esq' }, incognita(), atual('pais', p) ? ' (atual)' : '',
+        novo(`pais:${p}`) || novo(`pais_atual:${p}`) ? carimbo('confirmado', 'Confirmado', `pais:${p}`, true) : null,
+        el('small', { text: P.nomePais(p) }))));
+  }
+  linhas.push(el('tr', {}, el('td', {}, incognita()), el('td', { class: 'esq' }, incognita())));
+  return el('section', {},
+    el('h4', { text: 'Carreira' }),
+    el('table', { class: 'tabela-carreira' },
+      el('thead', {}, el('tr', {}, el('th', { text: 'Clube' }), el('th', { class: 'esq', text: 'Liga' }))),
+      el('tbody', {}, ...linhas)));
+}
+
+function estatisticasPublicas(f, ctx) {
+  const numeros = confirmados(f, 'num');
+  const faixas = confirmados(f, 'faixa').map((i) => {
+    const [a, b] = P.FAIXAS_NUMEROS[Number(i)];
+    return a === 1 ? `abaixo de ${b + 1}` : b >= 99 ? `acima de ${a - 1}` : `${a} a ${b}`;
+  });
+  const camisola = numeros.length ? `n.º ${numeros.join(', ')}` : faixas.length ? faixas.join(' · ') : null;
+  return el('section', {},
+    el('h4', { text: 'Estatísticas' }),
+    el('dl', { class: 'estatisticas' },
+      linhaDados('Jogos', ...dado(textoIntervalo(intervalo(f, 'jogos')), f, [], ctx)),
+      linhaDados('Golos', ...dado(textoIntervalo(intervalo(f, 'golos')), f, [], ctx)),
+      linhaDados('Assist.', ...dado(textoIntervalo(intervalo(f, 'assist')), f, ['assist'], ctx)),
+      linhaDados('Seleção', ...dado(textoIntervalo(intervalo(f, 'inter')), f, [], ctx)),
+      linhaDados('Camisola', ...dado(camisola, f, ['num', 'faixa'], ctx))));
+}
+
+function premiosPublicos(f) {
+  const ganhos = confirmados(f, 'premio').map(nomePremio);
+  return el('section', {},
+    el('h4', { text: 'Prémios' }),
+    ganhos.length ? el('ul', { class: 'lista-folha' }, el('li', { text: [...ganhos, INCOGNITA].join(' · ') }))
+      : el('p', { class: 'texto-maquina incognita', text: INCOGNITA }));
+}
+
+function treinadorPublico(f, ctx) {
+  if (P.valor(f, 'foi_treinador') !== 'sim') return null;
+  const cat = ctx.cat;
+  const treinou = [
+    ...confirmados(f, 't_pais').map(P.nomePais),
+    ...confirmados(f, 't_clube').map((c) => P.nomeClube(cat, c)),
+    ...confirmados(f, 't_sel').map((p) => `seleção ${P.dePais(p)}`),
+  ];
+  const titulos = textoIntervalo(intervalo(f, 't_titulos'));
+  const premios = confirmados(f, 't_premio').map(nomePremio);
+  const tit = [titulos && titulos !== '+0' ? `${titulos} títulos` : titulos === '+0' ? 'tem títulos' : null, ...premios].filter(Boolean);
+  return el('section', {},
+    el('h4', { text: 'Treinador' }),
+    el('dl', { class: 'estatisticas', style: { gridTemplateColumns: '1fr' } },
+      linhaDados('Treinou', ...(treinou.length ? juntar([...treinou, incognita()]) : [incognita()])),
+      linhaDados('Títulos', ...(tit.length ? juntar([...tit, incognita()]) : [incognita()]))));
+}
+
+function notasExtra(f, ctx) {
+  if (!f.livres.length) return null;
+  const textos = { sim: 'Sim', nao: 'Não', nao_sei: 'Não sei' };
+  return el('section', {},
+    el('h4', { text: 'Notas extra' }),
+    el('ul', { class: 'notas' }, ...f.livres.map((l) =>
+      el('li', {}, `${l.texto} `, el('span', { class: `resposta-livre ${l.r.replace('_', '-')}`, text: textos[l.r] }),
+        ' ', el('span', { class: 'autor', text: `— ${ctx.nome(l.autor)}` })))));
+}
+
+function descartadas(f, ctx) {
+  const itens = [
+    ...Object.entries(f.respostas).filter(([, v]) => v.r === 'nao').map(([k, v]) => [P.afirmacao(k, ctx.cat), v.autor]),
+    ...f.palpites.map((p) => [`Palpite final: ${p.nome}`, p.autor]),
+  ];
+  if (!itens.length) return null;
+  return el('section', { class: 'descartadas' },
+    el('h4', { text: 'Informações descartadas' }),
+    el('ul', {}, ...itens.map(([t, autor]) => el('li', {}, el('span', { text: t }), el('span', { class: 'autor', text: ctx.nome(autor) })))));
+}
+
+// ---------------------------------------------------------------------------
+// Peças comuns
+// ---------------------------------------------------------------------------
+
+function retrato(foto, nome) {
+  if (!foto?.url) return el('figure', { class: 'folha-foto' }, el('div', { class: 'moldura desconhecida' }, silhueta()));
+  return el('figure', { class: 'folha-foto' },
+    el('div', { class: 'moldura' }, el('img', { src: miniatura(foto.url), alt: nome, title: creditoFoto(foto), loading: 'lazy', referrerpolicy: 'no-referrer' })));
+}
+function silhueta() {
+  const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  svg.setAttribute('width', '64');
+  svg.setAttribute('height', '80');
+  const use = document.createElementNS('http://www.w3.org/2000/svg', 'use');
+  use.setAttribute('href', '#i-silhueta');
+  svg.append(use);
+  return svg;
+}
+
+/** Os seis quadrados dos "sim" (quanto já se sabe de uma ficha). */
+export function contadorSim(n, titulo) {
+  return el('span', { class: 'contador-sim', title: titulo, 'aria-label': titulo },
+    el('span', { class: 'caixas' }, ...Array.from({ length: P.SIM_MINIMOS }, (_, i) => el('i', { class: i < n ? 'sim' : null }))));
+}
+
+/** Dados de um jogador já conhecido (revelado ou o meu): nascimento, nação, posição, físico, estado. */
+function dadosRegisto(reg) {
+  const nacoes = reg.nacionalidades.map((c) => `${P.nomePais(c)}${P.PAISES[c]?.confederacao ? ` (${P.PAISES[c].confederacao})` : ''}`);
+  const fisico = [reg.perfil?.altura_cm ? metros(reg.perfil.altura_cm) : null, PES[reg.perfil?.pe] ?? null].filter(Boolean);
+  const ultimoAno = Math.max(...reg.carreira.map((c) => c.fim ?? 0));
+  const estado = reg.estado === 'ativo' ? 'No ativo' : `Retirado${ultimoAno ? ` (${ultimoAno})` : ''}`;
+  const naturalidade = reg.perfil?.naturalidade?.split(',')[0];
+  return el('dl', { class: 'folha-dados' },
+    linhaDados('Nasceu', `${data(reg.nascimento)}${naturalidade ? ` · ${naturalidade}` : ''}`),
+    linhaDados('Nação', nacoes.join(' · ') || '—'),
+    linhaDados('Posição', [reg.posicao.setores.map((s) => P.SETORES[s]).join(' / '), reg.posicao.especificas.join(', ')].filter(Boolean).join(' · ')),
+    linhaDados('Físico', fisico.join(' · ') || 'sem registo'),
+    linhaDados('Estado', reg.treinador ? `${estado} · treinador${reg.treinador.atual ? ` (${reg.treinador.atual.nome})` : ''}` : estado));
+}
+
+function carreiraRegisto(reg, cat, completa) {
+  const ativo = reg.estado === 'ativo';
+  const cabeca = completa ? ['Clube', 'Épocas', 'J', 'G', 'A', 'N.º'] : ['Clube', 'Liga', 'Épocas'];
+  const linhas = reg.carreira.map((c, i) => {
+    const liga = c.ligas[0] ? P.nomeLiga(cat, c.ligas[0]) : '—';
+    const ep = epocas(c.inicio, c.fim, ativo && i === reg.carreira.length - 1);
+    const nome = `${c.nome}${c.emprestimo ? ' (emp.)' : ''}`;
+    if (!completa) return el('tr', {}, el('td', { text: nome }), el('td', { class: 'esq', text: liga }), el('td', { text: ep }));
+    return el('tr', {},
+      el('td', {}, nome, el('small', { text: liga })),
+      el('td', { text: ep }),
+      el('td', { text: c.jogos ?? '—' }),
+      el('td', { text: c.golos ?? '—' }),
+      el('td', { text: c.assistencias ?? '—' }),
+      el('td', { text: c.numeros?.length ? c.numeros.join(', ') : '—' }));
+  });
+  if (completa) {
+    for (const s of reg.selecoes) {
+      linhas.push(el('tr', {},
+        el('td', {}, P.nomePais(s.pais), el('small', { text: 'seleção' })),
+        el('td', { text: epocas(s.inicio, s.fim, false) }),
+        el('td', { text: s.jogos ?? '—' }),
+        el('td', { text: s.golos ?? '—' }),
+        el('td', { text: '—' }),
+        el('td', { text: s.numeros?.length ? s.numeros.join(', ') : '—' })));
+    }
+  }
+  return el('section', {},
+    el('h4', { text: 'Carreira' }),
+    el('table', { class: 'tabela-carreira' },
+      el('thead', {}, el('tr', {}, ...cabeca.map((t, i) => el('th', { class: !completa && i === 1 ? 'esq' : null, text: t })))),
+      el('tbody', {}, ...linhas)));
+}
+
+// ---------------------------------------------------------------------------
+// Fichas dos adversários
+// ---------------------------------------------------------------------------
+
+/**
+ * A ficha de um jogador secreto. `o`: { cat, dono (jogador público), alvo, aberta, podePalpitar, porqueNao,
+ * pontosPalpite, identificadoAgora, palpite (caixa aberta?), novas (Set "n:chave"), nome(id), cor(id) }.
+ */
+export function fichaPublica(f, o) {
+  const ctx = o;
+  const revelada = f.revelada;
+  const nSim = P.contarSim(f);
+  const pronto = P.palpiteDesbloqueado(f);
+  const resumo = f.identificada ? 'identificado' : revelada ? 'revelado' : pronto ? `${nSim} sim · palpite!` : `${Math.min(nSim, P.SIM_MINIMOS)}/${P.SIM_MINIMOS} sim`;
+  const classe = ['folha', 'ficha', 'papel', o.alvo ? 'alvo' : '', o.recolhida ? 'recolhida' : ''].filter(Boolean).join(' ');
+  const corpo = revelada
+    ? [carreiraRegisto(revelada, o.cat, false)]
+    : [carreiraPublica(f, ctx), treinadorPublico(f, ctx), estatisticasPublicas(f, ctx), premiosPublicos(f), notasExtra(f, ctx), descartadas(f, ctx)];
+  const titulo = `${nSim} «sim»`;
+  const rodape = f.identificada
+    ? el('span', { class: 'carimbo identificado-mini', style: { '--rot': rotacao(`id${f.n}`) }, title: `Identificado por ${o.nome(f.identificada.por)}`, text: 'Identificado' })
+    : revelada
+      ? el('span', { class: 'carimbo identificado-mini', style: { '--rot': rotacao(`rv${f.n}`) }, text: 'Revelado' })
+      : el('button', {
+        class: 'btn btn-principal btn-palpite', type: 'button', disabled: !o.podePalpitar, title: o.podePalpitar ? null : o.porqueNao,
+        dataset: { palpite: String(f.n) },
+      }, 'Palpite final');
+  const art = el('article', {
+    class: classe, id: `f-${f.n}`, style: { '--cor-dono': o.cor(f.dono) }, 'aria-label': `Ficha de ${o.dono?.nome ?? '?'}`,
+    dataset: { ficha: String(f.n) },
+  },
+  o.alvo ? el('span', { class: 'folha-etiqueta-alvo', text: 'Alvo' }) : null,
+  el('header', { class: 'folha-topo' },
+    el('div', { class: 'folha-linha' },
+      el('div', { class: 'pin-dono', text: o.dono?.nome ?? '?' }),
+      el('div', { class: 'folha-id' },
+        el('h3', { class: `folha-nome${revelada ? '' : ' desconhecido'}`, text: revelada ? revelada.nome : '[Desconhecido]' }),
+        el('span', { class: `folha-resumo${pronto || f.identificada ? ' pronto' : ''}`, text: resumo })),
+      el('button', { class: 'folha-min', type: 'button', 'aria-label': `${o.recolhida ? 'Abrir' : 'Recolher'} a ficha de ${o.dono?.nome ?? '?'}`, dataset: { recolher: String(f.n) }, text: o.recolhida ? '+' : '–' })),
+    el('div', { class: 'folha-retrato' }, retrato(revelada?.perfil?.foto, revelada?.nome), revelada ? dadosRegisto(revelada) : dadosPublicos(f, ctx))),
+  el('div', { class: 'folha-corpo' }, ...corpo),
+  el('footer', { class: 'folha-rodape' }, contadorSim(nSim, titulo), rodape));
+  if (o.identificadoAgora && revelada) {
+    art.append(el('div', { class: 'identificado' },
+      el('p', { class: 'carimbo-grande', text: 'Identificado' }),
+      el('figure', { class: 'identificado-foto' },
+        revelada.perfil?.foto?.url ? el('img', { src: miniatura(revelada.perfil.foto.url), alt: revelada.nome, title: creditoFoto(revelada.perfil.foto), referrerpolicy: 'no-referrer' }) : silhueta()),
+      el('p', { class: 'identificado-nome', text: revelada.nome }),
+      el('p', { class: 'carimbo carimbo-autor', style: { '--cor-autor': o.cor(f.identificada?.por) }, text: o.nome(f.identificada?.por) })));
+  }
+  return art;
+}
+
+/** A caixa do palpite final, por cima do fundo da ficha. */
+export function caixaPalpite(f, o) {
+  return el('form', { class: 'caixa-palpite', novalidate: true, dataset: { caixa: String(f.n) } },
+    el('h4', { text: `Palpite final · ficha ${o.dono ? `de ${o.dono.nome}` : ''}` }),
+    el('div', { class: 'autocompletar' }, el('input', { class: 'campo', placeholder: 'Quem é?', 'aria-label': 'Nome do jogador', autocomplete: 'off', spellcheck: 'false' })),
+    el('p', { class: 'erro', role: 'alert' }),
+    el('div', { class: 'linha-botoes' },
+      el('button', { class: 'cancelar', type: 'button', dataset: { cancelar: '' }, text: 'Cancelar' }),
+      el('button', { class: 'btn btn-principal', type: 'submit', text: `Enviar · ${o.pontosPalpite} pts` })));
+}
+
+// ---------------------------------------------------------------------------
+// O meu dossier
+// ---------------------------------------------------------------------------
+
+/** O dossier do meu jogador secreto: tudo o que há no registo, para responder às perguntas livres. */
+export function dossier(reg, f, o) {
+  const cat = o.cat;
+  const t = reg.totais;
+  const base = t.base === 'todas' ? 'todas as competições + seleção' : 'campeonato + seleção';
+  const assist = t.assistencias;
+  const premios = new Map();
+  for (const p of reg.premios) {
+    if (!p.id) continue;
+    const chave = p.id === 'campeonato_nacional' || p.id === 'taca_nacional' ? `${p.id}:${p.pais ?? ''}` : p.id;
+    const atual = premios.get(chave) ?? { ...p, anos: [] };
+    atual.anos = [...atual.anos, ...(p.anos ?? [])];
+    premios.set(chave, atual);
+  }
+  const textoPremio = (p) => {
+    const nome = p.pais && (p.id === 'campeonato_nacional' || p.id === 'taca_nacional')
+      ? `${p.id === 'campeonato_nacional' ? 'Campeonato nacional' : 'Taça nacional'} · ${P.nomePais(p.pais)}` : nomePremio(p.id);
+    const anos = [...new Set(p.anos)].sort();
+    return anos.length > 3 ? `${nome} ×${anos.length}` : `${nome}${anos.length ? ` (${anos.join(', ')})` : ''}`;
+  };
+  const tr = reg.treinador;
+  const nSim = f ? P.contarSim(f) : 0;
+  const titulo = `Os outros já têm ${plural(nSim, '«sim»', '«sim»')} sobre o teu jogador`;
+  return el('article', { class: 'folha dossier', id: 'f-meu', 'aria-label': 'O teu dossier' },
+    el('p', { class: 'dossier-titulo', text: 'Dossier · o teu jogador' }),
+    el('div', { class: 'dossier-folha papel' },
+      el('header', { class: 'folha-topo' },
+        el('div', { class: 'folha-linha' },
+          el('div', { class: 'folha-id' }, el('h3', { class: 'folha-nome', text: reg.nome })),
+          el('span', { class: 'carimbo carimbo-secreto', text: f?.identificada ? 'Identificado' : 'Confidencial' })),
+        el('div', { class: 'folha-retrato' }, retrato(reg.perfil?.foto, reg.nome), dadosRegisto(reg))),
+      el('div', { class: 'folha-corpo' },
+        carreiraRegisto(reg, cat, true),
+        el('section', {},
+          el('h4', { text: 'Totais' }),
+          el('p', { class: 'texto-maquina' },
+            `${t.jogos} jogos · ${t.golos} golos · ${assist.conhecidas} assist. conhecidas`,
+            assist.cobertura < P.COBERTURA_MINIMA ? ` (${Math.round(assist.cobertura * 100)}% da carreira)` : '',
+            ` · estreia em ${reg.estreia} · base: ${base}`)),
+        premios.size ? el('section', {}, el('h4', { text: 'Prémios' }), el('ul', { class: 'lista-folha' }, ...[...premios.values()].map((p) => el('li', { text: textoPremio(p) })))) : null,
+        tr ? el('section', {},
+          el('h4', { text: 'Treinador' }),
+          el('ul', { class: 'lista-folha' },
+            ...tr.equipas.map((e) => el('li', { text: `${e.tipo === 'selecao' ? `Seleção ${P.dePais(e.pais)}` : e.nome}${e.pais && e.tipo !== 'selecao' ? ` (${P.nomePais(e.pais)})` : ''} · ${epocas(e.inicio, e.fim, e === tr.atual)}${e.interino ? ' · interino' : ''}` })),
+            el('li', { text: `${plural(tr.n_titulos ?? 0, 'título', 'títulos')}${tr.titulos.length ? `: ${tr.titulos.filter((x) => x.id).map(textoPremio).join(' · ')}` : ''}` }))) : null,
+        reg.perfil?.alcunhas?.length ? el('section', {}, el('h4', { text: 'Alcunhas' }), el('p', { class: 'texto-maquina', text: reg.perfil.alcunhas.join(' · ') })) : null,
+        el('p', { class: 'folha-fonte' }, 'Fonte: ',
+          reg.fontes?.wikipedia ? el('a', { href: `https://en.wikipedia.org/wiki/${encodeURIComponent(reg.fontes.wikipedia.replace(/ /g, '_'))}`, target: '_blank', rel: 'noopener', text: 'Wikipédia' }) : 'Wikipédia',
+          ' · zerozero · Transfermarkt. Só podes pesquisar o teu jogador.')),
+      el('footer', { class: 'folha-rodape' },
+        contadorSim(nSim, titulo),
+        el('button', { class: 'btn btn-principal btn-palpite', type: 'button', disabled: true, title: 'Não podes dar palpites à tua própria ficha' }, 'Palpite final'))));
+}
+
+/** O dossier enquanto não há jogador (a escolher, ou a ver). */
+export function dossierVazio(texto) {
+  return el('article', { class: 'folha dossier', id: 'f-meu', 'aria-label': 'O teu dossier' },
+    el('p', { class: 'dossier-titulo', text: 'Dossier · o teu jogador' }),
+    el('div', { class: 'dossier-folha papel' },
+      el('div', { class: 'folha-corpo' }, el('p', { class: 'texto-maquina', text: texto }))));
+}

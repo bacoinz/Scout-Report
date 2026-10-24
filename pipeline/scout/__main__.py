@@ -7,6 +7,7 @@
     python -m scout premios
     python -m scout validar
     python -m scout relatorio
+    python -m scout exportar
     python -m scout assistencias
     python -m scout estado
 """
@@ -89,6 +90,14 @@ def cmd_premios(args):
     print(f"{n} registos com prémios atualizados (dados/competicoes.json)")
 
 
+def cmd_exportar(args):
+    from . import exportar
+    r = exportar.gerar()
+    print(f"{r['jogadores']} jogadores, {r['clubes']} clubes, {r['ligas']} ligas (versão {r['versao']}) → "
+          f"{exportar.SAIDA_D1}: {', '.join(r['ficheiros'])}")
+    print("Para o D1 local: cd ../jogo && npm run db:local")
+
+
 def cmd_validar(args):
     from .validar import validar_todos
     res = validar_todos()
@@ -145,6 +154,7 @@ def main(argv=None):
     s.set_defaults(f=cmd_recolher)
     sub.add_parser("premios", help="volta a aplicar dados/competicoes.json aos títulos de todos os registos"
                    ).set_defaults(f=cmd_premios)
+    sub.add_parser("exportar", help="SQL para o D1 do jogo → saida/d1/").set_defaults(f=cmd_exportar)
     s = sub.add_parser("validar", help="valida os registos (sai com 1 se houver erros)")
     s.add_argument("--avisos", action="store_true", help="mostra também os avisos")
     s.set_defaults(f=cmd_validar)

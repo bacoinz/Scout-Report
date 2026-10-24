@@ -31,7 +31,7 @@
  },
  "numeros": {"faixas": [[1, 9], [10, 20], [21, 99]]},
  "fisico": {"alturas_cm": [175, 180, 185, 190], "pes": ["direito", "esquerdo", "ambos"]},
- "decadas": [1960, 1970, 1980, 1990, 2000, 2010, 2020],
+ "decadas": [1930, 1940, 1950, 1960, 1970, 1980, 1990, 2000, 2010, 2020],
  "treinador": {"titulos": [1, 5, 10, 20]},
  "premios": {
   "liga_campeoes": {"nome": "a Liga dos Campeões", "tipo": "clube", "treinador": true},
@@ -56,6 +56,6 @@
   "melhor_jogador_fifa": {"nome": "o prémio de Melhor Jogador do Mundo da FIFA", "tipo": "individual", "treinador": false},
   "bota_de_ouro": {"nome": "a Bota de Ouro", "tipo": "individual", "treinador": false},
   "golden_boy": {"nome": "o Golden Boy", "tipo": "individual", "treinador": false},
-  "melhor_treinador_fifa": {"nome": "o prémio de Melhor Treinador da FIFA", "tipo": "individual", "treinador": true}
+  "melhor_treinador_fifa": {"nome": "o prémio de Melhor Treinador da FIFA", "tipo": "individual", "treinador": true, "jogador": false}
  }
 }

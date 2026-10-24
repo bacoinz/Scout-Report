@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
+  <title>Scout Report</title>
+  <meta name="description" content="O &quot;Quem é Quem&quot; do futebol: cada um tem um jogador secreto. Pergunta, carimba e identifica o dos teus amigos.">
+  <meta name="theme-color" content="#8b5cf6">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Scout Report">
+  <meta property="og:title" content="Scout Report">
+  <meta property="og:description" content="O &quot;Quem é Quem&quot; do futebol: cada um tem um jogador secreto. Pergunta, carimba e identifica o dos teus amigos.">
+  <!-- O Worker põe aqui o URL absoluto (o Discord não aceita caminhos relativos). -->
+  <meta property="og:image" content="/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="/fontes/anton-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fontes/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fontes/courier-prime-latin-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/css/tema.css">
+  <link rel="stylesheet" href="/css/relatorio.css">
+  <link rel="stylesheet" href="/css/app.css">
+  <script type="module" src="/js/app.js"></script>
+</head>
+<body>
+  <div class="fundo" aria-hidden="true"><div class="fundo-circulo"></div></div>
+
+  <!-- Ícones (só traço, cor do texto) -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-trofeu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0V4z"/><path d="M17 5h3v2a3 3 0 0 1-3 3M7 5H4v2a3 3 0 0 0 3 3"/></symbol>
+    <symbol id="i-lista" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 6h11M9 12h11M9 18h11"/><circle cx="4.5" cy="6" r="1.2"/><circle cx="4.5" cy="12" r="1.2"/><circle cx="4.5" cy="18" r="1.2"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></symbol>
+    <symbol id="i-som" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></symbol>
+    <symbol id="i-ajuda" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.6v.6M12 17h.01"/></symbol>
+    <symbol id="i-sair" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4H5v16h4M14 8l4 4-4 4M18 12H9"/></symbol>
+    <symbol id="i-silhueta" viewBox="0 0 56 70"><circle cx="28" cy="22" r="13" fill="#a8a291"/><path d="M4 70C6 46 16 40 28 40s22 6 24 30z" fill="#a8a291"/></symbol>
+  </svg>
+
+  <!-- ===================== Início ===================== -->
+  <main id="ecra-inicio" class="ecra ecra-centro" hidden>
+    <header class="marca">
+      <img class="logo" src="/favicon.svg" alt="" width="72" height="72">
+      <h1 class="titulo"><span>Scout</span> <span class="destaque">Report</span></h1>
+      <p class="subtitulo">O "Quem é Quem" do futebol. Pergunta, carimba e identifica o jogador secreto dos teus amigos antes de eles descobrirem o teu.</p>
+    </header>
+    <section class="cartao">
+      <label class="rotulo" for="nome">O teu nome</label>
+      <input id="nome" class="campo" maxlength="16" placeholder="Ex.: Mister" autocomplete="nickname" spellcheck="false">
+      <button id="btn-criar" class="btn btn-principal" type="button"><span aria-hidden="true">＋</span> Criar sala</button>
+      <p class="separador">ou entra numa sala</p>
+      <form id="form-entrar" class="linha">
+        <input id="codigo" class="campo campo-codigo" maxlength="4" placeholder="CÓDIGO" autocomplete="off" autocapitalize="characters" spellcheck="false" aria-label="Código da sala">
+        <button class="btn btn-fantasma" type="submit">Entrar</button>
+      </form>
+      <p id="erro-inicio" class="erro" role="alert"></p>
+    </section>
+    <div class="linha-botoes">
+      <button class="btn btn-contorno" type="button" data-abrir="dialogo-como">Como jogar</button>
+    </div>
+  </main>
+
+  <!-- ===================== Entrada por link ===================== -->
+  <main id="ecra-nome" class="ecra ecra-centro" hidden>
+    <header class="marca marca-pequena">
+      <img class="logo" src="/favicon.svg" alt="" width="52" height="52">
+      <h1 class="titulo"><span>Scout</span> <span class="destaque">Report</span></h1>
+    </header>
+    <form id="form-nome" class="cartao">
+      <p class="rotulo">Sala <strong id="nome-codigo" class="codigo-inline"></strong></p>
+      <label class="rotulo" for="nome-link">O teu nome</label>
+      <input id="nome-link" class="campo" maxlength="16" placeholder="Ex.: Mister" autocomplete="nickname" spellcheck="false" required>
+      <button class="btn btn-principal" type="submit">Entrar na sala</button>
+      <p id="erro-nome" class="erro" role="alert"></p>
+      <a class="ligacao-voltar" href="/">Voltar ao início</a>
+    </form>
+  </main>
+
+  <!-- ===================== Lobby ===================== -->
+  <main id="ecra-lobby" class="ecra ecra-centro" hidden>
+    <header class="marca marca-pequena">
+      <img class="logo" src="/favicon.svg" alt="" width="52" height="52">
+      <h1 class="titulo"><span>Scout</span> <span class="destaque">Report</span></h1>
+    </header>
+    <section class="cartao cartao-largo">
+      <div class="lobby-sala">
+        <div>
+          <p class="rotulo">Sala</p>
+          <p id="lobby-codigo" class="codigo-grande"></p>
+        </div>
+        <button id="btn-copiar" class="btn btn-fantasma" type="button">Copiar link</button>
+      </div>
+      <div>
+        <p class="rotulo">Jogadores <span id="lobby-contagem" class="nota"></span></p>
+        <ul id="lobby-jogadores" class="lista-jogadores"></ul>
+      </div>
+      <div class="lobby-config">
+        <p class="rotulo">Jogador secreto</p>
+        <div id="cfg-modo" class="segmentos" role="radiogroup" aria-label="Como se recebe o jogador secreto"></div>
+        <p class="rotulo">Jogadores da base</p>
+        <div id="cfg-jogadores" class="segmentos" role="radiogroup" aria-label="Que jogadores entram"></div>
+        <p class="rotulo">Fim da partida</p>
+        <div id="cfg-fim-tipo" class="segmentos" role="radiogroup" aria-label="Fim por rondas ou por tempo"></div>
+        <div id="cfg-fim" class="segmentos" role="radiogroup" aria-label="Quantas rondas ou minutos"></div>
+        <p class="rotulo">Tempo por vez</p>
+        <div id="cfg-vez" class="segmentos" role="radiogroup" aria-label="Tempo de cada vez"></div>
+        <p id="cfg-resumo" class="nota"></p>
+      </div>
+      <button id="btn-comecar" class="btn btn-principal" type="button">Começar</button>
+      <button id="btn-repor" class="btn btn-fantasma" type="button" hidden>Repor jogadores já usados nesta sala</button>
+      <p id="lobby-espera" class="nota centro" hidden>À espera que o anfitrião comece…</p>
+      <p id="erro-lobby" class="erro" role="alert"></p>
+    </section>
+    <div class="linha-botoes">
+      <button class="btn btn-contorno" type="button" data-abrir="dialogo-como">Como jogar</button>
+      <button class="btn btn-contorno btn-sair" type="button">Sair</button>
+    </div>
+  </main>
+
+  <!-- ===================== Jogo ===================== -->
+  <main id="ecra-jogo" class="ecra ecra-jogo" hidden>
+    <header class="barra-jogo">
+      <div class="barra-marca">
+        <img class="logo" src="/favicon.svg" alt="" width="26" height="26">
+        <span class="barra-nome"><span>Scout</span> <span class="destaque">Report</span></span>
+      </div>
+
+      <div class="barra-ronda">
+        <p id="jogo-ronda" class="ronda"></p>
+        <div class="barra-tempo" aria-hidden="true"><div id="barra-tempo" class="barra-tempo-enchimento"></div></div>
+        <p id="relogio" class="relogio vez-relogio" aria-live="off"></p>
+      </div>
+
+      <div class="barra-botoes">
+        <div class="ancora">
+          <button class="btn-barra" type="button" data-popup aria-controls="popup-feed" aria-expanded="false" aria-label="Acontecimentos">
+            <svg><use href="#i-lista"/></svg><span class="so-largo">Acontecimentos</span>
+          </button>
+          <div id="popup-feed" class="popup" hidden>
+            <h2 class="painel-titulo">Acontecimentos</h2>
+            <ol id="feed" class="feed"></ol>
+          </div>
+        </div>
+
+        <div class="ancora">
+          <button class="btn-barra" type="button" data-popup aria-controls="popup-placar" aria-expanded="false" aria-label="Classificação">
+            <svg><use href="#i-trofeu"/></svg><span class="so-largo">Classificação</span>
+          </button>
+          <div id="popup-placar" class="popup" hidden>
+            <h2 class="painel-titulo">Classificação</h2>
+            <table class="tabela tabela-placar">
+              <thead><tr><th>#</th><th>Jogador</th><th>Ronda</th><th>Total</th></tr></thead>
+              <tbody id="placar"></tbody>
+            </table>
+            <p class="nota">Os jogadores que já foram identificados recebem metade dos pontos em cada ronda.</p>
+            <p id="placar-espectadores" class="nota"></p>
+          </div>
+        </div>
+
+        <div class="ancora">
+          <button class="btn-barra btn-menu" type="button" data-popup aria-controls="popup-menu" aria-expanded="false" aria-label="Menu">
+            <svg><use href="#i-menu"/></svg>
+          </button>
+          <div id="popup-menu" class="popup menu" hidden>
+            <div class="menu-sala">
+              <div><p class="rotulo">Sala</p><span id="menu-codigo" class="codigo-inline"></span></div>
+              <button id="btn-copiar-jogo" class="btn btn-mini" type="button">Copiar link</button>
+            </div>
+            <button id="btn-som" class="menu-item" type="button" aria-pressed="true"><svg><use href="#i-som"/></svg>Som e vibração <span class="estado"></span></button>
+            <button class="menu-item" type="button" data-abrir="dialogo-como"><svg><use href="#i-ajuda"/></svg>Como jogar</button>
+            <button id="btn-sair-jogo" class="menu-item perigo" type="button"><svg><use href="#i-sair"/></svg>Sair da sala</button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="mesa" id="mesa">
+      <!-- ===== Perguntas ===== -->
+      <section class="coluna-perguntas" id="col-perguntas" aria-label="Perguntas">
+        <form class="acoes" id="acoes" novalidate>
+          <h2 class="acoes-titulo" id="acoes-titulo"></h2>
+          <p id="acoes-aviso" class="acoes-aviso" hidden></p>
+          <div class="categorias" id="categorias"></div>
+          <div class="acoes-fundo">
+            <p class="escolhida vazia" id="escolhida">
+              <span class="texto">Escolhe uma pergunta da lista</span><span class="pts"></span>
+              <button class="limpar" type="button" aria-label="Tirar a pergunta escolhida">×</button>
+            </p>
+            <label class="rotulo" for="livre">Pergunta livre</label>
+            <input id="livre" class="campo" maxlength="60" placeholder="Ex.: Jogou com o irmão na mesma equipa?" autocomplete="off">
+            <p class="erro" id="erro-envio" role="alert"></p>
+            <button class="btn btn-principal" type="submit" id="btn-enviar">Enviar pergunta</button>
+          </div>
+        </form>
+      </section>
+
+      <!-- ===== Fichas: o meu dossier primeiro, depois os adversários (arrumados em colunas) ===== -->
+      <div class="fichas" id="fichas"></div>
+    </div>
+
+    <!-- Telemóvel: saltar entre colunas -->
+    <nav class="navegador" id="navegador" aria-label="Ir para"></nav>
+
+    <!-- Modo Escolha: as três cartas -->
+    <div id="escolha" class="sobreposicao" hidden>
+      <article class="cartao cartao-largo escolha">
+        <h2 class="titulo titulo-medio"><span>Escolhe o teu</span> <span class="destaque">jogador</span></h2>
+        <p id="escolha-nota" class="nota centro"></p>
+        <ul id="escolha-cartas" class="cartas"></ul>
+        <p id="escolha-espera" class="nota centro" hidden></p>
+      </article>
+    </div>
+
+    <!-- Fim da partida -->
+    <div id="final" class="sobreposicao" hidden>
+      <article class="cartao cartao-largo final">
+        <h2 class="titulo titulo-medio"><span>Classificação</span> <span class="destaque">final</span></h2>
+        <ol id="podio" class="podio"></ol>
+        <table class="tabela">
+          <thead><tr><th>#</th><th>Jogador</th><th>Jogador secreto</th><th>Pontos</th></tr></thead>
+          <tbody id="final-tabela"></tbody>
+        </table>
+        <button id="btn-novo" class="btn btn-principal" type="button">Nova partida</button>
+        <p id="final-espera" class="nota centro">À espera do anfitrião…</p>
+        <button id="btn-ver-mesa" class="btn btn-fantasma" type="button">Ver as fichas</button>
+        <button class="btn btn-contorno btn-sair" type="button">Sair</button>
+      </article>
+    </div>
+    <button id="btn-ver-final" class="btn btn-principal btn-ver-final" type="button" hidden>Classificação final</button>
+  </main>
+
+  <!-- ===================== Pergunta livre: o dono responde ===================== -->
+  <dialog id="dialogo-livre" class="dialogo dialogo-livre" aria-labelledby="livre-titulo">
+    <h2 id="livre-titulo" class="titulo titulo-medio"><span>Pergunta</span> <span class="destaque">livre</span></h2>
+    <p id="livre-quem" class="nota"></p>
+    <p id="livre-texto" class="livre-texto"></p>
+    <p class="nota">Responde pelo teu jogador (está tudo no teu dossier). <span id="livre-tempo"></span></p>
+    <div class="linha-botoes livre-botoes">
+      <button class="btn btn-principal" type="button" data-resposta="sim">Sim</button>
+      <button class="btn btn-fantasma" type="button" data-resposta="nao">Não</button>
+      <button class="btn btn-contorno" type="button" data-resposta="nao_sei">Não sei</button>
+    </div>
+  </dialog>
+
+  <!-- ===================== Como jogar ===================== -->
+  <dialog id="dialogo-como" class="dialogo dialogo-fixo" aria-labelledby="como-titulo">
+    <header class="dialogo-cabecalho">
+      <h2 id="como-titulo" class="titulo titulo-medio" tabindex="-1" autofocus><span>Como</span> <span class="destaque">jogar</span></h2>
+      <form method="dialog"><button class="btn-fechar" type="submit" aria-label="Fechar">×</button></form>
+    </header>
+    <div class="dialogo-corpo">
+    <ol class="regras">
+      <li><span>Cada um recebe um <strong>jogador secreto</strong>: ao calhas (modo Aleatório) ou à escolha entre 3 cartas (modo Escolha). O teu <strong>dossier</strong>, a primeira ficha, tem tudo sobre ele, para responderes às perguntas livres.</span></li>
+      <li><span>Joga-se <strong>à vez</strong>. Em cada ronda tens um <strong>alvo</strong> fixo, que roda: na 1.ª ronda perguntas ao seguinte, na 2.ª ao que está dois lugares à frente, e assim por diante.</span></li>
+      <li><span>Na tua vez fazes <strong>uma</strong> pergunta ao alvo e carregas em <strong>Enviar</strong>: escolhes uma da lista (o jogo responde) <strong>ou</strong> escreves uma <strong>pergunta livre</strong> (fazes-la por voz no Discord e o dono responde Sim, Não ou Não sei). Uma das duas, não as duas.</span></li>
+      <li><span>As perguntas da lista abrem por níveis: <strong>país da liga → liga → clube</strong>, setor → posição, confederação → país, década → ano de estreia, faixa → número. A secção Treinador abre com "é ou foi treinador?".</span></li>
+      <li><span>Cada ficha mostra o que já se sabe e <strong>????</strong> no que falta, as <strong>notas extra</strong> (perguntas livres) e as <strong>informações descartadas</strong>. Com mais de 4 jogadores, as fichas que não cabem ficam recolhidas por baixo das outras e abrem-se na vez desse jogador ou quando é o teu alvo.</span></li>
+      <li><span>Cada "sim" dá pontos a quem perguntou:
+        <table class="tabela tabela-pontos">
+          <thead><tr><th>Nível 1</th><th>Nível 2</th><th>Nível 3</th><th>Livre</th><th>Físico</th><th>Palpite</th></tr></thead>
+          <tbody><tr><td>3</td><td>6</td><td>9</td><td>3</td><td>3</td><td>30</td></tr></tbody>
+        </table>
+        Não, Não sei, Sem registo e palpites errados valem 0. O que já se sabe pelas outras respostas fica a cinzento e não dá pontos. Ninguém perde pontos.</span></li>
+      <li><span><strong>Sem registo</strong>: quando os dados não chegam para responder (números de camisola e assistências antigas, pé ou altura), a ficha leva esse carimbo, a pergunta fica fechada e <strong>não gastas a vez</strong>: escolhe outra.</span></li>
+      <li><span>O botão <strong>Palpite final</strong> de cada ficha acende-se quando ela tem <strong>6 "sim"</strong> e pelo menos <strong>um clube confirmado</strong>. Na tua vez, em vez de perguntar, podes carregar nele e dizer quem é. Contam gralhas pequenas e alcunhas. Acertar vale 30 pontos.</span></li>
+      <li><span>Quem tem o jogador <strong>identificado</strong> não recebe outro: continua a perguntar e a dar palpites, mas recebe <strong>metade dos pontos</strong> em tudo (também no palpite final: 15 em vez de 30), e deixa de ser alvo. A partida acaba quando só resta um jogador secreto por descobrir.</span></li>
+      <li><span>Podes consultar fora do jogo (internet, livros…) dados <strong>só do teu próprio jogador</strong>, para responderes bem às perguntas livres. Pesquisar os jogadores dos outros <strong>não vale</strong>.</span></li>
+      <li><span>Quem entra a meio fica a ver e joga a partir da ronda seguinte, com um jogador secreto.</span></li>
+    </ol>
+    </div>
+  </dialog>
+
+  <div id="aviso-ligacao" class="aviso-ligacao" hidden>A ligar ao servidor…</div>
+  <div id="toasts" class="toasts" aria-live="polite"></div>
+</body>
+</html>

@@ -8,7 +8,7 @@ O projeto tem três partes:
 
 1. **`pipeline/`** (Python, corre no teu computador): constrói a base de jogadores a partir da Wikidata, da
    Wikipédia, do zerozero e do transfermarkt-datasets, e exporta-a para o Cloudflare D1.
-2. **`jogo/`** (Cloudflare Workers + Durable Objects + D1): salas, voltas, perguntas, fichas e pontuação. Em jogo não
+2. **`jogo/`** (Cloudflare Workers + Durable Objects + D1): salas, rondas, perguntas, fichas e pontuação. Em jogo não
    corre IA nenhuma.
 3. **Desafio do Dia** (no mesmo Worker): um jogador mistério por dia, igual para toda a gente.
 
@@ -19,7 +19,7 @@ O projeto tem três partes:
 - [x] Passo 1 — tema partilhado e mockup do relatório de olheiro (`docs/tema-partilhado.md`, `docs/capturas/`)
 - [x] Passo 2 — pipeline com uma amostra de 30 jogadores e relatório de qualidade
 - [x] Passo 3 — lista dos míticos e processamento completo (865 jogadores)
-- [ ] Passo 4 — jogo: salas, rotação, perguntas, fichas, pontuação, palpites
+- [x] Passo 4 — jogo: salas, rotação, perguntas, fichas, pontuação, palpites (`docs/capturas/passo4/`)
 - [ ] Passo 5 — Ronda Joker
 - [ ] Passo 6 — Desafio do Dia
 - [ ] Passo 7 — exportação para o D1 e deploy
@@ -52,6 +52,7 @@ py -3.12 -m venv .venv
 .venv/Scripts/python -m scout premios             # volta a aplicar dados/competicoes.json aos títulos
 .venv/Scripts/python -m scout validar
 .venv/Scripts/python -m scout relatorio           # → saida/qualidade.md
+.venv/Scripts/python -m scout exportar            # SQL para o D1 do jogo → saida/d1/
 .venv/Scripts/python -m pytest
 ```
 
@@ -65,6 +66,29 @@ py -3.12 -m venv .venv
 - **Sem IA:** o pipeline só lê fontes estruturadas (caixas, tabelas, Wikidata, zerozero, transfermarkt-datasets).
 - **Correções à mão:** ficam em `pipeline/dados/ajustes.json`, `pipeline/dados/competicoes.json` e
   `pipeline/dados/clubes.json`. Os ajustes aplicam-se por cima das fontes em cada recolha.
+
+## Jogar localmente
+
+Depois de `python -m scout exportar` no pipeline, a partir de `jogo/`:
+
+```bash
+npm install
+npm run assets        # fontes para public/fontes
+npm run db:local      # cria as tabelas no D1 local e carrega ../pipeline/saida/d1/*.sql
+npm run dev           # http://127.0.0.1:8787
+npm test              # regras das perguntas, nomes, partida e fugas de informação
+npm run e2e           # (com o dev a correr) clientes WebSocket jogam uma partida inteira
+```
+
+Para jogar sozinho no browser contra bots: cria uma sala e corre `node scripts/e2e.mjs --bots ABCD 3` (com o
+código da sala no lugar de ABCD). Os bots perguntam ao calhas e respondem às perguntas livres.
+
+- **Código partilhado:** `public/js/comum/` (perguntas, deduções, respostas e nomes) é usado pelo Worker e pelo
+  browser. `scripts/gerar-dados.mjs` gera `comum/dados.gen.js` a partir de `partilhado/` antes de cada `dev`,
+  `deploy` e `test`.
+- **Servidor:** `src/partida.js` (rondas, rotação, vezes, palpites, identificação, desligados) e
+  `src/sala-logica.js` (jogadores, lobby) são puros; `src/sala.js` (Durable Object) só faz I/O; `src/vista.js`
+  decide o que cada jogador recebe (o dossier só vai para o dono).
 
 ## Créditos
 
