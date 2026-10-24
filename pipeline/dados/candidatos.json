@@ -1,0 +1,10232 @@
+{
+ "Q100708799": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "benfica": 52
+  },
+  "titulo": "Heorhiy Sudakov"
+ },
+ "Q102027": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2006": 1,
+    "2007": 24
+   },
+   "melhor": 1
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "titulo": "Fabio Cannavaro"
+ },
+ "Q102045930": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "benfica": 54
+  },
+  "titulo": "Enzo Barrenechea"
+ },
+ "Q104375627": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "porto": 79
+  },
+  "titulo": "Alan Varela"
+ },
+ "Q104414736": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2024": 15
+   },
+   "melhor": 15
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Nico Williams"
+ },
+ "Q104454": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2014": 15
+   },
+   "melhor": 15
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Mario Götze"
+ },
+ "Q10520": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "1997": 19,
+    "1998": 28,
+    "1999": 2,
+    "2000": 10,
+    "2001": 4,
+    "2003": 10
+   },
+   "melhor": 2
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "titulo": "David Beckham"
+ },
+ "Q10524": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "1997": 28,
+    "1999": 21,
+    "2001": 28,
+    "2007": 30,
+    "2009": 14
+   },
+   "melhor": 14
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Ryan Giggs"
+ },
+ "Q10545642": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "benfica": 59
+  },
+  "titulo": "Gabriel Pires"
+ },
+ "Q105887": {
+  "categorias": [
+   "selecao",
+   "grandes"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "grandes": {
+   "porto": 51
+  },
+  "internacionalizacoes": 57,
+  "titulo": "Hugo Almeida"
+ },
+ "Q106099213": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "benfica": 57
+  },
+  "titulo": "Andreas Schjelderup"
+ },
+ "Q106625792": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "porto": 68
+  },
+  "titulo": "Nico González (footballer, born 2002)"
+ },
+ "Q106686485": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "sporting": 53
+  },
+  "titulo": "Zeno Debast"
+ },
+ "Q107089": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "benfica": 77
+  },
+  "titulo": "Robert Enke"
+ },
+ "Q107365": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2012": 19,
+    "2013": 23,
+    "2014": 3,
+    "2015": 7,
+    "2016": 20
+   },
+   "melhor": 3
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "titulo": "Manuel Neuer"
+ },
+ "Q109417": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2004": 11
+   },
+   "melhor": 11
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Angelos Charisteas"
+ },
+ "Q109428": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2009": 25
+   },
+   "melhor": 25
+  },
+  "categorias": [
+   "bola_de_ouro",
+   "grandes"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "grandes": {
+   "porto": 63
+  },
+  "titulo": "Diego (footballer, born 1985)"
+ },
+ "Q110053": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2017": 27,
+    "2024": 29
+   },
+   "melhor": 27
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Mats Hummels"
+ },
+ "Q111962649": {
+  "categorias": [
+   "selecao",
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "benfica": 108
+  },
+  "internacionalizacoes": 20,
+  "titulo": "António Silva (footballer)"
+ },
+ "Q112170256": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2025": 14
+   },
+   "melhor": 14
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Désiré Doué"
+ },
+ "Q113156": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2001": 28
+   },
+   "melhor": 28
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Robert Pires"
+ },
+ "Q113551733": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2025": 19
+   },
+   "melhor": 19
+  },
+  "categorias": [
+   "bola_de_ouro",
+   "selecao",
+   "grandes"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "grandes": {
+   "benfica": 50
+  },
+  "internacionalizacoes": 30,
+  "titulo": "João Neves"
+ },
+ "Q113704154": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2024": 8,
+    "2025": 2
+   },
+   "melhor": 2
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "titulo": "Lamine Yamal"
+ },
+ "Q115453": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2015": 23,
+    "2018": 19
+   },
+   "melhor": 19
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Ivan Rakitić"
+ },
+ "Q1155889": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "sporting": 110
+  },
+  "titulo": "André Carrillo"
+ },
+ "Q11571": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2004": 12,
+    "2005": 20,
+    "2006": 14,
+    "2007": 2,
+    "2008": 1,
+    "2009": 2,
+    "2010": 6,
+    "2011": 2,
+    "2012": 2,
+    "2013": 1,
+    "2014": 1,
+    "2015": 2,
+    "2016": 1,
+    "2017": 1,
+    "2018": 2,
+    "2019": 3,
+    "2021": 6,
+    "2022": 20
+   },
+   "melhor": 1
+  },
+  "categorias": [
+   "bola_de_ouro",
+   "selecao"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "internacionalizacoes": 234,
+  "titulo": "Cristiano Ronaldo"
+ },
+ "Q11576": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "1996": 20,
+    "1997": 7,
+    "1998": 21,
+    "1999": 9,
+    "2000": 9,
+    "2001": 2,
+    "2002": 7,
+    "2003": 7
+   },
+   "melhor": 2
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "titulo": "Raúl González"
+ },
+ "Q11584": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2007": 27,
+    "2008": 4,
+    "2009": 16,
+    "2010": 7,
+    "2011": 9,
+    "2012": 6
+   },
+   "melhor": 4
+  },
+  "categorias": [
+   "bola_de_ouro",
+   "grandes"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "grandes": {
+   "porto": 116
+  },
+  "titulo": "Iker Casillas"
+ },
+ "Q116700351": {
+  "categorias": [
+   "selecao"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "internacionalizacoes": 22,
+  "titulo": "Renato Veiga"
+ },
+ "Q116743": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "porto": 83
+  },
+  "titulo": "Vincent Aboubakar"
+ },
+ "Q116753805": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "sporting": 87
+  },
+  "titulo": "Ousmane Diomande"
+ },
+ "Q116923606": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "porto": 52
+  },
+  "titulo": "Samu Aghehowa"
+ },
+ "Q116980": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2006": 14,
+    "2007": 19
+   },
+   "melhor": 14
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Gennaro Gattuso"
+ },
+ "Q117322318": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "benfica": 51
+  },
+  "titulo": "Richard Ríos"
+ },
+ "Q117436": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2009": 20
+   },
+   "melhor": 20
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Yoann Gourcuff"
+ },
+ "Q1185419": {
+  "categorias": [
+   "selecao"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "internacionalizacoes": 12,
+  "titulo": "Bruma (footballer)"
+ },
+ "Q1188407": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "grandes": {
+   "benfica": 165
+  },
+  "titulo": "Jardel (footballer, born 1986)"
+ },
+ "Q118858754": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "porto": 51
+  },
+  "titulo": "Martim Fernandes"
+ },
+ "Q11910114": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "benfica": 51
+  },
+  "titulo": "Bruno Caires"
+ },
+ "Q11948": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2002": 5,
+    "2003": 20,
+    "2005": 14,
+    "2008": 19
+   },
+   "melhor": 5
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "titulo": "Michael Ballack"
+ },
+ "Q11954": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2017": 29
+   },
+   "melhor": 29
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Dries Mertens"
+ },
+ "Q119562": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2008": 14,
+    "2011": 17,
+    "2012": 17,
+    "2015": 13,
+    "2016": 20,
+    "2018": 16,
+    "2019": 16
+   },
+   "melhor": 13
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Sergio Agüero"
+ },
+ "Q122618590": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "sporting": 52
+  },
+  "titulo": "Conrad Harder"
+ },
+ "Q122733082": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "porto": 52
+  },
+  "titulo": "Rodrigo Mora (footballer, born 2007)"
+ },
+ "Q123174990": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "porto": 71
+  },
+  "titulo": "Deniz Gül"
+ },
+ "Q123349034": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "porto": 61
+  },
+  "titulo": "Victor Froholdt"
+ },
+ "Q123499230": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "sporting": 54
+  },
+  "titulo": "Geovany Quenda"
+ },
+ "Q124086": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2010": 4,
+    "2011": 12
+   },
+   "melhor": 4
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "titulo": "Wesley Sneijder"
+ },
+ "Q1249859": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2007": 27
+   },
+   "melhor": 27
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Rogério Ceni"
+ },
+ "Q1255625": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2004": 15,
+    "2005": 10,
+    "2006": 6,
+    "2007": 30,
+    "2008": 17,
+    "2009": 5,
+    "2010": 12,
+    "2011": 8
+   },
+   "melhor": 5
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "titulo": "Samuel Eto'o"
+ },
+ "Q126503": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2002": 24,
+    "2003": 22,
+    "2007": 16
+   },
+   "melhor": 16
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Filippo Inzaghi"
+ },
+ "Q127452": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2024": 4
+   },
+   "melhor": 4
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "titulo": "Dani Carvajal"
+ },
+ "Q12808967": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "benfica": 55
+  },
+  "titulo": "Andrija Živković"
+ },
+ "Q128725": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2001": 28
+   },
+   "melhor": 28
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Hidetoshi Nakata"
+ },
+ "Q128829": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "1998": 4,
+    "2001": 1,
+    "2002": 13
+   },
+   "melhor": 1
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "titulo": "Michael Owen"
+ },
+ "Q129027": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2014": 22,
+    "2015": 15,
+    "2016": 14,
+    "2018": 15
+   },
+   "melhor": 14
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Paul Pogba"
+ },
+ "Q129700": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2012": 23
+   },
+   "melhor": 23
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Mario Balotelli"
+ },
+ "Q130215": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "benfica": 107
+  },
+  "titulo": "Pablo Aimar"
+ },
+ "Q130809237": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "porto": 58
+  },
+  "titulo": "Alberto Costa (footballer, born 2003)"
+ },
+ "Q131234": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2014": 9,
+    "2015": 21,
+    "2016": 17,
+    "2017": 17,
+    "2024": 9
+   },
+   "melhor": 9
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "titulo": "Toni Kroos"
+ },
+ "Q131261": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2000": 24,
+    "2001": 3,
+    "2002": 3
+   },
+   "melhor": 3
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "titulo": "Oliver Kahn"
+ },
+ "Q131340429": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "sporting": 53
+  },
+  "titulo": "João Simões (footballer, born 2007)"
+ },
+ "Q1335595": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "porto": 60
+  },
+  "titulo": "Emerson (footballer, born 1972)"
+ },
+ "Q1337051": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "sporting": 50
+  },
+  "titulo": "Filip De Wilde"
+ },
+ "Q1337341": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "porto": 54
+  },
+  "titulo": "Ernesto Farías"
+ },
+ "Q1337793": {
+  "categorias": [
+   "selecao",
+   "grandes"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "grandes": {
+   "porto": 188
+  },
+  "internacionalizacoes": 34,
+  "titulo": "Capucho (footballer)"
+ },
+ "Q133903": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2019": 2,
+    "2022": 16,
+    "2025": 28
+   },
+   "melhor": 2
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "titulo": "Virgil van Dijk"
+ },
+ "Q1347269": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "sporting": 91
+  },
+  "titulo": "Islam Slimani"
+ },
+ "Q134976": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2006": 17
+   },
+   "melhor": 17
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Lukas Podolski"
+ },
+ "Q1354960": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2018": 6,
+    "2019": 5,
+    "2021": 7,
+    "2022": 5,
+    "2023": 11,
+    "2025": 4
+   },
+   "melhor": 4
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "titulo": "Mohamed Salah"
+ },
+ "Q1365706": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "benfica": 75
+  },
+  "titulo": "Sidnei (footballer, born 1989)"
+ },
+ "Q136959": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "benfica": 56
+  },
+  "titulo": "Fabrizio Miccoli"
+ },
+ "Q1375418": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "benfica": 53
+  },
+  "titulo": "João Tomás"
+ },
+ "Q137899": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "sporting": 64
+  },
+  "titulo": "Noureddine Naybet"
+ },
+ "Q138172": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2012": 5,
+    "2013": 11,
+    "2017": 24
+   },
+   "melhor": 5
+  },
+  "categorias": [
+   "bola_de_ouro",
+   "grandes"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "grandes": {
+   "porto": 51
+  },
+  "titulo": "Radamel Falcao"
+ },
+ "Q13865408": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2022": 20
+   },
+   "melhor": 20
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Joshua Kimmich"
+ },
+ "Q1391784": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "sporting": 73
+  },
+  "titulo": "Facundo Quiroga (footballer, born 1978)"
+ },
+ "Q1392235": {
+  "categorias": [
+   "selecao"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "internacionalizacoes": 14,
+  "titulo": "Anthony Lopes"
+ },
+ "Q14258335": {
+  "categorias": [
+   "selecao"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "internacionalizacoes": 13,
+  "titulo": "Ricardo Horta"
+ },
+ "Q142794": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2011": 10,
+    "2012": 13,
+    "2013": 5,
+    "2014": 7,
+    "2015": 3,
+    "2016": 5,
+    "2017": 3,
+    "2018": 12,
+    "2021": 16
+   },
+   "melhor": 3
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "titulo": "Neymar"
+ },
+ "Q1442274": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "sporting": 56
+  },
+  "titulo": "Renan Ribeiro"
+ },
+ "Q1467843": {
+  "categorias": [
+   "selecao",
+   "grandes"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "grandes": {
+   "porto": 205
+  },
+  "internacionalizacoes": 30,
+  "titulo": "Paulinho Santos"
+ },
+ "Q1496559": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "grandes": {
+   "benfica": 193
+  },
+  "titulo": "André Almeida (footballer, born 1990)"
+ },
+ "Q150268": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2017": 20
+   },
+   "melhor": 20
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "David de Gea"
+ },
+ "Q15113616": {
+  "categorias": [
+   "selecao",
+   "grandes"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "grandes": {
+   "porto": 70
+  },
+  "internacionalizacoes": 53,
+  "titulo": "André Silva (footballer, born 1995)"
+ },
+ "Q151269": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2013": 13,
+    "2015": 4,
+    "2016": 16,
+    "2017": 9,
+    "2019": 8,
+    "2021": 2,
+    "2022": 4,
+    "2023": 12,
+    "2025": 17
+   },
+   "melhor": 2
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "titulo": "Robert Lewandowski"
+ },
+ "Q15131398": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "porto": 71
+  },
+  "titulo": "Wendell (footballer, born 1993)"
+ },
+ "Q151838": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "benfica": 52
+  },
+  "titulo": "Axel Witsel"
+ },
+ "Q15214940": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "porto": 129
+  },
+  "titulo": "Alex Telles"
+ },
+ "Q152340": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2003": 22
+   },
+   "melhor": 22
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Jan Koller"
+ },
+ "Q152458": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2002": 15
+   },
+   "melhor": 15
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Bernd Schneider (footballer)"
+ },
+ "Q152725": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2002": 24,
+    "2003": 13
+   },
+   "melhor": 13
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Roy Makaay"
+ },
+ "Q152844": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "1997": 29,
+    "1998": 18,
+    "1999": 19
+   },
+   "melhor": 18
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Oliver Bierhoff"
+ },
+ "Q153786": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2009": 13,
+    "2017": 28
+   },
+   "melhor": 13
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Edin Džeko"
+ },
+ "Q154390": {
+  "categorias": [
+   "selecao",
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "porto": 75
+  },
+  "internacionalizacoes": 22,
+  "titulo": "Ricardo Costa (footballer, born 1981)"
+ },
+ "Q154856": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "1996": 13
+   },
+   "melhor": 13
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Andreas Köpke"
+ },
+ "Q15521306": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2019": 9,
+    "2022": 20,
+    "2023": 9
+   },
+   "melhor": 9
+  },
+  "categorias": [
+   "bola_de_ouro",
+   "selecao"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "internacionalizacoes": 115,
+  "titulo": "Bernardo Silva"
+ },
+ "Q155884": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "1996": 22
+   },
+   "melhor": 22
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Christian Ziege"
+ },
+ "Q155919": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "1997": 6
+   },
+   "melhor": 6
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "titulo": "Andreas Möller"
+ },
+ "Q155924": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "1996": 22
+   },
+   "melhor": 22
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Patrik Berger"
+ },
+ "Q156822": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2002": 19
+   },
+   "melhor": 19
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Lúcio"
+ },
+ "Q15830937": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "porto": 64
+  },
+  "titulo": "Artur Oliveira"
+ },
+ "Q15844698": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "benfica": 77
+  },
+  "titulo": "Julian Weigl"
+ },
+ "Q15907851": {
+  "categorias": [
+   "selecao",
+   "grandes"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "grandes": {
+   "benfica": 230
+  },
+  "internacionalizacoes": 25,
+  "titulo": "Rafa Silva"
+ },
+ "Q160206": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "1999": 23,
+    "2001": 16
+   },
+   "melhor": 16
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Hernán Crespo"
+ },
+ "Q160472": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2019": 24
+   },
+   "melhor": 24
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Marc-André ter Stegen"
+ },
+ "Q1607231": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "sporting": 76
+  },
+  "titulo": "Paulo Costinha"
+ },
+ "Q161089": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2023": 14
+   },
+   "melhor": 14
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "İlkay Gündoğan"
+ },
+ "Q161571": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2014": 19,
+    "2015": 14
+   },
+   "melhor": 14
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Javier Mascherano"
+ },
+ "Q16212492": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "porto": 59
+  },
+  "titulo": "Jan Bednarek"
+ },
+ "Q16235823": {
+  "categorias": [
+   "selecao",
+   "grandes"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "grandes": {
+   "benfica": 65
+  },
+  "internacionalizacoes": 54,
+  "titulo": "Nélson Semedo"
+ },
+ "Q16236321": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "porto": 85
+  },
+  "titulo": "Wilson Manafá"
+ },
+ "Q16236537": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "sporting": 57
+  },
+  "titulo": "Rui Silva (footballer, born 1994)"
+ },
+ "Q16236952": {
+  "categorias": [
+   "selecao",
+   "grandes"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "grandes": {
+   "sporting": 72
+  },
+  "internacionalizacoes": 40,
+  "titulo": "João Palhinha"
+ },
+ "Q16239548": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "porto": 80
+  },
+  "titulo": "Marko Grujić"
+ },
+ "Q16337517": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "benfica": 66
+  },
+  "titulo": "Gilberto (footballer, born 1993)"
+ },
+ "Q163564": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2008": 21,
+    "2009": 16
+   },
+   "melhor": 16
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Nemanja Vidić"
+ },
+ "Q163974": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2008": 26
+   },
+   "melhor": 26
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Rafael van der Vaart"
+ },
+ "Q164575": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "porto": 73
+  },
+  "titulo": "Paulo Assunção"
+ },
+ "Q1648865": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "sporting": 59
+  },
+  "titulo": "Rogério (footballer, born 1976)"
+ },
+ "Q164994": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "sporting": 69
+  },
+  "titulo": "Carlos Saleiro"
+ },
+ "Q1654093": {
+  "categorias": [
+   "selecao",
+   "grandes"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "grandes": {
+   "porto": 408
+  },
+  "internacionalizacoes": 70,
+  "titulo": "João Pinto (footballer, born 1961)"
+ },
+ "Q166317": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2016": 20,
+    "2017": 15
+   },
+   "melhor": 15
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Paulo Dybala"
+ },
+ "Q16665941": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2017": 8,
+    "2018": 11,
+    "2021": 5
+   },
+   "melhor": 5
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "titulo": "N'Golo Kanté"
+ },
+ "Q16729477": {
+  "categorias": [
+   "selecao",
+   "grandes"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "grandes": {
+   "benfica": 60
+  },
+  "internacionalizacoes": 34,
+  "titulo": "Gonçalo Guedes"
+ },
+ "Q167790": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2013": 20,
+    "2017": 11,
+    "2018": 22
+   },
+   "melhor": 11
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Edinson Cavani"
+ },
+ "Q16902219": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2023": 28,
+    "2024": 19
+   },
+   "melhor": 19
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Martin Ødegaard"
+ },
+ "Q16940397": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "porto": 79
+  },
+  "titulo": "Zé Carlos (footballer, born 1965)"
+ },
+ "Q170235": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2007": 30
+   },
+   "melhor": 30
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Dimitar Berbatov"
+ },
+ "Q170328": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "1996": 7
+   },
+   "melhor": 7
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "titulo": "Eric Cantona"
+ },
+ "Q170376": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "1996": 13,
+    "1997": 23,
+    "1998": 6,
+    "1999": 4,
+    "2000": 7,
+    "2001": 28
+   },
+   "melhor": 4
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "titulo": "Gabriel Batistuta"
+ },
+ "Q170452": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2004": 6,
+    "2005": 7
+   },
+   "melhor": 6
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "titulo": "Adriano (footballer, born February 1982)"
+ },
+ "Q17070837": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "grandes": {
+   "porto": 150
+  },
+  "titulo": "Mehdi Taremi"
+ },
+ "Q17074511": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "benfica": 58
+  },
+  "titulo": "Ederson (footballer, born 1993)"
+ },
+ "Q171295": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "1999": 15,
+    "2000": 22,
+    "2001": 28,
+    "2003": 1,
+    "2004": 7,
+    "2005": 23
+   },
+   "melhor": 1
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "titulo": "Pavel Nedvěd"
+ },
+ "Q17158": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2006": 17,
+    "2010": 11
+   },
+   "melhor": 11
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Carles Puyol"
+ },
+ "Q172211": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2005": 20
+   },
+   "melhor": 20
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Jamie Carragher"
+ },
+ "Q172720": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2007": 15,
+    "2010": 23,
+    "2011": 19
+   },
+   "melhor": 15
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Dani Alves"
+ },
+ "Q17274709": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2022": 20
+   },
+   "melhor": 20
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Mike Maignan"
+ },
+ "Q173139": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "1996": 12
+   },
+   "melhor": 12
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "George Weah"
+ },
+ "Q17385902": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "benfica": 59
+  },
+  "titulo": "Everton Soares"
+ },
+ "Q174615": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "sporting": 54
+  },
+  "titulo": "Phil Babb"
+ },
+ "Q17462635": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "sporting": 85
+  },
+  "titulo": "Marcos Acuña"
+ },
+ "Q17486571": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "benfica": 77
+  },
+  "titulo": "Chiquinho (footballer, born 1995)"
+ },
+ "Q17486599": {
+  "categorias": [
+   "selecao",
+   "grandes"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "grandes": {
+   "porto": 59
+  },
+  "internacionalizacoes": 73,
+  "titulo": "Rúben Neves"
+ },
+ "Q17499": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2007": 8,
+    "2008": 19,
+    "2009": 12,
+    "2010": 20,
+    "2011": 21
+   },
+   "melhor": 8
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "titulo": "Cesc Fàbregas"
+ },
+ "Q17500": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2008": 5,
+    "2009": 3,
+    "2010": 3,
+    "2011": 3,
+    "2012": 4,
+    "2013": 14
+   },
+   "melhor": 3
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "titulo": "Xavi (footballer, born 1980)"
+ },
+ "Q17507": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2011": 23,
+    "2012": 21
+   },
+   "melhor": 21
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Gerard Piqué"
+ },
+ "Q175296": {
+  "categorias": [
+   "selecao",
+   "grandes"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "grandes": {
+   "porto": 137
+  },
+  "internacionalizacoes": 76,
+  "titulo": "Raul Meireles"
+ },
+ "Q17560793": {
+  "categorias": [
+   "selecao",
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "sporting": 92
+  },
+  "internacionalizacoes": 21,
+  "titulo": "Gelson Martins"
+ },
+ "Q177686": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2009": 24,
+    "2010": 17
+   },
+   "melhor": 17
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Maicon (footballer, born 1981)"
+ },
+ "Q178599": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "porto": 101
+  },
+  "titulo": "Jorge Fucile"
+ },
+ "Q178683": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2001": 28,
+    "2002": 15
+   },
+   "melhor": 15
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Cafu"
+ },
+ "Q179069": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "benfica": 85
+  },
+  "titulo": "Artur Moraes"
+ },
+ "Q179334": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2001": 14,
+    "2003": 12
+   },
+   "melhor": 12
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Henrik Larsson"
+ },
+ "Q1801340": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "benfica": 59
+  },
+  "titulo": "Daniel Kenedy"
+ },
+ "Q180326": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "1997": 25,
+    "1998": 7,
+    "2001": 28
+   },
+   "melhor": 7
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "titulo": "Lilian Thuram"
+ },
+ "Q180553": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2015": 10
+   },
+   "melhor": 10
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "titulo": "Alexis Sánchez"
+ },
+ "Q180581": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2004": 12
+   },
+   "melhor": 12
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Milan Baroš"
+ },
+ "Q18127780": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "sporting": 136
+  },
+  "titulo": "Nuno Santos (footballer, born 1995)"
+ },
+ "Q182063": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "grandes": {
+   "benfica": 178,
+   "porto": 77
+  },
+  "titulo": "Nicolás Otamendi"
+ },
+ "Q182314": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "1997": 8,
+    "1999": 17
+   },
+   "melhor": 8
+  },
+  "categorias": [
+   "bola_de_ouro",
+   "grandes"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "grandes": {
+   "sporting": 55
+  },
+  "titulo": "Peter Schmeichel"
+ },
+ "Q18237361": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2018": 25,
+    "2019": 7
+   },
+   "melhor": 7
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "titulo": "Alisson Becker"
+ },
+ "Q182459": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2009": 21,
+    "2010": 19
+   },
+   "melhor": 19
+  },
+  "categorias": [
+   "bola_de_ouro",
+   "grandes"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "grandes": {
+   "benfica": 57
+  },
+  "titulo": "Júlio César (football goalkeeper, born 1979)"
+ },
+ "Q182907": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2006": 20
+   },
+   "melhor": 20
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Gianluca Zambrotta"
+ },
+ "Q1835": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "1996": 28,
+    "1997": 3,
+    "1998": 1,
+    "1999": 19,
+    "2000": 2,
+    "2001": 9,
+    "2002": 4,
+    "2003": 5,
+    "2004": 23,
+    "2005": 18,
+    "2006": 5
+   },
+   "melhor": 1
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "titulo": "Zinedine Zidane"
+ },
+ "Q1839": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "1998": 14,
+    "2000": 27
+   },
+   "melhor": 14
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Laurent Blanc"
+ },
+ "Q18394009": {
+  "categorias": [
+   "selecao",
+   "grandes"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "grandes": {
+   "benfica": 56
+  },
+  "internacionalizacoes": 32,
+  "titulo": "Renato Sanches"
+ },
+ "Q1839524": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "porto": 93
+  },
+  "titulo": "Felipe (footballer, born 1989)"
+ },
+ "Q183967": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2000": 22,
+    "2001": 12
+   },
+   "melhor": 12
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "David Trezeguet"
+ },
+ "Q184261": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2008": 26
+   },
+   "melhor": 26
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Yuri Zhirkov"
+ },
+ "Q184277": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2009": 28,
+    "2012": 12,
+    "2013": 12,
+    "2014": 14,
+    "2015": 12
+   },
+   "melhor": 12
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Yaya Touré"
+ },
+ "Q184362": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2005": 13
+   },
+   "melhor": 13
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Claude Makélélé"
+ },
+ "Q184586": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2013": 9,
+    "2014": 12,
+    "2015": 16,
+    "2016": 6,
+    "2018": 17
+   },
+   "melhor": 6
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "titulo": "Gareth Bale"
+ },
+ "Q184614": {
+  "categorias": [
+   "selecao",
+   "grandes"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "grandes": {
+   "porto": 62
+  },
+  "internacionalizacoes": 62,
+  "titulo": "Paulo Ferreira"
+ },
+ "Q185115": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "1998": 8,
+    "1999": 26,
+    "2000": 18
+   },
+   "melhor": 8
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "titulo": "Edgar Davids"
+ },
+ "Q185389": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "1997": 4,
+    "1998": 8
+   },
+   "melhor": 4
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "titulo": "Dennis Bergkamp"
+ },
+ "Q185693": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "porto": 56
+  },
+  "titulo": "Russell Latapy"
+ },
+ "Q186071": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "benfica": 69
+  },
+  "titulo": "Javier Saviola"
+ },
+ "Q18637429": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2025": 21
+   },
+   "melhor": 21
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Serhou Guirassy"
+ },
+ "Q18637930": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2025": 24
+   },
+   "melhor": 24
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Fabián Ruiz"
+ },
+ "Q186478": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2006": 20,
+    "2008": 26
+   },
+   "melhor": 20
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Luca Toni"
+ },
+ "Q187171": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2018": 25
+   },
+   "melhor": 25
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Mario Mandžukić"
+ },
+ "Q188241": {
+  "categorias": [
+   "selecao",
+   "grandes"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "grandes": {
+   "porto": 156,
+   "sporting": 59
+  },
+  "internacionalizacoes": 80,
+  "titulo": "Ricardo Quaresma"
+ },
+ "Q188544": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2003": 13
+   },
+   "melhor": 13
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Dida (footballer, born 1973)"
+ },
+ "Q188632": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "1999": 6,
+    "2000": 27
+   },
+   "melhor": 6
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "titulo": "Roy Keane"
+ },
+ "Q188696": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "1997": 10,
+    "1998": 26,
+    "1999": 7
+   },
+   "melhor": 7
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "titulo": "Christian Vieri"
+ },
+ "Q188720": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "1998": 20
+   },
+   "melhor": 20
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Michael Laudrup"
+ },
+ "Q188983": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "benfica": 67
+  },
+  "titulo": "Giorgos Karagounis"
+ },
+ "Q189217": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "1996": 6,
+    "1998": 2
+   },
+   "melhor": 2
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "titulo": "Davor Šuker"
+ },
+ "Q18928108": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "sporting": 80
+  },
+  "titulo": "Jerry St. Juste"
+ },
+ "Q189686": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2000": 17,
+    "2001": 28
+   },
+   "melhor": 17
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Patrick Kluivert"
+ },
+ "Q19059840": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2019": 28
+   },
+   "melhor": 28
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Donny van de Beek"
+ },
+ "Q190608": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "1996": 26,
+    "2000": 24,
+    "2001": 25
+   },
+   "melhor": 24
+  },
+  "categorias": [
+   "bola_de_ouro",
+   "selecao",
+   "grandes"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "grandes": {
+   "benfica": 121
+  },
+  "internacionalizacoes": 94,
+  "titulo": "Rui Costa"
+ },
+ "Q1907": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2016": 20,
+    "2018": 29,
+    "2019": 23
+   },
+   "melhor": 20
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Hugo Lloris"
+ },
+ "Q191139": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "1998": 14,
+    "2000": 12,
+    "2001": 28
+   },
+   "melhor": 12
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Fabien Barthez"
+ },
+ "Q19116103": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2023": 23
+   },
+   "melhor": 23
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "André Onana"
+ },
+ "Q1912": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2008": 26,
+    "2009": 30,
+    "2011": 20,
+    "2012": 22,
+    "2014": 16,
+    "2015": 20,
+    "2017": 25,
+    "2018": 17,
+    "2019": 26,
+    "2021": 4,
+    "2022": 1,
+    "2023": 16
+   },
+   "melhor": 1
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "titulo": "Karim Benzema"
+ },
+ "Q1918": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2006": 13,
+    "2007": 17,
+    "2008": 16,
+    "2009": 28,
+    "2013": 3
+   },
+   "melhor": 3
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "titulo": "Franck Ribéry"
+ },
+ "Q192175": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "1999": 11
+   },
+   "melhor": 11
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Dwight Yorke"
+ },
+ "Q1925465": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "benfica": 80
+  },
+  "titulo": "Raúl Jiménez"
+ },
+ "Q192565": {
+  "categorias": [
+   "selecao",
+   "grandes"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "grandes": {
+   "benfica": 58,
+   "sporting": 94
+  },
+  "internacionalizacoes": 40,
+  "titulo": "João Pereira (footballer, born 1984)"
+ },
+ "Q192671": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2015": 17,
+    "2016": 14
+   },
+   "melhor": 14
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Arturo Vidal"
+ },
+ "Q19282169": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "benfica": 61
+  },
+  "titulo": "Diogo Gonçalves"
+ },
+ "Q192840": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2001": 18
+   },
+   "melhor": 18
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Sami Hyypiä"
+ },
+ "Q192963": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2009": 16
+   },
+   "melhor": 16
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Luís Fabiano"
+ },
+ "Q192965": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2005": 14,
+    "2007": 14
+   },
+   "melhor": 14
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Juan Román Riquelme"
+ },
+ "Q192974": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2000": 18
+   },
+   "melhor": 18
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Hakan Şükür"
+ },
+ "Q193000": {
+  "categorias": [
+   "selecao",
+   "grandes"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "grandes": {
+   "porto": 119
+  },
+  "internacionalizacoes": 96,
+  "titulo": "Bruno Alves"
+ },
+ "Q1932648": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "sporting": 61
+  },
+  "titulo": "Miguel Garcia (Portuguese footballer)"
+ },
+ "Q19341305": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "benfica": 114
+  },
+  "titulo": "Franco Cervi"
+ },
+ "Q1935": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2011": 18
+   },
+   "melhor": 18
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Eric Abidal"
+ },
+ "Q193568": {
+  "categorias": [
+   "selecao",
+   "grandes"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "grandes": {
+   "benfica": 294
+  },
+  "internacionalizacoes": 79,
+  "titulo": "Nuno Gomes"
+ },
+ "Q193625": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "1996": 8,
+    "1998": 10,
+    "2000": 24,
+    "2001": 28
+   },
+   "melhor": 8
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "titulo": "Marcel Desailly"
+ },
+ "Q193706": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "benfica": 82
+  },
+  "titulo": "David Luiz"
+ },
+ "Q194439": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2008": 11
+   },
+   "melhor": 11
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Marcos Senna"
+ },
+ "Q19509544": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2024": 17
+   },
+   "melhor": 17
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Federico Valverde"
+ },
+ "Q19518278": {
+  "categorias": [
+   "selecao"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "internacionalizacoes": 49,
+  "titulo": "Diogo Jota"
+ },
+ "Q19560313": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2024": 13
+   },
+   "melhor": 13
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Dani Olmo"
+ },
+ "Q19754212": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "porto": 126
+  },
+  "titulo": "Moussa Marega"
+ },
+ "Q198064": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "porto": 71
+  },
+  "titulo": "Bruno Martins Indi"
+ },
+ "Q1984980": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "porto": 114
+  },
+  "titulo": "Fernando Bandeirinha"
+ },
+ "Q19882816": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2025": 25
+   },
+   "melhor": 25
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Denzel Dumfries"
+ },
+ "Q19898898": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2019": 11
+   },
+   "melhor": 11
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Frenkie de Jong"
+ },
+ "Q19985279": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "porto": 97
+  },
+  "titulo": "Tiquinho Soares"
+ },
+ "Q2001511": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "sporting": 85
+  },
+  "titulo": "Tiago Ferreira (footballer, born 1975)"
+ },
+ "Q20017202": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "porto": 113
+  },
+  "titulo": "Mateus Uribe"
+ },
+ "Q2002761": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "sporting": 56
+  },
+  "titulo": "Alecsandro"
+ },
+ "Q20066885": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2024": 29
+   },
+   "melhor": 29
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Artem Dovbyk"
+ },
+ "Q20090180": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "benfica": 122
+  },
+  "titulo": "Fredrik Aursnes"
+ },
+ "Q20090225": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2021": 26,
+    "2023": 27
+   },
+   "melhor": 26
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Nicolò Barella"
+ },
+ "Q20110": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2000": 14,
+    "2001": 5,
+    "2003": 18,
+    "2007": 10
+   },
+   "melhor": 5
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "titulo": "Francesco Totti"
+ },
+ "Q201414": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "sporting": 61
+  },
+  "titulo": "Nélson Pereira"
+ },
+ "Q2018541": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "sporting": 52
+  },
+  "titulo": "Stefan Ristovski"
+ },
+ "Q202645": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2003": 22
+   },
+   "melhor": 22
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Adrian Mutu"
+ },
+ "Q203296": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "porto": 56
+  },
+  "titulo": "Grzegorz Mielcarski"
+ },
+ "Q203451": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2005": 12,
+    "2006": 20
+   },
+   "melhor": 12
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Juninho Pernambucano"
+ },
+ "Q203665": {
+  "categorias": [
+   "selecao",
+   "grandes"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "grandes": {
+   "benfica": 172,
+   "sporting": 53
+  },
+  "internacionalizacoes": 85,
+  "titulo": "Simão Sabrosa"
+ },
+ "Q204429": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2001": 28
+   },
+   "melhor": 28
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Harry Kewell"
+ },
+ "Q205499": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "1997": 22,
+    "1998": 26
+   },
+   "melhor": 22
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Fernando Hierro"
+ },
+ "Q2058682": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2017": 26,
+    "2018": 25
+   },
+   "melhor": 25
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Jan Oblak"
+ },
+ "Q206247": {
+  "categorias": [
+   "selecao",
+   "grandes"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "grandes": {
+   "benfica": 131
+  },
+  "internacionalizacoes": 32,
+  "titulo": "Quim (footballer, born 1975)"
+ },
+ "Q2071136": {
+  "categorias": [
+   "selecao",
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "porto": 102
+  },
+  "internacionalizacoes": 13,
+  "titulo": "Sérgio Oliveira"
+ },
+ "Q20716254": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "sporting": 140
+  },
+  "titulo": "Matheus Reis"
+ },
+ "Q207186": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "1999": 14,
+    "2000": 12
+   },
+   "melhor": 12
+  },
+  "categorias": [
+   "bola_de_ouro",
+   "grandes"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "grandes": {
+   "benfica": 80,
+   "porto": 87
+  },
+  "titulo": "Zlatko Zahovič"
+ },
+ "Q208050": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2017": 21,
+    "2021": 14
+   },
+   "melhor": 14
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Leonardo Bonucci"
+ },
+ "Q208104": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2010": 10,
+    "2011": 16,
+    "2012": 11
+   },
+   "melhor": 10
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "titulo": "Xabi Alonso"
+ },
+ "Q20830808": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2021": 10,
+    "2025": 9
+   },
+   "melhor": 9
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "titulo": "Gianluigi Donnarumma"
+ },
+ "Q20851003": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2025": 1
+   },
+   "melhor": 1
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "titulo": "Ousmane Dembélé"
+ },
+ "Q208638": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2021": 17
+   },
+   "melhor": 17
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Simon Kjær"
+ },
+ "Q20972416": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "porto": 52
+  },
+  "titulo": "Pablo Rosario"
+ },
+ "Q20994118": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2023": 5,
+    "2024": 1
+   },
+   "melhor": 1
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "titulo": "Rodri"
+ },
+ "Q209942": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2017": 23,
+    "2018": 22,
+    "2019": 4,
+    "2022": 2
+   },
+   "melhor": 2
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "titulo": "Sadio Mané"
+ },
+ "Q210453": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2013": 21
+   },
+   "melhor": 21
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Thiago Silva"
+ },
+ "Q210937": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "sporting": 66
+  },
+  "titulo": "Stijn Schaars"
+ },
+ "Q210944": {
+  "categorias": [
+   "selecao",
+   "grandes"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "grandes": {
+   "benfica": 75
+  },
+  "internacionalizacoes": 66,
+  "titulo": "Tiago Mendes"
+ },
+ "Q210950": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "grandes": {
+   "benfica": 337
+  },
+  "titulo": "Luisão"
+ },
+ "Q211124": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "benfica": 80
+  },
+  "titulo": "Kostas Katsouranis"
+ },
+ "Q211996": {
+  "categorias": [
+   "selecao",
+   "grandes"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "grandes": {
+   "porto": 107
+  },
+  "internacionalizacoes": 27,
+  "titulo": "José Bosingwa"
+ },
+ "Q2121035": {
+  "categorias": [
+   "selecao"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "internacionalizacoes": 33,
+  "titulo": "Jorge Cadete"
+ },
+ "Q212854": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "1996": 28,
+    "1998": 23
+   },
+   "melhor": 23
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Brian Laudrup"
+ },
+ "Q213437": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "grandes": {
+   "benfica": 175
+  },
+  "titulo": "Óscar Cardozo"
+ },
+ "Q213676": {
+  "categorias": [
+   "selecao",
+   "grandes"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "grandes": {
+   "sporting": 214
+  },
+  "internacionalizacoes": 15,
+  "titulo": "Liédson"
+ },
+ "Q214117": {
+  "categorias": [
+   "selecao",
+   "grandes"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "grandes": {
+   "porto": 114,
+   "sporting": 71
+  },
+  "internacionalizacoes": 71,
+  "titulo": "Hélder Postiga"
+ },
+ "Q214204": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2013": 22,
+    "2014": 21,
+    "2015": 8,
+    "2017": 19,
+    "2018": 8,
+    "2019": 13
+   },
+   "melhor": 8
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "titulo": "Eden Hazard"
+ },
+ "Q214233": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "porto": 86
+  },
+  "titulo": "Benni McCarthy"
+ },
+ "Q214498": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "1996": 20
+   },
+   "melhor": 20
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "David Seaman"
+ },
+ "Q214751": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "porto": 59
+  },
+  "titulo": "Henrique Hilário"
+ },
+ "Q21484126": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2021": 21,
+    "2023": 20,
+    "2024": 7,
+    "2025": 20
+   },
+   "melhor": 7
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "titulo": "Lautaro Martínez"
+ },
+ "Q21484766": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2024": 14
+   },
+   "melhor": 14
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Ademola Lookman"
+ },
+ "Q214886": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "grandes": {
+   "benfica": 212,
+   "porto": 89
+  },
+  "titulo": "Maxi Pereira"
+ },
+ "Q214898": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "porto": 72
+  },
+  "titulo": "Álvaro Pereira"
+ },
+ "Q214903": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2016": 20,
+    "2018": 28
+   },
+   "melhor": 20
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Diego Godín"
+ },
+ "Q215522": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2007": 30
+   },
+   "melhor": 30
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Guillermo Ochoa"
+ },
+ "Q21621168": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2021": 26,
+    "2023": 30,
+    "2024": 23
+   },
+   "melhor": 23
+  },
+  "categorias": [
+   "bola_de_ouro",
+   "selecao",
+   "grandes"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "grandes": {
+   "benfica": 91
+  },
+  "internacionalizacoes": 84,
+  "titulo": "Rúben Dias"
+ },
+ "Q21621995": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2017": 7,
+    "2018": 4,
+    "2019": 6,
+    "2021": 9,
+    "2022": 6,
+    "2023": 3,
+    "2024": 6,
+    "2025": 7
+   },
+   "melhor": 3
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "titulo": "Kylian Mbappé"
+ },
+ "Q2165118": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "sporting": 78
+  },
+  "titulo": "Alberto Acosta"
+ },
+ "Q216917": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "1999": 12
+   },
+   "melhor": 12
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Jaap Stam"
+ },
+ "Q216928": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "1999": 26
+   },
+   "melhor": 26
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Andy Cole"
+ },
+ "Q21693199": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2022": 20
+   },
+   "melhor": 20
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Christopher Nkunku"
+ },
+ "Q217482": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "1996": 9,
+    "1997": 12
+   },
+   "melhor": 9
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "titulo": "Youri Djorkaeff"
+ },
+ "Q218098": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "sporting": 78
+  },
+  "titulo": "André Cruz"
+ },
+ "Q218165": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2001": 28
+   },
+   "melhor": 28
+  },
+  "categorias": [
+   "bola_de_ouro",
+   "selecao"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "internacionalizacoes": 88,
+  "titulo": "Pauleta"
+ },
+ "Q218394": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2007": 11
+   },
+   "melhor": 11
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Frédéric Kanouté"
+ },
+ "Q219248": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "1998": 23
+   },
+   "melhor": 23
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Marc Overmars"
+ },
+ "Q219657": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "1998": 11
+   },
+   "melhor": 11
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Frank de Boer"
+ },
+ "Q219771": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2004": 24
+   },
+   "melhor": 24
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Ludovic Giuly"
+ },
+ "Q221138": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2004": 24
+   },
+   "melhor": 24
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Antonios Nikopolidis"
+ },
+ "Q222151": {
+  "categorias": [
+   "selecao",
+   "grandes"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "grandes": {
+   "porto": 83,
+   "sporting": 163
+  },
+  "internacionalizacoes": 146,
+  "titulo": "João Moutinho"
+ },
+ "Q222746": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2010": 18
+   },
+   "melhor": 18
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Asamoah Gyan"
+ },
+ "Q222789": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "1998": 28
+   },
+   "melhor": 28
+  },
+  "categorias": [
+   "bola_de_ouro",
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Luis Enrique"
+ },
+ "Q223176": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2001": 28
+   },
+   "melhor": 28
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Jimmy Floyd Hasselbaink"
+ },
+ "Q224033": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "1996": 10
+   },
+   "melhor": 10
+  },
+  "categorias": [
+   "bola_de_ouro",
+   "grandes"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "grandes": {
+   "benfica": 88
+  },
+  "titulo": "Karel Poborský"
+ },
+ "Q2272518": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "sporting": 67
+  },
+  "titulo": "André Santos (footballer, born 1989)"
+ },
+ "Q2277552": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "benfica": 79
+  },
+  "titulo": "Argel Fuchs"
+ },
+ "Q227892": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2000": 5,
+    "2001": 14,
+    "2003": 13
+   },
+   "melhor": 5
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "titulo": "Alessandro Nesta"
+ },
+ "Q2288869": {
+  "categorias": [
+   "selecao",
+   "grandes"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "grandes": {
+   "sporting": 308
+  },
+  "internacionalizacoes": 54,
+  "titulo": "Oceano Cruz"
+ },
+ "Q22959121": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "benfica": 67
+  },
+  "titulo": "Ferro (footballer)"
+ },
+ "Q2297174": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "grandes": {
+   "porto": 164
+  },
+  "titulo": "Héctor Herrera"
+ },
+ "Q2307574": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "porto": 56,
+   "sporting": 124
+  },
+  "titulo": "Emílio Peixe"
+ },
+ "Q2320501": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "sporting": 64
+  },
+  "titulo": "Hugo (footballer, born 1976)"
+ },
+ "Q2339": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2007": 30,
+    "2012": 9,
+    "2013": 7
+   },
+   "melhor": 7
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "titulo": "Robin van Persie"
+ },
+ "Q234532": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2000": 14,
+    "2003": 22
+   },
+   "melhor": 14
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Francesco Toldo"
+ },
+ "Q2358664": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "porto": 50
+  },
+  "titulo": "Miguel Layún"
+ },
+ "Q23762815": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2022": 17
+   },
+   "melhor": 17
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Dušan Vlahović"
+ },
+ "Q237964": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "1996": 16,
+    "1997": 2,
+    "1998": 16
+   },
+   "melhor": 2
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "titulo": "Predrag Mijatović"
+ },
+ "Q24084271": {
+  "categorias": [
+   "selecao",
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "sporting": 133
+  },
+  "internacionalizacoes": 22,
+  "titulo": "Francisco Trincão"
+ },
+ "Q2413716": {
+  "categorias": [
+   "selecao",
+   "grandes"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "grandes": {
+   "benfica": 169
+  },
+  "internacionalizacoes": 25,
+  "titulo": "Paulo Madeira"
+ },
+ "Q24231840": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "benfica": 75
+  },
+  "titulo": "Vangelis Pavlidis"
+ },
+ "Q2441518": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "porto": 73
+  },
+  "titulo": "Carlos Chaínho"
+ },
+ "Q244363": {
+  "categorias": [
+   "selecao",
+   "grandes"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "grandes": {
+   "sporting": 98
+  },
+  "internacionalizacoes": 56,
+  "titulo": "Miguel Veloso"
+ },
+ "Q2448009": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "sporting": 86
+  },
+  "titulo": "Bruno Pereirinha"
+ },
+ "Q244894": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "grandes": {
+   "porto": 168
+  },
+  "titulo": "Lucho González"
+ },
+ "Q2452835": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "benfica": 82
+  },
+  "titulo": "Léo (footballer, born 1975)"
+ },
+ "Q2466806": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "benfica": 111
+  },
+  "titulo": "Ronaldo Guiaro"
+ },
+ "Q2471998": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "benfica": 67
+  },
+  "titulo": "Serhiy Kandaurov"
+ },
+ "Q2479934": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "porto": 65
+  },
+  "titulo": "Agustín Marchesín"
+ },
+ "Q2498195": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "benfica": 56
+  },
+  "titulo": "Armando Sá"
+ },
+ "Q250962": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "benfica": 91
+  },
+  "titulo": "Geovanni"
+ },
+ "Q2511680": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "grandes": {
+   "porto": 332
+  },
+  "titulo": "Aloísio (footballer, born 1963)"
+ },
+ "Q251683": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2014": 10
+   },
+   "melhor": 10
+  },
+  "categorias": [
+   "bola_de_ouro",
+   "grandes"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "grandes": {
+   "benfica": 129
+  },
+  "titulo": "Ángel Di María"
+ },
+ "Q251966": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "sporting": 55
+  },
+  "titulo": "Ricky van Wolfswinkel"
+ },
+ "Q2519999": {
+  "categorias": [
+   "selecao",
+   "grandes"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "grandes": {
+   "porto": 135
+  },
+  "internacionalizacoes": 26,
+  "titulo": "António Folha"
+ },
+ "Q2522220": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "benfica": 68
+  },
+  "titulo": "Edgar Pacheco"
+ },
+ "Q25253293": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2023": 8
+   },
+   "melhor": 8
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "titulo": "Victor Osimhen"
+ },
+ "Q252711": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "grandes": {
+   "sporting": 221
+  },
+  "titulo": "Ânderson Polga"
+ },
+ "Q2537426": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "benfica": 52
+  },
+  "titulo": "Ilian Iliev"
+ },
+ "Q2550318": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "grandes": {
+   "sporting": 184
+  },
+  "titulo": "Ivaylo Yordanov"
+ },
+ "Q2557773": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "sporting": 52
+  },
+  "titulo": "Fabián Rinaudo"
+ },
+ "Q261534": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2009": 19,
+    "2010": 5,
+    "2011": 7
+   },
+   "melhor": 5
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "titulo": "Diego Forlán"
+ },
+ "Q26255503": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "benfica": 63
+  },
+  "titulo": "Gedson Fernandes"
+ },
+ "Q26255506": {
+  "categorias": [
+   "selecao"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "internacionalizacoes": 40,
+  "titulo": "Diogo Dalot"
+ },
+ "Q26255578": {
+  "categorias": [
+   "selecao",
+   "grandes"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "grandes": {
+   "porto": 176
+  },
+  "internacionalizacoes": 52,
+  "titulo": "Diogo Costa"
+ },
+ "Q26259982": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2019": 15
+   },
+   "melhor": 15
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Matthijs de Ligt"
+ },
+ "Q26517": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2011": 6,
+    "2013": 19,
+    "2015": 5,
+    "2016": 4,
+    "2017": 13,
+    "2018": 13,
+    "2021": 17
+   },
+   "melhor": 4
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "titulo": "Luis Suárez (Uruguayan footballer)"
+ },
+ "Q2662720": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "benfica": 59
+  },
+  "titulo": "Bruno Basto"
+ },
+ "Q266613": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2004": 8,
+    "2007": 26,
+    "2008": 13,
+    "2009": 8,
+    "2011": 5,
+    "2012": 15
+   },
+   "melhor": 5
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "titulo": "Wayne Rooney"
+ },
+ "Q26704562": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "sporting": 72
+  },
+  "titulo": "Jovane Cabral"
+ },
+ "Q26924424": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "benfica": 113
+  },
+  "titulo": "Florentino Luís"
+ },
+ "Q26932598": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2025": 6
+   },
+   "melhor": 6
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "titulo": "Achraf Hakimi"
+ },
+ "Q26972992": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "sporting": 77
+  },
+  "titulo": "Marcus Edwards"
+ },
+ "Q269883": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "1998": 12
+   },
+   "melhor": 12
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Emmanuel Petit"
+ },
+ "Q270075": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "1996": 28,
+    "1998": 21
+   },
+   "melhor": 21
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Ronald de Boer"
+ },
+ "Q27049064": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2019": 28
+   },
+   "melhor": 28
+  },
+  "categorias": [
+   "bola_de_ouro",
+   "selecao"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "internacionalizacoes": 61,
+  "titulo": "João Félix"
+ },
+ "Q2715259": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "sporting": 76
+  },
+  "titulo": "Evaldo (footballer, born 1982)"
+ },
+ "Q2718569": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "benfica": 72
+  },
+  "titulo": "Tahar El Khalej"
+ },
+ "Q2718715": {
+  "categorias": [
+   "selecao"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "internacionalizacoes": 44,
+  "titulo": "Vítor Paneira"
+ },
+ "Q2724855": {
+  "categorias": [
+   "selecao",
+   "grandes"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "grandes": {
+   "sporting": 168
+  },
+  "internacionalizacoes": 26,
+  "titulo": "Adrien Silva"
+ },
+ "Q2736254": {
+  "categorias": [
+   "selecao"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "internacionalizacoes": 50,
+  "titulo": "José Fonte"
+ },
+ "Q273776": {
+  "categorias": [
+   "selecao"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "internacionalizacoes": 35,
+  "titulo": "Eder (footballer, born 1987)"
+ },
+ "Q27569376": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2019": 19,
+    "2022": 20
+   },
+   "melhor": 19
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Trent Alexander-Arnold"
+ },
+ "Q276091": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2016": 20
+   },
+   "melhor": 20
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Koke (footballer, born 1992)"
+ },
+ "Q2761656": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "porto": 53
+  },
+  "titulo": "Pena (footballer)"
+ },
+ "Q276402": {
+  "categorias": [
+   "selecao",
+   "grandes"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "grandes": {
+   "porto": 141
+  },
+  "internacionalizacoes": 27,
+  "titulo": "Silvestre Varela"
+ },
+ "Q2777891": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "sporting": 72
+  },
+  "titulo": "André Martins (footballer, born 1990)"
+ },
+ "Q27801691": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "benfica": 55
+  },
+  "titulo": "David Neres"
+ },
+ "Q27960175": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "sporting": 56
+  },
+  "titulo": "Manuel Ugarte (footballer)"
+ },
+ "Q283762": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "benfica": 120
+  },
+  "titulo": "Haris Seferovic"
+ },
+ "Q284359": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2003": 18
+   },
+   "melhor": 18
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Nihat Kahveci"
+ },
+ "Q284473": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "porto": 99
+  },
+  "titulo": "Óliver Torres"
+ },
+ "Q28531111": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2022": 17
+   },
+   "melhor": 17
+  },
+  "categorias": [
+   "bola_de_ouro",
+   "grandes"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "grandes": {
+   "porto": 77
+  },
+  "titulo": "Luis Díaz (footballer, born 1997)"
+ },
+ "Q285986": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "grandes": {
+   "porto": 177
+  },
+  "titulo": "Iván Marcano"
+ },
+ "Q28699707": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2023": 22
+   },
+   "melhor": 22
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Kim Min-jae (footballer)"
+ },
+ "Q28736721": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "sporting": 64
+  },
+  "titulo": "Luis Suárez (Colombian footballer)"
+ },
+ "Q288053": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2001": 28
+   },
+   "melhor": 28
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Eric Carrière"
+ },
+ "Q28861547": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2025": 5
+   },
+   "melhor": 5
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "titulo": "Raphinha"
+ },
+ "Q28967995": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2021": 11,
+    "2022": 10,
+    "2023": 2,
+    "2024": 5,
+    "2025": 26
+   },
+   "melhor": 2
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "titulo": "Erling Haaland"
+ },
+ "Q28973866": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2022": 8,
+    "2023": 6,
+    "2024": 2,
+    "2025": 16
+   },
+   "melhor": 2
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "titulo": "Vinícius Júnior"
+ },
+ "Q29117869": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "sporting": 52
+  },
+  "titulo": "Bruno Tabata"
+ },
+ "Q2927563": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "sporting": 62
+  },
+  "titulo": "Budimir Vujačić"
+ },
+ "Q29339": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2004": 24
+   },
+   "melhor": 24
+  },
+  "categorias": [
+   "bola_de_ouro",
+   "selecao",
+   "grandes"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "grandes": {
+   "benfica": 54,
+   "porto": 80
+  },
+  "internacionalizacoes": 52,
+  "titulo": "Maniche"
+ },
+ "Q2939508": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "grandes": {
+   "sporting": 248
+  },
+  "titulo": "Carlos Xavier"
+ },
+ "Q294351": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "1999": 13
+   },
+   "melhor": 13
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Siniša Mihajlović"
+ },
+ "Q294565": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "1997": 29
+   },
+   "melhor": 29
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Angelo Peruzzi"
+ },
+ "Q294806": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2021": 29
+   },
+   "melhor": 29
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "César Azpilicueta"
+ },
+ "Q294881": {
+  "categorias": [
+   "selecao",
+   "grandes"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "grandes": {
+   "benfica": 148
+  },
+  "internacionalizacoes": 57,
+  "titulo": "Petit (Portuguese footballer)"
+ },
+ "Q294963": {
+  "categorias": [
+   "selecao",
+   "grandes"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "grandes": {
+   "sporting": 58
+  },
+  "internacionalizacoes": 29,
+  "titulo": "Hugo Viana"
+ },
+ "Q294980": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2016": 12
+   },
+   "melhor": 12
+  },
+  "categorias": [
+   "bola_de_ouro",
+   "selecao",
+   "grandes"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "grandes": {
+   "sporting": 327
+  },
+  "internacionalizacoes": 108,
+  "titulo": "Rui Patrício"
+ },
+ "Q295315": {
+  "categorias": [
+   "selecao",
+   "grandes"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "grandes": {
+   "benfica": 131
+  },
+  "internacionalizacoes": 59,
+  "titulo": "Miguel Monteiro"
+ },
+ "Q295410": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2000": 8,
+    "2001": 18
+   },
+   "melhor": 8
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "titulo": "Gaizka Mendieta"
+ },
+ "Q295416": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2005": 23
+   },
+   "melhor": 23
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Luis García (footballer, born 1978)"
+ },
+ "Q295438": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "1999": 26
+   },
+   "melhor": 26
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Marcelo Salas"
+ },
+ "Q295456": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2000": 18
+   },
+   "melhor": 18
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Fernando Redondo"
+ },
+ "Q295883": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "1999": 26,
+    "2000": 27
+   },
+   "melhor": 26
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Claudio López (footballer)"
+ },
+ "Q295887": {
+  "categorias": [
+   "selecao",
+   "grandes"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "grandes": {
+   "porto": 406
+  },
+  "internacionalizacoes": 80,
+  "titulo": "Vítor Baía"
+ },
+ "Q296133": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "porto": 106
+  },
+  "titulo": "Lisandro López (footballer, born 1983)"
+ },
+ "Q296180": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2004": 28
+   },
+   "melhor": 28
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Vicente Rodríguez"
+ },
+ "Q29624459": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2025": 18
+   },
+   "melhor": 18
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Scott McTominay"
+ },
+ "Q296452": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2004": 5
+   },
+   "melhor": 5
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "titulo": "Theodoros Zagorakis"
+ },
+ "Q296684": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "benfica": 78
+  },
+  "titulo": "Ezequiel Garay"
+ },
+ "Q296975": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2001": 28
+   },
+   "melhor": 28
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Iván Helguera"
+ },
+ "Q297603": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "benfica": 56
+  },
+  "titulo": "Nemanja Matić"
+ },
+ "Q297845": {
+  "categorias": [
+   "selecao",
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "benfica": 67
+  },
+  "internacionalizacoes": 15,
+  "titulo": "Manuel Fernandes (footballer, born 1986)"
+ },
+ "Q2978729": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "porto": 74
+  },
+  "titulo": "Clayton (footballer, born 1975)"
+ },
+ "Q299488": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2002": 24,
+    "2004": 24
+   },
+   "melhor": 24
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Rubén Baraja"
+ },
+ "Q299493": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "1996": 16
+   },
+   "melhor": 16
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Fabrizio Ravanelli"
+ },
+ "Q299624": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2001": 28
+   },
+   "melhor": 28
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Vincent Candela"
+ },
+ "Q299727": {
+  "categorias": [
+   "selecao",
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "porto": 112
+  },
+  "internacionalizacoes": 21,
+  "titulo": "Rolando (footballer)"
+ },
+ "Q299768": {
+  "categorias": [
+   "selecao"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "internacionalizacoes": 36,
+  "titulo": "Eduardo Carvalho"
+ },
+ "Q30007142": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2024": 26,
+    "2025": 27
+   },
+   "melhor": 26
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Declan Rice"
+ },
+ "Q30036972": {
+  "categorias": [
+   "selecao"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "internacionalizacoes": 33,
+  "titulo": "Pedro Neto"
+ },
+ "Q30055335": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2022": 14
+   },
+   "melhor": 14
+  },
+  "categorias": [
+   "bola_de_ouro",
+   "selecao"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "internacionalizacoes": 51,
+  "titulo": "Rafael Leão"
+ },
+ "Q30122100": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "porto": 95
+  },
+  "titulo": "Galeno"
+ },
+ "Q304416": {
+  "categorias": [
+   "selecao",
+   "grandes"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "grandes": {
+   "sporting": 143
+  },
+  "internacionalizacoes": 80,
+  "titulo": "William Carvalho"
+ },
+ "Q3054646": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "porto": 64
+  },
+  "titulo": "Mário Silva (footballer)"
+ },
+ "Q3071853": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "sporting": 119
+  },
+  "titulo": "Filipe Ramos"
+ },
+ "Q30729096": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2021": 25,
+    "2022": 20,
+    "2024": 11
+   },
+   "melhor": 11
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Phil Foden"
+ },
+ "Q308925": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "1997": 9
+   },
+   "melhor": 9
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "titulo": "Jürgen Kohler"
+ },
+ "Q30935816": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "sporting": 54
+  },
+  "titulo": "Wendel (footballer, born 1997)"
+ },
+ "Q309826": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "sporting": 82
+  },
+  "titulo": "Marat Izmailov"
+ },
+ "Q310206": {
+  "categorias": [
+   "selecao",
+   "grandes"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "grandes": {
+   "benfica": 55
+  },
+  "internacionalizacoes": 54,
+  "titulo": "Fernando Meira"
+ },
+ "Q310330": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "benfica": 74
+  },
+  "titulo": "Javi García"
+ },
+ "Q310559": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "porto": 78
+  },
+  "titulo": "Marek Čech (Slovak footballer)"
+ },
+ "Q310657": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "sporting": 69
+  },
+  "titulo": "Matías Fernández (footballer, born 1986)"
+ },
+ "Q310817": {
+  "categorias": [
+   "selecao"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "internacionalizacoes": 38,
+  "titulo": "Danny (footballer)"
+ },
+ "Q311087": {
+  "categorias": [
+   "selecao",
+   "grandes"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "grandes": {
+   "porto": 109
+  },
+  "internacionalizacoes": 53,
+  "titulo": "Costinha"
+ },
+ "Q311089": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2002": 15
+   },
+   "melhor": 15
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Juan Carlos Valerón"
+ },
+ "Q311095": {
+  "categorias": [
+   "selecao",
+   "grandes"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "grandes": {
+   "porto": 52
+  },
+  "internacionalizacoes": 51,
+  "titulo": "Jorge Andrade"
+ },
+ "Q311344": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "sporting": 52
+  },
+  "titulo": "Mustapha Hadji"
+ },
+ "Q311872": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2017": 29
+   },
+   "melhor": 29
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Philippe Coutinho"
+ },
+ "Q311941": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "grandes": {
+   "sporting": 262
+  },
+  "titulo": "Sebastián Coates"
+ },
+ "Q311968": {
+  "categorias": [
+   "selecao",
+   "grandes"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "grandes": {
+   "porto": 56
+  },
+  "internacionalizacoes": 33,
+  "titulo": "Nuno Valente"
+ },
+ "Q312157": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2019": 12,
+    "2021": 15
+   },
+   "melhor": 12
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Raheem Sterling"
+ },
+ "Q312507": {
+  "categorias": [
+   "selecao"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "internacionalizacoes": 17,
+  "titulo": "Nélson Oliveira"
+ },
+ "Q312534": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "benfica": 60
+  },
+  "titulo": "Kostas Mitroglou"
+ },
+ "Q312892": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "sporting": 71
+  },
+  "titulo": "Jérémy Mathieu"
+ },
+ "Q312895": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "1997": 29
+   },
+   "melhor": 29
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Raí"
+ },
+ "Q313170": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "benfica": 57
+  },
+  "titulo": "Jan Vertonghen"
+ },
+ "Q313316": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2021": 12
+   },
+   "melhor": 12
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Romelu Lukaku"
+ },
+ "Q313380": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "1997": 15
+   },
+   "melhor": 15
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Krasimir Balakov"
+ },
+ "Q313468": {
+  "categorias": [
+   "selecao"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "internacionalizacoes": 110,
+  "titulo": "Fernando Couto"
+ },
+ "Q313474": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2002": 11
+   },
+   "melhor": 11
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Hasan Şaş"
+ },
+ "Q313518": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "1996": 13
+   },
+   "melhor": 13
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Alen Bokšić"
+ },
+ "Q313722": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2004": 17
+   },
+   "melhor": 17
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Traianos Dellas"
+ },
+ "Q313753": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2002": 21
+   },
+   "melhor": 21
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Papa Bouba Diop"
+ },
+ "Q313861": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2001": 28
+   },
+   "melhor": 28
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Sonny Anderson"
+ },
+ "Q313913": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2001": 18
+   },
+   "melhor": 18
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Ebbe Sand"
+ },
+ "Q313955": {
+  "categorias": [
+   "selecao"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "internacionalizacoes": 16,
+  "titulo": "Beto (footballer, born 1982)"
+ },
+ "Q314113": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "porto": 52
+  },
+  "titulo": "Adrián López"
+ },
+ "Q314155": {
+  "categorias": [
+   "selecao",
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "sporting": 95
+  },
+  "internacionalizacoes": 10,
+  "titulo": "Custódio Castro"
+ },
+ "Q314315": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "sporting": 99
+  },
+  "titulo": "Diego Capel"
+ },
+ "Q314376": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "porto": 70
+  },
+  "titulo": "Cristian Rodríguez"
+ },
+ "Q314440": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "1997": 25
+   },
+   "melhor": 25
+  },
+  "categorias": [
+   "bola_de_ouro",
+   "selecao"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "internacionalizacoes": 51,
+  "titulo": "Paulo Sousa"
+ },
+ "Q315992": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "benfica": 147
+  },
+  "titulo": "Michel Preud'homme"
+ },
+ "Q316512": {
+  "categorias": [
+   "selecao"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "internacionalizacoes": 28,
+  "titulo": "Luís Boa Morte"
+ },
+ "Q316733": {
+  "categorias": [
+   "selecao",
+   "grandes"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "grandes": {
+   "benfica": 69,
+   "sporting": 103
+  },
+  "internacionalizacoes": 35,
+  "titulo": "Paulo Bento"
+ },
+ "Q317298": {
+  "categorias": [
+   "selecao",
+   "grandes"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "grandes": {
+   "porto": 67
+  },
+  "internacionalizacoes": 56,
+  "titulo": "Sérgio Conceição"
+ },
+ "Q317532": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "porto": 63
+  },
+  "titulo": "Fredy Guarín"
+ },
+ "Q317863": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "1999": 16,
+    "2000": 18
+   },
+   "melhor": 16
+  },
+  "categorias": [
+   "bola_de_ouro",
+   "grandes"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "grandes": {
+   "porto": 125,
+   "sporting": 63
+  },
+  "titulo": "Mário Jardel"
+ },
+ "Q318184": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "1997": 25
+   },
+   "melhor": 25
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Juninho Paulista"
+ },
+ "Q3183789": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "porto": 130
+  },
+  "titulo": "Jorge Couto"
+ },
+ "Q318383": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "sporting": 86
+  },
+  "titulo": "Bryan Ruiz"
+ },
+ "Q318415": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "sporting": 111
+  },
+  "titulo": "Abel Ferreira"
+ },
+ "Q318520": {
+  "categorias": [
+   "selecao"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "internacionalizacoes": 11,
+  "titulo": "Pedro Mendes (footballer, born 1979)"
+ },
+ "Q3186264": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "sporting": 58
+  },
+  "titulo": "Delfim Teixeira"
+ },
+ "Q3187314": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "benfica": 52,
+   "porto": 75
+  },
+  "titulo": "João Manuel Pinto"
+ },
+ "Q318780": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2007": 29
+   },
+   "melhor": 29
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Younis Mahmoud"
+ },
+ "Q3192187": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2019": 24
+   },
+   "melhor": 24
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Kalidou Koulibaly"
+ },
+ "Q3196721": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "porto": 87
+  },
+  "titulo": "Chancel Mbemba"
+ },
+ "Q323180": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "sporting": 62
+  },
+  "titulo": "José Dominguez"
+ },
+ "Q326476": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "benfica": 132
+  },
+  "titulo": "Jonas (footballer, born 1984)"
+ },
+ "Q3275904": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2023": 15,
+    "2024": 18
+   },
+   "melhor": 15
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Emiliano Martínez"
+ },
+ "Q328466": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "sporting": 86
+  },
+  "titulo": "Toñito"
+ },
+ "Q328869": {
+  "categorias": [
+   "selecao",
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "porto": 56
+  },
+  "internacionalizacoes": 16,
+  "titulo": "Rúben Micael"
+ },
+ "Q329533": {
+  "categorias": [
+   "selecao"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "internacionalizacoes": 18,
+  "titulo": "Duda (footballer, born 1980)"
+ },
+ "Q33297140": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2025": 22
+   },
+   "melhor": 22
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Alexis Mac Allister"
+ },
+ "Q342223": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "1996": 28
+   },
+   "melhor": 28
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Sergi Barjuán"
+ },
+ "Q343997": {
+  "categorias": [
+   "selecao",
+   "grandes"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "grandes": {
+   "sporting": 69
+  },
+  "internacionalizacoes": 25,
+  "titulo": "Marco Caneira"
+ },
+ "Q35009041": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "porto": 104
+  },
+  "titulo": "Stephen Eustáquio"
+ },
+ "Q350271": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2001": 18
+   },
+   "melhor": 18
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Damiano Tommasi"
+ },
+ "Q350616": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "benfica": 79
+  },
+  "titulo": "Adel Taarabt"
+ },
+ "Q351797": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "sporting": 66
+  },
+  "titulo": "Emiliano Insúa"
+ },
+ "Q351972": {
+  "categorias": [
+   "selecao",
+   "grandes"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "grandes": {
+   "benfica": 220,
+   "sporting": 115
+  },
+  "internacionalizacoes": 81,
+  "titulo": "João Pinto"
+ },
+ "Q353059": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "1998": 28
+   },
+   "melhor": 28
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Nikos Machlas"
+ },
+ "Q354346": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2001": 18
+   },
+   "melhor": 18
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Emmanuel Olisadebe"
+ },
+ "Q355193": {
+  "categorias": [
+   "selecao"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "internacionalizacoes": 25,
+  "titulo": "Vieirinha"
+ },
+ "Q356056": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "sporting": 113
+  },
+  "titulo": "Rodrigo Tello"
+ },
+ "Q356142": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "porto": 90
+  },
+  "titulo": "Jackson Martínez"
+ },
+ "Q35694605": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "benfica": 50
+  },
+  "titulo": "Carlos Vinícius"
+ },
+ "Q3571952": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2023": 13
+   },
+   "melhor": 13
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Yassine Bounou"
+ },
+ "Q357984": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2015": 18,
+    "2016": 20,
+    "2017": 14,
+    "2018": 9,
+    "2019": 14,
+    "2021": 8,
+    "2022": 3,
+    "2023": 4
+   },
+   "melhor": 3
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "titulo": "Kevin De Bruyne"
+ },
+ "Q359481": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "grandes": {
+   "porto": 232
+  },
+  "titulo": "Helton (footballer)"
+ },
+ "Q360213": {
+  "categorias": [
+   "selecao",
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "benfica": 79,
+   "sporting": 76
+  },
+  "internacionalizacoes": 17,
+  "titulo": "Carlos Martins (footballer)"
+ },
+ "Q36386": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "1999": 10
+   },
+   "melhor": 10
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "titulo": "Lothar Matthäus"
+ },
+ "Q366109": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "1999": 21
+   },
+   "melhor": 21
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Mario Basler"
+ },
+ "Q366493": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "1997": 24
+   },
+   "melhor": 24
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Olaf Thon"
+ },
+ "Q366571": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "1996": 19
+   },
+   "melhor": 19
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Kubilay Türkyilmaz"
+ },
+ "Q367644": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "grandes": {
+   "benfica": 166
+  },
+  "titulo": "Eduardo Salvio"
+ },
+ "Q368441": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2014": 8,
+    "2015": 19
+   },
+   "melhor": 8
+  },
+  "categorias": [
+   "bola_de_ouro",
+   "grandes"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "grandes": {
+   "porto": 63
+  },
+  "titulo": "James Rodríguez"
+ },
+ "Q368682": {
+  "categorias": [
+   "selecao",
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "benfica": 95
+  },
+  "internacionalizacoes": 14,
+  "titulo": "Ruben Amorim"
+ },
+ "Q3718523": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "porto": 77
+  },
+  "titulo": "Ricardo Pereira (footballer, born 1993)"
+ },
+ "Q3719405": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "porto": 59,
+   "sporting": 66
+  },
+  "titulo": "Edmílson (footballer, born 1971)"
+ },
+ "Q372379": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2019": 26
+   },
+   "melhor": 26
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Georginio Wijnaldum"
+ },
+ "Q372534": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "sporting": 82
+  },
+  "titulo": "Leandro Grimi"
+ },
+ "Q372605": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "grandes": {
+   "benfica": 152
+  },
+  "titulo": "Nicolás Gaitán"
+ },
+ "Q372755": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "sporting": 71
+  },
+  "titulo": "Leandro Romagnoli"
+ },
+ "Q3742942": {
+  "categorias": [
+   "selecao",
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "porto": 52,
+   "sporting": 115
+  },
+  "internacionalizacoes": 10,
+  "titulo": "Fernando Nélson"
+ },
+ "Q375496": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "sporting": 66
+  },
+  "titulo": "Fábio Rochemback"
+ },
+ "Q376063": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "porto": 64
+  },
+  "titulo": "Adriano (footballer, born January 1979)"
+ },
+ "Q376247": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2016": 17
+   },
+   "melhor": 17
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Dimitri Payet"
+ },
+ "Q376394": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "benfica": 68
+  },
+  "titulo": "Rodrigo (footballer, born 1991)"
+ },
+ "Q377544": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "sporting": 84
+  },
+  "titulo": "Bas Dost"
+ },
+ "Q377899": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "porto": 56
+  },
+  "titulo": "Cristian Săpunaru"
+ },
+ "Q379414": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "porto": 73
+  },
+  "titulo": "Mariano González"
+ },
+ "Q38000669": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2021": 19
+   },
+   "melhor": 19
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Mason Mount"
+ },
+ "Q380024": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "porto": 64
+  },
+  "titulo": "Edgaras Jankauskas"
+ },
+ "Q3807803": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "sporting": 88
+  },
+  "titulo": "Jefferson (footballer, born July 1988)"
+ },
+ "Q3810078": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2021": 3
+   },
+   "melhor": 3
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "titulo": "Jorginho (footballer, born December 1991)"
+ },
+ "Q3810496": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "porto": 58
+  },
+  "titulo": "Esquerdinha (footballer, born 1972)"
+ },
+ "Q38136": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2017": 16,
+    "2018": 22
+   },
+   "melhor": 16
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Marcelo (footballer, born 1988)"
+ },
+ "Q381384": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "sporting": 59
+  },
+  "titulo": "Marius Niculae"
+ },
+ "Q38218627": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "porto": 51
+  },
+  "titulo": "Diogo Leite (footballer, born 1999)"
+ },
+ "Q3844978": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "sporting": 58
+  },
+  "titulo": "Bino (footballer, born 1972)"
+ },
+ "Q3845912": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "sporting": 134
+  },
+  "titulo": "Marco Aurélio (footballer, born 1967)"
+ },
+ "Q386876": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2008": 12
+   },
+   "melhor": 12
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Emmanuel Adebayor"
+ },
+ "Q3869208": {
+  "categorias": [
+   "selecao"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "internacionalizacoes": 12,
+  "titulo": "Mário Rui"
+ },
+ "Q386973": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "benfica": 68
+  },
+  "titulo": "Basarab Panduru"
+ },
+ "Q3887042": {
+  "categorias": [
+   "selecao",
+   "grandes"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "grandes": {
+   "porto": 183
+  },
+  "internacionalizacoes": 22,
+  "titulo": "Otávio (footballer, born 1995)"
+ },
+ "Q39230": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2019": 28
+   },
+   "melhor": 28
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Marquinhos"
+ },
+ "Q3940027": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "sporting": 56
+  },
+  "titulo": "Rodrigo Battaglia"
+ },
+ "Q39444": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2002": 12,
+    "2003": 22,
+    "2004": 3,
+    "2005": 1,
+    "2006": 4,
+    "2007": 12
+   },
+   "melhor": 1
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "titulo": "Ronaldinho"
+ },
+ "Q40588348": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "porto": 68
+  },
+  "titulo": "Danny Namaso"
+ },
+ "Q41244": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "1999": 3,
+    "2000": 3,
+    "2001": 8,
+    "2003": 4,
+    "2004": 1,
+    "2005": 5
+   },
+   "melhor": 1
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "titulo": "Andriy Shevchenko"
+ },
+ "Q4125587": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "benfica": 72
+  },
+  "titulo": "Victor Lindelöf"
+ },
+ "Q41533": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2004": 17,
+    "2005": 2,
+    "2006": 17,
+    "2008": 15,
+    "2009": 21
+   },
+   "melhor": 2
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "titulo": "Frank Lampard"
+ },
+ "Q4241680": {
+  "categorias": [
+   "selecao"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "internacionalizacoes": 65,
+  "titulo": "Raphaël Guerreiro"
+ },
+ "Q42601": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "1999": 26
+   },
+   "melhor": 26
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "David Ginola"
+ },
+ "Q42731": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2008": 3,
+    "2009": 11
+   },
+   "melhor": 3
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "titulo": "Fernando Torres"
+ },
+ "Q428603": {
+  "categorias": [
+   "selecao",
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "sporting": 68
+  },
+  "internacionalizacoes": 19,
+  "titulo": "Luís Neto"
+ },
+ "Q429039": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "1997": 5,
+    "1998": 13,
+    "1999": 26,
+    "2000": 14,
+    "2001": 18,
+    "2002": 2,
+    "2003": 8
+   },
+   "melhor": 2
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "titulo": "Roberto Carlos"
+ },
+ "Q430865": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "porto": 65
+  },
+  "titulo": "Steven Defour"
+ },
+ "Q431526": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "sporting": 52
+  },
+  "titulo": "Emmanuel Amunike"
+ },
+ "Q433070": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "sporting": 77
+  },
+  "titulo": "Simon Vukčević"
+ },
+ "Q43666": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2010": 15,
+    "2011": 13,
+    "2013": 17,
+    "2014": 5,
+    "2015": 6,
+    "2016": 20
+   },
+   "melhor": 5
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "titulo": "Thomas Müller"
+ },
+ "Q43682": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2006": 25,
+    "2010": 22,
+    "2013": 14,
+    "2014": 6
+   },
+   "melhor": 6
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "titulo": "Philipp Lahm"
+ },
+ "Q43729": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2009": 4,
+    "2010": 2,
+    "2011": 4,
+    "2012": 3,
+    "2013": 6,
+    "2014": 17,
+    "2015": 9,
+    "2016": 20
+   },
+   "melhor": 2
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "titulo": "Andrés Iniesta"
+ },
+ "Q437329": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "porto": 91
+  },
+  "titulo": "Danilo (footballer, born July 1991)"
+ },
+ "Q43913": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2010": 14,
+    "2013": 8,
+    "2014": 4,
+    "2015": 22
+   },
+   "melhor": 4
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "titulo": "Arjen Robben"
+ },
+ "Q43926": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2006": 9,
+    "2007": 5,
+    "2012": 7,
+    "2013": 10
+   },
+   "melhor": 5
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "titulo": "Andrea Pirlo"
+ },
+ "Q439722": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2019": 22,
+    "2022": 11
+   },
+   "melhor": 11
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Son Heung-min"
+ },
+ "Q44073": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "1998": 28,
+    "2001": 11
+   },
+   "melhor": 11
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Bixente Lizarazu"
+ },
+ "Q44080929": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "sporting": 67
+  },
+  "titulo": "Pedro Porro"
+ },
+ "Q440999": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "benfica": 100
+  },
+  "titulo": "Ricardo Gomes"
+ },
+ "Q441224": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "porto": 69
+  },
+  "titulo": "Fernando Belluschi"
+ },
+ "Q442821": {
+  "categorias": [
+   "selecao"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "internacionalizacoes": 13,
+  "titulo": "Vitorino Antunes"
+ },
+ "Q44298": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2010": 16,
+    "2011": 15,
+    "2013": 17,
+    "2014": 18
+   },
+   "melhor": 15
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Bastian Schweinsteiger"
+ },
+ "Q44522": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "1999": 18,
+    "2001": 13
+   },
+   "melhor": 13
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Stefan Effenberg"
+ },
+ "Q447031": {
+  "categorias": [
+   "selecao",
+   "grandes"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "grandes": {
+   "sporting": 174
+  },
+  "internacionalizacoes": 45,
+  "titulo": "Ricardo Sá Pinto"
+ },
+ "Q447483": {
+  "categorias": [
+   "selecao",
+   "grandes"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "grandes": {
+   "porto": 263
+  },
+  "internacionalizacoes": 34,
+  "titulo": "Domingos Paciência"
+ },
+ "Q44815": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2001": 18
+   },
+   "melhor": 18
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Giovane Élber"
+ },
+ "Q448678": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "1996": 22
+   },
+   "melhor": 22
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Trifon Ivanov"
+ },
+ "Q44977": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2016": 11,
+    "2017": 21,
+    "2019": 20
+   },
+   "melhor": 11
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Pierre-Emerick Aubameyang"
+ },
+ "Q455462": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2016": 3,
+    "2017": 18,
+    "2018": 3,
+    "2019": 18,
+    "2023": 21
+   },
+   "melhor": 3
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "titulo": "Antoine Griezmann"
+ },
+ "Q45567": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2004": 17
+   },
+   "melhor": 17
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Fernando Morientes"
+ },
+ "Q45613": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2001": 28
+   },
+   "melhor": 28
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Paul Scholes"
+ },
+ "Q45626": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2002": 13,
+    "2003": 6,
+    "2004": 9,
+    "2007": 6,
+    "2008": 24
+   },
+   "melhor": 6
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "titulo": "Ruud van Nistelrooy"
+ },
+ "Q456617": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "benfica": 63
+  },
+  "titulo": "Nolito"
+ },
+ "Q45901": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2000": 4,
+    "2001": 9,
+    "2002": 6,
+    "2003": 2,
+    "2004": 4,
+    "2005": 4,
+    "2006": 3,
+    "2007": 19,
+    "2009": 15
+   },
+   "melhor": 2
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "titulo": "Thierry Henry"
+ },
+ "Q459707": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2014": 11
+   },
+   "melhor": 11
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Diego Costa"
+ },
+ "Q459830": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2001": 25,
+    "2005": 3,
+    "2007": 13,
+    "2008": 10,
+    "2009": 10
+   },
+   "melhor": 3
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "titulo": "Steven Gerrard"
+ },
+ "Q46347": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2001": 28,
+    "2002": 15,
+    "2006": 14
+   },
+   "melhor": 14
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Patrick Vieira"
+ },
+ "Q46372260": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2022": 20
+   },
+   "melhor": 20
+  },
+  "categorias": [
+   "bola_de_ouro",
+   "grandes"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "grandes": {
+   "benfica": 57
+  },
+  "titulo": "Darwin Núñez"
+ },
+ "Q464815": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "benfica": 101
+  },
+  "titulo": "Mantorras"
+ },
+ "Q46502": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "1999": 8,
+    "2000": 27,
+    "2001": 16
+   },
+   "melhor": 8
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "titulo": "Juan Sebastián Verón"
+ },
+ "Q465049": {
+  "categorias": [
+   "selecao",
+   "grandes"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "grandes": {
+   "porto": 251
+  },
+  "internacionalizacoes": 50,
+  "titulo": "Jorge Costa"
+ },
+ "Q4689382": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "sporting": 66
+  },
+  "titulo": "Afonso Martins"
+ },
+ "Q46896": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2003": 20,
+    "2004": 14,
+    "2005": 8,
+    "2007": 7,
+    "2008": 8,
+    "2009": 7,
+    "2012": 10,
+    "2013": 4,
+    "2014": 13,
+    "2015": 11,
+    "2016": 13
+   },
+   "melhor": 4
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "titulo": "Zlatan Ibrahimović"
+ },
+ "Q470246": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "sporting": 52
+  },
+  "titulo": "Mbo Mpenza"
+ },
+ "Q47075606": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2025": 15
+   },
+   "melhor": 15
+  },
+  "categorias": [
+   "bola_de_ouro",
+   "grandes"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "grandes": {
+   "sporting": 66
+  },
+  "titulo": "Viktor Gyökeres"
+ },
+ "Q47230": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2008": 6,
+    "2009": 21
+   },
+   "melhor": 6
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "titulo": "Andrey Arshavin"
+ },
+ "Q4755614": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "benfica": 132
+  },
+  "titulo": "Andreas Samaris"
+ },
+ "Q4759899": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "porto": 65
+  },
+  "titulo": "André André"
+ },
+ "Q481330": {
+  "categorias": [
+   "selecao",
+   "grandes"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "grandes": {
+   "sporting": 67
+  },
+  "internacionalizacoes": 34,
+  "titulo": "Cédric Soares"
+ },
+ "Q482602": {
+  "categorias": [
+   "selecao",
+   "grandes"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "grandes": {
+   "sporting": 241
+  },
+  "internacionalizacoes": 31,
+  "titulo": "Beto (footballer, born May 1976)"
+ },
+ "Q482947": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2011": 22
+   },
+   "melhor": 22
+  },
+  "categorias": [
+   "bola_de_ouro",
+   "selecao",
+   "grandes"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "grandes": {
+   "sporting": 103
+  },
+  "internacionalizacoes": 112,
+  "titulo": "Nani (footballer)"
+ },
+ "Q482955": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2008": 24
+   },
+   "melhor": 24
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Edwin van der Sar"
+ },
+ "Q483027": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "1996": 22,
+    "2000": 10,
+    "2003": 3,
+    "2004": 28,
+    "2005": 6,
+    "2007": 18
+   },
+   "melhor": 3
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "titulo": "Paolo Maldini"
+ },
+ "Q483137": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2005": 14,
+    "2007": 19
+   },
+   "melhor": 14
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Petr Čech"
+ },
+ "Q483145": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "1996": 28,
+    "1997": 14,
+    "1999": 5,
+    "2000": 1,
+    "2001": 6,
+    "2002": 19,
+    "2004": 22
+   },
+   "melhor": 1
+  },
+  "categorias": [
+   "bola_de_ouro",
+   "selecao"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "internacionalizacoes": 127,
+  "titulo": "Luís Figo"
+ },
+ "Q483309": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2008": 21,
+    "2012": 18,
+    "2014": 23,
+    "2016": 20,
+    "2017": 6,
+    "2018": 19
+   },
+   "melhor": 6
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "titulo": "Sergio Ramos"
+ },
+ "Q483417": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2001": 28,
+    "2002": 21
+   },
+   "melhor": 21
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Rio Ferdinand"
+ },
+ "Q483577": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "1998": 5,
+    "1999": 1,
+    "2000": 6,
+    "2001": 7,
+    "2002": 8
+   },
+   "melhor": 1
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "titulo": "Rivaldo"
+ },
+ "Q483583": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "1996": 3,
+    "1997": 19
+   },
+   "melhor": 3
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "titulo": "Alan Shearer"
+ },
+ "Q483837": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2016": 17,
+    "2017": 5,
+    "2018": 1,
+    "2021": 29,
+    "2022": 9,
+    "2023": 10
+   },
+   "melhor": 1
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "titulo": "Luka Modrić"
+ },
+ "Q483846": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2016": 20
+   },
+   "melhor": 20
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Gonzalo Higuaín"
+ },
+ "Q484384": {
+  "categorias": [
+   "selecao",
+   "grandes"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "grandes": {
+   "benfica": 52
+  },
+  "internacionalizacoes": 52,
+  "titulo": "Fábio Coentrão"
+ },
+ "Q484909": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "1997": 17,
+    "1998": 23,
+    "2007": 19
+   },
+   "melhor": 17
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Clarence Seedorf"
+ },
+ "Q485697": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2008": 26,
+    "2016": 9
+   },
+   "melhor": 9
+  },
+  "categorias": [
+   "bola_de_ouro",
+   "selecao",
+   "grandes"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "grandes": {
+   "porto": 196
+  },
+  "internacionalizacoes": 141,
+  "titulo": "Pepe (footballer, born February 1983)"
+ },
+ "Q4888740": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "benfica": 56
+  },
+  "titulo": "Chano (footballer, born 1965)"
+ },
+ "Q48892": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2004": 17,
+    "2005": 14,
+    "2006": 8,
+    "2007": 4,
+    "2008": 21,
+    "2009": 9,
+    "2010": 9,
+    "2012": 8
+   },
+   "melhor": 4
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "titulo": "Didier Drogba"
+ },
+ "Q489039": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2018": 7
+   },
+   "melhor": 7
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "titulo": "Raphaël Varane"
+ },
+ "Q489111": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "sporting": 118
+  },
+  "titulo": "Antonio Adán"
+ },
+ "Q490729": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "benfica": 57
+  },
+  "titulo": "Anders Andersson (footballer)"
+ },
+ "Q491506": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "benfica": 73
+  },
+  "titulo": "Anderson (footballer, born 1980)"
+ },
+ "Q492484": {
+  "categorias": [
+   "selecao",
+   "grandes"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "grandes": {
+   "sporting": 125
+  },
+  "internacionalizacoes": 79,
+  "titulo": "Ricardo (footballer, born 1976)"
+ },
+ "Q49704": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2012": 20
+   },
+   "melhor": 20
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Sergio Busquets"
+ },
+ "Q4979316": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2021": 21
+   },
+   "melhor": 21
+  },
+  "categorias": [
+   "bola_de_ouro",
+   "selecao",
+   "grandes"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "grandes": {
+   "sporting": 83
+  },
+  "internacionalizacoes": 97,
+  "titulo": "Bruno Fernandes"
+ },
+ "Q50069716": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "porto": 51
+  },
+  "titulo": "Romário Baró"
+ },
+ "Q5024": {
+  "categorias": [
+   "selecao"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "internacionalizacoes": 20,
+  "titulo": "Abel Xavier"
+ },
+ "Q503365": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "benfica": 115
+  },
+  "titulo": "Ricardo Rocha (footballer, born 1978)"
+ },
+ "Q5042329": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "sporting": 62
+  },
+  "titulo": "Carlos Mané"
+ },
+ "Q5042331": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "benfica": 52
+  },
+  "titulo": "Carlitos (footballer, born 1977)"
+ },
+ "Q50600": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2007": 30
+   },
+   "melhor": 30
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Carlos Tevez"
+ },
+ "Q50622134": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "benfica": 77
+  },
+  "titulo": "Arthur Cabral"
+ },
+ "Q507890": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "sporting": 62
+  },
+  "titulo": "Marcos Rojo"
+ },
+ "Q50827917": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "benfica": 60
+  },
+  "titulo": "Leandro Barreiro"
+ },
+ "Q508711": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "1996": 18,
+    "1997": 17,
+    "1998": 18
+   },
+   "melhor": 17
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Didier Deschamps"
+ },
+ "Q510123": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "sporting": 65
+  },
+  "titulo": "Elias (footballer, born 1985)"
+ },
+ "Q511763": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "benfica": 72
+  },
+  "titulo": "Nélson Marcos"
+ },
+ "Q514427": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2024": 16
+   },
+   "melhor": 16
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Granit Xhaka"
+ },
+ "Q519008": {
+  "categorias": [
+   "selecao"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "internacionalizacoes": 29,
+  "titulo": "André Gomes"
+ },
+ "Q526233": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "porto": 84
+  },
+  "titulo": "Dmitri Alenichev"
+ },
+ "Q526497": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "sporting": 98
+  },
+  "titulo": "Yannick Djaló"
+ },
+ "Q529207": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "1996": 2,
+    "1997": 1,
+    "1998": 3,
+    "1999": 23,
+    "2002": 1,
+    "2003": 11
+   },
+   "melhor": 1
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "titulo": "Ronaldo (Brazilian footballer)"
+ },
+ "Q531814": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2004": 15,
+    "2005": 9,
+    "2006": 11,
+    "2007": 1,
+    "2008": 9,
+    "2009": 6
+   },
+   "melhor": 1
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "titulo": "Kaká"
+ },
+ "Q533712": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "porto": 57
+  },
+  "titulo": "Carlos Paredes (footballer)"
+ },
+ "Q537568": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "1996": 26
+   },
+   "melhor": 26
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Radek Bejbl"
+ },
+ "Q54055": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "porto": 57
+  },
+  "titulo": "Cristian Tello"
+ },
+ "Q5427726": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "porto": 74
+  },
+  "titulo": "Fabiano Freitas"
+ },
+ "Q5444829": {
+  "categorias": [
+   "selecao",
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "porto": 61
+  },
+  "internacionalizacoes": 11,
+  "titulo": "Fernando Mendes (footballer, born 1966)"
+ },
+ "Q54858384": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "grandes": {
+   "porto": 165
+  },
+  "titulo": "Pepê (footballer, born 1997)"
+ },
+ "Q551192": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "porto": 87
+  },
+  "titulo": "Alex Sandro"
+ },
+ "Q552097": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "benfica": 55
+  },
+  "titulo": "Ola John"
+ },
+ "Q554591": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "sporting": 56
+  },
+  "titulo": "Ronny (footballer, born 1986)"
+ },
+ "Q5550103": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2021": 26
+   },
+   "melhor": 26
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Gerard Moreno"
+ },
+ "Q55761514": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "sporting": 85
+  },
+  "titulo": "Morten Hjulmand"
+ },
+ "Q560329": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "porto": 116
+  },
+  "titulo": "Maicon (footballer, born September 1988)"
+ },
+ "Q56254739": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "sporting": 112
+  },
+  "titulo": "Hidemasa Morita"
+ },
+ "Q56289593": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "grandes": {
+   "sporting": 165
+  },
+  "titulo": "Pedro Gonçalves"
+ },
+ "Q56308263": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "porto": 52
+  },
+  "titulo": "Francisco Moura"
+ },
+ "Q56788302": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "benfica": 60
+  },
+  "titulo": "Orkun Kökçü"
+ },
+ "Q56868118": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2024": 24
+   },
+   "melhor": 24
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "William Saliba"
+ },
+ "Q57079": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "1996": 5
+   },
+   "melhor": 5
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "titulo": "Jürgen Klinsmann"
+ },
+ "Q570811": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2004": 9
+   },
+   "melhor": 9
+  },
+  "categorias": [
+   "bola_de_ouro",
+   "selecao",
+   "grandes"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "grandes": {
+   "porto": 73
+  },
+  "internacionalizacoes": 89,
+  "titulo": "Ricardo Carvalho"
+ },
+ "Q57114": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2006": 10
+   },
+   "melhor": 10
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "titulo": "Jens Lehmann"
+ },
+ "Q57183": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "1996": 1,
+    "1997": 10
+   },
+   "melhor": 1
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "titulo": "Matthias Sammer"
+ },
+ "Q57408482": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "benfica": 80
+  },
+  "titulo": "Alexander Bah"
+ },
+ "Q5742529": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "porto": 52
+  },
+  "titulo": "Hernâni Fortes"
+ },
+ "Q579231": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "porto": 51
+  },
+  "titulo": "Eliaquim Mangala"
+ },
+ "Q58011167": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "sporting": 59
+  },
+  "titulo": "Maximiliano Araújo"
+ },
+ "Q584219": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "sporting": 84
+  },
+  "titulo": "César Prates"
+ },
+ "Q58441": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2007": 9
+   },
+   "melhor": 9
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "titulo": "Robinho"
+ },
+ "Q59306386": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2023": 24,
+    "2024": 21
+   },
+   "melhor": 21
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Bukayo Saka"
+ },
+ "Q59381180": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2023": 7
+   },
+   "melhor": 7
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "titulo": "Julián Alvarez"
+ },
+ "Q59655998": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2023": 28
+   },
+   "melhor": 28
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Randal Kolo Muani"
+ },
+ "Q599675": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "1996": 11,
+    "1999": 23
+   },
+   "melhor": 11
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Nwankwo Kanu"
+ },
+ "Q602525": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2018": 19,
+    "2019": 17
+   },
+   "melhor": 17
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Roberto Firmino"
+ },
+ "Q60621615": {
+  "categorias": [
+   "selecao",
+   "grandes"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "grandes": {
+   "benfica": 64
+  },
+  "internacionalizacoes": 31,
+  "titulo": "Gonçalo Ramos"
+ },
+ "Q60676442": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "porto": 116
+  },
+  "titulo": "João Mário (footballer, born 2000)"
+ },
+ "Q607790": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "grandes": {
+   "porto": 192
+  },
+  "titulo": "Jesús Manuel Corona"
+ },
+ "Q611923": {
+  "categorias": [
+   "selecao",
+   "grandes"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "grandes": {
+   "benfica": 234
+  },
+  "internacionalizacoes": 17,
+  "titulo": "Pizzi (Portuguese footballer)"
+ },
+ "Q614199": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "sporting": 65
+  },
+  "titulo": "Roudolphe Douala"
+ },
+ "Q6147586": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2016": 8
+   },
+   "melhor": 8
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "titulo": "Jamie Vardy"
+ },
+ "Q615": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2006": 20,
+    "2007": 3,
+    "2008": 2,
+    "2009": 1,
+    "2010": 1,
+    "2011": 1,
+    "2012": 1,
+    "2013": 2,
+    "2014": 2,
+    "2015": 1,
+    "2016": 2,
+    "2017": 2,
+    "2018": 5,
+    "2019": 1,
+    "2021": 1,
+    "2023": 1
+   },
+   "melhor": 1
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "titulo": "Lionel Messi"
+ },
+ "Q616664": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2022": 17
+   },
+   "melhor": 17
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Casemiro"
+ },
+ "Q61741633": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "benfica": 92
+  },
+  "titulo": "Anatoliy Trubin"
+ },
+ "Q61744153": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "porto": 51
+  },
+  "titulo": "Jakub Kiwior"
+ },
+ "Q61780902": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2023": 17,
+    "2025": 12
+   },
+   "melhor": 12
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Khvicha Kvaratskhelia"
+ },
+ "Q61978222": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "sporting": 107
+  },
+  "titulo": "Daniel Bragança"
+ },
+ "Q62050484": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2025": 30
+   },
+   "melhor": 30
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Michael Olise"
+ },
+ "Q624": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "1996": 4,
+    "1997": 19,
+    "1998": 16,
+    "2001": 28,
+    "2002": 10,
+    "2003": 13
+   },
+   "melhor": 4
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "titulo": "Alessandro Del Piero"
+ },
+ "Q62786": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "porto": 99
+  },
+  "titulo": "Hulk (footballer)"
+ },
+ "Q6291660": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "porto": 57
+  },
+  "titulo": "José Barroso (footballer)"
+ },
+ "Q6298063": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2022": 20
+   },
+   "melhor": 20
+  },
+  "categorias": [
+   "bola_de_ouro",
+   "selecao"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "internacionalizacoes": 77,
+  "titulo": "João Cancelo"
+ },
+ "Q6298271": {
+  "categorias": [
+   "selecao",
+   "grandes"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "grandes": {
+   "benfica": 94,
+   "sporting": 93
+  },
+  "internacionalizacoes": 56,
+  "titulo": "João Mário (footballer, born January 1993)"
+ },
+ "Q6298297": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "sporting": 96
+  },
+  "titulo": "Paulinho (footballer, born November 1992)"
+ },
+ "Q63032399": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "porto": 80
+  },
+  "titulo": "Fábio Vieira (footballer, born 2000)"
+ },
+ "Q641425": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2022": 14
+   },
+   "melhor": 14
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Fabinho (footballer, born 1993)"
+ },
+ "Q659634": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2003": 13,
+    "2004": 2,
+    "2006": 11
+   },
+   "melhor": 2
+  },
+  "categorias": [
+   "bola_de_ouro",
+   "selecao",
+   "grandes"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "grandes": {
+   "porto": 148
+  },
+  "internacionalizacoes": 75,
+  "titulo": "Deco"
+ },
+ "Q660159": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "porto": 58
+  },
+  "titulo": "Evandro (footballer, born 1986)"
+ },
+ "Q66241169": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2023": 18,
+    "2024": 3,
+    "2025": 23
+   },
+   "melhor": 3
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "titulo": "Jude Bellingham"
+ },
+ "Q66606355": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2021": 24,
+    "2025": 11
+   },
+   "melhor": 11
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Pedri"
+ },
+ "Q667306": {
+  "categorias": [
+   "selecao",
+   "grandes"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "grandes": {
+   "benfica": 164
+  },
+  "internacionalizacoes": 35,
+  "titulo": "Hélder (footballer, born 1971)"
+ },
+ "Q66818142": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "porto": 54
+  },
+  "titulo": "Gonçalo Borges"
+ },
+ "Q66818509": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2024": 27
+   },
+   "melhor": 27
+  },
+  "categorias": [
+   "bola_de_ouro",
+   "selecao",
+   "grandes",
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "grandes": {
+   "porto": 59
+  },
+  "internacionalizacoes": 47,
+  "titulo": "Vitinha"
+ },
+ "Q6706739": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "benfica": 53
+  },
+  "titulo": "Luís Andrade"
+ },
+ "Q6706751": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "benfica": 54
+  },
+  "titulo": "Luís Carlos (footballer, born 1972)"
+ },
+ "Q67616315": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "porto": 96
+  },
+  "titulo": "Zaidu Sanusi"
+ },
+ "Q67671549": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "sporting": 87
+  },
+  "titulo": "Geny Catamo"
+ },
+ "Q67964": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2001": 25
+   },
+   "melhor": 25
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Roberto Baggio"
+ },
+ "Q68060": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2001": 28,
+    "2003": 9,
+    "2004": 17,
+    "2005": 19,
+    "2006": 2,
+    "2007": 19,
+    "2008": 18,
+    "2012": 16,
+    "2016": 9,
+    "2017": 4
+   },
+   "melhor": 2
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "titulo": "Gianluigi Buffon"
+ },
+ "Q69975567": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "porto": 96
+  },
+  "titulo": "Evanilson (footballer, born 1999)"
+ },
+ "Q703983": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "porto": 57
+  },
+  "titulo": "Derlei"
+ },
+ "Q704725": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "sporting": 117
+  },
+  "titulo": "Tonel"
+ },
+ "Q710207": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "porto": 57
+  },
+  "titulo": "Tarik Sektioui"
+ },
+ "Q710788": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "benfica": 112
+  },
+  "titulo": "José Moreira"
+ },
+ "Q713719": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "benfica": 60,
+   "sporting": 69
+  },
+  "titulo": "Bruno César"
+ },
+ "Q713895": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2019": 20
+   },
+   "melhor": 20
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Dušan Tadić"
+ },
+ "Q7155269": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "sporting": 59
+  },
+  "titulo": "Paulo Oliveira"
+ },
+ "Q7159755": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "sporting": 77
+  },
+  "titulo": "Pedro Martins (Portuguese footballer)"
+ },
+ "Q717999": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "benfica": 114
+  },
+  "titulo": "Ljubomir Fejsa"
+ },
+ "Q718284": {
+  "categorias": [
+   "selecao",
+   "grandes"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "grandes": {
+   "porto": 215
+  },
+  "internacionalizacoes": 35,
+  "titulo": "Carlos Secretário"
+ },
+ "Q718765": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "porto": 66
+  },
+  "titulo": "Sergei Ovchinnikov (footballer, born 1970)"
+ },
+ "Q719334": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "benfica": 54
+  },
+  "titulo": "Lisandro López (footballer, born 1989)"
+ },
+ "Q721546": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "benfica": 60
+  },
+  "titulo": "Tomo Šokota"
+ },
+ "Q724757": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "benfica": 56
+  },
+  "titulo": "Nuno Assis"
+ },
+ "Q724769": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "benfica": 55
+  },
+  "titulo": "Martin Pringle"
+ },
+ "Q725768": {
+  "categorias": [
+   "selecao",
+   "grandes"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "grandes": {
+   "benfica": 68
+  },
+  "internacionalizacoes": 44,
+  "titulo": "Dimas (footballer)"
+ },
+ "Q726547": {
+  "categorias": [
+   "selecao",
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "sporting": 110
+  },
+  "internacionalizacoes": 15,
+  "titulo": "José Luís Vidigal"
+ },
+ "Q7272040": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "sporting": 64
+  },
+  "titulo": "Quim Berto"
+ },
+ "Q72802": {
+  "categorias": [
+   "selecao",
+   "grandes"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "grandes": {
+   "benfica": 75
+  },
+  "internacionalizacoes": 29,
+  "titulo": "Eliseu"
+ },
+ "Q73360": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2014": 20,
+    "2018": 14,
+    "2022": 7
+   },
+   "melhor": 7
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "titulo": "Thibaut Courtois"
+ },
+ "Q73400656": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2023": 25
+   },
+   "melhor": 25
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Joško Gvardiol"
+ },
+ "Q735137": {
+  "categorias": [
+   "selecao",
+   "grandes"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "grandes": {
+   "porto": 168
+  },
+  "internacionalizacoes": 36,
+  "titulo": "Rui Barros"
+ },
+ "Q7378694": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "sporting": 55
+  },
+  "titulo": "Rui Bento"
+ },
+ "Q74223837": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "benfica": 52
+  },
+  "titulo": "Samuel Dahl"
+ },
+ "Q7486708": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "sporting": 52
+  },
+  "titulo": "Luís Miguel (footballer, born 1971)"
+ },
+ "Q76322": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2002": 9
+   },
+   "melhor": 9
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "titulo": "Yıldıray Baştürk"
+ },
+ "Q763465": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2024": 20
+   },
+   "melhor": 20
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Hakan Çalhanoğlu"
+ },
+ "Q766289": {
+  "categorias": [
+   "selecao",
+   "grandes"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "grandes": {
+   "porto": 135
+  },
+  "internacionalizacoes": 74,
+  "titulo": "Danilo Pereira"
+ },
+ "Q7665927": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2022": 13
+   },
+   "melhor": 13
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Sébastien Haller"
+ },
+ "Q767469": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "porto": 148
+  },
+  "titulo": "Yacine Brahimi"
+ },
+ "Q771352": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "porto": 54
+  },
+  "titulo": "Rui Correia"
+ },
+ "Q772371": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "sporting": 91
+  },
+  "titulo": "Daniel Carriço"
+ },
+ "Q777488": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "grandes": {
+   "porto": 217
+  },
+  "titulo": "José Semedo (footballer, born 1965)"
+ },
+ "Q7822898": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "porto": 89
+  },
+  "titulo": "Toni Martínez"
+ },
+ "Q794914": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "sporting": 111
+  },
+  "titulo": "Ricardo Esgaio"
+ },
+ "Q80306": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2021": 12
+   },
+   "melhor": 12
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Giorgio Chiellini"
+ },
+ "Q80471": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2006": 7,
+    "2010": 21
+   },
+   "melhor": 7
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "titulo": "Miroslav Klose"
+ },
+ "Q80892": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2017": 12,
+    "2018": 29
+   },
+   "melhor": 12
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Isco"
+ },
+ "Q83006": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2006": 25,
+    "2008": 7,
+    "2009": 26,
+    "2010": 8,
+    "2011": 14
+   },
+   "melhor": 7
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "titulo": "David Villa"
+ },
+ "Q8338725": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2016": 7,
+    "2019": 10,
+    "2021": 19,
+    "2022": 12
+   },
+   "melhor": 7
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "titulo": "Riyad Mahrez"
+ },
+ "Q83456": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2005": 10,
+    "2006": 20,
+    "2009": 26
+   },
+   "melhor": 10
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "titulo": "John Terry"
+ },
+ "Q83488": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2010": 13,
+    "2011": 11,
+    "2012": 14,
+    "2013": 16
+   },
+   "melhor": 11
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Mesut Özil"
+ },
+ "Q83721": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "sporting": 61
+  },
+  "titulo": "Abdelilah Saber"
+ },
+ "Q84381": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "sporting": 55
+  },
+  "titulo": "Aldo Duscher"
+ },
+ "Q84810924": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "benfica": 66
+  },
+  "titulo": "Petar Musa"
+ },
+ "Q91531": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "grandes": {
+   "benfica": 151
+  },
+  "titulo": "Odysseas Vlachodimos"
+ },
+ "Q921324": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2024": 28
+   },
+   "melhor": 28
+  },
+  "categorias": [
+   "bola_de_ouro",
+   "grandes"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "grandes": {
+   "benfica": 197
+  },
+  "titulo": "Álex Grimaldo"
+ },
+ "Q921947": {
+  "categorias": [
+   "selecao"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "internacionalizacoes": 23,
+  "titulo": "Silvino Louro"
+ },
+ "Q922118": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "benfica": 89
+  },
+  "titulo": "Lima (footballer, born 1983)"
+ },
+ "Q926353": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "benfica": 70
+  },
+  "titulo": "Enzo Pérez"
+ },
+ "Q932932": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "grandes": {
+   "benfica": 50,
+   "porto": 225
+  },
+  "titulo": "Ljubinko Drulović"
+ },
+ "Q933886": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "porto": 119
+  },
+  "titulo": "Pedro Emanuel"
+ },
+ "Q934127": {
+  "categorias": [
+   "selecao",
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "sporting": 68
+  },
+  "internacionalizacoes": 13,
+  "titulo": "Paulo Alves (footballer, born 1969)"
+ },
+ "Q9354": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "1997": 15
+   },
+   "melhor": 15
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Gianfranco Zola"
+ },
+ "Q937157": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "benfica": 138
+  },
+  "titulo": "Valdo (footballer, born 1964)"
+ },
+ "Q938963": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "porto": 57
+  },
+  "titulo": "Ibson"
+ },
+ "Q942727": {
+  "categorias": [
+   "selecao",
+   "grandes"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "grandes": {
+   "sporting": 259
+  },
+  "internacionalizacoes": 22,
+  "titulo": "Pedro Barbosa"
+ },
+ "Q94699949": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2024": 12,
+    "2025": 29
+   },
+   "melhor": 12
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Florian Wirtz"
+ },
+ "Q949015": {
+  "categorias": [
+   "selecao"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "internacionalizacoes": 17,
+  "titulo": "Nuno Frechaut"
+ },
+ "Q951342": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2001": 28
+   },
+   "melhor": 28
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Samuel Kuffour"
+ },
+ "Q951958": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "benfica": 138
+  },
+  "titulo": "José Calado"
+ },
+ "Q955237": {
+  "categorias": [
+   "selecao",
+   "grandes"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "grandes": {
+   "porto": 86,
+   "sporting": 191
+  },
+  "internacionalizacoes": 45,
+  "titulo": "Rui Jorge"
+ },
+ "Q96064959": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "sporting": 72
+  },
+  "titulo": "Eduardo Quaresma"
+ },
+ "Q96072055": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2023": 26
+   },
+   "melhor": 26
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Jamal Musiala"
+ },
+ "Q9613708": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "benfica": 53
+  },
+  "titulo": "Talisca"
+ },
+ "Q96211488": {
+  "categorias": [
+   "selecao",
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "sporting": 76
+  },
+  "internacionalizacoes": 21,
+  "titulo": "Matheus Nunes"
+ },
+ "Q96396963": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2025": 10
+   },
+   "melhor": 10
+  },
+  "categorias": [
+   "bola_de_ouro",
+   "selecao",
+   "grandes"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "grandes": {
+   "sporting": 56
+  },
+  "internacionalizacoes": 53,
+  "titulo": "Nuno Mendes (footballer, born 2002)"
+ },
+ "Q96755": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2022": 20,
+    "2024": 22
+   },
+   "melhor": 20
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Antonio Rüdiger"
+ },
+ "Q969520": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2005": 22,
+    "2007": 24
+   },
+   "melhor": 22
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "Michael Essien"
+ },
+ "Q969725": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2017": 10,
+    "2018": 10,
+    "2021": 23,
+    "2022": 20,
+    "2023": 19,
+    "2024": 10,
+    "2025": 13
+   },
+   "melhor": 10
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "titulo": "Harry Kane"
+ },
+ "Q970801": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "sporting": 87
+  },
+  "titulo": "Fredy Montero"
+ },
+ "Q973416": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "porto": 142
+  },
+  "titulo": "Fernando (footballer, born 1987)"
+ },
+ "Q973903": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "porto": 57
+  },
+  "titulo": "Cândido Costa"
+ },
+ "Q973942": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "porto": 73
+  },
+  "titulo": "Tomás Costa"
+ },
+ "Q97725322": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "benfica": 58
+  },
+  "titulo": "Kerem Aktürkoğlu"
+ },
+ "Q981657": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "benfica": 65,
+   "porto": 55
+  },
+  "titulo": "César Peixoto"
+ },
+ "Q984373": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "porto": 56
+  },
+  "titulo": "Jorginho (footballer, born 1977)"
+ },
+ "Q988626": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2002": 21
+   },
+   "melhor": 21
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "titulo": "El Hadji Diouf"
+ },
+ "Q99485150": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "porto": 63
+  },
+  "titulo": "Gabri Veiga"
+ },
+ "Q99617294": {
+  "categorias": [
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "benfica": 66
+  },
+  "titulo": "Tomás Araújo"
+ },
+ "Q99617367": {
+  "categorias": [
+   "selecao",
+   "grandes"
+  ],
+  "conhecido": false,
+  "diario": false,
+  "grandes": {
+   "porto": 66
+  },
+  "internacionalizacoes": 23,
+  "titulo": "Francisco Conceição"
+ },
+ "Q99760796": {
+  "bola_de_ouro": {
+   "edicoes": {
+    "2024": 25,
+    "2025": 8
+   },
+   "melhor": 8
+  },
+  "categorias": [
+   "bola_de_ouro"
+  ],
+  "conhecido": true,
+  "diario": true,
+  "titulo": "Cole Palmer"
+ },
+ "Q99955331": {
+  "categorias": [
+   "selecao",
+   "grandes"
+  ],
+  "conhecido": true,
+  "diario": false,
+  "grandes": {
+   "sporting": 177
+  },
+  "internacionalizacoes": 22,
+  "titulo": "Gonçalo Inácio"
+ }
+}

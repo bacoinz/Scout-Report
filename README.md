@@ -17,7 +17,7 @@ O projeto tem três partes:
 ## Estado
 
 - [x] Passo 1 — tema partilhado e mockup do relatório de olheiro (`docs/tema-partilhado.md`, `docs/capturas/`)
-- [ ] Passo 2 — pipeline com uma amostra de 30 jogadores e relatório de qualidade
+- [x] Passo 2 — pipeline com uma amostra de 30 jogadores e relatório de qualidade
 - [ ] Passo 3 — lista dos míticos e processamento completo
 - [ ] Passo 4 — jogo: salas, rotação, perguntas, fichas, pontuação, palpites
 - [ ] Passo 5 — Ronda Joker
@@ -47,6 +47,7 @@ py -3.12 -m venv .venv
 .venv/Scripts/python -m scout tm descarregar      # uma vez: transfermarkt-datasets (CC0, ~180 MB) → .cache/tm/
 .venv/Scripts/python -m scout tm preparar         # → .cache/tm/tm.sqlite
 .venv/Scripts/python -m scout paises              # → partilhado/paises.json
+.venv/Scripts/python -m scout sementes            # quem entra na base → dados/candidatos.json
 .venv/Scripts/python -m scout recolher --amostra  # os 30 da amostra → dados/jogadores/<QID>.json
 .venv/Scripts/python -m scout curiosidades        # Ollama local com o gemma4:12b (ver abaixo)
 .venv/Scripts/python -m scout validar

@@ -371,8 +371,8 @@ def _grelha(corpo: str) -> list[tuple[bool, list[str]]]:
             if not linha or linha.startswith("|+"):
                 continue
             if linha[0] in "|!":
-                if cabecalho is None:
-                    cabecalho = linha[0] == "!"
+                # Cabeçalho só se todas as células o forem ("!2" seguido de "|[[Vitinha]]" é uma linha de dados).
+                cabecalho = (linha[0] == "!") if cabecalho is None else (cabecalho and linha[0] == "!")
                 celulas += re.split(r"\|\||!!", linha[1:])
             elif celulas:
                 celulas[-1] += "\n" + linha

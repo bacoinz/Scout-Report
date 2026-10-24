@@ -36,6 +36,20 @@ def cmd_paises(args):
     print(f"{len(dados['paises'])} países → {paises.escrever(dados)}")
 
 
+def cmd_sementes(args):
+    from . import sementes
+    candidatos = sementes.gerar(_cliente(), registar=lambda s: print(s, flush=True))
+    caminho = sementes.escrever(candidatos)
+    cats = {}
+    for d in candidatos.values():
+        for c in d["categorias"]:
+            cats[c] = cats.get(c, 0) + 1
+    print(f"{len(candidatos)} candidatos → {caminho}")
+    print("  por categoria: " + ", ".join(f"{k} {v}" for k, v in sorted(cats.items())))
+    print(f"  conhecidos: {sum(d['conhecido'] for d in candidatos.values())} · "
+          f"Desafio do Dia: {sum(d['diario'] for d in candidatos.values())}")
+
+
 def cmd_recolher(args):
     from . import recolha
     from .fontes import transfermarkt as tm
@@ -125,6 +139,7 @@ def main(argv=None):
     s.add_argument("acao", choices=["descarregar", "preparar"])
     s.set_defaults(f=cmd_tm)
     sub.add_parser("paises", help="gera partilhado/paises.json").set_defaults(f=cmd_paises)
+    sub.add_parser("sementes", help="quem entra na base → dados/candidatos.json").set_defaults(f=cmd_sementes)
     s = sub.add_parser("recolher", help="recolhe jogadores para dados/jogadores/")
     s.add_argument("--amostra", action="store_true", help="os 30 jogadores da amostra")
     s.add_argument("--titulo", action="append", help="artigo da Wikipédia inglesa (repetível)")
