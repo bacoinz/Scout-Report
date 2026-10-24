@@ -8,6 +8,7 @@ import time
 from . import config
 from .fontes import wikidata as wd
 from .fontes import wikipedia as wp
+from .http import BloqueioAntiBot
 from .jogador import Contexto, construir
 
 # Amostra do passo 2 (plano, 1.6): artigos da Wikipédia inglesa.
@@ -39,6 +40,24 @@ def _ajustar(registo: dict, ajustes: dict) -> dict:
     return registo
 
 
+def _marcar_fama(registo: dict, candidatos: dict) -> bool:
+    """Copia de dados/candidatos.json as categorias e as marcas Conhecido / Desafio do Dia. Devolve se mudou algo."""
+    c = candidatos.get(registo["id"])
+    if not c:
+        return False
+    marcas = {"categorias": c["categorias"], "conhecido": c["conhecido"], "diario": c["diario"]}
+    if all(registo.get("fama", {}).get(k) == v for k, v in marcas.items()):
+        return False
+    registo.setdefault("fama", {}).update(marcas)
+    return True
+
+
+def titulos_candidatos() -> list[str]:
+    """Os artigos de todos os candidatos (dados/candidatos.json), pela ordem do QID."""
+    candidatos = json.loads((config.DADOS / "candidatos.json").read_text(encoding="utf-8"))
+    return [c["titulo"] for _, c in sorted(candidatos.items())]
+
+
 def titulos_de_qids(cliente, qids) -> dict:
     """{QID: artigo da Wikipédia inglesa}."""
     ents = wd.entidades(cliente, qids, props="sitelinks", lote_max=10)
@@ -50,6 +69,8 @@ def recolher(ctx: Contexto, titulos: list[str], refazer: bool = False, registar=
     cliente = ctx.cliente
     ajustes = {k: v for k, v in json.loads((config.DADOS / "ajustes.json").read_text(encoding="utf-8")).items()
                if not k.startswith("_")} if (config.DADOS / "ajustes.json").exists() else {}
+    candidatos = json.loads((config.DADOS / "candidatos.json").read_text(encoding="utf-8")) \
+        if (config.DADOS / "candidatos.json").exists() else {}
     info = wp.info_titulos(cliente, titulos, fresco=ctx.fresco)
     res = {"feitos": [], "saltados": [], "falhas": {}}
     pendentes = []
@@ -59,6 +80,10 @@ def recolher(ctx: Contexto, titulos: list[str], refazer: bool = False, registar=
             res["falhas"][t] = "artigo sem QID (não existe?)"
         elif not refazer and (config.JOGADORES / f"{q}.json").exists():
             res["saltados"].append(q)
+            caminho = config.JOGADORES / f"{q}.json"          # só atualiza as marcas de fama (categorias, conhecido…)
+            registo = json.loads(caminho.read_text(encoding="utf-8"))
+            if _marcar_fama(registo, candidatos):
+                _gravar(caminho, registo)
         else:
             pendentes.append((t, q))
     if not pendentes:
@@ -73,10 +98,13 @@ def recolher(ctx: Contexto, titulos: list[str], refazer: bool = False, registar=
         try:
             artigo = {"titulo": canon, **textos[canon]}
             registo, discrepancias, avisos = construir(ctx, q, ents[q], artigo)
+        except BloqueioAntiBot:
+            raise                                    # um site a bloquear: parar já, sem insistir com os seguintes
         except Exception as e:                       # noqa: BLE001 — um jogador com problemas não para a recolha
             res["falhas"][t] = f"{type(e).__name__}: {e}"
             registar(f"[{n}/{len(pendentes)}] {canon}: FALHOU ({e})")
             continue
+        _marcar_fama(registo, candidatos)
         _gravar(config.JOGADORES / f"{q}.json", _ajustar(registo, ajustes))
         _gravar(SAIDA_RECOLHA / f"{q}.json", {"id": q, "nome": registo["nome"], "discrepancias": discrepancias,
                                              "avisos": avisos})

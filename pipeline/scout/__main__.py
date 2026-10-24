@@ -3,7 +3,7 @@
     python -m scout tm descarregar|preparar
     python -m scout paises
     python -m scout sementes
-    python -m scout recolher --amostra | --titulo "Rui Costa" | --id Q190608   [--refazer] [--fresco]
+    python -m scout recolher --amostra | --candidatos | --titulo "Rui Costa" | --id Q190608   [--refazer] [--fresco]
     python -m scout validar
     python -m scout relatorio
     python -m scout assistencias
@@ -62,6 +62,10 @@ def cmd_recolher(args):
     titulos = list(args.titulo or [])
     if args.amostra:
         titulos += recolha.AMOSTRA
+    if args.candidatos:
+        titulos += recolha.titulos_candidatos()
+    if args.limite:
+        titulos = titulos[:args.limite]
     if args.id:
         encontrados = recolha.titulos_de_qids(cliente, args.id)
         for q in args.id:
@@ -124,6 +128,8 @@ def main(argv=None):
     sub.add_parser("sementes", help="quem entra na base → dados/candidatos.json").set_defaults(f=cmd_sementes)
     s = sub.add_parser("recolher", help="recolhe jogadores para dados/jogadores/")
     s.add_argument("--amostra", action="store_true", help="os 30 jogadores da amostra")
+    s.add_argument("--candidatos", action="store_true", help="todos os candidatos (python -m scout sementes)")
+    s.add_argument("--limite", type=int, help="só os primeiros N")
     s.add_argument("--titulo", action="append", help="artigo da Wikipédia inglesa (repetível)")
     s.add_argument("--id", action="append", help="QID da Wikidata (repetível)")
     s.add_argument("--refazer", action="store_true", help="refaz quem já tem registo")
