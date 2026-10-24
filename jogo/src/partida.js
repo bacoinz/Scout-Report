@@ -35,8 +35,10 @@ export function fichaDe(sala, id) {
 export const emJogo = (sala) => sala.jogadores.filter((j) => !j.espectador && !j.saiu && sala.partida?.segredos[j.id]);
 /** Quem ainda é alvo: o jogador secreto está por identificar. */
 export const alvos = (sala) => emJogo(sala).filter((j) => !fichaDe(sala, j.id).identificada);
-/** Há alguém da partida ligado (sem ninguém, a partida congela). */
-const algumLigado = (sala) => emJogo(sala).some((j) => j.ligado && !j.saindo);
+/** Pode fazer perguntas: não está de saída e tem a quem perguntar (o dono do último secreto já não tem). */
+const podeJogar = (sala, j) => !j.saindo && alvos(sala).some((t) => t.id !== j.id);
+/** Há alguém ligado que possa jogar (sem ninguém, a partida congela em vez de passar rondas vazias). */
+const algumLigado = (sala) => emJogo(sala).some((j) => j.ligado && podeJogar(sala, j));
 
 /** Distância na mesa de `de` até `para` (1 = o seguinte). */
 function distanciaNaMesa(sala, de, para) {
@@ -160,8 +162,6 @@ export function iniciarPartida(sala, ctx, reserva) {
   const cfg = sala.config;
   sala.partida = {
     inicio: agora,
-    fimEm: cfg.fim.tipo === 'minutos' ? agora + cfg.fim.n * 60_000 : null,
-    totalRondas: cfg.fim.tipo === 'rondas' ? cfg.fim.n : null,
     ronda: 1,
     cicloInicio: 1,
     conjunto: null,
@@ -208,7 +208,7 @@ function iniciarRonda(sala, ctx) {
     }
   }
   promover(sala, ctx);
-  if (deveAcabar(sala, ctx, false)) return terminar(sala, ctx);
+  if (deveAcabar(sala)) return terminar(sala, ctx);
   for (const j of sala.jogadores) j.ronda = 0;
   // Quando muda quem é alvo, o ciclo recomeça: cada um volta a passar por todos.
   const conjunto = alvos(sala).map((j) => j.id).join(',');
@@ -250,7 +250,7 @@ function iniciarVez(sala, ctx) {
     p.fila.shift();
     if (!alvo) continue;
     p.seqVez += 1;
-    const duracao = sala.config.vez * 1000;
+    const duracao = REGRAS.vezMs;
     p.vez = { seq: p.seqVez, jogador: id, alvo, ficha: p.segredos[alvo].ficha, inicio: ctx.agora, prazo: ctx.agora + duracao, duracao };
     if (!j.ligado) p.vez.prazo = Math.min(p.vez.prazo, j.desligadoEm + REGRAS.desligadoSaltaMs);
     return;
@@ -262,20 +262,14 @@ function fimRonda(sala, ctx) {
   const p = sala.partida;
   p.vez = null;
   // (Passo 5: a Ronda Joker entra aqui.)
-  if (deveAcabar(sala, ctx, true)) return terminar(sala, ctx);
+  if (deveAcabar(sala)) return terminar(sala, ctx);
   p.ronda += 1;
   return iniciarRonda(sala, ctx);
 }
 
-/**
- * Acaba quando só resta um jogador secreto por identificar (ou ninguém para jogar) e, no fim de uma ronda, quando
- * se chega ao número de rondas ou ao tempo da partida (a ronda em curso termina sempre).
- */
-function deveAcabar(sala, ctx, fimDeRonda) {
-  const p = sala.partida;
-  if (alvos(sala).length <= 1 || emJogo(sala).length < 2) return true;
-  if (!fimDeRonda) return false;
-  return (p.totalRondas != null && p.ronda >= p.totalRondas) || (p.fimEm != null && ctx.agora >= p.fimEm);
+/** Acaba quando todos os jogadores secretos forem identificados (ou já não houver quem jogue). Não há limite de rondas. */
+function deveAcabar(sala) {
+  return alvos(sala).length === 0 || emJogo(sala).length < 2;
 }
 
 function terminar(sala, ctx) {
@@ -448,7 +442,6 @@ export function descongelar(sala, ctx) {
   p.congelada = null;
   for (const o of [p.vez, p.livre, p.identificado, p.escolha]) if (o?.prazo != null) o.prazo += d;
   for (const c of Object.values(p.cartas)) if (c.prazo != null) c.prazo += d;
-  if (p.fimEm != null) p.fimEm += d;
   // O tempo da pausa não conta para quem continua desligado (nem para saltar a vez, nem para sair de vez).
   for (const j of sala.jogadores) if (!j.ligado && j.desligadoEm != null) j.desligadoEm += d;
   avancar(sala, ctx);
@@ -509,7 +502,7 @@ function passo(sala, ctx) {
     case 'identificado':
       if (agora < p.identificado.prazo) return false;
       p.identificado = null;
-      if (deveAcabar(sala, ctx, false)) terminar(sala, ctx);
+      if (deveAcabar(sala)) terminar(sala, ctx);
       else terminarVez(sala, ctx);
       return true;
     default:

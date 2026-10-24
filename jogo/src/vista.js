@@ -34,9 +34,7 @@ function publicoPartida(sala) {
   if (!p) return null;
   return {
     ronda: p.ronda,
-    totalRondas: p.totalRondas,
     inicio: p.inicio,
-    fimEm: p.fimEm,
     fase: p.fase,
     congelada: p.congelada,
     alvos: p.alvos,

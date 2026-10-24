@@ -149,8 +149,8 @@ for (const c of [A, B, C]) await c.ligar(codigo);
 await A.estadoQue((s) => s.jogadores.length === 3);
 ok(A.estado.anfitriao === A.eu, 'quem cria a sala é o anfitrião');
 
-A.enviar({ t: 'config', modo: 'aleatorio', jogadores: 'conhecidos', fim: { tipo: 'rondas', n: 10 }, vez: 30 });
-await A.estadoQue((s) => s.config.vez === 30 && s.config.fim.n === 10);
+A.enviar({ t: 'config', modo: 'aleatorio', jogadores: 'conhecidos' });
+await A.estadoQue((s) => s.config.modo === 'aleatorio' && s.disponiveis != null);
 ok(A.estado.disponiveis > 400, `jogadores conhecidos na base: ${A.estado.disponiveis}`);
 A.enviar({ t: 'comecar' });
 for (const c of [A, B, C]) await c.estadoQue((s) => s.fase === 'jogo' && s.partida?.fase === 'vez');
@@ -252,7 +252,7 @@ for (let passo = 0; passo < 400; passo++) {
 s = await A.estadoQue((x) => x.fase === 'final', 30_000);
 ok(s.fase === 'final', `a partida acabou (ronda ${s.partida.ronda})`);
 const identificadas = s.partida.fichas.filter((f) => f.identificada).length;
-ok(identificadas >= 2, `${identificadas} jogadores identificados`);
+ok(identificadas === s.partida.fichas.length, `só acaba com todos identificados: ${identificadas} de ${s.partida.fichas.length}`);
 ok(s.partida.fichas.every((f) => f.revelada?.nome), 'no fim revelam-se todos os jogadores secretos');
 const metade = s.feed.filter((e) => e.tipo === 'identificado').some((e) => s.jogadores.find((j) => j.id === e.jogador) && e.pontos === 15);
 console.log(`  pontos: ${s.jogadores.map((j) => `${j.nome} ${j.total}`).join(' · ')}${metade ? ' (houve um palpite a metade)' : ''}`);

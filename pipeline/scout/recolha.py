@@ -95,14 +95,15 @@ def titulos_de_qids(cliente, qids) -> dict:
 
 
 def recolher(ctx: Contexto, titulos: list[str], refazer: bool = False, registar=print) -> dict:
-    """Recolhe os jogadores destes artigos. Devolve {'feitos': [...], 'saltados': [...], 'falhas': {título: erro}}."""
+    """Recolhe os jogadores destes artigos. Devolve {'feitos': [...], 'saltados': [...], 'falhas': {título: erro},
+    'fora': [...]} (fora: nascidos antes de config.NASCIDOS_DESDE, que não se gravam)."""
     cliente = ctx.cliente
     ajustes = {k: v for k, v in json.loads((config.DADOS / "ajustes.json").read_text(encoding="utf-8")).items()
                if not k.startswith("_")} if (config.DADOS / "ajustes.json").exists() else {}
     candidatos = json.loads((config.DADOS / "candidatos.json").read_text(encoding="utf-8")) \
         if (config.DADOS / "candidatos.json").exists() else {}
     info = wp.info_titulos(cliente, titulos, fresco=ctx.fresco)
-    res = {"feitos": [], "saltados": [], "falhas": {}}
+    res = {"feitos": [], "saltados": [], "falhas": {}, "fora": []}
     pendentes = []
     for t in titulos:
         q = info[t]["qid"]
@@ -133,6 +134,10 @@ def recolher(ctx: Contexto, titulos: list[str], refazer: bool = False, registar=
         except Exception as e:                       # noqa: BLE001 — um jogador com problemas não para a recolha
             res["falhas"][t] = f"{type(e).__name__}: {e}"
             registar(f"[{n}/{len(pendentes)}] {canon}: FALHOU ({e})")
+            continue
+        if registo["nascimento"] and int(registo["nascimento"][:4]) < config.NASCIDOS_DESDE:
+            res["fora"].append(q)                    # nasceu antes de 1960: não entra na base
+            registar(f"[{n}/{len(pendentes)}] {canon}: nasceu em {registo['nascimento'][:4]}, fica de fora")
             continue
         _marcar_fama(registo, candidatos)
         _gravar(config.JOGADORES / f"{q}.json", _ajustar(registo, ajustes))

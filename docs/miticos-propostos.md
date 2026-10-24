@@ -1,5 +1,8 @@
 # Míticos propostos
 
+> **24/10/2026:** os jogadores nascidos antes de 1960 saíram da base, a pedido do utilizador. Dos 100 míticos
+> aprovados ficam 26 (`pipeline/dados/miticos.json`); a lista abaixo fica como estava, para registo.
+
 Lista para aprovares antes do processamento completo (passo 3). Os míticos são lendas que as regras automáticas
 deixam de fora. As regras são estas:
 

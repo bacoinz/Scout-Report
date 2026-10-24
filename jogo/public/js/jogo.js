@@ -16,7 +16,7 @@ const MAX_COLUNAS = 3;
 /** Estado da interface (o que não vem do servidor). */
 const ui = {
   escolhida: null,
-  abertas: new Set(['carreira']),
+  abertas: new Set(), // as categorias começam todas fechadas
   recente: new Map(), // ficha → instante em que se abriu (a mais recente de cada coluna fica aberta)
   relogio: 0,
   palpite: null, // { n, texto }
@@ -247,9 +247,11 @@ function renderPainel(sala) {
 
 function escolher(chave) {
   ui.escolhida = chave;
-  for (const b of $$('#categorias .pergunta[aria-pressed]')) b.setAttribute('aria-pressed', String(b.dataset.chave === chave));
   $('#erro-envio').textContent = '';
-  mostrarEscolhida();
+  // Volta a desenhar o menu: a escolhida fica marcada no sítio dela (botão, campo ou lista) e só lá.
+  ui.menuChave = null;
+  if (contexto?.sala) renderPainel(contexto.sala);
+  else mostrarEscolhida();
 }
 
 function mostrarEscolhida() {
@@ -267,10 +269,7 @@ function mostrarEscolhida() {
 }
 
 export function ligarPainel() {
-  $('#escolhida .limpar').addEventListener('click', () => {
-    escolher(null);
-    for (const i of $$('#categorias .pergunta-campo input')) i.value = '';
-  });
+  $('#escolhida .limpar').addEventListener('click', () => escolher(null));
   $('#livre').addEventListener('input', () => {
     $('#erro-envio').textContent = '';
   });
@@ -614,8 +613,7 @@ function renderCabecalho(sala) {
   const p = sala.partida;
   $('#menu-codigo').textContent = sala.codigo;
   if (!p) return;
-  const total = p.totalRondas ? ` de ${p.totalRondas}` : '';
-  $('#jogo-ronda').dataset.base = p.fase === 'escolha' ? 'Escolha' : `Ronda ${p.ronda}${total}`;
+  $('#jogo-ronda').dataset.base = p.fase === 'escolha' ? 'Escolha' : `Ronda ${p.ronda}`;
 }
 
 /** O relógio da vez (ou da pergunta livre, ou da escolha) e a linha do tempo. */
@@ -637,13 +635,7 @@ export function tick(agora) {
   const falta = prazo ? Math.max(0, prazo - agora) : 0;
   $('#relogio').textContent = p.congelada ? '⏸' : prazo ? formatarTempo(falta) : '';
   $('#barra-tempo').style.width = prazo ? `${Math.min(100, (falta / duracao) * 100)}%` : '0%';
-  let texto = $('#jogo-ronda').dataset.base ?? '';
-  if (p.fimEm && p.fase !== 'escolha') {
-    const min = Math.ceil((p.fimEm - agora) / 60_000);
-    texto += min > 0 ? ` · faltam ${min} min` : ' · última ronda';
-  }
-  $('#jogo-ronda').textContent = texto;
-  if (p.fase === 'livre' && p.livre?.alvo === contexto.eu) $('#livre-tempo').textContent = `Faltam ${Math.ceil(falta / 1000)} s.`;
+  $('#jogo-ronda').textContent = $('#jogo-ronda').dataset.base ?? '';
   return p.vez?.jogador === contexto.eu && p.fase === 'vez' ? falta : null;
 }
 
@@ -717,6 +709,7 @@ export function render(ctx, novos) {
 
 /** Uma partida nova (ou outra sala): esquece o estado da interface. */
 export function reiniciar() {
+  ui.abertas.clear();
   Object.assign(ui, { escolhida: null, palpite: null, finalEscondido: false, ultimaVez: null, menuChave: null, disposicao: null, livreRespondida: null, avisada: null });
   ui.recente.clear();
   ui.cartoes.clear();

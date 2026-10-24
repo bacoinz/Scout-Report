@@ -128,7 +128,7 @@ const soAnfitriao = (sala, id) => (id === sala.anfitriao ? null : erro('Só o an
 // Lobby e partida
 // ---------------------------------------------------------------------------
 
-/** Opções do anfitrião, só no lobby. Valores desconhecidos são ignorados. */
+/** Opções do anfitrião (modo e jogadores da base), só no lobby. Valores desconhecidos são ignorados. */
 export function configurar(sala, jogadorId, cfg) {
   const recusa = soAnfitriao(sala, jogadorId);
   if (recusa) return recusa;
@@ -136,9 +136,6 @@ export function configurar(sala, jogadorId, cfg) {
   const c = structuredClone(sala.config);
   if (REGRAS.modos.includes(cfg?.modo)) c.modo = cfg.modo;
   if (REGRAS.grupos.includes(cfg?.jogadores)) c.jogadores = cfg.jogadores;
-  if (cfg?.fim?.tipo === 'rondas' && REGRAS.rondas.includes(cfg.fim.n)) c.fim = { tipo: 'rondas', n: cfg.fim.n };
-  if (cfg?.fim?.tipo === 'minutos' && REGRAS.minutos.includes(cfg.fim.n)) c.fim = { tipo: 'minutos', n: cfg.fim.n };
-  if (REGRAS.vezes.includes(cfg?.vez)) c.vez = cfg.vez;
   sala.config = c;
   return { ok: true };
 }

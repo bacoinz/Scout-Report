@@ -36,3 +36,5 @@ TM_TABELAS = ("players", "appearances", "games", "game_lineups", "clubs", "compe
 # Regras de cobertura (ver Decisões no plano): um "não" só sai com dados que cubram ≥ 90% dos jogos de clube.
 COBERTURA_MINIMA = 0.90
 ANO_ATUAL = 2026
+# Só entram na base jogadores nascidos a partir deste ano (pedido do utilizador, 24/10/2026).
+NASCIDOS_DESDE = 1960

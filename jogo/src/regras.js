@@ -26,13 +26,12 @@ export const REGRAS = {
   saidaDefinitivaMs: 5 * 60_000,
   /** Registos a mais na reserva da sala (para quem entra a meio). */
   folgaReserva: 4,
+  /** Cada vez dura 1 minuto. A partida não tem limite de rondas: acaba quando todos forem identificados. */
+  vezMs: 60_000,
   /** Opções do lobby. */
   modos: ['aleatorio', 'escolha'],
   grupos: ['conhecidos', 'todos'],
-  rondas: [4, 6, 8, 10],
-  minutos: [15, 20, 30, 45],
-  vezes: [30, 45, 60, 90],
-  porOmissao: { modo: 'aleatorio', jogadores: 'conhecidos', fim: { tipo: 'rondas', n: 6 }, vez: 45 },
+  porOmissao: { modo: 'aleatorio', jogadores: 'conhecidos' },
 };
 
 // O roxo é a cor de destaque do jogo: na paleta dos jogadores fica um verde-água no lugar dele.

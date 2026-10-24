@@ -66,7 +66,8 @@ function dadosPublicos(f, ctx) {
   const nacs = confirmados(f, 'nac').map(P.nomePais);
   const setores = confirmados(f, 'setor').map((s) => P.SETORES[s]);
   const posicoes = confirmados(f, 'pos').map((p) => P.POSICOES[p].nome);
-  const altura = textoIntervalo(intervalo(f, 'altura'), metros);
+  const baixo = P.valor(f, 'baixo:175') === 'sim' ? `-${metros(175)}` : null;
+  const altura = baixo ?? textoIntervalo(intervalo(f, 'altura'), metros);
   const pe = confirmados(f, 'pe').map((p) => PES[p]);
   const estado = P.valor(f, 'ativo') === 'sim' ? 'No ativo' : P.valor(f, 'retirado') === 'sim' ? 'Retirado' : null;
   const treinador = P.valor(f, 'foi_treinador') === 'sim' ? (P.valor(f, 't_atual') === 'sim' ? 'treinador (no ativo)' : 'treinador') : null;
@@ -75,7 +76,7 @@ function dadosPublicos(f, ctx) {
     linhaDados('Estreia', ...(estreia ? (anos.length ? [estreia] : juntar([estreia, incognita()])) : [incognita()])),
     linhaDados('Nação', ...comFalta([...confs, ...nacs], nacs.length > 0)),
     linhaDados('Posição', ...comFalta([...setores, ...posicoes], posicoes.length > 0)),
-    linhaDados('Físico', ...(altura || pe.length ? juntar([altura, ...pe].filter(Boolean)) : dado(null, f, ['altura', 'pe'], ctx))),
+    linhaDados('Físico', ...(altura || pe.length ? juntar([altura, ...pe].filter(Boolean)) : dado(null, f, ['altura', 'baixo', 'pe'], ctx))),
     linhaDados('Estado', ...(estado || treinador ? juntar([estado ?? incognita(), treinador].filter(Boolean)) : [incognita()])));
 }
 
@@ -130,7 +131,7 @@ function estatisticasPublicas(f, ctx) {
   const numeros = confirmados(f, 'num');
   const faixas = confirmados(f, 'faixa').map((i) => {
     const [a, b] = P.FAIXAS_NUMEROS[Number(i)];
-    return a === 1 ? `abaixo de ${b + 1}` : b >= 99 ? `acima de ${a - 1}` : `${a} a ${b}`;
+    return b >= 99 ? `${a}+` : `${a}-${b}`;
   });
   const camisola = numeros.length ? `n.º ${numeros.join(', ')}` : faixas.length ? faixas.join(' · ') : null;
   return el('section', {},

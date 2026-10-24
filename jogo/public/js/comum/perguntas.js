@@ -10,7 +10,7 @@ export const PONTOS = PERGUNTAS.pontos;
 export const SIM_MINIMOS = PERGUNTAS.palpite.sim_minimos;
 export const ORDEM = PERGUNTAS.ordem_categorias;
 export const NOMES_CATEGORIAS = {
-  era: 'Era', nacionalidade: 'Nacionalidade', posicao: 'Posição', fisico: 'Físico', estado: 'Estado',
+  era: 'Anos', nacionalidade: 'Nacionalidade', posicao: 'Posição', fisico: 'Físico', estado: 'Estado',
   carreira: 'Carreira', estatisticas: 'Estatísticas', numeros: 'Números', premios: 'Prémios', treinador: 'Treinador',
 };
 
@@ -25,7 +25,7 @@ export const CONFEDERACOES = {
 export const SETORES = PERGUNTAS.setores;
 export const POSICOES = PERGUNTAS.posicoes;
 export const PREMIOS = PERGUNTAS.premios;
-const PES = { direito: 'É destro?', esquerdo: 'É canhoto?', ambos: 'Usa os dois pés?' };
+const PES = { direito: 'É destro?', esquerdo: 'É canhoto?', ambos: 'É ambidestro?' };
 const FAIXAS = PERGUNTAS.numeros.faixas;
 const LIMIARES = {
   jogos: PERGUNTAS.estatisticas.jogos,
@@ -33,6 +33,7 @@ const LIMIARES = {
   inter: PERGUNTAS.estatisticas.internacionalizacoes,
   assist: PERGUNTAS.estatisticas.assistencias,
   altura: PERGUNTAS.fisico.alturas_cm,
+  baixo: PERGUNTAS.fisico.menos_de_cm,
   // "Ganhou algum título como treinador?" é o limiar 0 ("mais de 0").
   t_titulos: [0, ...PERGUNTAS.treinador.titulos.filter((n) => n > 1)],
 };
@@ -176,6 +177,12 @@ const TIPOS = {
     responder: (reg, v) => (reg.perfil?.pe ? simNao(reg.perfil.pe === v) : 'sem_registo'),
     valores: () => Object.keys(PES),
   },
+  baixo: {
+    cat: 'fisico', nivel: 1, valida: (v) => LIMIARES.baixo.includes(Number(v)),
+    texto: (v) => `Mede menos de ${(Number(v) / 100).toFixed(2).replace('.', ',')} m?`,
+    responder: (reg, v) => (reg.perfil?.altura_cm ? simNao(reg.perfil.altura_cm < Number(v)) : 'sem_registo'),
+    valores: () => LIMIARES.baixo.map(String),
+  },
   altura: {
     cat: 'fisico', nivel: 1, valida: (v) => LIMIARES.altura.includes(Number(v)),
     texto: (v) => `Mede mais de ${(Number(v) / 100).toFixed(2).replace('.', ',')} m?`,
@@ -250,7 +257,7 @@ const TIPOS = {
     cat: 'numeros', nivel: 1, valida: (v) => intEntre(v, 0, FAIXAS.length - 1),
     texto: (v) => {
       const [a, b] = FAIXAS[Number(v)];
-      return a === 1 ? `Usou um número abaixo de ${b + 1}?` : b >= 99 ? `Usou um número acima de ${a - 1}?` : `Usou um número de ${a} a ${b}?`;
+      return b >= 99 ? `Usou um número a partir do ${a}?` : `Usou um número de ${a} a ${b}?`;
     },
     responder: (reg, v) => {
       const [a, b] = FAIXAS[Number(v)];
@@ -327,10 +334,10 @@ export const TIPOS_POR_CATEGORIA = {
   era: ['decada', 'ano'],
   nacionalidade: ['conf', 'nac'],
   posicao: ['setor', 'pos'],
-  fisico: ['pe', 'altura'],
+  fisico: ['pe', 'baixo', 'altura'],
   estado: ['ativo', 'retirado', 'foi_treinador'],
   carreira: ['pais', 'pais_atual', 'liga', 'liga_atual', 'clube', 'clube_atual'],
-  estatisticas: ['jogos', 'golos', 'inter', 'assist'],
+  estatisticas: ['jogos', 'golos', 'assist', 'inter'],
   numeros: ['faixa', 'num'],
   premios: ['premio'],
   treinador: ['t_atual', 't_selecao', 't_titulos', 't_premio', 't_pais', 't_clube', 't_sel', 't_atual_clube', 't_atual_sel'],
@@ -409,7 +416,15 @@ export function deduzir(ficha, chave) {
   const achar = (cond) => respondidas(ficha).find(([k, v]) => cond(k, v.r));
   const de = (achado, res) => (achado ? { r: res, de: achado[0] } : null);
 
-  if (LIMIARES[tipo]) {
+  if (tipo === 'baixo') {
+    const alto = doTipo(ficha, 'altura').find(([m, res]) => res === 'sim' && Number(m) >= Number(valor) - 1);
+    return alto ? { r: 'nao', de: `altura:${alto[0]}` } : null;
+  }
+  if (tipo === 'altura') {
+    const baixo = doTipo(ficha, 'baixo').find(([m, res]) => res === 'sim' && Number(m) <= Number(valor) + 1);
+    if (baixo) return { r: 'nao', de: `baixo:${baixo[0]}` };
+  }
+  if (LIMIARES[tipo] && tipo !== 'baixo') {
     const n = Number(valor);
     const outros = doTipo(ficha, tipo).map(([v, res]) => [Number(v), res]);
     const acima = outros.find(([m, res]) => res === 'sim' && m >= n);

@@ -1,51 +1,9 @@
 [
  {
-  "titulo": "Pelé",
-  "qid": "Q12897",
-  "grupo": "mundo",
-  "porque": "3 Mundiais (1958, 1962, 1970); o Rei"
- },
- {
   "titulo": "Diego Maradona",
   "qid": "Q17515",
   "grupo": "mundo",
   "porque": "Mundial de 1986, o golo do século e a mão de Deus"
- },
- {
-  "titulo": "Johan Cruyff",
-  "qid": "Q17163",
-  "grupo": "mundo",
-  "porque": "3 Bolas de Ouro; o futebol total do Ajax e da Holanda"
- },
- {
-  "titulo": "Franz Beckenbauer",
-  "qid": "Q4457",
-  "grupo": "mundo",
-  "porque": "Mundial como capitão (1974) e como selecionador (1990)"
- },
- {
-  "titulo": "Alfredo Di Stéfano",
-  "qid": "Q164546",
-  "grupo": "mundo",
-  "porque": "5 Taças dos Campeões seguidas pelo Real Madrid"
- },
- {
-  "titulo": "Ferenc Puskás",
-  "qid": "Q482931",
-  "grupo": "mundo",
-  "porque": "A Hungria mágica e o Real Madrid; dá nome ao prémio do golo do ano"
- },
- {
-  "titulo": "Eusébio",
-  "qid": "Q162043",
-  "grupo": "mundo",
-  "porque": "Bola de Ouro 1965, Benfica e o Mundial de 1966"
- },
- {
-  "titulo": "Michel Platini",
-  "qid": "Q4261",
-  "grupo": "mundo",
-  "porque": "3 Bolas de Ouro seguidas; Europeu de 1984"
  },
  {
   "titulo": "Marco van Basten",
@@ -54,88 +12,10 @@
   "porque": "3 Bolas de Ouro; o vólei da final do Europeu de 1988"
  },
  {
-  "titulo": "Gerd Müller",
-  "qid": "Q43744",
-  "grupo": "mundo",
-  "porque": "Der Bomber: Mundial de 1974 e golos sem fim pelo Bayern"
- },
- {
-  "titulo": "Lev Yashin",
-  "qid": "Q167828",
-  "grupo": "mundo",
-  "porque": "O único guarda-redes com Bola de Ouro"
- },
- {
-  "titulo": "George Best",
-  "qid": "Q164521",
-  "grupo": "mundo",
-  "porque": "Bola de Ouro 1968 pelo Manchester United"
- },
- {
-  "titulo": "Bobby Charlton",
-  "qid": "Q171583",
-  "grupo": "mundo",
-  "porque": "Mundial de 1966 e sobrevivente de Munique"
- },
- {
-  "titulo": "Bobby Moore",
-  "qid": "Q191492",
-  "grupo": "mundo",
-  "porque": "Capitão de Inglaterra no Mundial de 1966"
- },
- {
-  "titulo": "Garrincha",
-  "qid": "Q180642",
-  "grupo": "mundo",
-  "porque": "A alegria do povo: Mundiais de 1958 e 1962"
- },
- {
-  "titulo": "Zico (footballer)",
-  "qid": "Q47526",
-  "grupo": "mundo",
-  "porque": "O Galinho do Flamengo e do Brasil de 1982"
- },
- {
-  "titulo": "Sócrates",
-  "qid": "Q102331",
-  "grupo": "mundo",
-  "porque": "O Doutor, capitão do Brasil de 1982"
- },
- {
-  "titulo": "Paulo Roberto Falcão",
-  "qid": "Q312454",
-  "grupo": "mundo",
-  "porque": "O Rei de Roma e o Brasil de 1982"
- },
- {
   "titulo": "Romário",
   "qid": "Q178649",
   "grupo": "mundo",
   "porque": "Mundial de 1994 e mais de mil golos"
- },
- {
-  "titulo": "Karl-Heinz Rummenigge",
-  "qid": "Q152871",
-  "grupo": "mundo",
-  "porque": "2 Bolas de Ouro pelo Bayern"
- },
- {
-  "titulo": "Kevin Keegan",
-  "qid": "Q152832",
-  "grupo": "mundo",
-  "porque": "2 Bolas de Ouro, uma delas no Hamburgo"
- },
- {
-  "titulo": "Dino Zoff",
-  "qid": "Q180661",
-  "grupo": "mundo",
-  "porque": "Campeão do Mundo aos 40 anos (1982)"
- },
- {
-  "titulo": "Paolo Rossi",
-  "qid": "Q178628",
-  "grupo": "mundo",
-  "porque": "Herói e melhor marcador do Mundial de 1982"
  },
  {
   "titulo": "Franco Baresi",
@@ -162,48 +42,6 @@
   "porque": "Bola de Ouro 1994 e o dream team do Barcelona"
  },
  {
-  "titulo": "Mario Kempes",
-  "qid": "Q180649",
-  "grupo": "mundo",
-  "porque": "Herói e melhor marcador do Mundial de 1978"
- },
- {
-  "titulo": "Daniel Passarella",
-  "qid": "Q15802",
-  "grupo": "mundo",
-  "porque": "Capitão da Argentina campeã em 1978"
- },
- {
-  "titulo": "Rivellino",
-  "qid": "Q220283",
-  "grupo": "mundo",
-  "porque": "O Brasil de 1970 e o elástico"
- },
- {
-  "titulo": "Jairzinho",
-  "qid": "Q210102",
-  "grupo": "mundo",
-  "porque": "Marcou em todos os jogos do Mundial de 1970"
- },
- {
-  "titulo": "Carlos Alberto Torres",
-  "qid": "Q295262",
-  "grupo": "mundo",
-  "porque": "Capitão do Brasil de 1970 e o golo da final"
- },
- {
-  "titulo": "Gianni Rivera",
-  "qid": "Q230046",
-  "grupo": "mundo",
-  "porque": "Bola de Ouro 1969 pelo Milan"
- },
- {
-  "titulo": "Kenny Dalglish",
-  "qid": "Q187198",
-  "grupo": "mundo",
-  "porque": "Lenda do Liverpool e do Celtic"
- },
- {
   "titulo": "Ian Rush",
   "qid": "Q219354",
   "grupo": "mundo",
@@ -222,12 +60,6 @@
   "porque": "O Príncipe uruguaio, ídolo de Zidane"
  },
  {
-  "titulo": "Hugo Sánchez",
-  "qid": "Q487155",
-  "grupo": "mundo",
-  "porque": "Os pontapés de bicicleta do Real Madrid"
- },
- {
   "titulo": "Jean-Pierre Papin",
   "qid": "Q13494",
   "grupo": "mundo",
@@ -244,12 +76,6 @@
   "qid": "Q189892",
   "grupo": "mundo",
   "porque": "O Maradona dos Cárpatos"
- },
- {
-  "titulo": "Roger Milla",
-  "qid": "Q168540",
-  "grupo": "mundo",
-  "porque": "A dança na bandeirola no Mundial de 1990, aos 38 anos"
  },
  {
   "titulo": "Carlos Valderrama",
@@ -276,12 +102,6 @@
   "porque": "El Buitre e a Quinta del Buitre do Real Madrid"
  },
  {
-  "titulo": "Johan Neeskens",
-  "qid": "Q233819",
-  "grupo": "mundo",
-  "porque": "Penálti na final do Mundial de 1974 ao 1.º minuto"
- },
- {
   "titulo": "Jay-Jay Okocha",
   "qid": "Q605817",
   "grupo": "mundo",
@@ -294,148 +114,10 @@
   "porque": "Capitão do Inter do triplete"
  },
  {
-  "titulo": "Teófilo Cubillas",
-  "qid": "Q311403",
-  "grupo": "mundo",
-  "porque": "Lenda do Peru que jogou no FC Porto"
- },
- {
-  "titulo": "Mário Coluna",
-  "qid": "Q705585",
-  "grupo": "portugal",
-  "porque": "O Monstro Sagrado, capitão do Benfica bicampeão europeu"
- },
- {
-  "titulo": "José Águas",
-  "qid": "Q1340083",
-  "grupo": "portugal",
-  "porque": "Capitão e goleador do Benfica campeão europeu de 1961"
- },
- {
-  "titulo": "José Augusto (footballer)",
-  "qid": "Q1709009",
-  "grupo": "portugal",
-  "porque": "Extremo do Benfica europeu e do Mundial de 1966"
- },
- {
-  "titulo": "António Simões",
-  "qid": "Q611413",
-  "grupo": "portugal",
-  "porque": "Extremo-esquerdo do Benfica e do Mundial de 1966"
- },
- {
-  "titulo": "José Torres (footballer, born 1938)",
-  "qid": "Q508897",
-  "grupo": "portugal",
-  "porque": "O Bom Gigante do Mundial de 1966"
- },
- {
-  "titulo": "Hilário (footballer, born 1939)",
-  "qid": "Q2478970",
-  "grupo": "portugal",
-  "porque": "Lateral do Sporting e do Mundial de 1966"
- },
- {
-  "titulo": "Fernando Peyroteo",
-  "qid": "Q945064",
-  "grupo": "portugal",
-  "porque": "Dos Cinco Violinos do Sporting, golos sem fim"
- },
- {
-  "titulo": "José Travassos",
-  "qid": "Q360241",
-  "grupo": "portugal",
-  "porque": "Dos Cinco Violinos do Sporting"
- },
- {
-  "titulo": "Jesus Correia",
-  "qid": "Q4777570",
-  "grupo": "portugal",
-  "porque": "Dos Cinco Violinos e hoquista campeão do mundo"
- },
- {
-  "titulo": "Vítor Damas",
-  "qid": "Q1388678",
-  "grupo": "portugal",
-  "porque": "Guarda-redes lendário do Sporting"
- },
- {
-  "titulo": "Manuel Bento",
-  "qid": "Q465817",
-  "grupo": "portugal",
-  "porque": "Guarda-redes lendário do Benfica"
- },
- {
-  "titulo": "Humberto Coelho",
-  "qid": "Q730529",
-  "grupo": "portugal",
-  "porque": "Central e capitão do Benfica; depois selecionador"
- },
- {
-  "titulo": "Nené (footballer, born 1949)",
-  "qid": "Q594078",
-  "grupo": "portugal",
-  "porque": "Goleador do Benfica nos anos 70 e 80"
- },
- {
-  "titulo": "Fernando Chalana",
-  "qid": "Q172306",
-  "grupo": "portugal",
-  "porque": "O Pequeno Genial do Europeu de 1984"
- },
- {
-  "titulo": "Rui Jordão",
-  "qid": "Q708118",
-  "grupo": "portugal",
-  "porque": "Os golos ao Europeu de 1984 e o Sporting"
- },
- {
-  "titulo": "Manuel Fernandes (footballer, born 1951)",
-  "qid": "Q2069185",
-  "grupo": "portugal",
-  "porque": "Capitão e goleador do Sporting nos anos 80"
- },
- {
-  "titulo": "Fernando Gomes (Portuguese footballer)",
-  "qid": "Q361418",
-  "grupo": "portugal",
-  "porque": "2 Botas de Ouro pelo FC Porto"
- },
- {
   "titulo": "Paulo Futre",
   "qid": "Q363829",
   "grupo": "portugal",
   "porque": "Campeão europeu em 1987 e 2.º na Bola de Ouro"
- },
- {
-  "titulo": "Rabah Madjer",
-  "qid": "Q431343",
-  "grupo": "portugal",
-  "porque": "O calcanhar de Viena, final de 1987"
- },
- {
-  "titulo": "António Sousa",
-  "qid": "Q611428",
-  "grupo": "portugal",
-  "porque": "Médio do FC Porto campeão europeu de 1987"
- },
- {
-  "titulo": "Jaime Pacheco",
-  "qid": "Q1370368",
-  "grupo": "portugal",
-  "porque": "Médio do FC Porto de 1987; treinador campeão pelo Boavista"
- },
- {
-  "titulo": "Diamantino Miranda",
-  "qid": "Q1208602",
-  "grupo": "portugal",
-  "porque": "Extremo do Benfica e do Europeu de 1984"
- },
- {
-  "titulo": "Carlos Manuel",
-  "qid": "Q1335293",
-  "grupo": "portugal",
-  "porque": "O golo em Estugarda que levou Portugal ao Mundial de 1986"
  },
  {
   "titulo": "Rui Águas (footballer)",
@@ -456,76 +138,10 @@
   "porque": "Bota de prata da Europa pelo Benfica (1990)"
  },
  {
-  "titulo": "Héctor Yazalde",
-  "qid": "Q375280",
-  "grupo": "portugal",
-  "porque": "Bota de Ouro 1974 pelo Sporting, com 46 golos"
- },
- {
-  "titulo": "Raymond Kopa",
-  "qid": "Q123118",
-  "grupo": "mundo",
-  "porque": "Bola de Ouro 1958 e o Real Madrid de Di Stéfano"
- },
- {
-  "titulo": "Just Fontaine",
-  "qid": "Q192749",
-  "grupo": "mundo",
-  "porque": "13 golos num só Mundial (1958), recorde até hoje"
- },
- {
-  "titulo": "Stanley Matthews",
-  "qid": "Q216140",
-  "grupo": "mundo",
-  "porque": "O primeiro Bola de Ouro (1956), jogou até aos 50 anos"
- },
- {
-  "titulo": "Gordon Banks",
-  "qid": "Q213879",
-  "grupo": "mundo",
-  "porque": "A defesa ao cabeceamento de Pelé em 1970"
- },
- {
-  "titulo": "Sepp Maier",
-  "qid": "Q44194",
-  "grupo": "mundo",
-  "porque": "Guarda-redes da Alemanha campeã em 1974"
- },
- {
-  "titulo": "Paul Breitner",
-  "qid": "Q44458",
-  "grupo": "mundo",
-  "porque": "Marcou em duas finais de Mundiais (1974 e 1982)"
- },
- {
   "titulo": "Andreas Brehme",
   "qid": "Q159045",
   "grupo": "mundo",
   "porque": "O penálti da final do Mundial de 1990"
- },
- {
-  "titulo": "Marco Tardelli",
-  "qid": "Q312626",
-  "grupo": "mundo",
-  "porque": "O grito na final do Mundial de 1982"
- },
- {
-  "titulo": "Gaetano Scirea",
-  "qid": "Q299608",
-  "grupo": "mundo",
-  "porque": "Líbero da Juventus e da Itália de 1982"
- },
- {
-  "titulo": "Giacinto Facchetti",
-  "qid": "Q219390",
-  "grupo": "mundo",
-  "porque": "Lateral do grande Inter de Herrera"
- },
- {
-  "titulo": "Oleg Blokhin",
-  "qid": "Q186691",
-  "grupo": "mundo",
-  "porque": "Bola de Ouro 1975 pelo Dínamo de Kiev"
  },
  {
   "titulo": "Ronald Koeman",
@@ -538,65 +154,5 @@
   "qid": "Q204825",
   "grupo": "mundo",
   "porque": "O embalar do bebé no Mundial de 1994"
- },
- {
-  "titulo": "Costa Pereira",
-  "qid": "Q1492347",
-  "grupo": "portugal",
-  "porque": "Guarda-redes do Benfica bicampeão europeu"
- },
- {
-  "titulo": "Germano de Figueiredo",
-  "qid": "Q2450616",
-  "grupo": "portugal",
-  "porque": "Central do Benfica bicampeão europeu"
- },
- {
-  "titulo": "Domiciano Cavém",
-  "qid": "Q3713307",
-  "grupo": "portugal",
-  "porque": "Marcou na final de 1961 pelo Benfica"
- },
- {
-  "titulo": "Artur Jorge (footballer, born 1946)",
-  "qid": "Q502977",
-  "grupo": "portugal",
-  "porque": "Goleador do Benfica; treinador do FC Porto campeão europeu"
- },
- {
-  "titulo": "Toni (footballer, born 1946)",
-  "qid": "Q611003",
-  "grupo": "portugal",
-  "porque": "Médio e capitão do Benfica nos anos 70"
- },
- {
-  "titulo": "Shéu",
-  "qid": "Q3959898",
-  "grupo": "portugal",
-  "porque": "Médio do Benfica e da seleção nos anos 70 e 80"
- },
- {
-  "titulo": "Juary",
-  "qid": "Q1071060",
-  "grupo": "portugal",
-  "porque": "Marcou o 2–1 na final de Viena de 1987"
- },
- {
-  "titulo": "António Oliveira (footballer, born 1952)",
-  "qid": "Q759193",
-  "grupo": "portugal",
-  "porque": "Médio do FC Porto e do Sporting; selecionador em 2002"
- },
- {
-  "titulo": "Eurico Gomes",
-  "qid": "Q1374415",
-  "grupo": "portugal",
-  "porque": "Central que jogou nos três grandes"
- },
- {
-  "titulo": "Matateu",
-  "qid": "Q2460081",
-  "grupo": "portugal",
-  "porque": "O goleador lendário do Belenenses"
  }
 ]

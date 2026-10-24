@@ -61,6 +61,7 @@ def gerar() -> dict:
     clubes_cat = json.loads((config.DADOS / "clubes.json").read_text(encoding="utf-8"))
     ligas_cat = json.loads((config.DADOS / "ligas.json").read_text(encoding="utf-8"))
     registos = [json.loads(p.read_text(encoding="utf-8")) for p in sorted(config.JOGADORES.glob("*.json"))]
+    registos = [r for r in registos if not r["nascimento"] or int(r["nascimento"][:4]) >= config.NASCIDOS_DESDE]
 
     # Clubes e ligas que aparecem nas carreiras (e nas equipas treinadas).
     ligas_do_clube = defaultdict(set)
@@ -119,6 +120,7 @@ def gerar() -> dict:
         linhas_jog.append({"id": r["id"], "nome": r["nome"], "aliases": json.dumps(r["aliases"], ensure_ascii=False),
                            "dica": r["dica"], "conhecido": bool(r["fama"].get("conhecido")),
                            "diario": bool(r["fama"].get("diario")), "dados": dados, "aleatorio": _aleatorio(r["id"]),
+                           "decada_nascimento": int(r["nascimento"][:3]) * 10 if r["nascimento"] else None,
                            "hash": hashlib.sha1(dados.encode()).hexdigest()[:16], "ativo": True, "atualizado_em": agora})
     versao = hashlib.sha1("".join(l["hash"] for l in linhas_jog).encode()
                           + json.dumps([linhas_clubes, linhas_ligas], sort_keys=True).encode()).hexdigest()[:10]

@@ -72,10 +72,12 @@ describe('textos', () => {
     expect(P.texto(`t_atual_clube:${REAL_MADRID}`, cat)).toBe('Treina atualmente o Real Madrid?');
   });
   it('números, alturas, décadas e limiares', () => {
-    expect(P.texto('faixa:0', cat)).toBe('Usou um número abaixo de 10?');
-    expect(P.texto('faixa:1', cat)).toBe('Usou um número de 10 a 20?');
-    expect(P.texto('faixa:2', cat)).toBe('Usou um número acima de 20?');
+    expect(P.texto('faixa:0', cat)).toBe('Usou um número de 1 a 9?');
+    expect(P.texto('faixa:1', cat)).toBe('Usou um número de 10 a 19?');
+    expect(P.texto('faixa:2', cat)).toBe('Usou um número a partir do 20?');
     expect(P.texto('altura:180', cat)).toBe('Mede mais de 1,80 m?');
+    expect(P.texto('baixo:175', cat)).toBe('Mede menos de 1,75 m?');
+    expect(P.texto('pe:ambos', cat)).toBe('É ambidestro?');
     expect(P.texto('decada:1990', cat)).toBe('Estreou-se como sénior nos anos 90?');
     expect(P.texto('decada:2010', cat)).toBe('Estreou-se como sénior nos anos 2010?');
     expect(P.texto('t_titulos:0', cat)).toBe('Ganhou algum título como treinador?');
@@ -86,12 +88,12 @@ describe('textos', () => {
 describe('validação das chaves', () => {
   it('recusa o que não existe', () => {
     for (const k of ['liga:Q0', 'jogos:150', 'num:100', 'num:0', 'premio:melhor_treinador_fifa', 'ativo:1', '__proto__',
-      'constructor', 'decada:1920', 'nac:XX', 'pais:FO', 'faixa:3', 'clube:', '', null, 'pe:canhoto']) {
+      'constructor', 'decada:1950', 'baixo:180', 'nac:XX', 'pais:FO', 'faixa:3', 'clube:', '', null, 'pe:canhoto']) {
       expect(P.valida(k, cat), String(k)).toBe(false);
     }
   });
   it('aceita o que existe', () => {
-    for (const k of ['liga:Q324867', 'jogos:300', 'num:99', 'premio:liga_campeoes', 'ativo', 'decada:1930', 'nac:PT', 'pais:PT',
+    for (const k of ['liga:Q324867', 'jogos:300', 'num:99', 'premio:liga_campeoes', 'ativo', 'decada:1970', 'baixo:175', 'nac:PT', 'pais:PT',
       't_premio:melhor_treinador_fifa', 'liga:outra-PT']) {
       expect(P.valida(k, cat), k).toBe(true);
     }
@@ -142,6 +144,9 @@ describe('deduções', () => {
     expect(P.avaliar(ficha({ 'jogos:300': 'sim' }), 'jogos:500', cat).estado).toBe('aberta');
     expect(P.avaliar(ficha({ 'jogos:300': 'nao' }), 'jogos:500', cat)).toMatchObject({ estado: 'deduzida', r: 'nao' });
     expect(P.avaliar(ficha({ 'altura:185': 'sim' }), 'altura:175', cat)).toMatchObject({ estado: 'deduzida', r: 'sim' });
+    expect(P.avaliar(ficha({ 'altura:175': 'sim' }), 'baixo:175', cat)).toMatchObject({ estado: 'deduzida', r: 'nao' });
+    expect(P.avaliar(ficha({ 'baixo:175': 'sim' }), 'altura:190', cat)).toMatchObject({ estado: 'deduzida', r: 'nao' });
+    expect(P.avaliar(ficha({ 'altura:175': 'nao' }), 'baixo:175', cat).estado).toBe('aberta'); // pode medir 1,75 certo
     expect(P.avaliar(ficha({ 't_premio:mundial': 'sim', foi_treinador: 'sim' }), 't_titulos:0', cat))
       .toMatchObject({ estado: 'deduzida', r: 'sim' });
   });

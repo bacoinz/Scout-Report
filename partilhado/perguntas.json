@@ -6,7 +6,8 @@
   "fator_identificado": 0.5
  },
  "palpite": {"sim_minimos": 6, "clube_obrigatorio": true},
- "ordem_categorias": ["era", "nacionalidade", "posicao", "fisico", "estado", "carreira", "estatisticas", "numeros", "premios", "treinador"],
+ "sorteio_por_decada_de_nascimento": {"1990": 8, "1980": 5, "2000": 5, "1970": 3, "1960": 1},
+ "ordem_categorias": ["estado", "era", "nacionalidade", "posicao", "fisico", "carreira", "estatisticas", "numeros", "premios", "treinador"],
  "setores": {"gr": "Guarda-redes", "defesa": "Defesa", "medio": "Médio", "avancado": "Avançado"},
  "posicoes": {
   "GR": {"nome": "Guarda-redes", "setor": "gr"},
@@ -29,9 +30,9 @@
   "internacionalizacoes": [25, 50, 100],
   "assistencias": [25, 50, 100]
  },
- "numeros": {"faixas": [[1, 9], [10, 20], [21, 99]]},
- "fisico": {"alturas_cm": [175, 180, 185, 190], "pes": ["direito", "esquerdo", "ambos"]},
- "decadas": [1930, 1940, 1950, 1960, 1970, 1980, 1990, 2000, 2010, 2020],
+ "numeros": {"faixas": [[1, 9], [10, 19], [20, 99]]},
+ "fisico": {"alturas_cm": [175, 180, 185, 190], "menos_de_cm": [175], "pes": ["direito", "esquerdo", "ambos"]},
+ "decadas": [1970, 1980, 1990, 2000, 2010, 2020],
  "treinador": {"titulos": [1, 5, 10, 20]},
  "premios": {
   "liga_campeoes": {"nome": "a Liga dos Campeões", "tipo": "clube", "treinador": true},

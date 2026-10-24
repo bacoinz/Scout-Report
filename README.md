@@ -18,7 +18,7 @@ O projeto tem três partes:
 
 - [x] Passo 1 — tema partilhado e mockup do relatório de olheiro (`docs/tema-partilhado.md`, `docs/capturas/`)
 - [x] Passo 2 — pipeline com uma amostra de 30 jogadores e relatório de qualidade
-- [x] Passo 3 — lista dos míticos e processamento completo (865 jogadores)
+- [x] Passo 3 — lista dos míticos e processamento completo (865 jogadores; 788 depois de saírem os nascidos antes de 1960)
 - [x] Passo 4 — jogo: salas, rotação, perguntas, fichas, pontuação, palpites (`docs/capturas/passo4/`)
 - [ ] Passo 5 — Ronda Joker
 - [ ] Passo 6 — Desafio do Dia
@@ -64,6 +64,8 @@ py -3.12 -m venv .venv
 - **Cache:** tudo o que vem da rede fica em `pipeline/.cache/`. Correr outra vez não pede nada à rede, e `--fresco`
   ignora a cache. Há um pedido de cada vez, e o zerozero só leva um a cada 2–3 s.
 - **Sem IA:** o pipeline só lê fontes estruturadas (caixas, tabelas, Wikidata, zerozero, transfermarkt-datasets).
+- **Quem entra:** só jogadores nascidos a partir de 1960 (`NASCIDOS_DESDE` em `config.py`); a recolha não grava os
+  outros e a exportação também os deixa de fora.
 - **Correções à mão:** ficam em `pipeline/dados/ajustes.json`, `pipeline/dados/competicoes.json` e
   `pipeline/dados/clubes.json`. Os ajustes aplicam-se por cima das fontes em cada recolha.
 
@@ -79,6 +81,9 @@ npm run dev           # http://127.0.0.1:8787
 npm test              # regras das perguntas, nomes, partida e fugas de informação
 npm run e2e           # (com o dev a correr) clientes WebSocket jogam uma partida inteira
 ```
+
+O `wrangler dev` só calcula as ETags dos ficheiros de `public/` quando arranca: depois de os mudar, reinicia-o (senão o
+browser pode continuar com a versão antiga).
 
 Para jogar sozinho no browser contra bots: cria uma sala e corre `node scripts/e2e.mjs --bots ABCD 3` (com o
 código da sala no lugar de ABCD). Os bots perguntam ao calhas e respondem às perguntas livres.

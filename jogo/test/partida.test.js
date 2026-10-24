@@ -93,7 +93,7 @@ describe('rotação dos alvos', () => {
     const { sala } = montar(3);
     expect(sala.partida.fase).toBe('vez');
     expect(vez(sala)).toMatchObject({ jogador: 'j1', alvo: 'j2' });
-    expect(vez(sala).prazo - vez(sala).inicio).toBe(45_000);
+    expect(vez(sala).prazo - vez(sala).inicio).toBe(REGRAS.vezMs);
   });
 });
 
@@ -170,7 +170,7 @@ describe('pergunta livre', () => {
   it('sem resposta em 30 s cai, e quem perguntou recupera a vez com pelo menos 15 s', () => {
     const { sala, ctx, t } = montar(3);
     const seq = vez(sala).seq;
-    t(40_000);
+    t(REGRAS.vezMs - 10_000);
     partida.perguntaLivre(sala, 'j1', { vez: seq, texto: 'É canhoto?' }, ctx);
     t(REGRAS.livreMs);
     expect(sala.partida.fase).toBe('vez');
@@ -221,7 +221,7 @@ describe('palpite final e identificação', () => {
     expect(vez(sala).alvo).toBe('j1'); // o alvo dele (j3) foi identificado: passa ao seguinte
   });
 
-  it('quem foi identificado recebe 15 por um palpite certo; com um só secreto por descobrir, a partida acaba', () => {
+  it('quem foi identificado recebe 15 por um palpite certo; a partida só acaba quando todos forem identificados', () => {
     const { sala, ctx, t, base } = montar(3);
     jogador(sala, 'j1').identificado = true;
     ficha(sala, 'j1').identificada = { por: 'j2', ronda: 1 };
@@ -229,8 +229,15 @@ describe('palpite final e identificação', () => {
     partida.palpitar(sala, 'j1', { vez: vez(sala).seq, ficha: ficha(sala, 'j2').n, jogador: base[1].id }, ctx);
     expect(jogador(sala, 'j1').total).toBe(15);
     t(REGRAS.identificadoMs);
+    // Falta o do j3: os outros perguntam-lhe, e o j3, que já não tem a quem perguntar, não joga.
+    expect(sala.fase).toBe('jogo');
+    expect(vez(sala)).toMatchObject({ jogador: 'j2', alvo: 'j3' });
+    t(REGRAS.vezMs);
+    expect(vez(sala)).toMatchObject({ jogador: 'j1', alvo: 'j3' });
+    desbloquear(sala, ctx, 'j3');
+    partida.palpitar(sala, 'j1', { vez: vez(sala).seq, ficha: ficha(sala, 'j3').n, jogador: base[2].id }, ctx);
+    t(REGRAS.identificadoMs);
     expect(sala.fase).toBe('final');
-    // No fim revelam-se todos.
     for (const f of Object.values(sala.partida.fichas)) expect(f.revelada?.nome).toBeTruthy();
   });
 
@@ -249,7 +256,7 @@ describe('palpite final e identificação', () => {
 describe('tempo, desligados e fim', () => {
   it('a vez acaba quando o tempo acaba', () => {
     const { sala, t } = montar(3);
-    t(45_000);
+    t(REGRAS.vezMs);
     expect(vez(sala).jogador).toBe('j2');
     expect(sala.feed.some((e) => e.tipo === 'tempo' && e.jogador === 'j1')).toBe(true);
   });
@@ -260,8 +267,8 @@ describe('tempo, desligados e fim', () => {
     expect(vez(sala).prazo).toBe(ctx.agora + REGRAS.desligadoSaltaMs);
     t(REGRAS.desligadoSaltaMs);
     expect(vez(sala).jogador).toBe('j2');
-    t(45_000);
-    t(45_000);
+    t(REGRAS.vezMs);
+    t(REGRAS.vezMs);
     // Ronda 2: a vez do j1 salta.
     expect(sala.partida.ronda).toBe(2);
     expect(vez(sala).jogador).toBe('j2');
@@ -284,33 +291,37 @@ describe('tempo, desligados e fim', () => {
     expect(vez(sala).prazo - ctx.agora).toBeLessThanOrEqual(Math.min(falta, REGRAS.desligadoSaltaMs));
   });
 
-  it('acaba no fim da última ronda', () => {
-    const { sala, t } = montar(2, { config: { fim: { tipo: 'rondas', n: 4 } } });
-    for (let i = 0; i < 7; i++) t(45_000);
+  it('não há limite de rondas nem de tempo', () => {
+    const { sala, t } = montar(2);
+    for (let i = 0; i < 60; i++) t(REGRAS.vezMs);
     expect(sala.fase).toBe('jogo');
-    expect(sala.partida.ronda).toBe(4);
-    t(45_000);
-    expect(sala.fase).toBe('final');
+    expect(sala.partida.ronda).toBe(31);
   });
 
-  it('por tempo: acabado o tempo, termina a ronda em curso', () => {
-    const { sala, t } = montar(3, { config: { fim: { tipo: 'minutos', n: 15 } } });
-    // 15 min = 20 vezes de 45 s; a 7.ª ronda acaba depois disso.
-    for (let i = 0; i < 20; i++) t(45_000);
+  it('se só estiver ligado o dono do último secreto (que não tem a quem perguntar), a partida congela', () => {
+    const { sala, ctx, t, base } = montar(2);
+    desbloquear(sala, ctx, 'j2');
+    partida.palpitar(sala, 'j1', { vez: vez(sala).seq, ficha: ficha(sala, 'j2').n, jogador: base[1].id }, ctx);
+    t(REGRAS.identificadoMs);
+    expect(vez(sala)).toMatchObject({ jogador: 'j2', alvo: 'j1' });
+    L.desligar(sala, 'j2', ctx);
+    t(REGRAS.vezMs);
+    t(REGRAS.vezMs);
+    expect(sala.partida.congelada).toBeTruthy();
     expect(sala.fase).toBe('jogo');
-    expect(sala.partida.ronda).toBe(7);
-    t(45_000);
-    expect(sala.fase).toBe('final');
+    L.entrar(sala, { token: 'token-2-abcdef' }, ctx);
+    expect(sala.partida.congelada).toBeNull();
+    expect(vez(sala)).toMatchObject({ jogador: 'j2', alvo: 'j1' });
   });
 
   it('quem sai a meio: a ficha fica até ao fim da ronda e depois é revelada e sai da rotação', () => {
     const { sala, ctx, t } = montar(4);
     L.sair(sala, 'j3', ctx);
     expect(jogador(sala, 'j3').saindo).toBe(true);
-    t(45_000);
-    t(45_000);
+    t(REGRAS.vezMs);
+    t(REGRAS.vezMs);
     expect(vez(sala).jogador).toBe('j4'); // a vez do j3 salta
-    t(45_000);
+    t(REGRAS.vezMs);
     expect(sala.partida.ronda).toBe(2);
     expect(jogador(sala, 'j3').saiu).toBe(true);
     expect(ficha(sala, 'j3').revelada).toBeTruthy();
@@ -321,8 +332,8 @@ describe('tempo, desligados e fim', () => {
     const { sala, ctx, t } = montar(2);
     const r = L.entrar(sala, { token: 'token-novo-abcdef', nome: 'Novo' }, ctx);
     expect(r.jogador.espectador).toBe(true);
-    t(45_000);
-    t(45_000);
+    t(REGRAS.vezMs);
+    t(REGRAS.vezMs);
     expect(sala.partida.ronda).toBe(2);
     expect(jogador(sala, r.jogador.id).espectador).toBe(false);
     expect(ficha(sala, r.jogador.id)).toBeTruthy();

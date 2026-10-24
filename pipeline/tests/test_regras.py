@@ -91,7 +91,7 @@ def test_sem_registo():
     r = _registo()
     r["totais"]["numeros"] = {"cobertura": 0.4, "conhecidos": [7]}
     falta = respostas_sem_registo(r, PERGUNTAS)
-    assert "números 1–9" not in falta and "números 10–20" in falta       # o "sim" sai com um número conhecido
+    assert "números 1–9" not in falta and "números 10–19" in falta       # o "sim" sai com um número conhecido
 
 
 def test_validar():

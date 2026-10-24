@@ -3,10 +3,11 @@
   "name": "scout-report",
   "main": "src/index.js",
   "compatibility_date": "2026-09-01",
-  // Gera public/js/comum/dados.gen.js a partir de ../partilhado/*.json antes de cada dev/deploy.
+  // Gera public/js/comum/dados.gen.js a partir de ../partilhado/*.json antes de cada dev/deploy. Com um build
+  // próprio, o `wrangler dev` só recarrega o que estiver em watch_dir: por isso o src/ também lá está.
   "build": {
     "command": "node scripts/gerar-dados.mjs",
-    "watch_dir": "../partilhado"
+    "watch_dir": ["src", "public/js/comum", "../partilhado"]
   },
   "assets": {
     "directory": "./public",
