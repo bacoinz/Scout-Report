@@ -9,7 +9,9 @@ const juntar = (partes, sep = ' · ') => partes.flatMap((p, i) => (i ? [sep, p] 
 const linhaDados = (rotulo, ...conteudo) => el('div', {}, el('dt', { text: rotulo }), el('dd', {}, ...conteudo));
 const PES = { direito: 'destro', esquerdo: 'canhoto', ambos: 'ambidestro' };
 const semArtigo = (t) => t.replace(/^(o|a|os|as|um|uma) /, '');
-export const nomePremio = (id) => semArtigo(P.PREMIOS[id]?.nome ?? id).replace(/ (ou [^)]*)$/, '').replace(/^./, (c) => c.toUpperCase());
+/** "o Mundial de Clubes (ou a Taça Intercontinental)" → "Mundial de Clubes"; "o prémio de Melhor…" → "Melhor…". */
+export const nomePremio = (id) => semArtigo(P.PREMIOS[id]?.nome ?? id).replace(/ \(ou [^)]*\)$/, '').replace(/^prémio de /, '')
+  .replace(/^./, (c) => c.toUpperCase());
 
 /** Carimbo pequeno ("Confirmado", "Sem registo"), com rotação fixa; "novo" anima-o. */
 const carimbo = (classe, texto, chave, novo) =>
@@ -124,7 +126,8 @@ function carreiraPublica(f, ctx) {
     el('h4', { text: 'Carreira' }),
     el('table', { class: 'tabela-carreira' },
       el('thead', {}, el('tr', {}, el('th', { text: 'Clube' }), el('th', { class: 'esq', text: 'Liga' }))),
-      el('tbody', {}, ...linhas)));
+      el('tbody', {}, ...linhas)),
+    nota ? el('p', { class: 'nota-carreira', text: `Totais: ${nota}.` }) : null);
 }
 
 function estatisticasPublicas(f, ctx) {
@@ -218,10 +221,11 @@ export function contadorSim(n, titulo) {
 
 /** Dados de um jogador já conhecido (revelado ou o meu): nascimento, nação, posição, físico, estado. */
 function dadosRegisto(reg) {
-  const nacoes = reg.nacionalidades.map((c) => `${P.nomePais(c)}${P.PAISES[c]?.confederacao ? ` (${P.PAISES[c].confederacao})` : ''}`);
+  const nacoes = reg.nacionalidades.map((c) => `${P.nomePais(c)}${P.PAISES[c]?.confederacao ? ` (${P.CONFEDERACOES[P.PAISES[c].confederacao].nome})` : ''}`);
   const fisico = [reg.perfil?.altura_cm ? metros(reg.perfil.altura_cm) : null, PES[reg.perfil?.pe] ?? null].filter(Boolean);
   const ultimoAno = Math.max(...reg.carreira.map((c) => c.fim ?? 0));
-  const estado = reg.estado === 'ativo' ? 'No ativo' : `Retirado${ultimoAno ? ` (${ultimoAno})` : ''}`;
+  const agora = reg.estado === 'ativo' ? `No ativo${reg.clube_atual ? '' : ' (sem clube)'}` : `Retirado${ultimoAno ? ` (${ultimoAno})` : ''}`;
+  const estado = `${agora}${reg.estreia ? ` · estreou-se em ${reg.estreia}` : ''}`;
   const naturalidade = reg.perfil?.naturalidade?.split(',')[0];
   return el('dl', { class: 'folha-dados' },
     linhaDados('Nasceu', `${data(reg.nascimento)}${naturalidade ? ` · ${naturalidade}` : ''}`),
@@ -234,6 +238,7 @@ function dadosRegisto(reg) {
 function carreiraRegisto(reg, cat, completa) {
   const ativo = reg.estado === 'ativo';
   const cabeca = completa ? ['Clube', 'Épocas', 'J', 'G', 'A', 'N.º'] : ['Clube', 'Liga', 'Épocas'];
+  let nota = null;
   const linhas = reg.carreira.map((c, i) => {
     const liga = c.ligas[0] ? P.nomeLiga(cat, c.ligas[0]) : '—';
     const ep = epocas(c.inicio, c.fim, ativo && i === reg.carreira.length - 1);
@@ -257,6 +262,17 @@ function carreiraRegisto(reg, cat, completa) {
         el('td', { text: '—' }),
         el('td', { text: s.numeros?.length ? s.numeros.join(', ') : '—' })));
     }
+    const t = reg.totais;
+    const assist = t.assistencias;
+    nota = [t.base === 'todas' ? 'todas as competições + seleção' : 'campeonato + seleção',
+      assist.cobertura < P.COBERTURA_MINIMA ? `assist. conhecidas em ${Math.round(assist.cobertura * 100)}% dos jogos` : null].filter(Boolean).join(' · ');
+    linhas.push(el('tr', { class: 'total' },
+      el('td', { text: 'Total' }),
+      el('td', { text: '' }),
+      el('td', { text: t.jogos }),
+      el('td', { text: t.golos }),
+      el('td', { text: assist.conhecidas }),
+      el('td', { text: '' })));
   }
   return el('section', {},
     el('h4', { text: 'Carreira' }),
@@ -333,27 +349,46 @@ export function caixaPalpite(f, o) {
 // O meu dossier
 // ---------------------------------------------------------------------------
 
+/**
+ * Uma linha por tipo de prémio, pela ordem de partilhado/perguntas.json, com os países (campeonatos e taças) e os
+ * anos: "Campeonato nacional · Croácia (2019, 2020), Inglaterra (2023)", "Liga dos Campeões (2024, 2025)".
+ */
+export function linhasPremios(lista) {
+  // Primeiro os campeonatos e as taças nacionais, depois pela ordem de perguntas.json.
+  const ordem = ['campeonato_nacional', 'taca_nacional', ...Object.keys(P.PREMIOS)];
+  const porId = new Map();
+  for (const p of lista) {
+    if (!p.id || !P.PREMIOS[p.id]) continue;
+    const porPais = porId.get(p.id) ?? new Map();
+    porId.set(p.id, porPais);
+    const atual = porPais.get(p.pais ?? '') ?? { anos: [], n: 0 };
+    atual.anos.push(...(p.anos ?? []));
+    atual.n += p.n ?? (p.anos?.length || 1);
+    porPais.set(p.pais ?? '', atual);
+  }
+  const anos = ({ anos: a, n }) => {
+    const unicos = [...new Set(a)].sort((x, y) => x - y);
+    return unicos.length ? `(${unicos.join(', ')})` : n > 1 ? `×${n}` : '';
+  };
+  return [...porId].sort(([a], [b]) => ordem.indexOf(a) - ordem.indexOf(b)).map(([id, porPais]) => {
+    const nome = nomePremio(id);
+    const semPais = porPais.size === 1 && porPais.has('');
+    if (semPais) return [nome, anos(porPais.get(''))].filter(Boolean).join(' ');
+    return `${nome} · ${[...porPais].map(([pais, x]) => [pais ? P.nomePais(pais) : '?', anos(x)].filter(Boolean).join(' ')).join(', ')}`;
+  });
+}
+
+// ---------------------------------------------------------------------------
+// O dossier
+// ---------------------------------------------------------------------------
+
 /** O dossier do meu jogador secreto: tudo o que há no registo, para responder às perguntas livres. */
 export function dossier(reg, f, o) {
   const cat = o.cat;
-  const t = reg.totais;
-  const base = t.base === 'todas' ? 'todas as competições + seleção' : 'campeonato + seleção';
-  const assist = t.assistencias;
-  const premios = new Map();
-  for (const p of reg.premios) {
-    if (!p.id) continue;
-    const chave = p.id === 'campeonato_nacional' || p.id === 'taca_nacional' ? `${p.id}:${p.pais ?? ''}` : p.id;
-    const atual = premios.get(chave) ?? { ...p, anos: [] };
-    atual.anos = [...atual.anos, ...(p.anos ?? [])];
-    premios.set(chave, atual);
-  }
-  const textoPremio = (p) => {
-    const nome = p.pais && (p.id === 'campeonato_nacional' || p.id === 'taca_nacional')
-      ? `${p.id === 'campeonato_nacional' ? 'Campeonato nacional' : 'Taça nacional'} · ${P.nomePais(p.pais)}` : nomePremio(p.id);
-    const anos = [...new Set(p.anos)].sort();
-    return anos.length > 3 ? `${nome} ×${anos.length}` : `${nome}${anos.length ? ` (${anos.join(', ')})` : ''}`;
-  };
   const tr = reg.treinador;
+  const grupos = [['clube', 'Clubes'], ['selecao', 'Internacionais'], ['individual', 'Pessoais']]
+    .map(([tipo, rotulo]) => [rotulo, linhasPremios(reg.premios.filter((p) => P.PREMIOS[p.id]?.tipo === tipo))])
+    .filter(([, linhas]) => linhas.length);
   const nSim = f ? P.contarSim(f) : 0;
   const titulo = `Os outros já têm ${plural(nSim, '«sim»', '«sim»')} sobre o teu jogador`;
   return el('article', { class: 'folha dossier', id: 'f-meu', 'aria-label': 'O teu dossier' },
@@ -366,18 +401,16 @@ export function dossier(reg, f, o) {
         el('div', { class: 'folha-retrato' }, retrato(reg.perfil?.foto, reg.nome), dadosRegisto(reg))),
       el('div', { class: 'folha-corpo' },
         carreiraRegisto(reg, cat, true),
-        el('section', {},
-          el('h4', { text: 'Totais' }),
-          el('p', { class: 'texto-maquina' },
-            `${t.jogos} jogos · ${t.golos} golos · ${assist.conhecidas} assist. conhecidas`,
-            assist.cobertura < P.COBERTURA_MINIMA ? ` (${Math.round(assist.cobertura * 100)}% da carreira)` : '',
-            ` · estreia em ${reg.estreia} · base: ${base}`)),
-        premios.size ? el('section', {}, el('h4', { text: 'Prémios' }), el('ul', { class: 'lista-folha' }, ...[...premios.values()].map((p) => el('li', { text: textoPremio(p) })))) : null,
+        grupos.length ? el('section', {}, el('h4', { text: 'Prémios' }),
+          ...grupos.map(([rotulo, linhas]) => el('div', { class: 'premios-grupo' },
+            el('p', { class: 'premios-rotulo', text: rotulo }),
+            el('ul', { class: 'lista-folha' }, ...linhas.map((l) => el('li', { text: l })))))) : null,
         tr ? el('section', {},
           el('h4', { text: 'Treinador' }),
           el('ul', { class: 'lista-folha' },
             ...tr.equipas.map((e) => el('li', { text: `${e.tipo === 'selecao' ? `Seleção ${P.dePais(e.pais)}` : e.nome}${e.pais && e.tipo !== 'selecao' ? ` (${P.nomePais(e.pais)})` : ''} · ${epocas(e.inicio, e.fim, e === tr.atual)}${e.interino ? ' · interino' : ''}` })),
-            el('li', { text: `${plural(tr.n_titulos ?? 0, 'título', 'títulos')}${tr.titulos.length ? `: ${tr.titulos.filter((x) => x.id).map(textoPremio).join(' · ')}` : ''}` }))) : null,
+            el('li', { text: plural(tr.n_titulos ?? 0, 'título', 'títulos') }),
+            ...linhasPremios(tr.titulos).map((l) => el('li', { text: l })))) : null,
         reg.perfil?.alcunhas?.length ? el('section', {}, el('h4', { text: 'Alcunhas' }), el('p', { class: 'texto-maquina', text: reg.perfil.alcunhas.join(' · ') })) : null,
         el('p', { class: 'folha-fonte' }, 'Fonte: ',
           reg.fontes?.wikipedia ? el('a', { href: `https://en.wikipedia.org/wiki/${encodeURIComponent(reg.fontes.wikipedia.replace(/ /g, '_'))}`, target: '_blank', rel: 'noopener', text: 'Wikipédia' }) : 'Wikipédia',

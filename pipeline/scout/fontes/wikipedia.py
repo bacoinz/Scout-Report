@@ -180,9 +180,9 @@ _INDIVIDUAL = re.compile(r"individual|personal|records|orders|decorations", re.I
 _VICE = re.compile(r"runner[s]?[- ]?up|second place|third place|finalist|silver|bronze", re.I)
 _ANO = re.compile(r"\b(1[89]\d{2}|20\d{2})(?:\s*[–\-/]\s*\d{2,4})?\b")
 # "Ballon d'Or: 1996 (26th place)" é um lugar na votação, não uma vitória.
-_LUGAR = re.compile(r"^\s*\)?\s*\(?\s*(\d+\s*(st|nd|rd|th)\b|runner|second|third|nominated|shortlist)", re.I)
-# "7th place (1999)": o lugar vem antes do ano.
-_LUGAR_ANTES = re.compile(r"(\d+\s*(st|nd|rd|th)\s+place|runners?[- ]?up|second place|third place|nominated)\W*$", re.I)
+_LUGAR = re.compile(r"^\s*\)?\s*\(?\s*(\d+\s*(st|nd|rd|th)\b|runner|second|third|nominated|shortlist|silver|bronze)", re.I)
+# "7th place (1999)", "Silver medal 2003": o lugar vem antes do ano.
+_LUGAR_ANTES = re.compile(r"(\d+\s*(st|nd|rd|th)\s+place|runners?[- ]?up|second place|third place|nominated|silver|bronze)( medal)?\W*$", re.I)
 _REF = re.compile(r"<ref[^>]*/>|<ref[^>]*>.*?</ref>", re.I | re.S)
 _JOVEM = re.compile(r"\bu-?\d{2}\b|under-?\d{2}|youth", re.I)
 

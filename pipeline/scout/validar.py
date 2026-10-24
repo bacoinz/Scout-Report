@@ -38,10 +38,10 @@ def validar_registo(r: dict, perguntas: dict, paises: dict) -> tuple[list[str], 
         for n in c.get("numeros", []):
             if not 1 <= n <= 99:
                 erros.append(f"{nome}: número {n} fora de 1–99")
-    if r.get("estado") == "ativo" and carreira and carreira[-1].get("fim") is not None:
-        erros.append("ativo, mas a última passagem tem fim")
     if r.get("estado") == "ativo" and not r.get("clube_atual"):
-        erros.append("ativo sem clube atual")
+        avisos.append("no ativo e sem clube (contrato acabado)")
+    if r.get("clube_atual") and r["clube_atual"] not in {c["clube"] for c in carreira}:
+        erros.append("o clube atual não está na carreira")
     for p in r.get("nacionalidades", []):
         if p not in paises:
             erros.append(f"nacionalidade {p} sem país em paises.json")

@@ -185,3 +185,10 @@ def test_titulos_epoca():
 
 def test_limpo_sem_legendas_de_imagens():
     assert wp.limpo("[[File:X.jpg|thumb|X playing in 2005]]He made his [[debut]] at 17.") == "He made his debut at 17."
+
+
+def test_medalhas_de_prata_nao_contam():
+    texto = "==Honours==\n===International===\n*[[CONCACAF Gold Cup]]: Silver medal [[2003 CONCACAF Gold Cup|2003]]\n*[[FIFA Confederations Cup]]: [[2005 FIFA Confederations Cup|2005]]\n"
+    anos = {t["competicao"]: t["anos"] for t in wp.titulos(texto)}
+    assert anos.get("CONCACAF Gold Cup", []) == []
+    assert anos["FIFA Confederations Cup"] == [2005]

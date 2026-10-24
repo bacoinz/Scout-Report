@@ -507,12 +507,18 @@ def construir(ctx: Contexto, qid: str, ent: dict, artigo: dict) -> tuple[dict, l
             else:
                 avisos.append(f"clube sem país/liga: {c['nome']}")
 
-    ultima = passagens[-1] if passagens else None
+    # O zerozero diz o estado ("No ativo", "Retirado das competições oficiais", "Falecido"): quem acabou contrato e
+    # está sem clube continua no ativo, só não tem clube atual. Sem zerozero, conta a caixa (uma passagem em aberto).
+    abertas = [i for i, p in enumerate(passagens) if p["aberto"]]
     situacao = (zz_perfil.get("situacao") or "").lower()
-    ativo = bool(ultima and ultima["aberto"]) and "retirad" not in situacao
-    if ultima and ultima["aberto"] and "retirad" in situacao:
-        discrepancias.append({"campo": "estado", "wikipedia": "passagem em aberto", "zerozero": zz_perfil.get("situacao"),
-                              "escolha": "retirado"})
+    if situacao:
+        ativo = "ativo" in situacao and "retirad" not in situacao and "falecid" not in situacao
+        if ativo != bool(abertas):
+            discrepancias.append({"campo": "estado", "wikipedia": "passagem em aberto" if abertas else "sem passagem em aberto",
+                                  "zerozero": zz_perfil.get("situacao"), "escolha": "ativo" if ativo else "retirado"})
+    else:
+        ativo = bool(abertas)
+    i_atual = abertas[-1] if ativo and abertas else None
     estreia = min((p["inicio"] for p in passagens if p["inicio"]), default=None)
 
     # --- posição e físico ---------------------------------------------------------------------------------------------
@@ -581,7 +587,8 @@ def construir(ctx: Contexto, qid: str, ent: dict, artigo: dict) -> tuple[dict, l
         "estreia": estreia,
         "estado": "ativo" if ativo else "retirado",
         # A carreira já tem os ids próprios dos clubes sem artigo ("x-vv-woudenberg").
-        "clube_atual": carreira[-1]["clube"] if ativo and carreira else None,
+        # Sem clube (contrato acabado) não há clube atual; num empréstimo, é o clube do empréstimo (a última em aberto).
+        "clube_atual": carreira[i_atual]["clube"] if i_atual is not None else None,
         "carreira": carreira,
         "selecoes": [dict(s, numeros=sorted(s["numeros"])) for s in selecoes],
         "totais": {
@@ -643,7 +650,8 @@ def _naturalidade(ctx: Contexto, ent: dict) -> tuple[str | None, str | None]:
         pais = (wd.itens(e, "P17") or [None])[0]
         cod = ctx.codigo_pais(pais)
         if cod:
-            return f"{nome_lugar}, {ctx.paises[cod]['nome']}", cod
+            # Sítios sem nome em português nem em inglês na Wikidata: fica só o país.
+            return (f"{nome_lugar}, {ctx.paises[cod]['nome']}" if nome_lugar else ctx.paises[cod]["nome"]), cod
         acima = wd.itens(e, "P131")
         atual = acima[0] if acima else None
     return nome_lugar, None

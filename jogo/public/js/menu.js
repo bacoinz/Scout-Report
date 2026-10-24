@@ -5,8 +5,8 @@
 import * as P from './comum/perguntas.js';
 import { el, pts } from './util.js';
 import { autocompletar } from './autocompletar.js';
+import { nomePremio } from './ficha.js';
 
-const nomeCurtoPremio = (id) => P.PREMIOS[id].nome.replace(/^(o|a|os|as|um|uma) /, '').replace(/ \(ou [^)]*\)$/, '').replace(/^./, (c) => c.toUpperCase());
 const tipoPremio = (tipo) => (k) => P.PREMIOS[P.ler(k).valor]?.tipo === tipo;
 
 /**
@@ -42,8 +42,8 @@ const GRUPOS = {
   estatisticas: [
     { rotulo: 'Jogos', tipos: ['jogos'], colunas: 4 },
     { rotulo: 'Golos', tipos: ['golos'], colunas: 4 },
-    { rotulo: 'Assistências', tipos: ['assist'], colunas: 4 },
-    { rotulo: 'Internacionalizações', tipos: ['inter'], colunas: 4 },
+    { rotulo: 'Assistências', tipos: ['assist_menos', 'assist'], colunas: 4 },
+    { rotulo: 'Internacionalizações', tipos: ['inter_menos', 'inter'], colunas: 4 },
   ],
   numeros: [
     { rotulo: 'Números usados', tipos: ['faixa'], colunas: 3 },
@@ -83,6 +83,7 @@ export function rotulo(chave, cat) {
     case 'pe': return { direito: 'Destro', esquerdo: 'Canhoto', ambos: 'Ambidestro' }[v];
     case 'altura': return `+${metros(v)}`;
     case 'baixo': return `-${metros(v)}`;
+    case 'assist_menos': case 'inter_menos': return `-${v}`;
     case 'jogos': case 'golos': case 'assist': case 'inter': return `+${v}`;
     case 'faixa': {
       const [a, b] = P.FAIXAS_NUMEROS[Number(v)];
@@ -90,7 +91,7 @@ export function rotulo(chave, cat) {
     }
     case 'liga': case 'liga_atual': return v.startsWith('outra-') ? 'Outra liga' : P.nomeLiga(cat, v);
     case 'clube': case 'clube_atual': case 't_clube': case 't_atual_clube': return P.nomeClube(cat, v);
-    case 'premio': case 't_premio': return nomeCurtoPremio(v);
+    case 'premio': case 't_premio': return nomePremio(v);
     case 't_atual': return 'Treina atualmente';
     case 't_selecao': return 'Treinou uma seleção';
     case 't_titulos': return Number(v) === 0 ? 'Algum título' : `+${v}`;
@@ -155,13 +156,29 @@ export function menu(ficha, o) {
     return [caixa, fechadas.length ? el('div', { class: 'grelha larga' }, ...fechadas.map(botao)) : null];
   };
 
-  const lista = (chaves) => [el('select', { class: 'campo lista-opcoes', disabled: !o.ativo, onchange: (e) => o.aoEscolher(e.target.value || null) },
-    el('option', { value: '', text: 'Escolhe…' }),
-    ...chaves.map((k) => {
-      const e = estado(k);
-      const marca = e.estado === 'aberta' ? '' : e.r === 'sim' ? ' ✓' : e.r === 'nao' ? ' ✗' : ' · sem registo';
-      return el('option', { value: k, disabled: e.estado !== 'aberta', selected: o.escolhida === k, text: `${rotulo(k, cat)}${marca}` });
-    }))];
+  // Lista que se abre por baixo do botão (no estilo dos campos e das sugestões da app). As deduzidas não aparecem:
+  // com a nacionalidade confirmada, os torneios de outras confederações saem da lista.
+  const lista = (chaves) => {
+    const visiveis = chaves.filter((k) => estado(k).estado !== 'deduzida');
+    const aqui = visiveis.includes(o.escolhida) ? o.escolhida : null;
+    const opcoes = el('div', { class: 'seletor-lista', role: 'listbox', hidden: true },
+      ...visiveis.map((k) => {
+        const e = estado(k);
+        const livre = e.estado === 'aberta';
+        return el('button', {
+          class: `seletor-opcao ${livre ? '' : classeEstado(e)}`.trim(), type: 'button', role: 'option', disabled: !livre || !o.ativo,
+          'aria-selected': String(k === aqui), title: livre ? P.afirmacao(k, cat) : porque(e, ficha, cat), onclick: () => o.aoEscolher(k),
+        }, rotulo(k, cat));
+      }));
+    const botao = el('button', {
+      class: `campo seletor-botao${aqui ? ' escolhido' : ''}`, type: 'button', 'aria-haspopup': 'listbox', 'aria-expanded': 'false', disabled: !visiveis.length,
+      onclick: () => {
+        opcoes.hidden = !opcoes.hidden;
+        botao.setAttribute('aria-expanded', String(!opcoes.hidden));
+      },
+    }, el('span', { text: aqui ? rotulo(aqui, cat) : 'Escolhe…' }), el('span', { class: 'seta', 'aria-hidden': 'true', text: '▾' }));
+    return [el('div', { class: 'seletor' }, botao, opcoes)];
+  };
 
   const categorias = P.ORDEM.filter((c) => c !== 'treinador' || P.comTreinador(ficha));
   return categorias.map((categoria) => {

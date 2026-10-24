@@ -14,13 +14,14 @@ export const NOMES_CATEGORIAS = {
   carreira: 'Carreira', estatisticas: 'Estatísticas', numeros: 'Números', premios: 'Prémios', treinador: 'Treinador',
 };
 
+/** As confederações mostram-se só pelo continente (a Austrália, da AFC, é "Ásia"). */
 export const CONFEDERACOES = {
-  UEFA: { nome: 'Europa (UEFA)', de: 'da Europa (UEFA)' },
-  CONMEBOL: { nome: 'América do Sul (CONMEBOL)', de: 'da América do Sul (CONMEBOL)' },
-  CONCACAF: { nome: 'América do Norte e Central (CONCACAF)', de: 'da América do Norte e Central (CONCACAF)' },
-  CAF: { nome: 'África (CAF)', de: 'de África (CAF)' },
-  AFC: { nome: 'Ásia (AFC)', de: 'da Ásia (AFC)' },
-  OFC: { nome: 'Oceânia (OFC)', de: 'da Oceânia (OFC)' },
+  UEFA: { nome: 'Europa', de: 'da Europa' },
+  CONMEBOL: { nome: 'América do Sul', de: 'da América do Sul' },
+  CONCACAF: { nome: 'América do Norte e Central', de: 'da América do Norte e Central' },
+  CAF: { nome: 'África', de: 'de África' },
+  AFC: { nome: 'Ásia', de: 'da Ásia' },
+  OFC: { nome: 'Oceânia', de: 'da Oceânia' },
 };
 export const SETORES = PERGUNTAS.setores;
 export const POSICOES = PERGUNTAS.posicoes;
@@ -32,11 +33,16 @@ const LIMIARES = {
   golos: PERGUNTAS.estatisticas.golos,
   inter: PERGUNTAS.estatisticas.internacionalizacoes,
   assist: PERGUNTAS.estatisticas.assistencias,
+  inter_menos: PERGUNTAS.estatisticas.internacionalizacoes_menos_de,
+  assist_menos: PERGUNTAS.estatisticas.assistencias_menos_de,
   altura: PERGUNTAS.fisico.alturas_cm,
   baixo: PERGUNTAS.fisico.menos_de_cm,
   // "Ganhou algum título como treinador?" é o limiar 0 ("mais de 0").
   t_titulos: [0, ...PERGUNTAS.treinador.titulos.filter((n) => n > 1)],
 };
+
+/** Os pares "menos de N" → "mais de N" do mesmo valor (excluem-se: "menos de 25 ✓" fecha os "mais de"). */
+const MENOS_DE = { baixo: 'altura', assist_menos: 'assist', inter_menos: 'inter' };
 
 /** Os limiares de um tipo "mais de N" (jogos, golos, inter, assist, altura, t_titulos). */
 export const limiaresDe = (tipo) => LIMIARES[tipo] ?? [];
@@ -107,7 +113,15 @@ export const nomeClube = (cat, id) => cat.clubes[id]?.nome ?? id;
 // ---------------------------------------------------------------------------
 
 const intEntre = (v, a, b) => /^\d+$/.test(v) && Number(v) >= a && Number(v) <= b;
-const ultima = (reg) => (reg.estado === 'ativo' ? reg.carreira.at(-1) : null);
+/**
+ * A passagem atual: a do clube atual que ainda não acabou (num empréstimo, a do empréstimo). Quem está no ativo mas
+ * sem clube (contrato acabado) não tem passagem atual: as perguntas "atualmente" dão "não".
+ */
+function ultima(reg) {
+  if (reg.estado !== 'ativo' || !reg.clube_atual) return null;
+  const doClube = reg.carreira.filter((c) => c.clube === reg.clube_atual);
+  return doClube.findLast((c) => c.fim == null) ?? doClube.at(-1) ?? null;
+}
 const tre = (reg) => reg.treinador ?? { equipas: [], atual: null, titulos: [], n_titulos: 0 };
 
 /** Resposta a "mais de N" com o valor (ou SEM REGISTO sem ele). */
@@ -119,6 +133,12 @@ function numeros(reg, aceita) {
   const t = reg.totais.numeros;
   if (t.conhecidos.some(aceita)) return 'sim';
   return t.cobertura >= COBERTURA_MINIMA ? 'nao' : 'sem_registo';
+}
+/** "Menos de N assistências?": "sim" só com o máximo estimado (ou a carreira coberta) abaixo de N. */
+export function respostaAssistenciasMenos(assist, limiar) {
+  if (assist.conhecidas >= limiar) return 'nao';
+  if ((assist.maximo ?? Infinity) < limiar || assist.cobertura >= COBERTURA_MINIMA) return 'sim';
+  return 'sem_registo';
 }
 /** O mesmo que pipeline/scout/assistencias.py → resposta(). */
 export function respostaAssistencias(assist, limiar) {
@@ -246,6 +266,18 @@ const TIPOS = {
     responder: (reg, v) => maisDe(reg.totais.internacionalizacoes, Number(v)),
     valores: () => LIMIARES.inter.map(String),
   },
+  inter_menos: {
+    cat: 'estatisticas', nivel: 1, valida: (v) => LIMIARES.inter_menos.includes(Number(v)),
+    texto: (v) => `Tem menos de ${v} internacionalizações?`,
+    responder: (reg, v) => simNao(reg.totais.internacionalizacoes < Number(v)),
+    valores: () => LIMIARES.inter_menos.map(String),
+  },
+  assist_menos: {
+    cat: 'estatisticas', nivel: 1, valida: (v) => LIMIARES.assist_menos.includes(Number(v)),
+    texto: (v) => `Fez menos de ${v} assistências?`,
+    responder: (reg, v) => respostaAssistenciasMenos(reg.totais.assistencias, Number(v)),
+    valores: () => LIMIARES.assist_menos.map(String),
+  },
   assist: {
     cat: 'estatisticas', nivel: 1, valida: (v) => LIMIARES.assist.includes(Number(v)),
     texto: (v) => `Fez mais de ${v} assistências?`,
@@ -337,7 +369,7 @@ export const TIPOS_POR_CATEGORIA = {
   fisico: ['pe', 'baixo', 'altura'],
   estado: ['ativo', 'retirado', 'foi_treinador'],
   carreira: ['pais', 'pais_atual', 'liga', 'liga_atual', 'clube', 'clube_atual'],
-  estatisticas: ['jogos', 'golos', 'assist', 'inter'],
+  estatisticas: ['jogos', 'golos', 'assist_menos', 'assist', 'inter_menos', 'inter'],
   numeros: ['faixa', 'num'],
   premios: ['premio'],
   treinador: ['t_atual', 't_selecao', 't_titulos', 't_premio', 't_pais', 't_clube', 't_sel', 't_atual_clube', 't_atual_sel'],
@@ -416,15 +448,18 @@ export function deduzir(ficha, chave) {
   const achar = (cond) => respondidas(ficha).find(([k, v]) => cond(k, v.r));
   const de = (achado, res) => (achado ? { r: res, de: achado[0] } : null);
 
-  if (tipo === 'baixo') {
-    const alto = doTipo(ficha, 'altura').find(([m, res]) => res === 'sim' && Number(m) >= Number(valor) - 1);
-    return alto ? { r: 'nao', de: `altura:${alto[0]}` } : null;
+  if (MENOS_DE[tipo]) {
+    // "Menos de 25" fica "não" com algum "mais de N" ✓ (N ≥ 24: o valor é pelo menos 25).
+    const mais = MENOS_DE[tipo];
+    const acima = doTipo(ficha, mais).find(([m, res]) => res === 'sim' && Number(m) >= Number(valor) - 1);
+    return acima ? { r: 'nao', de: `${mais}:${acima[0]}` } : null;
   }
-  if (tipo === 'altura') {
-    const baixo = doTipo(ficha, 'baixo').find(([m, res]) => res === 'sim' && Number(m) <= Number(valor) + 1);
-    if (baixo) return { r: 'nao', de: `baixo:${baixo[0]}` };
+  const menos = Object.keys(MENOS_DE).find((t) => MENOS_DE[t] === tipo);
+  if (menos) {
+    const abaixo = doTipo(ficha, menos).find(([m, res]) => res === 'sim' && Number(m) <= Number(valor) + 1);
+    if (abaixo) return { r: 'nao', de: `${menos}:${abaixo[0]}` };
   }
-  if (LIMIARES[tipo] && tipo !== 'baixo') {
+  if (LIMIARES[tipo]) {
     const n = Number(valor);
     const outros = doTipo(ficha, tipo).map(([v, res]) => [Number(v), res]);
     const acima = outros.find(([m, res]) => res === 'sim' && m >= n);
@@ -470,6 +505,16 @@ export function deduzir(ficha, chave) {
         const outro = doTipo(ficha, tipo).find(([v, res]) => v !== valor && res === 'sim');
         if (outro) return { r: 'nao', de: `${tipo}:${outro[0]}` };
       }
+      return null;
+    }
+    case 'premio': {
+      // Os torneios de uma confederação (o Europeu, a Taça da Ásia…) ficam "não" com uma nacionalidade
+      // confirmada de outra confederação, ou com o continente dela descartado.
+      const confs = PREMIOS[valor]?.confederacoes;
+      if (!confs) return null;
+      const nacs = doTipo(ficha, 'nac').filter(([, res]) => res === 'sim').map(([v]) => v);
+      if (nacs.length && !nacs.some((n) => confs.includes(PAISES[n]?.confederacao))) return { r: 'nao', de: `nac:${nacs[0]}` };
+      if (confs.every((c) => r(ficha, `conf:${c}`) === 'nao')) return { r: 'nao', de: `conf:${confs[0]}` };
       return null;
     }
     case 't_atual':
