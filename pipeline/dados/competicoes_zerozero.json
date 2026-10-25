@@ -1,0 +1,1557 @@
+{
+ "_nota": "Competições do zerozero (id da ligação 'Jogos' do bloco Classificações do plantel) → liga de ligas.json. Só serve às passagens sem liga época a época da Wikipédia nem do transfermarkt. null = não é liga (taças, supertaças, torneios, continentais, playoffs, juniores e os estaduais brasileiros, que contam pela liga nacional). 'antes': [ano, liga] para as épocas que começam antes desse ano. Revisto à mão a 25/10/2026; as competições novas aparecem como aviso na recolha.",
+ "496": {
+  "nome": "Arabian Gulf League | Etisalat Pro League",
+  "pais": "AE",
+  "liga": "Q5334350"
+ },
+ "1266": {
+  "nome": "Etisalat Cup",
+  "pais": "AE",
+  "liga": null
+ },
+ "1267": {
+  "nome": "President´s Cup",
+  "pais": "AE",
+  "liga": null
+ },
+ "4788": {
+  "nome": "Arabian Division 1",
+  "pais": "AE",
+  "liga": "Q1046766"
+ },
+ "84": {
+  "nome": "Girabola",
+  "pais": "AO",
+  "liga": "Q630141"
+ },
+ "662": {
+  "nome": "Supertaça Angolana",
+  "pais": "AO",
+  "liga": null
+ },
+ "1153": {
+  "nome": "Taça de Angola",
+  "pais": "AO",
+  "liga": null
+ },
+ "70": {
+  "nome": "Apertura | Clausura",
+  "pais": "AR",
+  "liga": "Q223170"
+ },
+ "384": {
+  "nome": "Nacional B | Primera B",
+  "pais": "AR",
+  "liga": "Q934724"
+ },
+ "1405": {
+  "nome": "Promoción Primera División",
+  "pais": "AR",
+  "liga": null
+ },
+ "1718": {
+  "nome": "Copa Argentina",
+  "pais": "AR",
+  "liga": null
+ },
+ "2112": {
+  "nome": "Supercopa Argentina",
+  "pais": "AR",
+  "liga": null
+ },
+ "2697": {
+  "nome": "Superfinal",
+  "pais": "AR",
+  "liga": null
+ },
+ "5319": {
+  "nome": "Copa da Superliga",
+  "pais": "AR",
+  "liga": null
+ },
+ "5609": {
+  "nome": "Trofeo de Campeones",
+  "pais": "AR",
+  "liga": null
+ },
+ "5987": {
+  "nome": "Copa Diego Maradona",
+  "pais": "AR",
+  "liga": null
+ },
+ "8057": {
+  "nome": "Supercopa Internacional",
+  "pais": "AR",
+  "liga": null
+ },
+ "14": {
+  "nome": "Austria | Austrian Bundesliga",
+  "pais": "AT",
+  "liga": "Q219592"
+ },
+ "1074": {
+  "nome": "ÖFB-Cup",
+  "pais": "AT",
+  "liga": null
+ },
+ "1413": {
+  "nome": "Supercup ÖFB",
+  "pais": "AT",
+  "liga": null
+ },
+ "15": {
+  "nome": "Eerste Klasse | Jupiler League",
+  "pais": "BE",
+  "liga": "Q216022"
+ },
+ "271": {
+  "nome": "Tweed Klasse | Tweed",
+  "pais": "BE",
+  "liga": "Q233199"
+ },
+ "343": {
+  "nome": "Beker van België | Taça da Bélgica",
+  "pais": "BE",
+  "liga": null
+ },
+ "627": {
+  "nome": "Super Cup | Supertaça Bélgica",
+  "pais": "BE",
+  "liga": null
+ },
+ "1645": {
+  "nome": "Taça Liga Belga",
+  "pais": "BE",
+  "liga": null
+ },
+ "77": {
+  "nome": "A Grupa | efbet League",
+  "pais": "BG",
+  "liga": "Q12837728"
+ },
+ "638": {
+  "nome": "Bulgarska Superkupa | Supertaça Bulgária",
+  "pais": "BG",
+  "liga": null
+ },
+ "1641": {
+  "nome": "Taça Bulgária | Bulgarska Kupa",
+  "pais": "BG",
+  "liga": null
+ },
+ "2314": {
+  "nome": "2ª Liga Búlgara",
+  "pais": "BG",
+  "liga": null,
+  "nota": "2.ª liga búlgara: sem liga correspondente em ligas.json"
+ },
+ "280": {
+  "nome": "Liga Boliviana",
+  "pais": "BO",
+  "liga": "Q1622667"
+ },
+ "6501": {
+  "nome": "Copa da Liga Boliviana",
+  "pais": "BO",
+  "liga": null
+ },
+ "51": {
+  "nome": "Brasileirão | Copa João Havelange",
+  "pais": "BR",
+  "liga": "Q206813"
+ },
+ "154": {
+  "nome": "Série B",
+  "pais": "BR",
+  "liga": "Q610175"
+ },
+ "208": {
+  "nome": "Série C | Serie C",
+  "pais": "BR",
+  "liga": "Q2037826"
+ },
+ "260": {
+  "nome": "Copa do Brasil | Copa Brasil",
+  "pais": "BR",
+  "liga": null
+ },
+ "545": {
+  "nome": "Mineiro Módulo II",
+  "pais": "BR",
+  "liga": null,
+  "nota": "campeonato estadual ou regional brasileiro: conta a liga nacional"
+ },
+ "555": {
+  "nome": "Paulista A1 | Paulista",
+  "pais": "BR",
+  "liga": null,
+  "nota": "campeonato estadual ou regional brasileiro: conta a liga nacional"
+ },
+ "562": {
+  "nome": "Paulista A2 | Paulista Série A2",
+  "pais": "BR",
+  "liga": null,
+  "nota": "campeonato estadual ou regional brasileiro: conta a liga nacional"
+ },
+ "578": {
+  "nome": "Copa Rio",
+  "pais": "BR",
+  "liga": null
+ },
+ "631": {
+  "nome": "Série D | Brasileirão Série D",
+  "pais": "BR",
+  "liga": "Q931513"
+ },
+ "659": {
+  "nome": "Copa Paulista",
+  "pais": "BR",
+  "liga": null
+ },
+ "696": {
+  "nome": "Paranaense  2ª Divisão",
+  "pais": "BR",
+  "liga": null,
+  "nota": "campeonato estadual ou regional brasileiro: conta a liga nacional"
+ },
+ "784": {
+  "nome": "Mineiro",
+  "pais": "BR",
+  "liga": null,
+  "nota": "campeonato estadual ou regional brasileiro: conta a liga nacional"
+ },
+ "785": {
+  "nome": "Mineiro 2ª Divisão | Mineiro 2ªD",
+  "pais": "BR",
+  "liga": null,
+  "nota": "campeonato estadual ou regional brasileiro: conta a liga nacional"
+ },
+ "877": {
+  "nome": "Rio-São Paulo | Torneio Rio-São Paulo",
+  "pais": "BR",
+  "liga": null,
+  "nota": "campeonato estadual ou regional brasileiro: conta a liga nacional"
+ },
+ "893": {
+  "nome": "Carioca",
+  "pais": "BR",
+  "liga": null,
+  "nota": "campeonato estadual ou regional brasileiro: conta a liga nacional"
+ },
+ "904": {
+  "nome": "Gaúcho",
+  "pais": "BR",
+  "liga": null,
+  "nota": "campeonato estadual ou regional brasileiro: conta a liga nacional"
+ },
+ "908": {
+  "nome": "Alagoano",
+  "pais": "BR",
+  "liga": null,
+  "nota": "campeonato estadual ou regional brasileiro: conta a liga nacional"
+ },
+ "921": {
+  "nome": "Nordestão",
+  "pais": "BR",
+  "liga": null,
+  "nota": "campeonato estadual ou regional brasileiro: conta a liga nacional"
+ },
+ "938": {
+  "nome": "Copa S. Catarina",
+  "pais": "BR",
+  "liga": null
+ },
+ "939": {
+  "nome": "Copa Bahia",
+  "pais": "BR",
+  "liga": null
+ },
+ "959": {
+  "nome": "Paranaense",
+  "pais": "BR",
+  "liga": null,
+  "nota": "campeonato estadual ou regional brasileiro: conta a liga nacional"
+ },
+ "960": {
+  "nome": "Copa Paraná | Taça FPF",
+  "pais": "BR",
+  "liga": null
+ },
+ "1234": {
+  "nome": "Catarinense",
+  "pais": "BR",
+  "liga": null,
+  "nota": "campeonato estadual ou regional brasileiro: conta a liga nacional"
+ },
+ "1781": {
+  "nome": "Brasiliense",
+  "pais": "BR",
+  "liga": null,
+  "nota": "campeonato estadual ou regional brasileiro: conta a liga nacional"
+ },
+ "1782": {
+  "nome": "Pernambucano",
+  "pais": "BR",
+  "liga": null,
+  "nota": "campeonato estadual ou regional brasileiro: conta a liga nacional"
+ },
+ "1788": {
+  "nome": "Copa dos Campeões",
+  "pais": "BR",
+  "liga": null
+ },
+ "1789": {
+  "nome": "Paraense",
+  "pais": "BR",
+  "liga": null,
+  "nota": "campeonato estadual ou regional brasileiro: conta a liga nacional"
+ },
+ "1791": {
+  "nome": "Paraibano",
+  "pais": "BR",
+  "liga": null,
+  "nota": "campeonato estadual ou regional brasileiro: conta a liga nacional"
+ },
+ "1794": {
+  "nome": "Copa Sul-Minas",
+  "pais": "BR",
+  "liga": null,
+  "nota": "campeonato estadual ou regional brasileiro: conta a liga nacional"
+ },
+ "1796": {
+  "nome": "Baiano",
+  "pais": "BR",
+  "liga": null,
+  "nota": "campeonato estadual ou regional brasileiro: conta a liga nacional"
+ },
+ "1816": {
+  "nome": "Cearense",
+  "pais": "BR",
+  "liga": null,
+  "nota": "campeonato estadual ou regional brasileiro: conta a liga nacional"
+ },
+ "1857": {
+  "nome": "Campeonto Sergipano",
+  "pais": "BR",
+  "liga": null,
+  "nota": "campeonato estadual ou regional brasileiro: conta a liga nacional"
+ },
+ "1879": {
+  "nome": "Supercampeonato Baiano",
+  "pais": "BR",
+  "liga": null,
+  "nota": "campeonato estadual ou regional brasileiro: conta a liga nacional"
+ },
+ "2222": {
+  "nome": "MT",
+  "pais": "BR",
+  "liga": null,
+  "nota": "campeonato estadual ou regional brasileiro: conta a liga nacional"
+ },
+ "2468": {
+  "nome": "Acreano",
+  "pais": "BR",
+  "liga": null,
+  "nota": "campeonato estadual ou regional brasileiro: conta a liga nacional"
+ },
+ "2586": {
+  "nome": "Goiano",
+  "pais": "BR",
+  "liga": null,
+  "nota": "campeonato estadual ou regional brasileiro: conta a liga nacional"
+ },
+ "2592": {
+  "nome": "Copa Verde",
+  "pais": "BR",
+  "liga": null,
+  "nota": "campeonato estadual ou regional brasileiro: conta a liga nacional"
+ },
+ "2686": {
+  "nome": "Taça dos Campeões Cearenses",
+  "pais": "BR",
+  "liga": null
+ },
+ "3415": {
+  "nome": "Primeira Liga",
+  "pais": "BR",
+  "liga": null
+ },
+ "4255": {
+  "nome": "Copa Centro-Oeste",
+  "pais": "BR",
+  "liga": null,
+  "nota": "campeonato estadual ou regional brasileiro: conta a liga nacional"
+ },
+ "4270": {
+  "nome": "Copa Nordeste Class.",
+  "pais": "BR",
+  "liga": null,
+  "nota": "campeonato estadual ou regional brasileiro: conta a liga nacional"
+ },
+ "5628": {
+  "nome": "Recopa Gaúcha",
+  "pais": "BR",
+  "liga": null,
+  "nota": "campeonato estadual ou regional brasileiro: conta a liga nacional"
+ },
+ "5906": {
+  "nome": "Recopa Mineira",
+  "pais": "BR",
+  "liga": null
+ },
+ "6060": {
+  "nome": "Copa União Módulo Azul",
+  "pais": "BR",
+  "liga": null,
+  "nota": "campeonato estadual ou regional brasileiro: conta a liga nacional"
+ },
+ "6064": {
+  "nome": "Seletiva Série B",
+  "pais": "BR",
+  "liga": null,
+  "nota": "campeonato estadual ou regional brasileiro: conta a liga nacional"
+ },
+ "6306": {
+  "nome": "Supercampeonato Paulista",
+  "pais": "BR",
+  "liga": null,
+  "nota": "campeonato estadual ou regional brasileiro: conta a liga nacional"
+ },
+ "19": {
+  "nome": "Swiss Super League | Liga Suiça",
+  "pais": "CH",
+  "liga": "Q202699"
+ },
+ "216": {
+  "nome": "Challenge League | 2ª Div. Suiça",
+  "pais": "CH",
+  "liga": "Q669073"
+ },
+ "1410": {
+  "nome": "Schweizer Cup | Schweizer Pokal",
+  "pais": "CH",
+  "liga": null
+ },
+ "1421": {
+  "nome": "1. Liga Promotion",
+  "pais": "CH",
+  "liga": "Q25762"
+ },
+ "512": {
+  "nome": "Liga Costa do Marfim",
+  "pais": "CI",
+  "liga": "Q988698"
+ },
+ "3123": {
+  "nome": "Supertaça da Costa do Marfim",
+  "pais": "CI",
+  "liga": null
+ },
+ "265": {
+  "nome": "Liga Chilena | Liga de Primera",
+  "pais": "CL",
+  "liga": "Q606832"
+ },
+ "1437": {
+  "nome": "Copa Chile | Taça Chile",
+  "pais": "CL",
+  "liga": null
+ },
+ "1466": {
+  "nome": "Liga Chilena Apertura | Apertura",
+  "pais": "CL",
+  "liga": "Q606832"
+ },
+ "1467": {
+  "nome": "Liga Chilena Clausura | Clausura",
+  "pais": "CL",
+  "liga": "Q606832"
+ },
+ "2360": {
+  "nome": "Supercopa de Chile",
+  "pais": "CL",
+  "liga": null
+ },
+ "2379": {
+  "nome": "Torneo Transición",
+  "pais": "CL",
+  "liga": "Q606832"
+ },
+ "2696": {
+  "nome": "Playoff Sud.",
+  "pais": "CL",
+  "liga": null
+ },
+ "117": {
+  "nome": "Super League | Chinese Super League",
+  "pais": "CN",
+  "liga": "Q209318"
+ },
+ "1341": {
+  "nome": "Chinese FA Cup | Toshiba FA Cup",
+  "pais": "CN",
+  "liga": null
+ },
+ "2647": {
+  "nome": "Supertaça China | Chinese FA Super Cup",
+  "pais": "CN",
+  "liga": null
+ },
+ "1469": {
+  "nome": "Apertura | Liga DIMAYOR Apertura",
+  "pais": "CO",
+  "liga": "Q1033349"
+ },
+ "1470": {
+  "nome": "Clausura | Finalización",
+  "pais": "CO",
+  "liga": "Q1033349"
+ },
+ "1714": {
+  "nome": "Copa de Colombia",
+  "pais": "CO",
+  "liga": null
+ },
+ "2349": {
+  "nome": "2ª Divisão Colombiana Apertura",
+  "pais": "CO",
+  "liga": "Q635198"
+ },
+ "128": {
+  "nome": "Marfin Lai | A Kategoria",
+  "pais": "CY",
+  "liga": "Q155965"
+ },
+ "2397": {
+  "nome": "Kypello Kyprou | Taça do Chipre",
+  "pais": "CY",
+  "liga": null
+ },
+ "22": {
+  "nome": "Gambrinus Liga | Czech",
+  "pais": "CZ",
+  "liga": "Q217016"
+ },
+ "1637": {
+  "nome": "Taça Rep. Checa | Pohár FACR",
+  "pais": "CZ",
+  "liga": null
+ },
+ "11": {
+  "nome": "1. Bundesliga",
+  "pais": "DE",
+  "liga": "Q82595"
+ },
+ "156": {
+  "nome": "DFB-Pokal | DFB Pokal",
+  "pais": "DE",
+  "liga": null
+ },
+ "209": {
+  "nome": "Ligapokal",
+  "pais": "DE",
+  "liga": null
+ },
+ "211": {
+  "nome": "2. Bundesliga | 2. Bundesliga Nord",
+  "pais": "DE",
+  "liga": "Q152665"
+ },
+ "276": {
+  "nome": "DFL Super Cup",
+  "pais": "DE",
+  "liga": null
+ },
+ "975": {
+  "nome": "Regionalliga West | Regionalliga Süd",
+  "pais": "DE",
+  "liga": null,
+  "nota": "Regionalliga: o zerozero junta as regionais (West, Süd, Nordost…) num só id"
+ },
+ "2870": {
+  "nome": "Championnat national de la 1ère division",
+  "pais": "DJ",
+  "liga": "Q912116"
+ },
+ "2964": {
+  "nome": "Supertaça Jibuti",
+  "pais": "DJ",
+  "liga": null
+ },
+ "3151": {
+  "nome": "Coupe de Djibouti",
+  "pais": "DJ",
+  "liga": null
+ },
+ "123": {
+  "nome": "Liga Egípcia | Premiership",
+  "pais": "EG",
+  "liga": "Q680619"
+ },
+ "2329": {
+  "nome": "Taça Egípcia",
+  "pais": "EG",
+  "liga": null
+ },
+ "5": {
+  "nome": "La Liga | Liga BBVA",
+  "pais": "ES",
+  "liga": "Q324867"
+ },
+ "99": {
+  "nome": "Copa del Rey",
+  "pais": "ES",
+  "liga": null
+ },
+ "113": {
+  "nome": "Segunda División | Liga Adelante",
+  "pais": "ES",
+  "liga": "Q35615"
+ },
+ "115": {
+  "nome": "Supercopa de España",
+  "pais": "ES",
+  "liga": null
+ },
+ "275": {
+  "nome": "Segunda División B G3 | II División B Grupo 1",
+  "pais": "ES",
+  "liga": "Q100146559",
+  "antes": [
+   [
+    2021,
+    "Q751826"
+   ]
+  ]
+ },
+ "923": {
+  "nome": "Segunda RFEF G4 | Seg. Div. Play-Off Promoção",
+  "pais": "ES",
+  "liga": null,
+  "nota": "fases de subida e Segunda RFEF misturadas no mesmo id"
+ },
+ "1356": {
+  "nome": "Copa Liga | Copa de la Liga",
+  "pais": "ES",
+  "liga": null
+ },
+ "2699": {
+  "nome": "Segunda B - Ascenso | II División B Promoción Ascenso",
+  "pais": "ES",
+  "liga": null
+ },
+ "13": {
+  "nome": "Ligue 1 | Division 1",
+  "pais": "FR",
+  "liga": "Q13394"
+ },
+ "71": {
+  "nome": "Trophée des Champions | T.Champions",
+  "pais": "FR",
+  "liga": null
+ },
+ "147": {
+  "nome": "Coupe de France",
+  "pais": "FR",
+  "liga": null
+ },
+ "151": {
+  "nome": "Coupe de la Ligue | Coupe Ligue",
+  "pais": "FR",
+  "liga": null
+ },
+ "155": {
+  "nome": "Ligue 2 | 2ème Division - Gr. A",
+  "pais": "FR",
+  "liga": "Q217374"
+ },
+ "63": {
+  "nome": "Ethniki Katigoria | Alpha Ethniki",
+  "pais": "GR",
+  "liga": "Q235114"
+ },
+ "1269": {
+  "nome": "Kypello Elladas | Greek Cup",
+  "pais": "GR",
+  "liga": null
+ },
+ "535": {
+  "nome": "Premier League HK I Fase | Premier League",
+  "pais": "HK",
+  "liga": "Q5360175"
+ },
+ "7240": {
+  "nome": "Hong Kong Senior Shield",
+  "pais": "HK",
+  "liga": null
+ },
+ "7243": {
+  "nome": "HKFA League Cup",
+  "pais": "HK",
+  "liga": null
+ },
+ "78": {
+  "nome": "Prva HNL | OžujskoHNL",
+  "pais": "HR",
+  "liga": "Q162604"
+ },
+ "686": {
+  "nome": "Supertaça Croácia | Superkup",
+  "pais": "HR",
+  "liga": null
+ },
+ "1500": {
+  "nome": "Nogometni Kup",
+  "pais": "HR",
+  "liga": null
+ },
+ "1503": {
+  "nome": "Druga HNL",
+  "pais": "HR",
+  "liga": null,
+  "nota": "Druga HNL: sem liga correspondente em ligas.json"
+ },
+ "118": {
+  "nome": "Ligat Al | Ligat Ha´Al",
+  "pais": "IL",
+  "liga": "Q477309"
+ },
+ "501": {
+  "nome": "Persian Gulf League | Persian Gulf Pro League",
+  "pais": "IR",
+  "liga": "Q194641"
+ },
+ "2255": {
+  "nome": "Hazfi Cup",
+  "pais": "IR",
+  "liga": null
+ },
+ "10": {
+  "nome": "Serie A",
+  "pais": "IT",
+  "liga": "Q15804"
+ },
+ "73": {
+  "nome": "Supercoppa",
+  "pais": "IT",
+  "liga": null
+ },
+ "95": {
+  "nome": "Serie B | Serie BWIN",
+  "pais": "IT",
+  "liga": "Q194052"
+ },
+ "96": {
+  "nome": "TIM Cup | Coppa Italia",
+  "pais": "IT",
+  "liga": null
+ },
+ "6227": {
+  "nome": "Taça da Liga Jordânia",
+  "pais": "JO",
+  "liga": null
+ },
+ "69": {
+  "nome": "J-League | J. League Suntory Series",
+  "pais": "JP",
+  "liga": "Q276445"
+ },
+ "691": {
+  "nome": "J2-League",
+  "pais": "JP",
+  "liga": "Q1140581"
+ },
+ "920": {
+  "nome": "J.League Cup",
+  "pais": "JP",
+  "liga": null
+ },
+ "2912": {
+  "nome": "Liga Libéria",
+  "pais": "LR",
+  "liga": "Q628797"
+ },
+ "3085": {
+  "nome": "Taça da Libéria",
+  "pais": "LR",
+  "liga": null
+ },
+ "233": {
+  "nome": "Liga Lituana",
+  "pais": "LT",
+  "liga": "Q275665"
+ },
+ "3113": {
+  "nome": "Taça da Lituânia",
+  "pais": "LT",
+  "liga": null
+ },
+ "267": {
+  "nome": "Division Nationale",
+  "pais": "LU",
+  "liga": "Q245252"
+ },
+ "122": {
+  "nome": "Liga Marroquina | Botola",
+  "pais": "MA",
+  "liga": "Q570246"
+ },
+ "1692": {
+  "nome": "Coupe Trône",
+  "pais": "MA",
+  "liga": null
+ },
+ "1485": {
+  "nome": "Apertura | Liga Mexicana Apertura",
+  "pais": "MX",
+  "liga": "Q764690"
+ },
+ "1486": {
+  "nome": "Clausura | Liga Mexicana Clausura",
+  "pais": "MX",
+  "liga": "Q764690"
+ },
+ "2709": {
+  "nome": "Campeón de Campeones | Campeón de Campeones MX",
+  "pais": "MX",
+  "liga": null
+ },
+ "475": {
+  "nome": "Liga Nigeriana",
+  "pais": "NG",
+  "liga": "Q830826"
+ },
+ "12": {
+  "nome": "Eredivisie | Dutch Holland",
+  "pais": "NL",
+  "liga": "Q167541"
+ },
+ "215": {
+  "nome": "2ª Div. Holandesa | Eerste Divisie",
+  "pais": "NL",
+  "liga": "Q610823"
+ },
+ "394": {
+  "nome": "KNVB Beker | KNVB-beker",
+  "pais": "NL",
+  "liga": null
+ },
+ "576": {
+  "nome": "Holland Supercup | Nederlandse Supercup",
+  "pais": "NL",
+  "liga": null
+ },
+ "21": {
+  "nome": "Tippeligaen",
+  "pais": "NO",
+  "liga": "Q201671"
+ },
+ "1806": {
+  "nome": "NM Cupen | Taça Noruega",
+  "pais": "NO",
+  "liga": null
+ },
+ "241": {
+  "nome": "Primera División | Clausura",
+  "pais": "PE",
+  "liga": "Q606652"
+ },
+ "4861": {
+  "nome": "Supercopa Movistar",
+  "pais": "PE",
+  "liga": null
+ },
+ "80": {
+  "nome": "Orange Ekstraklasa | Ekstraklasa",
+  "pais": "PL",
+  "liga": "Q44763"
+ },
+ "5392": {
+  "nome": "Liga Polaca S17",
+  "pais": "PL",
+  "liga": null
+ },
+ "3": {
+  "nome": "Liga Portuguesa | I Divisão",
+  "pais": "PT",
+  "liga": "Q182994"
+ },
+ "9": {
+  "nome": "Taça de Portugal",
+  "pais": "PT",
+  "liga": null
+ },
+ "42": {
+  "nome": "Ledman LigaPro | II Liga",
+  "pais": "PT",
+  "liga": "Q754488"
+ },
+ "49": {
+  "nome": "Supertaça | Supertaça Cândido de Oliveira Placard",
+  "pais": "PT",
+  "liga": null
+ },
+ "64": {
+  "nome": "II Divisão Zona Norte | II Divisão Zona Centro",
+  "pais": "PT",
+  "liga": "Q618131"
+ },
+ "76": {
+  "nome": "III Divisão Série F | III Divisão Série A",
+  "pais": "PT",
+  "liga": null,
+  "nota": "III Divisão: só fases finais (apuramento de campeão)"
+ },
+ "137": {
+  "nome": "Nacional Jun.B 1ª Div. I Fase Série C",
+  "pais": "PT",
+  "liga": null
+ },
+ "207": {
+  "nome": "Taça da Liga | Carlsberg Cup",
+  "pais": "PT",
+  "liga": null
+ },
+ "1319": {
+  "nome": "Torneio de Competência I/II Divisão | Playoff I Liga/II Liga",
+  "pais": "PT",
+  "liga": null
+ },
+ "1430": {
+  "nome": "AF Setúbal 1ª Divisão",
+  "pais": "PT",
+  "liga": "Q7232634"
+ },
+ "1452": {
+  "nome": "AF Lisboa 1ªH",
+  "pais": "PT",
+  "liga": "Q7232634"
+ },
+ "1456": {
+  "nome": "AF Lisboa - 2D S2 | AF Lisboa 2ªD Ap. Campeão",
+  "pais": "PT",
+  "liga": "Q7232634"
+ },
+ "1458": {
+  "nome": "AF Lisboa Taça",
+  "pais": "PT",
+  "liga": null
+ },
+ "1538": {
+  "nome": "AF Madeira Taça",
+  "pais": "PT",
+  "liga": null
+ },
+ "2041": {
+  "nome": "AF Lisboa Taça de Honra 2ª Divisão | AF Lisboa Taça de Honra II Divisão",
+  "pais": "PT",
+  "liga": null
+ },
+ "2060": {
+  "nome": "AF Porto Taça",
+  "pais": "PT",
+  "liga": null
+ },
+ "2365": {
+  "nome": "AF Braga Torneio de Abertura | Torneio de Abertura",
+  "pais": "PT",
+  "liga": null
+ },
+ "2366": {
+  "nome": "AF Braga Taça de Honra",
+  "pais": "PT",
+  "liga": null
+ },
+ "2380": {
+  "nome": "CNS Fase Subida Zona Norte | CNS Série B",
+  "pais": "PT",
+  "liga": "Q13668768"
+ },
+ "2431": {
+  "nome": "AF Lisboa 1ª Divisão | AF Lisboa Pro-Nacional",
+  "pais": "PT",
+  "liga": "Q7232634"
+ },
+ "5615": {
+  "nome": "II Divisão B Zona Sul | II Divisão B Zona Norte",
+  "pais": "PT",
+  "liga": "Q618131"
+ },
+ "5616": {
+  "nome": "II Divisão Série A | II Divisão Série D",
+  "pais": "PT",
+  "liga": "Q618131"
+ },
+ "5617": {
+  "nome": "III Divisão Série E | III Divisão Série F",
+  "pais": "PT",
+  "liga": "Q2648473"
+ },
+ "5683": {
+  "nome": "Liga 3 Série B | Liga 3 Série A",
+  "pais": "PT",
+  "liga": "Q106597664"
+ },
+ "1506": {
+  "nome": "Apertura",
+  "pais": "PY",
+  "liga": "Q954911"
+ },
+ "1507": {
+  "nome": "Clausura",
+  "pais": "PY",
+  "liga": "Q954911"
+ },
+ "4872": {
+  "nome": "Apertura Categoría Reserva",
+  "pais": "PY",
+  "liga": null
+ },
+ "5018": {
+  "nome": "Clausura Categoría Reserva",
+  "pais": "PY",
+  "liga": null
+ },
+ "5029": {
+  "nome": "Taça do Paraguai",
+  "pais": "PY",
+  "liga": null
+ },
+ "480": {
+  "nome": "Stars League Catar | Stars League",
+  "pais": "QA",
+  "liga": "Q60681"
+ },
+ "2608": {
+  "nome": "Crown Prince Cup",
+  "pais": "QA",
+  "liga": null
+ },
+ "2611": {
+  "nome": "Prince Cup | QSL Cup",
+  "pais": "QA",
+  "liga": null
+ },
+ "5154": {
+  "nome": "Emir Cup",
+  "pais": "QA",
+  "liga": null
+ },
+ "81": {
+  "nome": "Liga I | Liga Romena",
+  "pais": "RO",
+  "liga": "Q237753"
+ },
+ "689": {
+  "nome": "Supercupa | Supercupa Romaniei",
+  "pais": "RO",
+  "liga": null
+ },
+ "1659": {
+  "nome": "Cupa Romaniei | Cupa României",
+  "pais": "RO",
+  "liga": null
+ },
+ "2334": {
+  "nome": "1.SFL | Meridian SLiga",
+  "pais": "RS",
+  "liga": "Q235307",
+  "antes": [
+   [
+    1992,
+    "Q163786"
+   ],
+   [
+    2006,
+    "Q1344912"
+   ]
+  ]
+ },
+ "67": {
+  "nome": "Russian Premier-Liga | Rossiyskaya Premier-Liga",
+  "pais": "RU",
+  "liga": "Q182165"
+ },
+ "227": {
+  "nome": "Russian D1",
+  "pais": "RU",
+  "liga": "Q162533"
+ },
+ "655": {
+  "nome": "Super Cup | Russian Super Cup",
+  "pais": "RU",
+  "liga": null
+ },
+ "1303": {
+  "nome": "Kubok Rossii | Russian Cup",
+  "pais": "RU",
+  "liga": null
+ },
+ "2005": {
+  "nome": "3ª Divisão Russa - Zona Centro",
+  "pais": "RU",
+  "liga": "Q209955"
+ },
+ "518": {
+  "nome": "Saudi Premier League | Premier League",
+  "pais": "SA",
+  "liga": "Q255633"
+ },
+ "2120": {
+  "nome": "King´s Cup | King´s Cup of Champions",
+  "pais": "SA",
+  "liga": null
+ },
+ "5621": {
+  "nome": "Division 1 Arábia Saudita | Yelo League",
+  "pais": "SA",
+  "liga": "Q2656109"
+ },
+ "20": {
+  "nome": "Allsvenskan",
+  "pais": "SE",
+  "liga": "Q202243"
+ },
+ "2469": {
+  "nome": "Svenska Cupen | Taça da Suécia",
+  "pais": "SE",
+  "liga": null
+ },
+ "89": {
+  "nome": "1. SNL",
+  "pais": "SI",
+  "liga": "Q275005"
+ },
+ "88": {
+  "nome": "Slovakia Corgoň Liga | Fortuna Liga",
+  "pais": "SK",
+  "liga": "Q238113"
+ },
+ "2614": {
+  "nome": "Slovenský Pohár | Taça da Eslováquia",
+  "pais": "SK",
+  "liga": null
+ },
+ "550": {
+  "nome": "Liga São Marino",
+  "pais": "SM",
+  "liga": "Q387662"
+ },
+ "2221": {
+  "nome": "Coppa Titano",
+  "pais": "SM",
+  "liga": null
+ },
+ "2399": {
+  "nome": "Supertaça São Marino",
+  "pais": "SM",
+  "liga": null
+ },
+ "579": {
+  "nome": "Liga Senegal",
+  "pais": "SN",
+  "liga": "Q1188284"
+ },
+ "4898": {
+  "nome": "Championnat national de la 1ère division | Championnat National de 1ère Division",
+  "pais": "TG",
+  "liga": "Q1187730"
+ },
+ "24": {
+  "nome": "Süper Lig | Türkiye 1. Süper Lig",
+  "pais": "TR",
+  "liga": "Q485568"
+ },
+ "193": {
+  "nome": "1.Ligi A | 1.Lig",
+  "pais": "TR",
+  "liga": "Q1141692"
+ },
+ "656": {
+  "nome": "TFF Super Kupa | Super Cup",
+  "pais": "TR",
+  "liga": null
+ },
+ "1179": {
+  "nome": "Taça da Turquia | Turkiye Kupasi",
+  "pais": "TR",
+  "liga": null
+ },
+ "580": {
+  "nome": "T&T Pro League",
+  "pais": "TT",
+  "liga": "Q2083774"
+ },
+ "68": {
+  "nome": "Premier-Liha | Premier League",
+  "pais": "UA",
+  "liga": "Q206073"
+ },
+ "1535": {
+  "nome": "Kubok Ukrainy | Taça da Ucrânia",
+  "pais": "UA",
+  "liga": null
+ },
+ "25": {
+  "nome": "MLS | Liga USA",
+  "pais": "US",
+  "liga": "Q18543"
+ },
+ "1343": {
+  "nome": "NASL",
+  "pais": "US",
+  "liga": "Q1197790"
+ },
+ "1501": {
+  "nome": "US Open Cup | U.S. Open Cup",
+  "pais": "US",
+  "liga": null
+ },
+ "2301": {
+  "nome": "USL Pro",
+  "pais": "US",
+  "liga": "Q1362411"
+ },
+ "237": {
+  "nome": "Campeonato Uruguayo | Liga Uruguaia",
+  "pais": "UY",
+  "liga": "Q287453"
+ },
+ "1543": {
+  "nome": "Segunda Divisão Uruguaia",
+  "pais": "UY",
+  "liga": "Q1033083"
+ },
+ "5122": {
+  "nome": "Supercopa Uruguaya | Supercopa de Uruguay",
+  "pais": "UY",
+  "liga": null
+ },
+ "272": {
+  "nome": "Primeira División Venezuela",
+  "pais": "VE",
+  "liga": "Q1033339"
+ },
+ "197": {
+  "nome": "PS League",
+  "pais": "ZA",
+  "liga": "Q16056559"
+ },
+ "1077": {
+  "nome": "Nedbank Cup",
+  "pais": "ZA",
+  "liga": null
+ },
+ "1081": {
+  "nome": "MTN8",
+  "pais": "ZA",
+  "liga": null
+ },
+ "1082": {
+  "nome": "Telkom Knockout",
+  "pais": "ZA",
+  "liga": null
+ },
+ "4": {
+  "nome": "Premier League | First Division",
+  "pais": null,
+  "liga": "Q9448",
+  "antes": [
+   [
+    1992,
+    "Q754839"
+   ]
+  ]
+ },
+ "18": {
+  "nome": "Premier League | Premier Division",
+  "pais": null,
+  "liga": "Q14377162",
+  "antes": [
+   [
+    1998,
+    "Q843012"
+   ],
+   [
+    2013,
+    "Q187304"
+   ]
+  ]
+ },
+ "27": {
+  "nome": "UEFA Champions League | European Cup",
+  "pais": null,
+  "liga": null
+ },
+ "28": {
+  "nome": "UEFA Cup | UEFA Europa League",
+  "pais": null,
+  "liga": null
+ },
+ "33": {
+  "nome": "Intercontinental Cup | Intercontinental",
+  "pais": null,
+  "liga": null
+ },
+ "34": {
+  "nome": "UEFA Super Cup | European Super Cup",
+  "pais": null,
+  "liga": null
+ },
+ "58": {
+  "nome": "Copa Libertadores | Libertadores",
+  "pais": null,
+  "liga": null
+ },
+ "72": {
+  "nome": "Community Shield | The FA Community Shield",
+  "pais": null,
+  "liga": null
+ },
+ "74": {
+  "nome": "UEFA Intertoto Cup",
+  "pais": null,
+  "liga": null
+ },
+ "91": {
+  "nome": "Carling Cup | League Cup",
+  "pais": null,
+  "liga": null
+ },
+ "97": {
+  "nome": "The FA Cup | FA Cup",
+  "pais": null,
+  "liga": null
+ },
+ "114": {
+  "nome": "Championship | Division One",
+  "pais": null,
+  "liga": "Q19510",
+  "antes": [
+   [
+    1992,
+    "Q769744"
+   ],
+   [
+    2004,
+    "Q754839"
+   ]
+  ]
+ },
+ "129": {
+  "nome": "Royal | Royal League",
+  "pais": null,
+  "liga": null
+ },
+ "144": {
+  "nome": "FIFA Club World Cup",
+  "pais": null,
+  "liga": null
+ },
+ "159": {
+  "nome": "Asian Champions League | AFC Champions League Elite",
+  "pais": null,
+  "liga": null
+ },
+ "161": {
+  "nome": "CAF Champions League | Liga dos Campeões África",
+  "pais": null,
+  "liga": null
+ },
+ "200": {
+  "nome": "Division Three | Division Two",
+  "pais": null,
+  "liga": "Q19565",
+  "antes": [
+   [
+    1992,
+    "Q1436448"
+   ],
+   [
+    2004,
+    "Q769744"
+   ]
+  ]
+ },
+ "205": {
+  "nome": "UEFA Cup Winners Cup",
+  "pais": null,
+  "liga": null
+ },
+ "210": {
+  "nome": "SuperLiga",
+  "pais": null,
+  "liga": null
+ },
+ "268": {
+  "nome": "Recopa Sudamericana | Recopa Sudam.",
+  "pais": null,
+  "liga": null
+ },
+ "269": {
+  "nome": "Copa Sudamericana | Copa Sudamer.",
+  "pais": null,
+  "liga": null
+ },
+ "368": {
+  "nome": "CONCACAF Champions Cup | CONCACAF Champions League",
+  "pais": null,
+  "liga": null
+ },
+ "546": {
+  "nome": "Supertaça Africana",
+  "pais": null,
+  "liga": null
+ },
+ "694": {
+  "nome": "Copa Suruga Bank | Copa Suruga",
+  "pais": null,
+  "liga": null
+ },
+ "733": {
+  "nome": "Scottish FA Cup | FA Cup",
+  "pais": null,
+  "liga": null
+ },
+ "859": {
+  "nome": "Copa Conmebol",
+  "pais": null,
+  "liga": null
+ },
+ "860": {
+  "nome": "Copa Mercosul",
+  "pais": null,
+  "liga": null
+ },
+ "864": {
+  "nome": "Supercopa Libertadores",
+  "pais": null,
+  "liga": null
+ },
+ "866": {
+  "nome": "Master Conmebol",
+  "pais": null,
+  "liga": null
+ },
+ "867": {
+  "nome": "Copa de Ouro",
+  "pais": null,
+  "liga": null
+ },
+ "1282": {
+  "nome": "T. Confederação CAF | Taça da Confederação CAF",
+  "pais": null,
+  "liga": null
+ },
+ "1312": {
+  "nome": "AFC Champions League Two | AFC Cup",
+  "pais": null,
+  "liga": null
+ },
+ "1314": {
+  "nome": "Mitropa Cup",
+  "pais": null,
+  "liga": null
+ },
+ "1539": {
+  "nome": "Liga da URSS",
+  "pais": null,
+  "liga": "Q490700"
+ },
+ "1660": {
+  "nome": "Liga da Checoslováquia",
+  "pais": null,
+  "liga": "Q586726"
+ },
+ "2064": {
+  "nome": "UEFA Champions League (Qual.) | UEFA Champions League (Qual)",
+  "pais": null,
+  "liga": null
+ },
+ "2106": {
+  "nome": "Johnstone´s Paint Trophy | EFL Trophy",
+  "pais": null,
+  "liga": null
+ },
+ "2278": {
+  "nome": "Arab Club Champions Cup | UAFA Cup",
+  "pais": null,
+  "liga": null
+ },
+ "2643": {
+  "nome": "Full Members Cup",
+  "pais": null,
+  "liga": null
+ },
+ "2775": {
+  "nome": "PLIC | U21 PLIC",
+  "pais": null,
+  "liga": null
+ },
+ "2928": {
+  "nome": "Intertoto Cup",
+  "pais": null,
+  "liga": null
+ },
+ "3184": {
+  "nome": "North Riding Cup",
+  "pais": null,
+  "liga": null
+ },
+ "3247": {
+  "nome": "CAF Cup",
+  "pais": null,
+  "liga": null
+ },
+ "3248": {
+  "nome": "African Cup Winners´ Cup",
+  "pais": null,
+  "liga": null
+ },
+ "3276": {
+  "nome": "UEFA Europa League (Qual.) | UEFA Cup (Qual.)",
+  "pais": null,
+  "liga": null
+ },
+ "3542": {
+  "nome": "Afro-Asian Club Championship",
+  "pais": null,
+  "liga": null
+ },
+ "5115": {
+  "nome": "Campeones Cup CONCACAF | Campeones Cup",
+  "pais": null,
+  "liga": null
+ },
+ "5960": {
+  "nome": "UEFA Conference League (Qual.)",
+  "pais": null,
+  "liga": null
+ },
+ "6626": {
+  "nome": "Leagues Cup",
+  "pais": null,
+  "liga": null
+ },
+ "7392": {
+  "nome": "FIFA Intercontinental Cup",
+  "pais": null,
+  "liga": null
+ },
+ "1590": {
+  "nome": "AF Ponta Delgada São Miguel",
+  "pais": "PT",
+  "liga": "Q7232634"
+ },
+ "1591": {
+  "nome": "AF Ponta Delgada Taça São Miguel",
+  "pais": "PT",
+  "liga": null
+ },
+ "1589": {
+  "nome": "AF Ponta Delgada Taça de Honra",
+  "pais": "PT",
+  "liga": null
+ }
+}

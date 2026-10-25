@@ -15,6 +15,16 @@ def test_perfil_rui_costa():
     assert p["pe"] == "direito" and p["altura_cm"] == 180 and p["nascimento"] == "1972-03-29" and p["numero"] == 10
 
 
+def test_classificacoes_do_plantel():
+    linhas = zz.classificacoes(_html("zz_plantel_boavista_96.html.gz"))
+    assert [(l["edicao"], l["posicao"], l["liga"], l["competicao"], l["pais"]) for l in linhas] == [
+        ("Liga Portuguesa 96/97", "7º", True, "3", "PT"),
+        ("Taça de Portugal 96/97", "1.º", True, "9", "PT"),     # o vencedor da taça também tem "1.º": decide o mapa
+        ("UEFA Cup 96/97", "3R", False, "28", None),
+    ]
+    assert {l["seccao"] for l in linhas} == {"Competições Oficiais"}
+
+
 def test_epocas_rui_costa():
     e = zz.epocas(_html("zz_rui_costa_epocas.html.gz"))
     benfica_91 = next(x for x in e["clubes"] if x["epoca"] == 1991 and "Benfica" in x["clube"])

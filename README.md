@@ -74,8 +74,13 @@ py -3.12 -m venv .venv
   `pipeline/dados/clubes.json`. Os ajustes aplicam-se por cima das fontes em cada recolha.
 - **Ligas:** em `pipeline/dados/ligas.json`, as competições que não são ligas (taças, federações) levam
   `"liga": false`, e as associações distritais levam `"substituir"` com o Campeonato Distrital. As novas marcam-se
-  sozinhas pelo tipo na Wikidata. A validação recusa qualquer passagem com uma delas. Quando a Wikidata só tem a
-  liga atual de um clube que mudou de escalão, as ligas por época vão à mão para `clubes.json` (com uma `nota`).
+  sozinhas pelo tipo na Wikidata. A validação recusa qualquer passagem com uma delas.
+- **Liga de cada passagem:** primeiro a tabela de épocas da Wikipédia e o transfermarkt (2012+). Sem eles, o bloco
+  "Classificações" do plantel do zerozero em cada época, com o mapa revisto à mão em
+  `pipeline/dados/competicoes_zerozero.json` (id da competição no zerozero → liga; `null` para taças, supertaças,
+  torneios, estaduais brasileiros e competições continentais; `antes` para as competições que a Wikidata separa por
+  épocas, como a First Division inglesa e a Premier League). Por fim, a P118 do clube na Wikidata, que só tem a liga
+  atual. As competições novas que faltem no mapa aparecem nos avisos da recolha.
 - **Calendário do Desafio do Dia** (`pipeline/dados/calendario.json`, versionado): um jogador do Desafio por data de
   Lisboa. Cada `exportar` preenche as datas de depois de amanhã até 60 dias à frente, sem mexer em hoje nem em amanhã,
   e troca as datas futuras de quem saiu da base. Ninguém repete antes de todos terem saído. O `estado` avisa quando

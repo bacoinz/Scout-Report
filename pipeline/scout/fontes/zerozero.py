@@ -113,6 +113,47 @@ def pagina_plantel(cliente, caminho: str, fresco: bool = False) -> str:
     return cliente.texto(f"{config.ZEROZERO}{caminho}", fresco=fresco)
 
 
+_ID_EDICAO = re.compile(r"id_edicao=(\d+)")
+_ID_COMPETICAO = re.compile(r"compet_id_jogos=(\d+)")
+_POSICAO = re.compile(r"^\d+\.?º$")
+
+
+def classificacoes(html: str) -> list[dict]:
+    """O bloco "Classificações <época>" do plantel de um clube: as competições em que a equipa jogou nessa época, pela
+    ordem do zerozero. [{'seccao': 'Competições Oficiais', 'posicao': '4º', 'liga': True, 'edicao': 'Liga Portuguesa
+    95/96', 'id_edicao': '…', 'competicao': '3', 'pais': 'PT'}]. 'competicao' é o id da competição no zerozero, o
+    mesmo em todas as épocas e nomes ("I Divisão", "SuperLiga", "bwin LIGA" são todas a 3). 'liga' é True quando a
+    equipa tem uma classificação ("4º") e não uma fase ("QF", "1/8"); as taças também a têm para o vencedor e o
+    finalista, por isso quem decide o que é liga é o mapa das competições."""
+    arvore = LexborHTMLParser(html)
+    titulo = next((h for h in arvore.css("h2.card-data__title") if h.text(strip=True).startswith("Classificações")), None)
+    if titulo is None or titulo.parent is None or titulo.parent.parent is None:
+        return []
+    corpo = titulo.parent.parent.css_first(".card-data__body")
+    if corpo is None:
+        return []
+    seccao, linhas = None, []
+    for no in corpo.traverse():
+        classes = (no.attributes.get("class") or "").split()
+        if no.tag == "div" and "section" in classes:
+            seccao = no.text(strip=True)
+        elif no.tag == "div" and "season" in classes:
+            numero = no.css_first(".number")
+            edicao = no.css_first('a[href*="id_edicao="]')
+            if edicao is None:
+                continue
+            jogos = no.css_first('a[href*="compet_id_jogos="]')
+            bandeira = no.css_first('span[class^="flag:"]')
+            posicao = numero.text(strip=True) if numero else ""
+            id_edicao = _ID_EDICAO.search(edicao.attributes.get("href") or "")
+            competicao = _ID_COMPETICAO.search(jogos.attributes.get("href") or "") if jogos else None
+            linhas.append({"seccao": seccao, "posicao": posicao, "liga": bool(_POSICAO.match(posicao)),
+                           "edicao": edicao.text(strip=True), "id_edicao": id_edicao.group(1) if id_edicao else None,
+                           "competicao": competicao.group(1) if competicao else None,
+                           "pais": bandeira.attributes["class"].split(":", 1)[1] if bandeira else None})
+    return linhas
+
+
 def numero_no_plantel(html: str, zz_id, slug: str | None) -> int | None:
     """Número de camisola do jogador no plantel ('<div class="staff"><div class="number">7</div>… <a
     href="/jogador/cristiano-ronaldo?epoca_id=138">'). As ligações trazem o slug e às vezes o id."""

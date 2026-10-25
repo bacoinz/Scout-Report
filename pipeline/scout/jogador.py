@@ -3,7 +3,8 @@
 Fonte principal de cada campo (ver o plano, 1.3):
 - carreira (clubes, anos, empréstimos, jogos/golos de campeonato) e seleções: caixa da Wikipédia inglesa;
 - jogos/golos/assistências em todas as competições, época a época: zerozero;
-- liga de cada passagem: P118 do clube na Wikidata (com datas) + ligas do transfermarkt-datasets por época (2012+);
+- liga de cada passagem: tabela de épocas da Wikipédia + transfermarkt-datasets (2012+); sem elas, as classificações
+  dos planteis do zerozero (dados/competicoes_zerozero.json); por fim a P118 do clube na Wikidata;
 - números: plantéis das épocas (Wikipédia), convocados das fases finais (Wikipédia) e onzes do transfermarkt;
 - pé, altura, posição: transfermarkt, com o zerozero e a caixa como recurso;
 - nascimento, cidadania, local de nascimento, foto, fama: Wikidata;
@@ -86,6 +87,9 @@ class Contexto:
         self.clubes = _ler_json(config.DADOS / "clubes.json", {})
         self.ligas = _ler_json(config.DADOS / "ligas.json", {})
         self.ligas_tm = {}
+        # Competições do zerozero (id) → liga, para as ligas por época dos planteis. Revisto à mão.
+        self.competicoes_zz = {k: v for k, v in _ler_json(config.DADOS / "competicoes_zerozero.json", {}).items()
+                               if not k.startswith("_")}
 
     def gravar_catalogo(self):
         for nome, dados in (("clubes.json", self.clubes), ("ligas.json", self.ligas)):
@@ -206,6 +210,47 @@ def _limpar_competicao(titulo: str | None) -> str | None:
     t = re.sub(r"^\d{4}(?:[–\-]\d{2,4})?\s+", "", titulo.strip())
     t = re.sub(r"\s+(season|final|finals|Final)$", "", t)
     return re.sub(r"\s+\d{4}$", "", t)
+
+
+def ligas_das_classificacoes(linhas: list[dict], mapa: dict, epoca: int) -> tuple[list[str], set[str]]:
+    """As ligas de uma época (ano de início) a partir do bloco "Classificações" do zerozero (zz.classificacoes), com o
+    mapa de dados/competicoes_zerozero.json: id da competição → {"liga": QID ou null, "antes": [[ano, QID], …]}.
+    "antes" serve às competições que o zerozero junta e a Wikidata separa (a First Division inglesa antes de 1992 e a
+    Premier League depois): as épocas que começam antes desse ano usam essa liga. Só as competições oficiais. Devolve
+    (ligas, competições com classificação que não estão no mapa)."""
+    ligas, desconhecidas = [], set()
+    for l in linhas:
+        if l["seccao"] != "Competições Oficiais" or not l["competicao"]:
+            continue
+        info = mapa.get(l["competicao"])
+        if info is None:
+            if l["liga"] and l["pais"]:
+                desconhecidas.add(f"{l['edicao']} [{l['competicao']}]")
+            continue
+        liga = next((q for ano, q in info.get("antes", []) if epoca < ano), info.get("liga"))
+        if liga and liga not in ligas:
+            ligas.append(liga)
+    return ligas, desconhecidas
+
+
+def _ligas_zerozero(ctx, cliente, p: dict, desconhecidas: set, avisos: list) -> list[str]:
+    """As ligas de uma passagem pelos planteis do zerozero de cada época (a cache partilha-os entre jogadores)."""
+    ligas = []
+    for ep in p["epocas"]:
+        if not ep.get("plantel"):
+            continue
+        try:
+            html = zz.pagina_plantel(cliente, ep["plantel"], fresco=ctx.fresco)
+        except BloqueioAntiBot:
+            raise
+        except Exception as e:                           # noqa: BLE001 — um plantel em falta não para a recolha
+            avisos.append(f"plantel do zerozero {ep['plantel']} falhou: {e}")
+            continue
+        da_epoca, novas = ligas_das_classificacoes(zz.classificacoes(html), ctx.competicoes_zz, ep["epoca"])
+        desconhecidas |= novas
+        ligas += [l for l in da_epoca if l not in ligas]
+    ctx.registar_ligas(ligas)
+    return ctx.so_ligas(ligas)
 
 
 def ultimo_ano(p: dict) -> int | None:
@@ -402,6 +447,14 @@ def construir(ctx: Contexto, qid: str, ent: dict, artigo: dict) -> tuple[dict, l
                 ep["numeros"].add(n)
                 p["numeros"].add(n)
 
+    # Ligas das passagens sem tabela de épocas nem transfermarkt: o bloco "Classificações" do plantel do zerozero em
+    # cada época, antes da Wikidata (que só tem a liga atual do clube: o Boavista dos anos 90 aparecia nos distritais).
+    desconhecidas = set()
+    for p in passagens:
+        p["ligas_zz"] = [] if ctx.so_ligas(p["ligas_epocas"]) else _ligas_zerozero(ctx, cliente, p, desconhecidas, avisos)
+    if desconhecidas:
+        avisos.append("competições do zerozero fora de dados/competicoes_zerozero.json: " + "; ".join(sorted(desconhecidas)))
+
     # --- seleções --------------------------------------------------------------------------------------------------
     selecoes = []
     for s in car["selecoes"]:
@@ -455,9 +508,10 @@ def construir(ctx: Contexto, qid: str, ent: dict, artigo: dict) -> tuple[dict, l
             if e["numeros"]:
                 jogos_com_numero += e["jogos"]
         ligas_epocas = ctx.so_ligas(p["ligas_epocas"])   # sem as taças e as associações das tabelas de épocas
-        ligas = ligas_epocas or p["ligas"]               # época a época primeiro; a Wikidata como recurso
-        if not ligas_epocas and p["ligas"]:
-            avisos.append(f"{p['nome']}: liga só pela Wikidata (sem tabela de épocas nem transfermarkt)")
+        # Época a época primeiro (Wikipédia, transfermarkt), depois o zerozero; a Wikidata como recurso.
+        ligas = ligas_epocas or p["ligas_zz"] or p["ligas"]
+        if not ligas_epocas and not p["ligas_zz"] and p["ligas"]:
+            avisos.append(f"{p['nome']}: liga só pela Wikidata (sem tabela de épocas, transfermarkt nem zerozero)")
         paises_liga = list(dict.fromkeys(x for x in (ctx.ligas.get(l, {}).get("pais") for l in ligas) if x))
         if not ligas and p["clube"]:
             pais = ctx.pais_clube(p["clube"])

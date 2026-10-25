@@ -2,7 +2,7 @@
 import json
 
 from scout import config
-from scout.jogador import Contexto
+from scout.jogador import Contexto, ligas_das_classificacoes
 from scout.validar import validar_registo
 
 PERGUNTAS = json.loads((config.PARTILHADO / "perguntas.json").read_text(encoding="utf-8"))
@@ -64,3 +64,35 @@ def test_validar_recusa_competições_que_não_são_ligas():
         "X: Taça de Portugal não é uma liga (ver dados/ligas.json; refaz a recolha)",
         "Y: Porto Football Association não é uma liga (ver dados/ligas.json; refaz a recolha)",
     ]
+
+
+def _linha(edicao, posicao, competicao, pais="PT", seccao="Competições Oficiais"):
+    return {"seccao": seccao, "posicao": posicao, "liga": posicao[:1].isdigit() and "º" in posicao, "edicao": edicao,
+            "id_edicao": "1", "competicao": competicao, "pais": pais}
+
+
+def test_ligas_das_classificacoes_do_zerozero():
+    mapa = {"3": {"liga": PL}, "9": {"liga": None}, "49": {"liga": None}}
+    linhas = [_linha("Liga Portuguesa 96/97", "7º", "3"), _linha("Taça de Portugal 96/97", "1.º", "9"),
+              _linha("Supertaça 1997", "1.º", "49"), _linha("UEFA Cup 96/97", "3R", "28", pais=None),
+              _linha("Liga Desconhecida 96/97", "4º", "777"), _linha("Torneio de verão", "1.º", "888", seccao="Particulares")]
+    assert ligas_das_classificacoes(linhas, mapa, 1996) == ([PL], {"Liga Desconhecida 96/97 [777]"})
+
+
+def test_competição_que_a_wikidata_separa_por_épocas():
+    mapa = {"4": {"liga": "Q9448", "antes": [[1992, "Q754839"]]}}
+    linha = [_linha("Premier League 92/93", "1º", "4", pais="GB-ENG")]
+    assert ligas_das_classificacoes(linha, mapa, 1991)[0] == ["Q754839"]     # First Division
+    assert ligas_das_classificacoes(linha, mapa, 1992)[0] == ["Q9448"]       # Premier League
+
+
+def test_o_mapa_do_zerozero_aponta_para_ligas_conhecidas():
+    mapa = json.loads((config.DADOS / "competicoes_zerozero.json").read_text(encoding="utf-8"))
+    ligas = json.loads((config.DADOS / "ligas.json").read_text(encoding="utf-8"))
+    for comp, info in mapa.items():
+        if comp.startswith("_"):
+            continue
+        assert set(info) >= {"nome", "pais", "liga"}, comp
+        if info["liga"]:
+            assert info["liga"] in ligas and ligas[info["liga"]].get("liga") is not False, (comp, info)
+    assert mapa["3"]["liga"] == PL and mapa["9"]["liga"] is None      # Liga Portuguesa → Primeira Liga; a Taça não
