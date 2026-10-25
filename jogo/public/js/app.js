@@ -6,6 +6,7 @@ import { prepararCatalogo } from './comum/perguntas.js';
 import { criarIndice } from './comum/nomes.js';
 import { renderLobby } from './lobby.js';
 import * as jogo from './jogo.js';
+import * as joker from './joker.js';
 import { sons, somLigado, alternarSom } from './sons.js';
 
 const CHAVE_TOKEN = 'sr.token';
@@ -178,7 +179,7 @@ function desenhar(novos) {
     return;
   }
   mostrar('jogo');
-  jogo.render({ eu: estado.eu, sala, privado: estado.privado, cat: estado.cat, indice: estado.indice, nomesPorId: estado.nomesPorId }, novos);
+  jogo.render({ eu: estado.eu, sala, privado: estado.privado, cat: estado.cat, indice: estado.indice, nomesPorId: estado.nomesPorId, desvio: estado.ligacao?.desvio ?? 0 }, novos);
 }
 
 // ---------------------------------------------------------------------------
@@ -268,6 +269,7 @@ jogo.ligarPopups();
 jogo.ligarPainel();
 jogo.ligarFichas();
 jogo.ligarLivre();
+joker.ligar(enviar);
 
 // Relógio (e tique nos últimos 10 segundos da minha vez)
 let ultimoSegundo = null;

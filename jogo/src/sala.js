@@ -104,6 +104,9 @@ export class Sala extends DurableObject {
       case 'palpite':
         r = partida.palpitar(sala, id, { vez: msg.vez, ficha: msg.ficha, jogador: msg.jogador, nome: msg.nome }, ctx);
         break;
+      case 'lance':
+        r = partida.lance(sala, id, { valor: msg.valor }, ctx);
+        break;
       case 'carta':
         r = partida.escolherCarta(sala, id, msg.jogador, ctx);
         break;

@@ -120,6 +120,10 @@ if (process.argv[2] === '--bots') {
         b.agiu.add('carta');
         b.enviar({ t: 'carta', jogador: b.privado.cartas.ids[0] });
       }
+      if (p.fase === 'joker' && p.joker.dono !== b.eu && !b.agiu.has(`joker${p.joker.ficha}`)) {
+        b.agiu.add(`joker${p.joker.ficha}`);
+        setTimeout(() => b.enviar({ t: 'lance', valor: Math.floor(Math.random() * 400) }), 4000 + Math.random() * 6000);
+      }
       if (p.fase === 'livre' && p.livre?.alvo === b.eu && !b.agiu.has(`livre${p.livre.prazo}`)) {
         b.agiu.add(`livre${p.livre.prazo}`);
         setTimeout(() => b.enviar({ t: 'responder_livre', resposta: ['sim', 'nao', 'nao_sei'][Math.floor(Math.random() * 3)] }), 2500);
@@ -193,6 +197,7 @@ let reconectou = false;
 let entrou = null;
 let rondas = 0;
 const porId = () => new Map([...ordem, ...extras].map((c) => [c.eu, c]));
+let jokerVista = false;
 for (let passo = 0; passo < 400; passo++) {
   s = A.estado;
   if (s.fase === 'final') break;
@@ -223,6 +228,29 @@ for (let passo = 0; passo < 400; passo++) {
       if (entrou.privado?.dossier) segredo.set(entrou.eu, entrou.privado.dossier);
     }
   }
+  if (p.fase === 'joker') {
+    const j = p.joker;
+    ok(j.valor === undefined && !('lances' in j), 'durante a Joker, o valor e os palpites não chegam a ninguém');
+    const dono = porId().get(j.dono);
+    const reg = dono.privado.dossier;
+    const certo = { jogos: reg.totais.jogos, golos: reg.totais.golos, inter: reg.totais.internacionalizacoes,
+      golos_selecao: reg.totais.golos_selecao, estreia: reg.estreia, clubes: reg.totais.clubes, t_titulos: reg.treinador?.n_titulos ?? 0,
+      t_equipas: reg.treinador ? new Set(reg.treinador.equipas.map((e) => e.equipa ?? `sel:${e.pais}`)).size : null }[j.pergunta];
+    const respondem = [...ordem, ...extras].filter((c) => c.eu !== j.dono && c.estado.jogadores.find((x) => x.id === c.eu && !x.espectador && x.ficha != null));
+    respondem.forEach((c, i) => c.enviar({ t: 'lance', valor: i === 0 && certo != null ? certo : 99999 % 10000 }));
+    s = await A.estadoQue((x) => x.partida?.fase === 'revelacao', 30_000);
+    const jr = s.partida.joker;
+    ok(jr.valor === certo || certo == null, `Ronda Joker: «${jr.pergunta}» = ${jr.valor}`);
+    if (certo != null) ok(jr.exatos.includes(respondem[0].eu) && jr.pontos[j.dono] === 0, 'quem acertou leva os 15; o dono não ganha nada');
+    ok(s.partida.fichas.find((x) => x.n === jr.ficha).valores[jr.pergunta] === jr.valor, 'o valor fica na ficha');
+    jokerVista = true;
+    await A.estadoQue((x) => x.partida?.fase !== 'revelacao' || x.fase === 'final', 20_000);
+    continue;
+  }
+  if (p.fase === 'revelacao') {
+    await espera(200);
+    continue;
+  }
   if (p.fase === 'identificado') {
     await A.estadoQue((x) => x.partida?.fase !== 'identificado' || x.fase === 'final', 10_000);
     continue;
@@ -252,6 +280,8 @@ for (let passo = 0; passo < 400; passo++) {
 s = await A.estadoQue((x) => x.fase === 'final', 30_000);
 ok(s.fase === 'final', `a partida acabou (ronda ${s.partida.ronda})`);
 const identificadas = s.partida.fichas.filter((f) => f.identificada).length;
+ok(jokerVista || s.partida.ronda < 3, 'houve uma Ronda Joker');
+ok(s.feed.filter((e) => e.tipo === 'joker').length <= 1, 'só uma Joker por partida');
 ok(identificadas === s.partida.fichas.length, `só acaba com todos identificados: ${identificadas} de ${s.partida.fichas.length}`);
 ok(s.partida.fichas.every((f) => f.revelada?.nome), 'no fim revelam-se todos os jogadores secretos');
 const metade = s.feed.filter((e) => e.tipo === 'identificado').some((e) => s.jogadores.find((j) => j.id === e.jogador) && e.pontos === 15);

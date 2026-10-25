@@ -868,3 +868,26 @@ body:has(.dialogo-livre[open]) .toasts {
   height: 11px;
   font-size: 10px;
 }
+
+/* Ronda Joker: o campo dos algarismos fica por cima das caixas (escreve-se nelas). */
+.digitos {
+  position: relative;
+  cursor: text;
+}
+.ft-input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  opacity: 0;
+  font-size: 16px;
+  cursor: text;
+}
+.ft-input:focus-visible + .digito,
+.digitos:focus-within {
+  outline: none;
+}
+.ft-nota {
+  margin: 0;
+  font-weight: 700;
+  color: var(--tinta-suave);
+}

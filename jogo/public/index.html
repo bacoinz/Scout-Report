@@ -223,6 +223,83 @@
       </article>
     </div>
     <button id="btn-ver-final" class="btn btn-principal btn-ver-final" type="button" hidden>Classificação final</button>
+
+    <!-- ===================== Ronda Joker ===================== -->
+    <div id="joker" class="joker" hidden>
+      <div class="joker-anuncio" aria-hidden="true">
+        <div class="joker-raios"></div>
+        <svg class="carta-joker" viewBox="0 0 124 176">
+          <defs><linearGradient id="gj" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#a78bfa"/><stop offset="1" stop-color="#5b21b6"/></linearGradient></defs>
+          <rect x="3" y="3" width="118" height="170" rx="12" fill="url(#gj)" stroke="#fbf8ef" stroke-width="4"/>
+          <rect x="12" y="12" width="100" height="152" rx="7" fill="none" stroke="#fbf8ef80" stroke-width="1.5"/>
+          <text x="20" y="38" font-family="Anton, Impact, sans-serif" font-size="24" fill="#fbf8ef">J</text>
+          <text x="104" y="138" font-family="Anton, Impact, sans-serif" font-size="24" fill="#fbf8ef" transform="rotate(180 104 146)">J</text>
+          <path d="M30 108Q36 70 24 60Q50 66 62 102Q74 66 100 60Q88 70 94 108Z" fill="#fbf8ef"/>
+          <path d="M50 106Q53 66 62 50Q71 66 74 106Z" fill="#ede9fe"/>
+          <circle cx="24" cy="60" r="6" fill="#facc15"/><circle cx="62" cy="50" r="6" fill="#facc15"/><circle cx="100" cy="60" r="6" fill="#facc15"/>
+          <rect x="30" y="104" width="64" height="13" rx="5" fill="#fbf8ef"/>
+          <circle cx="44" cy="110.5" r="2.5" fill="#6d28d9"/><circle cx="62" cy="110.5" r="2.5" fill="#6d28d9"/><circle cx="80" cy="110.5" r="2.5" fill="#6d28d9"/>
+        </svg>
+        <h2 class="joker-titulo"><span>Ronda</span> <span class="destaque">Joker</span></h2>
+        <p class="joker-sub">GANHA PONTOS EXTRA COM A EXATIDÃO</p>
+      </div>
+
+      <article class="ficha-tecnica papel" id="ficha-tecnica" aria-label="Ficha técnica da Ronda Joker">
+        <header class="ft-cabecalho">
+          <span class="ft-tipo">Ficha técnica</span>
+          <h2>Ronda Joker</h2>
+        </header>
+        <div class="ft-grelha">
+          <div class="ft-celula ft-sujeito" id="ft-sujeito">
+            <span class="ft-rotulo">Sujeito</span>
+            <div class="folha-foto"><div class="moldura desconhecida"><svg width="64" height="80"><use href="#i-silhueta"/></svg></div></div>
+            <p class="folha-nome desconhecido">[Desconhecido]</p>
+            <div class="pin-dono" id="ft-dono"></div>
+          </div>
+          <div class="ft-celula ft-dados">
+            <span class="ft-rotulo">Dados conhecidos</span>
+            <div id="ft-dados"></div>
+          </div>
+          <div class="ft-celula ft-pergunta">
+            <span class="ft-rotulo">Pergunta</span>
+            <p id="ft-pergunta"></p>
+          </div>
+          <div class="ft-celula ft-tempo">
+            <span class="ft-rotulo">Tempo</span>
+            <div class="cronometro">
+              <svg viewBox="0 0 120 120"><circle class="fundo-anel" cx="60" cy="60" r="52" fill="none" stroke-width="10"/><circle id="ft-anel" class="anel" cx="60" cy="60" r="52" fill="none" stroke-width="10" stroke-dasharray="326.7" stroke-dashoffset="0"/></svg>
+              <p><span class="ft-por-revelar" id="ft-relogio">0:15</span><span class="ft-fim">Fim</span></p>
+            </div>
+          </div>
+          <div class="ft-celula ft-lance">
+            <span class="ft-rotulo">O teu palpite</span>
+            <form class="ft-por-revelar" id="ft-form" novalidate>
+              <label class="digitos" id="ft-digitos">
+                <input id="ft-input" class="ft-input" inputmode="numeric" maxlength="4" autocomplete="off" aria-label="O teu palpite">
+                <span class="digito vazio">0</span><span class="digito vazio">0</span><span class="digito vazio">0</span><span class="digito vazio">0</span>
+              </label>
+              <button class="btn btn-principal" type="submit" id="ft-enviar">Enviar palpite</button>
+            </form>
+            <p class="ft-por-revelar ft-nota" id="ft-nota" hidden></p>
+            <div class="ft-valor-certo">
+              <span class="numero" id="ft-valor"></span>
+              <span class="carimbo confirmado novo" style="--rot:-6deg">Valor certo</span>
+            </div>
+          </div>
+          <div class="ft-celula ft-lances">
+            <span class="ft-rotulo">Palpites</span>
+            <ul class="ft-por-revelar" id="ft-lista"></ul>
+            <ul class="ft-resultados" id="ft-resultados" hidden></ul>
+          </div>
+          <div class="ft-celula ft-regras">
+            <span class="ft-rotulo">Pontuação</span>
+            <span><strong>Exato</strong> 15</span><span><strong>Mais perto sem passar</strong> 9</span><span><strong>Passou</strong> 0</span>
+            <span><strong>Dono:</strong> todos passam 9 · alguém perto 3 · alguém exato 0</span>
+          </div>
+        </div>
+        <span class="carimbo ft-carimbo">Confidencial</span>
+      </article>
+    </div>
   </main>
 
   <!-- ===================== Pergunta livre: o dono responde ===================== -->
@@ -260,6 +337,7 @@
       <li><span>O botão <strong>Palpite final</strong> de cada ficha acende-se quando ela tem <strong>10 "sim"</strong> e pelo menos <strong>um clube confirmado</strong>. Na tua vez, em vez de perguntar, podes carregar nele e dizer quem é. Contam gralhas pequenas e alcunhas. Acertar vale 30 pontos.</span></li>
       <li><span>Quem tem o jogador <strong>identificado</strong> não recebe outro: continua a perguntar e a dar palpites, mas recebe <strong>metade dos pontos</strong> em tudo (também no palpite final: 15 em vez de 30), e deixa de ser alvo. Não há limite de rondas: a partida só acaba quando <strong>todos</strong> os jogadores secretos forem identificados.</span></li>
       <li><span>Podes consultar fora do jogo (internet, livros…) dados <strong>só do teu próprio jogador</strong>, para responderes bem às perguntas livres. Pesquisar os jogadores dos outros <strong>não vale</strong>.</span></li>
+      <li><span><strong>Ronda Joker</strong>: uma vez por partida, no fim de uma ronda ao calhas entre a 3.ª e a 6.ª. Pergunta-se um número sobre o jogador com menos "sim" (jogos, golos, ano de estreia…) e todos menos o dono dão um palpite em 15 s. Exato: 15; mais perto sem passar: 9. O dono ganha 9 se toda a gente passar, 3 se alguém ficar perto e 0 se alguém acertar. O valor fica na ficha.</span></li>
       <li><span>Quem entra a meio fica a ver e joga a partir da ronda seguinte, com um jogador secreto.</span></li>
     </ol>
     </div>

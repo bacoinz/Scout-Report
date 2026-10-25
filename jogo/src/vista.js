@@ -27,7 +27,19 @@ const publicoFicha = (f) => ({
   palpites: f.palpites.map(({ nome, autor, ronda }) => ({ nome, autor, ronda })),
   identificada: f.identificada,
   revelada: f.revelada,
+  valores: f.valores ?? {},
 });
+
+/**
+ * A Joker como toda a gente a vê: a ficha, a pergunta e quem já respondeu. O valor certo e os palpites só aparecem na
+ * revelação (cada um vê o seu no `eu`). A ronda sorteada também não sai (é surpresa).
+ */
+function publicoJoker(j) {
+  if (!j?.fase) return null;
+  const base = { fase: j.fase, ficha: j.ficha, dono: j.dono, pergunta: j.pergunta, abre: j.abre, prazo: j.prazo, enviados: Object.keys(j.lances) };
+  if (j.fase !== 'revelacao') return base;
+  return { ...base, valor: j.valor, lances: j.lances, pontos: j.pontos, exatos: j.exatos, perto: j.perto };
+}
 
 function publicoPartida(sala) {
   const p = sala.partida;
@@ -43,6 +55,7 @@ function publicoPartida(sala) {
     livre: p.livre ? { autor: p.livre.autor, alvo: p.livre.alvo, ficha: p.livre.ficha, texto: p.livre.texto, prazo: p.livre.prazo } : null,
     identificado: p.identificado,
     escolha: p.escolha,
+    joker: publicoJoker(p.joker),
     fichas: Object.values(p.fichas).map(publicoFicha),
   };
 }
@@ -64,12 +77,13 @@ export function estadoPublico(sala, agora) {
 /** A parte de cada um: o dossier do seu jogador secreto e as cartas (modo Escolha). */
 export function privado(sala, jogadorId, registos) {
   const p = sala.partida;
-  if (!p) return { id: jogadorId, dossier: null, cartas: null };
+  if (!p) return { id: jogadorId, dossier: null, cartas: null, lance: null };
   const s = p.segredos[jogadorId];
   const c = p.cartas[jogadorId];
   return {
     id: jogadorId,
     dossier: s ? registos.get(s.registo) ?? null : null,
     cartas: c ? { ids: c.ids, escolhida: c.escolhida, prazo: c.prazo, resumos: c.ids.map((id) => registos.get(id)).filter(Boolean).map(resumoCarta) } : null,
+    lance: p.joker?.fase ? p.joker.lances?.[jogadorId] ?? null : null,
   };
 }

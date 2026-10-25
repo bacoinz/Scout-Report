@@ -407,6 +407,7 @@ export const comFator = (pts, identificado) => (identificado ? Math.ceil(pts * P
 
 /** O texto da pergunta ("Jogou na La Liga?"). */
 export function texto(chave, cat) {
+  if (String(chave).startsWith('joker:')) return 'Revelado na Ronda Joker';
   const p = ler(chave);
   return p ? p.def.texto(p.valor, cat) : chave;
 }
@@ -445,6 +446,8 @@ export function deduzir(ficha, chave) {
   const p = ler(chave);
   if (!p) return null;
   const { tipo, valor } = p;
+  const joker = deduzirDaJoker(ficha?.valores ?? {}, tipo, valor);
+  if (joker) return joker;
   const achar = (cond) => respondidas(ficha).find(([k, v]) => cond(k, v.r));
   const de = (achado, res) => (achado ? { r: res, de: achado[0] } : null);
 
@@ -540,6 +543,24 @@ export function deduzir(ficha, chave) {
     default:
       return null;
   }
+}
+
+/** Que perguntas cada valor revelado na Joker decide, e como. */
+const PELA_JOKER = {
+  jogos: (v, n) => v > n, golos: (v, n) => v > n, inter: (v, n) => v > n, inter_menos: (v, n) => v < n,
+  t_titulos: (v, n) => v > n,
+};
+const CAMPO_DA_JOKER = { jogos: 'jogos', golos: 'golos', inter: 'inter', inter_menos: 'inter', t_titulos: 't_titulos' };
+
+/** { r, de: 'joker:<pergunta>' } se um valor revelado na Joker decide esta pergunta. */
+function deduzirDaJoker(valores, tipo, valor) {
+  const campo = CAMPO_DA_JOKER[tipo];
+  if (campo && Number.isInteger(valores[campo])) return { r: simNao(PELA_JOKER[tipo](valores[campo], Number(valor))), de: `joker:${campo}` };
+  if ((tipo === 'decada' || tipo === 'ano') && Number.isInteger(valores.estreia)) {
+    const certo = tipo === 'decada' ? Math.floor(valores.estreia / 10) * 10 === Number(valor) : valores.estreia === Number(valor);
+    return { r: simNao(certo), de: 'joker:estreia' };
+  }
+  return null;
 }
 
 /** A resposta que a ficha tem (dada ou deduzida), ou null. */

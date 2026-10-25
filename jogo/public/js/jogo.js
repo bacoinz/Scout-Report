@@ -8,6 +8,7 @@ import { autocompletar } from './autocompletar.js';
 import { fichaPublica, caixaPalpite, dossier, dossierVazio } from './ficha.js';
 import { menu, descreverEscolhida } from './menu.js';
 import { sons } from './sons.js';
+import * as joker from './joker.js';
 
 const LARGURA_COLUNA = 245;
 const GAP = 14;
@@ -102,6 +103,13 @@ function textoFeed(ev) {
       return [quem(ev.jogador), ' saiu', ev.nome ? `: o jogador secreto era ${ev.nome}` : ''];
     case 'promovido':
       return [quem(ev.jogador), ' passou a jogar'];
+    case 'joker':
+      return [sistema('Ronda Joker sobre a ficha de '), quem(ev.alvo), `: «${joker.textoPergunta(ev.pergunta)}»`];
+    case 'joker_valor': {
+      const ganhos = Object.entries(ev.pontos).filter(([, n]) => n > 0);
+      return [sistema(`Ronda Joker: «${joker.textoPergunta(ev.pergunta)}» → ${ev.valor}`),
+        ...(ganhos.length ? ['. ', ...ganhos.flatMap(([id, n], i) => [i ? ', ' : '', quem(id), ` +${n}`])] : [])];
+    }
     case 'final':
       return [sistema('Fim da partida')];
     default:
@@ -109,7 +117,7 @@ function textoFeed(ev) {
   }
 }
 
-const SISTEMA = new Set(['comecou', 'escolha', 'ronda', 'livre_cancelada', 'tempo', 'final']);
+const SISTEMA = new Set(['comecou', 'escolha', 'ronda', 'livre_cancelada', 'tempo', 'final', 'joker', 'joker_valor']);
 function renderFeed(sala) {
   $('#feed').replaceChildren(...[...sala.feed].reverse().map((ev) => el('li', { class: SISTEMA.has(ev.tipo) ? 'sistema' : null }, ...textoFeed(ev))));
 }
@@ -618,6 +626,7 @@ function renderCabecalho(sala) {
 
 /** O relógio da vez (ou da pergunta livre, ou da escolha) e a linha do tempo. */
 export function tick(agora) {
+  if (contexto?.sala) joker.tick({ sala: contexto.sala, agora });
   const sala = contexto?.sala;
   const p = sala?.partida;
   if (!p || sala.fase !== 'jogo') {
@@ -631,6 +640,7 @@ export function tick(agora) {
   if (p.congelada) prazo = null;
   else if (p.fase === 'livre' && p.livre) [prazo, duracao] = [p.livre.prazo, 30_000];
   else if (p.fase === 'escolha' && p.escolha) [prazo, duracao] = [p.escolha.prazo, 30_000];
+  else if ((p.fase === 'joker' || p.fase === 'revelacao') && p.joker) [prazo, duracao] = [p.joker.prazo, p.joker.prazo - p.joker.abre];
   else if (p.vez) [prazo, duracao] = [p.vez.prazo, p.vez.duracao];
   const falta = prazo ? Math.max(0, prazo - agora) : 0;
   $('#relogio').textContent = p.congelada ? '⏸' : prazo ? formatarTempo(falta) : '';
@@ -705,6 +715,7 @@ export function render(ctx, novos) {
   renderEscolha(sala);
   renderLivre(sala);
   renderFinal(sala);
+  joker.render({ sala, eu: ctx.eu, privado: ctx.privado, cat: ctx.cat, nome, cor, agora: Date.now() + (ctx.desvio ?? 0) });
 }
 
 /** Uma partida nova (ou outra sala): esquece o estado da interface. */

@@ -89,6 +89,11 @@ export const sons = {
     tocar([[fim ? 1568 : 1046, fim ? 0.09 : 0.07, 'square']], fim ? 0.07 : 0.05);
     if (fim) vibrar(15);
   },
+  /** O anúncio da Ronda Joker: um arpejo a subir. */
+  joker() {
+    tocar([[392, 0.1], [523, 0.1], [659, 0.1], [784, 0.12], [1047, 0.3]], 0.09);
+    vibrar([50, 30, 50, 30, 120]);
+  },
   identificado() {
     baque(0.35);
     setTimeout(() => tocar([[523, 0.12], [659, 0.12], [784, 0.12], [1047, 0.35]], 0.1), 180);

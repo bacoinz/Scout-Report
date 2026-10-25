@@ -60,6 +60,9 @@ function dado(texto, f, tipos, ctx) {
   return [incognita()];
 }
 
+/** Um valor revelado na Ronda Joker, com a etiqueta. */
+const daJoker = (f, campo) => (Number.isInteger(f.valores?.[campo]) ? [String(f.valores[campo]), ' ', el('span', { class: 'tag-joker', text: 'Joker' })] : null);
+
 function dadosPublicos(f, ctx) {
   const decadas = confirmados(f, 'decada');
   const anos = confirmados(f, 'ano');
@@ -75,7 +78,7 @@ function dadosPublicos(f, ctx) {
   const treinador = P.valor(f, 'foi_treinador') === 'sim' ? (P.valor(f, 't_atual') === 'sim' ? 'treinador (no ativo)' : 'treinador') : null;
   const comFalta = (partes, completo) => (partes.length ? juntar([...partes, ...(completo ? [] : [incognita()])]) : [incognita()]);
   return el('dl', { class: 'folha-dados' },
-    linhaDados('Estreia', ...(estreia ? (anos.length ? [estreia] : juntar([estreia, incognita()])) : [incognita()])),
+    linhaDados('Estreia', ...(daJoker(f, 'estreia') ?? (estreia ? (anos.length ? [estreia] : juntar([estreia, incognita()])) : [incognita()]))),
     linhaDados('Nação', ...comFalta([...confs, ...nacs], nacs.length > 0)),
     linhaDados('Posição', ...comFalta([...setores, ...posicoes], posicoes.length > 0)),
     linhaDados('Físico', ...(altura || pe.length ? juntar([altura, ...pe].filter(Boolean)) : dado(null, f, ['altura', 'baixo', 'pe'], ctx))),
@@ -140,10 +143,12 @@ function estatisticasPublicas(f, ctx) {
   return el('section', {},
     el('h4', { text: 'Estatísticas' }),
     el('dl', { class: 'estatisticas' },
-      linhaDados('Jogos', ...dado(textoIntervalo(intervalo(f, 'jogos')), f, [], ctx)),
-      linhaDados('Golos', ...dado(textoIntervalo(intervalo(f, 'golos')), f, [], ctx)),
+      linhaDados('Jogos', ...(daJoker(f, 'jogos') ?? dado(textoIntervalo(intervalo(f, 'jogos')), f, [], ctx))),
+      linhaDados('Golos', ...(daJoker(f, 'golos') ?? dado(textoIntervalo(intervalo(f, 'golos')), f, [], ctx))),
       linhaDados('Assist.', ...dado(textoIntervalo(intervalo(f, 'assist')), f, ['assist'], ctx)),
-      linhaDados('Seleção', ...dado(textoIntervalo(intervalo(f, 'inter')), f, [], ctx)),
+      linhaDados('Seleção', ...(daJoker(f, 'inter') ?? dado(textoIntervalo(intervalo(f, 'inter')), f, [], ctx))),
+      daJoker(f, 'golos_selecao') ? linhaDados('Golos sel.', ...daJoker(f, 'golos_selecao')) : null,
+      daJoker(f, 'clubes') ? linhaDados('Clubes', ...daJoker(f, 'clubes')) : null,
       linhaDados('Camisola', ...dado(camisola, f, ['num', 'faixa'], ctx))));
 }
 
@@ -170,7 +175,27 @@ function treinadorPublico(f, ctx) {
     el('h4', { text: 'Treinador' }),
     el('dl', { class: 'estatisticas', style: { gridTemplateColumns: '1fr' } },
       linhaDados('Treinou', ...(treinou.length ? juntar([...treinou, incognita()]) : [incognita()])),
-      linhaDados('Títulos', ...(tit.length ? juntar([...tit, incognita()]) : [incognita()]))));
+      daJoker(f, 't_equipas') ? linhaDados('Equipas', ...daJoker(f, 't_equipas')) : null,
+      linhaDados('Títulos', ...(daJoker(f, 't_titulos') ?? (tit.length ? juntar([...tit, incognita()]) : [incognita()])))));
+}
+
+/**
+ * Os dados conhecidos de uma ficha para a ficha técnica da Joker, a começar pelos mais relevantes para a pergunta
+ * (para os jogos da seleção: a estreia, a nação e a posição).
+ */
+export function dadosParaJoker(f, pergunta, ctx) {
+  const todos = [...dadosPublicos(f, ctx).children];
+  const por = Object.fromEntries(todos.map((d) => [d.querySelector('dt').textContent, d]));
+  const extra = { jogos: ['Jogos', 'jogos'], golos: ['Golos', 'golos'], inter: ['Seleção', 'inter'], golos_selecao: ['Seleção', 'inter'],
+    t_titulos: ['Títulos', 't_titulos'] }[pergunta];
+  const linhas = [];
+  if (extra) {
+    const texto = textoIntervalo(intervalo(f, extra[1]));
+    linhas.push(linhaDados(extra[0], ...(texto ? [texto] : [incognita()])));
+  }
+  const ordem = pergunta === 'estreia' ? ['Nação', 'Posição', 'Estado'] : ['Estreia', 'Nação', 'Posição', 'Estado'];
+  for (const k of ordem) if (por[k] && linhas.length < 4) linhas.push(por[k]);
+  return el('dl', { class: 'folha-dados' }, ...linhas);
 }
 
 function notasExtra(f, ctx) {

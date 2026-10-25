@@ -3,6 +3,7 @@
 // Durable Object (sala.js) trata dos sockets, da persistência, dos alarmes e do D1.
 import * as P from '../public/js/comum/perguntas.js';
 import { REGRAS } from './regras.js';
+import * as joker from './joker.js';
 
 const jogador = (sala, id) => sala.jogadores.find((j) => j.id === id);
 const erro = (msg, extra = {}) => ({ erro: msg, ...extra });
@@ -179,6 +180,7 @@ export function iniciarPartida(sala, ctx, reserva) {
     segredos: {},
     cartas: {},
     reserva: [...reserva],
+    joker: { ronda: joker.RONDA_JOKER.de + Math.floor(ctx.aleatorio() * (joker.RONDA_JOKER.ate - joker.RONDA_JOKER.de + 1)), feita: false },
   };
   const p = sala.partida;
   const jogam = sala.jogadores.filter((j) => !j.espectador);
@@ -261,11 +263,75 @@ function iniciarVez(sala, ctx) {
 function fimRonda(sala, ctx) {
   const p = sala.partida;
   p.vez = null;
-  // (Passo 5: a Ronda Joker entra aqui.)
   if (deveAcabar(sala)) return terminar(sala, ctx);
+  if (iniciarJoker(sala, ctx)) return undefined;
+  return proximaRonda(sala, ctx);
+}
+
+function proximaRonda(sala, ctx) {
+  const p = sala.partida;
   p.ronda += 1;
   return iniciarRonda(sala, ctx);
 }
+
+// ---------------------------------------------------------------------------
+// Ronda Joker
+// ---------------------------------------------------------------------------
+
+/** Quem responde à Joker: os da partida, menos o dono da ficha. */
+const respondentes = (sala, dono) => emJogo(sala).filter((j) => j.id !== dono && !j.saindo);
+
+/**
+ * No fim da ronda sorteada (ou da seguinte, se ninguém puder responder), começa a Joker: a ficha com menos "sim" e
+ * uma pergunta numérica que ela ainda não tenha. Devolve true se começou.
+ */
+function iniciarJoker(sala, ctx) {
+  const p = sala.partida;
+  const j = p.joker;
+  if (!j || j.feita || p.ronda < j.ronda) return false;
+  for (const f of joker.ordenarFichas(alvos(sala).map((x) => fichaDe(sala, x.id)), ctx.aleatorio)) {
+    const reg = ctx.registos.get(p.segredos[f.dono].registo);
+    const pergunta = reg && joker.escolherPergunta(f, reg, ctx.aleatorio);
+    if (!pergunta) continue;
+    // Sem ninguém ligado para responder, fica para o fim da ronda seguinte.
+    if (!respondentes(sala, f.dono).some((x) => x.ligado)) return false;
+    const abre = ctx.agora + REGRAS.jokerAnuncioMs;
+    Object.assign(j, { fase: 'joker', ficha: f.n, dono: f.dono, pergunta, valor: joker.PERGUNTAS_JOKER[pergunta].valor(reg), abre, prazo: abre + REGRAS.jokerMs, lances: {} });
+    p.fase = 'joker';
+    noFeed(sala, { tipo: 'joker', ficha: f.n, alvo: f.dono, pergunta });
+    return true;
+  }
+  j.feita = true; // nenhuma ficha tem pergunta por revelar
+  return false;
+}
+
+/** O palpite de um jogador na Joker: um número inteiro, definitivo e escondido até à revelação. */
+export function lance(sala, id, { valor }, ctx) {
+  const p = sala.partida;
+  const j = p?.joker;
+  if (sala.fase !== 'jogo' || p.fase !== 'joker') return erro('Não há Ronda Joker a decorrer.');
+  if (!respondentes(sala, j.dono).some((x) => x.id === id)) return erro(id === j.dono ? 'É a tua ficha: não respondes a esta.' : 'Não respondes a esta Joker.');
+  if (id in j.lances) return erro('Já deste o teu palpite.');
+  if (!Number.isInteger(valor) || valor < 0 || valor > 9999) return erro('Escreve um número inteiro.');
+  j.lances[id] = valor;
+  avancar(sala, ctx); // se toda a gente já respondeu, revela-se já
+  return { ok: true };
+}
+
+function revelarJoker(sala, ctx) {
+  const p = sala.partida;
+  const j = p.joker;
+  const r = joker.pontuar(j.valor, j.lances);
+  const pontos = {};
+  for (const [id, n] of Object.entries(r.pontos)) pontos[id] = n ? dar(sala, id, n) : 0;
+  pontos[j.dono] = r.dono ? dar(sala, j.dono, r.dono) : 0;
+  const f = p.fichas[j.ficha];
+  f.valores = { ...(f.valores ?? {}), [j.pergunta]: j.valor };
+  Object.assign(j, { fase: 'revelacao', pontos, exatos: r.exatos, perto: r.perto, prazo: ctx.agora + REGRAS.jokerRevelacaoMs });
+  p.fase = 'revelacao';
+  noFeed(sala, { tipo: 'joker_valor', ficha: j.ficha, alvo: j.dono, pergunta: j.pergunta, valor: j.valor, pontos });
+}
+
 
 /** Acaba quando todos os jogadores secretos forem identificados (ou já não houver quem jogue). Não há limite de rondas. */
 function deveAcabar(sala) {
@@ -440,7 +506,8 @@ export function descongelar(sala, ctx) {
   if (sala.fase !== 'jogo' || !p?.congelada || !algumLigado(sala)) return false;
   const d = ctx.agora - p.congelada;
   p.congelada = null;
-  for (const o of [p.vez, p.livre, p.identificado, p.escolha]) if (o?.prazo != null) o.prazo += d;
+  for (const o of [p.vez, p.livre, p.identificado, p.escolha, p.joker]) if (o?.prazo != null) o.prazo += d;
+  if (p.joker?.abre != null) p.joker.abre += d;
   for (const c of Object.values(p.cartas)) if (c.prazo != null) c.prazo += d;
   // O tempo da pausa não conta para quem continua desligado (nem para saltar a vez, nem para sair de vez).
   for (const j of sala.jogadores) if (!j.ligado && j.desligadoEm != null) j.desligadoEm += d;
@@ -499,6 +566,19 @@ function passo(sala, ctx) {
       }
       return false;
     }
+    case 'joker': {
+      const j = p.joker;
+      const ligados = respondentes(sala, j.dono).filter((x) => x.ligado);
+      if (agora < j.prazo && !ligados.every((x) => x.id in j.lances)) return false;
+      revelarJoker(sala, ctx);
+      return true;
+    }
+    case 'revelacao':
+      if (agora < p.joker.prazo) return false;
+      Object.assign(p.joker, { fase: null, feita: true });
+      if (deveAcabar(sala)) terminar(sala, ctx);
+      else proximaRonda(sala, ctx);
+      return true;
     case 'identificado':
       if (agora < p.identificado.prazo) return false;
       p.identificado = null;
@@ -539,6 +619,7 @@ export function proximoPrazo(sala) {
   }
   if (p.fase === 'livre') prazos.push(p.livre?.prazo);
   if (p.fase === 'identificado') prazos.push(p.identificado?.prazo);
+  if (p.fase === 'joker' || p.fase === 'revelacao') prazos.push(p.joker?.prazo);
   for (const j of emJogo(sala)) if (!j.ligado && !j.saindo && j.desligadoEm != null) prazos.push(j.desligadoEm + REGRAS.saidaDefinitivaMs);
   const validos = prazos.filter((t) => typeof t === 'number');
   return validos.length ? Math.min(...validos) : null;

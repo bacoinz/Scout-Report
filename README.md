@@ -20,7 +20,7 @@ O projeto tem três partes:
 - [x] Passo 2 — pipeline com uma amostra de 30 jogadores e relatório de qualidade
 - [x] Passo 3 — lista dos míticos e processamento completo (865 jogadores; 788 depois de saírem os nascidos antes de 1960)
 - [x] Passo 4 — jogo: salas, rotação, perguntas, fichas, pontuação, palpites (`docs/capturas/passo4/`)
-- [ ] Passo 5 — Ronda Joker
+- [x] Passo 5 — Ronda Joker (`docs/capturas/passo5/`)
 - [ ] Passo 6 — Desafio do Dia
 - [ ] Passo 7 — exportação para o D1 e deploy
 

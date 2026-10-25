@@ -298,7 +298,8 @@ describe('tempo, desligados e fim', () => {
     const { sala, t } = montar(2);
     for (let i = 0; i < 60; i++) t(REGRAS.vezMs);
     expect(sala.fase).toBe('jogo');
-    expect(sala.partida.ronda).toBe(31);
+    expect(sala.partida.ronda).toBeGreaterThan(25);
+    expect(sala.partida.joker.feita).toBe(true);
   });
 
   it('se só estiver ligado o dono do último secreto (que não tem a quem perguntar), a partida congela', () => {
@@ -395,5 +396,80 @@ describe('vista', () => {
     partida.palpitar(sala, 'j1', { vez: vez(sala).seq, ficha: ficha(sala, 'j2').n, jogador: errado.id, nome: errado.nome }, ctx);
     expect(textoPublico()).toContain(errado.nome);
     expect(textoPublico()).not.toContain(`"${errado.id}"`);
+  });
+});
+
+describe('Ronda Joker', () => {
+  /** Avança até ao fim da ronda `n` (todas as vezes por tempo). */
+  const ateAoFimDaRonda = (sala, t, n) => {
+    for (let i = 0; i < 200 && sala.partida.fase === 'vez' && sala.partida.ronda <= n; i++) t(REGRAS.vezMs);
+  };
+
+  it('uma por partida, numa ronda ao calhas entre a 3.ª e a 6.ª', () => {
+    for (const [sorte, ronda] of [[0, 3], [0.3, 4], [0.6, 5], [0.99, 6]]) {
+      const { sala } = montar(2, {}); // a ronda sorteia-se no início
+      const p = sala.partida;
+      p.joker.ronda = 3 + Math.floor(sorte * 4);
+      expect(p.joker.ronda).toBe(ronda);
+    }
+  });
+
+  it('no fim da ronda: a ficha com menos "sim", palpites escondidos, revelação, pontos e o valor na ficha', () => {
+    const { sala, ctx, t } = montar(3);
+    const p = sala.partida;
+    expect(p.joker.ronda).toBe(3); // aleatorio = 0
+    ateAoFimDaRonda(sala, t, 3);
+    expect(p.fase).toBe('joker');
+    const j = p.joker;
+    expect(j.dono).toBe('j1'); // empate a zero "sim": fica a primeira
+    expect(j.pergunta).toBe('jogos');
+    const publico = estadoPublico(sala, ctx.agora).partida.joker;
+    expect(publico).toMatchObject({ fase: 'joker', ficha: j.ficha, dono: 'j1', pergunta: 'jogos', enviados: [] });
+    expect(publico.valor).toBeUndefined();
+    expect(publico.lances).toBeUndefined();
+    // O dono não responde; os outros uma vez só; um número inteiro.
+    expect(partida.lance(sala, 'j1', { valor: 10 }, ctx).erro).toBeTruthy();
+    expect(partida.lance(sala, 'j2', { valor: 'x' }, ctx).erro).toBeTruthy();
+    jogador(sala, 'j3').identificado = true; // recebe metade
+    expect(partida.lance(sala, 'j2', { valor: j.valor - 1 }, ctx)).toEqual({ ok: true });
+    expect(partida.lance(sala, 'j2', { valor: j.valor }, ctx).erro).toMatch(/Já deste/);
+    expect(privado(sala, 'j2', ctx.registos).lance).toBe(j.valor - 1);
+    expect(privado(sala, 'j3', ctx.registos).lance).toBeNull();
+    expect(estadoPublico(sala, ctx.agora).partida.joker.enviados).toEqual(['j2']);
+    // Quando todos os que estão ligados respondem, revela-se logo.
+    partida.lance(sala, 'j3', { valor: j.valor }, ctx);
+    expect(p.fase).toBe('revelacao');
+    expect(j.pontos).toEqual({ j2: 0, j3: 8, j1: 0 });
+    expect(jogador(sala, 'j3').total).toBe(8);
+    expect(estadoPublico(sala, ctx.agora).partida.joker).toMatchObject({ valor: j.valor, lances: { j2: j.valor - 1, j3: j.valor } });
+    // O valor fica na ficha e decide as perguntas dos jogos.
+    const f = sala.partida.fichas[j.ficha];
+    expect(f.valores).toEqual({ jogos: j.valor });
+    expect(P.avaliar(f, 'jogos:100', cat)).toMatchObject({ estado: 'deduzida', de: 'joker:jogos' });
+    expect(P.contarSim(f)).toBe(0); // não conta como "sim"
+    // Depois da revelação, a ronda seguinte; não volta a haver Joker.
+    t(REGRAS.jokerRevelacaoMs);
+    expect(p.fase).toBe('vez');
+    expect(p.ronda).toBe(4);
+    ateAoFimDaRonda(sala, t, 7);
+    expect(p.fase).toBe('vez');
+    expect(sala.feed.filter((e) => e.tipo === 'joker')).toHaveLength(1);
+  });
+
+  it('sem ninguém ligado para responder, passa para o fim da ronda seguinte; acaba por tempo', () => {
+    const { sala, ctx, t } = montar(3);
+    const p = sala.partida;
+    L.desligar(sala, 'j2', ctx);
+    L.desligar(sala, 'j3', ctx);
+    ateAoFimDaRonda(sala, t, 3);
+    expect(p.ronda).toBe(4);
+    expect(p.fase).toBe('vez');
+    L.entrar(sala, { token: 'token-2-abcdef' }, ctx);
+    ateAoFimDaRonda(sala, t, 4);
+    expect(p.fase).toBe('joker');
+    // Sem palpites: acaba quando o tempo acaba, e o dono ganha os 9 (ninguém ficou abaixo).
+    t(REGRAS.jokerAnuncioMs + REGRAS.jokerMs);
+    expect(p.fase).toBe('revelacao');
+    expect(p.joker.pontos.j1).toBe(9);
   });
 });

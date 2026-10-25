@@ -26,6 +26,10 @@ export const REGRAS = {
   saidaDefinitivaMs: 5 * 60_000,
   /** Registos a mais na reserva da sala (para quem entra a meio). */
   folgaReserva: 4,
+  /** Ronda Joker: o anúncio (a carta e o título), o tempo para os palpites e a revelação. */
+  jokerAnuncioMs: 3_300,
+  jokerMs: 15_000,
+  jokerRevelacaoMs: 7_000,
   /** Cada vez dura 1 minuto. A partida não tem limite de rondas: acaba quando todos forem identificados. */
   vezMs: 60_000,
   /** Opções do lobby. */
