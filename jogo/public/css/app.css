@@ -891,3 +891,189 @@ body:has(.dialogo-livre[open]) .toasts {
   font-weight: 700;
   color: var(--tinta-suave);
 }
+
+/* ---------- Desafio do Dia (/dia): perguntas | a ficha | o teu relatório ---------- */
+a.barra-marca,
+a.btn-barra {
+  color: inherit;
+  text-decoration: none;
+}
+.dia-cabecalho {
+  flex-direction: column;
+  justify-content: center;
+  gap: 1px;
+  text-align: center;
+}
+.dia-data {
+  margin: 0;
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--muted);
+}
+.dia-data::first-letter {
+  text-transform: uppercase;
+}
+/* Sem pontos: o resultado é o número de perguntas. */
+.ecra-dia .cat-pts {
+  display: none;
+}
+@media (min-width: 960px) {
+  .ecra-dia .mesa {
+    justify-content: center;
+  }
+  .ecra-dia .fichas {
+    flex: 0 1 560px;
+  }
+  .ecra-dia .fichas > .folha {
+    flex: 1 1 0;
+    min-width: 0;
+    min-height: 0;
+  }
+}
+.dia-lado {
+  flex: 0 0 250px;
+  align-self: flex-start;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.dia-lado .painel-titulo {
+  margin: 0;
+}
+.dia-lado .btn {
+  width: 100%;
+}
+.dia-lado .nota {
+  margin: 0;
+}
+.dia-contagem {
+  margin: 0;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  font-weight: 800;
+  color: var(--muted);
+}
+.dia-contagem .numero {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: 54px;
+  line-height: 1;
+  color: var(--text);
+}
+/* Os quadrados (os mesmos do resultado copiado: 🟩 🟥 ⬛ 🟪). */
+.trilho,
+.legenda {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+.trilho {
+  gap: 4px;
+}
+.q {
+  display: inline-block;
+  flex: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+}
+.q.sim {
+  background: #43a047;
+}
+.q.nao {
+  background: #e53935;
+}
+.q.errado {
+  background: #050806;
+  box-shadow: inset 0 0 0 1px #ffffff40;
+}
+.q.certo {
+  background: var(--destaque);
+}
+.q.bandeira {
+  width: auto;
+  height: 18px;
+  font-size: 15px;
+  line-height: 18px;
+}
+.legenda {
+  gap: 4px 12px;
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--muted);
+}
+.legenda li {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+.legenda .q {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+}
+
+/* Fim: o carimbo do IDENTIFICADO (ou REVELADO), a foto e o resultado para copiar. */
+.dia-fim {
+  width: min(100%, 380px);
+  text-align: center;
+}
+.dia-fim .titulo-medio {
+  margin-bottom: 4px;
+}
+.dia-fim .btn {
+  width: 100%;
+}
+.dia-fim-retrato {
+  display: grid;
+  justify-items: center;
+  gap: 8px;
+  padding: 18px 14px 16px;
+}
+.dia-fim-retrato.desistiu .carimbo-grande {
+  color: var(--carimbo-vermelho);
+}
+.dia-fim-retrato.parado *,
+.dia-fim-retrato.parado {
+  animation: none !important;
+}
+.identificado-foto .sem-foto {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 4 / 5;
+  background: #d9d3c2;
+}
+.dia-fim .nota {
+  margin: 0;
+}
+.dia-resumo {
+  margin: 0;
+  padding: 10px 12px;
+  background: #0000004d;
+  border: 1px solid #ffffff1a;
+  border-radius: 12px;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.45;
+  text-align: left;
+  white-space: pre-wrap;
+}
+
+@media (max-width: 959px) {
+  .dia-lado {
+    flex: 0 0 calc(100vw - 44px);
+    align-self: stretch;
+    scroll-snap-align: start;
+    overflow-y: auto;
+  }
+  .dia-cabecalho {
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: baseline;
+    gap: 10px;
+  }
+}

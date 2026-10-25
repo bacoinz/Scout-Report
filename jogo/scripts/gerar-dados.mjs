@@ -1,7 +1,7 @@
 // Gera public/js/comum/dados.gen.js a partir de ../partilhado/ (perguntas.json e paises.json), para o Worker e o
 // browser usarem as mesmas regras e os mesmos nomes. Corre antes de cada `wrangler dev` / `deploy`
 // (wrangler.jsonc → build) e dos testes.
-import { readFileSync, writeFileSync } from 'node:fs';
+import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -16,11 +16,16 @@ const paises = Object.fromEntries(
     .sort(([, a], [, b]) => a.nome.localeCompare(b.nome, 'pt')),
 );
 
-writeFileSync(
-  join(raiz, 'public', 'js', 'comum', 'dados.gen.js'),
-  `// Gerado por scripts/gerar-dados.mjs a partir de partilhado/ — não editar à mão.
+const destino = join(raiz, 'public', 'js', 'comum', 'dados.gen.js');
+const conteudo = `// Gerado por scripts/gerar-dados.mjs a partir de partilhado/ — não editar à mão.
 export const PERGUNTAS = ${JSON.stringify(perguntas)};
 export const PAISES = ${JSON.stringify(paises)};
-`,
-);
-console.log(`perguntas.json + ${Object.keys(paises).length} países → public/js/comum/dados.gen.js`);
+`;
+// Só escreve se mudou: o ficheiro está numa pasta que o `wrangler dev` vigia, e cada escrita dispara outro build
+// (que volta a correr este script): reescrever sempre dava um ciclo sem fim e o servidor deixava de responder.
+if (!existsSync(destino) || readFileSync(destino, 'utf8') !== conteudo) {
+  writeFileSync(destino, conteudo);
+  console.log(`perguntas.json + ${Object.keys(paises).length} países → public/js/comum/dados.gen.js`);
+} else {
+  console.log('public/js/comum/dados.gen.js já está atualizado');
+}

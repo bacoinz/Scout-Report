@@ -1,12 +1,12 @@
-// Arranque e controlo do cliente: ecrãs, ligação à sala, catálogo e nomes do D1, e mensagens. (Esqueleto do Guess
-// The Kit.)
+// Arranque e controlo do cliente: ecrãs, ligação à sala, catálogo e nomes do D1, mensagens e o Desafio do Dia.
+// (Esqueleto do Guess The Kit.)
 import { $, $$, ler, guardar, novoId } from './util.js';
 import { Ligacao } from './ligacao.js';
-import { prepararCatalogo } from './comum/perguntas.js';
-import { criarIndice } from './comum/nomes.js';
+import { carregarDados as obterDados } from './dados.js';
 import { renderLobby } from './lobby.js';
 import * as jogo from './jogo.js';
 import * as joker from './joker.js';
+import * as dia from './dia.js';
 import { sons, somLigado, alternarSom } from './sons.js';
 
 const CHAVE_TOKEN = 'sr.token';
@@ -28,7 +28,7 @@ jogo.configurar(enviar);
 
 function mostrar(ecra) {
   for (const e of $$('.ecra')) e.hidden = e.id !== `ecra-${ecra}`;
-  document.body.classList.toggle('vista-jogo', ecra === 'jogo');
+  document.body.classList.toggle('vista-jogo', ecra === 'jogo' || ecra === 'dia');
 }
 
 function irPara(caminho) {
@@ -44,6 +44,22 @@ function voltarAoInicio(erro = '') {
   $('#aviso-ligacao').hidden = true;
   for (const d of $$('dialog[open]')) d.close();
   mostrar('inicio');
+  mostrarBotaoDia();
+}
+
+/** O número do relatório de hoje no botão do início (com ✓ se já estiver feito neste browser). */
+async function mostrarBotaoDia() {
+  const info = await dia.infoDeHoje();
+  if (info) $('#btn-dia .nota').textContent = `#${info.numero}${dia.feitoHoje(info.data) ? ' ✓' : ''}`;
+}
+
+function abrirDia() {
+  estado.ligacao?.fechar();
+  Object.assign(estado, { ligacao: null, sala: null, privado: null, eu: null });
+  $('#aviso-ligacao').hidden = true;
+  for (const d of $$('dialog[open]')) d.close();
+  mostrar('dia');
+  dia.abrir();
 }
 
 async function infoSala(codigo) {
@@ -115,13 +131,7 @@ async function carregarDados(versao) {
   if (estado.versao === versao && estado.cat) return;
   estado.versao = versao;
   try {
-    const [cat, nomes] = await Promise.all([
-      fetch(`/api/catalogo?v=${encodeURIComponent(versao)}`).then((r) => r.json()),
-      fetch(`/api/nomes?v=${encodeURIComponent(versao)}`).then((r) => r.json()),
-    ]);
-    estado.cat = prepararCatalogo(cat);
-    estado.indice = criarIndice(nomes);
-    estado.nomesPorId = new Map(nomes.map((j) => [j.id, j]));
+    Object.assign(estado, await obterDados(versao));
     if (estado.sala) desenhar([]);
   } catch {
     estado.versao = null;
@@ -270,6 +280,16 @@ jogo.ligarPainel();
 jogo.ligarFichas();
 jogo.ligarLivre();
 joker.ligar(enviar);
+dia.ligar({ toast: jogo.toast });
+
+// Ligações internas (início ↔ Desafio do Dia) sem recarregar a página.
+document.addEventListener('click', (e) => {
+  const a = e.target.closest('a[data-rota]');
+  if (!a || e.ctrlKey || e.metaKey || e.shiftKey || e.button !== 0) return;
+  e.preventDefault();
+  irPara(new URL(a.href).pathname);
+  rota();
+});
 
 // Relógio (e tique nos últimos 10 segundos da minha vez)
 let ultimoSegundo = null;
@@ -288,6 +308,7 @@ setInterval(() => {
 function rota() {
   const m = location.pathname.match(/^\/sala\/([A-Za-z]{4})\/?$/);
   if (m) abrirSala(m[1].toUpperCase());
+  else if (/^\/dia\/?$/.test(location.pathname)) abrirDia();
   else voltarAoInicio();
 }
 window.addEventListener('popstate', rota);

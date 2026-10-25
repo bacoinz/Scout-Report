@@ -21,7 +21,7 @@ O projeto tem três partes:
 - [x] Passo 3 — lista dos míticos e processamento completo (865 jogadores; 788 depois de saírem os nascidos antes de 1960)
 - [x] Passo 4 — jogo: salas, rotação, perguntas, fichas, pontuação, palpites (`docs/capturas/passo4/`)
 - [x] Passo 5 — Ronda Joker (`docs/capturas/passo5/`)
-- [ ] Passo 6 — Desafio do Dia
+- [x] Passo 6 — Desafio do Dia, em `/dia` (`docs/capturas/passo6/`)
 - [ ] Passo 7 — exportação para o D1 e deploy
 
 ## Ver o mockup
@@ -52,7 +52,8 @@ py -3.12 -m venv .venv
 .venv/Scripts/python -m scout premios             # volta a aplicar dados/competicoes.json aos títulos
 .venv/Scripts/python -m scout validar
 .venv/Scripts/python -m scout relatorio           # → saida/qualidade.md
-.venv/Scripts/python -m scout exportar            # SQL para o D1 do jogo → saida/d1/
+.venv/Scripts/python -m scout exportar            # SQL para o D1 do jogo → saida/d1/ (e estende o calendário do Desafio)
+.venv/Scripts/python -m scout estado              # contagens e dias que faltam no calendário do Desafio do Dia
 .venv/Scripts/python -m pytest
 ```
 
@@ -71,6 +72,10 @@ py -3.12 -m venv .venv
   outros e a exportação também os deixa de fora.
 - **Correções à mão:** ficam em `pipeline/dados/ajustes.json`, `pipeline/dados/competicoes.json` e
   `pipeline/dados/clubes.json`. Os ajustes aplicam-se por cima das fontes em cada recolha.
+- **Calendário do Desafio do Dia** (`pipeline/dados/calendario.json`, versionado): um jogador do Desafio por data de
+  Lisboa. Cada `exportar` preenche as datas de depois de amanhã até 60 dias à frente, sem mexer em hoje nem em amanhã,
+  e troca as datas futuras de quem saiu da base. Ninguém repete antes de todos terem saído. O `estado` avisa quando
+  faltam menos de 30 dias: no deploy, é preciso exportar e aplicar o SQL no D1 pelo menos uma vez por mês.
 
 ## Jogar localmente
 
@@ -97,6 +102,11 @@ código da sala no lugar de ABCD). Os bots perguntam ao calhas e respondem às p
 - **Servidor:** `src/partida.js` (rondas, rotação, vezes, palpites, identificação, desligados) e
   `src/sala-logica.js` (jogadores, lobby) são puros; `src/sala.js` (Durable Object) só faz I/O; `src/vista.js`
   decide o que cada jogador recebe (o dossier só vai para o dono).
+- **Desafio do Dia** (`/dia`, `src/dia.js`): sem estado no servidor e sem contas. O browser guarda o progresso
+  (`localStorage`, `sr.dia.<data>`) e manda o histórico das perguntas em cada pedido; o servidor volta a responder a
+  esse histórico a partir do registo, confirma a hierarquia e os 10 "sim" + clube do palpite, e só revela o jogador
+  no fim. Só aceita a data de hoje ou de ontem (Lisboa). O Relatório #1 é o dia em `DIA_LANCAMENTO`
+  (`wrangler.jsonc`); as datas sem linha no calendário usam a mesma ordem de reserva do pipeline.
 
 ## Créditos
 

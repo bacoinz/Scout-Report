@@ -57,7 +57,89 @@
       <p id="erro-inicio" class="erro" role="alert"></p>
     </section>
     <div class="linha-botoes">
+      <a id="btn-dia" class="btn btn-fantasma" href="/dia" data-rota>Relatório do Dia <span class="nota"></span></a>
       <button class="btn btn-contorno" type="button" data-abrir="dialogo-como">Como jogar</button>
+    </div>
+  </main>
+
+  <!-- ===================== Desafio do Dia ===================== -->
+  <main id="ecra-dia" class="ecra ecra-jogo ecra-dia" hidden>
+    <header class="barra-jogo">
+      <a class="barra-marca" href="/" data-rota aria-label="Scout Report: voltar ao início">
+        <img class="logo" src="/favicon.svg" alt="" width="26" height="26">
+        <span class="barra-nome"><span>Scout</span> <span class="destaque">Report</span></span>
+      </a>
+      <div class="barra-ronda dia-cabecalho">
+        <p id="dia-numero" class="ronda">Relatório do Dia</p>
+        <p id="dia-data" class="dia-data"></p>
+      </div>
+      <div class="barra-botoes">
+        <button class="btn-barra" type="button" data-abrir="dialogo-dia" aria-label="Como jogar">
+          <svg><use href="#i-ajuda"/></svg><span class="so-largo">Como jogar</span>
+        </button>
+        <a class="btn-barra" href="/" data-rota aria-label="Início"><svg><use href="#i-sair"/></svg><span class="so-largo">Início</span></a>
+      </div>
+    </header>
+
+    <div class="mesa" id="dia-mesa">
+      <section class="coluna-perguntas" id="dia-col-perguntas" aria-label="Perguntas">
+        <form class="acoes" id="dia-acoes" novalidate>
+          <h2 class="acoes-titulo">Perguntas</h2>
+          <p id="dia-aviso" class="acoes-aviso" hidden></p>
+          <div class="categorias" id="dia-categorias"></div>
+          <div class="acoes-fundo">
+            <p class="escolhida vazia" id="dia-escolhida">
+              <span class="texto">Escolhe uma pergunta da lista</span>
+              <button class="limpar" type="button" aria-label="Tirar a pergunta escolhida">×</button>
+            </p>
+            <p class="erro" id="dia-erro" role="alert"></p>
+            <button class="btn btn-principal" type="submit" id="dia-enviar">Enviar pergunta</button>
+          </div>
+        </form>
+      </section>
+
+      <div class="fichas" id="dia-fichas"></div>
+
+      <aside class="dia-lado painel" id="dia-lado" aria-label="O teu relatório">
+        <h2 class="painel-titulo">O teu relatório</h2>
+        <p class="dia-contagem"><span id="dia-n" class="numero">0</span> <span id="dia-n-texto">perguntas</span></p>
+        <ol id="dia-trilho" class="trilho" aria-label="Respostas, pela ordem" hidden></ol>
+        <ul class="legenda">
+          <li><i class="q sim"></i>Sim</li>
+          <li><i class="q nao"></i>Não</li>
+          <li><i class="q errado"></i>Palpite errado</li>
+          <li><i class="q certo"></i>Identificado</li>
+        </ul>
+        <p class="nota">Quanto menos perguntas, melhor. Os palpites errados contam; as perguntas sem registo não.</p>
+        <button id="dia-ver-fim" class="btn btn-principal" type="button" hidden>Ver o resultado</button>
+        <button id="dia-copiar" class="btn btn-fantasma dia-copiar" type="button" hidden>Copiar resultado</button>
+        <button id="dia-desistir" class="btn btn-contorno" type="button">Desistir</button>
+        <p class="nota dia-proximo"></p>
+      </aside>
+    </div>
+
+    <!-- Telemóvel: saltar entre colunas -->
+    <nav class="navegador" id="dia-navegador" aria-label="Ir para">
+      <button type="button" data-ir="dia-col-perguntas" aria-current="true">Perguntar</button>
+      <button type="button" data-ir="dia-ficha">Ficha</button>
+      <button type="button" data-ir="dia-lado">Relatório</button>
+    </nav>
+
+    <!-- Fim: identificado ou revelado -->
+    <div id="dia-fim" class="sobreposicao" hidden>
+      <article class="cartao dia-fim">
+        <h2 id="dia-fim-titulo" class="titulo titulo-medio"></h2>
+        <div id="dia-fim-retrato" class="dia-fim-retrato papel">
+          <p id="dia-fim-carimbo" class="carimbo-grande"></p>
+          <figure id="dia-fim-foto" class="identificado-foto"></figure>
+          <p id="dia-fim-nome" class="identificado-nome"></p>
+        </div>
+        <p id="dia-fim-nota" class="nota centro"></p>
+        <pre id="dia-resumo" class="dia-resumo"></pre>
+        <button class="btn btn-principal dia-copiar" type="button">Copiar resultado</button>
+        <button id="dia-fim-ver" class="btn btn-fantasma" type="button">Ver a ficha</button>
+        <p class="nota centro dia-proximo"></p>
+      </article>
     </div>
   </main>
 
@@ -339,6 +421,26 @@
       <li><span>Podes consultar fora do jogo (internet, livros…) dados <strong>só do teu próprio jogador</strong>, para responderes bem às perguntas livres. Pesquisar os jogadores dos outros <strong>não vale</strong>.</span></li>
       <li><span><strong>Ronda Joker</strong>: uma vez por partida, no fim de uma ronda ao calhas entre a 3.ª e a 6.ª. Pergunta-se um número sobre o jogador com menos "sim" (jogos, golos, ano de estreia…) e todos menos o dono dão um palpite em 15 s. Exato: 15; mais perto sem passar: 9. O dono ganha 9 se toda a gente passar, 3 se alguém ficar perto e 0 se alguém acertar. O valor fica na ficha.</span></li>
       <li><span>Quem entra a meio fica a ver e joga a partir da ronda seguinte, com um jogador secreto.</span></li>
+      <li><span><strong>Relatório do Dia</strong>: um jogador mistério por dia, o mesmo para toda a gente, para jogares sozinho. Só perguntas da lista; o resultado é o número de perguntas até acertares. Copia-o para o Discord.</span></li>
+    </ol>
+    </div>
+  </dialog>
+
+  <!-- ===================== Como jogar: Relatório do Dia ===================== -->
+  <dialog id="dialogo-dia" class="dialogo dialogo-fixo" aria-labelledby="dia-como-titulo">
+    <header class="dialogo-cabecalho">
+      <h2 id="dia-como-titulo" class="titulo titulo-medio" tabindex="-1" autofocus><span>Relatório</span> <span class="destaque">do Dia</span></h2>
+      <form method="dialog"><button class="btn-fechar" type="submit" aria-label="Fechar">×</button></form>
+    </header>
+    <div class="dialogo-corpo">
+    <ol class="regras">
+      <li><span>Há <strong>um jogador mistério por dia</strong>, o mesmo para toda a gente. Muda à meia-noite (hora de Lisboa).</span></li>
+      <li><span>Escolhes uma pergunta da lista e carregas em <strong>Enviar</strong>: o jogo responde Sim ou Não e a ficha vai-se preenchendo. Não há perguntas livres nem tempo.</span></li>
+      <li><span>As perguntas abrem por níveis, como no jogo: <strong>país → liga → clube</strong>, setor → posição, continente → país, década → ano de estreia, números usados → número exato. O que já se sabe pelas outras respostas fica a cinzento.</span></li>
+      <li><span><strong>Sem registo</strong>: quando os dados não chegam para responder, a pergunta fecha-se e não conta.</span></li>
+      <li><span>O <strong>Palpite final</strong> acende-se com <strong>10 "sim"</strong> e pelo menos <strong>um clube confirmado</strong>. Podes dar os palpites que quiseres, mas cada palpite errado conta como uma pergunta.</span></li>
+      <li><span>Quanto <strong>menos perguntas</strong>, melhor. No fim, copia o resultado e cola-o no Discord: 🟩 sim, 🟥 não, ⬛ palpite errado, 🟪 identificado.</span></li>
+      <li><span>Se não conseguires, <strong>Desistir</strong> revela o jogador (🏳️). Só há um relatório por dia em cada browser.</span></li>
     </ol>
     </div>
   </dialog>

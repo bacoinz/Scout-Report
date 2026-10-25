@@ -5,16 +5,17 @@ Tabelas (jogo/migrations/0001_inicial.sql):
 - clubes e ligas: só os que aparecem nas carreiras. As ligas de um clube são as das passagens dos jogadores (assim o
   menu "jogou no {clube}?" abre com as mesmas ligas que as respostas usam), e as "outra-PT" chamam-se
   "Outra liga de Portugal";
-- resumo: a versão, para o /api/catalogo e o /api/nomes ficarem em cache até à exportação seguinte.
+- resumo: a versão, para o /api/catalogo e o /api/nomes ficarem em cache até à exportação seguinte;
+- desafios: o calendário do Desafio do Dia (scout/calendario.py), que se estende a cada exportação.
 
 Cada instrução fica abaixo de 90 KB (o D1 aceita até 100 KB). Os jogadores que saíram da base ficam com ativo = 0."""
 import hashlib
 import json
 import random
 from collections import Counter, defaultdict
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 
-from . import config
+from . import calendario, config
 from .validar import validar_todos
 
 LIMITE_INSTRUCAO = 90_000
@@ -144,5 +145,14 @@ def gerar() -> dict:
     escrever("02_desativar.sql", [f"UPDATE jogadores SET ativo = 0 WHERE id NOT IN ({ids});"])
     escrever("03_catalogo.sql", [_insert("ligas", l) for l in linhas_ligas] + [_insert("clubes", l) for l in linhas_clubes])
     escrever("04_resumo.sql", [_insert("resumo", {"chave": "versao", "valor": versao}, chave="chave")])
+
+    # Calendário do Desafio do Dia, só com os jogadores do Desafio que vão nesta exportação. Vai para o D1 de ontem
+    # em diante (as datas anteriores já não se jogam).
+    hoje = calendario.hoje_lisboa()
+    cal = calendario.estender(calendario.ler(), [r["id"] for r in registos if r["fama"].get("diario")], hoje)
+    calendario.guardar(cal)
+    desde = (hoje - timedelta(days=1)).isoformat()
+    escrever("05_desafios.sql", [_insert("desafios", {"data": d, "jogador_id": q}, chave="data")
+                                 for d, q in sorted(cal.items()) if d >= desde])
     return {"jogadores": len(linhas_jog), "clubes": len(linhas_clubes), "ligas": len(linhas_ligas), "versao": versao,
-            "ficheiros": ficheiros}
+            "desafios": max(d for d in cal) if cal else None, "ficheiros": ficheiros}

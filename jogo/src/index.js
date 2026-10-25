@@ -1,7 +1,8 @@
 // Worker: cria salas, encaminha WebSockets para o Durable Object da sala, serve o catálogo e os nomes do D1 e o
 // frontend. (Do Guess The Kit.)
 import { ALFABETO_CODIGO } from './regras.js';
-import { lerCatalogo, lerNomes, lerVersao } from './catalogo.js';
+import { lerCatalogo, lerNomes, lerVersao, catalogoPreparado } from './catalogo.js';
+import * as Dia from './dia.js';
 
 export { Sala } from './sala.js';
 
@@ -40,11 +41,44 @@ async function servirComVersao(request, env, ler) {
   return json(dados, 200, pedida === versao ? 'public, max-age=31536000, immutable' : 'public, max-age=60');
 }
 
+const lancamento = (env) => env.DIA_LANCAMENTO || Dia.LANCAMENTO_POR_OMISSAO;
+
+/** O relatório de hoje: a data de Lisboa, o número, quanto falta para o seguinte e a versão da base. */
+async function infoDia(env) {
+  const agora = Date.now();
+  const data = Dia.dataLisboa(agora);
+  return { data, numero: Dia.numero(data, lancamento(env)), faltaMs: Dia.faltaParaAmanha(agora), versao: await lerVersao(env.DB) };
+}
+
+/**
+ * Pergunta, palpite e desistir do Desafio do Dia. O corpo leva a data (hoje ou ontem) e o histórico das perguntas
+ * já feitas; o servidor volta a responder-lhe antes de responder à nova.
+ */
+async function acaoDia(request, env, acao) {
+  let corpo;
+  try {
+    const texto = await request.text();
+    if (texto.length > 20_000) throw new Error('grande');
+    corpo = JSON.parse(texto);
+  } catch {
+    return json({ erro: 'Pedido inválido.' }, 400);
+  }
+  if (!Dia.datasValidas(Date.now(), lancamento(env)).includes(corpo?.data)) {
+    return json({ erro: 'Esse relatório já fechou. Volta a abrir a página para jogares o de hoje.', fechado: true }, 400);
+  }
+  const reg = await Dia.jogadorDoDia(env.DB, corpo.data);
+  if (!reg) return json({ erro: 'Não há relatório para hoje.' }, 503);
+  if (acao === 'desistir') return json(Dia.desistir(reg));
+  const cat = await catalogoPreparado(env.DB);
+  const r = acao === 'pergunta' ? Dia.perguntar(reg, corpo.historico, corpo.chave, cat) : Dia.palpitar(reg, corpo.historico, corpo.jogador, cat);
+  return json(r, r.erro ? 400 : 200);
+}
+
 /**
  * O index.html com a pré-visualização do Discord: imagem com URL absoluto e, na página de uma sala, título e
- * descrição com o código.
+ * descrição com o código (na do Desafio do Dia, com o número do relatório).
  */
-async function pagina(request, env, codigo = null) {
+async function pagina(request, env, { codigo = null, dia = false } = {}) {
   const html = await env.ASSETS.fetch(new Request(new URL('/', request.url), { headers: request.headers }));
   const imagem = new URL('/og.png', request.url).href;
   let reescrever = new HTMLRewriter().on('meta[property="og:image"]', { element: (el) => el.setAttribute('content', imagem) });
@@ -52,6 +86,14 @@ async function pagina(request, env, codigo = null) {
     const titulo = `Scout Report · Sala ${codigo}`;
     const descricao = `Entra na sala ${codigo}: cada um tem um jogador secreto. Pergunta, carimba e identifica o dos teus amigos.`;
     reescrever = reescrever
+      .on('meta[property="og:title"]', { element: (el) => el.setAttribute('content', titulo) })
+      .on('meta[property="og:description"]', { element: (el) => el.setAttribute('content', descricao) })
+      .on('meta[name="description"]', { element: (el) => el.setAttribute('content', descricao) });
+  } else if (dia) {
+    const titulo = `Scout Report · Relatório do Dia #${Dia.numero(Dia.dataLisboa(), lancamento(env))}`;
+    const descricao = 'Um jogador mistério por dia, o mesmo para toda a gente. Em quantas perguntas o identificas?';
+    reescrever = reescrever
+      .on('title', { element: (el) => el.setInnerContent(titulo) })
       .on('meta[property="og:title"]', { element: (el) => el.setAttribute('content', titulo) })
       .on('meta[property="og:description"]', { element: (el) => el.setAttribute('content', descricao) })
       .on('meta[name="description"]', { element: (el) => el.setAttribute('content', descricao) });
@@ -70,6 +112,9 @@ export default {
 
     if (pathname === '/api/catalogo' && request.method === 'GET') return servirComVersao(request, env, lerCatalogo);
     if (pathname === '/api/nomes' && request.method === 'GET') return servirComVersao(request, env, lerNomes);
+    if (pathname === '/api/dia' && request.method === 'GET') return json(await infoDia(env));
+    const dia = pathname.match(/^\/api\/dia\/(pergunta|palpite|desistir)$/);
+    if (dia && request.method === 'POST') return acaoDia(request, env, dia[1]);
 
     const ws = pathname.match(/^\/ws\/([A-Za-z]{4})$/);
     if (ws) {
@@ -78,7 +123,8 @@ export default {
     }
 
     const sala = pathname.match(/^\/sala\/([A-Za-z]{4})\/?$/);
-    if (sala) return pagina(request, env, sala[1].toUpperCase());
+    if (sala) return pagina(request, env, { codigo: sala[1].toUpperCase() });
+    if (pathname === '/dia' || pathname === '/dia/') return pagina(request, env, { dia: true });
     if (pathname === '/' || pathname === '/index.html') return pagina(request, env);
 
     if (pathname.startsWith('/api/') || pathname.startsWith('/ws/')) return json({ erro: 'Não encontrado.' }, 404);

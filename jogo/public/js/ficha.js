@@ -356,15 +356,15 @@ export function fichaPublica(f, o) {
   return art;
 }
 
-/** A caixa do palpite final, por cima do fundo da ficha. */
+/** A caixa do palpite final, por cima do fundo da ficha (no Desafio do Dia, sem dono nem pontos). */
 export function caixaPalpite(f, o) {
   return el('form', { class: 'caixa-palpite', novalidate: true, dataset: { caixa: String(f.n) } },
-    el('h4', { text: `Palpite final · ficha ${o.dono ? `de ${o.dono.nome}` : ''}` }),
+    el('h4', { text: `Palpite final${o.dono ? ` · ficha de ${o.dono.nome}` : ''}` }),
     el('div', { class: 'autocompletar' }, el('input', { class: 'campo', placeholder: 'Quem é?', 'aria-label': 'Nome do jogador', autocomplete: 'off', spellcheck: 'false' })),
     el('p', { class: 'erro', role: 'alert' }),
     el('div', { class: 'linha-botoes' },
       el('button', { class: 'cancelar', type: 'button', dataset: { cancelar: '' }, text: 'Cancelar' }),
-      el('button', { class: 'btn btn-principal', type: 'submit', text: `Enviar · ${o.pontosPalpite} pts` })));
+      el('button', { class: 'btn btn-principal', type: 'submit', text: o.pontosPalpite != null ? `Enviar · ${o.pontosPalpite} pts` : 'Enviar palpite' })));
 }
 
 // ---------------------------------------------------------------------------

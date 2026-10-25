@@ -14,6 +14,7 @@
 import argparse
 import json
 import sys
+from datetime import timedelta
 
 from . import config
 
@@ -95,6 +96,7 @@ def cmd_exportar(args):
     r = exportar.gerar()
     print(f"{r['jogadores']} jogadores, {r['clubes']} clubes, {r['ligas']} ligas (versão {r['versao']}) → "
           f"{exportar.SAIDA_D1}: {', '.join(r['ficheiros'])}")
+    print(f"Calendário do Desafio do Dia até {r['desafios']} (dados/calendario.json)")
     print("Para o D1 local: cd ../jogo && npm run db:local")
 
 
@@ -133,6 +135,14 @@ def cmd_assistencias(args):
 def cmd_estado(args):
     registos = [json.loads(c.read_text(encoding="utf-8")) for c in config.JOGADORES.glob("*.json")]
     print(f"Jogadores: {len(registos)} · ativos: {sum(r.get('estado') == 'ativo' for r in registos)}")
+    from . import calendario
+    hoje = calendario.hoje_lisboa()
+    # Hoje e amanhã têm sempre jogador (do calendário ou da ordem de reserva do Worker); conta-se o resto.
+    dias = 2 + calendario.dias_a_frente(calendario.ler(), hoje + timedelta(days=2))
+    print(f"Desafio do Dia: {sum(bool(r['fama'].get('diario')) for r in registos)} jogadores · calendário com "
+          f"{dias} dias a partir de hoje ({hoje.isoformat()})")
+    if dias < calendario.DIAS_MINIMOS:
+        print(f"  Aviso: menos de {calendario.DIAS_MINIMOS} dias. Corre `python -m scout exportar` e aplica o SQL no D1.")
 
 
 def main(argv=None):
