@@ -56,6 +56,11 @@ _LIGAS_UK = [(r"scottish|scotland", "GB-SCT"), (r"welsh|wales|cymru", "GB-WLS"),
              (r"northern ireland|nifl|irish league", "GB-NIR"), (r".", "GB-ENG")]
 _SELECAO = re.compile(r"national (football|soccer|under-\d+ football) team", re.I)
 _DESAMBIG = re.compile(r"\s*\(.*?\)\s*$")
+# A P118 dos clubes e as tabelas de épocas também trazem competições que não são ligas: taças nacionais,
+# associações e federações, "futebol em X". Pelo tipo (P31) na Wikidata ficam marcadas em ligas.json ("liga": false);
+# as que escapam marcam-se lá à mão.
+_NAO_LIGAS = {"Q8463186": "taça nacional", "Q4438121": "organização desportiva", "Q2485448": "federação",
+              "Q29791211": "futebol de uma região"}
 
 
 def _ler_json(caminho, padrao):
@@ -135,6 +140,8 @@ class Contexto:
             desporto = wd.itens(e, "P641")              # clubes ecléticos: a P118 do River Plate inclui o vólei
             self.ligas[lq] = {"nome": _nome_liga(e) or lq, "nome_en": wd.rotulo(e, ("en",)), "pais": self._pais_liga(e),
                               "futebol": not desporto or "Q2736" in desporto}
+            if set(wd.itens(e, "P31")) & set(_NAO_LIGAS):
+                self.ligas[lq]["liga"] = False
 
     def _pais_liga(self, ent: dict) -> str | None:
         for q in wd.itens(ent, "P1532") + wd.itens(ent, "P17"):
@@ -156,16 +163,30 @@ class Contexto:
                 return p
         return self.codigo_pais(c.get("pais_qid"))
 
+    def liga(self, lq: str) -> str | None:
+        """A liga a usar no jogo: a própria; a que a substitui ("substituir" em ligas.json: as associações distritais
+        dão o Campeonato Distrital); ou None se não for uma liga (taças, federações…)."""
+        info = self.ligas.get(lq, {})
+        if info.get("substituir"):
+            return info["substituir"]
+        return None if info.get("liga") is False else lq
+
+    def so_ligas(self, qids) -> list[str]:
+        return list(dict.fromkeys(x for x in map(self.liga, qids) if x))
+
     def ligas_da_passagem(self, clube_qid: str, inicio: int | None, fim: int | None) -> list[str]:
-        """Ligas do clube que se sobrepõem à passagem (pelas datas da Wikidata); sem datas, as atuais."""
+        """Ligas do clube que se sobrepõem à passagem (pelas datas da Wikidata ou de clubes.json); sem datas, as
+        atuais. As datas contam-se por épocas, como nas passagens: 1992–2008 são as épocas de 1992/93 a 2007/08, por
+        isso uma passagem de 2007–2008 não apanha a liga de 2008/09."""
         ligas = [l for l in self.clubes.get(clube_qid, {}).get("ligas", [])
                  if self.ligas.get(l["liga"], {}).get("futebol", True)]
-        ini, fi = inicio or 0, fim or config.ANO_ATUAL
+        ini = inicio or 0
+        ult = ultimo_ano({"inicio": inicio, "fim": fim, "aberto": True}) if inicio else config.ANO_ATUAL
         com_datas = [l["liga"] for l in ligas if (l["inicio"] or l["fim"]) and
-                     (l["inicio"] or 0) <= fi and (l["fim"] or 9999) >= ini]
+                     (l["inicio"] or 0) <= ult and ultimo_ano({"inicio": l["inicio"] or 0, "fim": l["fim"], "aberto": True}) >= ini]
         if com_datas:
-            return list(dict.fromkeys(com_datas))
-        return list(dict.fromkeys(l["liga"] for l in ligas if not l["fim"]))
+            return self.so_ligas(com_datas)
+        return self.so_ligas(l["liga"] for l in ligas if not l["fim"])
 
 
 # --- ajudas ---------------------------------------------------------------------------------------------------------
@@ -433,8 +454,9 @@ def construir(ctx: Contexto, qid: str, ent: dict, artigo: dict) -> tuple[dict, l
                 jogos_com_assist += e.get("jogos_assist", e["jogos"])
             if e["numeros"]:
                 jogos_com_numero += e["jogos"]
-        ligas = p["ligas_epocas"] or p["ligas"]          # época a época primeiro; a Wikidata como recurso
-        if not p["ligas_epocas"] and p["ligas"]:
+        ligas_epocas = ctx.so_ligas(p["ligas_epocas"])   # sem as taças e as associações das tabelas de épocas
+        ligas = ligas_epocas or p["ligas"]               # época a época primeiro; a Wikidata como recurso
+        if not ligas_epocas and p["ligas"]:
             avisos.append(f"{p['nome']}: liga só pela Wikidata (sem tabela de épocas nem transfermarkt)")
         paises_liga = list(dict.fromkeys(x for x in (ctx.ligas.get(l, {}).get("pais") for l in ligas) if x))
         if not ligas and p["clube"]:

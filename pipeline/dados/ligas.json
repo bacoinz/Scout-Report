@@ -49,8 +49,10 @@
  },
  "Q105071625": {
   "futebol": true,
+  "liga": false,
   "nome": "Copa de la Liga Profesional",
   "nome_en": "Copa de la Liga Profesional",
+  "nota": "não é liga: taça da liga argentina",
   "pais": "AR"
  },
  "Q1053080": {
@@ -105,7 +107,9 @@
   "futebol": true,
   "nome": "Lisbon Football Association",
   "nome_en": "Lisbon Football Association",
-  "pais": "PT"
+  "nota": "Associação de Futebol de Lisboa: os clubes jogam nos campeonatos distritais dela",
+  "pais": "PT",
+  "substituir": "Q7232634"
  },
  "Q1095556": {
   "futebol": true,
@@ -475,8 +479,10 @@
  },
  "Q1520453": {
   "futebol": true,
+  "liga": false,
   "nome": "United Soccer Leagues",
   "nome_en": "United Soccer League",
+  "nota": "não é liga: organização das ligas USL, não uma liga",
   "pais": "CA"
  },
  "Q152665": {
@@ -499,8 +505,10 @@
  },
  "Q1543206": {
   "futebol": true,
+  "liga": false,
   "nome": "Copa Colômbia",
   "nome_en": "Copa Colombia",
+  "nota": "não é liga: taça nacional (Copa Colombia)",
   "pais": "CO"
  },
  "Q1547526": {
@@ -1507,8 +1515,10 @@
  },
  "Q29224": {
   "futebol": true,
+  "liga": false,
   "nome": "Taça de Portugal",
   "nome_en": "Taça de Portugal",
+  "nota": "não é liga: taça nacional (Taça de Portugal)",
   "pais": "PT"
  },
  "Q2948903": {
@@ -1639,8 +1649,10 @@
  },
  "Q3429753": {
   "futebol": true,
+  "liga": false,
   "nome": "futebol da Eslovénia",
   "nome_en": "football in Slovenia",
+  "nota": "não é liga: artigo sobre o futebol na Eslovénia",
   "pais": "SI"
  },
  "Q3476351": {
@@ -2241,13 +2253,17 @@
   "futebol": true,
   "nome": "Ponta Delgada Football Association",
   "nome_en": "Ponta Delgada Football Association",
-  "pais": "PT"
+  "nota": "Associação de Futebol de Ponta Delgada: os clubes jogam nos campeonatos distritais dela",
+  "pais": "PT",
+  "substituir": "Q7232634"
  },
  "Q7232154": {
   "futebol": true,
   "nome": "Porto Football Association",
   "nome_en": "Porto Football Association",
-  "pais": "PT"
+  "nota": "Associação de Futebol do Porto: os clubes jogam nos campeonatos distritais dela",
+  "pais": "PT",
+  "substituir": "Q7232634"
  },
  "Q7232634": {
   "futebol": true,
@@ -2449,14 +2465,18 @@
  },
  "Q843159": {
   "futebol": true,
+  "liga": false,
   "nome": "Johnstone Paint Trophy",
   "nome_en": "EFL Trophy",
+  "nota": "não é liga: taça das divisões inferiores inglesas (EFL Trophy)",
   "pais": "GB-ENG"
  },
  "Q843989": {
   "futebol": true,
+  "liga": false,
   "nome": "Copa do Brasil",
   "nome_en": "Copa do Brasil",
+  "nota": "não é liga: taça nacional (Copa do Brasil)",
   "pais": "BR"
  },
  "Q845412": {

@@ -8,7 +8,7 @@ def _ler(caminho):
     return json.loads(caminho.read_text(encoding="utf-8"))
 
 
-def validar_registo(r: dict, perguntas: dict, paises: dict) -> tuple[list[str], list[str]]:
+def validar_registo(r: dict, perguntas: dict, paises: dict, ligas: dict | None = None) -> tuple[list[str], list[str]]:
     erros, avisos = [], []
     for campo in ("id", "nome", "nascimento", "estreia", "estado", "carreira", "totais", "nacionalidades", "posicao"):
         if not r.get(campo):
@@ -35,6 +35,10 @@ def validar_registo(r: dict, perguntas: dict, paises: dict) -> tuple[list[str], 
             erros.append(f"{nome}: clube sem QID")
         if not c.get("ligas") or not c.get("paises_liga"):
             erros.append(f"{nome}: sem liga ou país da liga")
+        for l in c.get("ligas", []):
+            info = (ligas or {}).get(l, {})
+            if info.get("liga") is False or info.get("substituir"):
+                erros.append(f"{nome}: {info.get('nome') or l} não é uma liga (ver dados/ligas.json; refaz a recolha)")
         for n in c.get("numeros", []):
             if not 1 <= n <= 99:
                 erros.append(f"{nome}: número {n} fora de 1–99")
@@ -81,10 +85,11 @@ def validar_todos() -> dict:
     """{QID: {'nome', 'erros': [...], 'avisos': [...]}}."""
     perguntas = _ler(config.PARTILHADO / "perguntas.json")
     paises = _ler(config.PARTILHADO / "paises.json")["paises"]
+    ligas = _ler(config.DADOS / "ligas.json")
     res = {}
     for caminho in sorted(config.JOGADORES.glob("*.json")):
         r = _ler(caminho)
-        erros, avisos = validar_registo(r, perguntas, paises)
+        erros, avisos = validar_registo(r, perguntas, paises, ligas)
         if caminho.stem != r.get("id"):
             erros.append(f"o ficheiro {caminho.name} não corresponde ao id {r.get('id')}")
         res[caminho.stem] = {"nome": r.get("nome"), "erros": erros, "avisos": avisos}

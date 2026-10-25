@@ -143,7 +143,12 @@ def gerar() -> dict:
                  [_insert("jogadores", l) for l in linhas_jog[i:i + POR_FICHEIRO]])
     ids = ", ".join(_sql(l["id"]) for l in linhas_jog)
     escrever("02_desativar.sql", [f"UPDATE jogadores SET ativo = 0 WHERE id NOT IN ({ids});"])
-    escrever("03_catalogo.sql", [_insert("ligas", l) for l in linhas_ligas] + [_insert("clubes", l) for l in linhas_clubes])
+    # O menu mostra todas as ligas do D1: as que deixaram de aparecer nas carreiras (uma taça marcada em ligas.json,
+    # um clube corrigido) saem. Os DELETE vão no fim, para um ficheiro a meio deixar linhas a mais e não a menos.
+    ids_ligas = ", ".join(_sql(l["id"]) for l in linhas_ligas)
+    ids_clubes = ", ".join(_sql(c["id"]) for c in linhas_clubes)
+    escrever("03_catalogo.sql", [_insert("ligas", l) for l in linhas_ligas] + [_insert("clubes", l) for l in linhas_clubes]
+             + [f"DELETE FROM ligas WHERE id NOT IN ({ids_ligas});", f"DELETE FROM clubes WHERE id NOT IN ({ids_clubes});"])
     escrever("04_resumo.sql", [_insert("resumo", {"chave": "versao", "valor": versao}, chave="chave")])
 
     # Calendário do Desafio do Dia, só com os jogadores do Desafio que vão nesta exportação. Vai para o D1 de ontem

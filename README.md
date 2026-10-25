@@ -72,6 +72,10 @@ py -3.12 -m venv .venv
   outros e a exportação também os deixa de fora.
 - **Correções à mão:** ficam em `pipeline/dados/ajustes.json`, `pipeline/dados/competicoes.json` e
   `pipeline/dados/clubes.json`. Os ajustes aplicam-se por cima das fontes em cada recolha.
+- **Ligas:** em `pipeline/dados/ligas.json`, as competições que não são ligas (taças, federações) levam
+  `"liga": false`, e as associações distritais levam `"substituir"` com o Campeonato Distrital. As novas marcam-se
+  sozinhas pelo tipo na Wikidata. A validação recusa qualquer passagem com uma delas. Quando a Wikidata só tem a
+  liga atual de um clube que mudou de escalão, as ligas por época vão à mão para `clubes.json` (com uma `nota`).
 - **Calendário do Desafio do Dia** (`pipeline/dados/calendario.json`, versionado): um jogador do Desafio por data de
   Lisboa. Cada `exportar` preenche as datas de depois de amanhã até 60 dias à frente, sem mexer em hoje nem em amanhã,
   e troca as datas futuras de quem saiu da base. Ninguém repete antes de todos terem saído. O `estado` avisa quando

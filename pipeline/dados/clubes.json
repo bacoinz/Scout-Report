@@ -3233,10 +3233,21 @@
     "fim": null,
     "inicio": null,
     "liga": "Q7232154"
+   },
+   {
+    "fim": 2003,
+    "inicio": 2002,
+    "liga": "Q754488"
+   },
+   {
+    "fim": 2005,
+    "inicio": 2004,
+    "liga": "Q754488"
    }
   ],
   "nome": "Maia",
   "nome_completo": "Futebol Clube da Maia",
+  "nota": "Maia: II Liga em 2002/03 e 2004/05 pelo zerozero; a Wikidata só tem a AF Porto",
   "pais_qid": "Q45",
   "titulo": "F.C. Maia"
  },
@@ -8953,10 +8964,31 @@
     "fim": 2025,
     "inicio": 2014,
     "liga": "Q182994"
+   },
+   {
+    "fim": 2008,
+    "inicio": 1968,
+    "liga": "Q182994"
+   },
+   {
+    "fim": 2009,
+    "inicio": 2008,
+    "liga": "Q754488"
+   },
+   {
+    "fim": 2013,
+    "inicio": 2009,
+    "liga": "Q618131"
+   },
+   {
+    "fim": 2014,
+    "inicio": 2013,
+    "liga": "Q13668768"
    }
   ],
   "nome": "Boavista",
   "nome_completo": "Boavista Futebol Clube",
+  "nota": "Boavista: até 2013/14 pelo zerozero (I Divisão até 2007/08, II Liga 2008/09, II Divisão, CNS 2013/14); a Wikidata só tem 2014–2025 e a AF Porto",
   "pais_qid": "Q45",
   "titulo": "Boavista F.C."
  },
@@ -15694,10 +15726,16 @@
     "fim": null,
     "inicio": null,
     "liga": "Q7228035"
+   },
+   {
+    "fim": 1995,
+    "inicio": 1995,
+    "liga": "Q2648473"
    }
   ],
   "nome": "Micaelense",
   "nome_completo": "Clube União Micaelense",
+  "nota": "Micaelense: III Divisão em 1994/95 pelo zerozero (o Pauleta chegou em janeiro de 1995)",
   "pais_qid": "Q45",
   "titulo": "CU Micaelense"
  },
