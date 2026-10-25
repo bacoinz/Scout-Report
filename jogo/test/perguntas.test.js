@@ -14,8 +14,8 @@ describe('respostas a partir do registo', () => {
     'setor:medio': 'sim', 'pos:MO': 'sim', 'pos:MC': 'nao',
     'pe:direito': 'sim', 'pe:esquerdo': 'nao', 'altura:180': 'sim', 'altura:185': 'nao',
     retirado: 'nao', ativo: 'nao', treinador: 'sim',
-    'pais:ES': 'sim', 'pais:GB-ENG': 'nao', 'pais_atual:ES': 'nao',
-    [`clube:${REAL_MADRID}`]: 'sim', [`clube_atual:${REAL_MADRID}`]: 'nao',
+    'pais:ES': 'sim', 'pais:GB-ENG': 'nao',
+    [`clube:${REAL_MADRID}`]: 'sim',
     'jogos:500': 'sim', 'golos:200': 'nao', 'inter:100': 'sim', 'assist:100': 'sim', 'inter_menos:25': 'nao', 'assist_menos:25': 'nao',
     'faixa:0': 'sim', 'num:5': 'sim', 'num:9': 'sem_registo',
     'premio:bola_de_ouro': 'sim', 'premio:libertadores': 'nao',
@@ -41,13 +41,6 @@ describe('respostas a partir do registo', () => {
     expect(P.respostaAssistenciasMenos({ conhecidas: 10, cobertura: 0.5, maximo: 400 }, 25)).toBe('sem_registo');
   });
 
-  it('no ativo: o clube atual é o do contrato em curso, mesmo com empréstimos antigos listados depois', () => {
-    const valverde = porNome('Federico Valverde');
-    expect(P.responder(valverde, 'ativo')).toBe('sim');
-    expect(P.responder(valverde, `clube_atual:${REAL_MADRID}`)).toBe('sim');
-    expect(P.responder(valverde, 'pais_atual:ES')).toBe('sim');
-  });
-
   it('o estado tem uma só resposta certa: no ativo, treinador (já não joga) ou retirado', () => {
     for (const reg of todos()) {
       const certas = ['ativo', 'retirado', 'treinador'].filter((k) => P.responder(reg, k) === 'sim');
@@ -56,13 +49,15 @@ describe('respostas a partir do registo', () => {
     expect(P.responder(porNome('Luís Figo'), 'retirado')).toBe('sim');
   });
 
-  it('no ativo e sem clube (contrato acabado): as perguntas "atualmente" dão não', () => {
+  it('"jogou/joga" vale para o passado e para agora', () => {
+    const valverde = porNome('Federico Valverde');
+    expect(P.responder(valverde, 'ativo')).toBe('sim');
+    expect(P.responder(valverde, `clube:${REAL_MADRID}`)).toBe('sim');   // o clube atual
+    expect(P.responder(valverde, 'pais:ES')).toBe('sim');
     const sterling = porNome('Raheem Sterling');
     expect(sterling.clube_atual).toBeNull();
     expect(P.responder(sterling, 'ativo')).toBe('sim');
-    expect(P.responder(sterling, 'retirado')).toBe('nao');
-    expect(P.responder(sterling, 'pais_atual:GB-ENG')).toBe('nao');
-    expect(P.responder(sterling, 'pais_atual:NL')).toBe('nao');
+    expect(P.responder(sterling, 'pais:GB-ENG')).toBe('sim');            // sem clube agora, mas jogou
   });
 
   it('sem pé ou altura no registo dá SEM REGISTO', () => {
@@ -74,7 +69,7 @@ describe('respostas a partir do registo', () => {
   it('todas as perguntas candidatas respondem sem erro para todos os jogadores', () => {
     const aberta = ficha({
       'decada:2000': 'sim', 'conf:UEFA': 'sim', 'setor:medio': 'sim', 'faixa:1': 'sim', treinador: 'sim',
-      't_pais:PT': 'sim', 'pais:PT': 'sim', 'pais_atual:PT': 'sim',
+      't_pais:PT': 'sim', 'pais:PT': 'sim',
     });
     const chaves = Object.values(P.TIPOS_POR_CATEGORIA).flat().flatMap((t) => P.candidatas(aberta, t, cat));
     expect(chaves.length).toBeGreaterThan(200);
@@ -87,17 +82,17 @@ describe('respostas a partir do registo', () => {
 
 describe('textos', () => {
   it('artigos de países e clubes', () => {
-    expect(P.texto('pais:BR', cat)).toBe('Jogou no Brasil?');
-    expect(P.texto('pais:ES', cat)).toBe('Jogou em Espanha?');
-    expect(P.texto('pais_atual:NL', cat)).toBe('Joga atualmente nos Países Baixos?');
+    expect(P.texto('pais:BR', cat)).toBe('Jogou/joga no Brasil?');
+    expect(P.texto('pais:ES', cat)).toBe('Jogou/joga em Espanha?');
+    expect(P.texto('pais:NL', cat)).toBe('Jogou/joga nos Países Baixos?');
     expect(P.texto('treinador', cat)).toBe('É treinador?');
     expect(P.texto('completo:pais', cat)).toBe('Já se encontraram todos os países');
     expect(P.texto('nac:AR', cat)).toBe('É da Argentina?');
     expect(P.texto('nac:PT', cat)).toBe('É de Portugal?');
     expect(P.texto('conf:CAF', cat)).toBe('É de África?');
     expect(P.texto('conf:UEFA', cat)).toBe('É da Europa?');
-    expect(P.texto(`clube:${REAL_MADRID}`, cat)).toBe('Jogou no Real Madrid?');
-    expect(P.texto('clube:Q1422', cat)).toBe('Jogou na Juventus?');
+    expect(P.texto(`clube:${REAL_MADRID}`, cat)).toBe('Jogou/joga no Real Madrid?');
+    expect(P.texto('clube:Q1422', cat)).toBe('Jogou/joga na Juventus?');
     expect(P.texto('t_sel:FR', cat)).toBe('Treinou a seleção de França?');
     expect(P.texto('t_pais:BR', cat)).toBe('Treinou no Brasil?');
     expect(P.texto(`t_atual_clube:${REAL_MADRID}`, cat)).toBe('Treina atualmente o Real Madrid?');
@@ -118,7 +113,7 @@ describe('textos', () => {
 
 describe('validação das chaves', () => {
   it('recusa o que não existe', () => {
-    for (const k of ['liga:Q324867', 'liga_atual:Q324867', 'foi_treinador', 'jogos:150', 'num:100', 'num:0', 'premio:melhor_treinador_fifa', 'ativo:1', '__proto__',
+    for (const k of ['liga:Q324867', 'liga_atual:Q324867', 'foi_treinador', 'pais_atual:ES', `clube_atual:${REAL_MADRID}`, 'jogos:150', 'num:100', 'num:0', 'premio:melhor_treinador_fifa', 'ativo:1', '__proto__',
       'constructor', 'decada:1950', 'baixo:180', 'nac:XX', 'pais:FO', 'faixa:3', 'clube:', '', null, 'pe:canhoto']) {
       expect(P.valida(k, cat), String(k)).toBe(false);
     }
@@ -132,18 +127,12 @@ describe('validação das chaves', () => {
 });
 
 describe('hierarquia', () => {
-  it('o clube abre com o país (da carreira ou o atual) e fecha quando ele é descartado', () => {
+  it('o clube abre com o país e fecha quando ele é descartado', () => {
     expect(P.avaliar(ficha(), `clube:${REAL_MADRID}`, cat)).toMatchObject({ estado: 'bloqueada', fechada: false });
     expect(P.avaliar(ficha({ 'pais:ES': 'sim' }), `clube:${REAL_MADRID}`, cat).estado).toBe('aberta');
-    expect(P.avaliar(ficha({ 'pais_atual:ES': 'sim' }), `clube:${REAL_MADRID}`, cat).estado).toBe('aberta');
     expect(P.avaliar(ficha({ 'pais:ES': 'nao' }), `clube:${REAL_MADRID}`, cat)).toMatchObject({ estado: 'bloqueada', fechada: true });
     expect(P.candidatas(ficha({ 'pais:ES': 'sim' }), 'clube', cat)).toContain(`clube:${REAL_MADRID}`);
     expect(P.candidatas(ficha({ 'pais:ES': 'sim' }), 'clube', cat)).not.toContain('clube:Q1422'); // a Juventus é de Itália
-  });
-  it('o clube atual só abre com o país atual', () => {
-    expect(P.disponivel(ficha({ 'pais:ES': 'sim' }), `clube_atual:${REAL_MADRID}`, cat)).toBe(false);
-    expect(P.disponivel(ficha({ 'pais_atual:ES': 'sim' }), `clube_atual:${REAL_MADRID}`, cat)).toBe(true);
-    expect(P.candidatas(ficha({ 'pais:ES': 'sim' }), 'clube_atual', cat)).toEqual([]);
   });
   it('depois de um país ou clube certo continua-se a perguntar pelos outros', () => {
     const f = ficha({ 'pais:ES': 'sim', [`clube:${REAL_MADRID}`]: 'sim' });
@@ -158,7 +147,6 @@ describe('hierarquia', () => {
     expect(P.completos(zidane, ficha({ 'pais:ES': 'sim' })).pais).toBe(false);
     f.completos = P.completos(zidane, f);
     expect(P.avaliar(f, 'pais:PT', cat)).toMatchObject({ estado: 'deduzida', r: 'nao', de: 'completo:pais' });
-    expect(P.avaliar(f, 'pais_atual:PT', cat)).toMatchObject({ estado: 'deduzida', r: 'nao' });
     expect(P.avaliar(f, `clube:${REAL_MADRID}`, cat).estado).toBe('aberta');
     const clubes = [...new Set(zidane.carreira.map((c) => c.clube))];
     const g = ficha({ ...Object.fromEntries(paises.map((p) => [`pais:${p}`, 'sim'])), ...Object.fromEntries(clubes.map((c) => [`clube:${c}`, 'sim'])) });
@@ -232,21 +220,12 @@ describe('deduções', () => {
     expect(P.avaliar(ficha({ 'pe:esquerdo': 'sim' }), 'pe:direito', cat)).toMatchObject({ estado: 'deduzida', r: 'nao' });
     expect(P.avaliar(ficha({ 'pe:esquerdo': 'nao' }), 'pe:direito', cat).estado).toBe('aberta');
   });
-  it('o estado: um ✓ fecha os outros dois, dois ✗ dão o terceiro, e quem não joga não tem nada "atualmente"', () => {
+  it('o estado: um ✓ fecha os outros dois e dois ✗ dão o terceiro', () => {
     expect(P.avaliar(ficha({ ativo: 'sim' }), 'retirado', cat)).toMatchObject({ estado: 'deduzida', r: 'nao' });
     expect(P.avaliar(ficha({ ativo: 'sim' }), 'treinador', cat)).toMatchObject({ estado: 'deduzida', r: 'nao' });
     expect(P.avaliar(ficha({ treinador: 'sim' }), 'retirado', cat)).toMatchObject({ estado: 'deduzida', r: 'nao', de: 'treinador' });
     expect(P.avaliar(ficha({ ativo: 'nao' }), 'retirado', cat).estado).toBe('aberta');
     expect(P.avaliar(ficha({ ativo: 'nao', retirado: 'nao' }), 'treinador', cat)).toMatchObject({ estado: 'deduzida', r: 'sim' });
-    expect(P.avaliar(ficha({ retirado: 'sim' }), 'pais_atual:ES', cat)).toMatchObject({ estado: 'deduzida', r: 'nao' });
-    expect(P.avaliar(ficha({ treinador: 'sim' }), 'pais_atual:ES', cat)).toMatchObject({ estado: 'deduzida', r: 'nao', de: 'treinador' });
-    const f = ficha({ 'pais_atual:ES': 'sim', [`clube_atual:${REAL_MADRID}`]: 'sim' });
-    expect(P.avaliar(f, `clube:${REAL_MADRID}`, cat)).toMatchObject({ estado: 'deduzida', r: 'sim' });
-    expect(P.avaliar(f, 'pais:ES', cat)).toMatchObject({ estado: 'deduzida', r: 'sim' });
-    expect(P.avaliar(f, 'ativo', cat)).toMatchObject({ estado: 'deduzida', r: 'sim' });
-    expect(P.avaliar(f, 'treinador', cat)).toMatchObject({ estado: 'deduzida', r: 'nao' });
-    expect(P.avaliar(f, 'clube_atual:Q8687', cat)).toMatchObject({ estado: 'deduzida', r: 'nao' });
-    expect(P.avaliar(f, 'pais_atual:IT', cat)).toMatchObject({ estado: 'deduzida', r: 'nao' });
   });
   it('prémios independentes: confirmar um não fecha nenhum outro', () => {
     const f = ficha({ 'premio:liga_campeoes': 'sim' });
@@ -270,7 +249,6 @@ describe('palpite final', () => {
     expect(P.palpiteDesbloqueado(ficha(nove, ['sim']))).toBe(false); // falta o clube
     expect(P.faltaParaPalpite(ficha(nove))).toEqual({ sim: 1, clube: true });
     expect(P.palpiteDesbloqueado(ficha({ ...nove, [`clube:${REAL_MADRID}`]: 'sim' }))).toBe(true);
-    expect(P.palpiteDesbloqueado(ficha({ ...nove, [`clube_atual:${REAL_MADRID}`]: 'sim' }))).toBe(true);
   });
 });
 
@@ -278,7 +256,6 @@ describe('pontos', () => {
   it('3/6/9 por nível, físico 3, metade arredondada para cima para quem foi identificado', () => {
     expect(P.pontos('pais:ES')).toBe(3);
     expect(P.pontos(`clube:${REAL_MADRID}`)).toBe(6);
-    expect(P.pontos(`clube_atual:${REAL_MADRID}`)).toBe(6);
     expect(P.pontos('num:7')).toBe(9);
     expect(P.pontos('pe:esquerdo')).toBe(3);
     expect(P.comFator(9, true)).toBe(5);

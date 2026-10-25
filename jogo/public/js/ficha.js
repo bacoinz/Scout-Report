@@ -26,8 +26,7 @@ function confirmados(f, tipo) {
   const prefixo = `${tipo}:`;
   const vistos = new Set();
   for (const k of Object.keys(f.respostas)) {
-    const base = k.startsWith(`${tipo}_atual:`) ? k.slice(tipo.length + 7) : k.startsWith(prefixo) ? k.slice(prefixo.length) : null;
-    if (base != null && P.valor(f, `${tipo}:${base}`) === 'sim') vistos.add(base);
+    if (k.startsWith(prefixo) && P.valor(f, k) === 'sim') vistos.add(k.slice(prefixo.length));
   }
   return [...vistos];
 }
@@ -93,24 +92,22 @@ function carreiraPublica(f, ctx) {
   const cat = ctx.cat;
   const clubes = confirmados(f, 'clube');
   const paises = confirmados(f, 'pais');
-  const atual = (tipo, v) => P.valor(f, `${tipo}_atual:${v}`) === 'sim';
   const novo = (k) => ctx.novas.has(`${f.n}:${k}`);
-  const novoPais = (p) => (novo(`pais:${p}`) || novo(`pais_atual:${p}`) ? carimbo('confirmado', 'Confirmado', `pais:${p}`, true) : null);
+  const novoPais = (p) => (novo(`pais:${p}`) ? carimbo('confirmado', 'Confirmado', `pais:${p}`, true) : null);
   const linhas = [];
   const paisesUsados = new Set();
   for (const c of clubes) {
     const pais = cat.clubes[c]?.pais;
     if (pais) paisesUsados.add(pais);
     linhas.push(el('tr', {},
-      el('td', {}, P.nomeClube(cat, c), atual('clube', c) ? el('small', { text: 'atual' }) : null,
-        novo(`clube:${c}`) || novo(`clube_atual:${c}`) ? carimbo('confirmado', 'Confirmado', `clube:${c}`, true) : null),
-      el('td', { class: 'esq' }, pais ? P.nomePais(pais) : incognita(), pais && atual('pais', pais) ? ' (atual)' : '', pais ? novoPais(pais) : null)));
+      el('td', {}, P.nomeClube(cat, c), novo(`clube:${c}`) ? carimbo('confirmado', 'Confirmado', `clube:${c}`, true) : null),
+      el('td', { class: 'esq' }, pais ? P.nomePais(pais) : incognita(), pais ? novoPais(pais) : null)));
   }
   for (const p of paises) {
     if (paisesUsados.has(p)) continue;
     linhas.push(el('tr', {},
       el('td', {}, incognita()),
-      el('td', { class: 'esq' }, P.nomePais(p), atual('pais', p) ? ' (atual)' : '', novoPais(p))));
+      el('td', { class: 'esq' }, P.nomePais(p), novoPais(p))));
   }
   const todos = f.completos ?? {};
   if (!todos.clube || !todos.pais) {

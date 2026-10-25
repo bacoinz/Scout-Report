@@ -1,4 +1,4 @@
-// Painel das perguntas: cada categoria tem subcategorias com um rótulo pequeno ("Pé", "Jogou em…") e as opções em
+// Painel das perguntas: cada categoria tem subcategorias com um rótulo pequeno ("Pé", "Jogou/joga em…") e as opções em
 // grelha de botões, num campo com sugestões (países, clubes) ou numa lista (prémios). Os níveis 2 e 3 só aparecem
 // depois de confirmado o nível de cima. A hierarquia, as deduções e o que já foi respondido vêm de
 // comum/perguntas.js. Escolher uma opção seleciona a pergunta; o Enviar (em jogo.js) manda-a.
@@ -32,13 +32,11 @@ const GRUPOS = {
     { rotulo: 'Pé', tipos: ['pe'], colunas: 3, soCerto: true },
     { rotulo: 'Altura', tipos: ['baixo', 'altura'], colunas: 5 },
   ],
-  // Países e clubes: pergunta-se até estarem todos encontrados (o campo só sai com `completos` na ficha). O país e o
-  // clube atuais são só um.
+  // Países e clubes (no passado ou agora): pergunta-se até estarem todos encontrados (o campo só sai com
+  // `completos` na ficha).
   carreira: [
-    { rotulo: 'Jogou em…', tipos: ['pais'], campo: 'país', larga: true },
-    { rotulo: 'Joga atualmente em…', tipos: ['pais_atual'], campo: 'país', larga: true, soCerto: true },
-    { rotulo: 'Jogou no clube…', tipos: ['clube'], campo: 'clube', larga: true },
-    { rotulo: 'Joga atualmente no clube…', tipos: ['clube_atual'], campo: 'clube', larga: true, soCerto: true },
+    { rotulo: 'Jogou/joga em…', tipos: ['pais'], campo: 'país', larga: true },
+    { rotulo: 'Jogou/joga no clube…', tipos: ['clube'], campo: 'clube', larga: true },
   ],
   estatisticas: [
     { rotulo: 'Jogos', tipos: ['jogos'], colunas: 4 },
@@ -90,7 +88,7 @@ export function rotulo(chave, cat) {
       const [a, b] = P.FAIXAS_NUMEROS[Number(v)];
       return b >= 99 ? `${a}+` : `${a}-${b}`;
     }
-    case 'clube': case 'clube_atual': case 't_clube': case 't_atual_clube': return P.nomeClube(cat, v);
+    case 'clube': case 't_clube': case 't_atual_clube': return P.nomeClube(cat, v);
     case 'premio': case 't_premio': return nomePremio(v);
     case 't_atual': return 'Treina atualmente';
     case 't_selecao': return 'Treinou uma seleção';

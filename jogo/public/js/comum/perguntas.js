@@ -106,15 +106,6 @@ const clubesDe = (reg) => [...new Set(reg.carreira.map((c) => c.clube))];
 // ---------------------------------------------------------------------------
 
 const intEntre = (v, a, b) => /^\d+$/.test(v) && Number(v) >= a && Number(v) <= b;
-/**
- * A passagem atual: a do clube atual que ainda não acabou (num empréstimo, a do empréstimo). Quem está no ativo mas
- * sem clube (contrato acabado) não tem passagem atual: as perguntas "atualmente" dão "não".
- */
-function ultima(reg) {
-  if (reg.estado !== 'ativo' || !reg.clube_atual) return null;
-  const doClube = reg.carreira.filter((c) => c.clube === reg.clube_atual);
-  return doClube.findLast((c) => c.fim == null) ?? doClube.at(-1) ?? null;
-}
 const tre = (reg) => reg.treinador ?? { equipas: [], atual: null, titulos: [], n_titulos: 0 };
 /**
  * O estado tem uma só resposta certa: no ativo (a jogar), treinador (já não joga e é ou foi treinador) ou retirado.
@@ -212,28 +203,18 @@ const TIPOS = {
   ativo: { cat: 'estado', nivel: 1, texto: () => 'Está no ativo?', responder: (reg) => simNao(situacao(reg) === 'ativo') },
   retirado: { cat: 'estado', nivel: 1, texto: () => 'Está retirado?', responder: (reg) => simNao(situacao(reg) === 'retirado') },
   treinador: { cat: 'estado', nivel: 1, texto: () => 'É treinador?', responder: (reg) => simNao(situacao(reg) === 'treinador') },
-  // Carreira: país → clube, na carreira toda ou só agora. Pergunta-se pelos países e pelos clubes até estarem todos.
+  // Carreira: país → clube, sem distinguir o passado do presente ("Jogou/joga em Espanha?"). Pergunta-se pelos países
+  // e pelos clubes até estarem todos encontrados.
   pais: {
     cat: 'carreira', nivel: 1, valida: (v, cat) => Boolean(cat.clubesPorPais[v]),
-    texto: (v) => `Jogou ${emPais(v)}?`,
+    texto: (v) => `Jogou/joga ${emPais(v)}?`,
     responder: (reg, v) => simNao(reg.carreira.some((c) => c.paises_liga.includes(v))),
-  },
-  pais_atual: {
-    cat: 'carreira', nivel: 1, valida: (v, cat) => Boolean(cat.clubesPorPais[v]),
-    texto: (v) => `Joga atualmente ${emPais(v)}?`,
-    responder: (reg, v) => simNao(Boolean(ultima(reg)?.paises_liga.includes(v))),
   },
   clube: {
     cat: 'carreira', nivel: 2, valida: (v, cat) => Boolean(cat.clubes[v]?.pais),
-    texto: (v, cat) => `Jogou ${noClube(nomeClube(cat, v))}?`,
+    texto: (v, cat) => `Jogou/joga ${noClube(nomeClube(cat, v))}?`,
     responder: (reg, v) => simNao(reg.carreira.some((c) => c.clube === v)),
-    requer: (v, cat) => [[`pais:${cat.clubes[v]?.pais}`, `pais_atual:${cat.clubes[v]?.pais}`]],
-  },
-  clube_atual: {
-    cat: 'carreira', nivel: 2, valida: (v, cat) => Boolean(cat.clubes[v]?.pais),
-    texto: (v, cat) => `Joga atualmente ${noClube(nomeClube(cat, v))}?`,
-    responder: (reg, v) => simNao(reg.clube_atual === v),
-    requer: (v, cat) => [[`pais_atual:${cat.clubes[v]?.pais}`]],
+    requer: (v, cat) => [[`pais:${cat.clubes[v]?.pais}`]],
   },
   // Estatísticas (clubes, todas as competições, e seleção)
   jogos: {
@@ -354,7 +335,7 @@ export const TIPOS_POR_CATEGORIA = {
   posicao: ['setor', 'pos'],
   fisico: ['pe', 'baixo', 'altura'],
   estado: ['ativo', 'retirado', 'treinador'],
-  carreira: ['pais', 'pais_atual', 'clube', 'clube_atual'],
+  carreira: ['pais', 'clube'],
   estatisticas: ['jogos', 'golos', 'assist_menos', 'assist', 'inter_menos', 'inter'],
   numeros: ['faixa', 'num'],
   premios: ['premio'],
@@ -423,14 +404,10 @@ function doTipo(ficha, tipo) {
   return respondidas(ficha).filter(([k]) => k.startsWith(prefixo)).map(([k, v]) => [k.slice(prefixo.length), v.r]);
 }
 
-/** Já se sabe que não joga (retirado ✓, treinador ✓ ou no ativo ✗)? A chave que o decide, ou null. */
-const naoJoga = (ficha) => ['retirado', 'treinador'].find((k) => r(ficha, k) === 'sim') ?? (r(ficha, 'ativo') === 'nao' ? 'ativo' : null);
-const ATUAIS = ['pais_atual', 'clube_atual'];
-
 /**
  * O que já se sabe sem perguntar, a partir das respostas desta ficha: { r, de } (de = a chave que o decide), ou
- * null. Só valores que se excluem (limiares, década e ano, pé, o estado, o clube e o país atuais), o que uma
- * resposta "atual" implica para a carreira toda e, com todos os países (ou clubes) encontrados, os que faltam.
+ * null. Só valores que se excluem (limiares, década e ano, pé, o estado) e, com todos os países (ou clubes)
+ * encontrados, os que faltam.
  */
 export function deduzir(ficha, chave) {
   const p = ler(chave);
@@ -482,24 +459,11 @@ export function deduzir(ficha, chave) {
       const outros = ESTADOS.filter((k) => k !== tipo);
       const certo = outros.find((k) => r(ficha, k) === 'sim');
       if (certo) return { r: 'nao', de: certo };
-      const atual = achar((k, x) => ATUAIS.includes(ler(k)?.tipo) && x === 'sim');
-      if (atual) return { r: simNao(tipo === 'ativo'), de: atual[0] };
       return outros.every((k) => r(ficha, k) === 'nao') ? { r: 'sim', de: outros[0] } : null;
     }
     case 'pais':
     case 'clube':
-      if (r(ficha, `${tipo}_atual:${valor}`) === 'sim') return { r: 'sim', de: `${tipo}_atual:${valor}` };
       return ficha?.completos?.[tipo] ? { r: 'nao', de: `completo:${tipo}` } : null;
-    case 'pais_atual':
-    case 'clube_atual': {
-      const parado = naoJoga(ficha);
-      if (parado) return { r: 'nao', de: parado };
-      const base = `${tipo.replace('_atual', '')}:${valor}`;
-      if (respostaDe(ficha, base) === 'nao') return { r: 'nao', de: base };
-      // Só há um clube atual e um país atual.
-      const outro = doTipo(ficha, tipo).find(([v, res]) => v !== valor && res === 'sim');
-      return outro ? { r: 'nao', de: `${tipo}:${outro[0]}` } : null;
-    }
     case 'premio': {
       // Os torneios de uma confederação (o Europeu, a Taça da Ásia…) ficam "não" com uma nacionalidade
       // confirmada de outra confederação, ou com o continente dela descartado.
@@ -555,10 +519,6 @@ function deduzirDaJoker(valores, tipo, valor) {
 
 /** A resposta que a ficha tem (dada ou deduzida), ou null. */
 export function valor(ficha, chave) {
-  return respostaDe(ficha, chave);
-}
-// O mesmo, com outro nome: dentro de deduzir() o nome "valor" é o valor da pergunta.
-function respostaDe(ficha, chave) {
   return r(ficha, chave) ?? deduzir(ficha, chave)?.r ?? null;
 }
 
@@ -567,7 +527,7 @@ function respostaDe(ficha, chave) {
  * de cada resposta; a ficha guarda-o em `completos` e os países (ou clubes) que faltam perguntar passam a "não".
  */
 export function completos(reg, ficha) {
-  const sim = (k) => respostaDe(ficha, k) === 'sim';
+  const sim = (k) => r(ficha, k) === 'sim';
   return { pais: paisesDe(reg).every((p) => sim(`pais:${p}`)), clube: clubesDe(reg).every((c) => sim(`clube:${c}`)) };
 }
 
@@ -600,8 +560,8 @@ export function contarSim(ficha) {
   return respondidas(ficha).filter(([, v]) => v.r === 'sim').length + (ficha?.livres ?? []).filter((l) => l.r === 'sim').length;
 }
 
-/** Algum clube confirmado (na carreira ou o atual)? */
-export const clubeConfirmado = (ficha) => respondidas(ficha).some(([k, v]) => v.r === 'sim' && /^clube(_atual)?:/.test(k));
+/** Algum clube confirmado? */
+export const clubeConfirmado = (ficha) => respondidas(ficha).some(([k, v]) => v.r === 'sim' && k.startsWith('clube:'));
 
 /** O que falta para o palpite final: { sim, clube } (sim = quantos "sim" faltam). */
 export function faltaParaPalpite(ficha) {
@@ -622,9 +582,8 @@ export function candidatas(ficha, tipo, cat) {
   if (!d.valida) return [tipo];
   if (d.valores) return d.valores().map((v) => `${tipo}:${v}`);
   const sim = (k) => valor(ficha, k) === 'sim';
-  const comSim = (prefixo) => respondidas(ficha).map(([k]) => k).concat(deduzidasSim(ficha, prefixo))
-    .filter((k) => k.startsWith(prefixo) && sim(k)).map((k) => k.slice(prefixo.length));
-  const unicos = (lista) => [...new Set(lista)];
+  const comSim = (prefixo) => respondidas(ficha).map(([k]) => k).filter((k) => k.startsWith(prefixo) && sim(k))
+    .map((k) => k.slice(prefixo.length));
   switch (tipo) {
     case 'ano':
       return comSim('decada:').flatMap((dec) => Array.from({ length: 10 }, (_, i) => `ano:${Number(dec) + i}`));
@@ -637,14 +596,9 @@ export function candidatas(ficha, tipo, cat) {
       return Object.keys(POSICOES).filter((p) => setores.has(POSICOES[p].setor)).map((p) => `pos:${p}`);
     }
     case 'pais':
-    case 'pais_atual':
-      return cat.paisesComClubes.map((c) => `${tipo}:${c}`);
-    case 'clube': {
-      const paises = unicos([...comSim('pais:'), ...comSim('pais_atual:')]);
-      return unicos(paises.flatMap((c) => cat.clubesPorPais[c] ?? [])).map((c) => `clube:${c}`);
-    }
-    case 'clube_atual':
-      return comSim('pais_atual:').flatMap((c) => cat.clubesPorPais[c] ?? []).map((c) => `clube_atual:${c}`);
+      return cat.paisesComClubes.map((c) => `pais:${c}`);
+    case 'clube':
+      return comSim('pais:').flatMap((c) => cat.clubesPorPais[c] ?? []).map((c) => `clube:${c}`);
     case 'num':
       return comSim('faixa:').flatMap((i) => {
         const [a, b] = FAIXAS[Number(i)];
@@ -661,13 +615,6 @@ export function candidatas(ficha, tipo, cat) {
     default:
       return [];
   }
-}
-
-/** As chaves "base" que uma resposta "atual" com ✓ deixa deduzidas com ✓ (pais_atual:ES ✓ → pais:ES). */
-function deduzidasSim(ficha, prefixo) {
-  const base = prefixo.replace(/:$/, '');
-  if (!['pais', 'clube'].includes(base)) return [];
-  return doTipo(ficha, `${base}_atual`).filter(([, res]) => res === 'sim').map(([v]) => `${base}:${v}`);
 }
 
 /** Resumo de uma categoria nesta ficha: { sim, nao, sem_registo } das respostas dadas. */
