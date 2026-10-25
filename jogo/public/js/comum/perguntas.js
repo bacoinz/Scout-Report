@@ -1,7 +1,8 @@
 // Perguntas estruturadas: textos, níveis e pontos, desbloqueio por hierarquia, deduções e respostas.
 // O mesmo código corre no Durable Object (que responde e valida) e no browser (que monta o menu e as fichas).
-// Puro. Uma pergunta é uma chave "tipo:valor" ("liga:Q324867", "jogos:300", "ativo"); uma ficha é
-// { respostas: { [chave]: { r: 'sim' | 'nao' | 'sem_registo', autor, ronda } }, livres: [{ texto, r, autor }] }.
+// Puro. Uma pergunta é uma chave "tipo:valor" ("clube:Q8682", "jogos:300", "ativo"); uma ficha é
+// { respostas: { [chave]: { r: 'sim' | 'nao' | 'sem_registo', autor, ronda } }, livres: [{ texto, r, autor }],
+//   completos: { pais, clube } } — completos: o servidor já viu que estão encontrados todos os países (ou clubes).
 import { PERGUNTAS, PAISES } from './dados.gen.js';
 
 export { PAISES };
@@ -76,37 +77,29 @@ const semAcentos = (t) => String(t).toLowerCase().normalize('NFD').replace(/\p{M
 export const artigoClube = (nome) => (CLUBES_FEMININOS.test(semAcentos(nome)) ? 'a' : 'o');
 const noClube = (nome) => `${artigoClube(nome) === 'a' ? 'na' : 'no'} ${nome}`;
 const oClube = (nome) => `${artigoClube(nome)} ${nome}`;
-const naLiga = (nome) => `${/^(campeonato|brasileirao|torneio)/.test(semAcentos(nome)) ? 'no' : 'na'} ${nome}`;
 const anos = (d) => (d < 2000 ? `anos ${String(d).slice(2)}` : `anos ${d}`);
 
 // ---------------------------------------------------------------------------
-// Catálogo (clubes e ligas do D1) com os índices para o menu
+// Catálogo (clubes do D1) com os índices para o menu
 // ---------------------------------------------------------------------------
 
-/** { ligas: {id: {nome, pais}}, clubes: {id: {nome, pais, ligas}} } → o mesmo, mais os índices por país e liga. */
-export function prepararCatalogo({ ligas = {}, clubes = {}, versao = null } = {}) {
-  const ligasPorPais = {};
-  const clubesPorLiga = {};
+/**
+ * { clubes: {id: {nome, pais}} } → o mesmo, mais os clubes de cada país. O país de um clube é o das passagens dos
+ * jogadores por ele (o da liga), o mesmo que responde a "jogou em {país}?". As ligas do D1 já não entram nas perguntas.
+ */
+export function prepararCatalogo({ clubes = {}, versao = null } = {}) {
   const clubesPorPais = {};
-  const juntar = (mapa, chave, id) => {
-    if (chave) (mapa[chave] ??= []).push(id);
-  };
-  for (const [id, l] of Object.entries(ligas)) juntar(ligasPorPais, l.pais, id);
-  for (const [id, c] of Object.entries(clubes)) {
-    for (const l of c.ligas ?? []) juntar(clubesPorLiga, l, id);
-    juntar(clubesPorPais, c.pais, id);
-  }
-  const porNome = (mapa) => (a, b) => (mapa[a]?.nome ?? a).localeCompare(mapa[b]?.nome ?? b, 'pt');
-  // A "Outra liga de X" fica no fim da lista desse país.
-  for (const lista of Object.values(ligasPorPais)) lista.sort((a, b) => a.startsWith('outra-') - b.startsWith('outra-') || porNome(ligas)(a, b));
-  for (const lista of [...Object.values(clubesPorLiga), ...Object.values(clubesPorPais)]) lista.sort(porNome(clubes));
-  const paisesComLiga = Object.keys(ligasPorPais).sort((a, b) => nomePais(a).localeCompare(nomePais(b), 'pt'));
-  return { versao, ligas, clubes, ligasPorPais, clubesPorLiga, clubesPorPais, paisesComLiga };
+  for (const [id, c] of Object.entries(clubes)) if (c.pais) (clubesPorPais[c.pais] ??= []).push(id);
+  const porNome = (a, b) => (clubes[a]?.nome ?? a).localeCompare(clubes[b]?.nome ?? b, 'pt');
+  for (const lista of Object.values(clubesPorPais)) lista.sort(porNome);
+  const paisesComClubes = Object.keys(clubesPorPais).sort((a, b) => nomePais(a).localeCompare(nomePais(b), 'pt'));
+  return { versao, clubes, clubesPorPais, paisesComClubes };
 }
 
-export const nomeLiga = (cat, id) => (id.startsWith('outra-') ? `Outra liga ${dePais(id.slice(6))}` : cat.ligas[id]?.nome ?? id);
-export const paisLiga = (cat, id) => (id.startsWith('outra-') ? id.slice(6) : cat.ligas[id]?.pais ?? null);
 export const nomeClube = (cat, id) => cat.clubes[id]?.nome ?? id;
+/** Os países e os clubes da carreira de um jogador (para saber quando já se encontraram todos). */
+const paisesDe = (reg) => [...new Set(reg.carreira.flatMap((c) => c.paises_liga))];
+const clubesDe = (reg) => [...new Set(reg.carreira.map((c) => c.clube))];
 
 // ---------------------------------------------------------------------------
 // Tipos de pergunta
@@ -123,6 +116,12 @@ function ultima(reg) {
   return doClube.findLast((c) => c.fim == null) ?? doClube.at(-1) ?? null;
 }
 const tre = (reg) => reg.treinador ?? { equipas: [], atual: null, titulos: [], n_titulos: 0 };
+/**
+ * O estado tem uma só resposta certa: no ativo (a jogar), treinador (já não joga e é ou foi treinador) ou retirado.
+ * Um jogador no ativo que já treinou conta como no ativo.
+ */
+const situacao = (reg) => (reg.estado === 'ativo' ? 'ativo' : reg.treinador ? 'treinador' : 'retirado');
+const ESTADOS = ['ativo', 'retirado', 'treinador'];
 
 /** Resposta a "mais de N" com o valor (ou SEM REGISTO sem ele). */
 const maisDe = (valor, n) => (valor == null ? 'sem_registo' : valor > n ? 'sim' : 'nao');
@@ -209,45 +208,32 @@ const TIPOS = {
     responder: (reg, v) => maisDe(reg.perfil?.altura_cm ?? null, Number(v)),
     valores: () => LIMIARES.altura.map(String),
   },
-  // Estado
-  ativo: { cat: 'estado', nivel: 1, texto: () => 'Está no ativo?', responder: (reg) => simNao(reg.estado === 'ativo') },
-  retirado: { cat: 'estado', nivel: 1, texto: () => 'Está retirado?', responder: (reg) => simNao(reg.estado === 'retirado') },
-  foi_treinador: { cat: 'estado', nivel: 1, texto: () => 'É ou foi treinador?', responder: (reg) => simNao(Boolean(reg.treinador)) },
-  // Carreira: país da liga → liga → clube, na carreira toda ou só agora
+  // Estado: uma só resposta certa
+  ativo: { cat: 'estado', nivel: 1, texto: () => 'Está no ativo?', responder: (reg) => simNao(situacao(reg) === 'ativo') },
+  retirado: { cat: 'estado', nivel: 1, texto: () => 'Está retirado?', responder: (reg) => simNao(situacao(reg) === 'retirado') },
+  treinador: { cat: 'estado', nivel: 1, texto: () => 'É treinador?', responder: (reg) => simNao(situacao(reg) === 'treinador') },
+  // Carreira: país → clube, na carreira toda ou só agora. Pergunta-se pelos países e pelos clubes até estarem todos.
   pais: {
-    cat: 'carreira', nivel: 1, valida: (v, cat) => Boolean(cat.ligasPorPais[v]),
-    texto: (v) => `Jogou numa liga ${dePais(v)}?`,
+    cat: 'carreira', nivel: 1, valida: (v, cat) => Boolean(cat.clubesPorPais[v]),
+    texto: (v) => `Jogou ${emPais(v)}?`,
     responder: (reg, v) => simNao(reg.carreira.some((c) => c.paises_liga.includes(v))),
   },
   pais_atual: {
-    cat: 'carreira', nivel: 1, valida: (v, cat) => Boolean(cat.ligasPorPais[v]),
-    texto: (v) => `Joga atualmente numa liga ${dePais(v)}?`,
+    cat: 'carreira', nivel: 1, valida: (v, cat) => Boolean(cat.clubesPorPais[v]),
+    texto: (v) => `Joga atualmente ${emPais(v)}?`,
     responder: (reg, v) => simNao(Boolean(ultima(reg)?.paises_liga.includes(v))),
   },
-  liga: {
-    cat: 'carreira', nivel: 2, valida: (v, cat) => Boolean(cat.ligas[v]),
-    texto: (v, cat) => (v.startsWith('outra-') ? `Jogou noutra liga ${dePais(v.slice(6))}?` : `Jogou ${naLiga(nomeLiga(cat, v))}?`),
-    responder: (reg, v) => simNao(reg.carreira.some((c) => c.ligas.includes(v))),
-    requer: (v, cat) => [[`pais:${paisLiga(cat, v)}`, `pais_atual:${paisLiga(cat, v)}`]],
-  },
-  liga_atual: {
-    cat: 'carreira', nivel: 2, valida: (v, cat) => Boolean(cat.ligas[v]),
-    texto: (v, cat) => (v.startsWith('outra-') ? `Joga atualmente noutra liga ${dePais(v.slice(6))}?`
-      : `Joga atualmente ${naLiga(nomeLiga(cat, v))}?`),
-    responder: (reg, v) => simNao(Boolean(ultima(reg)?.ligas.includes(v))),
-    requer: (v, cat) => [[`pais:${paisLiga(cat, v)}`, `pais_atual:${paisLiga(cat, v)}`]],
-  },
   clube: {
-    cat: 'carreira', nivel: 3, valida: (v, cat) => Boolean(cat.clubes[v]),
+    cat: 'carreira', nivel: 2, valida: (v, cat) => Boolean(cat.clubes[v]?.pais),
     texto: (v, cat) => `Jogou ${noClube(nomeClube(cat, v))}?`,
     responder: (reg, v) => simNao(reg.carreira.some((c) => c.clube === v)),
-    requer: (v, cat) => [(cat.clubes[v]?.ligas ?? []).flatMap((l) => [`liga:${l}`, `liga_atual:${l}`])],
+    requer: (v, cat) => [[`pais:${cat.clubes[v]?.pais}`, `pais_atual:${cat.clubes[v]?.pais}`]],
   },
   clube_atual: {
-    cat: 'carreira', nivel: 3, valida: (v, cat) => Boolean(cat.clubes[v]),
+    cat: 'carreira', nivel: 2, valida: (v, cat) => Boolean(cat.clubes[v]?.pais),
     texto: (v, cat) => `Joga atualmente ${noClube(nomeClube(cat, v))}?`,
     responder: (reg, v) => simNao(reg.clube_atual === v),
-    requer: (v, cat) => [(cat.clubes[v]?.ligas ?? []).flatMap((l) => [`liga:${l}`, `liga_atual:${l}`])],
+    requer: (v, cat) => [[`pais_atual:${cat.clubes[v]?.pais}`]],
   },
   // Estatísticas (clubes, todas as competições, e seleção)
   jogos: {
@@ -308,56 +294,56 @@ const TIPOS = {
     texto: (v) => `Ganhou ${PREMIOS[v].nome}?`, responder: (reg, v) => simNao(reg.premios.some((p) => p.id === v)),
     valores: () => Object.keys(PREMIOS).filter((id) => PREMIOS[id].jogador !== false),
   },
-  // Treinador: só com "é ou foi treinador?" ✓
+  // Treinador: só com "é treinador?" ✓ (no estado)
   t_atual: {
     cat: 'treinador', nivel: 1, texto: () => 'Treina atualmente?', responder: (reg) => simNao(Boolean(tre(reg).atual)),
-    requer: () => [['foi_treinador']],
+    requer: () => [['treinador']],
   },
   t_selecao: {
     cat: 'treinador', nivel: 1, texto: () => 'Treinou uma seleção?',
-    responder: (reg) => simNao(tre(reg).equipas.some((e) => e.tipo === 'selecao')), requer: () => [['foi_treinador']],
+    responder: (reg) => simNao(tre(reg).equipas.some((e) => e.tipo === 'selecao')), requer: () => [['treinador']],
   },
   t_titulos: {
     cat: 'treinador', nivel: 1, valida: (v) => LIMIARES.t_titulos.includes(Number(v)),
     texto: (v) => (Number(v) === 0 ? 'Ganhou algum título como treinador?' : `Ganhou mais de ${v} títulos como treinador?`),
     responder: (reg, v) => maisDe(tre(reg).n_titulos ?? 0, Number(v)),
-    requer: () => [['foi_treinador']], valores: () => LIMIARES.t_titulos.map(String),
+    requer: () => [['treinador']], valores: () => LIMIARES.t_titulos.map(String),
   },
   t_premio: {
     cat: 'treinador', nivel: 1, valida: (v) => Boolean(PREMIOS[v]?.treinador),
     texto: (v) => `Ganhou ${PREMIOS[v].nome} como treinador?`,
     responder: (reg, v) => simNao(tre(reg).titulos.some((p) => p.id === v)),
-    requer: () => [['foi_treinador']], valores: () => Object.keys(PREMIOS).filter((id) => PREMIOS[id].treinador),
+    requer: () => [['treinador']], valores: () => Object.keys(PREMIOS).filter((id) => PREMIOS[id].treinador),
   },
   t_pais: {
     cat: 'treinador', nivel: 1, valida: (v) => Boolean(PAISES[v]),
     texto: (v) => `Treinou ${emPais(v)}?`,
     responder: (reg, v) => simNao(tre(reg).equipas.some((e) => e.pais === v)),
-    requer: () => [['foi_treinador']],
+    requer: () => [['treinador']],
   },
   t_clube: {
     cat: 'treinador', nivel: 2, valida: (v, cat) => Boolean(cat.clubes[v]),
     texto: (v, cat) => `Treinou ${oClube(nomeClube(cat, v))}?`,
     responder: (reg, v) => simNao(tre(reg).equipas.some((e) => e.tipo === 'clube' && e.equipa === v)),
-    requer: (v, cat) => [['foi_treinador'], [`t_pais:${cat.clubes[v]?.pais}`]],
+    requer: (v, cat) => [['treinador'], [`t_pais:${cat.clubes[v]?.pais}`]],
   },
   t_sel: {
     cat: 'treinador', nivel: 2, valida: (v) => Boolean(PAISES[v]),
     texto: (v) => `Treinou a seleção ${dePais(v)}?`,
     responder: (reg, v) => simNao(tre(reg).equipas.some((e) => e.tipo === 'selecao' && e.pais === v)),
-    requer: (v) => [['foi_treinador'], [`t_pais:${v}`]],
+    requer: (v) => [['treinador'], [`t_pais:${v}`]],
   },
   t_atual_clube: {
     cat: 'treinador', nivel: 2, valida: (v, cat) => Boolean(cat.clubes[v]),
     texto: (v, cat) => `Treina atualmente ${oClube(nomeClube(cat, v))}?`,
     responder: (reg, v) => simNao(tre(reg).atual?.tipo === 'clube' && tre(reg).atual.equipa === v),
-    requer: (v, cat) => [['foi_treinador'], [`t_pais:${cat.clubes[v]?.pais}`]],
+    requer: (v, cat) => [['treinador'], [`t_pais:${cat.clubes[v]?.pais}`]],
   },
   t_atual_sel: {
     cat: 'treinador', nivel: 2, valida: (v) => Boolean(PAISES[v]),
     texto: (v) => `Treina atualmente a seleção ${dePais(v)}?`,
     responder: (reg, v) => simNao(tre(reg).atual?.tipo === 'selecao' && tre(reg).atual.pais === v),
-    requer: (v) => [['foi_treinador'], [`t_pais:${v}`]],
+    requer: (v) => [['treinador'], [`t_pais:${v}`]],
   },
 };
 
@@ -367,15 +353,15 @@ export const TIPOS_POR_CATEGORIA = {
   nacionalidade: ['conf', 'nac'],
   posicao: ['setor', 'pos'],
   fisico: ['pe', 'baixo', 'altura'],
-  estado: ['ativo', 'retirado', 'foi_treinador'],
-  carreira: ['pais', 'pais_atual', 'liga', 'liga_atual', 'clube', 'clube_atual'],
+  estado: ['ativo', 'retirado', 'treinador'],
+  carreira: ['pais', 'pais_atual', 'clube', 'clube_atual'],
   estatisticas: ['jogos', 'golos', 'assist_menos', 'assist', 'inter_menos', 'inter'],
   numeros: ['faixa', 'num'],
   premios: ['premio'],
   treinador: ['t_atual', 't_selecao', 't_titulos', 't_premio', 't_pais', 't_clube', 't_sel', 't_atual_clube', 't_atual_sel'],
 };
 
-/** "liga:Q324867" → { tipo: 'liga', valor: 'Q324867', def }; null se o tipo não existir. */
+/** "clube:Q8682" → { tipo: 'clube', valor: 'Q8682', def }; null se o tipo não existir. */
 export function ler(chave) {
   if (typeof chave !== 'string' || chave.length > 80) return null;
   const i = chave.indexOf(':');
@@ -386,7 +372,7 @@ export function ler(chave) {
   return { tipo, valor, def };
 }
 
-/** A chave existe e o valor faz sentido (país, liga e clube do catálogo, limiares da tabela…)? */
+/** A chave existe e o valor faz sentido (país e clube do catálogo, limiares da tabela…)? */
 export function valida(chave, cat) {
   const p = ler(chave);
   if (!p) return false;
@@ -405,13 +391,16 @@ export function pontos(chave) {
 /** Metade, arredondada para cima, para quem já tem o jogador identificado. */
 export const comFator = (pts, identificado) => (identificado ? Math.ceil(pts * PONTOS.fator_identificado) : pts);
 
-/** O texto da pergunta ("Jogou na La Liga?"). */
+const TODOS = { pais: 'Já se encontraram todos os países', clube: 'Já se encontraram todos os clubes' };
+
+/** O texto da pergunta ("Jogou no Benfica?"). */
 export function texto(chave, cat) {
   if (String(chave).startsWith('joker:')) return 'Revelado na Ronda Joker';
+  if (String(chave).startsWith('completo:')) return TODOS[String(chave).slice(9)] ?? chave;
   const p = ler(chave);
   return p ? p.def.texto(p.valor, cat) : chave;
 }
-/** A pergunta como afirmação ("Jogou na La Liga"), para as informações descartadas e as deduções. */
+/** A pergunta como afirmação ("Jogou no Benfica"), para as informações descartadas e as deduções. */
 export const afirmacao = (chave, cat) => texto(chave, cat).replace(/\?$/, '');
 
 /** A resposta do jogo, a partir do registo do jogador secreto: 'sim' | 'nao' | 'sem_registo'. */
@@ -434,13 +423,14 @@ function doTipo(ficha, tipo) {
   return respondidas(ficha).filter(([k]) => k.startsWith(prefixo)).map(([k, v]) => [k.slice(prefixo.length), v.r]);
 }
 
-const retirado = (ficha) => r(ficha, 'retirado') === 'sim' || r(ficha, 'ativo') === 'nao';
-const ATUAIS = ['pais_atual', 'liga_atual', 'clube_atual'];
+/** Já se sabe que não joga (retirado ✓, treinador ✓ ou no ativo ✗)? A chave que o decide, ou null. */
+const naoJoga = (ficha) => ['retirado', 'treinador'].find((k) => r(ficha, k) === 'sim') ?? (r(ficha, 'ativo') === 'nao' ? 'ativo' : null);
+const ATUAIS = ['pais_atual', 'clube_atual'];
 
 /**
  * O que já se sabe sem perguntar, a partir das respostas desta ficha: { r, de } (de = a chave que o decide), ou
- * null. Só valores que se excluem (limiares, década e ano, pé, ativo/retirado, o clube e o país atuais) e o que
- * uma resposta "atual" implica para a carreira toda.
+ * null. Só valores que se excluem (limiares, década e ano, pé, o estado, o clube e o país atuais), o que uma
+ * resposta "atual" implica para a carreira toda e, com todos os países (ou clubes) encontrados, os que faltam.
  */
 export function deduzir(ficha, chave) {
   const p = ler(chave);
@@ -486,29 +476,29 @@ export function deduzir(ficha, chave) {
       return outro ? { r: 'nao', de: `${tipo}:${outro[0]}` } : null;
     }
     case 'ativo':
-    case 'retirado': {
-      const oposto = tipo === 'ativo' ? 'retirado' : 'ativo';
-      const res = r(ficha, oposto);
-      if (res === 'sim' || res === 'nao') return { r: res === 'sim' ? 'nao' : 'sim', de: oposto };
+    case 'retirado':
+    case 'treinador': {
+      // Uma só resposta certa: um ✓ fecha as outras duas e dois ✗ dão a terceira.
+      const outros = ESTADOS.filter((k) => k !== tipo);
+      const certo = outros.find((k) => r(ficha, k) === 'sim');
+      if (certo) return { r: 'nao', de: certo };
       const atual = achar((k, x) => ATUAIS.includes(ler(k)?.tipo) && x === 'sim');
-      return atual ? { r: tipo === 'ativo' ? 'sim' : 'nao', de: atual[0] } : null;
+      if (atual) return { r: simNao(tipo === 'ativo'), de: atual[0] };
+      return outros.every((k) => r(ficha, k) === 'nao') ? { r: 'sim', de: outros[0] } : null;
     }
     case 'pais':
-    case 'liga':
     case 'clube':
-      return r(ficha, `${tipo}_atual:${valor}`) === 'sim' ? { r: 'sim', de: `${tipo}_atual:${valor}` } : null;
+      if (r(ficha, `${tipo}_atual:${valor}`) === 'sim') return { r: 'sim', de: `${tipo}_atual:${valor}` };
+      return ficha?.completos?.[tipo] ? { r: 'nao', de: `completo:${tipo}` } : null;
     case 'pais_atual':
-    case 'liga_atual':
     case 'clube_atual': {
-      if (retirado(ficha)) return { r: 'nao', de: r(ficha, 'retirado') === 'sim' ? 'retirado' : 'ativo' };
-      const base = tipo.replace('_atual', '');
-      if (r(ficha, `${base}:${valor}`) === 'nao') return { r: 'nao', de: `${base}:${valor}` };
-      // Só há um clube atual e um país atual (a liga atual pode ser mais do que uma: subidas a meio da época).
-      if (tipo !== 'liga_atual') {
-        const outro = doTipo(ficha, tipo).find(([v, res]) => v !== valor && res === 'sim');
-        if (outro) return { r: 'nao', de: `${tipo}:${outro[0]}` };
-      }
-      return null;
+      const parado = naoJoga(ficha);
+      if (parado) return { r: 'nao', de: parado };
+      const base = `${tipo.replace('_atual', '')}:${valor}`;
+      if (respostaDe(ficha, base) === 'nao') return { r: 'nao', de: base };
+      // Só há um clube atual e um país atual.
+      const outro = doTipo(ficha, tipo).find(([v, res]) => v !== valor && res === 'sim');
+      return outro ? { r: 'nao', de: `${tipo}:${outro[0]}` } : null;
     }
     case 'premio': {
       // Os torneios de uma confederação (o Europeu, a Taça da Ásia…) ficam "não" com uma nacionalidade
@@ -565,7 +555,20 @@ function deduzirDaJoker(valores, tipo, valor) {
 
 /** A resposta que a ficha tem (dada ou deduzida), ou null. */
 export function valor(ficha, chave) {
+  return respostaDe(ficha, chave);
+}
+// O mesmo, com outro nome: dentro de deduzir() o nome "valor" é o valor da pergunta.
+function respostaDe(ficha, chave) {
   return r(ficha, chave) ?? deduzir(ficha, chave)?.r ?? null;
+}
+
+/**
+ * Já se encontraram todos os países e todos os clubes da carreira? Só quem tem o registo o sabe (o servidor), depois
+ * de cada resposta; a ficha guarda-o em `completos` e os países (ou clubes) que faltam perguntar passam a "não".
+ */
+export function completos(reg, ficha) {
+  const sim = (k) => respostaDe(ficha, k) === 'sim';
+  return { pais: paisesDe(reg).every((p) => sim(`pais:${p}`)), clube: clubesDe(reg).every((c) => sim(`clube:${c}`)) };
 }
 
 /**
@@ -611,7 +614,7 @@ export const palpiteDesbloqueado = (ficha) => {
 
 /**
  * Os valores candidatos de um tipo nesta ficha (para o menu): os fixos, ou os que os pais com ✓ abrem
- * (as ligas dos países confirmados, os clubes das ligas confirmadas…). Devolve chaves completas.
+ * (os clubes dos países confirmados, os anos da década confirmada…). Devolve chaves completas.
  */
 export function candidatas(ficha, tipo, cat) {
   const d = TIPOS[tipo];
@@ -635,17 +638,13 @@ export function candidatas(ficha, tipo, cat) {
     }
     case 'pais':
     case 'pais_atual':
-      return cat.paisesComLiga.map((c) => `${tipo}:${c}`);
-    case 'liga':
-    case 'liga_atual': {
+      return cat.paisesComClubes.map((c) => `${tipo}:${c}`);
+    case 'clube': {
       const paises = unicos([...comSim('pais:'), ...comSim('pais_atual:')]);
-      return paises.flatMap((c) => cat.ligasPorPais[c] ?? []).map((l) => `${tipo}:${l}`);
+      return unicos(paises.flatMap((c) => cat.clubesPorPais[c] ?? [])).map((c) => `clube:${c}`);
     }
-    case 'clube':
-    case 'clube_atual': {
-      const ligas = unicos([...comSim('liga:'), ...comSim('liga_atual:')]);
-      return unicos(ligas.flatMap((l) => cat.clubesPorLiga[l] ?? [])).map((c) => `${tipo}:${c}`);
-    }
+    case 'clube_atual':
+      return comSim('pais_atual:').flatMap((c) => cat.clubesPorPais[c] ?? []).map((c) => `clube_atual:${c}`);
     case 'num':
       return comSim('faixa:').flatMap((i) => {
         const [a, b] = FAIXAS[Number(i)];
@@ -664,10 +663,10 @@ export function candidatas(ficha, tipo, cat) {
   }
 }
 
-/** As chaves "base" que uma resposta "atual" com ✓ deixa deduzidas com ✓ (liga_atual:L ✓ → liga:L). */
+/** As chaves "base" que uma resposta "atual" com ✓ deixa deduzidas com ✓ (pais_atual:ES ✓ → pais:ES). */
 function deduzidasSim(ficha, prefixo) {
   const base = prefixo.replace(/:$/, '');
-  if (!['pais', 'liga', 'clube'].includes(base)) return [];
+  if (!['pais', 'clube'].includes(base)) return [];
   return doTipo(ficha, `${base}_atual`).filter(([, res]) => res === 'sim').map(([v]) => `${base}:${v}`);
 }
 
@@ -678,5 +677,5 @@ export function resumoCategoria(ficha, cat) {
   return conta;
 }
 
-/** A categoria Treinador só aparece com "é ou foi treinador?" ✓. */
-export const comTreinador = (ficha) => valor(ficha, 'foi_treinador') === 'sim';
+/** A categoria Treinador só aparece com "Treinador" ✓ no estado. */
+export const comTreinador = (ficha) => valor(ficha, 'treinador') === 'sim';

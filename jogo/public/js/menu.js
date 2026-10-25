@@ -15,7 +15,7 @@ const tipoPremio = (tipo) => (k) => P.PREMIOS[P.ler(k).valor]?.tipo === tipo;
  * `soCerto`: depois de uma resposta certa, o grupo fica só com ela (sai o resto e o campo), para não baralhar.
  */
 const GRUPOS = {
-  estado: [{ tipos: ['ativo', 'retirado', 'foi_treinador'], colunas: 3 }],
+  estado: [{ tipos: ['ativo', 'retirado', 'treinador'], colunas: 3, soCerto: true }],
   era: [
     { rotulo: 'Estreou-se nos anos…', tipos: ['decada'], colunas: 3, soCerto: true },
     { rotulo: 'Estreou-se em…', tipos: ['ano'], colunas: 5, soCerto: true },
@@ -32,12 +32,12 @@ const GRUPOS = {
     { rotulo: 'Pé', tipos: ['pe'], colunas: 3, soCerto: true },
     { rotulo: 'Altura', tipos: ['baixo', 'altura'], colunas: 5 },
   ],
+  // Países e clubes: pergunta-se até estarem todos encontrados (o campo só sai com `completos` na ficha). O país e o
+  // clube atuais são só um.
   carreira: [
-    { rotulo: 'Jogou em…', tipos: ['pais'], campo: 'país', larga: true, soCerto: true },
+    { rotulo: 'Jogou em…', tipos: ['pais'], campo: 'país', larga: true },
     { rotulo: 'Joga atualmente em…', tipos: ['pais_atual'], campo: 'país', larga: true, soCerto: true },
-    { rotulo: 'Jogou na liga…', tipos: ['liga'], campo: 'liga', larga: true, soCerto: true },
-    { rotulo: 'Joga atualmente na liga…', tipos: ['liga_atual'], campo: 'liga', larga: true, soCerto: true },
-    { rotulo: 'Jogou no clube…', tipos: ['clube'], campo: 'clube', larga: true, soCerto: true },
+    { rotulo: 'Jogou no clube…', tipos: ['clube'], campo: 'clube', larga: true },
     { rotulo: 'Joga atualmente no clube…', tipos: ['clube_atual'], campo: 'clube', larga: true, soCerto: true },
   ],
   estatisticas: [
@@ -76,7 +76,7 @@ export function rotulo(chave, cat) {
   switch (tipo) {
     case 'ativo': return 'No ativo';
     case 'retirado': return 'Retirado';
-    case 'foi_treinador': return 'É/foi treinador';
+    case 'treinador': return 'Treinador';
     case 'decada': return `anos ${Number(v) < 2000 ? v.slice(2) : v}`;
     case 'conf': return P.CONFEDERACOES[v].nome;
     case 'setor': return P.SETORES[v];
@@ -90,7 +90,6 @@ export function rotulo(chave, cat) {
       const [a, b] = P.FAIXAS_NUMEROS[Number(v)];
       return b >= 99 ? `${a}+` : `${a}-${b}`;
     }
-    case 'liga': case 'liga_atual': return v.startsWith('outra-') ? 'Outra liga' : P.nomeLiga(cat, v);
     case 'clube': case 'clube_atual': case 't_clube': case 't_atual_clube': return P.nomeClube(cat, v);
     case 'premio': case 't_premio': return nomePremio(v);
     case 't_atual': return 'Treina atualmente';
@@ -152,9 +151,13 @@ export function menu(ficha, o) {
         o.aoEscolher(op.valor);
       },
     });
-    // As que já estão decididas ficam à vista por baixo do campo, como os botões fechados.
-    const fechadas = chaves.filter((k) => !aberta(k));
-    return [caixa, fechadas.length ? el('div', { class: 'grelha larga' }, ...fechadas.map(botao)) : null];
+    // As já respondidas (e as deduzidas com ✓) ficam à vista por baixo do campo, como os botões fechados; as
+    // deduzidas com ✗ não (com todos os países encontrados seriam centenas). Sem nada por perguntar, o campo sai
+    // e ficam só as certas.
+    const vistas = chaves.filter((k) => estado(k).estado === 'respondida' || (estado(k).estado === 'deduzida' && estado(k).r === 'sim'));
+    const decididas = abertas.length ? vistas : vistas.filter((k) => estado(k).r === 'sim');
+    const grelhaDecididas = decididas.length ? el('div', { class: 'grelha larga' }, ...decididas.map(botao)) : null;
+    return abertas.length ? [caixa, grelhaDecididas] : [grelhaDecididas];
   };
 
   // Lista que se abre por baixo do botão (no estilo dos campos e das sugestões da app). As deduzidas não aparecem:
@@ -201,10 +204,18 @@ export function menu(ficha, o) {
       } else if (g.lista) {
         conteudo = lista(chaves);
         abertasVisiveis.push(...chaves.filter(aberta));
-      } else {
-        conteudo = g.campo && chaves.length > MAX_GRELHA ? campo(chaves, g.campo) : [grelha(g, chaves)];
+      } else if (g.campo && chaves.length > MAX_GRELHA) {
+        conteudo = campo(chaves, g.campo);
         abertasVisiveis.push(...chaves.filter(aberta));
+      } else {
+        // Num grupo de países ou clubes sem nada por perguntar (todos encontrados), ficam só os certos.
+        const abertasAqui = chaves.filter(aberta);
+        const mostrar = g.campo && !abertasAqui.length ? chaves.filter((k) => estado(k).r === 'sim') : chaves;
+        conteudo = mostrar.length ? [grelha(g, mostrar)] : [];
+        abertasVisiveis.push(...abertasAqui);
       }
+      conteudo = conteudo.filter(Boolean);
+      if (!conteudo.length) continue;
       grupos.push(el('div', { class: 'grupo' }, g.rotulo ? el('p', { class: 'grupo-rotulo', text: g.rotulo }) : null, ...conteudo));
     }
     // Sem nada por perguntar (todos os níveis respondidos), a categoria fecha-se: leva o carimbo e não abre.

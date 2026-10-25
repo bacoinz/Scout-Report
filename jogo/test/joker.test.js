@@ -32,13 +32,13 @@ describe('que ficha e que pergunta', () => {
     expect(ordenarFichas([a, b, c], () => 0.5)[2].n).toBe(1);
     expect(ordenarFichas([a, b, c], () => 0.5)[0].n).toBe(2);
   });
-  it('uma pergunta ainda não revelada; as de treinador só com "é ou foi treinador" ✓', () => {
+  it('uma pergunta ainda não revelada; as de treinador só com "Treinador" ✓', () => {
     const zidane = registo('Q1835');
     const todas = new Set();
     for (let i = 0; i < 40; i++) todas.add(escolherPergunta(ficha(), zidane, () => i / 40));
     expect([...todas].sort()).toEqual(['clubes', 'estreia', 'golos', 'golos_selecao', 'inter', 'jogos']);
     const treinador = new Set();
-    for (let i = 0; i < 40; i++) treinador.add(escolherPergunta(ficha({ foi_treinador: 'sim' }), zidane, () => i / 40));
+    for (let i = 0; i < 40; i++) treinador.add(escolherPergunta(ficha({ treinador: 'sim' }), zidane, () => i / 40));
     expect(treinador.has('t_titulos') && treinador.has('t_equipas')).toBe(true);
     expect(escolherPergunta(ficha({}, { jogos: 1, golos: 1, inter: 1, golos_selecao: 1, estreia: 1, clubes: 1 }), zidane, () => 0)).toBeNull();
   });

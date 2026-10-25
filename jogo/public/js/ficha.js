@@ -74,61 +74,52 @@ function dadosPublicos(f, ctx) {
   const baixo = P.valor(f, 'baixo:175') === 'sim' ? `-${metros(175)}` : null;
   const altura = baixo ?? textoIntervalo(intervalo(f, 'altura'), metros);
   const pe = confirmados(f, 'pe').map((p) => PES[p]);
-  const estado = P.valor(f, 'ativo') === 'sim' ? 'No ativo' : P.valor(f, 'retirado') === 'sim' ? 'Retirado' : null;
-  const treinador = P.valor(f, 'foi_treinador') === 'sim' ? (P.valor(f, 't_atual') === 'sim' ? 'treinador (no ativo)' : 'treinador') : null;
+  const estado = P.valor(f, 'ativo') === 'sim' ? 'No ativo' : P.valor(f, 'retirado') === 'sim' ? 'Retirado'
+    : P.valor(f, 'treinador') === 'sim' ? (P.valor(f, 't_atual') === 'sim' ? 'Treinador (treina atualmente)' : 'Treinador') : null;
   const comFalta = (partes, completo) => (partes.length ? juntar([...partes, ...(completo ? [] : [incognita()])]) : [incognita()]);
   return el('dl', { class: 'folha-dados' },
     linhaDados('Estreia', ...(daJoker(f, 'estreia') ?? (estreia ? (anos.length ? [estreia] : juntar([estreia, incognita()])) : [incognita()]))),
     linhaDados('Nação', ...comFalta([...confs, ...nacs], nacs.length > 0)),
     linhaDados('Posição', ...comFalta([...setores, ...posicoes], posicoes.length > 0)),
     linhaDados('Físico', ...(altura || pe.length ? juntar([altura, ...pe].filter(Boolean)) : dado(null, f, ['altura', 'baixo', 'pe'], ctx))),
-    linhaDados('Estado', ...(estado || treinador ? juntar([estado ?? incognita(), treinador].filter(Boolean)) : [incognita()])));
+    linhaDados('Estado', ...(estado ? [estado] : [incognita()])));
 }
 
-/** Carreira: os clubes, as ligas e os países confirmados, e uma linha ???? para o que falta. */
+/**
+ * Carreira: os clubes e os países confirmados, e uma linha ???? enquanto não estiverem todos encontrados (o servidor
+ * marca-o em `completos`).
+ */
 function carreiraPublica(f, ctx) {
   const cat = ctx.cat;
   const clubes = confirmados(f, 'clube');
-  const ligas = confirmados(f, 'liga');
   const paises = confirmados(f, 'pais');
   const atual = (tipo, v) => P.valor(f, `${tipo}_atual:${v}`) === 'sim';
   const novo = (k) => ctx.novas.has(`${f.n}:${k}`);
+  const novoPais = (p) => (novo(`pais:${p}`) || novo(`pais_atual:${p}`) ? carimbo('confirmado', 'Confirmado', `pais:${p}`, true) : null);
   const linhas = [];
-  const ligasUsadas = new Set();
   const paisesUsados = new Set();
   for (const c of clubes) {
-    const l = (cat.clubes[c]?.ligas ?? []).find((x) => ligas.includes(x));
-    if (l) ligasUsadas.add(l);
-    const pais = l ? P.paisLiga(cat, l) : cat.clubes[c]?.pais;
+    const pais = cat.clubes[c]?.pais;
     if (pais) paisesUsados.add(pais);
     linhas.push(el('tr', {},
       el('td', {}, P.nomeClube(cat, c), atual('clube', c) ? el('small', { text: 'atual' }) : null,
         novo(`clube:${c}`) || novo(`clube_atual:${c}`) ? carimbo('confirmado', 'Confirmado', `clube:${c}`, true) : null),
-      el('td', { class: 'esq' }, l ? P.nomeLiga(cat, l) : incognita(), pais ? el('small', { text: P.nomePais(pais) }) : null)));
-  }
-  for (const l of ligas) {
-    if (ligasUsadas.has(l)) continue;
-    const pais = P.paisLiga(cat, l);
-    paisesUsados.add(pais);
-    linhas.push(el('tr', {},
-      el('td', {}, incognita()),
-      el('td', { class: 'esq' }, P.nomeLiga(cat, l), atual('liga', l) ? ' (atual)' : '',
-        novo(`liga:${l}`) || novo(`liga_atual:${l}`) ? carimbo('confirmado', 'Confirmado', `liga:${l}`, true) : null,
-        el('small', { text: P.nomePais(pais) }))));
+      el('td', { class: 'esq' }, pais ? P.nomePais(pais) : incognita(), pais && atual('pais', pais) ? ' (atual)' : '', pais ? novoPais(pais) : null)));
   }
   for (const p of paises) {
     if (paisesUsados.has(p)) continue;
     linhas.push(el('tr', {},
       el('td', {}, incognita()),
-      el('td', { class: 'esq' }, incognita(), atual('pais', p) ? ' (atual)' : '',
-        novo(`pais:${p}`) || novo(`pais_atual:${p}`) ? carimbo('confirmado', 'Confirmado', `pais:${p}`, true) : null,
-        el('small', { text: P.nomePais(p) }))));
+      el('td', { class: 'esq' }, P.nomePais(p), atual('pais', p) ? ' (atual)' : '', novoPais(p))));
   }
-  linhas.push(el('tr', {}, el('td', {}, incognita()), el('td', { class: 'esq' }, incognita())));
+  const todos = f.completos ?? {};
+  if (!todos.clube || !todos.pais) {
+    linhas.push(el('tr', {}, el('td', {}, todos.clube ? '' : incognita()), el('td', { class: 'esq' }, todos.pais ? '' : incognita())));
+  }
   return el('section', {},
     el('h4', { text: 'Carreira' }),
     el('table', { class: 'tabela-carreira' },
-      el('thead', {}, el('tr', {}, el('th', { text: 'Clube' }), el('th', { class: 'esq', text: 'Liga' }))),
+      el('thead', {}, el('tr', {}, el('th', { text: 'Clube' }), el('th', { class: 'esq', text: 'País' }))),
       el('tbody', {}, ...linhas)),
 );
 }
@@ -161,7 +152,7 @@ function premiosPublicos(f) {
 }
 
 function treinadorPublico(f, ctx) {
-  if (P.valor(f, 'foi_treinador') !== 'sim') return null;
+  if (P.valor(f, 'treinador') !== 'sim') return null;
   const cat = ctx.cat;
   const treinou = [
     ...confirmados(f, 't_pais').map(P.nomePais),
@@ -249,7 +240,11 @@ function dadosRegisto(reg) {
   const nacoes = reg.nacionalidades.map((c) => `${P.nomePais(c)}${P.PAISES[c]?.confederacao ? ` (${P.CONFEDERACOES[P.PAISES[c].confederacao].nome})` : ''}`);
   const fisico = [reg.perfil?.altura_cm ? metros(reg.perfil.altura_cm) : null, PES[reg.perfil?.pe] ?? null].filter(Boolean);
   const ultimoAno = Math.max(...reg.carreira.map((c) => c.fim ?? 0));
-  const agora = reg.estado === 'ativo' ? `No ativo${reg.clube_atual ? '' : ' (sem clube)'}` : `Retirado${ultimoAno ? ` (${ultimoAno})` : ''}`;
+  // O mesmo que a resposta ao Estado: no ativo, treinador (já não joga) ou retirado.
+  const atual = reg.treinador?.atual;
+  const agora = reg.estado === 'ativo' ? `No ativo${reg.clube_atual ? '' : ' (sem clube)'}`
+    : reg.treinador ? `Treinador${atual ? ` (${atual.tipo === 'selecao' ? `seleção ${P.dePais(atual.pais)}` : atual.nome})` : ''}${ultimoAno ? ` · deixou de jogar em ${ultimoAno}` : ''}`
+      : `Retirado${ultimoAno ? ` (${ultimoAno})` : ''}`;
   const estado = `${agora}${reg.estreia ? ` · estreou-se em ${reg.estreia}` : ''}`;
   const naturalidade = reg.perfil?.naturalidade?.split(',')[0];
   return el('dl', { class: 'folha-dados' },
@@ -257,19 +252,19 @@ function dadosRegisto(reg) {
     linhaDados('Nação', nacoes.join(' · ') || '—'),
     linhaDados('Posição', [reg.posicao.setores.map((s) => P.SETORES[s]).join(' / '), reg.posicao.especificas.join(', ')].filter(Boolean).join(' · ')),
     linhaDados('Físico', fisico.join(' · ') || 'sem registo'),
-    linhaDados('Estado', reg.treinador ? `${estado} · treinador${reg.treinador.atual ? ` (${reg.treinador.atual.nome})` : ''}` : estado));
+    linhaDados('Estado', estado));
 }
 
 function carreiraRegisto(reg, cat, completa) {
   const ativo = reg.estado === 'ativo';
-  const cabeca = completa ? ['Clube', 'Épocas', 'J', 'G', 'A', 'N.º'] : ['Clube', 'Liga', 'Épocas'];
+  const cabeca = completa ? ['Clube', 'Épocas', 'J', 'G', 'A', 'N.º'] : ['Clube', 'País', 'Épocas'];
   const linhas = reg.carreira.map((c, i) => {
-    const liga = c.ligas[0] ? P.nomeLiga(cat, c.ligas[0]) : '—';
+    const pais = c.paises_liga.length ? c.paises_liga.map(P.nomePais).join(', ') : '—';
     const ep = epocas(c.inicio, c.fim, ativo && i === reg.carreira.length - 1);
     const nome = `${c.nome}${c.emprestimo ? ' (emp.)' : ''}`;
-    if (!completa) return el('tr', {}, el('td', { text: nome }), el('td', { class: 'esq', text: liga }), el('td', { text: ep }));
+    if (!completa) return el('tr', {}, el('td', { text: nome }), el('td', { class: 'esq', text: pais }), el('td', { text: ep }));
     return el('tr', {},
-      el('td', {}, nome, el('small', { text: liga })),
+      el('td', {}, nome, el('small', { text: pais })),
       el('td', { text: ep }),
       el('td', { text: c.jogos ?? '—' }),
       el('td', { text: c.golos ?? '—' }),

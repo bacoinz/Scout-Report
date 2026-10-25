@@ -137,7 +137,8 @@ describe('perguntas da lista', () => {
   it('recusa perguntas fechadas, inválidas, fora da vez ou de uma vez que já passou (sem gastar a vez)', () => {
     const { sala, ctx } = montar(3);
     const seq = vez(sala).seq;
-    expect(partida.perguntar(sala, 'j1', { vez: seq, chave: 'liga:Q324867' }, ctx).erro).toMatch(/aberta/);
+    expect(partida.perguntar(sala, 'j1', { vez: seq, chave: 'clube:Q8682' }, ctx).erro).toMatch(/aberta/);
+    expect(partida.perguntar(sala, 'j1', { vez: seq, chave: 'liga:Q324867' }, ctx).erro).toMatch(/não existe/);
     expect(partida.perguntar(sala, 'j1', { vez: seq, chave: 'jogos:150' }, ctx).erro).toMatch(/não existe/);
     expect(partida.perguntar(sala, 'j2', { vez: seq, chave: 'ativo' }, ctx)).toMatchObject({ antiga: true });
     expect(partida.perguntar(sala, 'j1', { vez: seq - 1, chave: 'ativo' }, ctx)).toMatchObject({ antiga: true });

@@ -45,15 +45,16 @@ describe('data de Lisboa', () => {
 });
 
 describe('perguntas e palpite sem estado no servidor', () => {
-  const clube = ['pais:ES', `liga:${LA_LIGA}`, `clube:${REAL_MADRID}`];
-  const dezSim = ['decada:1980', 'ano:1989', 'conf:UEFA', 'nac:FR', 'setor:medio', 'pos:MO', 'retirado', 'foi_treinador', ...clube];
+  const clube = ['pais:ES', `clube:${REAL_MADRID}`];
+  const dezSim = ['decada:1980', 'ano:1989', 'conf:UEFA', 'nac:FR', 'setor:medio', 'pos:MO', 'treinador', 'pais:IT', ...clube];
 
   it('responde a partir do registo e segue a hierarquia', () => {
-    expect(D.perguntar(z, [], 'pais:ES', cat)).toEqual({ r: 'sim' });
-    expect(D.perguntar(z, ['pais:ES'], `liga:${LA_LIGA}`, cat)).toEqual({ r: 'sim' });
-    expect(D.perguntar(z, [], `liga:${LA_LIGA}`, cat).erro).toMatch(/não está aberta/);
+    expect(D.perguntar(z, [], 'pais:ES', cat)).toEqual({ r: 'sim', completos: { pais: false, clube: false } });
+    expect(D.perguntar(z, ['pais:ES'], `clube:${REAL_MADRID}`, cat).r).toBe('sim');
+    expect(D.perguntar(z, [], `clube:${REAL_MADRID}`, cat).erro).toMatch(/não está aberta/);
+    expect(D.perguntar(z, [], `liga:${LA_LIGA}`, cat).erro).toMatch(/não existe/);
     expect(D.perguntar(z, ['pais:ES'], 'pais:ES', cat).erro).toMatch(/não está aberta/);
-    expect(D.perguntar(z, ['retirado'], 'ativo', cat).erro).toMatch(/não está aberta/); // deduzida
+    expect(D.perguntar(z, ['treinador'], 'ativo', cat).erro).toMatch(/não está aberta/); // deduzida
     expect(D.perguntar(z, [], 'inventada:1', cat).erro).toMatch(/não existe/);
   });
 
@@ -68,7 +69,7 @@ describe('perguntas e palpite sem estado no servidor', () => {
   it('o palpite só abre com 10 "sim" e um clube, contados pelo próprio servidor', () => {
     expect(D.palpitar(z, dezSim.slice(0, -1), ZIDANE, cat).erro).toMatch(/desbloqueado/);
     // Dez perguntas com 'não' não chegam: os "sim" saem do registo, não do cliente.
-    const comNaos = ['decada:1990', 'decada:2000', 'conf:CONMEBOL', 'setor:defesa', 'setor:avancado', 'pe:esquerdo', 'ativo', ...clube];
+    const comNaos = ['decada:1990', 'decada:2000', 'conf:CONMEBOL', 'setor:defesa', 'setor:avancado', 'pe:esquerdo', 'ativo', 'retirado', ...clube];
     expect(D.palpitar(z, comNaos, ZIDANE, cat).erro).toMatch(/desbloqueado/);
     const certo = D.palpitar(z, dezSim, ZIDANE, cat);
     expect(certo.certo).toBe(true);
@@ -76,6 +77,13 @@ describe('perguntas e palpite sem estado no servidor', () => {
     expect(certo.revelado.fama).toBeUndefined();
     expect(D.palpitar(z, dezSim, 'Q11571', cat)).toEqual({ certo: false });
     expect(D.palpitar(z, dezSim, 'Cristiano', cat).erro).toMatch(/lista/);
+  });
+
+  it('diz quando já se encontraram todos os países, e daí em diante os outros estão fechados', () => {
+    const paises = [...new Set(z.carreira.flatMap((c) => c.paises_liga))];
+    const ultimo = D.perguntar(z, paises.slice(0, -1).map((p) => `pais:${p}`), `pais:${paises.at(-1)}`, cat);
+    expect(ultimo.completos.pais).toBe(true);
+    expect(D.perguntar(z, paises.map((p) => `pais:${p}`), 'pais:PT', cat).erro).toMatch(/não está aberta/);
   });
 
   it('desistir revela o jogador', () => {

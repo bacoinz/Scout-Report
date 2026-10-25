@@ -389,6 +389,8 @@ export function perguntar(sala, id, { vez, chave }, ctx) {
   if (!reg) return erro('O jogador desta ficha ainda não chegou. Tenta daqui a um segundo.');
   const r = P.responder(reg, chave);
   v.ficha.respostas[chave] = { r, autor: id, ronda: sala.partida.ronda };
+  // Com todos os países (ou clubes) encontrados, os que faltam ficam "não" e o campo sai do menu.
+  v.ficha.completos = P.completos(reg, v.ficha);
   if (r === 'sem_registo') {
     v.vez.prazo = Math.max(v.vez.prazo, ctx.agora + REGRAS.vezMinimaMs);
     noFeed(sala, { tipo: 'pergunta', jogador: id, ficha: v.ficha.n, alvo: v.vez.alvo, chave, r, pontos: 0 });

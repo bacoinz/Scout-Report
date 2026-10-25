@@ -86,7 +86,7 @@ export class Sala extends DurableObject {
 
     if (msg.t === 'comecar') return this.comecar(ws, id);
 
-    // As perguntas validam-se com o catálogo (que ligas tem cada país, que clubes cada liga).
+    // As perguntas validam-se com o catálogo (que clubes tem cada país).
     const jogo = ['pergunta', 'livre', 'responder_livre', 'palpite', 'carta'].includes(msg.t);
     const ctx = this.contexto(jogo ? await catalogoPreparado(this.env.DB) : null);
     let mudou = L.avancar(sala, ctx);

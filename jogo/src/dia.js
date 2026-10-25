@@ -82,21 +82,27 @@ export async function jogadorDoDia(db, data) {
  */
 export function refazer(reg, historico, cat) {
   if (!Array.isArray(historico) || historico.length > HISTORICO_MAX) return { erro: 'Histórico inválido.' };
-  const ficha = { respostas: {}, livres: [], palpites: [] };
+  const ficha = { respostas: {}, livres: [], palpites: [], completos: {} };
   for (const chave of historico) {
     if (!P.disponivel(ficha, chave, cat)) return { erro: 'O histórico não bate certo com as regras.' };
     ficha.respostas[chave] = { r: P.responder(reg, chave) };
+    ficha.completos = P.completos(reg, ficha);
   }
   return { ficha };
 }
 
-/** A resposta a uma pergunta nova: { r } ou { erro }. */
+/**
+ * A resposta a uma pergunta nova: { r, completos } ou { erro }. `completos` diz se já se encontraram todos os países
+ * (ou clubes): o browser guarda-o e tira esse campo do menu, como no jogo.
+ */
 export function perguntar(reg, historico, chave, cat) {
   const { ficha, erro } = refazer(reg, historico, cat);
   if (erro) return { erro };
   if (!P.valida(chave, cat)) return { erro: 'Essa pergunta não existe.' };
   if (!P.disponivel(ficha, chave, cat)) return { erro: 'Essa pergunta não está aberta.' };
-  return { r: P.responder(reg, chave) };
+  const r = P.responder(reg, chave);
+  ficha.respostas[chave] = { r };
+  return { r, completos: P.completos(reg, ficha) };
 }
 
 /** Um palpite, só com o palpite final desbloqueado pelo histórico (os "sim" e o clube): { certo, revelado? } ou { erro }. */

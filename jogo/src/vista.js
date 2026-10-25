@@ -28,6 +28,7 @@ const publicoFicha = (f) => ({
   identificada: f.identificada,
   revelada: f.revelada,
   valores: f.valores ?? {},
+  completos: f.completos ?? {},
 });
 
 /**

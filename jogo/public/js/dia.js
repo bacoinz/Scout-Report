@@ -19,7 +19,7 @@ const est = {
   info: null, // { data, numero, faltaMs, versao } de /api/dia
   proximo: 0, // instante do relatório seguinte
   dados: null, // { cat, indice, nomesPorId }
-  prog: null, // { passos: [{ chave, r } | { palpite, nome }], fim: null | { certo | desistiu, revelado } }
+  prog: null, // { passos: [{ chave, r } | { palpite, nome }], fim: null | { certo | desistiu, revelado }, completos }
   escolhida: null,
   abertas: new Set(),
   novas: new Set(),
@@ -37,11 +37,12 @@ let toast = () => {};
 function lerProgresso(data) {
   try {
     const p = JSON.parse(ler(chaveDia(data)) ?? 'null');
-    if (p && Array.isArray(p.passos)) return { passos: p.passos, fim: p.fim ?? null };
+    // Perguntas que deixaram de existir (as das ligas) saem do histórico, senão o servidor recusava-o.
+    if (p && Array.isArray(p.passos)) return { passos: p.passos.filter((x) => !x.chave || P.ler(x.chave)), fim: p.fim ?? null, completos: p.completos ?? {} };
   } catch {
     // progresso estragado: recomeça
   }
-  return { passos: [], fim: null };
+  return { passos: [], fim: null, completos: {} };
 }
 const guardarProgresso = () => guardar(chaveDia(est.info.data), JSON.stringify(est.prog));
 
@@ -79,6 +80,7 @@ function fichaDoDia() {
     valores: {},
     revelada: fim?.revelado ?? null,
     identificada: fim?.certo ? { por: 'tu' } : null,
+    completos: est.prog.completos ?? {},
   };
 }
 
@@ -228,8 +230,9 @@ async function enviarPergunta() {
   est.aEnviar = true;
   render();
   try {
-    const { r } = await pedir('pergunta', { historico: historico(), chave });
+    const { r, completos } = await pedir('pergunta', { historico: historico(), chave });
     est.prog.passos.push({ chave, r });
+    est.prog.completos = completos ?? {};
     guardarProgresso();
     est.novas = new Set([`${N}:${chave}`, ...(r === 'sem_registo' ? [`${N}:${P.ler(chave).tipo}`] : [])]);
     est.escolhida = null;

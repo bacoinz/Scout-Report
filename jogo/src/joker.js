@@ -38,7 +38,7 @@ export function ordenarFichas(fichas, aleatorio = Math.random) {
 /** Uma pergunta ao calhas que ainda não foi revelada nesta ficha e que o registo sabe responder. */
 export function escolherPergunta(ficha, reg, aleatorio = Math.random) {
   const valores = ficha.valores ?? {};
-  const treinador = P.valor(ficha, 'foi_treinador') === 'sim';
+  const treinador = P.valor(ficha, 'treinador') === 'sim';
   const possiveis = Object.entries(PERGUNTAS_JOKER)
     .filter(([id, q]) => !(id in valores) && (!q.treinador || treinador) && Number.isInteger(q.valor(reg)))
     .map(([id]) => id);

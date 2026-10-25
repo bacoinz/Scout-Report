@@ -83,7 +83,7 @@ class Cliente {
 }
 
 const fichaDe = (sala, dono) => sala.partida?.fichas.find((f) => f.dono === dono);
-const TIPOS_SIM = ['pais', 'liga', 'clube', 'conf', 'nac', 'setor', 'pos', 'decada', 'ano', 'premio', 'ativo', 'retirado', 'jogos', 'golos', 'faixa', 'pe', 'altura'];
+const TIPOS_SIM = ['pais', 'clube', 'conf', 'nac', 'setor', 'pos', 'decada', 'ano', 'premio', 'ativo', 'retirado', 'jogos', 'golos', 'faixa', 'pe', 'altura'];
 /** A melhor pergunta para a ficha `f` sabendo o registo: primeiro o caminho até um clube, depois o que der "sim". */
 function perguntaSim(f, reg) {
   for (const tipo of TIPOS_SIM) {
@@ -97,8 +97,8 @@ function perguntaSim(f, reg) {
 function perguntaQualquer(f) {
   const abertas = Object.values(P.TIPOS_POR_CATEGORIA).flat().flatMap((t) => P.candidatas(f, t, cat))
     .filter((k) => P.valida(k, cat) && P.disponivel(f, k, cat));
-  // Prefere subir na hierarquia (ligas e clubes dos países confirmados).
-  const fundo = abertas.filter((k) => /^(liga|clube|pos|nac|ano):/.test(k));
+  // Prefere subir na hierarquia (clubes dos países confirmados).
+  const fundo = abertas.filter((k) => /^(clube|pos|nac|ano):/.test(k));
   const lista = fundo.length && Math.random() < 0.6 ? fundo : abertas;
   return lista[Math.floor(Math.random() * lista.length)] ?? null;
 }
