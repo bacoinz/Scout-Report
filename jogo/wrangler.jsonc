@@ -21,16 +21,16 @@
   // SQLite é obrigatório para Durable Objects no plano gratuito.
   "migrations": [{ "tag": "v1", "new_sqlite_classes": ["Sala"] }],
   // A base de jogadores (pipeline: python -m scout exportar). Em `wrangler dev` usa-se uma cópia local
-  // (npm run db:local). O database_id verdadeiro chega no passo 7, com `wrangler d1 create scout-report`.
+  // (npm run db:local); a remota carrega-se com `npm run db:remoto`.
   "d1_databases": [
     {
       "binding": "DB",
       "database_name": "scout-report",
-      "database_id": "00000000-0000-0000-0000-000000000000",
+      "database_id": "e30df41d-d2fb-494f-a262-c54de6dbe8a6",
       "migrations_dir": "migrations"
     }
   ],
-  // O dia do Relatório #1 do Desafio do Dia (data de Lisboa). Passa a ser o dia do deploy no passo 7.
+  // O dia do Relatório #1 do Desafio do Dia (data de Lisboa): o do primeiro deploy.
   "vars": { "DIA_LANCAMENTO": "2026-10-25" },
   "observability": { "enabled": true }
 }

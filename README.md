@@ -22,7 +22,7 @@ O projeto tem três partes:
 - [x] Passo 4 — jogo: salas, rotação, perguntas, fichas, pontuação, palpites (`docs/capturas/passo4/`)
 - [x] Passo 5 — Ronda Joker (`docs/capturas/passo5/`)
 - [x] Passo 6 — Desafio do Dia, em `/dia` (`docs/capturas/passo6/`)
-- [ ] Passo 7 — exportação para o D1 e deploy
+- [x] Passo 7 — exportação para o D1 e deploy: **https://scout-report.bacoinz.workers.dev** (Desafio do Dia em `/dia`)
 
 ## Ver o mockup
 
@@ -116,6 +116,25 @@ código da sala no lugar de ABCD). Os bots perguntam ao calhas e respondem às p
   esse histórico a partir do registo, confirma a hierarquia e os 10 "sim" + clube do palpite, e só revela o jogador
   no fim. Só aceita a data de hoje ou de ontem (Lisboa). O Relatório #1 é o dia em `DIA_LANCAMENTO`
   (`wrangler.jsonc`); as datas sem linha no calendário usam a mesma ordem de reserva do pipeline.
+
+## Publicar
+
+O Worker, os Durable Objects das salas e o D1 `scout-report` estão na conta Cloudflare (plano gratuito). Com o
+wrangler autenticado (`npx wrangler login`, feito por ti), a partir de `jogo/`:
+
+```bash
+npm run db:remoto     # migrações e ../pipeline/saida/d1/*.sql no D1 remoto (um ficheiro de cada vez)
+npm run deploy        # publica o Worker e os ficheiros de public/
+BASE=https://scout-report.bacoinz.workers.dev npm run e2e
+```
+
+- **Atualizar os jogadores:** no pipeline, recolher ou corrigir, `validar`, `exportar`; depois `npm run db:remoto`. A
+  exportação só reescreve o que mudou e apaga do catálogo as ligas e os clubes que já não aparecem.
+- **Calendário do Desafio do Dia:** cada `exportar` preenche até 60 dias à frente. Para não ficar sem calendário, é
+  preciso exportar e correr `npm run db:remoto` pelo menos uma vez por mês (`python -m scout estado` avisa com menos de
+  30 dias). Sem linha no calendário, o Worker escolhe pela ordem de reserva, por isso o Desafio nunca fica vazio.
+- **Imagem de partilha:** `public/og.png` gera-se de `scripts/og.html` com o Chrome sem janela (o comando está no
+  ficheiro).
 
 ## Créditos
 

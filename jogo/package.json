@@ -12,6 +12,7 @@
     "assets": "node scripts/copiar-assets.mjs",
     "contraste": "node scripts/contraste.mjs",
     "db:local": "wrangler d1 migrations apply scout-report --local && node scripts/carregar-d1.mjs",
+    "db:remoto": "wrangler d1 migrations apply scout-report --remote && node scripts/carregar-d1.mjs --remote",
     "e2e": "node scripts/e2e.mjs"
   },
   "devDependencies": {

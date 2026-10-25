@@ -1,0 +1,72 @@
+<!doctype html>
+<!-- Imagem de pré-visualização dos links (public/og.png, 1200×630), como no Guess The Kit. Para a gerar outra vez, a
+     partir de jogo/:
+     chrome --headless=new --hide-scrollbars --allow-file-access-from-files --window-size=1200,630 --screenshot=public/og.png scripts/og.html -->
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<style>
+  @font-face { font-family: 'Anton'; src: url('../public/fontes/anton-latin.woff2') format('woff2'); }
+  @font-face { font-family: 'Inter'; src: url('../public/fontes/inter-latin.woff2') format('woff2-variations'); font-weight: 100 900; }
+  @font-face { font-family: 'Courier Prime'; src: url('../public/fontes/courier-prime-latin-400.woff2') format('woff2'); font-weight: 400; }
+  @font-face { font-family: 'Courier Prime'; src: url('../public/fontes/courier-prime-latin-700.woff2') format('woff2'); font-weight: 700; }
+  html, body { margin: 0; width: 1200px; height: 630px; overflow: hidden; }
+  body {
+    position: relative;
+    background:
+      radial-gradient(60% 75% at 28% 50%, #134a2c 0%, transparent 70%),
+      repeating-linear-gradient(90deg, #ffffff06 0 100px, transparent 100px 200px),
+      #06140d;
+    color: #eef3ef;
+    font-family: 'Inter', sans-serif;
+    display: flex; align-items: center; gap: 40px; padding: 0 70px 0 84px; box-sizing: border-box;
+  }
+  .texto { flex: 1; min-width: 0; }
+  .logo { width: 104px; height: 104px; filter: drop-shadow(0 14px 30px #8b5cf655); }
+  h1 { font-family: 'Anton', sans-serif; font-weight: 400; font-size: 132px; line-height: 0.95; margin: 18px 0 0; letter-spacing: 1px; }
+  h1 span {
+    background: linear-gradient(180deg, #d5c6f7, #8b5cf6);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  p { font-size: 30px; line-height: 1.35; margin: 22px 0 0; color: #bbf7d0cc; max-width: 560px; font-weight: 500; }
+
+  /* A ficha de olheiro, de lado */
+  .ficha {
+    flex: none; width: 410px; padding: 26px 30px 112px; box-sizing: border-box;
+    background: #fbf8ef; color: #1f2a44; border-radius: 4px; transform: rotate(3deg);
+    box-shadow: 0 1px 0 #e7e0cc, 0 30px 60px #000a; font-family: 'Courier Prime', monospace; position: relative;
+  }
+  .ficha .cab { font-family: 'Inter', sans-serif; font-weight: 800; font-size: 13px; letter-spacing: 0.12em; color: #55607a; }
+  .ficha h2 { font-weight: 700; font-size: 30px; margin: 6px 0 18px; }
+  .linha { display: flex; justify-content: space-between; gap: 12px; border-bottom: 1px dashed #1f2a4433; padding: 9px 0; font-size: 22px; }
+  .linha b { font-family: 'Inter', sans-serif; font-size: 13px; letter-spacing: 0.1em; color: #55607a; align-self: center; }
+  .linha .x { color: #1f2a4499; letter-spacing: 0.2em; }
+  .carimbo {
+    display: inline-block; font-family: 'Anton', sans-serif; text-transform: uppercase; letter-spacing: 0.08em;
+    border: 3px solid currentColor; outline: 1.5px solid currentColor; outline-offset: 2px; border-radius: 4px; padding: 2px 7px 1px;
+  }
+  .confirmado { color: #15803d; font-size: 14px; margin-left: 10px; vertical-align: 3px; transform: rotate(-6deg); }
+  .identificado {
+    position: absolute; left: 50%; bottom: 26px; transform: translateX(-50%) rotate(-6deg);
+    color: #6d28d9; font-size: 46px; border-width: 5px; outline-width: 2px; outline-offset: 4px; border-radius: 7px; padding: 4px 16px 2px;
+  }
+</style>
+</head>
+<body>
+  <div class="texto">
+    <img class="logo" src="../public/favicon.svg" alt="">
+    <h1>SCOUT <span>REPORT</span></h1>
+    <p>O "Quem é Quem" do futebol. Pergunta, carimba e identifica o jogador secreto dos teus amigos.</p>
+  </div>
+  <div class="ficha">
+    <div class="cab">RELATÓRIO DE OBSERVAÇÃO</div>
+    <h2>[DESCONHECIDO]</h2>
+    <div class="linha"><b>NAÇÃO</b><span>Europa · ????</span></div>
+    <div class="linha"><b>POSIÇÃO</b><span>Médio · ????</span></div>
+    <div class="linha"><b>CLUBE</b><span>Benfica<span class="carimbo confirmado">Confirmado</span></span></div>
+    <div class="linha"><b>ESTREIA</b><span class="x">????</span></div>
+    <div class="linha"><b>PRÉMIOS</b><span class="x">????</span></div>
+    <span class="carimbo identificado">Identificado</span>
+  </div>
+</body>
+</html>
