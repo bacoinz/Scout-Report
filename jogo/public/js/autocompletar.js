@@ -20,9 +20,10 @@ export function filtrar(opcoes, texto, max = 8) {
 
 /**
  * Liga um campo a uma lista de sugestões. `opcoes()` dá as opções atuais (ou `sugerir(texto)` faz a procura);
- * `aoEscolher(opcao)` recebe a escolhida. Devolve { fechar, limpar }.
+ * `aoEscolher(opcao)` recebe a escolhida; `aoMostrar(lista)` corre sempre que a lista aparece (o menu das perguntas
+ * desliza para a mostrar). Devolve { fechar, limpar }.
  */
-export function autocompletar(input, { opcoes = () => [], sugerir = null, aoEscolher, max = 8, abrirVazio = false }) {
+export function autocompletar(input, { opcoes = () => [], sugerir = null, aoEscolher, aoMostrar = null, max = 8, abrirVazio = false }) {
   const caixa = input.closest('.autocompletar') ?? input.parentElement;
   const lista = el('ul', { class: 'sugestoes', role: 'listbox', hidden: true });
   caixa.append(lista);
@@ -56,6 +57,7 @@ export function autocompletar(input, { opcoes = () => [], sugerir = null, aoEsco
     lista.hidden = false;
     input.setAttribute('aria-expanded', 'true');
     marcar(atuais.length ? 0 : -1);
+    aoMostrar?.(lista);
   };
 
   input.addEventListener('input', mostrar);

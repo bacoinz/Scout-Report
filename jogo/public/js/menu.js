@@ -112,6 +112,20 @@ function porque(estado, ficha, cat) {
 const classeEstado = (e) => [e.r === 'sem_registo' ? 'sr' : e.r, e.estado === 'deduzida' ? 'deduzida' : ''].filter(Boolean).join(' ');
 
 /**
+ * Desliza o menu das perguntas o necessário para se ver o que acabou de abrir (uma categoria, a lista dos prémios,
+ * as sugestões de um campo): até ao fundo de `fundo`, sem esconder o topo de `topo`.
+ */
+function mostrarNoMenu(topo, fundo = topo) {
+  setTimeout(() => {
+    const menu = topo.closest('.categorias');
+    if (!menu || !topo.isConnected || fundo.hidden) return;
+    const m = menu.getBoundingClientRect();
+    const falta = fundo.getBoundingClientRect().bottom - m.bottom + 8;
+    if (falta > 0) menu.scrollBy({ top: Math.min(falta, topo.getBoundingClientRect().top - m.top - 8), behavior: 'smooth' });
+  });
+}
+
+/**
  * O menu de uma ficha. `o`: { cat, ativo (é a minha vez), identificado (metade dos pontos), escolhida,
  * aoEscolher(chave), abertas (Set das categorias abertas) }. Devolve os <details> das categorias.
  */
@@ -148,6 +162,7 @@ export function menu(ficha, o) {
         input.value = op.nome;
         o.aoEscolher(op.valor);
       },
+      aoMostrar: (sugestoes) => mostrarNoMenu(caixa, sugestoes),
     });
     // As já respondidas (e as deduzidas com ✓) ficam à vista por baixo do campo, como os botões fechados; as
     // deduzidas com ✗ não (com todos os países encontrados seriam centenas). Sem nada por perguntar, o campo sai
@@ -177,6 +192,7 @@ export function menu(ficha, o) {
       onclick: () => {
         opcoes.hidden = !opcoes.hidden;
         botao.setAttribute('aria-expanded', String(!opcoes.hidden));
+        if (!opcoes.hidden) mostrarNoMenu(botao, opcoes);
       },
     }, el('span', { text: aqui ? rotulo(aqui, cat) : 'Escolhe…' }), el('span', { class: 'seta', 'aria-hidden': 'true', text: '▾' }));
     return [el('div', { class: 'seletor' }, botao, opcoes)];
@@ -224,7 +240,8 @@ export function menu(ficha, o) {
     const r = P.resumoCategoria(ficha, categoria);
     const resumo = [r.sim && `${r.sim} ✓`, r.nao && `${r.nao} ✗`, r.sem_registo && `${r.sem_registo} s/ registo`].filter(Boolean).join(' · ');
     const det = el('details', { class: `categoria${fechada ? ' fechada' : ''}`, open: !fechada && o.abertas.has(categoria), dataset: { categoria } },
-      el('summary', { 'aria-disabled': fechada ? 'true' : null, onclick: fechada ? (e) => e.preventDefault() : null },
+      // Ao abrir uma categoria (as do fundo, como os Prémios, abrem fora de vista), o menu desliza para a mostrar.
+      el('summary', { 'aria-disabled': fechada ? 'true' : null, onclick: fechada ? (e) => e.preventDefault() : () => setTimeout(() => det.open && mostrarNoMenu(det)) },
         el('span', { class: 'cat-nome', text: P.NOMES_CATEGORIAS[categoria] }),
         el('span', { class: 'resumo-cat', text: resumo }),
         fechada ? el('span', { class: 'carimbo mini cat-fechada', text: 'Fechado' }) : el('span', { class: 'cat-pts', text: `${pontosCat} pts` })),
