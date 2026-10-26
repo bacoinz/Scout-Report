@@ -114,8 +114,10 @@ código da sala no lugar de ABCD). Os bots perguntam ao calhas e respondem às p
 - **Desafio do Dia** (`/dia`, `src/dia.js`): sem estado no servidor e sem contas. O browser guarda o progresso
   (`localStorage`, `sr.dia.<data>`) e manda o histórico das perguntas em cada pedido; o servidor volta a responder a
   esse histórico a partir do registo, confirma a hierarquia e os 10 "sim" + clube do palpite, e só revela o jogador
-  no fim. Só aceita a data de hoje ou de ontem (Lisboa). O Relatório #1 é o dia em `DIA_LANCAMENTO`
-  (`wrangler.jsonc`); as datas sem linha no calendário usam a mesma ordem de reserva do pipeline.
+  no fim. Aceita qualquer dia desde o lançamento até hoje (Lisboa): os dias anteriores abrem-se no calendário da
+  página (`/dia/AAAA-MM-DD`). O Relatório #1 é o dia em `DIA_LANCAMENTO` (`wrangler.jsonc`, e o mesmo em
+  `pipeline/scout/calendario.py`); as datas sem linha no calendário usam a mesma ordem de reserva do pipeline, e
+  cada exportação fixa no calendário os dias já passados, para não mudarem quando a base mudar.
 
 ## Publicar
 

@@ -13,7 +13,7 @@ import hashlib
 import json
 import random
 from collections import Counter, defaultdict
-from datetime import datetime, timedelta, timezone
+from datetime import datetime, timezone
 
 from . import calendario, config
 from .validar import validar_todos
@@ -151,13 +151,11 @@ def gerar() -> dict:
              + [f"DELETE FROM ligas WHERE id NOT IN ({ids_ligas});", f"DELETE FROM clubes WHERE id NOT IN ({ids_clubes});"])
     escrever("04_resumo.sql", [_insert("resumo", {"chave": "versao", "valor": versao}, chave="chave")])
 
-    # Calendário do Desafio do Dia, só com os jogadores do Desafio que vão nesta exportação. Vai para o D1 de ontem
-    # em diante (as datas anteriores já não se jogam).
+    # Calendário do Desafio do Dia, só com os jogadores do Desafio que vão nesta exportação. Vai todo para o D1, desde
+    # o lançamento: os dias passados continuam a jogar-se no calendário da página.
     hoje = calendario.hoje_lisboa()
     cal = calendario.estender(calendario.ler(), [r["id"] for r in registos if r["fama"].get("diario")], hoje)
     calendario.guardar(cal)
-    desde = (hoje - timedelta(days=1)).isoformat()
-    escrever("05_desafios.sql", [_insert("desafios", {"data": d, "jogador_id": q}, chave="data")
-                                 for d, q in sorted(cal.items()) if d >= desde])
+    escrever("05_desafios.sql", [_insert("desafios", {"data": d, "jogador_id": q}, chave="data") for d, q in sorted(cal.items())])
     return {"jogadores": len(linhas_jog), "clubes": len(linhas_clubes), "ligas": len(linhas_ligas), "versao": versao,
             "desafios": max(d for d in cal) if cal else None, "ficheiros": ficheiros}

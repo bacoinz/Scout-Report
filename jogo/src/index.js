@@ -43,16 +43,20 @@ async function servirComVersao(request, env, ler) {
 
 const lancamento = (env) => env.DIA_LANCAMENTO || Dia.LANCAMENTO_POR_OMISSAO;
 
-/** O relatório de hoje: a data de Lisboa, o número, quanto falta para o seguinte e a versão da base. */
+/**
+ * O relatório de hoje: a data de Lisboa, o número, quanto falta para o seguinte, a versão da base e o dia do
+ * lançamento (o calendário da página mostra os relatórios desde aí).
+ */
 async function infoDia(env) {
   const agora = Date.now();
   const data = Dia.dataLisboa(agora);
-  return { data, numero: Dia.numero(data, lancamento(env)), faltaMs: Dia.faltaParaAmanha(agora), versao: await lerVersao(env.DB) };
+  return { data, numero: Dia.numero(data, lancamento(env)), faltaMs: Dia.faltaParaAmanha(agora), versao: await lerVersao(env.DB),
+    lancamento: lancamento(env) };
 }
 
 /**
- * Pergunta, palpite e desistir do Desafio do Dia. O corpo leva a data (hoje ou ontem) e o histórico das perguntas
- * já feitas; o servidor volta a responder-lhe antes de responder à nova.
+ * Pergunta, palpite e desistir do Desafio do Dia. O corpo leva a data (hoje ou um dia anterior, desde o lançamento) e
+ * o histórico das perguntas já feitas; o servidor volta a responder-lhe antes de responder à nova.
  */
 async function acaoDia(request, env, acao) {
   let corpo;
@@ -63,8 +67,8 @@ async function acaoDia(request, env, acao) {
   } catch {
     return json({ erro: 'Pedido inválido.' }, 400);
   }
-  if (!Dia.datasValidas(Date.now(), lancamento(env)).includes(corpo?.data)) {
-    return json({ erro: 'Esse relatório já fechou. Volta a abrir a página para jogares o de hoje.', fechado: true }, 400);
+  if (!Dia.dataValida(corpo?.data, Date.now(), lancamento(env))) {
+    return json({ erro: 'Esse relatório não existe. Volta a abrir a página para jogares o de hoje.', fechado: true }, 400);
   }
   const reg = await Dia.jogadorDoDia(env.DB, corpo.data);
   if (!reg) return json({ erro: 'Não há relatório para hoje.' }, 503);
@@ -76,9 +80,9 @@ async function acaoDia(request, env, acao) {
 
 /**
  * O index.html com a pré-visualização do Discord: imagem com URL absoluto e, na página de uma sala, título e
- * descrição com o código (na do Desafio do Dia, com o número do relatório).
+ * descrição com o código (na do Desafio do Dia, com o número do relatório: o de hoje, ou o da data no endereço).
  */
-async function pagina(request, env, { codigo = null, dia = false } = {}) {
+async function pagina(request, env, { codigo = null, dia = false, data = null } = {}) {
   const html = await env.ASSETS.fetch(new Request(new URL('/', request.url), { headers: request.headers }));
   const imagem = new URL('/og.png', request.url).href;
   let reescrever = new HTMLRewriter().on('meta[property="og:image"]', { element: (el) => el.setAttribute('content', imagem) });
@@ -90,7 +94,8 @@ async function pagina(request, env, { codigo = null, dia = false } = {}) {
       .on('meta[property="og:description"]', { element: (el) => el.setAttribute('content', descricao) })
       .on('meta[name="description"]', { element: (el) => el.setAttribute('content', descricao) });
   } else if (dia) {
-    const titulo = `Scout Report · Relatório do Dia #${Dia.numero(Dia.dataLisboa(), lancamento(env))}`;
+    const doDia = data && Dia.dataValida(data, Date.now(), lancamento(env)) ? data : Dia.dataLisboa();
+    const titulo = `Scout Report · Relatório do Dia #${Dia.numero(doDia, lancamento(env))}`;
     const descricao = 'Um jogador mistério por dia, o mesmo para toda a gente. Em quantas perguntas o identificas?';
     reescrever = reescrever
       .on('title', { element: (el) => el.setInnerContent(titulo) })
@@ -124,7 +129,8 @@ export default {
 
     const sala = pathname.match(/^\/sala\/([A-Za-z]{4})\/?$/);
     if (sala) return pagina(request, env, { codigo: sala[1].toUpperCase() });
-    if (pathname === '/dia' || pathname === '/dia/') return pagina(request, env, { dia: true });
+    const paginaDia = pathname.match(/^\/dia(?:\/(\d{4}-\d{2}-\d{2}))?\/?$/);
+    if (paginaDia) return pagina(request, env, { dia: true, data: paginaDia[1] ?? null });
     if (pathname === '/' || pathname === '/index.html') return pagina(request, env);
 
     if (pathname.startsWith('/api/') || pathname.startsWith('/ws/')) return json({ erro: 'Não encontrado.' }, 404);

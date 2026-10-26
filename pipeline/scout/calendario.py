@@ -6,6 +6,8 @@
 - A ordem: os jogadores do Desafio pelo sha1("scout-report:dia:<QID>"), a mesma que o Worker usa nas datas sem
   linha (jogo/src/dia.js). Cada data nova recebe o que saiu menos vezes no calendário e, em empate, o primeiro
   nessa ordem. Assim ninguém repete antes de todos terem saído, e os jogadores novos entram logo a seguir.
+- Os dias desde o lançamento até amanhã que não tenham linha ficam com o jogador que o Worker já serviu (a ordem de
+  reserva, `reserva`). Os dias passados jogam-se no calendário da página, e assim não mudam quando a base mudar.
 """
 import hashlib
 import json
@@ -17,6 +19,8 @@ from . import config
 CALENDARIO = config.DADOS / "calendario.json"
 DIAS_A_FRENTE = 60
 DIAS_MINIMOS = 30   # o `estado` avisa abaixo disto
+LANCAMENTO = date(2026, 10, 25)   # o Relatório #1: o mesmo dia que DIA_LANCAMENTO em jogo/wrangler.jsonc
+EPOCA = date(2026, 1, 1)          # o dia zero da ordem de reserva: o mesmo que EPOCA em jogo/src/dia.js
 
 
 def _ultimo_domingo(ano: int, mes: int) -> date:
@@ -37,6 +41,12 @@ def ordem(ids) -> list[str]:
     return sorted(ids, key=lambda q: hashlib.sha1(f"scout-report:dia:{q}".encode()).hexdigest())
 
 
+def reserva(ids, d: date) -> str:
+    """O jogador que o Worker serve numa data sem linha no calendário (jogo/src/dia.js → jogadorDoDia)."""
+    o = ordem(ids)
+    return o[(d - EPOCA).days % len(o)]
+
+
 def ler() -> dict:
     return json.loads(CALENDARIO.read_text(encoding="utf-8")) if CALENDARIO.exists() else {}
 
@@ -45,8 +55,10 @@ def guardar(calendario: dict) -> None:
     CALENDARIO.write_text(json.dumps(dict(sorted(calendario.items())), indent=1) + "\n", encoding="utf-8")
 
 
-def estender(calendario: dict, ids_do_desafio, hoje: date, dias: int = DIAS_A_FRENTE) -> dict:
-    """O calendário com as datas de hoje + 2 a hoje + `dias` preenchidas (devolve uma cópia)."""
+def estender(calendario: dict, ids_do_desafio, hoje: date, dias: int = DIAS_A_FRENTE,
+             lancamento: date = LANCAMENTO) -> dict:
+    """O calendário com as datas do lançamento a hoje + 1 fixadas (as que faltem, com o jogador que o Worker já
+    serviu) e as de hoje + 2 a hoje + `dias` preenchidas (devolve uma cópia)."""
     cal = dict(calendario)
     validos = set(ids_do_desafio)
     primeira = (hoje + timedelta(days=2)).isoformat()
@@ -54,6 +66,10 @@ def estender(calendario: dict, ids_do_desafio, hoje: date, dias: int = DIAS_A_FR
         del cal[d]
     if not validos:
         return cal
+    d = lancamento
+    while d < hoje + timedelta(days=2):
+        cal.setdefault(d.isoformat(), reserva(validos, d))
+        d += timedelta(days=1)
     posicao = {q: i for i, q in enumerate(ordem(validos))}
     usos = Counter(q for q in cal.values() if q in validos)
     for i in range(2, dias + 1):

@@ -1,6 +1,7 @@
 // Desafio do Dia (/dia, "Relatório do Dia"): um jogador mistério por dia, o mesmo para toda a gente. Só perguntas
 // da lista, com o menu e a ficha do jogo. O servidor responde (src/dia.js) e o progresso fica neste browser
 // (localStorage `sr.dia.<data>`): um jogo por dia. O resultado é o número de perguntas, para copiar para o Discord.
+// O calendário por baixo do relatório abre os dias anteriores (/dia/AAAA-MM-DD), desde o lançamento.
 import * as P from './comum/perguntas.js';
 import { procurar, sugerir } from './comum/nomes.js';
 import { $, $$, el, ler, guardar, miniatura, creditoFoto, enterEnvia } from './util.js';
@@ -16,7 +17,10 @@ const RESPOSTAS = { sim: 'Sim', nao: 'Não', sem_registo: 'Sem registo: escolhe 
 const chaveDia = (data) => `sr.dia.${data}`;
 
 const est = {
-  info: null, // { data, numero, faltaMs, versao } de /api/dia
+  info: null, // o de hoje: { data, numero, faltaMs, versao, lancamento } de /api/dia
+  data: null, // o dia aberto (hoje ou um anterior) e o número do relatório dele
+  numero: null,
+  mes: null, // o mês à vista no calendário: 'AAAA-MM'
   proximo: 0, // instante do relatório seguinte
   dados: null, // { cat, indice, nomesPorId }
   prog: null, // { passos: [{ chave, r } | { palpite, nome }], fim: null | { certo | desistiu, revelado }, completos }
@@ -44,7 +48,7 @@ function lerProgresso(data) {
   }
   return { passos: [], fim: null, completos: {} };
 }
-const guardarProgresso = () => guardar(chaveDia(est.info.data), JSON.stringify(est.prog));
+const guardarProgresso = () => guardar(chaveDia(est.data), JSON.stringify(est.prog));
 
 /** O relatório de hoje já acabou neste browser? (para o botão do início) */
 export function feitoHoje(data) {
@@ -56,7 +60,7 @@ const historico = () => est.prog.passos.filter((p) => p.chave).map((p) => p.chav
 async function pedir(acao, corpo) {
   let r;
   try {
-    r = await fetch(`/api/dia/${acao}`, { method: 'POST', body: JSON.stringify({ data: est.info.data, ...corpo }) });
+    r = await fetch(`/api/dia/${acao}`, { method: 'POST', body: JSON.stringify({ data: est.data, ...corpo }) });
   } catch {
     throw new Error('Sem ligação ao servidor. Tenta outra vez.');
   }
@@ -96,8 +100,20 @@ function porqueSemPalpite(f) {
 // Desenho
 // ---------------------------------------------------------------------------
 
+const meioDia = (data) => new Date(`${data}T12:00:00Z`);
 const dataPorExtenso = (data) =>
-  new Intl.DateTimeFormat('pt-PT', { weekday: 'long', day: 'numeric', month: 'long', timeZone: 'UTC' }).format(new Date(`${data}T12:00:00Z`));
+  new Intl.DateTimeFormat('pt-PT', { weekday: 'long', day: 'numeric', month: 'long', timeZone: 'UTC' }).format(meioDia(data));
+const nomeMes = (mes) => new Intl.DateTimeFormat('pt-PT', { month: 'long', year: 'numeric', timeZone: 'UTC' }).format(meioDia(`${mes}-01`));
+/** O número do relatório de uma data (o do lançamento é o #1). */
+const numeroDe = (data) => Math.round((Date.parse(data) - Date.parse(est.info.lancamento)) / 86_400_000) + 1;
+/** Pode abrir-se este dia? Desde o lançamento até hoje. */
+const jogavel = (data) => /^\d{4}-\d{2}-\d{2}$/.test(data ?? '') && data >= est.info.lancamento && data <= est.info.data;
+/** 'AAAA-MM' de mais (ou menos) n meses. */
+function somarMeses(mes, n) {
+  const [a, m] = mes.split('-').map(Number);
+  const d = new Date(Date.UTC(a, m - 1 + n, 1));
+  return `${d.getUTCFullYear()}-${String(d.getUTCMonth() + 1).padStart(2, '0')}`;
+}
 
 function renderPainel(f) {
   const cat = est.dados.cat;
@@ -109,7 +125,8 @@ function renderPainel(f) {
   categorias.replaceChildren(...menu(f, { cat, ativo, identificado: false, escolhida: est.escolhida, abertas: est.abertas, aoEscolher: escolher }));
   categorias.scrollTop = deslocamento;
   const aviso = $('#dia-aviso');
-  aviso.textContent = fim ? 'O relatório de hoje está fechado. Volta amanhã para outro jogador.' : '';
+  aviso.textContent = !fim ? '' : est.data === est.info.data ? 'O relatório de hoje está fechado. Volta amanhã para outro jogador, ou joga um dia anterior no calendário.'
+    : 'Este relatório está fechado. Escolhe outro dia no calendário.';
   aviso.hidden = !fim;
   $('#dia-enviar').disabled = !ativo;
   $('#dia-enviar').textContent = est.aEnviar ? 'A enviar…' : 'Enviar pergunta';
@@ -123,7 +140,7 @@ function renderFicha(f) {
   const podePalpitar = !fim && !est.aEnviar && P.palpiteDesbloqueado(f);
   const opcoes = {
     cat: est.dados.cat,
-    dono: { nome: `N.º ${est.info.numero}` },
+    dono: { nome: `N.º ${est.numero}` },
     alvo: false,
     recolhida: false,
     podePalpitar,
@@ -153,6 +170,40 @@ function renderLado() {
   $('#dia-copiar').hidden = !fim;
   $('#dia-ver-fim').hidden = !fim;
   renderProximo();
+  renderCalendario();
+}
+
+/** Como está um dia neste browser: { classe, texto } (identificado, desististe, a meio ou por jogar). */
+function estadoDoDia(data) {
+  const p = data === est.data ? est.prog : lerProgresso(data);
+  const n = textoPerguntas(quadrados(p.passos, p.fim).length);
+  if (p.fim?.certo) return { classe: 'certo', texto: `identificado em ${n}` };
+  if (p.fim?.desistiu) return { classe: 'desistiu', texto: `desististe ao fim de ${n}` };
+  if (p.passos.length) return { classe: 'a-meio', texto: `a meio (${n})` };
+  return { classe: '', texto: 'por jogar' };
+}
+
+/** O calendário: o mês à vista, com os dias desde o lançamento até hoje (o aberto em destaque). */
+function renderCalendario() {
+  const { lancamento, data: hoje } = est.info;
+  const [a, m] = est.mes.split('-').map(Number);
+  const desvio = (new Date(Date.UTC(a, m - 1, 1)).getUTCDay() + 6) % 7; // a semana começa à segunda
+  const diasNoMes = new Date(Date.UTC(a, m, 0)).getUTCDate();
+  const celulas = Array.from({ length: desvio }, () => el('li', { 'aria-hidden': 'true' }));
+  for (let dia = 1; dia <= diasNoMes; dia++) {
+    const d = `${est.mes}-${String(dia).padStart(2, '0')}`;
+    const pode = jogavel(d);
+    const e = pode ? estadoDoDia(d) : null;
+    celulas.push(el('li', {}, el('button', {
+      type: 'button', class: ['cal-dia', e?.classe, d === hoje ? 'hoje' : '', d === est.data ? 'atual' : ''].filter(Boolean).join(' '),
+      disabled: !pode, 'aria-current': d === est.data ? 'date' : null, dataset: { data: d },
+      title: pode ? `Relatório #${numeroDe(d)}${d === hoje ? ' (hoje)' : ''} · ${e.texto}` : null,
+    }, String(dia))));
+  }
+  $('#dia-cal-mes').textContent = nomeMes(est.mes);
+  $('#dia-cal-dias').replaceChildren(...celulas);
+  $('#dia-cal-antes').disabled = est.mes <= lancamento.slice(0, 7);
+  $('#dia-cal-depois').disabled = est.mes >= hoje.slice(0, 7);
 }
 
 function renderFim() {
@@ -175,7 +226,7 @@ function renderFim() {
     : semFoto);
   $('#dia-fim-nome').textContent = r.nome;
   $('#dia-fim-nota').textContent = fim.certo ? `Em ${textoPerguntas(n)}.` : `Desististe ao fim de ${textoPerguntas(n)}.`;
-  $('#dia-resumo').textContent = textoResumo(est.info.numero, est.prog.passos, fim);
+  $('#dia-resumo').textContent = textoResumo(est.numero, est.prog.passos, fim);
   est.fimAnimado = true;
   renderProximo();
 }
@@ -192,8 +243,8 @@ function renderProximo() {
 
 function render() {
   if (!est.info || !est.dados) return;
-  $('#dia-numero').textContent = `Relatório do Dia #${est.info.numero}`;
-  $('#dia-data').textContent = dataPorExtenso(est.info.data);
+  $('#dia-numero').textContent = `Relatório do Dia #${est.numero}`;
+  $('#dia-data').textContent = `${dataPorExtenso(est.data)}${est.data === est.info.data ? '' : ' · dia anterior'}`;
   const f = fichaDoDia();
   renderPainel(f);
   renderFicha(f);
@@ -216,8 +267,8 @@ function mostrarErro(e) {
   $('#dia-erro').textContent = e.message;
   sons.erro();
   if (e.fechado) {
-    toast('Esse relatório já fechou: a abrir o de hoje…', 3000);
-    setTimeout(() => location.reload(), 2500);
+    toast('Esse relatório não existe: a abrir o de hoje…', 3000);
+    setTimeout(() => location.assign('/dia'), 2500);
   }
 }
 
@@ -319,7 +370,7 @@ function abrirCaixa(art, f) {
 }
 
 async function desistir() {
-  if (!confirm('Desistir? O jogador é revelado e o relatório de hoje fica fechado.')) return;
+  if (!confirm('Desistir? O jogador é revelado e este relatório fica fechado.')) return;
   est.aEnviar = true;
   render();
   try {
@@ -337,7 +388,7 @@ async function desistir() {
 }
 
 async function copiarResultado() {
-  const texto = textoResumo(est.info.numero, est.prog.passos, est.prog.fim);
+  const texto = textoResumo(est.numero, est.prog.passos, est.prog.fim);
   try {
     await navigator.clipboard.writeText(texto);
     toast('Resultado copiado! Cola-o no Discord.');
@@ -391,6 +442,34 @@ export function ligar(o) {
     for (const b of $$('#dia-navegador [data-ir]')) b.setAttribute('aria-current', String(b === melhor?.b));
   }, { passive: true });
   setInterval(() => !$('#ecra-dia').hidden && renderProximo(), 30_000);
+  // Calendário: os meses e os dias (um dia anterior abre-se no endereço /dia/AAAA-MM-DD; o de hoje em /dia).
+  $('#dia-cal-antes').addEventListener('click', () => {
+    est.mes = somarMeses(est.mes, -1);
+    renderCalendario();
+  });
+  $('#dia-cal-depois').addEventListener('click', () => {
+    est.mes = somarMeses(est.mes, 1);
+    renderCalendario();
+  });
+  $('#dia-cal-dias').addEventListener('click', (e) => {
+    const b = e.target.closest('[data-data]');
+    if (!b || b.disabled || b.dataset.data === est.data) return;
+    const d = b.dataset.data;
+    history.pushState(null, '', d === est.info.data ? '/dia' : `/dia/${d}`);
+    mostrarDia(d);
+    // No telemóvel, volta-se à coluna das perguntas.
+    if (innerWidth < 960) $('#dia-col-perguntas').scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
+  });
+}
+
+/** Mostra o relatório de uma data (hoje ou um dia anterior): o progresso dela, o menu limpo e o mês dela no calendário. */
+function mostrarDia(data) {
+  Object.assign(est, { data, numero: numeroDe(data), prog: lerProgresso(data), mes: data.slice(0, 7) });
+  Object.assign(est, { escolhida: null, palpite: null, aEnviar: false, fimEscondido: false, novas: new Set() });
+  est.fimAnimado = Boolean(est.prog.fim); // quem volta a abrir um relatório acabado não vê o carimbo a cair outra vez
+  $('#dia-erro').textContent = '';
+  document.title = `Scout Report · Relatório do Dia #${est.numero}`;
+  render();
 }
 
 /** O relatório de hoje: { data, numero, faltaMs, versao }, ou null sem ligação. */
@@ -403,8 +482,8 @@ export async function infoDeHoje() {
   }
 }
 
-/** Abre o ecrã do Desafio do Dia (o app.js já o mostrou). */
-export async function abrir() {
+/** Abre o ecrã do Desafio do Dia (o app.js já o mostrou): o relatório de hoje, ou o da `data` do endereço. */
+export async function abrir(data = null) {
   const aviso = $('#dia-aviso');
   if (!est.info) {
     $('#dia-categorias').replaceChildren(el('p', { class: 'nota', text: 'A abrir o relatório de hoje…' }));
@@ -414,9 +493,10 @@ export async function abrir() {
       aviso.hidden = false;
       return;
     }
+    // Um servidor de antes do calendário não manda o dia do lançamento: tira-se do número de hoje.
+    info.lancamento ??= new Date(Date.parse(info.data) - (info.numero - 1) * 86_400_000).toISOString().slice(0, 10);
     est.info = info;
     est.proximo = Date.now() + info.faltaMs;
-    est.prog = lerProgresso(info.data);
   }
   try {
     est.dados = await carregarDados(est.info.versao);
@@ -425,7 +505,7 @@ export async function abrir() {
     aviso.hidden = false;
     return;
   }
-  document.title = `Scout Report · Relatório do Dia #${est.info.numero}`;
-  est.fimAnimado = Boolean(est.prog.fim); // quem volta a abrir um relatório acabado não vê o carimbo a cair outra vez
-  render();
+  // Uma data que não se pode jogar (futura, antes do lançamento, inválida) abre o de hoje, em /dia.
+  if (data && !jogavel(data)) history.replaceState(null, '', '/dia');
+  mostrarDia(jogavel(data) ? data : est.info.data);
 }

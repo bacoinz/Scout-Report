@@ -31,10 +31,15 @@ describe('data de Lisboa', () => {
     expect(D.faltaParaAmanha(t('2026-01-10T23:59:59Z'))).toBe(1000);
   });
 
-  it('aceita hoje e ontem, nunca antes do lançamento', () => {
-    expect(D.datasValidas(t('2026-11-03T10:00:00Z'), '2026-10-25')).toEqual(['2026-11-03', '2026-11-02']);
-    expect(D.datasValidas(t('2026-10-25T10:00:00Z'), '2026-10-25')).toEqual(['2026-10-25']);
-    expect(D.datasValidas(t('2026-11-03T23:30:00Z'), '2026-10-25')).toEqual(['2026-11-03', '2026-11-02']);
+  it('aceita qualquer dia desde o lançamento até hoje (Lisboa), nunca os que ainda não chegaram', () => {
+    const agora = t('2026-11-03T10:00:00Z');
+    const valida = (d) => D.dataValida(d, agora, '2026-10-25');
+    expect(['2026-11-03', '2026-11-02', '2026-10-30', '2026-10-25'].every(valida)).toBe(true);
+    expect(['2026-11-04', '2026-10-24', '2026-02-30', '2026-11-3', '', null, 20261103].some(valida)).toBe(false);
+    // Às 23:30 UTC de 3/11 já é dia 4 em Lisboa? Não: em novembro Lisboa está a UTC+0.
+    expect(D.dataValida('2026-11-04', t('2026-11-03T23:30:00Z'), '2026-10-25')).toBe(false);
+    // Em outubro (UTC+1), sim.
+    expect(D.dataValida('2026-10-25', t('2026-10-24T23:30:00Z'), '2026-10-25')).toBe(true);
   });
 
   it('o número do relatório conta os dias desde o lançamento', () => {

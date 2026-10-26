@@ -26,10 +26,13 @@ export const diasEntre = (de, ate) => Math.round((Date.parse(`${ate}T00:00:00Z`)
 /** O número do relatório: os dias desde o lançamento (o do lançamento é o #1). */
 export const numero = (data, lancamento = LANCAMENTO_POR_OMISSAO) => diasEntre(lancamento, data) + 1;
 
-/** Hoje e ontem (Lisboa), desde o lançamento: quem começou antes da meia-noite ainda acaba o de ontem. */
-export function datasValidas(instante = Date.now(), lancamento = LANCAMENTO_POR_OMISSAO) {
-  const hoje = dataLisboa(instante);
-  return [hoje, somarDias(hoje, -1)].filter((d) => d >= lancamento);
+/**
+ * Pode jogar-se o relatório desta data? Qualquer dia desde o lançamento até hoje (Lisboa): os que passaram jogam-se
+ * pelo calendário da página; os que ainda não chegaram, não.
+ */
+export function dataValida(data, instante = Date.now(), lancamento = LANCAMENTO_POR_OMISSAO) {
+  if (typeof data !== 'string' || !/^\d{4}-\d{2}-\d{2}$/.test(data) || somarDias(data, 0) !== data) return false;
+  return data >= lancamento && data <= dataLisboa(instante);
 }
 
 /**
@@ -58,12 +61,13 @@ export async function ordemDoCalendario(ids) {
 }
 
 /**
- * O jogador de uma data: o da tabela `desafios` (se ainda estiver na base). Sem linha (antes da primeira exportação
- * do calendário, ou além do fim dele), um da ordem do calendário, a rodar a partir de EPOCA.
+ * O jogador de uma data: o da tabela `desafios`, mesmo que já tenha saído da base (um dia passado joga-se sempre
+ * com o mesmo jogador; os futuros a exportação troca). Sem linha (além do fim do calendário), um da ordem do
+ * calendário, a rodar a partir de EPOCA (o mesmo que pipeline/scout/calendario.py → reserva).
  */
 export async function jogadorDoDia(db, data) {
   const marcado = await db
-    .prepare('SELECT j.dados FROM desafios d JOIN jogadores j ON j.id = d.jogador_id WHERE d.data = ? AND j.ativo = 1')
+    .prepare('SELECT j.dados FROM desafios d JOIN jogadores j ON j.id = d.jogador_id WHERE d.data = ?')
     .bind(data)
     .first();
   if (marcado) return JSON.parse(marcado.dados);

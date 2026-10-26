@@ -53,13 +53,14 @@ async function mostrarBotaoDia() {
   if (info) $('#btn-dia .nota').textContent = `#${info.numero}${dia.feitoHoje(info.data) ? ' ✓' : ''}`;
 }
 
-function abrirDia() {
+/** O Desafio do Dia: o relatório de hoje, ou o de um dia anterior (`data`, do endereço /dia/AAAA-MM-DD). */
+function abrirDia(data = null) {
   estado.ligacao?.fechar();
   Object.assign(estado, { ligacao: null, sala: null, privado: null, eu: null });
   $('#aviso-ligacao').hidden = true;
   for (const d of $$('dialog[open]')) d.close();
   mostrar('dia');
-  dia.abrir();
+  dia.abrir(data);
 }
 
 async function infoSala(codigo) {
@@ -307,8 +308,9 @@ setInterval(() => {
 
 function rota() {
   const m = location.pathname.match(/^\/sala\/([A-Za-z]{4})\/?$/);
+  const d = location.pathname.match(/^\/dia(?:\/(\d{4}-\d{2}-\d{2}))?\/?$/);
   if (m) abrirSala(m[1].toUpperCase());
-  else if (/^\/dia\/?$/.test(location.pathname)) abrirDia();
+  else if (d) abrirDia(d[1] ?? null);
   else voltarAoInicio();
 }
 window.addEventListener('popstate', rota);

@@ -115,6 +115,22 @@
         <button id="dia-copiar" class="btn btn-fantasma dia-copiar" type="button" hidden>Copiar resultado</button>
         <button id="dia-desistir" class="btn btn-contorno" type="button">Desistir</button>
         <p class="nota dia-proximo"></p>
+
+        <section class="dia-calendario" aria-labelledby="dia-cal-titulo">
+          <h3 id="dia-cal-titulo" class="painel-titulo">Calendário</h3>
+          <div class="cal-topo">
+            <button id="dia-cal-antes" class="cal-seta" type="button" aria-label="Mês anterior">‹</button>
+            <p id="dia-cal-mes" class="cal-mes"></p>
+            <button id="dia-cal-depois" class="cal-seta" type="button" aria-label="Mês seguinte">›</button>
+          </div>
+          <ol class="cal-semana" aria-hidden="true"><li>S</li><li>T</li><li>Q</li><li>Q</li><li>S</li><li>S</li><li>D</li></ol>
+          <ol id="dia-cal-dias" class="cal-dias" aria-label="Relatórios de cada dia"></ol>
+          <ul class="legenda cal-legenda">
+            <li><i class="cal-marca certo"></i>Identificado</li>
+            <li><i class="cal-marca desistiu"></i>Desististe</li>
+            <li><i class="cal-marca a-meio"></i>A meio</li>
+          </ul>
+        </section>
       </aside>
     </div>
 
@@ -441,7 +457,8 @@
       <li><span><strong>Sem registo</strong>: quando os dados não chegam para responder, a pergunta fecha-se e não conta.</span></li>
       <li><span>O <strong>Palpite final</strong> acende-se com <strong>10 "sim"</strong> e pelo menos <strong>um clube confirmado</strong>. Podes dar os palpites que quiseres, mas cada palpite errado conta como uma pergunta.</span></li>
       <li><span>Quanto <strong>menos perguntas</strong>, melhor. No fim, copia o resultado e cola-o no Discord: 🟩 sim, 🟥 não, ⬛ palpite errado, 🟪 identificado.</span></li>
-      <li><span>Se não conseguires, <strong>Desistir</strong> revela o jogador (🏳️). Só há um relatório por dia em cada browser.</span></li>
+      <li><span>Se não conseguires, <strong>Desistir</strong> revela o jogador (🏳️). Cada relatório joga-se uma vez em cada browser.</span></li>
+      <li><span>No <strong>calendário</strong>, por baixo do teu relatório, abres os dias anteriores que não chegaste a jogar (ou que deixaste a meio). Cada dia mostra se o identificaste, se desististe ou se está a meio.</span></li>
     </ol>
     </div>
   </dialog>
