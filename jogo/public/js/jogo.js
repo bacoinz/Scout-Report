@@ -3,7 +3,7 @@
 // servidor manda; as ações saem por `enviar`.
 import * as P from './comum/perguntas.js';
 import { procurar, sugerir } from './comum/nomes.js';
-import { $, $$, el, formatarTempo, plural, miniatura, creditoFoto } from './util.js';
+import { $, $$, el, formatarTempo, plural, miniatura, creditoFoto, enterEnvia } from './util.js';
 import { autocompletar } from './autocompletar.js';
 import { fichaPublica, caixaPalpite, dossier, dossierVazio } from './ficha.js';
 import { menu, descreverEscolhida } from './menu.js';
@@ -278,6 +278,7 @@ function mostrarEscolhida() {
 
 export function ligarPainel() {
   $('#escolhida .limpar').addEventListener('click', () => escolher(null));
+  enterEnvia({ ecra: '#ecra-jogo', form: '#acoes', menu: '#categorias', escolhida: () => Boolean(ui.escolhida) });
   $('#livre').addEventListener('input', () => {
     $('#erro-envio').textContent = '';
   });

@@ -3,7 +3,7 @@
 // (localStorage `sr.dia.<data>`): um jogo por dia. O resultado é o número de perguntas, para copiar para o Discord.
 import * as P from './comum/perguntas.js';
 import { procurar, sugerir } from './comum/nomes.js';
-import { $, $$, el, ler, guardar, miniatura, creditoFoto } from './util.js';
+import { $, $$, el, ler, guardar, miniatura, creditoFoto, enterEnvia } from './util.js';
 import { autocompletar } from './autocompletar.js';
 import { fichaPublica, caixaPalpite } from './ficha.js';
 import { menu, descreverEscolhida } from './menu.js';
@@ -358,6 +358,7 @@ export function ligar(o) {
     if (!est.aEnviar && !est.prog?.fim) enviarPergunta();
   });
   $('#dia-escolhida .limpar').addEventListener('click', () => escolher(null));
+  enterEnvia({ ecra: '#ecra-dia', form: '#dia-acoes', menu: '#dia-categorias', escolhida: () => Boolean(est.escolhida) });
   $('#dia-fichas').addEventListener('click', (e) => {
     const b = e.target.closest('[data-palpite]');
     if (!b || b.disabled || est.palpite) return;

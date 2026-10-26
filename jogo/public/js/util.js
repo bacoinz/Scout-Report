@@ -3,6 +3,24 @@
 export const $ = (seletor, raiz = document) => raiz.querySelector(seletor);
 export const $$ = (seletor, raiz = document) => [...raiz.querySelectorAll(seletor)];
 
+/**
+ * O Enter envia a pergunta escolhida no menu: liga-o num ecrã (`ecra`), com o formulário das perguntas (`form`), o
+ * menu (`menu`) e `escolhida()`, que diz se há uma pergunta escolhida. Só com o ecrã à vista e sem janelas abertas, e
+ * com o foco na página ou no menu: num campo de texto (pergunta livre, palpite, Joker) o Enter é do campo, e quando
+ * acabou de escolher uma sugestão (países, clubes) não envia logo (um Enter escolhe, o seguinte envia).
+ */
+export function enterEnvia({ ecra, form, menu, escolhida }) {
+  document.addEventListener('keydown', (e) => {
+    if (e.key !== 'Enter' || e.defaultPrevented || e.isComposing || e.repeat || e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return;
+    if ($(ecra).hidden || $('dialog[open]') || !escolhida()) return;
+    const alvo = e.target;
+    const naPagina = alvo === document.body || alvo === document.documentElement;
+    if (!naPagina && !(alvo.closest?.(menu) && !alvo.matches('input, textarea, select'))) return;
+    e.preventDefault();
+    $(form).requestSubmit();
+  });
+}
+
 /** Cria um elemento HTML. `attrs`: class, text, dataset, style, on* e atributos normais. */
 export function el(tag, attrs = {}, ...filhos) {
   const n = document.createElement(tag);
