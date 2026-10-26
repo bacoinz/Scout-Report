@@ -308,6 +308,8 @@ export function fichaPublica(f, o) {
   const revelada = f.revelada;
   const nSim = P.contarSim(f);
   const pronto = P.palpiteDesbloqueado(f);
+  // Com os "sim" todos e o palpite ainda fechado, o que falta (o clube) fica escrito à frente dos quadrados.
+  const faltaClube = !f.identificada && !revelada && P.faltaParaPalpite(f).sim === 0 && P.faltaParaPalpite(f).clube;
   const resumo = f.identificada ? 'identificado' : revelada ? 'revelado' : pronto ? `${nSim} sim · palpite!` : `${Math.min(nSim, P.SIM_MINIMOS)}/${P.SIM_MINIMOS} sim`;
   const classe = ['folha', 'ficha', 'papel', o.alvo ? 'alvo' : '', o.recolhida ? 'recolhida' : ''].filter(Boolean).join(' ');
   const corpo = revelada
@@ -319,7 +321,7 @@ export function fichaPublica(f, o) {
     : revelada
       ? el('span', { class: 'carimbo identificado-mini', style: { '--rot': rotacao(`rv${f.n}`) }, text: 'Revelado' })
       : el('button', {
-        class: 'btn btn-principal btn-palpite', type: 'button', disabled: !o.podePalpitar, title: o.podePalpitar ? null : o.porqueNao,
+        class: 'btn btn-principal btn-palpite', type: 'button', disabled: !o.podePalpitar, title: o.podePalpitar || faltaClube ? null : o.porqueNao,
         dataset: { palpite: String(f.n) },
       }, 'Palpite final');
   const art = el('article', {
@@ -336,7 +338,8 @@ export function fichaPublica(f, o) {
       el('button', { class: 'folha-min', type: 'button', 'aria-label': `${o.recolhida ? 'Abrir' : 'Recolher'} a ficha de ${o.dono?.nome ?? '?'}`, dataset: { recolher: String(f.n) }, text: o.recolhida ? '+' : '–' })),
     el('div', { class: 'folha-retrato' }, retrato(revelada?.perfil?.foto, revelada?.nome), revelada ? dadosRegisto(revelada) : dadosPublicos(f, ctx))),
   el('div', { class: 'folha-corpo' }, ...corpo),
-  el('footer', { class: 'folha-rodape' }, contadorSim(nSim, titulo), rodape));
+  el('footer', { class: 'folha-rodape' }, contadorSim(nSim, titulo),
+    faltaClube ? el('span', { class: 'falta-palpite', text: 'Falta um clube confirmado' }) : null, rodape));
   if (o.identificadoAgora && revelada) {
     art.append(el('div', { class: 'identificado' },
       el('p', { class: 'carimbo-grande', text: 'Identificado' }),

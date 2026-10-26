@@ -1220,3 +1220,14 @@
     display: none;
   }
 }
+
+/* O que falta para o palpite final, com os "sim" todos: escrito à mão à frente dos quadrados. */
+.falta-palpite {
+  flex: 1;
+  min-width: 0;
+  font-family: var(--mao);
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--carimbo-vermelho);
+}
