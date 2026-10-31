@@ -346,6 +346,130 @@ describe('tempo, desligados e fim', () => {
   });
 });
 
+describe('sem timer', () => {
+  const semTimer = (n, opcoes = {}) => montar(n, { ...opcoes, config: { tempo: 'sem' } });
+  const UMA_HORA = 60 * 60_000;
+  /** Em JSON (o que chega ao browser), o prazo infinito vira null. */
+  const noBrowser = (sala, ctx) => JSON.parse(JSON.stringify(estadoPublico(sala, ctx.agora))).partida;
+  /** Acaba a vez em curso com uma pergunta de resposta "não". */
+  const jogarVez = (sala, ctx) => {
+    const v = vez(sala);
+    expect(partida.perguntar(sala, v.jogador, { vez: v.seq, chave: perguntaCom(sala, ctx, 'nao') }, ctx).erro).toBeUndefined();
+    L.avancar(sala, ctx);
+  };
+
+  it('o timer é uma opção do lobby: com timer por omissão, e só aceita com ou sem', () => {
+    const ctx = { agora: 1_000_000, aleatorio: () => 0, registos: new Map(), catalogo: cat };
+    const sala = L.novaSala({ codigo: 'TEST', agora: ctx.agora });
+    L.entrar(sala, { token: 'token-1-abcdef', nome: 'J1' }, ctx);
+    expect(sala.config.tempo).toBe('com');
+    L.configurar(sala, 'j1', { tempo: 'sem' });
+    expect(sala.config.tempo).toBe('sem');
+    L.configurar(sala, 'j1', { tempo: 'talvez' });
+    expect(sala.config.tempo).toBe('sem');
+  });
+
+  it('a vez nunca acaba sozinha, sem alarme e com o prazo a chegar ao browser como null', () => {
+    const { sala, ctx, t } = semTimer(3);
+    expect(partida.proximoPrazo(sala)).toBeNull();
+    expect(noBrowser(sala, ctx).vez.prazo).toBeNull();
+    t(UMA_HORA);
+    expect(vez(sala).jogador).toBe('j1');
+    expect(sala.feed.some((e) => e.tipo === 'tempo')).toBe(false);
+  });
+
+  it('jogar faz a vez passar como sempre', () => {
+    const { sala, ctx } = semTimer(3);
+    jogarVez(sala, ctx);
+    expect(vez(sala).jogador).toBe('j2');
+  });
+
+  it('quem se desliga na sua vez perde-a ao fim de 10 s, com alarme marcado para isso', () => {
+    const { sala, ctx, t } = semTimer(3);
+    L.desligar(sala, 'j1', ctx);
+    const salta = ctx.agora + REGRAS.desligadoSaltaMs;
+    expect(partida.proximoPrazo(sala)).toBe(salta);
+    t(REGRAS.desligadoSaltaMs - 1);
+    expect(vez(sala).jogador).toBe('j1');
+    t(1);
+    expect(vez(sala).jogador).toBe('j2');
+    expect(sala.feed.some((e) => e.tipo === 'saltou' && e.jogador === 'j1')).toBe(true);
+  });
+
+  it('quem volta antes dos 10 s continua com a vez, ainda sem limite', () => {
+    const { sala, ctx, t } = semTimer(3);
+    L.desligar(sala, 'j1', ctx);
+    t(5_000);
+    L.entrar(sala, { token: 'token-1-abcdef' }, ctx);
+    t(UMA_HORA);
+    expect(vez(sala).jogador).toBe('j1');
+    expect(vez(sala).prazo).toBe(Infinity);
+  });
+
+  it('a pergunta livre espera pela resposta; se o dono se desligar, cai e quem perguntou recupera a vez', () => {
+    const { sala, ctx, t } = semTimer(3);
+    const v = vez(sala);
+    expect(partida.perguntaLivre(sala, 'j1', { vez: v.seq, texto: 'Canta o hino?' }, ctx).erro).toBeUndefined();
+    expect(partida.proximoPrazo(sala)).toBeNull();
+    expect(noBrowser(sala, ctx).livre.prazo).toBeNull();
+    t(UMA_HORA);
+    expect(sala.partida.fase).toBe('livre');
+    L.desligar(sala, v.alvo, ctx);
+    L.avancar(sala, ctx);
+    expect(sala.partida.fase).toBe('vez');
+    expect(vez(sala).jogador).toBe('j1');
+    expect(vez(sala).prazo).toBe(Infinity);
+  });
+
+  it('a Joker espera pelos palpites de quem está ligado, mas não por quem se desligou', () => {
+    const { sala, ctx, t } = semTimer(3);
+    const p = sala.partida;
+    p.joker.ronda = 1;
+    for (let i = 0; i < 3; i++) jogarVez(sala, ctx);
+    expect(p.fase).toBe('joker');
+    expect(noBrowser(sala, ctx).joker.prazo).toBeNull();
+    const [a, b] = sala.jogadores.map((j) => j.id).filter((id) => id !== p.joker.dono);
+    expect(partida.lance(sala, a, { valor: 10 }, ctx).erro).toBeUndefined();
+    t(UMA_HORA);
+    expect(p.fase).toBe('joker');
+    L.desligar(sala, b, ctx);
+    L.avancar(sala, ctx);
+    expect(p.fase).toBe('revelacao');
+    // A revelação é uma animação: essa continua a ter o seu tempo.
+    expect(Number.isFinite(partida.proximoPrazo(sala))).toBe(true);
+  });
+
+  it('as cartas esperam por quem está ligado; quem se desligou há 10 s fica com uma ao calhas', () => {
+    const { sala, ctx, t } = semTimer(3, { modo: 'escolha' });
+    const p = sala.partida;
+    expect(p.fase).toBe('escolha');
+    for (const id of ['j1', 'j2']) expect(partida.escolherCarta(sala, id, p.cartas[id].ids[0], ctx).erro).toBeUndefined();
+    t(UMA_HORA);
+    expect(p.fase).toBe('escolha');
+    const cartas = [...p.cartas.j3.ids];
+    L.desligar(sala, 'j3', ctx);
+    expect(partida.proximoPrazo(sala)).toBe(ctx.agora + REGRAS.desligadoSaltaMs);
+    t(REGRAS.desligadoSaltaMs - 1);
+    expect(p.fase).toBe('escolha');
+    t(1);
+    expect(p.fase).toBe('vez');
+    expect(cartas).toContain(p.segredos.j3.registo);
+  });
+
+  it('o alarme nunca recebe um prazo infinito, em nenhuma fase', () => {
+    const { sala, ctx } = semTimer(3);
+    sala.partida.joker.ronda = 1;
+    const v = vez(sala);
+    partida.perguntaLivre(sala, 'j1', { vez: v.seq, texto: 'Canta o hino?' }, ctx);
+    expect(L.proximoPrazo(sala)).toBeNull();
+    partida.responderLivre(sala, v.alvo, { resposta: 'nao' }, ctx);
+    L.avancar(sala, ctx);
+    for (let i = 0; i < 2; i++) jogarVez(sala, ctx);
+    expect(sala.partida.fase).toBe('joker');
+    expect(L.proximoPrazo(sala)).toBeNull();
+  });
+});
+
 describe('modo Escolha', () => {
   it('cada um escolhe uma de três cartas; quando todos escolhem, começa', () => {
     const { sala, ctx } = montar(2, { modo: 'escolha' });

@@ -30,12 +30,13 @@ export const REGRAS = {
   jokerAnuncioMs: 3_300,
   jokerMs: 15_000,
   jokerRevelacaoMs: 7_000,
-  /** Cada vez dura 1 minuto. A partida não tem limite de rondas: acaba quando todos forem identificados. */
+  /** Cada vez dura 1 minuto (com timer). A partida não tem limite de rondas: acaba quando todos forem identificados. */
   vezMs: 60_000,
-  /** Opções do lobby. */
+  /** Opções do lobby. "tempos": com ou sem timer nas decisões dos jogadores (a vez, a pergunta livre, as cartas, a Joker). */
   modos: ['aleatorio', 'escolha'],
   grupos: ['conhecidos', 'todos'],
-  porOmissao: { modo: 'aleatorio', jogadores: 'conhecidos' },
+  tempos: ['com', 'sem'],
+  porOmissao: { modo: 'aleatorio', jogadores: 'conhecidos', tempo: 'com' },
 };
 
 // O roxo é a cor de destaque do jogo: na paleta dos jogadores fica um verde-água no lugar dele.

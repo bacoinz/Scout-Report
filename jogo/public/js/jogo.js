@@ -541,7 +541,7 @@ function renderEscolha(sala) {
   $('#escolha-espera').hidden = !esperar;
   $('#escolha-espera').textContent = `À espera dos outros (${jogam.filter((j) => j.escolheu).length}/${jogam.length})…`;
   $('#escolha-nota').textContent = p?.fase === 'escolha'
-    ? 'Os outros vão tentar descobri-lo. Quem não escolher a tempo fica com uma das cartas ao calhas.'
+    ? `Os outros vão tentar descobri-lo.${sala.config.tempo === 'sem' ? '' : ' Quem não escolher a tempo fica com uma das cartas ao calhas.'}`
     : 'Jogas a partir da próxima ronda com o jogador que escolheres.';
   const chave = JSON.stringify([cartas?.ids, esperar]);
   if ($('#escolha-cartas').dataset.chave === chave) return;
@@ -559,10 +559,12 @@ function renderLivre(sala) {
   const d = $('#dialogo-livre');
   const l = sala.partida?.livre;
   const minha = sala.fase === 'jogo' && sala.partida?.fase === 'livre' && l?.alvo === contexto.eu;
-  if (minha && !d.open && ui.livreRespondida !== `${l.autor}:${l.prazo}`) {
+  // Sem timer o prazo é null: a chave leva também a vez, para a pergunta seguinte do mesmo jogador abrir a janela.
+  const chaveLivre = l ? `${l.autor}:${l.prazo}:${sala.partida.vez?.seq}` : null;
+  if (minha && !d.open && ui.livreRespondida !== chaveLivre) {
     $('#livre-quem').textContent = `${nome(l.autor)} pergunta sobre o teu jogador:`;
     $('#livre-texto').textContent = `«${l.texto}»`;
-    d.dataset.livre = `${l.autor}:${l.prazo}`;
+    d.dataset.livre = chaveLivre;
     d.show();
   }
   if (!minha && d.open) d.close();
@@ -638,7 +640,10 @@ export function tick(agora) {
   }
   let prazo = null;
   let duracao = 1;
-  if (p.congelada) prazo = null;
+  // Sem timer não há relógio nem linha do tempo (nem o tique dos últimos segundos).
+  const semTimer = sala.config.tempo === 'sem';
+  $('#barra-tempo').parentElement.hidden = semTimer;
+  if (p.congelada || semTimer) prazo = null;
   else if (p.fase === 'livre' && p.livre) [prazo, duracao] = [p.livre.prazo, 30_000];
   else if (p.fase === 'escolha' && p.escolha) [prazo, duracao] = [p.escolha.prazo, 30_000];
   else if ((p.fase === 'joker' || p.fase === 'revelacao') && p.joker) [prazo, duracao] = [p.joker.prazo, p.joker.prazo - p.joker.abre];
@@ -647,7 +652,7 @@ export function tick(agora) {
   $('#relogio').textContent = p.congelada ? '⏸' : prazo ? formatarTempo(falta) : '';
   $('#barra-tempo').style.width = prazo ? `${Math.min(100, (falta / duracao) * 100)}%` : '0%';
   $('#jogo-ronda').textContent = $('#jogo-ronda').dataset.base ?? '';
-  return p.vez?.jogador === contexto.eu && p.fase === 'vez' ? falta : null;
+  return !semTimer && p.vez?.jogador === contexto.eu && p.fase === 'vez' ? falta : null;
 }
 
 // ---------------------------------------------------------------------------

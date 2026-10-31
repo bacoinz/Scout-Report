@@ -203,7 +203,12 @@ export class Sala extends DurableObject {
     if (!id || !this.sala) return;
     const outros = this.ctx.getWebSockets().filter((w) => w !== ws && w.deserializeAttachment()?.jogadorId === id);
     if (outros.length) return; // ainda tem outro separador aberto
-    if (L.desligar(this.sala, id, this.contexto())) await this.publicar();
+    const ctx = this.contexto();
+    if (L.desligar(this.sala, id, ctx)) {
+      // Sem timer não há alarme: a pergunta livre e a Joker que só esperavam por esta pessoa avançam já.
+      L.avancar(this.sala, ctx);
+      await this.publicar();
+    }
   }
 
   // --- Alarmes ---

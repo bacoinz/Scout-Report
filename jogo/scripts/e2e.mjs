@@ -124,8 +124,8 @@ if (process.argv[2] === '--bots') {
         b.agiu.add(`joker${p.joker.ficha}`);
         setTimeout(() => b.enviar({ t: 'lance', valor: Math.floor(Math.random() * 400) }), 4000 + Math.random() * 6000);
       }
-      if (p.fase === 'livre' && p.livre?.alvo === b.eu && !b.agiu.has(`livre${p.livre.prazo}`)) {
-        b.agiu.add(`livre${p.livre.prazo}`);
+      if (p.fase === 'livre' && p.livre?.alvo === b.eu && !b.agiu.has(`livre${p.vez?.seq}:${p.livre.prazo}`)) {
+        b.agiu.add(`livre${p.vez?.seq}:${p.livre.prazo}`);
         setTimeout(() => b.enviar({ t: 'responder_livre', resposta: ['sim', 'nao', 'nao_sei'][Math.floor(Math.random() * 3)] }), 2500);
       }
       if (p.fase === 'vez' && p.vez?.jogador === b.eu && !b.agiu.has(`vez${p.vez.seq}:${Object.keys(fichaDe(s, p.vez.alvo).respostas).length}`)) {

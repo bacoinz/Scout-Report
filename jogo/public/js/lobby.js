@@ -1,4 +1,4 @@
-// Lobby: código da sala, jogadores e opções do anfitrião (modo, jogadores da base, fim, tempo por vez).
+// Lobby: código da sala, jogadores e opções do anfitrião (modo, jogadores da base, com ou sem timer).
 import { $, el, plural } from './util.js';
 
 const MODOS = [
@@ -8,6 +8,10 @@ const MODOS = [
 const GRUPOS = [
   { id: 'conhecidos', nome: 'Conhecidos' },
   { id: 'todos', nome: 'Todos' },
+];
+const TEMPOS = [
+  { id: 'com', nome: 'Com timer', ajuda: '1 min por vez' },
+  { id: 'sem', nome: 'Sem timer', ajuda: 'sem limite' },
 ];
 
 export const chipJogador = (j, sala) =>
@@ -34,14 +38,17 @@ export function renderLobby(sala, eu, enviar) {
   segmentos($('#cfg-modo'), MODOS, c.modo, anfitriao, (modo) => enviar({ t: 'config', modo }));
   segmentos($('#cfg-jogadores'), GRUPOS.map((g) => ({ ...g, ajuda: g.id === c.jogadores && sala.disponiveis != null ? plural(sala.disponiveis, 'jogador', 'jogadores') : null })),
     c.jogadores, anfitriao, (jogadores) => enviar({ t: 'config', jogadores }));
+  const semTimer = c.tempo === 'sem';
+  segmentos($('#cfg-tempo'), TEMPOS, semTimer ? 'sem' : 'com', anfitriao, (tempo) => enviar({ t: 'config', tempo }));
 
-  // Uma ronda: cada um tem uma vez de 1 minuto. A partida acaba quando todos forem identificados.
+  // Uma ronda: cada um tem uma vez (de 1 minuto, com timer). A partida acaba quando todos forem identificados.
   const n = Math.max(2, jogam.length);
   const disponiveis = sala.disponiveis ?? 0;
   const precisos = c.modo === 'escolha' ? n * 3 : n;
   $('#cfg-resumo').textContent = disponiveis < precisos
     ? 'Não há jogadores suficientes na base com estas opções: repõe os já usados ou escolhe "Todos".'
-    : `1 minuto por vez: com ${plural(n, 'jogador', 'jogadores')}, cada ronda dura no máximo ${n} min. A partida acaba quando todos os jogadores secretos forem identificados.`;
+    : semTimer ? 'Sem limite de tempo: a vez só passa quando o jogador jogar (ou se ficar desligado). A partida acaba quando todos os jogadores secretos forem identificados.'
+      : `1 minuto por vez: com ${plural(n, 'jogador', 'jogadores')}, cada ronda dura no máximo ${n} min. A partida acaba quando todos os jogadores secretos forem identificados.`;
   const ligados = jogam.filter((j) => j.ligado).length;
   $('#btn-comecar').hidden = !anfitriao;
   $('#btn-comecar').disabled = ligados < 2 || disponiveis < precisos;

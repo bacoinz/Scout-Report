@@ -23,6 +23,14 @@ export function limparTexto(texto, max) {
     .trim();
 }
 
+/** A partida tem timer? (O lobby escolhe; salas de antes desta opção têm.) */
+const temTimer = (sala) => sala.config.tempo !== 'sem';
+/**
+ * O prazo de uma decisão dos jogadores. Sem timer é Infinity: as contas continuam a funcionar, a persistência guarda-o
+ * (clonagem estruturada) e em JSON chega ao browser como null. O alarme ignora-o (proximoPrazo).
+ */
+const prazoDe = (sala, desde, ms) => (temTimer(sala) ? desde + ms : Infinity);
+
 // ---------------------------------------------------------------------------
 // Quem joga, quem é alvo
 // ---------------------------------------------------------------------------
@@ -185,7 +193,7 @@ export function iniciarPartida(sala, ctx, reserva) {
   const p = sala.partida;
   const jogam = sala.jogadores.filter((j) => !j.espectador);
   if (cfg.modo === 'escolha') {
-    p.escolha = { prazo: agora + REGRAS.escolhaMs };
+    p.escolha = { prazo: prazoDe(sala, agora, REGRAS.escolhaMs) };
     for (const j of jogam) oferecerCartas(sala, j.id, ctx, p.escolha.prazo);
     noFeed(sala, { tipo: 'escolha' });
   } else {
@@ -253,8 +261,8 @@ function iniciarVez(sala, ctx) {
     if (!alvo) continue;
     p.seqVez += 1;
     const duracao = REGRAS.vezMs;
-    p.vez = { seq: p.seqVez, jogador: id, alvo, ficha: p.segredos[alvo].ficha, inicio: ctx.agora, prazo: ctx.agora + duracao, duracao };
-    if (!j.ligado) p.vez.prazo = Math.min(p.vez.prazo, j.desligadoEm + REGRAS.desligadoSaltaMs);
+    p.vez = { seq: p.seqVez, jogador: id, alvo, ficha: p.segredos[alvo].ficha, inicio: ctx.agora, prazo: prazoDe(sala, ctx.agora, duracao), duracao };
+    if (!j.ligado && temTimer(sala)) p.vez.prazo = Math.min(p.vez.prazo, j.desligadoEm + REGRAS.desligadoSaltaMs);
     return;
   }
   fimRonda(sala, ctx);
@@ -296,7 +304,7 @@ function iniciarJoker(sala, ctx) {
     // Sem ninguém ligado para responder, fica para o fim da ronda seguinte.
     if (!respondentes(sala, f.dono).some((x) => x.ligado)) return false;
     const abre = ctx.agora + REGRAS.jokerAnuncioMs;
-    Object.assign(j, { fase: 'joker', ficha: f.n, dono: f.dono, pergunta, valor: joker.PERGUNTAS_JOKER[pergunta].valor(reg), abre, prazo: abre + REGRAS.jokerMs, lances: {} });
+    Object.assign(j, { fase: 'joker', ficha: f.n, dono: f.dono, pergunta, valor: joker.PERGUNTAS_JOKER[pergunta].valor(reg), abre, prazo: prazoDe(sala, abre, REGRAS.jokerMs), lances: {} });
     p.fase = 'joker';
     noFeed(sala, { tipo: 'joker', ficha: f.n, alvo: f.dono, pergunta });
     return true;
@@ -411,7 +419,7 @@ export function perguntaLivre(sala, id, { vez, texto }, ctx) {
   const dono = jogador(sala, v.vez.alvo);
   if (!dono?.ligado) return erro(`${dono?.nome ?? 'O dono da ficha'} não está ligado: escolhe uma pergunta da lista.`);
   const p = sala.partida;
-  p.livre = { autor: id, alvo: v.vez.alvo, ficha: v.ficha.n, texto: t, prazo: ctx.agora + REGRAS.livreMs, restante: Math.max(0, v.vez.prazo - ctx.agora) };
+  p.livre = { autor: id, alvo: v.vez.alvo, ficha: v.ficha.n, texto: t, prazo: prazoDe(sala, ctx.agora, REGRAS.livreMs), restante: Math.max(0, v.vez.prazo - ctx.agora) };
   p.fase = 'livre';
   noFeed(sala, { tipo: 'livre', jogador: id, alvo: v.vez.alvo, ficha: v.ficha.n, texto: t });
   return { ok: true };
@@ -531,7 +539,9 @@ function passo(sala, ctx) {
   switch (p.fase) {
     case 'escolha': {
       const jogam = sala.jogadores.filter((j) => !j.espectador && !j.saiu);
-      if (agora < p.escolha.prazo && !jogam.every((j) => p.segredos[j.id])) return false;
+      // Sem timer, quem se desligou há mais de 10 s não bloqueia os outros: fica com uma carta ao calhas.
+      const espera = (j) => !p.segredos[j.id] && (temTimer(sala) || j.ligado || agora < j.desligadoEm + REGRAS.desligadoSaltaMs);
+      if (agora < p.escolha.prazo && jogam.some(espera)) return false;
       for (const j of jogam) {
         if (p.segredos[j.id]) continue;
         const c = p.cartas[j.id];
@@ -552,9 +562,12 @@ function passo(sala, ctx) {
         terminarVez(sala, ctx);
         return true;
       }
-      if (!j.ligado && j.desligadoEm + REGRAS.desligadoSaltaMs < p.vez.prazo) p.vez.prazo = j.desligadoEm + REGRAS.desligadoSaltaMs;
-      if (agora >= p.vez.prazo) {
-        noFeed(sala, { tipo: 'tempo', jogador: p.vez.jogador, alvo: p.vez.alvo, ficha: p.vez.ficha });
+      // Desligado, perde a vez ao fim de 10 s. Com timer o prazo encurta; sem timer não muda, para quem volta a tempo
+      // continuar com a vez inteira.
+      const salta = j.ligado ? Infinity : j.desligadoEm + REGRAS.desligadoSaltaMs;
+      if (temTimer(sala) && salta < p.vez.prazo) p.vez.prazo = salta;
+      if (agora >= Math.min(p.vez.prazo, salta)) {
+        noFeed(sala, { tipo: temTimer(sala) ? 'tempo' : 'saltou', jogador: p.vez.jogador, alvo: p.vez.alvo, ficha: p.vez.ficha });
         terminarVez(sala, ctx);
         return true;
       }
@@ -609,7 +622,12 @@ export function proximoPrazo(sala) {
   const p = sala.partida;
   if (sala.fase !== 'jogo' || !p || p.congelada) return null;
   const prazos = [];
-  if (p.fase === 'escolha') prazos.push(p.escolha?.prazo);
+  if (p.fase === 'escolha') {
+    prazos.push(p.escolha?.prazo);
+    if (!temTimer(sala)) {
+      for (const j of sala.jogadores) if (!j.espectador && !j.saiu && !j.ligado && !p.segredos[j.id]) prazos.push(j.desligadoEm + REGRAS.desligadoSaltaMs);
+    }
+  }
   if (p.fase === 'vez') {
     if (p.vez) {
       prazos.push(p.vez.prazo);
@@ -623,7 +641,7 @@ export function proximoPrazo(sala) {
   if (p.fase === 'identificado') prazos.push(p.identificado?.prazo);
   if (p.fase === 'joker' || p.fase === 'revelacao') prazos.push(p.joker?.prazo);
   for (const j of emJogo(sala)) if (!j.ligado && !j.saindo && j.desligadoEm != null) prazos.push(j.desligadoEm + REGRAS.saidaDefinitivaMs);
-  const validos = prazos.filter((t) => typeof t === 'number');
+  const validos = prazos.filter(Number.isFinite); // os prazos sem timer (Infinity) não precisam de alarme
   return validos.length ? Math.min(...validos) : null;
 }
 

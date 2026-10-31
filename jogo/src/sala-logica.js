@@ -136,6 +136,7 @@ export function configurar(sala, jogadorId, cfg) {
   const c = structuredClone(sala.config);
   if (REGRAS.modos.includes(cfg?.modo)) c.modo = cfg.modo;
   if (REGRAS.grupos.includes(cfg?.jogadores)) c.jogadores = cfg.jogadores;
+  if (REGRAS.tempos.includes(cfg?.tempo)) c.tempo = cfg.tempo;
   sala.config = c;
   return { ok: true };
 }

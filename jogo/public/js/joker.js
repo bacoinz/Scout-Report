@@ -148,11 +148,16 @@ export function render(ctx) {
   return true;
 }
 
-/** O cronómetro: os 15 s dos palpites (durante o anúncio fica cheio). */
+/** O cronómetro: os 15 s dos palpites (durante o anúncio fica cheio). Sem timer, fica cheio com ∞. */
 export function tick(ctx) {
   const j = ctx.sala?.partida?.joker;
   if (!j || $('#joker').hidden) return;
   if (j.fase === 'revelacao') return;
+  if (j.prazo == null) {
+    $('#ft-relogio').textContent = '∞';
+    $('#ft-anel').setAttribute('stroke-dashoffset', '0');
+    return;
+  }
   const total = j.prazo - j.abre;
   const falta = Math.max(0, Math.min(total, j.prazo - ctx.agora));
   $('#ft-relogio').textContent = formatarTempo(falta);
