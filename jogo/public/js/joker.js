@@ -77,7 +77,7 @@ export function render(ctx) {
   const f = sala.partida.fichas.find((x) => x.n === j.ficha);
   $('#ft-sujeito').style.setProperty('--cor-dono', ctx.cor(j.dono));
   $('#ft-dono').textContent = ctx.nome(j.dono);
-  $('#ft-dados').replaceChildren(f ? dadosParaJoker(f, j.pergunta, { cat: ctx.cat, novas: new Set() }) : '');
+  $('#ft-dados').replaceChildren(f ? dadosParaJoker(f, j.pergunta, { cat: ctx.cat, novas: new Set(), nome: ctx.nome, cor: ctx.cor }) : '');
   $('#ft-pergunta').textContent = textoPergunta(j.pergunta);
 
   // O meu palpite: o dono e quem está a ver não respondem.

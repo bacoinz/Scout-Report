@@ -1,10 +1,10 @@
-// Ronda Joker: uma vez por partida, no fim de uma ronda ao calhas entre a 3.ª e a 6.ª. Pergunta-se um número sobre
+// Ronda Joker: uma vez por partida, no fim de uma ronda ao calhas entre a 14.ª e a 17.ª. Pergunta-se um número sobre
 // o jogador secreto com menos "sim" e todos menos o dono dão um palpite em 15 s. Puro: só as escolhas e as contas;
 // as fases ficam em partida.js.
 import * as P from '../public/js/comum/perguntas.js';
 
 /** Ronda mais cedo e mais tarde em que a Joker pode calhar. */
-export const RONDA_JOKER = { de: 3, ate: 6 };
+export const RONDA_JOKER = { de: 14, ate: 17 };
 
 /**
  * As perguntas da Joker: números com os dados completos no registo. As de treinador só quando a ficha já tem

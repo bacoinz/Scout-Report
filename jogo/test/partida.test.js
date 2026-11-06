@@ -4,6 +4,7 @@ import * as partida from '../src/partida.js';
 import { estadoPublico, privado } from '../src/vista.js';
 import * as P from '../public/js/comum/perguntas.js';
 import { REGRAS } from '../src/regras.js';
+import { RONDA_JOKER } from '../src/joker.js';
 import { todos, catalogoDeTeste, porNome } from './apoio.js';
 
 const cat = catalogoDeTeste();
@@ -530,19 +531,21 @@ describe('Ronda Joker', () => {
     for (let i = 0; i < 200 && sala.partida.fase === 'vez' && sala.partida.ronda <= n; i++) t(REGRAS.vezMs);
   };
 
-  it('uma por partida, numa ronda ao calhas entre a 3.ª e a 6.ª', () => {
-    for (const [sorte, ronda] of [[0, 3], [0.3, 4], [0.6, 5], [0.99, 6]]) {
-      const { sala } = montar(2, {}); // a ronda sorteia-se no início
-      const p = sala.partida;
-      p.joker.ronda = 3 + Math.floor(sorte * 4);
-      expect(p.joker.ronda).toBe(ronda);
-    }
+  it('uma por partida, numa ronda ao calhas entre a 14.ª e a 17.ª', () => {
+    expect(RONDA_JOKER).toEqual({ de: 14, ate: 17 });
+    expect(montar(2).p.joker.ronda).toBe(14); // aleatorio = 0
+    const { sala, t } = montar(2);
+    ateAoFimDaRonda(sala, t, 13);
+    expect(sala.partida.fase).toBe('vez');
+    expect(sala.feed.some((e) => e.tipo === 'joker')).toBe(false);
+    ateAoFimDaRonda(sala, t, 14);
+    expect(sala.partida.fase).toBe('joker');
   });
 
   it('no fim da ronda: a ficha com menos "sim", palpites escondidos, revelação, pontos e o valor na ficha', () => {
     const { sala, ctx, t } = montar(3);
     const p = sala.partida;
-    expect(p.joker.ronda).toBe(3); // aleatorio = 0
+    p.joker.ronda = 3; // para o teste ser curto
     ateAoFimDaRonda(sala, t, 3);
     expect(p.fase).toBe('joker');
     const j = p.joker;
@@ -584,6 +587,7 @@ describe('Ronda Joker', () => {
   it('sem ninguém ligado para responder, passa para o fim da ronda seguinte; acaba por tempo', () => {
     const { sala, ctx, t } = montar(3);
     const p = sala.partida;
+    p.joker.ronda = 3;
     L.desligar(sala, 'j2', ctx);
     L.desligar(sala, 'j3', ctx);
     ateAoFimDaRonda(sala, t, 3);

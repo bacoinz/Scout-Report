@@ -7,6 +7,7 @@
 //
 // Bots para jogar no browser:   node scripts/e2e.mjs --bots ABCD 2   (2 bots entram na sala ABCD e jogam sozinhos)
 import * as P from '../public/js/comum/perguntas.js';
+import { RONDA_JOKER } from '../src/joker.js';
 
 const BASE = process.env.BASE ?? 'http://127.0.0.1:8787';
 const WS_BASE = BASE.replace(/^http/, 'ws');
@@ -280,7 +281,7 @@ for (let passo = 0; passo < 400; passo++) {
 s = await A.estadoQue((x) => x.fase === 'final', 30_000);
 ok(s.fase === 'final', `a partida acabou (ronda ${s.partida.ronda})`);
 const identificadas = s.partida.fichas.filter((f) => f.identificada).length;
-ok(jokerVista || s.partida.ronda < 3, 'houve uma Ronda Joker');
+ok(jokerVista || s.partida.ronda < RONDA_JOKER.de, 'houve uma Ronda Joker');
 ok(s.feed.filter((e) => e.tipo === 'joker').length <= 1, 'só uma Joker por partida');
 ok(identificadas === s.partida.fichas.length, `só acaba com todos identificados: ${identificadas} de ${s.partida.fichas.length}`);
 ok(s.partida.fichas.every((f) => f.revelada?.nome), 'no fim revelam-se todos os jogadores secretos');
