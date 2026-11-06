@@ -368,10 +368,10 @@ function renderFichas(sala) {
   const contentor = $('#fichas');
   const minha = doDono(sala, contexto.eu);
   const reg = contexto.privado?.dossier;
-  const chaveDossier = JSON.stringify([reg?.id, minha ? [P.contarSim(minha), Boolean(minha.identificada)] : null, contexto.cat?.versao, p?.fase === 'escolha']);
+  const chaveDossier = JSON.stringify([reg?.id, minha ? [minha.respostas, Boolean(minha.identificada)] : null, contexto.cat?.versao, p?.fase === 'escolha']);
   let meu = $('#f-meu');
   if (!meu || meu.dataset.chave !== chaveDossier) {
-    const novo = reg && contexto.cat ? dossier(reg, minha, { cat: contexto.cat })
+    const novo = reg && contexto.cat ? dossier(reg, minha, { cat: contexto.cat, nome, cor })
       : dossierVazio(p?.fase === 'escolha' ? 'Escolhe o teu jogador secreto.' : 'Ainda não tens jogador secreto: jogas a partir da próxima ronda.');
     novo.dataset.chave = chaveDossier;
     if (meu) meu.replaceWith(novo);
