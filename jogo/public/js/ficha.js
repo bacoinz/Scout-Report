@@ -17,6 +17,43 @@ export const nomePremio = (id) => semArtigo(P.PREMIOS[id]?.nome ?? id).replace(/
 const carimbo = (classe, texto, chave, novo) =>
   el('span', { class: `carimbo mini ${classe}${novo ? ' novo' : ''}`, style: { '--rot': rotacao(chave) }, text: texto });
 
+/**
+ * O visto de quem acertou num dado, na cor dessa pessoa (com contorno a tinta, para se ler no papel também nas cores
+ * claras). No Desafio do Dia não há vistos: só há um jogador.
+ */
+function marcaVisto(autor, ctx, novo) {
+  if (!autor || ctx.vistos === false) return null;
+  const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  svg.setAttribute('viewBox', '0 0 16 16');
+  svg.setAttribute('aria-hidden', 'true');
+  for (const classe of ['contorno', 'traco']) {
+    const p = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    p.setAttribute('d', 'M2.5 8.5 6.5 12.5 13.5 3.5');
+    p.setAttribute('class', classe);
+    svg.append(p);
+  }
+  const texto = `${ctx.nome(autor) || 'Alguém'} acertou`;
+  return el('span', { class: `visto${novo ? ' novo' : ''}`, style: { '--cor-autor': ctx.cor(autor) }, title: texto, role: 'img', 'aria-label': texto }, svg);
+}
+
+/**
+ * A resposta "sim" que confirma um dado: a própria, ou aquela de onde ele se deduz ("+300 jogos" confirma "+200";
+ * "menos de 25" decide o "≤25"). O que só se sabe por exclusão (dois ✗ no Estado) ou pela Joker fica sem visto.
+ */
+function fonteDoSim(f, k) {
+  const chave = f.respostas[k] ? k : P.deduzir(f, k)?.de;
+  return f.respostas[chave]?.r === 'sim' ? chave : null;
+}
+function visto(f, k, ctx) {
+  const chave = fonteDoSim(f, k);
+  return chave ? marcaVisto(f.respostas[chave].autor, ctx, ctx.novas.has(`${f.n}:${chave}`)) : null;
+}
+/** O texto de um dado com o visto de quem acertou nele (sem quebra de linha entre os dois). */
+function comVisto(texto, f, k, ctx) {
+  const v = visto(f, k, ctx);
+  return v ? el('span', { class: 'com-visto' }, String(texto), v) : String(texto);
+}
+
 // ---------------------------------------------------------------------------
 // O que já se sabe de uma ficha
 // ---------------------------------------------------------------------------
@@ -51,6 +88,16 @@ function textoIntervalo({ min, max }, formatar = String) {
 }
 const metros = (cm) => `${(cm / 100).toFixed(2).replace('.', ',')} m`;
 
+/** Um intervalo ("+300", "≤25") com o visto de quem o descobriu; `frase` dá o texto final ("+5 títulos"). */
+function intervaloComVistos(f, tipo, ctx, formatar = String, frase = (t) => t) {
+  const iv = intervalo(f, tipo);
+  const texto = textoIntervalo(iv, formatar);
+  if (!texto) return null;
+  const chaves = new Set([iv.min, iv.max].filter((n) => n != null).map((n) => fonteDoSim(f, `${tipo}:${n}`)).filter(Boolean));
+  const vistos = [...chaves].map((k) => marcaVisto(f.respostas[k].autor, ctx, ctx.novas.has(`${f.n}:${k}`))).filter(Boolean);
+  return vistos.length ? el('span', { class: 'com-visto' }, frase(texto), ...vistos) : frase(texto);
+}
+
 /** Valor de um dado: o texto, ou SEM REGISTO, ou ????. */
 function dado(texto, f, tipos, ctx) {
   if (texto) return [texto];
@@ -62,26 +109,32 @@ function dado(texto, f, tipos, ctx) {
 /** Um valor revelado na Ronda Joker, com a etiqueta. */
 const daJoker = (f, campo) => (Number.isInteger(f.valores?.[campo]) ? [String(f.valores[campo]), ' ', el('span', { class: 'tag-joker', text: 'Joker' })] : null);
 
+const ESTADOS = { ativo: 'No ativo', retirado: 'Retirado', treinador: 'Treinador' };
+
 function dadosPublicos(f, ctx) {
+  const v = (texto, k) => comVisto(texto, f, k, ctx);
   const decadas = confirmados(f, 'decada');
   const anos = confirmados(f, 'ano');
-  const estreia = anos.length ? anos[0] : decadas.length ? `anos ${decadas[0] < 2000 ? String(decadas[0]).slice(2) : decadas[0]}` : null;
-  const confs = confirmados(f, 'conf').map((c) => P.CONFEDERACOES[c].nome);
-  const nacs = confirmados(f, 'nac').map(P.nomePais);
-  const setores = confirmados(f, 'setor').map((s) => P.SETORES[s]);
-  const posicoes = confirmados(f, 'pos').map((p) => P.POSICOES[p].nome);
-  const baixo = P.valor(f, 'baixo:175') === 'sim' ? `-${metros(175)}` : null;
-  const altura = baixo ?? textoIntervalo(intervalo(f, 'altura'), metros);
-  const pe = confirmados(f, 'pe').map((p) => PES[p]);
-  const estado = P.valor(f, 'ativo') === 'sim' ? 'No ativo' : P.valor(f, 'retirado') === 'sim' ? 'Retirado'
-    : P.valor(f, 'treinador') === 'sim' ? (P.valor(f, 't_atual') === 'sim' ? 'Treinador (treina atualmente)' : 'Treinador') : null;
+  const estreia = anos.length ? v(anos[0], `ano:${anos[0]}`)
+    : decadas.length ? v(`anos ${decadas[0] < 2000 ? String(decadas[0]).slice(2) : decadas[0]}`, `decada:${decadas[0]}`) : null;
+  const confs = confirmados(f, 'conf').map((c) => v(P.CONFEDERACOES[c].nome, `conf:${c}`));
+  const nacs = confirmados(f, 'nac').map((c) => v(P.nomePais(c), `nac:${c}`));
+  const setores = confirmados(f, 'setor').map((s) => v(P.SETORES[s], `setor:${s}`));
+  const posicoes = confirmados(f, 'pos').map((p) => v(P.POSICOES[p].nome, `pos:${p}`));
+  const baixo = P.valor(f, 'baixo:175') === 'sim' ? v(`-${metros(175)}`, 'baixo:175') : null;
+  const altura = baixo ?? intervaloComVistos(f, 'altura', ctx, metros);
+  const pe = confirmados(f, 'pe').map((p) => v(PES[p], `pe:${p}`));
+  const qual = Object.keys(ESTADOS).find((k) => P.valor(f, k) === 'sim');
+  const estado = !qual ? null
+    : qual === 'treinador' && P.valor(f, 't_atual') === 'sim' ? [v('Treinador', 'treinador'), ' ', v('(treina atualmente)', 't_atual')]
+      : [v(ESTADOS[qual], qual)];
   const comFalta = (partes, completo) => (partes.length ? juntar([...partes, ...(completo ? [] : [incognita()])]) : [incognita()]);
   return el('dl', { class: 'folha-dados' },
     linhaDados('Estreia', ...(daJoker(f, 'estreia') ?? (estreia ? (anos.length ? [estreia] : juntar([estreia, incognita()])) : [incognita()]))),
     linhaDados('Nação', ...comFalta([...confs, ...nacs], nacs.length > 0)),
     linhaDados('Posição', ...comFalta([...setores, ...posicoes], posicoes.length > 0)),
     linhaDados('Físico', ...(altura || pe.length ? juntar([altura, ...pe].filter(Boolean)) : dado(null, f, ['altura', 'baixo', 'pe'], ctx))),
-    linhaDados('Estado', ...(estado ? [estado] : [incognita()])));
+    linhaDados('Estado', ...(estado ?? [incognita()])));
 }
 
 /**
@@ -96,18 +149,21 @@ function carreiraPublica(f, ctx) {
   const novoPais = (p) => (novo(`pais:${p}`) ? carimbo('confirmado', 'Confirmado', `pais:${p}`, true) : null);
   const linhas = [];
   const paisesUsados = new Set();
+  // O visto do país só na primeira linha em que aparece (dois clubes em Espanha não são dois acertos).
+  const vistoPais = (p) => (paisesUsados.has(p) ? null : visto(f, `pais:${p}`, ctx));
   for (const c of clubes) {
     const pais = cat.clubes[c]?.pais;
+    const vp = pais ? vistoPais(pais) : null;
     if (pais) paisesUsados.add(pais);
     linhas.push(el('tr', {},
-      el('td', {}, P.nomeClube(cat, c), novo(`clube:${c}`) ? carimbo('confirmado', 'Confirmado', `clube:${c}`, true) : null),
-      el('td', { class: 'esq' }, pais ? P.nomePais(pais) : incognita(), pais ? novoPais(pais) : null)));
+      el('td', {}, P.nomeClube(cat, c), visto(f, `clube:${c}`, ctx), novo(`clube:${c}`) ? carimbo('confirmado', 'Confirmado', `clube:${c}`, true) : null),
+      el('td', { class: 'esq' }, pais ? P.nomePais(pais) : incognita(), vp, pais ? novoPais(pais) : null)));
   }
   for (const p of paises) {
     if (paisesUsados.has(p)) continue;
     linhas.push(el('tr', {},
       el('td', {}, incognita()),
-      el('td', { class: 'esq' }, P.nomePais(p), novoPais(p))));
+      el('td', { class: 'esq' }, P.nomePais(p), visto(f, `pais:${p}`, ctx), novoPais(p))));
   }
   const todos = f.completos ?? {};
   if (!todos.clube || !todos.pais) {
@@ -122,43 +178,44 @@ function carreiraPublica(f, ctx) {
 }
 
 function estatisticasPublicas(f, ctx) {
-  const numeros = confirmados(f, 'num');
+  const numeros = confirmados(f, 'num').map((n) => comVisto(n, f, `num:${n}`, ctx));
   const faixas = confirmados(f, 'faixa').map((i) => {
     const [a, b] = P.FAIXAS_NUMEROS[Number(i)];
-    return b >= 99 ? `${a}+` : `${a}-${b}`;
+    return comVisto(b >= 99 ? `${a}+` : `${a}-${b}`, f, `faixa:${i}`, ctx);
   });
-  const camisola = numeros.length ? `n.º ${numeros.join(', ')}` : faixas.length ? faixas.join(' · ') : null;
+  const camisola = numeros.length ? el('span', {}, 'n.º ', ...juntar(numeros, ', ')) : faixas.length ? el('span', {}, ...juntar(faixas)) : null;
   return el('section', {},
     el('h4', { text: 'Estatísticas' }),
     el('dl', { class: 'estatisticas' },
-      linhaDados('Jogos', ...(daJoker(f, 'jogos') ?? dado(textoIntervalo(intervalo(f, 'jogos')), f, [], ctx))),
-      linhaDados('Golos', ...(daJoker(f, 'golos') ?? dado(textoIntervalo(intervalo(f, 'golos')), f, [], ctx))),
-      linhaDados('Assist.', ...dado(textoIntervalo(intervalo(f, 'assist')), f, ['assist'], ctx)),
-      linhaDados('Seleção', ...(daJoker(f, 'inter') ?? dado(textoIntervalo(intervalo(f, 'inter')), f, [], ctx))),
+      linhaDados('Jogos', ...(daJoker(f, 'jogos') ?? dado(intervaloComVistos(f, 'jogos', ctx), f, [], ctx))),
+      linhaDados('Golos', ...(daJoker(f, 'golos') ?? dado(intervaloComVistos(f, 'golos', ctx), f, [], ctx))),
+      linhaDados('Assist.', ...dado(intervaloComVistos(f, 'assist', ctx), f, ['assist'], ctx)),
+      linhaDados('Seleção', ...(daJoker(f, 'inter') ?? dado(intervaloComVistos(f, 'inter', ctx), f, [], ctx))),
       daJoker(f, 'golos_selecao') ? linhaDados('Golos sel.', ...daJoker(f, 'golos_selecao')) : null,
       daJoker(f, 'clubes') ? linhaDados('Clubes', ...daJoker(f, 'clubes')) : null,
       linhaDados('Camisola', ...dado(camisola, f, ['num', 'faixa'], ctx))));
 }
 
-function premiosPublicos(f) {
-  const ganhos = confirmados(f, 'premio').map(nomePremio);
+function premiosPublicos(f, ctx) {
+  const ganhos = confirmados(f, 'premio').map((id) => comVisto(nomePremio(id), f, `premio:${id}`, ctx));
   return el('section', {},
     el('h4', { text: 'Prémios' }),
-    ganhos.length ? el('ul', { class: 'lista-folha' }, el('li', { text: [...ganhos, INCOGNITA].join(' · ') }))
+    ganhos.length ? el('ul', { class: 'lista-folha' }, el('li', {}, ...juntar([...ganhos, INCOGNITA])))
       : el('p', { class: 'texto-maquina incognita', text: INCOGNITA }));
 }
 
 function treinadorPublico(f, ctx) {
   if (P.valor(f, 'treinador') !== 'sim') return null;
   const cat = ctx.cat;
+  const v = (texto, k) => comVisto(texto, f, k, ctx);
   const treinou = [
-    ...confirmados(f, 't_pais').map(P.nomePais),
-    ...confirmados(f, 't_clube').map((c) => P.nomeClube(cat, c)),
-    ...confirmados(f, 't_sel').map((p) => `seleção ${P.dePais(p)}`),
+    ...confirmados(f, 't_pais').map((p) => v(P.nomePais(p), `t_pais:${p}`)),
+    ...confirmados(f, 't_clube').map((c) => v(P.nomeClube(cat, c), `t_clube:${c}`)),
+    ...confirmados(f, 't_sel').map((p) => v(`seleção ${P.dePais(p)}`, `t_sel:${p}`)),
   ];
-  const titulos = textoIntervalo(intervalo(f, 't_titulos'));
-  const premios = confirmados(f, 't_premio').map(nomePremio);
-  const tit = [titulos && titulos !== '+0' ? `${titulos} títulos` : titulos === '+0' ? 'tem títulos' : null, ...premios].filter(Boolean);
+  const titulos = intervaloComVistos(f, 't_titulos', ctx, String, (t) => (t === '+0' ? 'tem títulos' : `${t} títulos`));
+  const premios = confirmados(f, 't_premio').map((id) => v(nomePremio(id), `t_premio:${id}`));
+  const tit = [titulos, ...premios].filter(Boolean);
   return el('section', {},
     el('h4', { text: 'Treinador' }),
     el('dl', { class: 'estatisticas', style: { gridTemplateColumns: '1fr' } },
@@ -178,7 +235,7 @@ export function dadosParaJoker(f, pergunta, ctx) {
     t_titulos: ['Títulos', 't_titulos'] }[pergunta];
   const linhas = [];
   if (extra) {
-    const texto = textoIntervalo(intervalo(f, extra[1]));
+    const texto = intervaloComVistos(f, extra[1], ctx);
     linhas.push(linhaDados(extra[0], ...(texto ? [texto] : [incognita()])));
   }
   const ordem = pergunta === 'estreia' ? ['Nação', 'Posição', 'Estado'] : ['Estreia', 'Nação', 'Posição', 'Estado'];
@@ -193,6 +250,7 @@ function notasExtra(f, ctx) {
     el('h4', { text: 'Notas extra' }),
     el('ul', { class: 'notas' }, ...f.livres.map((l) =>
       el('li', {}, `${l.texto} `, el('span', { class: `resposta-livre ${l.r.replace('_', '-')}`, text: textos[l.r] }),
+        l.r === 'sim' ? marcaVisto(l.autor, ctx, false) : null,
         ' ', el('span', { class: 'autor', text: `— ${ctx.nome(l.autor)}` })))));
 }
 
@@ -314,7 +372,7 @@ export function fichaPublica(f, o) {
   const classe = ['folha', 'ficha', 'papel', o.alvo ? 'alvo' : '', o.recolhida ? 'recolhida' : ''].filter(Boolean).join(' ');
   const corpo = revelada
     ? [carreiraRegisto(revelada, o.cat, false)]
-    : [carreiraPublica(f, ctx), treinadorPublico(f, ctx), estatisticasPublicas(f, ctx), premiosPublicos(f), notasExtra(f, ctx), descartadas(f, ctx)];
+    : [carreiraPublica(f, ctx), treinadorPublico(f, ctx), estatisticasPublicas(f, ctx), premiosPublicos(f, ctx), notasExtra(f, ctx), descartadas(f, ctx)];
   const titulo = `${nSim} «sim»`;
   const rodape = f.identificada
     ? el('span', { class: 'carimbo identificado-mini', style: { '--rot': rotacao(`id${f.n}`) }, title: `Identificado por ${o.nome(f.identificada.por)}`, text: 'Identificado' })

@@ -149,6 +149,7 @@ function renderFicha(f) {
     novas: est.novas,
     nome: () => '',
     cor: () => 'var(--destaque)',
+    vistos: false, // só há um jogador: não é preciso dizer quem acertou
   };
   const art = fichaPublica(f, opcoes);
   art.id = 'dia-ficha'; // o #f-1 pode existir no ecrã do jogo

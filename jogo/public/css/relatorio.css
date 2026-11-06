@@ -274,6 +274,41 @@
   color: var(--tinta-suave);
   letter-spacing: 0.12em;
 }
+/* O visto de quem acertou num dado, na cor dessa pessoa. O contorno a tinta deixa-o ler-se no papel também nas cores
+   claras (amarelo, branco); o traço fica na cor exata do jogador, como o ponto dele no placar. */
+.com-visto {
+  white-space: nowrap;
+}
+.visto {
+  --rot: 0deg;
+  display: inline-block;
+  width: 1.1em;
+  height: 1.1em;
+  margin-left: 2px;
+  vertical-align: -0.18em;
+}
+.visto svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+.visto path {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.visto .contorno {
+  stroke: var(--tinta);
+  stroke-width: 4.6;
+}
+.visto .traco {
+  stroke: var(--cor-autor);
+  stroke-width: 2.4;
+}
+.visto.novo {
+  animation: carimbar 0.45s cubic-bezier(0.2, 0.9, 0.3, 1.2) both;
+}
 .sem-registo {
   color: var(--carimbo-cinza);
   font-style: italic;
