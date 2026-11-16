@@ -8,6 +8,11 @@ import * as jogo from './jogo.js';
 import * as joker from './joker.js';
 import * as dia from './dia.js';
 import { sons, somLigado, alternarSom } from './sons.js';
+import { instalarTradutor, mudarIdioma, traduzir } from './idioma.js';
+
+// Em inglês, cada texto em português que aparece no ecrã troca-se logo pela tradução.
+instalarTradutor();
+for (const s of $$('[data-mudar-idioma]')) s.addEventListener('change', () => mudarIdioma(s.value));
 
 const CHAVE_TOKEN = 'sr.token';
 const CHAVE_NOME = 'sr.nome';
@@ -92,7 +97,7 @@ function ligar(codigo) {
   estado.ligacao?.fechar();
   Object.assign(estado, { codigo, eu: null, sala: null, privado: null, ultimoSeq: null, partida: null });
   jogo.reiniciar();
-  document.title = `Scout Report · Sala ${codigo}`;
+  document.title = traduzir(`Scout Report · Sala ${codigo}`);
   estado.ligacao = new Ligacao({
     codigo,
     identidade: () => ({ token, nome: ler(CHAVE_NOME) ?? '' }),
@@ -258,7 +263,7 @@ for (const b of $$('.btn-sair')) {
 }
 $('#btn-sair-jogo').addEventListener('click', () => {
   const emJogo = estado.sala?.fase === 'jogo';
-  if (emJogo && !confirm('Sair da partida? A tua ficha é revelada no fim da ronda e não podes voltar a esta partida.')) return;
+  if (emJogo && !confirm(traduzir('Sair da partida? A tua ficha é revelada no fim da ronda e não podes voltar a esta partida.'))) return;
   enviar({ t: 'sair' });
   voltarAoInicio();
 });

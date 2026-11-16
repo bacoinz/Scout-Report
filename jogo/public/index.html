@@ -40,6 +40,7 @@
 
   <!-- ===================== Início ===================== -->
   <main id="ecra-inicio" class="ecra ecra-centro" hidden>
+    <div class="idioma-inicio"><select class="campo-idioma" data-mudar-idioma aria-label="Idioma / Language"><option value="pt">Português</option><option value="en">English</option></select></div>
     <header class="marca">
       <img class="logo" src="/favicon.svg" alt="" width="72" height="72">
       <h1 class="titulo"><span>Scout</span> <span class="destaque">Report</span></h1>
@@ -60,6 +61,12 @@
       <a id="btn-dia" class="btn btn-fantasma" href="/dia" data-rota>Relatório do Dia <span class="nota"></span></a>
       <button class="btn btn-contorno" type="button" data-abrir="dialogo-como">Como jogar</button>
     </div>
+    <footer class="rodape-inicio">
+      <a class="botao-kofi" href="https://ko-fi.com/bacoinz" target="_blank" rel="noopener"><svg viewBox="0 0 32 24" width="26" height="20" aria-hidden="true"><path fill="#fff" d="M2 2.5C2 1.7 2.7 1 3.5 1h19c.8 0 1.5.7 1.5 1.5V5h1.6C28.6 5 31 7.4 31 10.4s-2.4 5.4-5.4 5.4H23.6C22.4 19.9 18.7 23 14.3 23h-3C6.1 23 2 18.9 2 13.7V2.5zm22 5.7v4.4h1.6c1.2 0 2.2-1 2.2-2.2s-1-2.2-2.2-2.2H24z"/><path fill="#ff5e5b" d="M13 18.2l-4.6-4.3C6.6 12.2 6.9 9.3 9 8.4c1.4-.6 2.9 0 4 1.2 1.1-1.2 2.6-1.8 4-1.2 2.1.9 2.4 3.8.6 5.5L13 18.2z"/></svg><span>Apoiar no Ko-fi</span></a>
+      <a class="ligacao-github" href="https://github.com/bacoinz/scout-report" target="_blank" rel="noopener"><svg viewBox="0 0 16 16" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg><span>GitHub</span></a>
+      <span class="versao">v1.0</span>
+      <a class="ligacao-bug" href="https://github.com/bacoinz/scout-report/issues/new/choose" target="_blank" rel="noopener">Encontraste um bug?</a>
+    </footer>
   </main>
 
   <!-- ===================== Desafio do Dia ===================== -->
@@ -263,6 +270,7 @@
               <button id="btn-copiar-jogo" class="btn btn-mini" type="button">Copiar link</button>
             </div>
             <button id="btn-som" class="menu-item" type="button" aria-pressed="true"><svg><use href="#i-som"/></svg>Som e vibração <span class="estado"></span></button>
+            <label class="menu-idioma">Idioma <select class="campo-idioma" data-mudar-idioma aria-label="Idioma / Language"><option value="pt">Português</option><option value="en">English</option></select></label>
             <button class="menu-item" type="button" data-abrir="dialogo-como"><svg><use href="#i-ajuda"/></svg>Como jogar</button>
             <button id="btn-sair-jogo" class="menu-item perigo" type="button"><svg><use href="#i-sair"/></svg>Sair da sala</button>
           </div>
@@ -300,7 +308,7 @@
     <!-- Modo Escolha: as três cartas -->
     <div id="escolha" class="sobreposicao" hidden>
       <article class="cartao cartao-largo escolha">
-        <h2 class="titulo titulo-medio"><span>Escolhe o teu</span> <span class="destaque">jogador</span></h2>
+        <h2 class="titulo titulo-medio"><span data-en="Pick your">Escolhe o teu</span> <span class="destaque" data-en="player">jogador</span></h2>
         <p id="escolha-nota" class="nota centro"></p>
         <ul id="escolha-cartas" class="cartas"></ul>
         <p id="escolha-espera" class="nota centro" hidden></p>
@@ -310,7 +318,7 @@
     <!-- Fim da partida -->
     <div id="final" class="sobreposicao" hidden>
       <article class="cartao cartao-largo final">
-        <h2 class="titulo titulo-medio"><span>Classificação</span> <span class="destaque">final</span></h2>
+        <h2 class="titulo titulo-medio"><span data-en="Final">Classificação</span> <span class="destaque" data-en="standings">final</span></h2>
         <ol id="podio" class="podio"></ol>
         <table class="tabela">
           <thead><tr><th>#</th><th>Jogador</th><th>Jogador secreto</th><th>Pontos</th></tr></thead>
@@ -340,7 +348,7 @@
           <rect x="30" y="104" width="64" height="13" rx="5" fill="#fbf8ef"/>
           <circle cx="44" cy="110.5" r="2.5" fill="#6d28d9"/><circle cx="62" cy="110.5" r="2.5" fill="#6d28d9"/><circle cx="80" cy="110.5" r="2.5" fill="#6d28d9"/>
         </svg>
-        <h2 class="joker-titulo"><span>Ronda</span> <span class="destaque">Joker</span></h2>
+        <h2 class="joker-titulo"><span data-en="Joker">Ronda</span> <span class="destaque" data-en="Round">Joker</span></h2>
         <p class="joker-sub">GANHA PONTOS EXTRA COM A EXATIDÃO</p>
       </div>
 
@@ -404,7 +412,7 @@
 
   <!-- ===================== Pergunta livre: o dono responde ===================== -->
   <dialog id="dialogo-livre" class="dialogo dialogo-livre" aria-labelledby="livre-titulo">
-    <h2 id="livre-titulo" class="titulo titulo-medio"><span>Pergunta</span> <span class="destaque">livre</span></h2>
+    <h2 id="livre-titulo" class="titulo titulo-medio"><span data-en="Free">Pergunta</span> <span class="destaque" data-en="question">livre</span></h2>
     <p id="livre-quem" class="nota"></p>
     <p id="livre-texto" class="livre-texto"></p>
     <div class="linha-botoes livre-botoes">
@@ -417,7 +425,7 @@
   <!-- ===================== Como jogar ===================== -->
   <dialog id="dialogo-como" class="dialogo dialogo-fixo" aria-labelledby="como-titulo">
     <header class="dialogo-cabecalho">
-      <h2 id="como-titulo" class="titulo titulo-medio" tabindex="-1" autofocus><span>Como</span> <span class="destaque">jogar</span></h2>
+      <h2 id="como-titulo" class="titulo titulo-medio" tabindex="-1" autofocus><span data-en="How to">Como</span> <span class="destaque" data-en="play">jogar</span></h2>
       <form method="dialog"><button class="btn-fechar" type="submit" aria-label="Fechar">×</button></form>
     </header>
     <div class="dialogo-corpo">
@@ -448,7 +456,7 @@
   <!-- ===================== Como jogar: Relatório do Dia ===================== -->
   <dialog id="dialogo-dia" class="dialogo dialogo-fixo" aria-labelledby="dia-como-titulo">
     <header class="dialogo-cabecalho">
-      <h2 id="dia-como-titulo" class="titulo titulo-medio" tabindex="-1" autofocus><span>Relatório</span> <span class="destaque">do Dia</span></h2>
+      <h2 id="dia-como-titulo" class="titulo titulo-medio" tabindex="-1" autofocus><span data-en="Daily">Relatório</span> <span class="destaque" data-en="Report">do Dia</span></h2>
       <form method="dialog"><button class="btn-fechar" type="submit" aria-label="Fechar">×</button></form>
     </header>
     <div class="dialogo-corpo">

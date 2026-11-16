@@ -6,6 +6,7 @@ import * as P from './comum/perguntas.js';
 import { el, pts } from './util.js';
 import { autocompletar } from './autocompletar.js';
 import { nomePremio } from './ficha.js';
+import { traduzir } from './idioma.js';
 
 const tipoPremio = (tipo) => (k) => P.PREMIOS[P.ler(k).valor]?.tipo === tipo;
 
@@ -151,15 +152,16 @@ export function menu(ficha, o) {
   const campo = (chaves, exemplo) => {
     const abertas = chaves.filter(aberta);
     const input = el('input', { class: 'campo', placeholder: exemplo, autocomplete: 'off', spellcheck: 'false', disabled: !o.ativo || !abertas.length });
-    if (o.escolhida && abertas.includes(o.escolhida)) input.value = rotulo(o.escolhida, cat);
+    if (o.escolhida && abertas.includes(o.escolhida)) input.value = traduzir(rotulo(o.escolhida, cat));
     const caixa = el('div', { class: 'autocompletar' }, input);
     autocompletar(input, {
       opcoes: () => abertas.map((k) => {
         const c = cat.clubes[P.ler(k).valor];
-        return { valor: k, nome: rotulo(k, cat), extra: c?.pais ? P.nomePais(c.pais) : '' };
+        // Em inglês procura-se também pelo nome traduzido ("Spain").
+        return { valor: k, nome: rotulo(k, cat), busca: traduzir(rotulo(k, cat)), extra: c?.pais ? P.nomePais(c.pais) : '' };
       }),
       aoEscolher: (op) => {
-        input.value = op.nome;
+        input.value = traduzir(op.nome);
         o.aoEscolher(op.valor);
       },
       aoMostrar: (sugestoes) => mostrarNoMenu(caixa, sugestoes),

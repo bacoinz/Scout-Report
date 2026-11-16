@@ -10,7 +10,11 @@ import { fichaPublica, caixaPalpite } from './ficha.js';
 import { menu, descreverEscolhida } from './menu.js';
 import { carregarDados } from './dados.js';
 import { sons } from './sons.js';
-import { quadrados, textoResumo, textoPerguntas } from './resumo.js';
+import { quadrados, textoResumo as resumoPt, textoPerguntas } from './resumo.js';
+import { traduzir, LOCALE } from './idioma.js';
+
+/** O resultado para copiar, no idioma do jogo (linha a linha; os quadrados ficam iguais). */
+const textoResumo = (...a) => resumoPt(...a).split('\n').map(traduzir).join('\n');
 
 const N = 1; // o número da ficha (só há uma)
 const RESPOSTAS = { sim: 'Sim', nao: 'Não', sem_registo: 'Sem registo: escolhe outra pergunta' };
@@ -102,8 +106,8 @@ function porqueSemPalpite(f) {
 
 const meioDia = (data) => new Date(`${data}T12:00:00Z`);
 const dataPorExtenso = (data) =>
-  new Intl.DateTimeFormat('pt-PT', { weekday: 'long', day: 'numeric', month: 'long', timeZone: 'UTC' }).format(meioDia(data));
-const nomeMes = (mes) => new Intl.DateTimeFormat('pt-PT', { month: 'long', year: 'numeric', timeZone: 'UTC' }).format(meioDia(`${mes}-01`));
+  new Intl.DateTimeFormat(LOCALE, { weekday: 'long', day: 'numeric', month: 'long', timeZone: 'UTC' }).format(meioDia(data));
+const nomeMes = (mes) => new Intl.DateTimeFormat(LOCALE, { month: 'long', year: 'numeric', timeZone: 'UTC' }).format(meioDia(`${mes}-01`));
 /** O número do relatório de uma data (o do lançamento é o #1). */
 const numeroDe = (data) => Math.round((Date.parse(data) - Date.parse(est.info.lancamento)) / 86_400_000) + 1;
 /** Pode abrir-se este dia? Desde o lançamento até hoje. */
@@ -371,7 +375,7 @@ function abrirCaixa(art, f) {
 }
 
 async function desistir() {
-  if (!confirm('Desistir? O jogador é revelado e este relatório fica fechado.')) return;
+  if (!confirm(traduzir('Desistir? O jogador é revelado e este relatório fica fechado.'))) return;
   est.aEnviar = true;
   render();
   try {
@@ -469,7 +473,7 @@ function mostrarDia(data) {
   Object.assign(est, { escolhida: null, palpite: null, aEnviar: false, fimEscondido: false, novas: new Set() });
   est.fimAnimado = Boolean(est.prog.fim); // quem volta a abrir um relatório acabado não vê o carimbo a cair outra vez
   $('#dia-erro').textContent = '';
-  document.title = `Scout Report · Relatório do Dia #${est.numero}`;
+  document.title = traduzir(`Scout Report · Relatório do Dia #${est.numero}`);
   render();
 }
 
