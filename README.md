@@ -82,12 +82,19 @@ git clone https://github.com/bacoinz/scout-report && cd scout-report/jogo
 npm install
 ```
 
-**1. Build the player data.** The player database is not in this repository (see [Data](#data)). You build it once with the pipeline in `pipeline/`, which takes about 7 hours the first time (it fetches ~12,000 pages politely, one at a time) and resumes if you stop it:
+**1. Get the player data.** The game does not work without its player database (see [Data](#data)), and it is not in the source tree. Download **[scout-report-players-v1.0.zip](https://github.com/bacoinz/scout-report/releases/latest)** from the Releases page (1.3 MB, 878 players) and unzip it inside `pipeline/dados/`, so you end up with `pipeline/dados/jogadores/`. Then turn it into the game's database:
 
 ```bash
 cd ../pipeline
 py -3.12 -m venv .venv
 .venv/Scripts/python -m pip install -r requirements.txt     # on macOS/Linux: .venv/bin/python
+.venv/Scripts/python -m scout validar
+.venv/Scripts/python -m scout exportar                      # SQL for the game's database → pipeline/saida/d1/
+```
+
+*Optional:* instead of downloading it, you can rebuild the data from the sources. It takes about 7 hours the first time (it fetches ~12,000 pages politely, one at a time) and resumes if you stop it:
+
+```bash
 .venv/Scripts/python -m scout tm descarregar                # transfermarkt-datasets (CC0, ~180 MB)
 .venv/Scripts/python -m scout tm preparar
 .venv/Scripts/python -m scout paises
@@ -114,11 +121,11 @@ Open it in two browser windows to play against yourself, or run `node scripts/e2
 
 Share the address with your friends. The first deploy creates the Durable Object that stores the rooms.
 
-**Keeping the Daily Report going:** every `exportar` fills the calendar up to 60 days ahead; run `exportar` and `npm run db:remoto` at least once a month (`python -m scout estado` warns you). Without a calendar row the game falls back to a fixed order, so the challenge never goes empty.
+**The Daily Report calendar** is in the repository (`pipeline/dados/calendario.json`), so it lists every day's mystery player: delete the file before exporting if you want your own surprise. **Keeping it going:** every `exportar` fills the calendar up to 60 days ahead; run `exportar` and `npm run db:remoto` at least once a month (`python -m scout estado` warns you). Without a calendar row the game falls back to a fixed order, so the challenge never goes empty.
 
 ## Data
 
-The game needs a database of players with their careers, stats and honours. It is built from public sources, so it is **not included** here:
+The game needs a database of players with their careers, stats and honours. It is built from public sources and published as an **optional download, but a crucial one**: without it the game has no players. Get `scout-report-players-v1.0.zip` from the [Releases page](https://github.com/bacoinz/scout-report/releases/latest), or rebuild it with the pipeline. It is kept out of the source tree and offered for personal, non-commercial use; the sources have their own terms:
 
 - **Wikipedia** (infoboxes, honours, season squads) and **Wikidata** (ids, birth, nationality, photos, club leagues).
 - **zerozero.pt** (games, goals and assists per season, all competitions), fetched at 1 request every 2–3 s, respecting `robots.txt`.

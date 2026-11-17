@@ -10,5 +10,4 @@ pipeline/saida/
 # A base de jogadores recolhida e a resposta de cada Desafio do Dia ficam só no teu computador
 pipeline/dados/jogadores/
 pipeline/dados/amostra.json
-pipeline/dados/calendario.json
 docs/capturas/

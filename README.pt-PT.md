@@ -84,12 +84,19 @@ git clone https://github.com/bacoinz/scout-report && cd scout-report/jogo
 npm install
 ```
 
-**1. Constrói os dados dos jogadores.** A base de jogadores não está neste repositório (ver [Dados](#dados)). Constrói-se uma vez com o pipeline de `pipeline/`, que demora cerca de 7 horas na primeira vez (vai buscar ~12 000 páginas, uma de cada vez) e retoma se o parares:
+**1. Obtém os dados dos jogadores.** O jogo não funciona sem a sua base de jogadores (ver [Dados](#dados)), que não está no código-fonte. Descarrega o **[scout-report-players-v1.0.zip](https://github.com/bacoinz/scout-report/releases/latest)** da página de Releases (1,3 MB, 878 jogadores) e descompacta-o dentro de `pipeline/dados/`, ficando com `pipeline/dados/jogadores/`. Depois transforma-o na base do jogo:
 
 ```bash
 cd ../pipeline
 py -3.12 -m venv .venv
 .venv/Scripts/python -m pip install -r requirements.txt     # em macOS/Linux: .venv/bin/python
+.venv/Scripts/python -m scout validar
+.venv/Scripts/python -m scout exportar                      # SQL para a base do jogo → pipeline/saida/d1/
+```
+
+*Opcional:* em vez de descarregar, podes reconstruir os dados a partir das fontes. Demora cerca de 7 horas na primeira vez (vai buscar ~12 000 páginas, uma de cada vez) e retoma se o parares:
+
+```bash
 .venv/Scripts/python -m scout tm descarregar                # transfermarkt-datasets (CC0, ~180 MB)
 .venv/Scripts/python -m scout tm preparar
 .venv/Scripts/python -m scout paises
@@ -116,11 +123,11 @@ Abre em duas janelas do browser para jogares contra ti, ou corre `node scripts/e
 
 Partilha o endereço com os amigos. O primeiro deploy cria o Durable Object que guarda as salas.
 
-**Manter o Relatório do Dia:** cada `exportar` enche o calendário até 60 dias à frente; corre `exportar` e `npm run db:remoto` pelo menos uma vez por mês (o `python -m scout estado` avisa). Sem linha no calendário, o jogo usa uma ordem fixa, por isso o desafio nunca fica vazio.
+**O calendário do Relatório do Dia** está no repositório (`pipeline/dados/calendario.json`), por isso lista o jogador mistério de cada dia: apaga o ficheiro antes de exportar se quiseres ter surpresa. **Mantê-lo a andar:** cada `exportar` enche o calendário até 60 dias à frente; corre `exportar` e `npm run db:remoto` pelo menos uma vez por mês (o `python -m scout estado` avisa). Sem linha no calendário, o jogo usa uma ordem fixa, por isso o desafio nunca fica vazio.
 
 ## Dados
 
-O jogo precisa de uma base de jogadores com carreiras, estatísticas e prémios. Constrói-se a partir de fontes públicas, por isso **não está incluída** aqui:
+O jogo precisa de uma base de jogadores com carreiras, estatísticas e prémios. Constrói-se a partir de fontes públicas e está publicada como um **download opcional, mas crucial**: sem ela o jogo não tem jogadores. Descarrega o `scout-report-players-v1.0.zip` da [página de Releases](https://github.com/bacoinz/scout-report/releases/latest), ou reconstrói-a com o pipeline. Fica fora do código-fonte e é oferecida para uso pessoal e não comercial; as fontes têm os seus próprios termos:
 
 - **Wikipédia** (caixas de informação, títulos, plantéis das épocas) e **Wikidata** (ids, nascimento, nacionalidade, fotos, ligas dos clubes).
 - **zerozero.pt** (jogos, golos e assistências de cada época, em todas as competições), com 1 pedido a cada 2–3 s e respeitando o `robots.txt`.
