@@ -107,6 +107,7 @@ export const PARES = [
   ['Perguntas', 'Questions'],
   ['Ir para', 'Go to'],
   ['Fichas', 'Cards'],
+  ['O meu', 'Mine'],
   ['Dossier', 'Dossier'],
   ['1 ponto', '1 point'],
   ['{0} pontos', '{0} points'],

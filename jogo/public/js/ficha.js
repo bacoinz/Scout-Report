@@ -309,7 +309,7 @@ function dadosRegisto(reg, v = SEM_VISTOS) {
     const conf = P.PAISES[c]?.confederacao;
     const primeira = conf && !confs.has(conf);
     if (conf) confs.add(conf);
-    return el('span', {}, P.nomePais(c), v(`nac:${c}`), conf ? ` (${P.CONFEDERACOES[conf].nome}` : '', primeira ? v(`conf:${conf}`) : null, conf ? ')' : '');
+    return el('span', {}, P.nomePais(c), v(`nac:${c}`), conf ? ' (' : '', conf ? el('span', { text: P.CONFEDERACOES[conf].nome }) : null, primeira ? v(`conf:${conf}`) : null, conf ? ')' : '');
   }));
   const pe = reg.perfil?.pe;
   const fisico = [reg.perfil?.altura_cm ? el('span', {}, metros(reg.perfil.altura_cm), ...v.tipos('altura', 'baixo')) : null,

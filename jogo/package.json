@@ -1,8 +1,8 @@
 {
   "name": "scout-report",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
-  "description": "Scout Report — o \"Quem é Quem\" do futebol, para jogar com os amigos.",
+  "description": "Scout Report: a football Guess Who for you and your friends.",
   "type": "module",
   "scripts": {
     "dev": "wrangler dev",

@@ -1,143 +1,177 @@
+<div align="center">
+
+<img src="jogo/public/favicon.svg" alt="Scout Report logo" width="96" height="96">
+
 # Scout Report
 
-O "Quem é Quem" do futebol, multijogador e em tempo real, para jogar com amigos (partilha o link no Discord e
-conversa por voz no Discord). Cada um tem um jogador secreto; à vez, faz-se uma pergunta estruturada, uma pergunta
-livre ou um palpite, e cada resposta fica carimbada no relatório de olheiro desse jogador.
+**The football "Guess Who": ask, stamp and identify your friends' secret player before they find out yours.**<br>
+Real-time multiplayer on Discord-sized rooms, with scouting-report cards, a Joker Round and a Daily Report. Free to host on Cloudflare.
 
-O projeto tem três partes:
+<a href="https://scout-report.bacoinz.workers.dev"><img src="https://img.shields.io/badge/play-scout--report.bacoinz.workers.dev-8b5cf6?style=flat-square&labelColor=06140d" alt="Play online"></a> <img src="https://img.shields.io/badge/version-1.0-8b5cf6?style=flat-square&labelColor=06140d" alt="Version 1.0"> <a href="LICENSE.md"><img src="https://img.shields.io/badge/license-PolyForm%20Noncommercial-8b5cf6?style=flat-square&labelColor=06140d" alt="License: PolyForm Noncommercial"></a> <img src="https://img.shields.io/badge/cost-0%20%E2%82%AC%2Fmonth-8b5cf6?style=flat-square&labelColor=06140d" alt="Cost: 0 €/month"> <img src="https://img.shields.io/badge/Cloudflare-Workers%20%C2%B7%20Durable%20Objects%20%C2%B7%20D1-8b5cf6?style=flat-square&logo=cloudflare&logoColor=white&labelColor=06140d" alt="Cloudflare Workers, Durable Objects and D1"> <img src="https://img.shields.io/badge/interface-English%20%C2%B7%20Portugu%C3%AAs-8b5cf6?style=flat-square&labelColor=06140d" alt="Interface: English and Portuguese"> <a href="https://ko-fi.com/bacoinz"><img src="https://img.shields.io/badge/Ko--fi-support%20Scout%20Report-29abe0?style=flat-square&logo=kofi&logoColor=white&labelColor=06140d" alt="Support on Ko-fi"></a>
 
-1. **`pipeline/`** (Python, corre no teu computador): constrói a base de jogadores a partir da Wikidata, da
-   Wikipédia, do zerozero e do transfermarkt-datasets, e exporta-a para o Cloudflare D1.
-2. **`jogo/`** (Cloudflare Workers + Durable Objects + D1): salas, rondas, perguntas, fichas e pontuação. Em jogo não
-   corre IA nenhuma.
-3. **Desafio do Dia** (no mesmo Worker): um jogador mistério por dia, igual para toda a gente.
+[**▶ Play now**](https://scout-report.bacoinz.workers.dev) · [Daily Report](https://scout-report.bacoinz.workers.dev/dia?lang=en) · [How to play](#how-to-play) · [Run your own](#run-your-own) · [Report a bug](https://github.com/bacoinz/scout-report/issues/new/choose) · [🇵🇹 Português](README.pt-PT.md)
 
-`partilhado/` tem as regras e as listas comuns às duas partes (perguntas, países, casos de teste dos nomes).
+<img src="docs/screenshots/game.png" alt="A game in progress: the question menu, your dossier and two opponents' cards" width="100%">
 
-## Estado
+</div>
 
-- [x] Passo 1 — tema partilhado e mockup do relatório de olheiro (`docs/tema-partilhado.md`, `docs/capturas/`)
-- [x] Passo 2 — pipeline com uma amostra de 30 jogadores e relatório de qualidade
-- [x] Passo 3 — lista dos míticos e processamento completo (865 jogadores; 788 depois de saírem os nascidos antes de 1960)
-- [x] Passo 4 — jogo: salas, rotação, perguntas, fichas, pontuação, palpites (`docs/capturas/passo4/`)
-- [x] Passo 5 — Ronda Joker (`docs/capturas/passo5/`)
-- [x] Passo 6 — Desafio do Dia, em `/dia` (`docs/capturas/passo6/`)
-- [x] Passo 7 — exportação para o D1 e deploy: **https://scout-report.bacoinz.workers.dev** (Desafio do Dia em `/dia`)
+> [!TIP]
+> **Try it right now:** open **[scout-report.bacoinz.workers.dev](https://scout-report.bacoinz.workers.dev)**, create a room and share the link with your friends (Discord works great). No account, no install. Alone? The **[Daily Report](https://scout-report.bacoinz.workers.dev/dia?lang=en)** is a mystery player a day, the same for everyone.
 
-## Ver o mockup
+## Why Scout Report
+
+Football quizzes are usually solo and about one clue at a time. "Guess Who" is great with friends, but a football edition with real players needs hundreds of faces and a way to answer questions fairly.
+
+Scout Report is both. Everyone gets a secret player; on your turn you ask a question about someone else's, and the game answers it for you from real career data. Every answer is stamped on a scouting-report card, so the table slowly fills in. First to work out who it is wins the points.
+
+## Features
+
+**The game**
+
+- **A secret player for everyone:** at random, or picked from 3 cards. About 880 players born from 1960, from Ballon d'Or top 30s, national teams, big clubs, finalists of World Cups, Euros and Champions Leagues, and a hand-picked list of legends.
+- **Structured questions the game answers by itself:** 3 levels that unlock one after the other (continent → country, country → club, decade → debut year…). Career, position, physical, status, stats, shirt numbers, honours and a Coach section.
+- **Free questions:** ask anything out loud on Discord and the card's owner answers Yes, No or Don't know.
+- **A scouting-report card for each player:** every confirmed fact is stamped, ruled-out information is struck through, and a **tick in the colour of the player who found it** shows who found what. Your own **dossier** shows everything about your player (and what the others have found).
+- **Final guess** once a card has 10 "yes" and a confirmed club. Typos and nicknames count.
+- **Joker Round:** once per game, a number question about the least-known card (games, goals, debut year…). Everyone guesses in secret; closest without going over wins.
+- **No round limit:** the game ends when every secret player is identified. With or without a 1-minute timer, chosen in the lobby.
+- **Daily Report:** one mystery player a day, the same for everyone, played solo. Your score is the number of questions; copy the 🟩🟥🟪 result to share it. A calendar lets you play the days you missed.
+
+**Everything else**
+
+- **2 to 8 players** in real time, with reconnection, spectators joining mid-game and a host that moves on if they leave.
+- **English and Portuguese**, switchable on the start screen and in the game menu.
+- **No AI anywhere:** all answers come from structured data, checked in code.
+- **Works on phones:** the cards become swipeable pages.
+
+## Screenshots
+
+<table>
+  <tr>
+    <td width="50%"><img src="docs/screenshots/start.png" alt="The start screen"></td>
+    <td width="50%"><img src="docs/screenshots/lobby.png" alt="The lobby, with the game options"></td>
+  </tr>
+  <tr>
+    <td><img src="docs/screenshots/standings.png" alt="The standings during a game"></td>
+    <td><img src="docs/screenshots/daily.png" alt="The Daily Report, with its calendar"></td>
+  </tr>
+  <tr>
+    <td><img src="docs/screenshots/how-to-play.png" alt="The How to play dialog"></td>
+    <td align="center"><img src="docs/screenshots/card-phone.png" alt="Your dossier on a phone" width="45%"> <img src="docs/screenshots/game-phone.png" alt="The questions on a phone" width="45%"></td>
+  </tr>
+</table>
+
+## How to play
+
+1. **Create a room** at [scout-report.bacoinz.workers.dev](https://scout-report.bacoinz.workers.dev) and share the link. In the lobby the host picks how secret players are given out (random or pick 1 of 3 cards), the player pool (well-known or everyone) and with or without a timer.
+2. **Everyone gets a secret player.** Your **dossier**, the first card, has everything about yours, so you can answer the free questions without looking anything up. Looking up the others' players is not allowed.
+3. **On your turn** you ask your **target** (it rotates every round) one question: pick one from the list (the game answers) *or* write a free question and ask it out loud. Each "yes" earns points: 3, 6 or 9 by level, 3 for a free question.
+4. **The list unlocks in levels:** country → club, area → position, continent → country, decade → debut year. After a "yes" you keep asking for more countries and clubs until they are all found. Not enough data to answer? The card gets a **No record** stamp, and you keep your turn.
+5. **The final guess** lights up on a card with 10 "yes" and one confirmed club. On your turn, say who it is: a right guess is worth 30 points and the card is **identified**. Its owner keeps playing, on half points.
+6. **The Joker Round** drops in once per game, between round 14 and 17.
+7. **The game ends** when every secret player has been identified. Most points wins.
+
+The full rules are in the in-game **How to play** menu.
+
+## Run your own
+
+You need Node 22+, Python 3.12 (to build the player data) and a free Cloudflare account.
 
 ```bash
-cd jogo
+git clone https://github.com/bacoinz/scout-report && cd scout-report/jogo
 npm install
-npm run assets        # copia as fontes (Anton, Inter, Courier Prime, Caveat) para public/fontes
-npm run contraste     # verifica os contrastes dos tokens do tema
-cd ..
-py -3.12 -m http.server 8790 --bind 127.0.0.1 --directory jogo/public
 ```
 
-Abre `http://127.0.0.1:8790/mockup.html`.
-
-## Pipeline
-
-Python 3.12, a partir de `pipeline/`:
+**1. Build the player data.** The player database is not in this repository (see [Data](#data)). You build it once with the pipeline in `pipeline/`, which takes about 7 hours the first time (it fetches ~12,000 pages politely, one at a time) and resumes if you stop it:
 
 ```bash
+cd ../pipeline
 py -3.12 -m venv .venv
-.venv/Scripts/python -m pip install -r requirements.txt
-.venv/Scripts/python -m scout tm descarregar      # uma vez: transfermarkt-datasets (CC0, ~180 MB) → .cache/tm/
-.venv/Scripts/python -m scout tm preparar         # → .cache/tm/tm.sqlite
-.venv/Scripts/python -m scout paises              # → partilhado/paises.json
-.venv/Scripts/python -m scout sementes            # quem entra na base → dados/candidatos.json
-.venv/Scripts/python -m scout recolher --candidatos  # todos (6–7 h na 1.ª vez; retoma onde parou) → dados/jogadores/
-.venv/Scripts/python -m scout premios             # volta a aplicar dados/competicoes.json aos títulos
+.venv/Scripts/python -m pip install -r requirements.txt     # on macOS/Linux: .venv/bin/python
+.venv/Scripts/python -m scout tm descarregar                # transfermarkt-datasets (CC0, ~180 MB)
+.venv/Scripts/python -m scout tm preparar
+.venv/Scripts/python -m scout paises
+.venv/Scripts/python -m scout sementes                      # who is in the pool
+.venv/Scripts/python -m scout recolher --candidatos         # the long one
 .venv/Scripts/python -m scout validar
-.venv/Scripts/python -m scout relatorio           # → saida/qualidade.md
-.venv/Scripts/python -m scout exportar            # SQL para o D1 do jogo → saida/d1/ (e estende o calendário do Desafio)
-.venv/Scripts/python -m scout estado              # contagens e dias que faltam no calendário do Desafio do Dia
-.venv/Scripts/python -m pytest
+.venv/Scripts/python -m scout exportar                      # SQL for the game's database → pipeline/saida/d1/
 ```
 
-- **Fontes:**
-  - Wikipédia inglesa: caixa de informação, títulos, plantéis das épocas e das fases finais;
-  - Wikidata: ids, nascimento, cidadania, local de nascimento, foto, ligas dos clubes;
-  - zerozero: jogos, golos e assistências de cada época, em todas as competições;
-  - transfermarkt-datasets: pé, altura, posição, ligas e números a partir de 2012.
-- **Cache:** tudo o que vem da rede fica em `pipeline/.cache/`. Correr outra vez não pede nada à rede, e `--fresco`
-  ignora a cache. Há um pedido de cada vez, e o zerozero só leva um a cada 2–3 s.
-- **Sem IA:** o pipeline só lê fontes estruturadas (caixas, tabelas, Wikidata, zerozero, transfermarkt-datasets).
-- **Quem entra** (`python -m scout sementes`): o top 30 da Bola de Ouro desde 1996, a seleção portuguesa com 10
-  internacionalizações ou mais, os três grandes com 50 jogos ou mais, os míticos de `dados/miticos.json` e os titulares
-  das equipas campeãs nas finais do Mundial e do Europeu desde 2002 e da Liga dos Campeões desde 2010 (os onzes vêm dos
-  artigos das finais na Wikipédia). Só jogadores nascidos a partir de 1960 (`NASCIDOS_DESDE` em `config.py`); a recolha não grava os
-  outros e a exportação também os deixa de fora.
-- **Correções à mão:** ficam em `pipeline/dados/ajustes.json`, `pipeline/dados/competicoes.json` e
-  `pipeline/dados/clubes.json`. Os ajustes aplicam-se por cima das fontes em cada recolha.
-- **Ligas:** em `pipeline/dados/ligas.json`, as competições que não são ligas (taças, federações) levam
-  `"liga": false`, e as associações distritais levam `"substituir"` com o Campeonato Distrital. As novas marcam-se
-  sozinhas pelo tipo na Wikidata. A validação recusa qualquer passagem com uma delas.
-- **Liga de cada passagem:** primeiro a tabela de épocas da Wikipédia e o transfermarkt (2012+). Sem eles, o bloco
-  "Classificações" do plantel do zerozero em cada época, com o mapa revisto à mão em
-  `pipeline/dados/competicoes_zerozero.json` (id da competição no zerozero → liga; `null` para taças, supertaças,
-  torneios, estaduais brasileiros e competições continentais; `antes` para as competições que a Wikidata separa por
-  épocas, como a First Division inglesa e a Premier League). Por fim, a P118 do clube na Wikidata, que só tem a liga
-  atual. As competições novas que faltem no mapa aparecem nos avisos da recolha.
-- **Calendário do Desafio do Dia** (`pipeline/dados/calendario.json`, versionado): um jogador do Desafio por data de
-  Lisboa. Cada `exportar` preenche as datas de depois de amanhã até 60 dias à frente, sem mexer em hoje nem em amanhã,
-  e troca as datas futuras de quem saiu da base. Ninguém repete antes de todos terem saído. O `estado` avisa quando
-  faltam menos de 30 dias: no deploy, é preciso exportar e aplicar o SQL no D1 pelo menos uma vez por mês.
-
-## Jogar localmente
-
-Depois de `python -m scout exportar` no pipeline, a partir de `jogo/`:
+**2. Play locally** (from `jogo/`):
 
 ```bash
-npm install
-npm run assets        # fontes para public/fontes
-npm run db:local      # cria as tabelas no D1 local e carrega ../pipeline/saida/d1/*.sql
-npm run dev           # http://127.0.0.1:8787
-npm test              # regras das perguntas, nomes, partida e fugas de informação
-npm run e2e           # (com o dev a correr) clientes WebSocket jogam uma partida inteira
+npm run db:local     # creates the local D1 and loads the players
+npm run dev          # http://127.0.0.1:8787
 ```
 
-O `wrangler dev` só calcula as ETags dos ficheiros de `public/` quando arranca: depois de os mudar, reinicia-o (senão o
-browser pode continuar com a versão antiga).
+Open it in two browser windows to play against yourself, or run `node scripts/e2e.mjs --bots ABCD 3` (with your room code) to add bots.
 
-Para jogar sozinho no browser contra bots: cria uma sala e corre `node scripts/e2e.mjs --bots ABCD 3` (com o
-código da sala no lugar de ABCD). Os bots perguntam ao calhas e respondem às perguntas livres.
+**3. Put it online:**
 
-- **Código partilhado:** `public/js/comum/` (perguntas, deduções, respostas e nomes) é usado pelo Worker e pelo
-  browser. `scripts/gerar-dados.mjs` gera `comum/dados.gen.js` a partir de `partilhado/` antes de cada `dev`,
-  `deploy` e `test`.
-- **Servidor:** `src/partida.js` (rondas, rotação, vezes, palpites, identificação, desligados) e
-  `src/sala-logica.js` (jogadores, lobby) são puros; `src/sala.js` (Durable Object) só faz I/O; `src/vista.js`
-  decide o que cada jogador recebe (o dossier só vai para o dono).
-- **Desafio do Dia** (`/dia`, `src/dia.js`): sem estado no servidor e sem contas. O browser guarda o progresso
-  (`localStorage`, `sr.dia.<data>`) e manda o histórico das perguntas em cada pedido; o servidor volta a responder a
-  esse histórico a partir do registo, confirma a hierarquia e os 10 "sim" + clube do palpite, e só revela o jogador
-  no fim. Aceita qualquer dia desde o lançamento até hoje (Lisboa): os dias anteriores abrem-se no calendário da
-  página (`/dia/AAAA-MM-DD`). O Relatório #1 é o dia em `DIA_LANCAMENTO` (`wrangler.jsonc`, e o mesmo em
-  `pipeline/scout/calendario.py`); as datas sem linha no calendário usam a mesma ordem de reserva do pipeline, e
-  cada exportação fixa no calendário os dias já passados, para não mudarem quando a base mudar.
+1. Log in to Cloudflare: `npx wrangler login`.
+2. Create your database: `npx wrangler d1 create scout-report`, then put the `database_id` it prints in `jogo/wrangler.jsonc`. Optionally change `"name"` (it becomes your address) and `DIA_LANCAMENTO`, the date of Daily Report #1.
+3. Load it and deploy: `npm run db:remoto && npm run deploy`.
 
-## Publicar
+Share the address with your friends. The first deploy creates the Durable Object that stores the rooms.
 
-O Worker, os Durable Objects das salas e o D1 `scout-report` estão na conta Cloudflare (plano gratuito). Com o
-wrangler autenticado (`npx wrangler login`, feito por ti), a partir de `jogo/`:
+**Keeping the Daily Report going:** every `exportar` fills the calendar up to 60 days ahead; run `exportar` and `npm run db:remoto` at least once a month (`python -m scout estado` warns you). Without a calendar row the game falls back to a fixed order, so the challenge never goes empty.
 
-```bash
-npm run db:remoto     # migrações e ../pipeline/saida/d1/*.sql no D1 remoto (um ficheiro de cada vez)
-npm run deploy        # publica o Worker e os ficheiros de public/
-BASE=https://scout-report.bacoinz.workers.dev npm run e2e
+## Data
+
+The game needs a database of players with their careers, stats and honours. It is built from public sources, so it is **not included** here:
+
+- **Wikipedia** (infoboxes, honours, season squads) and **Wikidata** (ids, birth, nationality, photos, club leagues).
+- **zerozero.pt** (games, goals and assists per season, all competitions), fetched at 1 request every 2–3 s, respecting `robots.txt`.
+- **transfermarkt-datasets** (foot, height, positions, leagues and numbers from 2012), CC0.
+
+Photos are on Wikimedia Commons, with author and licence shown on hover. The pipeline never uses an LLM: everything is read from structured sources and checked in code (`python -m pytest` in `pipeline/`).
+
+## What it costs
+
+Nothing, on Cloudflare's free plans. Each room is one Durable Object (SQLite storage) whose WebSockets hibernate while nobody plays; the player database is a small D1 database read a few times per game.
+
+## How it works
+
+| Part | What it uses |
+|---|---|
+| Server | **Cloudflare Workers** + one **Durable Object** per room |
+| Players | **D1** (SQLite), loaded from the pipeline |
+| Game rules | Plain JavaScript, pure functions shared by the server, the browser and the tests |
+| Interface | Plain HTML, CSS and JavaScript modules, no framework |
+| Data pipeline | **Python** (`requests`, `mwparserfromhell`, `selectolax`) |
+
+- **The server is authoritative:** the browser only sends intentions, and a player's secret never leaves the server before it is revealed (a test plays whole games and checks it).
+- **Translations:** the interface is written in Portuguese and [`jogo/public/js/ingles.js`](jogo/public/js/ingles.js) holds the English for every text, including the server's messages; [`idioma.js`](jogo/public/js/idioma.js) swaps them on screen.
+- **Tests:** 160 with Vitest (questions, deductions, game flow, no-leak checks, translation) and about 50 with pytest (pipeline).
+
+```
+jogo/src/        Worker and Durable Object (the room), game logic
+jogo/public/     Interface, shared question code (js/comum), translations
+jogo/scripts/    Tests against a running server, screenshots, data export
+jogo/test/       Tests (Vitest)
+pipeline/        Python pipeline that builds the player database
+partilhado/      Rules and lists shared by the game and the pipeline
+docs/            Design notes and screenshots
 ```
 
-- **Atualizar os jogadores:** no pipeline, recolher ou corrigir, `validar`, `exportar`; depois `npm run db:remoto`. A
-  exportação só reescreve o que mudou e apaga do catálogo as ligas e os clubes que já não aparecem.
-- **Calendário do Desafio do Dia:** cada `exportar` preenche até 60 dias à frente. Para não ficar sem calendário, é
-  preciso exportar e correr `npm run db:remoto` pelo menos uma vez por mês (`python -m scout estado` avisa com menos de
-  30 dias). Sem linha no calendário, o Worker escolhe pela ordem de reserva, por isso o Desafio nunca fica vazio.
-- **Imagem de partilha:** `public/og.png` gera-se de `scripts/og.html` com o Chrome sem janela (o comando está no
-  ficheiro).
+Useful commands, inside `jogo/`: `npm run dev`, `npm test`, `npm run e2e`, `npm run deploy`. Pipeline and Daily Report details are in [docs/desenvolvimento.md](docs/desenvolvimento.md) (in Portuguese).
 
-## Créditos
+## Found a bug?
 
-Fontes: Anton, Inter, Courier Prime e Caveat (SIL OFL), via Fontsource. As licenças estão em `jogo/public/LICENCAS.txt`.
+This is version **1.0**, and there will be bugs. If you find one, please **[open an issue](https://github.com/bacoinz/scout-report/issues/new/choose)** saying what you did, what happened and, if you can, a screenshot. Ideas and feedback are welcome too.
+
+## Support
+
+Scout Report is free and has no ads. If you enjoyed it, you can buy me a coffee:
+
+<a href="https://ko-fi.com/bacoinz"><img src="https://ko-fi.com/img/githubbutton_sm.svg" alt="Support me on Ko-fi"></a>
+
+## Credits
+
+- Player data: Wikipedia, Wikidata, zerozero.pt and transfermarkt-datasets (see [Data](#data)). Photos: [Wikimedia Commons](https://commons.wikimedia.org).
+- Fonts: Anton, Inter, Courier Prime and Caveat (SIL OFL), via Fontsource. Licences in [`jogo/public/LICENCAS.txt`](jogo/public/LICENCAS.txt).
+- Scout Report is a fan-made game, not affiliated with any club, league or player.
+
+## License
+
+[PolyForm Noncommercial 1.0.0](LICENSE.md). Free of charge, you can use it, change it and host it for yourself and your friends, a school or a non-profit. Selling it, or selling access to it as a service, is not allowed. For anything commercial, ask the author.

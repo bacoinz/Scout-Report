@@ -1,0 +1,44 @@
+name: Bug report / Reportar um bug
+description: Something in the game is broken or behaves strangely. / Algo no jogo está partido ou estranho.
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting! / Obrigado por reportares!
+        You can write in English or Portuguese. / Podes escrever em inglês ou português.
+  - type: textarea
+    id: o-que
+    attributes:
+      label: What happened? / O que aconteceu?
+      description: What did you do, what did you expect, and what happened instead. / O que fizeste, o que esperavas e o que aconteceu.
+    validations:
+      required: true
+  - type: dropdown
+    id: onde
+    attributes:
+      label: Where in the game? / Em que parte do jogo?
+      options:
+        - Lobby / Sala
+        - Questions menu / Menu de perguntas
+        - Cards and dossier / Fichas e dossier
+        - Final guess / Palpite final
+        - Joker Round / Ronda Joker
+        - Daily Report / Relatório do Dia
+        - Language / Idioma
+        - Other / Outra
+  - type: input
+    id: aparelho
+    attributes:
+      label: Device and browser / Aparelho e browser
+      placeholder: e.g. Windows, Chrome 131 / ex.: iPhone, Safari
+  - type: input
+    id: sala
+    attributes:
+      label: Room code (optional) / Código da sala (opcional)
+      placeholder: ABCD
+  - type: textarea
+    id: imagens
+    attributes:
+      label: Screenshots (optional) / Imagens (opcional)
+      description: Drag images here. / Arrasta imagens para aqui.
