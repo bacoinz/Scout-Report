@@ -1,0 +1,65 @@
+<!doctype html>
+<!-- A imagem de capa do README (1920×1080). Gera-se com o Chrome sem janela:
+  chrome --headless=new --hide-scrollbars --window-size=1920,1080 --virtual-time-budget=3000 --screenshot=docs/screenshots/cover.png file:///…/jogo/scripts/cover.html
+  As capturas vêm de docs/screenshots (node scripts/prints.mjs). -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Scout Report cover</title>
+<style>
+  @font-face { font-family: Anton; src: url(../public/fontes/anton-latin.woff2) format('woff2'); }
+  @font-face { font-family: Inter; src: url(../public/fontes/inter-latin.woff2) format('woff2'); font-weight: 100 900; }
+  * { box-sizing: border-box; margin: 0; }
+  html, body { width: 1920px; height: 1080px; overflow: hidden; }
+  body {
+    position: relative;
+    background:
+      radial-gradient(60% 70% at 78% 40%, #2a1a5c66, transparent 70%),
+      radial-gradient(55% 60% at 18% 105%, #134a2c88, transparent 70%),
+      #06140d;
+    color: #f4f4f5;
+    font-family: Inter, system-ui, sans-serif;
+  }
+  .campo { position: absolute; inset: 0; background: repeating-linear-gradient(90deg, #ffffff06 0 80px, transparent 80px 160px); }
+  .esquerda { position: absolute; left: 96px; top: 150px; width: 760px; }
+  .marca { display: flex; align-items: center; gap: 26px; }
+  .logo { width: 84px; height: 84px; border-radius: 22px; background: #0d1f16; padding: 10px; box-shadow: 0 0 0 1px #ffffff14; }
+  .nome { font: 400 92px/1 Anton, Impact, sans-serif; letter-spacing: 0.01em; text-transform: uppercase; }
+  .nome b { font-weight: 400; background: linear-gradient(#a78bfa, #7c3aed); -webkit-background-clip: text; color: transparent; }
+  h1 { margin-top: 64px; font-size: 68px; line-height: 1.02; font-weight: 800; letter-spacing: -0.03em; }
+  h1 span { color: #a78bfa; }
+  .sub { margin-top: 38px; font-size: 31px; line-height: 1.4; color: #d4d4e8; font-weight: 300; }
+  .sub + .sub { margin-top: 22px; }
+  .pilula {
+    display: inline-block; margin-top: 52px; padding: 20px 46px; border-radius: 999px;
+    background: linear-gradient(#8b5cf6, #6d28d9); color: #fff; font-size: 31px; font-weight: 700;
+    box-shadow: 0 12px 40px #7c3aed66;
+  }
+  .janela {
+    position: absolute; left: 960px; top: 126px; width: 1080px; height: 675px; border-radius: 18px; overflow: hidden;
+    box-shadow: 0 0 0 1px #ffffff1f, 0 40px 90px #000000aa; background: #06140d;
+  }
+  .janela img { display: block; width: 100%; }
+  .telemovel {
+    position: absolute; left: 1498px; top: 262px; width: 330px; height: 714px; border-radius: 44px; padding: 10px;
+    background: #0a0f0c; box-shadow: 0 0 0 2px #2a2f2c, 0 0 0 5px #0a0f0c, 0 40px 90px #000000cc;
+  }
+  .telemovel img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top; border-radius: 36px; }
+</style>
+</head>
+<body>
+  <div class="campo"></div>
+  <div class="esquerda">
+    <div class="marca">
+      <img class="logo" src="../public/favicon.svg" alt="">
+      <div class="nome">Scout <b>Report</b></div>
+    </div>
+    <h1>Guess your friends' secret player,<br><span>before they guess yours.</span></h1>
+    <p class="sub">The football "Guess Who": ask, stamp and identify.</p>
+    <p class="sub">Scouting cards, a Joker Round, a Daily Report.</p>
+    <div class="pilula">Free · play in your browser</div>
+  </div>
+  <div class="janela"><img src="../../docs/screenshots/game.png" alt=""></div>
+  <div class="telemovel"><img src="../../docs/screenshots/card-phone.png" alt=""></div>
+</body>
+</html>

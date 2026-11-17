@@ -1,8 +1,6 @@
 <div align="center">
 
-<img src="jogo/public/favicon.svg" alt="Logo do Scout Report" width="96" height="96">
-
-# Scout Report
+<img src="docs/screenshots/cover.png" alt="Scout Report: descobre o jogador secreto dos teus amigos antes de eles descobrirem o teu" width="100%">
 
 **O "Quem é Quem" do futebol: pergunta, carimba e identifica o jogador secreto dos teus amigos antes de eles descobrirem o teu.**<br>
 Multijogador em tempo real, com fichas de olheiro, uma Ronda Joker e um Relatório do Dia. Grátis de alojar na Cloudflare.
@@ -10,8 +8,6 @@ Multijogador em tempo real, com fichas de olheiro, uma Ronda Joker e um Relatór
 <a href="https://scout-report.bacoinz.workers.dev"><img src="https://img.shields.io/badge/jogar-scout--report.bacoinz.workers.dev-8b5cf6?style=flat-square&labelColor=06140d" alt="Jogar online"></a> <img src="https://img.shields.io/badge/vers%C3%A3o-1.0-8b5cf6?style=flat-square&labelColor=06140d" alt="Versão 1.0"> <a href="LICENSE.md"><img src="https://img.shields.io/badge/licen%C3%A7a-PolyForm%20Noncommercial-8b5cf6?style=flat-square&labelColor=06140d" alt="Licença: PolyForm Noncommercial"></a> <img src="https://img.shields.io/badge/custo-0%20%E2%82%AC%2Fm%C3%AAs-8b5cf6?style=flat-square&labelColor=06140d" alt="Custo: 0 €/mês"> <img src="https://img.shields.io/badge/Cloudflare-Workers%20%C2%B7%20Durable%20Objects%20%C2%B7%20D1-8b5cf6?style=flat-square&logo=cloudflare&logoColor=white&labelColor=06140d" alt="Cloudflare Workers, Durable Objects e D1"> <img src="https://img.shields.io/badge/interface-English%20%C2%B7%20Portugu%C3%AAs-8b5cf6?style=flat-square&labelColor=06140d" alt="Interface: inglês e português"> <a href="https://ko-fi.com/bacoinz"><img src="https://img.shields.io/badge/Ko--fi-apoiar%20o%20Scout%20Report-29abe0?style=flat-square&logo=kofi&logoColor=white&labelColor=06140d" alt="Apoiar no Ko-fi"></a>
 
 [**▶ Jogar agora**](https://scout-report.bacoinz.workers.dev) · [Relatório do Dia](https://scout-report.bacoinz.workers.dev/dia) · [Como jogar](#como-jogar) · [Alojar o teu](#alojar-o-teu) · [Reportar um bug](https://github.com/bacoinz/scout-report/issues/new/choose) · [🇬🇧 English](README.md)
-
-<img src="docs/screenshots/game.png" alt="Uma partida a decorrer: o menu de perguntas, o teu dossier e as fichas de dois adversários" width="100%">
 
 </div>
 
@@ -47,6 +43,10 @@ O Scout Report é as duas coisas. Cada um recebe um jogador secreto; na tua vez 
 ## Capturas
 
 <table>
+  <tr>
+    <td width="50%"><img src="docs/screenshots/game.png" alt="Uma partida a decorrer: o menu de perguntas, o teu dossier e as fichas de dois adversários"></td>
+    <td width="50%"><img src="docs/screenshots/menu.png" alt="O menu do jogo, com o seletor de idioma"></td>
+  </tr>
   <tr>
     <td width="50%"><img src="docs/screenshots/start.png" alt="O ecrã inicial"></td>
     <td width="50%"><img src="docs/screenshots/lobby.png" alt="O lobby, com as opções do jogo"></td>

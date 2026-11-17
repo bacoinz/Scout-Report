@@ -1,8 +1,6 @@
 <div align="center">
 
-<img src="jogo/public/favicon.svg" alt="Scout Report logo" width="96" height="96">
-
-# Scout Report
+<img src="docs/screenshots/cover.png" alt="Scout Report: guess your friends' secret player before they guess yours" width="100%">
 
 **The football "Guess Who": ask, stamp and identify your friends' secret player before they find out yours.**<br>
 Real-time multiplayer on Discord-sized rooms, with scouting-report cards, a Joker Round and a Daily Report. Free to host on Cloudflare.
@@ -10,8 +8,6 @@ Real-time multiplayer on Discord-sized rooms, with scouting-report cards, a Joke
 <a href="https://scout-report.bacoinz.workers.dev"><img src="https://img.shields.io/badge/play-scout--report.bacoinz.workers.dev-8b5cf6?style=flat-square&labelColor=06140d" alt="Play online"></a> <img src="https://img.shields.io/badge/version-1.0-8b5cf6?style=flat-square&labelColor=06140d" alt="Version 1.0"> <a href="LICENSE.md"><img src="https://img.shields.io/badge/license-PolyForm%20Noncommercial-8b5cf6?style=flat-square&labelColor=06140d" alt="License: PolyForm Noncommercial"></a> <img src="https://img.shields.io/badge/cost-0%20%E2%82%AC%2Fmonth-8b5cf6?style=flat-square&labelColor=06140d" alt="Cost: 0 €/month"> <img src="https://img.shields.io/badge/Cloudflare-Workers%20%C2%B7%20Durable%20Objects%20%C2%B7%20D1-8b5cf6?style=flat-square&logo=cloudflare&logoColor=white&labelColor=06140d" alt="Cloudflare Workers, Durable Objects and D1"> <img src="https://img.shields.io/badge/interface-English%20%C2%B7%20Portugu%C3%AAs-8b5cf6?style=flat-square&labelColor=06140d" alt="Interface: English and Portuguese"> <a href="https://ko-fi.com/bacoinz"><img src="https://img.shields.io/badge/Ko--fi-support%20Scout%20Report-29abe0?style=flat-square&logo=kofi&logoColor=white&labelColor=06140d" alt="Support on Ko-fi"></a>
 
 [**▶ Play now**](https://scout-report.bacoinz.workers.dev) · [Daily Report](https://scout-report.bacoinz.workers.dev/dia?lang=en) · [How to play](#how-to-play) · [Run your own](#run-your-own) · [Report a bug](https://github.com/bacoinz/scout-report/issues/new/choose) · [🇵🇹 Português](README.pt-PT.md)
-
-<img src="docs/screenshots/game.png" alt="A game in progress: the question menu, your dossier and two opponents' cards" width="100%">
 
 </div>
 
@@ -47,6 +43,10 @@ Scout Report is both. Everyone gets a secret player; on your turn you ask a ques
 ## Screenshots
 
 <table>
+  <tr>
+    <td width="50%"><img src="docs/screenshots/game.png" alt="A game in progress: the question menu, your dossier and two opponents' cards"></td>
+    <td width="50%"><img src="docs/screenshots/menu.png" alt="The game menu, with the language selector"></td>
+  </tr>
   <tr>
     <td width="50%"><img src="docs/screenshots/start.png" alt="The start screen"></td>
     <td width="50%"><img src="docs/screenshots/lobby.png" alt="The lobby, with the game options"></td>
