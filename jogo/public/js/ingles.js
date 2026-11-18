@@ -35,6 +35,7 @@ export const PARES = [
   ['Como jogar', 'How to play'],
   ['Apoiar no Ko-fi', 'Support on Ko-fi'],
   ['Encontraste um bug?', 'Found a bug?'],
+  ['Vê os meus outros jogos e apps', 'See my other games and apps'],
   ['Idioma', 'Language'],
   ['Fechar', 'Close'],
   ['Sala', 'Room'],

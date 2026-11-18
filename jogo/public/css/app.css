@@ -1223,14 +1223,35 @@ a.btn-barra {
   top: 14px;
   right: 16px;
 }
+/* O Ko-fi sozinho e centrado por baixo dos botões, com o link dos outros jogos a seguir. */
+.apoio-inicio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  margin-top: 4px;
+}
+.outros-jogos {
+  font-size: 13px;
+  color: var(--muted);
+  text-decoration: none;
+}
+.outros-jogos:hover {
+  color: inherit;
+  text-decoration: underline;
+}
+/* O rodapé cola-se ao fundo do ecrã inicial, numa só linha pequena. */
 .rodape-inicio {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 10px;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  gap: 10px 16px;
-  margin-top: 8px;
-  font-size: 13px;
+  gap: 4px 14px;
+  font-size: 11px;
 }
 .botao-kofi {
   display: inline-flex;
@@ -1268,6 +1289,7 @@ a.btn-barra {
 }
 #ecra-inicio {
   position: relative;
+  padding-bottom: 56px;
 }
 /* No menu do jogo: o idioma numa linha, como os outros itens. */
 .menu-idioma {
